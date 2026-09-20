@@ -1,0 +1,142 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PAQUETES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\documentclass[12pt, spanish]{report}
+\usepackage[margin = 1in]{geometry}
+\usepackage[shorthands=off, es-lcroman]{babel} % Paquete de idioma sin modificar comillas
+\unaccentedoperators % Hacemos que babel no agregue tildes a operadores
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes} % Comillas españolas
+\usepackage{amsmath, amsthm, amssymb} % Paquetes AMS
+\usepackage{thmtools}
+    % Compatibilidad de thmtools y sibling con LaTeX/TeX Live 2026
+    \makeatletter
+    \@ifundefined{newcounteralias}{}{%
+      \renewcommand\thmt@autorefsetup{%
+        \@xa\def
+        \csname\thmt@envname autorefname\@xa\endcsname
+        \@xa{\thmt@thmname}%
+      }%
+    }
+    \makeatother
+\usepackage[most]{tcolorbox}
+\usepackage{varwidth}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc} % Fuentes extra
+\usepackage{newtxtext} \usepackage[libertine]{newtxmath} % Fuente
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{nfold} % Soporte múltiple línea en diagramas
+\usepackage{tikz-cd} 
+\tikzcdset{arrow style = tikz, diagrams={>=to}}
+\tikzcdset{%
+    arrow style = tikz, % Estilo de flecha 
+    diagrams={>=to}, % Punta de flecha
+    cells={nodes={execute at begin node=\displaystyle}} % Nodos en displaymath
+}
+\usetikzlibrary{decorations.markings} % Decoraciones flechas
+\usetikzlibrary{shapes.geometric, positioning}
+\usepackage{extarrows}
+\usepackage{xfrac}
+\usepackage{nicefrac}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage[hidelinks]{hyperref} % Referencias con hipervinculos
+\usepackage{bookmark}
+\usepackage{cleveref} % Referencias inteligentes
+\usepackage{nameref} % Referencias por nombre
+\usepackage{refcount} % Nombre de referencias extensible (para comparar con strings)
+\usepackage[backend=biber, style=apa]{biblatex} % Gestión de bibliografía
+    \addbibresource{Referencias.bib}
+\usepackage[explicit]{titlesec} % Personalizar titulos de secciones
+\usepackage{enumitem} % Personalizar numeraciones
+    \setlist[itemize]{leftmargin=1em}
+    \setlist[enumerate]{leftmargin=1.5em}
+\usepackage{tocloft} % Personalizar tabla de contenidos
+\usepackage{fancyhdr} % Encabezados y pies de página
+\usepackage{eucal} % Mejorar fuente \mathcal
+\usepackage{mathtools} % Herramientas para subíndices y mejoras de símbolos
+\usepackage{etoolbox}
+\usepackage{pgfplots} % Graficar funciones
+    \pgfplotsset{compat=1.18}
+    \usepgfplotslibrary{groupplots}
+\usepackage{diffcoeff} % Cocientes diferenciales bonitos
+\usepackage{physics} % matrices y vectores
+\usepackage{calc}
+\usepackage{soul}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% VARIABLES GLOBALES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\Materia}{
+    Temas Selectos de Topología II:\\[0.7cm] 
+    \normalfont\slshape\huge{``Homotopía Estable''}
+    }
+    \newcommand{\abvMateria}{Homotopía Estable}
+\newcommand{\Docente}{José María Cantarero López}
+\newcommand{\Alumno}{Pablo Jair Aranda Pérez}
+    \newcommand{\abvAlumno}{Pablo J. Aranda P.}
+\newcommand{\Correo}{pablo\_p1@live.com}
+\newcommand{\NumClases}{2}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PERSONALIZACIÓN  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%----------------------------------------  ENCABEZADOS -------------------------------------------
+
+\input{Personalizacion/Encabezados}
+
+%-------------------------------------------- TÍTULOS --------------------------------------------
+
+\definecolor{grisCIMAT}{RGB}{136,139,141}  % HTML: #888B8D (Pantone Cool Gray 8 C)
+\definecolor{rojoCIMAT}{RGB}{111,38,61}  % HTML: #6F263D (Burgundy, Pantone 209 C)
+\input{Personalizacion/Titulos}
+
+%--------------------------------------- SÍMBOLOS Y ENTORNOS -------------------------------------
+
+\input{Personalizacion/Simbolos y entornos}
+
+%------------------------------------- PERSONALIZACIÓN ÍNDICE ------------------------------------
+
+\input{Personalizacion/TOC}
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DOCUMENTO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+\include{Portada/Portada}
+\pagestyle{plain}
+\hypertarget{toc}{}
+\tableofcontents\clearpage % \clearpage para conservar \pagestyle{plain} en todas las pag. del TOC
+\pagestyle{fancy}
+\include{Apuntes/Cuerpo}
+{% Formato Capitulo para biblio solamente
+\titleformat{\chapter}[display]
+    {\centering\Huge\scshape\color{grisCIMAT}}
+    {}
+    {}
+    {#1}
+\printbibliography
+}
+\end{document}

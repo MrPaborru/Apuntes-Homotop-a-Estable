@@ -1,0 +1,71 @@
+\renewcommand{\thepart}{\arabic{part}}
+% Caja para el número de la parte
+\newsavebox{\felinepartnumber}
+
+% Dimensiones del recuadro
+\newlength{\partboxwidth}
+\newlength{\partboxheight}
+\setlength{\partboxwidth}{2.8cm}
+\setlength{\partboxheight}{2cm}
+
+% Marcador: "PARTE" vertical + número
+\newcommand{\felinepartmarker}{%
+    \sbox{\felinepartnumber}{%
+        \begingroup
+        \setlength{\fboxsep}{4pt}%
+        \colorbox{rojoCIMAT}{%
+            \makebox[\partboxwidth][c]{%
+                \resizebox{!}{4.2cm}{%
+                    \normalfont
+                    \bfseries
+                    \color{white}%
+                    \thepart
+                }%
+            }%
+        }%
+        \endgroup
+    }%
+    \makebox[\textwidth][r]{%
+        {%
+            \normalfont
+            \rmfamily
+            \mdseries
+            \color{black}%
+            \rotatebox{90}{%
+                \resizebox{%
+                    \heightof{\usebox{\felinepartnumber}}%
+                    +\depthof{\usebox{\felinepartnumber}}%
+                }{!}{%
+                    \scshape\so{PARTE}%
+                }%
+            }%
+        }%
+        \hspace{0.35em}%
+        \raisebox{\depthof{\usebox{\felinepartnumber}}}{%
+            \usebox{\felinepartnumber}%
+        }%
+    }%
+}
+
+% Espaciado de las partes
+\titlespacing*{\part}
+    {0pt}
+    {-5em}
+    {3em}
+
+% Formato de las partes
+\titleformat{\part}[display]
+    {\normalfont\Huge\bfseries\scshape\color{grisCIMAT!50!black}\raggedleft}
+    {
+    \begin{minipage}[t]{\textwidth}
+        \smash{\raisebox{-0.2cm}{\includegraphics[height=1cm]{Portada/escudo_cimat.pdf}}} \hfill
+        {\Large\color{rojoCIMAT}\normalfont\bfseries{Centro de Investigación en Matemáticas, A.C.}}
+        \vspace{-0.95em}\\
+        {\color{rojoCIMAT}\hspace{1cm}\rule{\dimexpr\textwidth-1cm\relax}{1.3pt}}
+    \end{minipage}\\
+    \vspace{4.2cm}
+    \felinepartmarker
+    }
+    {1.5em}
+    {}
+    [\input{Portada/banner}]

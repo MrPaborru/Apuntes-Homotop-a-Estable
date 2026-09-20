@@ -1,0 +1,394 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SIMBOLOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\qedsymbol}{\textcolor{rojoCIMAT}{\ensuremath{\square}}}
+% Redefinir \mathbb para usar Latin Modern
+\DeclareMathAlphabet{\mathbb}{U}{lmsb}{m}{n}
+% Redefinimos partes real e imaginaria
+\renewcommand{\Re}{\mathcal{R}\textit{e}}
+\renewcommand{\Im}{\mathcal{I}\textit{m}}
+% Agregamos alternativas reescalables de \ulcorner y \urcorner del paquete MnSymbols
+\makeatletter
+\DeclareFontFamily{OMX}{MnSymbolE}{}
+\DeclareSymbolFont{MnLargeSymbols}{OMX}{MnSymbolE}{m}{n}
+\SetSymbolFont{MnLargeSymbols}{bold}{OMX}{MnSymbolE}{b}{n}
+\DeclareFontShape{OMX}{MnSymbolE}{m}{n}{
+    <-6>  MnSymbolE5
+   <6-7>  MnSymbolE6
+   <7-8>  MnSymbolE7
+   <8-9>  MnSymbolE8
+   <9-10> MnSymbolE9
+  <10-12> MnSymbolE10
+  <12->   MnSymbolE12
+}{}
+\DeclareFontShape{OMX}{MnSymbolE}{b}{n}{
+    <-6>  MnSymbolE-Bold5
+   <6-7>  MnSymbolE-Bold6
+   <7-8>  MnSymbolE-Bold7
+   <8-9>  MnSymbolE-Bold8
+   <9-10> MnSymbolE-Bold9
+  <10-12> MnSymbolE-Bold10
+  <12->   MnSymbolE-Bold12
+}{}
+\DeclareMathDelimiter{\ulcor}
+    {\mathopen}{MnLargeSymbols}{'036}{MnLargeSymbols}{'036}
+\DeclareMathDelimiter{\urcor}
+    {\mathclose}{MnLargeSymbols}{'043}{MnLargeSymbols}{'043}
+\makeatother
+
+\newcommand{\bigforall}{\scalebox{1.2}{$\forall$}} % Simbolo para todo grande
+\newcommand{\bigexists}{\scalebox{1.2}{$\exists$}} % Simbolo existe grande
+% Símbolo pertenencia
+\newcommand{\en}{\mathrel{% 
+    \mathchoice%
+    {\hspace{-0.2em}\raisebox{0.1ex}{\scalebox{0.95}{$\in$}}\hspace{-0.2em}} % Tamaño Displaymath
+    {\hspace{-0.2em}\raisebox{0.1ex}{\scalebox{0.95}{$\in$}}\hspace{-0.2em}} % Tamaño Inline
+    {\hspace{-0.03em}\raisebox{0.07ex}{\scalebox{0.65}{$\in$}}\hspace{-0.03em}} % Scriptstyle
+    {\hspace{-0.03em}\raisebox{0.05ex}{\scalebox{0.6}{$\in$}}\hspace{-0.03em}} % Scriptscriptstyle
+}}
+\newcommand{\noten}{\mathrel{% 
+    \mathchoice%
+    {\hspace{-0.2em}\raisebox{0.1ex}{\scalebox{0.95}{$\notin$}}\hspace{-0.2em}} % Tamaño Displaymath
+    {\hspace{-0.2em}\raisebox{0.1ex}{\scalebox{0.95}{$\notin$}}\hspace{-0.2em}} % Tamaño Inline
+    {\hspace{-0.03em}\raisebox{0.07ex}{\scalebox{0.65}{$\notin$}}\hspace{-0.03em}} % Scriptstyle
+    {\hspace{-0.03em}\raisebox{0.05ex}{\scalebox{0.6}{$\notin$}}\hspace{-0.03em}} % Scriptscriptstyle
+}}
+\newcommand{\cont}{\mathrel{% 
+    \mathchoice%
+    {\hspace{-0.2em}\raisebox{0.1ex}{\scalebox{0.95}{$\ni$}}\hspace{-0.2em}} % Tamaño Displaymath
+    {\hspace{-0.2em}\raisebox{0.1ex}{\scalebox{0.95}{$\ni$}}\hspace{-0.2em}} % Tamaño Inline
+    {\hspace{-0.03em}\raisebox{0.07ex}{\scalebox{0.65}{$\ni$}}\hspace{-0.03em}} % Scriptstyle
+    {\hspace{-0.03em}\raisebox{0.05ex}{\scalebox{0.6}{$\ni$}}\hspace{-0.03em}} % Scriptscriptstyle
+}}
+\newcommand{\supsub}[3]{{#1}^{\scriptscriptstyle #2}_{\scriptscriptstyle #3}} % Comando exponentes más chicos
+\newcommand{\restr}[2]{{#1}{\left|_{ {#2}}\kern-\nulldelimiterspace\right.}} % Restricción extensible
+% Comando barra superior extensible 
+\newcommand{\ubar}[1]{\mathpalette\ubaraux{#1}}
+
+\newcommand{\ubaraux}[2]{%
+  \tikz[baseline=(X.base)]{
+    \node[inner sep=0pt, outer sep=0pt] (X) {$#1#2$};
+    \draw[line width=0.5pt]
+      ([xshift=1pt, yshift=1pt]X.north west) --
+      ([xshift=-1pt, yshift=1pt]X.north east);
+  }%
+}
+% Definición delimitadores
+\providecommand\given{}% Aseguramos que \given exista
+\newcommand\SetSymbol[1][]{% Símbolo "|" con soporte par múltiple línea
+    \nonscript\:#1\vert
+    \allowbreak
+    \nonscript\:
+    \mathopen{}
+}
+\DeclarePairedDelimiterX\ang[1]{\langle}{\rangle}{\renewcommand\given{\SetSymbol[\delimsize]}#1}% <, > reescalables 
+\DeclarePairedDelimiterX\set[1]\{\}{\renewcommand\given{\SetSymbol[\delimsize]}#1}% {, } para conjuntos
+\DeclarePairedDelimiter\cornered\ulcor\urcor% Esquinas superiores como delimitadores reescalables
+\DeclarePairedDelimiter\Brack\lBrack\rBrack
+\DeclarePairedDelimiter\round\lfloor\rceil
+\let\brack\relax
+\DeclarePairedDelimiter\brack{[}{]}
+\DeclarePairedDelimiter\floor\lfloor\rfloor
+\DeclarePairedDelimiter\ceil\lceil\rceil
+
+% Definición operadores útiles
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\diam}{diam}
+\newcommand{\dotcup}{\mathbin{\dot{\cup}}}
+\newcommand{\ctpeq}{\xlongequal{\hspace{-0.3em}\text{a.e.}\hspace{-0.3em}}}
+\DeclareMathOperator{\vol}{Vol}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\p}{\textit{p}}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\inter}{int}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\fv}{FV}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\pert}{\ni}
+\DeclareMathOperator{\desc}{Desc}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\sv}{Sv}
+\DeclareMathOperator{\et}{\mathscr{E}\!}
+% \DeclareMathOperator{\sh}{Sh}
+\DeclareMathOperator{\spsh}{SepPSh}
+\DeclareMathOperator{\psh}{PSh}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\true}{\top}
+\DeclareMathOperator{\false}{\bot}
+\let\ev\relax
+\DeclareMathOperator{\ev}{\textit{ev}}
+\DeclareMathOperator{\ob}{Ob}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\sub}{Sub}
+\DeclareMathOperator{\cone}{Cone}
+\DeclareMathOperator{\cocone}{Cocone}
+\DeclareMathOperator*{\colim}{colim} % Operador colímite sin acento y se comporta bien con subindices
+\newcommand{\Col}[1]{\operatorname{#1}} % Comando genérico para colecciones de objetos
+\newcommand{\cat}[1]{\textit{#1}}
+\newcommand{\coamalg}{\rotatebox[origin=c]{180}{$\amalg$}} % Simbolo producto binario alternativo
+\renewcommand{\hom}{\operatorname{Mor}} % Redefinimos \hom 
+\DeclareMathOperator{\Hom}{Hom}\newcommand{\cech}[1]{\operatorname{\check{H}^{#1}}}
+\newcommand{\colonequiv}{\vcentcolon\equiv}
+
+% Específicos para esta clase.
+\let\Top\relax
+\newcommand{\Top}{\mathbf{Top}}
+\newcommand{\Topstar}{\mathbf{Top}_*}
+\newcommand{\CW}{\mathbf{CW}}
+\newcommand{\CWstar}{\mathbf{CW}_*}
+\newcommand{\Sp}{\mathbf{Sp}}
+\newcommand{\Ho}{\operatorname{Ho}}
+\newcommand{\Map}{\operatorname{Map}}
+\newcommand{\SW}{\widetilde{\mathbf{SW}}}
+\newcommand{\Sph}{\mathbb{S}}
+\newcommand{\ESW}{\widetilde{\mathbf{SW}}}
+\newcommand{\sh}{\operatorname{sh}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ENTORNOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\declaretheorem[name = Teorema]{teo}
+\crefname{teo}{teorema}{teoremas}
+% Subentornos de teo que se nombren adecuadamente con \cref
+\declaretheorem[name = Proposición, sibling = teo]{prop}
+\crefname{prop}{proposición}{proposiciones}
+
+\declaretheorem[name = Lema, sibling = teo]{lema}
+\crefname{lema}{lema}{lemas}
+
+\declaretheorem[name = Corolario, sibling = teo]{coro}
+\crefname{coro}{corolario}{corolarios}
+
+% Otros entornos matemáticos
+\theoremstyle{definition}
+\declaretheorem[name = Definición, numberwithin = section]{defi}
+\declaretheorem[name = Ejemplo, numberwithin = section]{ejem}
+
+% Entorno auxiliar para ejercicio
+\declaretheorem[name = Ejercicio, numberwithin = section]{eje}
+\declaretheorem[name = Problema, numberwithin = subsection]{pro}
+\declaretheorem[name = Ejercicio, numberwithin = subsection]{neje}
+\crefname{eje}{ejercicio}{ejercicios}
+\crefname{neje}{ejercicio}{ejercicios}
+\crefname{pro}{problema}{problemas}
+
+% Cambiamos formato de contadores
+\renewcommand{\theneje}{\arabic{section}.\arabic{subsection}.\Alph{neje}}
+\renewcommand{\theHneje}{%
+    \arabic{section}.\arabic{subsection}.\arabic{neje}%
+} % Cambiamos formato del ancla de hyperref, de otro modo superpone etiquetas entre subsecciones
+\renewcommand{\theeje}{\arabic{eje}}
+
+\makeatletter
+% Entorno ejercicio que se agrega al TOC 
+\newenvironment{ejer}[1][]{%
+    \refstepcounter{eje} %
+    \label{ejer:\thechapter.\theeje} % Etiqueta automática para referencias
+    \if\relax\detokenize{#1}\relax
+        \def\ejetitle{Ejercicio \theeje}%
+        \addcontentsline{toc}{subsubsection}{\ejetitle}%
+    \else
+        \def\ejetitle{Ejercicio \theeje\ (#1)}%
+        \addcontentsline{toc}{subsubsection}{\ejetitle}%
+    \fi
+    \begin{tcolorbox}[
+        enhanced,
+        breakable,
+        before skip=12pt,
+        after skip=12pt,
+        top = 0.1em,
+        coltitle=rojoCIMAT,
+        colback=red!0!rojoCIMAT!5!white,
+        colframe=rojoCIMAT,
+        colbacktitle=rojoCIMAT,
+        boxrule=0.8pt,
+        title=\itshape\ejetitle,
+        attach boxed title to top center={yshift*=1mm-\tcboxedtitleheight},
+        % attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, % Alternativa pestana a la izquierda
+        varwidth boxed title*=-3cm,
+        boxed title style={%
+            top=-0.05em, % Espacio sobre titulo
+            bottom=-0.15em, % Espacio debajo del titulo 
+            frame code={%
+                \path[draw=tcbcolback,line width=0.8pt]
+                ([yshift=-1mm,xshift=-1.1mm]frame.north west)
+                arc[start angle=0,end angle=180,radius=1mm]
+                ([yshift=-1mm,xshift=1.1mm]frame.north east)
+                arc[start angle=180,end angle=0,radius=1mm];
+                \path[left color=tcbcolback!2.5,right color=tcbcolback!2.5,middle color=tcbcolback!2.5]
+                ([xshift=-2mm]frame.north west)--([xshift=2mm]frame.north east)
+                [rounded corners=1mm]--([xshift=1mm,yshift=-1mm]frame.north east)
+                --(frame.south east)--(frame.south west)
+                --([xshift=-1mm,yshift=-1mm]frame.north west)
+                [sharp corners]--cycle;
+                \path[draw=tcbcolback,line width=0.8pt]
+                ([xshift=-2mm]frame.north west)--([xshift=2mm]frame.north east)
+                [rounded corners=1mm]--([xshift=1mm,yshift=-1mm]frame.north east)
+                --(frame.south east)--(frame.south west)
+                --([xshift=-1mm,yshift=-1mm]frame.north west)
+                [sharp corners]--cycle;
+            },
+            interior engine=empty%
+        },
+        fonttitle=\bfseries%
+    ]%
+}{%
+    \par\nointerlineskip\vspace{0.1em}%
+    \end{tcolorbox}%
+}
+% Entorno problema que se agrega al TOC 
+\newenvironment{prob}[1][]{%
+    \refstepcounter{pro} %
+    \label{prob:\thepro} % Etiqueta automática para referencias
+    \if\relax\detokenize{#1}\relax
+        \def\protitle{Problema \thepro}%
+        \addcontentsline{toc}{subsubsection}{\protitle}%
+    \else
+        \def\protitle{Problema \thepro\ (#1)}%
+        \addcontentsline{toc}{subsubsection}{\protitle}%
+    \fi
+    \begin{tcolorbox}[
+        enhanced,
+        breakable,
+        before skip=12pt,
+        after skip=12pt,
+        top = 0.1em,
+        coltitle=rojoCIMAT,
+        colback=red!0!rojoCIMAT!5!white,
+        colframe=rojoCIMAT,
+        colbacktitle=rojoCIMAT,
+        boxrule=0.8pt,
+        title=\itshape\protitle,
+        attach boxed title to top center={yshift*=1mm-\tcboxedtitleheight},
+        % attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, % Alternativa pestana a la izquierda
+        varwidth boxed title*=-3cm,
+        boxed title style={%
+            top=-0.05em, % Espacio sobre titulo
+            bottom=-0.15em, % Espacio debajo del titulo 
+            frame code={%
+                \path[draw=tcbcolback,line width=0.8pt]
+                ([yshift=-1mm,xshift=-1.1mm]frame.north west)
+                arc[start angle=0,end angle=180,radius=1mm]
+                ([yshift=-1mm,xshift=1.1mm]frame.north east)
+                arc[start angle=180,end angle=0,radius=1mm];
+                \path[left color=tcbcolback!2.5,right color=tcbcolback!2.5,middle color=tcbcolback!2.5]
+                ([xshift=-2mm]frame.north west)--([xshift=2mm]frame.north east)
+                [rounded corners=1mm]--([xshift=1mm,yshift=-1mm]frame.north east)
+                --(frame.south east)--(frame.south west)
+                --([xshift=-1mm,yshift=-1mm]frame.north west)
+                [sharp corners]--cycle;
+                \path[draw=tcbcolback,line width=0.8pt]
+                ([xshift=-2mm]frame.north west)--([xshift=2mm]frame.north east)
+                [rounded corners=1mm]--([xshift=1mm,yshift=-1mm]frame.north east)
+                --(frame.south east)--(frame.south west)
+                --([xshift=-1mm,yshift=-1mm]frame.north west)
+                [sharp corners]--cycle;
+            },
+            interior engine=empty%
+        },
+        fonttitle=\bfseries%
+    ]%
+}{%
+    \par\nointerlineskip\vspace{0.1em}%
+    \end{tcolorbox}%
+}
+% Entorno ejercicio que se agrega al TOC (con número de sección)
+\newenvironment{nejer}[1][]{%
+    \refstepcounter{neje} %
+    \label{nejer:\theneje} % Etiqueta automática para referencias
+    \if\relax\detokenize{#1}\relax
+        \def\nejetitle{Ejercicio \theneje}%
+        \addcontentsline{toc}{subsubsection}{\nejetitle}%
+    \else
+        \def\nejetitle{Ejercicio \theneje\ (#1)}%
+        \addcontentsline{toc}{subsubsection}{\nejetitle}%
+    \fi
+    \begin{tcolorbox}[
+        enhanced,
+        breakable,
+        before skip=12pt,
+        after skip=12pt,
+        top = 0.1em,
+        coltitle=rojoCIMAT,
+        colback=red!0!rojoCIMAT!5!white,
+        colframe=rojoCIMAT,
+        colbacktitle=rojoCIMAT,
+        boxrule=0.8pt,
+        title=\itshape\nejetitle,
+        attach boxed title to top center={yshift*=1mm-\tcboxedtitleheight},
+        % attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, % Alternativa pestana a la izquierda
+        varwidth boxed title*=-3cm,
+        boxed title style={%
+            top=-0.05em, % Espacio sobre titulo
+            bottom=-0.15em, % Espacio debajo del titulo 
+            frame code={%
+                \path[draw=tcbcolback,line width=0.8pt]
+                ([yshift=-1mm,xshift=-1.1mm]frame.north west)
+                arc[start angle=0,end angle=180,radius=1mm]
+                ([yshift=-1mm,xshift=1.1mm]frame.north east)
+                arc[start angle=180,end angle=0,radius=1mm];
+                \path[left color=tcbcolback!2.5,right color=tcbcolback!2.5,middle color=tcbcolback!2.5]
+                ([xshift=-2mm]frame.north west)--([xshift=2mm]frame.north east)
+                [rounded corners=1mm]--([xshift=1mm,yshift=-1mm]frame.north east)
+                --(frame.south east)--(frame.south west)
+                --([xshift=-1mm,yshift=-1mm]frame.north west)
+                [sharp corners]--cycle;
+                \path[draw=tcbcolback,line width=0.8pt]
+                ([xshift=-2mm]frame.north west)--([xshift=2mm]frame.north east)
+                [rounded corners=1mm]--([xshift=1mm,yshift=-1mm]frame.north east)
+                --(frame.south east)--(frame.south west)
+                --([xshift=-1mm,yshift=-1mm]frame.north west)
+                [sharp corners]--cycle;
+            },
+            interior engine=empty%
+        },
+        fonttitle=\bfseries%
+    ]
+}{%
+    \par\nointerlineskip\vspace{0.1em}%  
+    \end{tcolorbox}%
+}
+\makeatother
+
+% Entornos notas
+\theoremstyle{remark}
+\declaretheorem[name = Observación, numbered = no]{obs}
+\declaretheorem[name = Nota, numbered = no]{nota}
+
+% Entorno solucion
+\newenvironment{sol}[1][Solución]{%
+    \begin{proof}[#1]
+}{%
+    \end{proof}
+    \vspace{1em}
+    % \pagebreak[3]
+    \clearpage
+}
+
+% Referencias inteligentes "\cref (\nameref)"
+\newcommand{\myref}[1]{%
+    \cref{#1}%
+    \begingroup
+    \edef\temp{\getrefbykeydefault{#1}{name}{}}%
+    \ifx\temp\empty
+        % No hacer nada si \temp está vacío
+    \else
+        ~(\nameref{#1})% Imprime nombre entre paréntesis en caso de existir
+    \fi
+    \endgroup
+}
+
+% Comando para referencias abreviadas
+\newcommand{\abvref}[1]{%
+    \begingroup
+    \crefname{teo}{teo.}{teos.}%
+    \crefname{lema}{lema}{lemas}%
+    \crefname{prop}{prop.}{props.}%
+    \crefname{coro}{coro.}{coros.}%
+    \crefname{section}{sec.}{secs.}%
+    \crefname{eje}{ej.}{ejs.}%
+    \cref{#1}%
+    \endgroup
+}

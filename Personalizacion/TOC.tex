@@ -1,0 +1,60 @@
+\setcounter{tocdepth}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITULO TOC %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \setlength{\cftbeforetoctitleskip}{-2.5em}
+\setlength{\cftaftertoctitleskip}{7em}
+\renewcommand{\cfttoctitlefont}{\hfill\fontfamily{lmr}\selectfont\resizebox{!}{1.2cm}}
+\renewcommand{\cftaftertoctitle}{
+    \resizebox{!}{1.2cm}{\,\colorbox{rojoCIMAT}{\!\vphantom{I}\!}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SEPARACIÓN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Capitulos
+\setlength{\cftchapnumwidth}{2em}
+\setlength{\cftbeforechapskip}{0.7em} % arriba
+\renewcommand{\cftchapafterpnum}{\vspace{0.5em}} % abajo
+% Secciones
+% \setlength{\cftsecnumwidth}{0em}
+\setlength{\cftsecindent}{2em}
+% \setlength{\cftbeforesecskip}{0.2em} % arriba
+% % Subsecciones
+% \setlength{\cftsubsecnumwidth}{2em}
+% \setlength{\cftsubsecindent}{\cftsecindent} % indentado
+% % Subsubsecciones
+% \setlength{\cftsubsubsecindent}{\cftsubsecindent + \cftsubsecnumwidth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CAPITULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cftpagenumbersoff{chap}
+\renewcommand{\cftchappresnum}{\bfseries\color{white}}
+\newcommand{\chaptertocbox}{%
+    \makebox[0pt][l]{%
+        \tikz[remember picture,overlay]{
+            \draw[color=grisCIMAT, line width=1pt]
+                ([xshift=-0.1em,yshift=-0.27em]0,0)
+                rectangle
+                ++(\textwidth,1.22em);
+            \fill[color=grisCIMAT, line width=1pt]
+                ([xshift=-0.1em,yshift=-0.27em]0,0)
+                rectangle
+                ++(1.1em,1.22em);
+        }%
+    }%
+}
+\renewcommand{\cftchapfont}{\large\chaptertocbox}
+\renewcommand{\cftchapaftersnum}{\textordfeminine}
+\renewcommand{\cftchapaftersnumb}{\color{grisCIMAT!80!black}Clase: }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECCIONES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\cftsecfont}{\fontfamily{bch}\selectfont}
+% \cftpagenumbersoff{sec}
+% \renewcommand{\cftsecpresnum}{\color{white}}
+% \renewcommand{\cftsecdotsep}{\cftnodots}
+
+% \renewcommand{\cftsubsecfont}{\small\fontfamily{bch}\selectfont}
+% \renewcommand{\cftsubsecaftersnum}{.}
+
+% \renewcommand{\cftsubsubsecfont}{\small\fontfamily{cmss}\selectfont}

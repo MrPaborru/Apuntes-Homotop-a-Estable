@@ -1,0 +1,74 @@
+\usetikzlibrary{shadows.blur}
+%------------------------------------------------------------------------------%
+
+% Definición movida a main.tex
+% \definecolor{grisCIMAT}{RGB}{137,136,139}  % HTML: #89888b
+% \definecolor{rojoCIMAT}{RGB}{100,41,62}  % HTML: #64293e
+% \definecolor{grisCIMAT}{RGB}{136,139,141}  % HTML: #888B8D (Pantone Cool Gray 8 C)
+% \definecolor{rojoCIMAT}{RGB}{111,38,61}  % HTML: #6F263D (Burgundy, Pantone 209 C)
+
+%-----------------------------------------------------------------------------%
+
+\setlength{\headheight}{15pt}  % \headheight fix
+
+\fancypagestyle{firststyle}
+{
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyhf{}
+    \fancyhead[l]{}
+    \fancyfoot[c]{%
+        \input{Portada/banner}
+    }
+    \fancyhfoffset[r]{0cm}
+    \fancyfoot[r]{%
+        \small\raisebox{3ex}{%
+        Guanajuato, Gto., \today. E-mail:
+        \color{blue}\href{mailto:\Correo}{\texttt\Correo}%
+        }%
+    }
+}
+
+\renewcommand*{\maketitle}{%
+    \begin{titlepage}     
+        \newgeometry{left=1.2cm,right=1.2cm,bottom=1.0cm,top=0.9cm}
+        \thispagestyle{firststyle}
+        \noindent
+        \begin{minipage}[c]{0.18\textwidth}
+            \begin{flushleft}
+                \includegraphics[height=3.2cm]{Portada/logo_cimat.pdf}  % 3cm as minimum height
+            \end{flushleft}
+        \end{minipage}
+        %
+        \begin{minipage}[t]{0.8\textwidth}
+            \vspace{0.63cm}
+            \begin{flushright}
+                {\Large {\color{rojoCIMAT} {\bfseries Centro de Investigación en Matemáticas, A.C.}}}
+            \end{flushright}
+        \end{minipage}
+        %
+        \vspace{0.1cm}
+        {\color{rojoCIMAT} \hrule height1.3pt} % height2pt
+        \vspace{2.2cm}  % 0.7cm
+
+        \begin{center}
+            \setlength{\fboxrule}{1.5pt}
+            {\Huge\scshape\Materia}\\[2cm]
+            \fcolorbox{rojoCIMAT}{rojoCIMAT}{%
+                \makebox[4cm][c]{%
+                    \color{white}\fontsize{52.5}{0}\selectfont%
+                    \textbf{1\textordfeminine{\! - \!}\NumClases\textordfeminine}%
+                }%
+            }\\[-0.1cm]
+            \fcolorbox{rojoCIMAT}{white}{%
+                \makebox[4cm][c]{\Huge\scshape\so{clase}}%
+            }\\[2cm]
+            {\Large\bfseries Docente:}\\[0.2cm]
+            {\Large\Docente}\\[0.7cm]
+            {\Large\bfseries Alumno:}\\[0.2cm]
+            {\Large\Alumno}
+        \end{center}
+    \end{titlepage}
+    \restoregeometry
+}
+
+\maketitle

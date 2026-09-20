@@ -1,0 +1,22 @@
+% Marca de capítulo con hipervínculo
+\makeatletter
+\def\chaptermark#1{\markright{\protect\hyper@linkstart{link}{\@currentHref}{Clase~\thechapter~de~\NumClases}\protect\hyper@linkend}}
+\makeatother
+\renewcommand{\sectionmark}[1]{}
+
+% Estructura encabezado
+\setlength{\headheight}{16pt}
+\renewcommand{\headrulewidth}{0.6pt} % Línea de encabezado
+\pagestyle{fancy}
+\fancyhf{} % Limpia marcas de encabezado y pie
+\fancyhead[l]{\fontfamily{lmr}\selectfont\abvAlumno}
+\fancyhead[r]{\fontfamily{lmr}\selectfont\rightmark}
+\fancyhead[c]{\scshape\abvMateria}
+\fancyfoot[c]{\hyperlink{toc}{\thepage}}
+
+% Aplica estilo vacío solo a la página en blanco
+\let\origcleardoublepage\cleardoublepage
+\renewcommand{\cleardoublepage}{%
+    \clearpage
+    {\pagestyle{empty}\origcleardoublepage}
+}

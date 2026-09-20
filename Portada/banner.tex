@@ -1,0 +1,28 @@
+\begin{tikzpicture}[remember picture,overlay]
+    % \node[anchor=south east, yshift=-1.5mm, xshift=1.5mm] at (current page.south east) {%
+    % \includegraphics[width=215.9mm]{Portada/banner_cimat.png}%
+    % };
+    \fill[rojoCIMAT] (current page.south west) rectangle ++(\paperwidth,6pt);
+    \fill[%
+        grisCIMAT,
+        blur shadow={
+        shadow xshift=-2pt,
+        shadow yshift=5pt,
+        shadow blur radius=0.8ex,
+        shadow blur steps=32,
+        shadow blur extra rounding=86pt,
+        opacity=1
+    }]%
+    (current page.south west) -- ++(6.4cm,0) -- ++(-6.4cm,6.55cm) -- cycle;
+    \fill[%
+        rojoCIMAT,
+        blur shadow={
+        shadow xshift=-2pt,
+        shadow yshift=5pt,
+        shadow blur radius=0.8ex,
+        shadow blur steps=32,
+        shadow blur extra rounding=86pt,
+        opacity=1
+    }]
+    (current page.south west) -- ++(6.4cm,0) -- ++(-6.4cm,4.4cm) -- cycle;
+\end{tikzpicture}
