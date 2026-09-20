@@ -1,0 +1,56 @@
+# Archivos generados por la compilación de LaTeX.
+#
+# La configuración de latexmk (véase latexmkrc) manda TODOS los auxiliares a
+# build/, así que esta lista es sobre todo una red de seguridad: si alguna vez
+# se compila a mano con pdflatex en la raíz, esos archivos no se suben.
+
+# Carpeta de compilación
+build/
+
+# Auxiliares de LaTeX
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.loe
+*.out
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.idx
+*.ind
+*.ilg
+*.nlo
+*.nls
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.bcf-SAVE-ERROR
+*.bbl-SAVE-ERROR
+
+# Salida del documento (el PDF vive en build/)
+main.pdf
+out.txt
+
+# Archivos de respaldo / temporales de editores
+*~
+*.bak
+*.backup
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Overleaf
+latexmk.out
+*.zip
+
+# Configuración local de agentes
+.workbuddy-ai/

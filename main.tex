@@ -88,7 +88,7 @@
 \newcommand{\Alumno}{Pablo Jair Aranda Pérez}
     \newcommand{\abvAlumno}{Pablo J. Aranda P.}
 \newcommand{\Correo}{pablo\_p1@live.com}
-\newcommand{\NumClases}{2}
+\newcommand{\NumClases}{6}
 
 
 
@@ -125,12 +125,16 @@
 
 
 \begin{document}
-\include{Portada/Portada}
+% Se usa \input en lugar de \include: \include genera un .aux propio por archivo
+% en una subcarpeta relativa a la raíz (p. ej. Portada/Portada.aux), lo que choca
+% con $out_dir = 'build' y ensucia la raíz. Con \input todos los auxiliares caen
+% en build/ y la raíz queda limpia.
+\input{Portada/Portada}
 \pagestyle{plain}
 \hypertarget{toc}{}
 \tableofcontents\clearpage % \clearpage para conservar \pagestyle{plain} en todas las pag. del TOC
 \pagestyle{fancy}
-\include{Apuntes/Cuerpo}
+\input{Apuntes/Cuerpo}
 {% Formato Capitulo para biblio solamente
 \titleformat{\chapter}[display]
     {\centering\Huge\scshape\color{grisCIMAT}}

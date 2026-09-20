@@ -136,13 +136,24 @@
 % Específicos para esta clase.
 \let\Top\relax
 \newcommand{\Top}{\mathbf{Top}}
+\newcommand{\Ab}{\mathbf{Ab}}
+\let\ord\relax
+\DeclareMathOperator{\ord}{ord}
+\let\Vect\relax
+\newcommand{\Vect}{\mathbf{Vect}}
+\let\Sq\relax
+\DeclareMathOperator{\Sq}{Sq}
+\let\Ch\relax
+\newcommand{\Ch}{\mathbf{Ch}}
+\let\ihom\relax
+\DeclareMathOperator{\ihom}{Hom}
 \newcommand{\Topstar}{\mathbf{Top}_*}
 \newcommand{\CW}{\mathbf{CW}}
 \newcommand{\CWstar}{\mathbf{CW}_*}
 \newcommand{\Sp}{\mathbf{Sp}}
 \newcommand{\Ho}{\operatorname{Ho}}
 \newcommand{\Map}{\operatorname{Map}}
-\newcommand{\SW}{\widetilde{\mathbf{SW}}}
+\newcommand{\SW}{\mathbf{SW}}
 \newcommand{\Sph}{\mathbb{S}}
 \newcommand{\ESW}{\widetilde{\mathbf{SW}}}
 \newcommand{\sh}{\operatorname{sh}}
@@ -167,7 +178,7 @@
 \declaretheorem[name = Ejemplo, numberwithin = section]{ejem}
 
 % Entorno auxiliar para ejercicio
-\declaretheorem[name = Ejercicio, numberwithin = section]{eje}
+\declaretheorem[name = Ejercicio]{eje}
 \declaretheorem[name = Problema, numberwithin = subsection]{pro}
 \declaretheorem[name = Ejercicio, numberwithin = subsection]{neje}
 \crefname{eje}{ejercicio}{ejercicios}
@@ -181,11 +192,17 @@
 } % Cambiamos formato del ancla de hyperref, de otro modo superpone etiquetas entre subsecciones
 \renewcommand{\theeje}{\arabic{eje}}
 
+% Anclas de hyperref para los entornos numerados por sección. Sin esto, dos
+% definiciones en secciones distintas comparten el destino «defi.1» y los
+% hipervínculos apuntan a la primera de ellas.
+\renewcommand{\theHdefi}{\arabic{chapter}.\arabic{section}.\arabic{defi}}
+\renewcommand{\theHejem}{\arabic{chapter}.\arabic{section}.\arabic{ejem}}
+
 \makeatletter
 % Entorno ejercicio que se agrega al TOC 
 \newenvironment{ejer}[1][]{%
     \refstepcounter{eje} %
-    \label{ejer:\thechapter.\theeje} % Etiqueta automática para referencias
+    \label{ejer:\theeje} % Etiqueta automática para referencias (contador global: \theeje = \arabic{eje})
     \if\relax\detokenize{#1}\relax
         \def\ejetitle{Ejercicio \theeje}%
         \addcontentsline{toc}{subsubsection}{\ejetitle}%
@@ -363,8 +380,6 @@
 }{%
     \end{proof}
     \vspace{1em}
-    % \pagebreak[3]
-    \clearpage
 }
 
 % Referencias inteligentes "\cref (\nameref)"

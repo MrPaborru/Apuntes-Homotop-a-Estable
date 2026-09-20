@@ -16,14 +16,15 @@
 \setlength{\cftbeforechapskip}{0.7em} % arriba
 \renewcommand{\cftchapafterpnum}{\vspace{0.5em}} % abajo
 % Secciones
-% \setlength{\cftsecnumwidth}{0em}
+\setlength{\cftsecnumwidth}{3em}   % hueco para números de dos cifras («5.14»)
 \setlength{\cftsecindent}{2em}
 % \setlength{\cftbeforesecskip}{0.2em} % arriba
 % % Subsecciones
-% \setlength{\cftsubsecnumwidth}{2em}
-% \setlength{\cftsubsecindent}{\cftsecindent} % indentado
+\setlength{\cftsubsecnumwidth}{3.2em} % hueco para «5.14.1»
+\setlength{\cftsubsecindent}{\dimexpr\cftsecindent+\cftsecnumwidth\relax} % indentado
 % % Subsubsecciones
-% \setlength{\cftsubsubsecindent}{\cftsubsecindent + \cftsubsecnumwidth}
+\setlength{\cftsubsubsecnumwidth}{3.6em}
+\setlength{\cftsubsubsecindent}{\dimexpr\cftsubsecindent+\cftsubsecnumwidth\relax}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CAPITULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

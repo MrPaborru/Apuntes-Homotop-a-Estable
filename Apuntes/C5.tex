@@ -1,0 +1,801 @@
+En la clase anterior quedó planteada, pero sin cerrar, la contradicción que muestra que la categoría de Spanier--Whitehead $\SW$ no alcanza para representar teorías de (co)homología. Esta clase comienza completando esa demostración y después cambia de registro: una vez establecidos los defectos de $\SW$, se construye la parte positiva de su estructura, el producto smash, que la convierte en una categoría monoidal simétrica, y se estudia la dualidad que ese producto permite definir.
+
+El hilo conductor de la segunda mitad es un fenómeno que ya apareció al estudiar la composición en $\SW$: los isomorfismos naturales entre suspensiones de un producto smash no son únicos, y elegir uno u otro cambia el signo del morfismo resultante. La corrección de esos signos es lo que hace que el producto smash esté bien definido sobre clases de homotopía estable, y la misma corrección reaparece en la trenza que da la simetría monoidal.
+
+\section{El punto de partida: la tabla de grupos de homotopía}
+
+Retomamos la \myref{prop:no-existe} de la clase anterior, cuya demostración quedó en la primera parte. Recordemos el enunciado: no existe un CW-complejo finito $Z$ ni un entero $n\ge0$ tales que
+\[
+\pi_k^s(Z)\cong
+\begin{cases}
+\mathbb Z, & k=n,\\
+0, & k\neq n .
+\end{cases}
+\]
+La estrategia, ya trazada, era la siguiente. Se supone que tales $Z$ y $n$ existen, se suspende dos veces para ganar simple conexidad y se aplica el teorema de Hurewicz estable y el inestable, que dan que
+\[
+X\coloneqq\Sigma^2Z
+\]
+es un CW-complejo finito $(n+1)$-conexo cuyos grupos de homotopía estable son
+\[
+\pi_k^s(X)\cong
+\begin{cases}
+\mathbb Z, & k=n+2,\\
+0, & k\neq n+2 .
+\end{cases}
+\]
+A continuación se suspende $X$ muchas veces para entrar en el rango estable. Como $\Sigma^NX$ es $(N+n+1)$-conexo, el teorema de suspensión de Freudenthal garantiza que la suspensión es un isomorfismo en un intervalo, y en ese intervalo
+\[
+\pi_i(\Sigma^NX)\cong\pi^s_{i-N}(X)\cong\pi^s_{i-N-2}(Z).
+\]
+El último grupo es $\mathbb Z$ exactamente cuando $i-N-2=n$, es decir, cuando $i=N+n+2$, y es nulo en cualquier otro caso. Reuniendo todo, la tabla de partida de esta clase es
+\[
+\pi_i(\Sigma^NX)=
+\begin{cases}
+0, & i\le N+n+1,\\
+\mathbb Z, & i=N+n+2,\\
+0, & N+n+2<i<2(N+n)+3,\\
+\text{?} & i\ge2(N+n)+3 .
+\end{cases}
+\]
+
+\begin{nota}
+   La tercera y la cuarta línea recogen el rango de validez de Freudenthal, del que solo se conoce la anulación por encima de $N+n+2$ hasta cierto grado. Como se señaló en la nota correspondiente de la \myref{prop:no-existe}, la pizarra vuelve a escribir aquí $2(N+n)-3$ en lugar de $2(N+n)+3$; se conserva el valor corregido, que es el que se usará en las desigualdades de la \myref{prop:Y}. Lo que el argumento necesita de la tabla es solamente que la anulación se extienda a un intervalo no vacío por encima de $N+n+2$.
+\end{nota}
+
+La tabla deja claro cuál es el obstáculo: $\Sigma^NX$ tiene un único grupo de homotopía estable no nulo, pero infinitos grupos de homotopía inestable posiblemente no nulos. El plan es reemplazar $\Sigma^NX$ por un espacio en el que esos grupos se hayan matado, y compararlo con un espacio de Eilenberg--Mac Lane.
+
+\section{La construcción del espacio $Y$}
+
+La idea es la estándar para construir espacios de Eilenberg--Mac Lane: matar los grupos de homotopía superiores pegando celdas de dimensión creciente. La observación clave es que, gracias a la tabla, las primeras celdas que hay que pegar son muy gruesas, y eso hace que el espacio resultante coincida con $K(\mathbb Z,N+n+2)$ en un rango apreciable de grados.
+
+Escribamos
+\[
+Y\coloneqq\Sigma^NX,
+\qquad
+d\coloneqq\dim Z,
+\]
+de modo que $Y$ es un CW-complejo finito de dimensión
+\[
+\dim Y=\dim\Sigma^{N+2}Z=N+2+d .
+\]
+
+\begin{prop}\label{prop:Y}
+Sea $\bar Y$ el espacio obtenido a partir de $Y$ pegando celdas de dimensión mayor o igual que $2(N+n)+4$. Entonces:
+\begin{enumerate}[label = \textup{(\roman*)}]
+\item $\pi_i(\bar Y)\cong\pi_i(Y)$ para $i\le N+n+2$ y $\pi_i(\bar Y)=0$ para $i>N+n+2$; en particular $\bar Y$ es un $K(\mathbb Z,N+n+2)$ hasta dimensión $2(N+n)+3$.
+\item $H^k(Y;\mathbb F_2)\cong H^k\bigl(K(\mathbb Z,N+n+2);\mathbb F_2\bigr)$ para todo $k\le2(N+n)+2$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\emph{(i)} Por la tabla, $\pi_i(Y)=0$ para $N+n+2<i<2(N+n)+3$, de modo que la primera obstrucción a matar está en el grado $2(N+n)+3$ y las celdas necesarias tienen dimensión al menos $2(N+n)+4$. Pegando una celda de dimensión $m+1$ a lo largo de un elemento de $\pi_m$ se anula ese elemento, y repitiendo el procedimiento para cada $m\ge2(N+n)+3$ se obtiene $\bar Y$ con los mismos $\pi_i$ que $Y$ en los grados $i\le N+n+2$ y con todos los superiores nulos. Como la parte del complejo $\bar Y$ que no está en $Y$ tiene celdas de dimensión $\ge2(N+n)+4$, el par $(\bar Y,Y)$ es un par CW relativo que es conexo hasta la dimensión $2(N+n)+3$.
+
+\emph{(ii)} Consideremos la sucesión exacta larga del par $(\bar Y,Y)$ con coeficientes en $\mathbb F_2$,
+\[
+\cdots\to H^k(\bar Y,Y;\mathbb F_2)\to H^k(\bar Y;\mathbb F_2)\to H^k(Y;\mathbb F_2)\to H^{k+1}(\bar Y,Y;\mathbb F_2)\to\cdots
+\]
+Como $(\bar Y,Y)$ es un par CW relativo cuyas celdas tienen todas dimensión $\ge2(N+n)+4$, el grupo relativo $H^k(\bar Y,Y;\mathbb F_2)$ se anula para $k\le2(N+n)+3$; por tanto
+\[
+H^k(\bar Y;\mathbb F_2)\xrightarrow{\ \cong\ }H^k(Y;\mathbb F_2)
+\qquad\text{para }k\le2(N+n)+2 .
+\]
+Por otra parte, por (i) el espacio $\bar Y$ es un $K(\mathbb Z,N+n+2)$ hasta dimensión $2(N+n)+3$, y la aplicación de comparación con el espacio de Eilenberg--Mac Lane induce un isomorfismo en cohomología en ese rango; de ahí
+\[
+H^k(\bar Y;\mathbb F_2)\cong H^k\bigl(K(\mathbb Z,N+n+2);\mathbb F_2\bigr)
+\qquad\text{para }k\le2(N+n)+2 .
+\]
+Combinando ambas identificaciones se obtiene el enunciado.
+\end{proof}
+
+\begin{nota}
+   La pizarra enuncia esta proposición con otras constantes: escribe «pegando celdas mayor o igual a $2(N+n)-3+1=2(N+n)-2$» y «$H^k(Y;\mathbb F_2)\cong H^k(K(\mathbb Z,N+n+2);\mathbb F_2)$ si $k\le2(N+n)-2-2=2(N+n)-4$». Se trata otra vez del desliz aritmético $2(N+n)-3$ por $2(N+n)+3$: con los valores corregidos, la dimensión de las celdas es $2(N+n)+4$ y el rango de coincidencia es $k\le2(N+n)+2$. La conclusión no cambia —el rango corregido es incluso más amplio—, pero las desigualdades de la sección siguiente se escriben con los valores corregidos, para que sean coherentes con la tabla de la sección anterior.
+
+   Vale la pena subrayar el sentido del enunciado: no se afirma que $Y$ sea un $K(\mathbb Z,N+n+2)$, sino solo que lo es hasta dimensión $2(N+n)+3$. La diferencia es esencial, porque $Y$ es un complejo finito y un $K(\mathbb Z,N+n+2)$ genuino con $n+2\ge2$ tiene cohomología no nula en grados arbitrariamente altos.
+\end{nota}
+
+\section{La contradicción cohomológica}
+
+Queda por exhibir una clase de cohomología que caiga simultáneamente en los dos regímenes de la \myref{prop:Y}: por encima de la dimensión de $Y$, donde la cohomología se anula, y por debajo de $2(N+n)+2$, donde $Y$ se comporta como el espacio de Eilenberg--Mac Lane. Las clases que hacen el trabajo son las que se obtienen aplicando operaciones de Steenrod a la clase fundamental.
+
+\begin{proof}[Conclusión de la demostración]
+Retomamos la demostración de la \myref{prop:no-existe}. Sea
+\[
+\iota\in H^{N+n+2}\bigl(K(\mathbb Z,N+n+2);\mathbb F_2\bigr)
+\]
+la reducción módulo $2$ de la clase fundamental. Por la fórmula de Cartan, los cuadrados de Steenrod actúan sobre $\iota$ y producen clases que no se cancelan; en particular, para todo $r\ge1$ la clase
+\[
+\Sq^{2^r}\Sq^{2^{r-1}}\cdots\Sq^{2}(\iota)
+\]
+es no nula. Su grado es
+\[
+(N+n+2)+\bigl(2^r+2^{r-1}+\cdots+2\bigr)=(N+n+2)+(2^{r+1}-2)=N+n+2^{r+1},
+\]
+donde se usó que la suma de las potencias $2,2^2,\dots,2^r$ vale $2^{r+1}-2$.
+
+\emph{Elección de $r$ y de $N$.} Queremos que el grado $N+n+2^{r+1}$ sea, a la vez, mayor que $\dim Y=N+2+d$ y menor o igual que el rango de coincidencia $2(N+n)+2$:
+\[
+N+d+2<N+n+2^{r+1}\le2(N+n)+2 .
+\]
+Restando $N+n$ en la primera desigualdad y $N+n$ en la segunda, esto equivale a
+\[
+d+2<n+2^{r+1}\le N+2n+2 .
+\]
+Las dos condiciones se satisfacen por separado: la primera eligiendo $r$ suficientemente grande, ya que $2^{r+1}$ crece sin cota y $d$ y $n$ están fijos; la segunda eligiendo, una vez fijado $r$, un $N$ suficientemente grande. Tomemos pues $r$ y $N$ que cumplan ambas y pongamos
+\[
+\deg\coloneqq N+n+2^{r+1}.
+\]
+
+\emph{La contradicción.} Por un lado, $\deg>N+2+d=\dim Y$, y la cohomología de un complejo de dimensión $\dim Y$ se anula por encima de esa dimensión:
+\[
+H^{\deg}(Y;\mathbb F_2)=0 .
+\]
+Por otro, $\deg\le2(N+n)+2$, de modo que estamos en el rango de la \myref{prop:Y} y
+\[
+H^{\deg}(Y;\mathbb F_2)\cong H^{\deg}\bigl(K(\mathbb Z,N+n+2);\mathbb F_2\bigr)\ni\Sq^{2^r}\Sq^{2^{r-1}}\cdots\Sq^{2}(\iota)\neq0 .
+\]
+Las dos afirmaciones son incompatibles. Por lo tanto no existe un CW-complejo finito $Z$ con un único grupo de homotopía estable no nulo, como se quería demostrar.
+\end{proof}
+
+\begin{nota}
+   El cálculo de $H^*\bigl(K(\mathbb Z,m);\mathbb F_2\bigr)$ del que se sigue que las clases iteradas $\Sq^{2^r}\cdots\Sq^{2}\iota$ son no nulas se debe a Serre; el argumento de la clase se apoya en la fórmula de Cartan para el producto de operaciones de Steenrod. Puede consultarse, junto con la construcción de los cuadrados, en \cite{steenrod_epstein1962}; el profesor lo citó simplemente como «Cartan».
+\end{nota}
+
+\begin{nota}
+   Con esto termina el balance negativo de la categoría de Spanier--Whitehead. El resultado se lee así: uno de los propósitos de la homotopía estable es \emph{parametrizar} las teorías de cohomología, y para ello hace falta que los objetos representantes admitan cuñas infinitas y que sus grupos de homotopía estable puedan concentrarse a voluntad. Ninguna de las dos cosas ocurre en $\SW$: la primera falló en la \myref{ejem:cuna} y la segunda acaba de fallar aquí. La categoría de espectros nace, precisamente, para reparar ambas.
+\end{nota}
+
+\section{El producto smash en \texorpdfstring{$\SW$}{SW}}
+
+Cambiamos de registro. El resto de la clase construye la estructura algebraica positiva de $\SW$, y el primer ingrediente es un producto.
+
+\begin{defi}\label{defi:smash}
+El \emph{producto smash} de dos objetos de $\SW$ se define sobre los objetos por
+\[
+(X,m)\wedge(Y,n)\coloneqq(X\wedge Y,\ m+n),
+\]
+donde $X\wedge Y$ es el producto smash de espacios punteados.
+\end{defi}
+
+Sobre los morfismos, la definición no es inmediata, y buena parte de esta clase se dedica a hacerla funcionar. Vale la pena ver primero por qué la construcción más natural no sirve, porque el obstáculo es instructivo.
+
+Sea $f\colon(X,m)\to(Z,l)$ un morfismo, representado en el nivel $k$ por una función punteada
+\[
+\varphi\colon\Sigma^{m+k}X\longrightarrow\Sigma^{l+k}Z,
+\]
+y sea $g\colon(Y,n)\to(W,b)$, representado en el nivel $a$ por
+\[
+\psi\colon\Sigma^{n+a}Y\longrightarrow\Sigma^{b+a}W .
+\]
+El candidato evidente para $f\wedge g$ es la clase de la función
+\[
+\varphi\wedge\psi\colon\Sigma^{m+k}X\wedge\Sigma^{n+a}Y\longrightarrow\Sigma^{l+k}Z\wedge\Sigma^{b+a}W,
+\]
+previa identificación del dominio y el codominio con suspensiones del producto smash:
+\[
+\Sigma^{m+k}X\wedge\Sigma^{n+a}Y
+\cong S^{m+k}\wedge X\wedge S^{n+a}\wedge Y
+\cong S^{m+n+k+a}\wedge(X\wedge Y)
+=\Sigma^{m+n+k+a}(X\wedge Y),
+\]
+y análogamente $\Sigma^{l+k}Z\wedge\Sigma^{b+a}W\cong\Sigma^{l+b+k+a}(Z\wedge W)$. Con esas identificaciones, $\varphi\wedge\psi$ sería un representante de un morfismo
+\[
+(X\wedge Y,\ m+n)\longrightarrow(Z\wedge W,\ l+b),
+\]
+que es justo lo que se quiere para $f\wedge g$.
+
+\section{El problema de la composición}
+
+La construcción anterior parece correcta, pero no lo es: depende de los representantes elegidos. Veámoslo con coordenadas.
+
+Elijamos para $g$ el representante $\psi$ en el nivel $a$. Un punto del dominio de $\varphi\wedge\psi$ se escribe, tras reordenar los factores del smash, como
+\[
+[t_1,x,t_2,y],
+\qquad
+t_1\in S^{m+k},\quad x\in X,\quad t_2\in S^{n+a},\quad y\in Y,
+\]
+y la función actúa como
+\[
+[t_1,x,t_2,y]\longmapsto\bigl[\varphi(t_1,x),\ \psi(t_2,y)\bigr]
+=\bigl[s_1,s_2,z,w\bigr],
+\qquad
+\varphi(t_1,x)=(s_1,z),\quad\psi(t_2,y)=(s_2,w).
+\]
+En resumen, el morfismo es
+\[
+S^{m+k}\wedge S^{n+a}\wedge X\wedge Y\longrightarrow S^{l+k}\wedge S^{b+a}\wedge Z\wedge W,
+\]
+que es lo que uno espera.
+
+Ahora cambiemos de representante para $g$: en lugar de $\psi$ tomemos
+\[
+1\wedge\psi\colon\Sigma^{n+a+c}Y\longrightarrow\Sigma^{b+a+c}W,
+\]
+que representa a la misma clase $[g]$ en un nivel más alto, con $c$ arbitrario. La coordenada nueva es un punto $m_2\in S^c$, y el morfismo correspondiente es
+\[
+[t_1,x,m_2,t_2,y]\longmapsto\bigl[\varphi(t_1,x),\ m_2\psi(t_2,y)\bigr],
+\]
+es decir, $m_2$ aparece \emph{en la segunda posición}, entre $x$ y $t_2$, y no se introduce por la izquierda como haría $1\wedge\psi$ si se leyera el factor $S^c$ en primer lugar. Reordenando, esto da
+\[
+\bigl[s_1,m_2,s_2,z,w\bigr]
+\]
+y, tras la identificación final, un morfismo
+\[
+S^{m+k}\wedge S^{c}\wedge S^{n+a}\wedge X\wedge Y\longrightarrow S^{l+k}\wedge S^{c}\wedge S^{b+a}\wedge Z\wedge W .
+\]
+
+Por su parte, el primer morfismo, leído con la coordenada $m_2$ insertada al principio, sería
+\[
+[m_2t_1,t_2,x,y]\longmapsto[m_2,s_1,s_2,z,w].
+\]
+Los dos mapeos no tienen por qué ser homótopos. La diferencia entre ambos es una \emph{permutación de esferas}: pasar de uno al otro exige intercambiar los factores $S^c$ y $S^{m+k}$ en la fuente y los factores $S^c$ y $S^{l+k}$ en el codominio, y esos intercambios tienen grados
+\[
+(-1)^{(m+k)c}
+\qquad\text{y}\qquad
+(-1)^{(l+k)c}
+\]
+respectivamente. Como $m+k$ y $l+k$ no tienen por qué tener la misma paridad, los dos grados pueden ser distintos, y entonces los dos mapeos difieren por un signo. Estabilizar no arregla nada: la suspensión de una permutación de esferas de grado $-1$ vuelve a ser una permutación de grado $-1$, de modo que el signo persiste en el límite y las dos clases obtenidas son distintas en $\SW$.
+
+En resumen: la composición «obvia» está bien definida a nivel de homeomorfismos, pero no es independiente de la elección de los representantes, ni siquiera tras estabilizar.
+
+\section{La composición corregida}
+
+La salida es incorporar los signos a la definición, de manera que las permutaciones que aparecen al cambiar de representante queden compensadas.
+
+La construcción corregida es la siguiente. Se separan las esferas que vienen del mapeo original de las que se añaden al estabilizar, y se define $f\wedge g$ como la clase del morfismo compuesto
+\[
+\begin{aligned}
+\Sigma^{m+n+k+a}(X\wedge Y)
+&\xrightarrow{\ \text{perm.}\circ(-1)^{am}\ }
+\Sigma^{m+k}X\wedge\Sigma^{n+a}Y\\
+&\xrightarrow{\ \varphi\wedge\psi\ }
+\Sigma^{l+k}Z\wedge\Sigma^{b+a}W
+\xrightarrow{\ (-1)^{al}\circ\text{perm.}\ }
+\Sigma^{l+b+k+a}(Z\wedge W),
+\end{aligned}
+\]
+donde las flechas extremas son los homeomorfismos de reordenamiento —que llevan $S^{m+k}$ y $S^{n+a}$ a su sitio, y los sacan de nuevo en el otro extremo— multiplicados por los signos indicados.
+
+El signo $(-1)^{am}$ de la primera flecha tiene una lectura concreta. Escribiendo el dominio como
+\[
+S^{k}\wedge S^{m}\wedge X\wedge S^{a}\wedge S^{n}\wedge Y,
+\]
+la reordenación que se necesita es la que intercambia $S^m$ con $S^a$, es decir, la que envía
+\[
+[t_1,t_2,x,t_3,t_4,y]\longmapsto[t_1,t_3,t_2,t_4,x,y],
+\]
+y esa permutación tiene grado $(-1)^{am}$. El signo $(-1)^{al}$ del otro extremo tiene la misma lectura, con $l$ en el lugar de $m$. Son, por tanto, correcciones aplicadas a los factores del producto smash: sin ellas, la clase de $\varphi\wedge\psi$ no sobreviviría al cambio de representante.
+
+\begin{nota}
+   Conviene subrayar que los signos no son un artificio para tapar el problema, sino la única elección que lo resuelve. La dependencia del representante que se exhibió en la sección anterior produce exactamente el factor $(-1)^{(l+k)c-(m+k)c}=(-1)^{(l-m)c}$; los signos $(-1)^{am}$ y $(-1)^{al}$ de la definición reproducen ese mismo factor al estabilizar, de modo que la discrepancia se cancela. En la literatura los signos aparecen escritos de manera explícita en \cite{malkiewich}; en \cite{margolis1983}, en cambio, parecen omitirse, lo que puede dar lugar a la impresión de que el producto smash está bien definido sin más.
+\end{nota}
+
+\section{Independencia de los representantes}
+
+Falta comprobar que la definición corregida hace efectivamente lo que promete: que el resultado no depende de los representantes elegidos.
+
+Sea $w$ la clase definida usando $\psi$ y sea $w'$ la definida usando $1\wedge\psi$, con el mismo $\varphi$ y el mismo nivel $k$. La comprobación consiste en escribir ambos mapeos en el mismo nivel y comparar. El cálculo, hecho por coordenadas, da
+\[
+w'\bigl([t_1,m_2,t_2,t_3,t_4,x,y]\bigr)
+=\bigl[m_2t_1,\ t_2t_3,\ t_4,\ x,\ y\bigr],
+\]
+donde las entradas están ordenadas según los bloques de dimensiones $k,c,a,m,n$; reordenando con la permutación de grado $(-1)^{kc}$ —la que intercambia el bloque de dimensión $k$ con el de dimensión $c$— se obtiene
+\[
+\Sigma^{c}w .
+\]
+Es decir,
+\[
+w'\cong\Sigma^{c}w
+\]
+en el nivel correspondiente. Como en $\SW$ la suspensión es un isomorfismo, y como la clase de $\Sigma^{c}w$ es la clase de $w$ vista un nivel más arriba, se concluye que $w'$ y $w$ definen el mismo morfismo de $\SW$. La clase $f\wedge g$ está bien definida.
+
+\begin{ejer}[Independencia de $\varphi$]
+Comprobar que la construcción tampoco depende de la elección del representante $\varphi$ de $f$.
+\end{ejer}
+
+\begin{sol}
+Es el mismo argumento con los papeles de $f$ y $g$ intercambiados. Si $\varphi'$ es otro representante de $f$, entonces $\Sigma^{c}\varphi$ y $\Sigma^{c}\varphi'$ son homótopas para $c$ suficientemente grande, porque ambas representan la misma clase estable. La composición corregida de la sección anterior es funtorial en $\varphi$, de modo que $\varphi\wedge\psi$ y $\varphi'\wedge\psi$ son homótopas en el mismo nivel, y los signos $(-1)^{am}$ y $(-1)^{al}$ son los mismos en ambos casos. Por tanto las dos clases coinciden.
+\end{sol}
+
+\begin{ejer}[Independencia del isomorfismo de comparación]
+Comprobar que la construcción no depende de la elección del isomorfismo $\varepsilon$ que identifica las dos maneras de escribir la suspensión del producto smash.
+\end{ejer}
+
+\begin{sol}
+En $\SW$ la suspensión induce biyecciones sobre los conjuntos de morfismos: la aplicación
+\[
+\Sigma\colon\set*{A,B}\longrightarrow\set*{\Sigma A,\Sigma B},
+\qquad
+[f]\longmapsto[\Sigma f],
+\]
+es un isomorfismo para cualesquiera objetos $A,B$ de $\SW$. En consecuencia, dos identificaciones distintas de $\Sigma^{p}(X\wedge Y)$ con $\Sigma^{p}(X\wedge Y)$ que difieran por un isomorfismo natural inducen la misma aplicación sobre clases de homotopía estable, y el morfismo $f\wedge g$ no cambia. La única información que aporta $\varepsilon$ es la de un isomorfismo entre suspensiones, y en $\SW$ esa información ya está codificada en el desplazamiento de índices.
+\end{sol}
+
+\begin{ejer}[El caso de las esferas]
+Comprobar el argumento de la composición con índices numéricos concretos, tomando $X=Y=Z=W=S^0$.
+\end{ejer}
+
+\begin{sol}
+Con $X=Y=Z=W=S^0$ se tiene $m=n=l=b=0$, y los representantes son
+\[
+\varphi\colon\Sigma^{k}S^0\to\Sigma^{k}S^0,
+\qquad
+\psi\colon\Sigma^{a}S^0\to\Sigma^{a}S^0,
+\]
+es decir, elementos de $\pi_k^s$ y $\pi_a^s$. Los signos de la definición corregida son
+\[
+(-1)^{am}=(-1)^{0\cdot0}=1,
+\qquad
+(-1)^{al}=(-1)^{0\cdot0}=1,
+\]
+y las permutaciones de esferas son las que intercambian $S^0$ con $S^0$, que son la identidad. La fórmula se reduce entonces a
+\[
+f\wedge g=[\varphi\wedge\psi],
+\]
+que es la composición ordinaria de clases estables de esferas: en este caso degenerado no hay coordenadas que reordenar y el problema de los signos no aparece. Es la comprobación que conviene hacer primero, antes de enfrentarse a los índices generales.
+\end{sol}
+
+\section{El producto smash preserva triángulos distinguidos}
+
+Queda por verificar que el producto smash es compatible con la estructura triangulada, que es lo que permitirá usarlo para construir teorías de homología.
+
+\begin{ejer}[Compatibilidad con los triángulos]
+Probar que el funtor $-\wedge A$ preserva triángulos distinguidos, tanto por la izquierda como por la derecha.
+\end{ejer}
+
+\begin{sol}
+Basta tratar el caso de un triángulo distinguido que proviene de una sucesión cofibrada de espacios punteados,
+\[
+X\xrightarrow{\ f\ }Y\xrightarrow{\ g\ }Z\xrightarrow{\ h\ }\Sigma X,
+\]
+pues todo triángulo distinguido de $\SW$ es isomorfo a uno de esta forma. Aplicando $-\wedge A$ se obtiene la sucesión de espacios
+\[
+X\wedge A\xrightarrow{\ f\wedge\id_A\ }Y\wedge A\xrightarrow{\ g\wedge\id_A\ }Z\wedge A\xrightarrow{\ h\wedge\id_A\ }\Sigma X\wedge A .
+\]
+Ahora bien, el producto smash con $A$ preserva cocientes: como $Z\cong Y/X$ en la sucesión cofibrada, se tiene
+\[
+(Y\wedge A)/(X\wedge A)\cong(Y/X)\wedge A\cong Z\wedge A,
+\]
+y además $\Sigma X\wedge A\cong\Sigma(X\wedge A)$, de modo que la sucesión anterior vuelve a ser una sucesión cofibrada y por tanto un triángulo distinguido. Como el funtor $-\wedge A$ es aditivo sobre los morfismos y respeta las homotopías, la construcción se extiende a los triángulos arbitrarios y a las dos variables: el caso $A\wedge-$ se sigue por la simetría del producto smash, que se estudia en la sección siguiente.
+\end{sol}
+
+La estrategia de la demostración es, por tanto, la anunciada: reducir el enunciado estable a la descripción concreta mediante cofibra, conos y suspensiones, donde la compatibilidad con el cociente es inmediata.
+
+\section{La categoría monoidal simétrica \texorpdfstring{$\SW$}{SW}}
+
+Con el producto smash ya bien definido, se puede enunciar la estructura que organiza toda la clase.
+
+\begin{prop}\label{prop:monoidal}
+$(\SW,\wedge)$ es una categoría monoidal simétrica con objeto unidad $(S^0,0)$. Los morfismos estructurales son los siguientes.
+\begin{enumerate}[label = \textup{(\roman*)}]
+\item \emph{Unidad.} Los isomorfismos naturales
+\[
+\lambda_{(X,m)}\colon(S^0,0)\wedge(X,m)\longrightarrow(X,m),
+\qquad
+\rho_{(X,m)}\colon(X,m)\wedge(S^0,0)\longrightarrow(X,m),
+\]
+inducidos por los homeomorfismos $S^0\wedge X\cong X\cong X\wedge S^0$ a nivel $k$:
+\[
+\Sigma^{m+k}(S^0\wedge X)\cong\Sigma^{m+k}X\cong\Sigma^{m+k}(X\wedge S^0).
+\]
+\item \emph{Asociatividad.} El isomorfismo natural
+\[
+\alpha_{(X,m),(Y,n),(Z,p)}\colon\bigl((X,m)\wedge(Y,n)\bigr)\wedge(Z,p)\longrightarrow(X,m)\wedge\bigl((Y,n)\wedge(Z,p)\bigr),
+\]
+inducido por el homeomorfismo $(X\wedge Y)\wedge Z\cong X\wedge(Y\wedge Z)$ a nivel $k$:
+\[
+\Sigma^{m+n+p+k}\bigl[(X\wedge Y)\wedge Z\bigr]\cong\Sigma^{m+n+p+k}\bigl[X\wedge(Y\wedge Z)\bigr],
+\qquad
+\bigl[[x,y],z\bigr]\longmapsto\bigl[x,[y,z]\bigr].
+\]
+\item \emph{Simetría.} El isomorfismo natural
+\[
+\beta_{(X,m),(Y,n)}\colon(X,m)\wedge(Y,n)\longrightarrow(Y,n)\wedge(X,m),
+\]
+inducido a nivel $k$ por
+\[
+\Sigma^{m+n+k}(X\wedge Y)\xrightarrow{\ (-1)^{mn}\ }\Sigma^{m+n+k}(Y\wedge X),
+\qquad
+[x,y]\longmapsto[y,x].
+\]
+\end{enumerate}
+\end{prop}
+
+El signo $(-1)^{mn}$ de la trenza es el punto fino de la proposición, y su presencia es obligada: es exactamente el mismo fenómeno que apareció al definir la composición. Al intercambiar dos factores suspendidos, las esferas de suspensión se permutan, y una permutación de esferas puede tener grado $-1$; la suspensión no cambia ese grado, de modo que el signo es una propiedad intrínseca del producto smash y no una elección de conveniencia. Obsérvese que el signo depende solo de los índices de suspensión $m$ y $n$, no de los espacios subyacentes.
+
+\section{Categorías monoidales simétricas}
+
+La \myref{prop:monoidal} dice que $\SW$ tiene la estructura que en álgebra se llama monoidal simétrica. Conviene fijar los axiomas, porque son los que gobiernan todas las manipulaciones de la segunda mitad de la clase.
+
+\begin{defi}\label{defi:monoidal}
+Una \emph{categoría monoidal} es una categoría $\mathcal C$ junto con
+\begin{enumerate}[label = \textup{(\roman*)}]
+\item un funtor $\otimes\colon\mathcal C\times\mathcal C\to\mathcal C$, el \emph{producto monoidal};
+\item un objeto $1$, la \emph{unidad monoidal};
+\item isomorfismos naturales
+\[
+\alpha\colon(-\otimes-)\otimes-\longrightarrow-\otimes(-\otimes-),
+\qquad
+\lambda\colon1\otimes-\longrightarrow-,
+\qquad
+\rho\colon-\otimes1\longrightarrow-,
+\]
+llamados \emph{asociador}, \emph{unidad izquierda} y \emph{unidad derecha}, cuyas componentes en $x$ son $\alpha_{x,y,z}$, $\lambda_x$ y $\rho_x$;
+\end{enumerate}
+sujetos a los axiomas de coherencia siguientes.
+\begin{enumerate}[label = \textup{(\arabic*)}]
+\item \emph{Triángulo.} Para todos $x,y$ el diagrama
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+(x\otimes1)\otimes y \arrow[r,"\alpha_{x,1,y}"] \arrow[dr,"\rho_x\otimes1_y"'] & x\otimes(1\otimes y) \arrow[d,"1_x\otimes\lambda_y"]\\
+& x\otimes y
+\end{tikzcd}
+\]
+conmuta.
+\item \emph{Pentágono.} Para todos $w,x,y,z$ el diagrama que compara las cinco maneras de reasociar $((w\otimes x)\otimes y)\otimes z$ con $w\otimes(x\otimes(y\otimes z))$ conmuta.
+\end{enumerate}
+La categoría es \emph{simétrica} si además se tiene
+\begin{enumerate}[label = \textup{(\arabic*)}, start=3]
+\item una \emph{trenza}, es decir, un isomorfismo natural
+\[
+B_{x,y}\colon x\otimes y\longrightarrow y\otimes x,
+\]
+\item el \emph{hexágono}: los dos diagramas que comparan la trenza con el asociador conmutan, y
+\item $B_{y,x}\circ B_{x,y}=1_{x\otimes y}$ para todos $x,y$.
+\end{enumerate}
+\end{defi}
+
+Los axiomas de coherencia tienen un contenido único, que conviene enunciar por separado.
+
+\begin{teo}[Coherencia]\label{teo:coherencia}
+En una categoría monoidal simétrica, dos morfismos cualesquiera construidos componiendo asociadores, unidades y trenzas, y que tengan el mismo objeto de partida y el mismo objeto de llegada, son iguales.
+\end{teo}
+
+\begin{nota}
+   Este es el teorema de coherencia de Mac Lane (véase \cite{maclane1998}); la parte correspondiente a las trenzas se debe a Mac Lane y Kelly \cite{kelly1964}. Su consecuencia práctica es que uno puede asociar, conmutar y multiplicar por la unidad en el orden que quiera, sin preocuparse por el camino elegido, siempre que el objeto inicial y el final sean los mismos. En la clase se comentó que la demostración de los cálculos diagramáticos de las secciones siguientes podría abreviarse invocando este teorema; se optó por no hacerlo, para que las identidades de dualidad quedaran verificadas a mano.
+\end{nota}
+
+\begin{ejer}[La trenza y la unidad]
+Demostrar que en una categoría monoidal simétrica el diagrama
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+1\otimes x \arrow[r,"B_{1,x}"] \arrow[dr,"\lambda_x"'] & x\otimes1 \arrow[d,"\rho_x"]\\
+& x
+\end{tikzcd}
+\]
+es conmutativo.
+\end{ejer}
+
+\begin{sol}
+Se usan el axioma del triángulo y la naturalidad de $\rho$ y de $B$. Por el axioma del triángulo aplicado a $(1,x)$ se tiene
+\[
+\rho_{1\otimes x}=(1_1\otimes\lambda_x)\circ\alpha_{1,x,1},
+\]
+y por naturalidad de $\rho$ en el morfismo $\lambda_x\colon1\otimes x\to x$,
+\[
+\rho_x\circ(\lambda_x\otimes1_1)=\lambda_x\circ\rho_{1\otimes x}.
+\]
+Por otra parte, la naturalidad de $B$ en la primera variable aplicada a $\lambda_1=\rho_1\colon1\otimes1\to1$, junto con el axioma del triángulo para $(1,1)$, que da $\lambda_1\otimes1_x=1_1\otimes\lambda_x$, conduce a
+\[
+(1_x\otimes\rho_1)\circ B_{1\otimes1,x}=B_{1,x}\circ(1_1\otimes\lambda_x).
+\]
+Combinando estas identidades con el axioma del pentágono para la terna $(1,1,x)$, que compara $((1\otimes1)\otimes x)$ con $1\otimes(1\otimes x)$, se obtiene $\rho_x\circ B_{1,x}=\lambda_x$, que es la conmutatividad pedida. Es un ejemplo típico de cálculo de coherencia: la conmutatividad se sigue de los axiomas, pero la verificación es más larga que el enunciado.
+\end{sol}
+
+\section{Dualidad: evaluación, coevaluación y zigzag}
+
+Con la estructura monoidal disponible se puede hablar de objetos duales. La definición es la de siempre, adaptada al lenguaje de la clase.
+
+\begin{defi}\label{defi:dual}
+Sea $X$ un objeto de una categoría monoidal simétrica $\mathcal C$. Un \emph{dual} para $X$ es un objeto $X^\vee$ junto con dos morfismos
+\[
+1\xrightarrow{\ \mathrm{coev}\ }X\otimes X^\vee
+\qquad\text{(coevaluación)},
+\qquad
+X^\vee\otimes X\xrightarrow{\ \mathrm{ev}\ }1
+\qquad\text{(evaluación)},
+\]
+tales que las dos composiciones de zigzag
+\[
+\begin{aligned}
+X &\xrightarrow{\ \lambda_x^{-1}\ } 1\otimes X \xrightarrow{\ \mathrm{coev}\otimes1_X\ } (X\otimes X^\vee)\otimes X\\
+&\xrightarrow{\ \alpha_{x,x^\vee,x}\ } X\otimes(X^\vee\otimes X) \xrightarrow{\ 1_X\otimes\mathrm{ev}\ } X\otimes1 \xrightarrow{\ \rho_x\ } X,
+\end{aligned}
+\]
+\[
+\begin{aligned}
+X^\vee &\xrightarrow{\ \rho_{x^\vee}^{-1}\ } X^\vee\otimes1 \xrightarrow{\ 1_{X^\vee}\otimes\mathrm{coev}\ } X^\vee\otimes(X\otimes X^\vee)\\
+&\xrightarrow{\ \alpha^{-1}_{x^\vee,x,x^\vee}\ } (X^\vee\otimes X)\otimes X^\vee \xrightarrow{\ \mathrm{ev}\otimes1_{X^\vee}\ } 1\otimes X^\vee \xrightarrow{\ \lambda_{x^\vee}\ } X^\vee,
+\end{aligned}
+\]
+componen la identidad: la primera es $1_X$ y la segunda es $1_{X^\vee}$.
+\end{defi}
+
+\begin{ejem}\label{ejem:vect}
+La categoría $\Vect_k^{\mathrm{f.g.}}$ de espacios vectoriales de dimensión finita sobre un cuerpo $k$ es simétrica monoidal con respecto a $\otimes_k$, con unidad $k$, y todo objeto $V$ admite un dual: $V^\vee=\Hom_k(V,k)$. Los morfismos estructurales son
+\[
+\mathrm{ev}\colon V^\vee\otimes_k V\longrightarrow k,
+\qquad
+f\otimes v\longmapsto f(v),
+\]
+y, fijada una base $\{v_1,\dots,v_n\}$ de $V$ con base dual $\{f_1,\dots,f_n\}$,
+\[
+\mathrm{coev}\colon k\longrightarrow V\otimes_k V^\vee,
+\qquad
+\lambda\longmapsto\lambda\sum_{i=1}^{n}v_i\otimes f_i .
+\]
+Este ejemplo es el que motiva la definición: la evaluación es la aplicación de una forma lineal a un vector, y la coevaluación codifica la existencia de una base y de su base dual.
+\end{ejem}
+
+\section{La biyección y la adjunción}
+
+La utilidad de la \myref{defi:dual} es que permite trasladar morfismos de un lado a otro del tensor. En esta sección se construyen las dos transformaciones que hacen ese traslado y se comprueba que son inversas.
+
+Supongamos que $X$ admite un dual $X^\vee$ y sean $A,B$ objetos de $\mathcal C$. Se define
+\[
+\Phi\colon\hom_{\mathcal C}(A\otimes X,\ B)\longrightarrow\hom_{\mathcal C}(A,\ B\otimes X^\vee)
+\]
+como la composición
+\[
+\begin{aligned}
+\hom_{\mathcal C}(A\otimes X,B)
+&\xrightarrow{\ -\otimes X^\vee\ }
+\hom_{\mathcal C}\bigl((A\otimes X)\otimes X^\vee,\ B\otimes X^\vee\bigr)\\
+&\xrightarrow{\ (\alpha^{-1})^*\ }
+\hom_{\mathcal C}\bigl(A\otimes(X\otimes X^\vee),\ B\otimes X^\vee\bigr)\\
+&\xrightarrow{\ (1\otimes\mathrm{coev})^*\ }
+\hom_{\mathcal C}(A\otimes1,\ B\otimes X^\vee)
+\xrightarrow{\ (\rho^{-1})^*\ }
+\hom_{\mathcal C}(A,\ B\otimes X^\vee),
+\end{aligned}
+\]
+y
+\[
+\Psi\colon\hom_{\mathcal C}(A,\ B\otimes X^\vee)\longrightarrow\hom_{\mathcal C}(A\otimes X,\ B)
+\]
+como la composición
+\[
+\begin{aligned}
+\hom_{\mathcal C}(A,B\otimes X^\vee)
+&\xrightarrow{\ -\otimes X\ }
+\hom_{\mathcal C}\bigl(A\otimes X,\ (B\otimes X^\vee)\otimes X\bigr)\\
+&\xrightarrow{\ \alpha_*\ }
+\hom_{\mathcal C}\bigl(A\otimes X,\ B\otimes(X^\vee\otimes X)\bigr)\\
+&\xrightarrow{\ (1\otimes\mathrm{ev})_*\ }
+\hom_{\mathcal C}(A\otimes X,\ B\otimes1)
+\xrightarrow{\ \rho_*\ }
+\hom_{\mathcal C}(A\otimes X,\ B).
+\end{aligned}
+\]
+Ambas son naturales en $A$ y en $B$.
+
+\begin{prop}\label{prop:adjuncion}
+Las transformaciones $\Phi$ y $\Psi$ son inversas una de la otra.
+\end{prop}
+
+\begin{proof}
+Se verifica que $\Phi\Psi=\id$; el otro caso es análogo. Sea $f\in\hom_{\mathcal C}(A,B\otimes X^\vee)$ y escribamos por separado los dos factores de $\Phi\Psi(f)$. Por un lado,
+\[
+\begin{aligned}
+\Psi(f)\colon\quad A\otimes X
+&\xrightarrow{\ f\otimes1_X\ } (B\otimes X^\vee)\otimes X
+\xrightarrow{\ a_{B,X^\vee,X}\ } B\otimes(X^\vee\otimes X)\\
+&\xrightarrow{\ 1_B\otimes\mathrm{ev}\ } B\otimes1
+\xrightarrow{\ \rho_B\ } B ,
+\end{aligned}
+\]
+y por otro,
+\[
+\begin{aligned}
+\Phi\Psi(f)\colon\quad A
+&\xrightarrow{\ \rho_A^{-1}\ } A\otimes1
+\xrightarrow{\ 1_A\otimes\mathrm{coev}\ } A\otimes(X\otimes X^\vee)
+\xrightarrow{\ a^{-1}_{A,X,X^\vee}\ } (A\otimes X)\otimes X^\vee\\
+&\xrightarrow{\ (\Psi f)\otimes1_{X^\vee}\ } B\otimes X^\vee .
+\end{aligned}
+\]
+El cálculo se organiza en tres pasos.
+
+\emph{Primer paso: la naturalidad del asociador.} El cuadrado
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+(A\otimes X)\otimes X^\vee \arrow[r,"a_{A,X,X^\vee}"] \arrow[d,"(f\otimes1_X)\otimes1_{X^\vee}"'] & A\otimes(X\otimes X^\vee) \arrow[d,"f\otimes1_{X\otimes X^\vee}"]\\
+((B\otimes X^\vee)\otimes X)\otimes X^\vee \arrow[r,"a_{B\otimes X^\vee,X,X^\vee}"'] & (B\otimes X^\vee)\otimes(X\otimes X^\vee)
+\end{tikzcd}
+\]
+conmuta por la naturalidad del asociador en la primera variable evaluada en $f$. Es el paso que permite leer el cálculo indistintamente sobre $A\otimes(X\otimes X^\vee)$ o sobre $(A\otimes X)\otimes X^\vee$.
+
+\emph{Segundo paso: el pentágono.} La parte central del cálculo se apoya en el axioma del pentágono para la cuádrupla $(B,X^\vee,X,X^\vee)$,
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+((B\otimes X^\vee)\otimes X)\otimes X^\vee \arrow[r,"a_{B\otimes X^\vee,X,X^\vee}"] \arrow[d,"a_{B,X^\vee,X}\otimes1_{X^\vee}"'] & (B\otimes X^\vee)\otimes(X\otimes X^\vee) \arrow[dd,"a_{B,X^\vee,X\otimes X^\vee}"] \arrow[dr,"1_{B\otimes X^\vee}\otimes a_{X^\vee,X,X^\vee}"'] & \\
+(B\otimes(X^\vee\otimes X))\otimes X^\vee \arrow[dr,"a_{B,X^\vee\otimes X,X^\vee}"'] & & B\otimes(X^\vee\otimes(X\otimes X^\vee))\\
+& B\otimes((X^\vee\otimes X)\otimes X^\vee) \arrow[ur,"1_B\otimes a_{X^\vee,X,X^\vee}"'] &
+\end{tikzcd}
+\]
+que iguala las dos maneras de reasociar $((B\otimes X^\vee)\otimes X)\otimes X^\vee$ hasta $B\otimes(X^\vee\otimes(X\otimes X^\vee))$.
+
+\emph{Tercer paso: las unidades.} Queda por eliminar la unidad. La identidad
+\[
+(\rho_B\otimes1_{X^\vee})\circ\bigl((1_B\otimes\mathrm{ev})\otimes1_{X^\vee}\bigr)
+=(1_B\otimes\lambda_{X^\vee})\circ\bigl(1_B\otimes(\mathrm{ev}\otimes1_{X^\vee})\bigr)\circ a_{B,X^\vee\otimes X,X^\vee}
+\]
+se prueba en dos pasos: la naturalidad del asociador en la segunda variable evaluada en $\mathrm{ev}\colon X^\vee\otimes X\to1$ da
+\[
+(1_B\otimes\mathrm{ev}\otimes1_{X^\vee})\circ a_{B,X^\vee\otimes X,X^\vee}=a_{B,1,X^\vee}\circ\bigl((1_B\otimes\mathrm{ev})\otimes1_{X^\vee}\bigr),
+\]
+y el axioma del triángulo para $(B,X^\vee)$, es decir, $\rho_B\otimes1_{X^\vee}=(1_B\otimes\lambda_{X^\vee})\circ a_{B,1,X^\vee}$, elimina el asociador restante. El diagrama que resume el tercer paso es
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+(B\otimes(X^\vee\otimes X))\otimes X^\vee \arrow[r,"(1_B\otimes\mathrm{ev})\otimes1_{X^\vee}"] \arrow[d,"a_{B,X^\vee\otimes X,X^\vee}"'] & (B\otimes1)\otimes X^\vee \arrow[dd,"\rho_B\otimes1_{X^\vee}"]\\
+B\otimes((X^\vee\otimes X)\otimes X^\vee) \arrow[d,"1_B\otimes(\mathrm{ev}\otimes1_{X^\vee})"'] & \\
+B\otimes(1\otimes X^\vee) \arrow[r,"1_B\otimes\lambda_{X^\vee}"'] & B\otimes X^\vee
+\end{tikzcd}
+\]
+
+\emph{El diagrama pegado.} Al pegar las aristas relevantes de los tres pasos —el cuadrado de naturalidad arriba, el pentágono en el centro y la eliminación de las unidades abajo— se obtiene el diagrama conmutativo
+\[
+\begin{tikzcd}[column sep=4em, row sep=large]
+A \arrow[r,"\rho_A^{-1}"] & A\otimes1 \arrow[d,"1_A\otimes\mathrm{coev}"] & \\
+(A\otimes X)\otimes X^\vee \arrow[r,"a_{A,X,X^\vee}"] \arrow[d,"(f\otimes1_X)\otimes1_{X^\vee}"'] & A\otimes(X\otimes X^\vee) \arrow[d,"f\otimes1_{X\otimes X^\vee}"'] & \\
+((B\otimes X^\vee)\otimes X)\otimes X^\vee \arrow[r,"a_{B\otimes X^\vee,X,X^\vee}"] \arrow[d,"a_{B,X^\vee,X}\otimes1_{X^\vee}"'] & (B\otimes X^\vee)\otimes(X\otimes X^\vee) \arrow[d,"a_{B,X^\vee,X\otimes X^\vee}"'] & \\
+(B\otimes(X^\vee\otimes X))\otimes X^\vee \arrow[r,"{(1_B\otimes a_{X^\vee,X,X^\vee})\circ a_{B,X^\vee\otimes X,X^\vee}}"'] \arrow[d,"(1_B\otimes\mathrm{ev})\otimes1_{X^\vee}"'] & B\otimes(X^\vee\otimes(X\otimes X^\vee)) \arrow[d,"1_B\otimes a^{-1}_{X^\vee,X,X^\vee}"'] & \\
+(B\otimes1)\otimes X^\vee \arrow[d,"\rho_B\otimes1_{X^\vee}"'] & B\otimes((X^\vee\otimes X)\otimes X^\vee) \arrow[d,"1_B\otimes(\mathrm{ev}\otimes1_{X^\vee})"'] & \\
+B\otimes X^\vee & B\otimes(1\otimes X^\vee) \arrow[l,"1_B\otimes\lambda_{X^\vee}"] &
+\end{tikzcd}
+\]
+Su camino exterior, que empieza en $A$ y termina en $B\otimes X^\vee$, es exactamente $\Phi\Psi(f)$: la unidad, la coevaluación, la inversa del asociador, $f$ tensada por la identidad, y después el pentágono y la eliminación de las unidades. La conmutatividad del diagrama es la conjunción de los tres pasos.
+
+\emph{Reducción a una composición independiente de $A$.} Por la funtorialidad del producto tensorial,
+\[
+(f\otimes1_{X\otimes X^\vee})\circ(1_A\otimes\mathrm{coev})=f\otimes\mathrm{coev}=(1_{B\otimes X^\vee}\otimes\mathrm{coev})\circ(f\otimes1_1),
+\]
+y por la naturalidad de $\rho$ evaluada en $f$, que dice $\rho_{B\otimes X^\vee}\circ(f\otimes1_1)=f\circ\rho_A$, se tiene $(f\otimes1_1)\circ\rho_A^{-1}=\rho^{-1}_{B\otimes X^\vee}\circ f$. Sustituyendo en la expresión de $\Phi\Psi(f)$ resulta
+\[
+\Phi\Psi(f)=\Theta\circ\rho^{-1}_{B\otimes X^\vee}\circ f,
+\]
+donde
+\[
+\Theta\coloneqq(\rho_B\otimes1_{X^\vee})\circ\bigl((1_B\otimes\mathrm{ev})\otimes1_{X^\vee}\bigr)\circ(a_{B,X^\vee,X}\otimes1_{X^\vee})\circ a^{-1}_{B\otimes X^\vee,X,X^\vee}\circ(1_{B\otimes X^\vee}\otimes\mathrm{coev})
+\]
+es un morfismo $(B\otimes X^\vee)\otimes1\to B\otimes X^\vee$ que ya no depende de $A$ ni de $f$.
+
+\emph{La identidad de zigzag generalizada.} Queda por ver que $\Theta=\rho_{B\otimes X^\vee}$, y aquí es donde interviene la identidad de zigzag. El pentágono y las unidades permiten reescribir $\Theta$ en la forma
+\[
+\Theta=(1_B\otimes\lambda_{X^\vee})\circ\bigl(1_B\otimes(\mathrm{ev}\otimes1_{X^\vee})\bigr)\circ(1_B\otimes a^{-1}_{X^\vee,X,X^\vee})\circ\bigl(1_B\otimes(1_{X^\vee}\otimes\mathrm{coev})\bigr)\circ(1_B\otimes\rho^{-1}_{X^\vee}),
+\]
+es decir, la identidad de zigzag tensada por $B$. En efecto, todas las aristas que hay que reordenar para pasar de una expresión a la otra son asociadores y unidades —la naturalidad del asociador en la segunda variable evaluada en $\mathrm{ev}$ y el axioma del triángulo actúan sobre el extremo derecho, y el pentágono traslada el resto—, de modo que el \myref{teo:coherencia} autoriza el reordenamiento sin verificarlo. Ahora bien, la composición que multiplica a $1_B$ es exactamente la identidad de zigzag de la \myref{defi:dual}, que vale $1_{X^\vee}$; por tanto
+\[
+\Theta=1_B\otimes1_{X^\vee},
+\]
+que no es otra cosa que $\rho_{B\otimes X^\vee}$. En consecuencia
+\[
+\Phi\Psi(f)=\rho_{B\otimes X^\vee}\circ\rho^{-1}_{B\otimes X^\vee}\circ f=f,
+\]
+como se quería. El caso $\Psi\Phi=\id$ es análogo, con la otra identidad de zigzag.
+\end{proof}
+
+\begin{nota}
+   La \myref{prop:adjuncion} dice que $\Phi$ es una biyección natural, es decir, que $\Phi$ es una \emph{adjunción} entre los funtores $-\otimes X^\vee$ y $-\otimes X$. Recíprocamente, dada una adjunción entre estos dos funtores, se recuperan la coevaluación y la evaluación: la unidad y la counidad de la adjunción son
+\[
+\eta\colon1_{\mathcal C}\longrightarrow(-\otimes X^\vee)\circ(-\otimes X),
+\qquad
+\varepsilon\colon(-\otimes X)\circ(-\otimes X^\vee)\longrightarrow1_{\mathcal C},
+\]
+y evaluándolas en el objeto unidad se obtiene
+\[
+\eta_1\colon1\longrightarrow(1\otimes X)\otimes X^\vee,
+\qquad
+\varepsilon_1\colon(1\otimes X^\vee)\otimes X\longrightarrow1,
+\]
+que a través de $\lambda$ dan precisamente $\mathrm{coev}$ y $\mathrm{ev}$. Las identidades triangulares de la adjunción, $\varepsilon F\circ F\eta=1_F$ y $G\varepsilon\circ\eta G=1_G$, son entonces las que garantizan las identidades de zigzag de la \myref{defi:dual}. La verificación detallada de este recíproco no se hizo en clase.
+\end{nota}
+
+\section{Un lema de coherencia}
+
+El cálculo anterior se apoyó en la forma en que se elimina una unidad cuando el morfismo que aparece no es la identidad. Conviene aislar esa pieza en su versión más simple, porque reaparece en cada verificación de este tipo y es también el lugar donde se ve por qué la coherencia monoidal no es automática.
+
+\begin{lema}\label{lema:coherencia}
+En una categoría monoidal simétrica el diagrama
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+(x\otimes y)\otimes1 \arrow[r,"\rho_{x\otimes y}"] \arrow[d,"\alpha_{x,y,1}"'] & x\otimes y\\
+x\otimes(y\otimes1) \arrow[ur,"1_x\otimes\rho_y"'] &
+\end{tikzcd}
+\]
+es conmutativo.
+\end{lema}
+
+\begin{proof}
+La prueba es la que está dibujada en la pizarra y consiste en leer un solo diagrama. El punto de partida es el axioma del pentágono aplicado a la cuádrupla $(x,y,1,1)$,
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+((x\otimes y)\otimes1)\otimes1 \arrow[r,"a_{x\otimes y,1,1}"] \arrow[d,"a_{x,y,1}\otimes1_1"'] & (x\otimes y)\otimes(1\otimes1) \arrow[r,"a_{x,y,1\otimes1}"] & x\otimes(y\otimes(1\otimes1))\\
+(x\otimes(y\otimes1))\otimes1 \arrow[r,"a_{x,y\otimes1,1}"'] & x\otimes((y\otimes1)\otimes1) \arrow[ur,"1_x\otimes a_{y,1,1}"'] & &
+\end{tikzcd}
+\]
+A continuación se añaden las flechas que eliminan las unidades, que son las que proporciona el axioma del triángulo aplicado a los pares $(x\otimes y,1)$ y $(y,1)$:
+\[
+(1_{x\otimes y}\otimes\lambda_1)\circ a_{x\otimes y,1,1}=\rho_{x\otimes y}\otimes1_1,
+\qquad
+(1_y\otimes\lambda_1)\circ a_{y,1,1}=\rho_y\otimes1_1 .
+\]
+El diagrama completo que resulta es
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+((x\otimes y)\otimes1)\otimes1 \arrow[r,"a_{x\otimes y,1,1}"] \arrow[d,"a_{x,y,1}\otimes1_1"'] & (x\otimes y)\otimes(1\otimes1) \arrow[r,"a_{x,y,1\otimes1}"] & x\otimes(y\otimes(1\otimes1))\\
+(x\otimes(y\otimes1))\otimes1 \arrow[d,"\rho_{x\otimes y}\otimes1_1"{pos=0.8}] \arrow[r,"a_{x,y\otimes1,1}"'] & x\otimes((y\otimes1)\otimes1) \arrow[ur,"1_x\otimes a_{y,1,1}"'] \arrow[d,"1_x\otimes(\rho_y\otimes1_1)"'] & \\
+(x\otimes y)\otimes1 \arrow[r,"a_{x,y,1}"'] & x\otimes(y\otimes1) & &
+\end{tikzcd}
+\]
+Para aligerarlo se han omitido las dos flechas
+\[
+1_{x\otimes y}\otimes\lambda_1\colon(x\otimes y)\otimes(1\otimes1)\longrightarrow(x\otimes y)\otimes1,
+\qquad
+1_x\otimes(1_y\otimes\lambda_1)\colon x\otimes(y\otimes(1\otimes1))\longrightarrow x\otimes(y\otimes1),
+\]
+que son las que hacen conmutar los dos triángulos y ya están escritas arriba.
+
+Todas las piezas del diagrama conmutan: el pentágono por el axioma del pentágono; el cuadrado formado por $a_{x,y\otimes1,1}$, $1_x\otimes a_{y,1,1}$, $1_x\otimes(\rho_y\otimes1_1)$ y la flecha omitida que baja desde $x\otimes(y\otimes(1\otimes1))$ hasta $x\otimes(y\otimes1)$ por la naturalidad del asociador en la segunda variable evaluada en $\rho_y\colon y\otimes1\to y$,
+\[
+(1_x\otimes\rho_y\otimes1_1)\circ a_{x,y\otimes1,1}=a_{x,y,1}\circ\bigl((1_x\otimes\rho_y)\otimes1_1\bigr);
+\]
+y los dos triángulos que las flechas omitidas forman con $a_{x\otimes y,1,1}$ y con $a_{x,y,1\otimes1}$ por el axioma del triángulo aplicado a los pares $(x\otimes y,1)$ y $(y,1)$.
+
+La conclusión se lee ahora del diagrama: los dos caminos que van de $((x\otimes y)\otimes1)\otimes1$ hasta $x\otimes(y\otimes1)$ coinciden. El primero baja por la izquierda, pasando por $(x\otimes y)\otimes1$; el segundo sube por la derecha, pasando por $x\otimes((y\otimes1)\otimes1)$ y usando el pentágono y las dos unidades. Igualando ambos,
+\[
+a_{x,y,1}\circ(\rho_{x\otimes y}\otimes1_1)=\bigl((1_x\otimes\rho_y)\circ a_{x,y,1}\bigr)\circ(a_{x,y,1}\otimes1_1)=a_{x,y,1}\circ\bigl(((1_x\otimes\rho_y)\circ a_{x,y,1})\otimes1_1\bigr).
+\]
+Como $a_{x,y,1}$ es un isomorfismo, se cancela y queda
+\[
+\rho_{x\otimes y}\otimes1_1=\bigl((1_x\otimes\rho_y)\circ a_{x,y,1}\bigr)\otimes1_1 .
+\]
+Queda por quitar el factor $-\otimes1_1$ común. Es aquí donde interviene la naturalidad de $\rho$, y el cuadrado que la expresa es el que está dibujado a la derecha de la pizarra:
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+((x\otimes y)\otimes1)\otimes1 \arrow[r,"a_{x,y,1}\otimes1_1"] \arrow[d,"\rho_{x\otimes y}\otimes1_1"'] & (x\otimes(y\otimes1))\otimes1 \arrow[d,"\rho_{x\otimes(y\otimes1)}"]\\
+(x\otimes y)\otimes1 \arrow[r,"a_{x,y,1}"'] & x\otimes(y\otimes1)
+\end{tikzcd}
+\]
+es decir,
+\[
+\rho_{x\otimes(y\otimes1)}\circ(a_{x,y,1}\otimes1_1)=a_{x,y,1}\circ\rho_{x\otimes y}.
+\]
+Por la naturalidad de $\rho$ aplicada a un morfismo cualquiera $f\colon(x\otimes y)\otimes1\to x\otimes y$ se tiene
+\[
+\rho_{x\otimes y}\circ(f\otimes1_1)=f\circ\rho_{(x\otimes y)\otimes1},
+\]
+y como $\rho_{(x\otimes y)\otimes1}$ es un isomorfismo, la igualdad anterior fuerza $f=\rho_{x\otimes y}$. Aplicándolo a $f=(1_x\otimes\rho_y)\circ a_{x,y,1}$ se concluye
+\[
+\rho_{x\otimes y}=(1_x\otimes\rho_y)\circ a_{x,y,1},
+\]
+que es la conmutatividad del cuadrado del enunciado.
+\end{proof}
+
+\begin{nota}
+   El lema es un caso particular de la \myref{teo:coherencia}, pero conviene tenerlo a la vista porque la eliminación de una unidad en presencia de un morfismo que no es la identidad reaparece en cada verificación de este tipo: es del mismo género que el tercer paso de la demostración de la \myref{prop:adjuncion}. Sin una identidad así, cada cálculo hay que rehacerlo desde el axioma del triángulo.
+\end{nota}
+
+\section{Dualizabilidad, finitud y rigidez}
+
+La \myref{defi:dual} plantea de inmediato la pregunta de qué objetos admiten un dual. En el caso de $\SW$ la respuesta es completa.
+
+\begin{prop}\label{prop:dualizable-sw}
+Todo objeto de $\SW$ admite un dual.
+\end{prop}
+
+\begin{proof}
+Un objeto de $\SW$ es una clase de suspensión de un CW-complejo \emph{finito} punteado. La construcción del dual es compatible con la suspensión, de modo que basta tratar el caso de un complejo finito $X$. Se procede por inducción sobre el número de celdas. Si $X=S^0$ el dual es $S^0$ mismo, con $\mathrm{ev}$ y $\mathrm{coev}$ dados por las unidades. Si $X$ se obtiene de un subcomplejo $X'$ pegando una celda, la sucesión cofibrada
+\[
+X'\longrightarrow X\longrightarrow S^r
+\]
+tiene dual, y el dual de una sucesión cofibrada es una sucesión cofibrada; esto permite extender el dual de $X'$ al de $X$. La finitud es lo que hace que la inducción termine.
+\end{proof}
+
+\begin{nota}
+   La relación entre dualizabilidad y finitud no es universal. En $\SW$ ambas nociones coinciden esencialmente, porque los objetos son complejos finitos por construcción; pero en una categoría monoidal simétrica triangulada general la dualizabilidad es una condición más débil y puede sustituir a la finitud en muchos contextos. Esa es la razón por la que los enunciados de dualidad suelen formularse en términos de existencia de un dual y no de finitud del objeto.
+
+   Para las categorías monoidales simétricas \emph{trianguladas} existe un criterio de rigidez, es decir, una condición suficiente para que todos los objetos admitan dual: se pide que los duales sean compatibles con la suspensión, que la construcción del dual preserve los triángulos distinguidos y que conmute con la formación de fibras y cofibras. El enunciado preciso y su demostración quedaron fuera de la clase.
+\end{nota}
+
+Con esto se cierra la primera incursión en la dualidad. La clase siguiente continúa con la dualidad en categorías monoidales generales y vuelve después a la categoría de Spanier--Whitehead, donde el producto smash y la dualidad se combinan para producir la dualidad de Spanier--Whitehead propiamente dicha.
