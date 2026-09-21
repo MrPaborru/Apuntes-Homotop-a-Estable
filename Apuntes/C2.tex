@@ -1,13 +1,27 @@
 En esta clase se continúa el estudio de la categoría extendida de Spanier--Whitehead y se formaliza la idea de que la suspensión debe ser invertible en homotopía estable. Para ello se introducen los funtores de desplazamiento, se compara el desplazamiento del índice con la suspensión del espacio y se demuestra que ambas operaciones son naturalmente isomorfas. Esto permite interpretar cada objeto como una suspensión o desuspensión formal, representar los grupos de homotopía estable mediante esferas desplazadas y caracterizar los isomorfismos estables en términos de equivalencias homotópicas entre suspensiones suficientemente altas. Posteriormente se restringe la construcción a CW-complejos punteados finitos para definir la categoría de Spanier--Whitehead y se estudian las sucesiones cofibradas asociadas a una inclusión $A\subseteq X$. Al aplicar clases de homotopía y estabilizar se obtienen sucesiones exactas largas en ambas direcciones. Los teoremas de escisión y de Hurewicz permiten comparar el subcomplejo $A$ con la fibra homotópica del cociente $X\to X/A$; después de suspender suficientemente, esta comparación se convierte en una equivalencia estable, por lo que las sucesiones cofibradas y fibradas coinciden en la categoría estable. Finalmente se analiza la estructura aditiva de la categoría, así como sus limitaciones: no es abeliana, no posee en general coproductos infinitos ni todos los límites y colímites, y no admite un funtor $\Omega^\infty$ intrínseco. Estas deficiencias motivan el paso posterior a categorías de espectros y categorías de modelos.
 
-\section{Repaso de la categoría extendida de Spanier--Whitehead}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{La categoría de Spanier--Whitehead}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Repaso de la categoría extendida de Spanier--Whitehead}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Los objetos de la categoría extendida de Spanier--Whitehead $\ESW$ son parejas $X_m=(X,m)$, donde $X$ es un CW-complejo punteado y $m\in\mathbb Z$. La interpretación de $X_m$ es la suspensión formal $\Sigma^mX$, aun cuando $m$ sea negativo. Para dos objetos $X_m$ y $Y_n$ se define
 \[
 \set*{X_m,Y_n}\coloneqq\Hom_{\ESW}(X_m,Y_n)=\colim_{\substack{k\to\infty\\m+k,n+k\geq0}}[\Sigma^{m+k}X,\Sigma^{n+k}Y]_*.
 \]
 Los mapeos del sistema dirigido son inducidos por la suspensión. Así, un morfismo estable puede representarse mediante una función punteada $f\colon\Sigma^{m+k}X\to\Sigma^{n+k}Y$, y dos representantes determinan el mismo morfismo cuando sus suspensiones se vuelven homotópicas en algún nivel posterior. Para componer $[f]_k\colon X_m\to Y_n$ y $[g]_\ell\colon Y_n\to Z_p$ se suspenden ambos representantes hasta un nivel común $r\geq k,\ell$ y se toma la clase de $(\Sigma^{r-\ell}g)\circ(\Sigma^{r-k}f)$. El resultado no depende de las elecciones porque la suspensión preserva identidades, composiciones y homotopías.
 
-Como se vio en la clase anterior, cada conjunto $\set*{X_m,Y_n}$ es un grupo abeliano y la composición es bilineal. En efecto, puede elegirse un nivel en el cual el dominio sea al menos una doble suspensión; el mapeo de pinchamiento proporciona entonces una suma abeliana en las clases de homotopía, y los mapeos de transición son homomorfismos. Además, el funtor $\Sigma^\infty\colon\Ho(\CWstar)\to\ESW$, dado por $X\mapsto X_0$, permite identificar $\pi_n^s(X)$ con $\set*{S^0_n,X_0}$.
+Como se vio en la clase anterior, cada conjunto $\set*{X_m,Y_n}$ es un grupo abeliano y la composición es bilineal. En efecto, puede elegirse un nivel en el cual el dominio sea al menos una doble suspensión; el mapeo de pinchamiento proporciona entonces una suma abeliana en las clases de homotopía, y los mapeos de transición son homomorfismos. Además, el funtor $\Sigma^\infty\colon\Ho(\CWstar)\to\ESW$, dado por $X\mapsto X_0$, permite identificar
+\[
+\pi_n^s(X)\cong\bigl\{(S^n,0),(X,0)\bigr\}\cong\set*{S^0_n,X_0},
+\]
+donde la primera identificación es la del grupo de homotopía estable con las clases estables de funciones desde la esfera, y la segunda es el desplazamiento de índices.
+
+\begin{nota}
+   En la pizarra la categoría extendida se denotó $\widehat{SW}$ para distinguirla de la categoría finita $\SW$, y se abrió la sesión con un encabezado organizativo («Ayer: introducción y la categoría extendida; hoy: la categoría de Spanier--Whitehead»). Aquí se conserva la notación $\ESW$ que venía usándose desde la clase anterior.
+\end{nota}
 
 La definición del colímite hace evidentes otras dos propiedades que se usarán constantemente. La primera es que suspender el espacio no cambia el conjunto de morfismos:
 \[
@@ -21,7 +35,9 @@ La segunda es que desplazar los dos índices a la vez tampoco los cambia:
 \]
 Ninguna de las dos es casual: ambas dicen que mover el índice y suspender el espacio codifican la misma información. La proposición de la subsección siguiente convierte esa observación en un isomorfismo natural.
 
-\section{Funtores de desplazamiento y suspensión}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Funtores de desplazamiento y suspensión}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Para cada $r\in\mathbb Z$ se define el funtor de desplazamiento $\sh^r\colon\ESW\to\ESW$ mediante $\sh^r(X_m)=X_{m+r}$. Sobre morfismos, $\sh^r$ se obtiene reindexando los sistemas dirigidos que definen los conjuntos de morfismos. En particular, $\sh^1$ y $\sh^{-1}$ son inversos estrictos sobre los objetos y, con la identificación canónica de los colímites, también sobre los morfismos; por tanto, $\sh^1$ es un automorfismo con inverso $\sh^{-1}$.
 
 Existe también el funtor de suspensión directa $\sigma\colon\ESW\to\ESW$, definido por $\sigma(X_m)=(\Sigma X)_m$. Sobre morfismos, si $[f]_k\colon X_m\to Y_n$ está representado por $f\colon\Sigma^{m+k}X\to\Sigma^{n+k}Y$ con $m+k\ge1$ y $n+k\ge1$ ---lo cual siempre se consigue aumentando $k$---, se define $\sigma([f]_k)$ como la clase de la \emph{misma} $f$ vista ahora como
@@ -41,7 +57,16 @@ Para $X_m$ se tiene $\sigma(X_m)=(\Sigma X)_m$ y $\sh^1(X_m)=X_{m+1}$. Ambos obj
 (\Sigma Y)_n \arrow[r,"{\eta_{Y_n}}"'] & Y_{n+1}
 \end{tikzcd}
 \]
-están representados por la misma suspensión $\Sigma f$. El cuadrado conmuta y $\eta$ es natural.
+están representados por la misma suspensión $\Sigma f$. Explícitamente, si $[f]_\ell\colon X_m\to Y_n$ está representado por $f\colon\Sigma^{m+\ell}X\to\Sigma^{n+\ell}Y$, los dos recorridos son
+\[
+\eta_{(Y,n)}\circ\sigma([f])
+=\bigl[\id\colon\Sigma^{n+\ell}\Sigma Y\to\Sigma^{n+\ell+1}Y\bigr]_{\ell}\circ\bigl[\Sigma f\colon\Sigma^{m+\ell}\Sigma X\to\Sigma^{n+\ell}\Sigma Y\bigr]_{\ell},
+\]
+\[
+\sh^1([f])\circ\eta_{(X,m)}
+=\bigl[f\colon\Sigma^{(m+1)+(\ell-1)}X\to\Sigma^{(n+1)+(\ell-1)}Y\bigr]_{\ell-1}\circ\bigl[\id\colon\Sigma^{m+k'}\Sigma X\to\Sigma^{m+k'+1}X\bigr]_{k'},
+\]
+y ambos valen $[\Sigma f]_\ell$, porque $[f]_{\ell-1}=[\Sigma f]_\ell$ en el colímite. El cuadrado conmuta y $\eta$ es natural.
 \end{proof}
 
 Como $\sigma\cong\sh^1$ y $\sh^1$ es invertible, la suspensión es una autoequivalencia de $\ESW$, con inversa dada, salvo isomorfismo natural, por $\sh^{-1}$. Más aún, $\sigma$ es la extensión del funtor de suspensión clásico: el cuadrado
@@ -64,7 +89,9 @@ Esto no ocurría en la categoría de espacios, y es la razón por la que en el m
 \]
 donde para $r<0$ la expresión del lado izquierdo se interpreta formalmente. Cuando $r\geq0$, la primera fórmula da $S^r_0\cong S^0_r$; por ello, las expresiones $\set*{S^r_0,X_0}$ y $\set*{S^0_r,X_0}$ no constituyen representaciones distintas del mismo grupo de homotopía estable, sino dos descripciones del mismo objeto que correpresenta $\pi_r^s$.
 
-\section{Isomorfismos estables y la categoría de Spanier--Whitehead}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Isomorfismos estables y la categoría de Spanier--Whitehead}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{ejer}[Caracterización de los isomorfismos estables]
 Demostrar que en $\ESW$ se tiene $X_n\cong Y_m$ si y solo si existe un entero $r$ con $n+r,m+r\geq0$ y $\Sigma^{n+r}X\simeq\Sigma^{m+r}Y$ como espacios punteados.
 \end{ejer}
@@ -75,9 +102,19 @@ Si existe una equivalencia homotópica $f\colon\Sigma^{n+r}X\to\Sigma^{m+r}Y$, s
 Recíprocamente, supongamos que $[f]\colon X_n\to Y_m$ es un isomorfismo estable con inverso $[g]$. Elegimos representantes de ambas clases y los suspendemos hasta un nivel común. Las igualdades $[g][f]=[\id]$ y $[f][g]=[\id]$ en los colímites significan que, después de aplicar un número finito adicional de suspensiones, los dos compuestos son homotópicos a las identidades. En ese nivel, el representante de $[f]$ es una equivalencia homotópica entre $\Sigma^{n+r}X$ y $\Sigma^{m+r}Y$.
 \end{sol}
 
-La categoría de Spanier--Whitehead $\SW$ es la subcategoría completa de $\ESW$ cuyos objetos $X_m$ tienen a $X$ un CW-complejo punteado finito. La finitud es importante porque, para $X$ finito, los conjuntos $[\Sigma^{m+k}X,\Sigma^{n+k}Y]_*$ se estabilizan cuando $k$ es suficientemente grande. En efecto, la conectividad de $\Sigma^{n+k}Y$ crece linealmente con $k$, mientras que el rango de Freudenthal crece al doble de esa velocidad; como la dimensión de $\Sigma^{m+k}X$ solo crece linealmente, el mapeo de suspensión termina siendo una biyección. Por tanto, en $\SW$ cada conjunto de morfismos puede calcularse en cualquier nivel suficientemente avanzado, aunque conservar la expresión como colímite permite trabajar sin elegir un nivel particular.
+La categoría de Spanier--Whitehead $\SW$ es la subcategoría completa de $\ESW$ cuyos objetos $X_m$ tienen a $X$ un CW-complejo punteado finito. La finitud es importante porque, para $X$ finito, los conjuntos $[\Sigma^{m+k}X,\Sigma^{n+k}Y]_*$ se estabilizan cuando $k$ es suficientemente grande. En efecto, la conectividad de $\Sigma^{n+k}Y$ crece linealmente con $k$, mientras que el rango de Freudenthal crece al doble de esa velocidad; como la dimensión de $\Sigma^{m+k}X$ solo crece linealmente, el mapeo de suspensión termina siendo una biyección. Por tanto, en $\SW$ cada conjunto de morfismos puede calcularse en cualquier nivel suficientemente avanzado,
+\[
+\set*{X_m,Y_n}\cong[\Sigma^{m+N}X,\Sigma^{n+N}Y]_*\qquad\text{para algún }N\gg0,
+\]
+aunque conservar la expresión como colímite permite trabajar sin elegir un nivel particular. En la pizarra esta observación se etiquetó como la \emph{versión más general de Freudenthal}: es la misma estimación de conectividad, aplicada ahora a funciones entre dos complejos finitos arbitrarios en lugar de a las esferas.
 
-\section{La sucesión de Puppe}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sucesiones exactas en \texorpdfstring{$\SW$}{SW}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La sucesión de Puppe}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Sea $A\subseteq X$ un subcomplejo punteado de un CW-complejo punteado. La inclusión $i\colon A\hookrightarrow X$ es una cofibración y su cofibra es el cociente $X/A$. Si $q\colon X\to X/A$ es el cociente, el cono de mapeo $X\cup_iCA$ es homotópicamente equivalente a $X/A$. Al colapsar $X$ dentro de este cono se obtiene el mapeo de conexión $\delta\colon X/A\to\Sigma A$. Repitiendo la construcción se obtiene la sucesión de Puppe
 \[
 A\xrightarrow{i}X\xrightarrow{q}X/A\xrightarrow{\delta}\Sigma A\xrightarrow{-\Sigma i}\Sigma X\xrightarrow{-\Sigma q}\Sigma(X/A)\xrightarrow{-\Sigma\delta}\Sigma^2A\longrightarrow\cdots .
@@ -88,7 +125,13 @@ Los signos aparecen al rotar la sucesión y son los que posteriormente hacen com
 \]
 Para la exactitud de los conjuntos de clases de homotopía el signo no altera el núcleo, pero sí es relevante para la estructura triangulada.
 
-\section{Exactitud al aplicar clases de homotopía}
+\begin{nota}
+   Tres precisiones sobre la pizarra, que se conservan aquí corregidas. \emph{(i)} El profesor escribió el mapeo de conexión como $r\colon X/A\to\Sigma A$ (y por tanto $-\Sigma r$ en el término siguiente); aquí se usa $\delta$, que es la letra empleada en el resto del capítulo. \emph{(ii)} El enunciado del pizarrón pide que $X$ sea un CW-complejo punteado \emph{finito}; la sucesión vale en realidad para cualquier pareja de CW-complejos, y la finitud solo se necesita al pasar a $\SW$. \emph{(iii)} En el diagrama de la pizarra la flecha de la inclusión se dibujó apuntando hacia $A$; el sentido correcto es $i\colon A\hookrightarrow X$.
+\end{nota}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exactitud al aplicar clases de homotopía}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Fijemos un espacio punteado $Z$. Al aplicar el funtor contravariante $[-,Z]_*$ a la sucesión anterior se obtiene
 \[
 [A,Z]_*\xleftarrow{i^*}[X,Z]_*\xleftarrow{q^*}[X/A,Z]_*\xleftarrow{\delta^*}[\Sigma A,Z]_*\xleftarrow{(-\Sigma i)^*}[\Sigma X,Z]_*\xleftarrow{(-\Sigma q)^*}\cdots .
@@ -105,7 +148,9 @@ Podemos suspender simultáneamente $A$, $X$, $X/A$ y $Z$ y formar un diagrama cu
 \]
 Al tomar el colímite en cada columna se obtiene una sucesión exacta de grupos abelianos. La razón es que los colímites filtrados de grupos abelianos son exactos: conmutan con núcleos, imágenes y conúcleos, de modo que el colímite de una sucesión exacta de sistemas dirigidos vuelve a ser exacto. Cuando $X$ es finito-dimensional la conclusión también puede comprobarse directamente por estabilización: fijados tres términos consecutivos, la \myref{prop:biysus} garantiza que existe un nivel $k$ a partir del cual los tres sistemas ya son constantes, y en ese nivel la sucesión es una de las sucesiones exactas anteriores. En ningún caso aparece un término derivado de un límite inverso, pues aquí se toman colímites directos y no límites inversos.
 
-\section{La sucesión exacta biinfinita}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La sucesión exacta biinfinita}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 La invertibilidad de la suspensión permite extender la sucesión de Puppe hacia la izquierda. En $\SW$ se obtiene la sucesión cofibrada estable
 \[
 \begin{aligned}
@@ -128,7 +173,9 @@ Para cualquier $Z_m\in\SW$, la aplicación del funtor $\set*{-,Z_m}$ produce la 
 \]
 No es necesario restringirse a objetivos de la forma $Z_0$. Si $m\geq0$, entonces $Z_m\cong(\Sigma^mZ)_0$; si $m<0$, al desplazar simultáneamente fuente y objetivo se obtiene $\set*{W_n,Z_m}\cong\set*{W_{n-m},Z_0}$. Por tanto, la exactitud para objetivos generales se reduce a la ya demostrada para un objeto con índice cero.
 
-\section{La sucesión exacta larga de homotopía estable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La sucesión exacta larga de homotopía estable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 El mismo argumento se aplica al funtor covariante $\set*{(Z,k),-}$, que también es exacto sobre sucesiones cofibradas. Partiendo de la sucesión de cofibra $A\xrightarrow{i}X\xrightarrow{q}X/A\xrightarrow{\delta}\Sigma A$ y estabilizando se obtiene la sucesión exacta larga
 \[
 \begin{aligned}
@@ -136,7 +183,11 @@ El mismo argumento se aplica al funtor covariante $\set*{(Z,k),-}$, que también
 &\xrightarrow{\ \delta_*\ }\set*{(Z,k),(\Sigma A,m)}\longrightarrow\set*{(Z,k),(\Sigma X,m)}\longrightarrow\cdots,
 \end{aligned}
 \]
-que, igual que la anterior, se prolonga indefinidamente en ambas direcciones.
+que, igual que la anterior, se prolonga indefinidamente en ambas direcciones. Si se prefiere absorber el desplazamiento en los espacios, la misma sucesión se escribe, para los índices donde los términos lucen,
+\[
+\set*{(\Sigma^kZ,0),(\Sigma^mA,0)}\longrightarrow\set*{(\Sigma^kZ,0),(\Sigma^mX,0)}\longrightarrow\set*{(\Sigma^kZ,0),(\Sigma^m(X/A),0)}\longrightarrow\cdots,
+\]
+que es la forma en que el pizarrón la escribió, y de la que la versión anterior es la traducción a la notación de parejas.
 
 El caso más importante es $Z=S^0$ y $k=0$. Como
 \[
@@ -151,7 +202,9 @@ la sucesión anterior se reescribe íntegramente en términos de grupos de homot
 \]
 Esta es la sucesión exacta larga de homotopía estable asociada a la inclusión $A\subseteq X$. Es el análogo estable de la sucesión exacta larga de la pareja $(X,A)$ y, gracias a la coincidencia de las sucesiones cofibradas y fibradas, también puede obtenerse a partir de la fibración $A\to X\to X/A$ una vez estabilizada.
 
-\section{Teorema de escisión para grupos de homotopía}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Teorema de escisión para grupos de homotopía}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Una pareja $(B,C)$ se llama $r$-conexa cuando $\pi_i(B,C)=0$ para $i\leq r$. La escisión no es válida para los grupos de homotopía en todos los grados, pero sí dentro de un rango controlado por las conectividades. Este es el teorema de escisión homotópica (teorema 4.23 de \cite{hatcher2002}), que enunciamos en la forma en que lo usaremos.
 
 \begin{teo}[Escisión homotópica]
@@ -160,15 +213,23 @@ Sea $Y=U\cup V$ un CW-complejo expresado como unión de dos subcomplejos, con $C
 
 El teorema de suspensión de Freudenthal es una consecuencia de este resultado: se descompone $\Sigma X$ como la unión de los dos conos de $X$ y se aplica escisión a su intersección $X$. Esta relación explica por qué el mismo tipo de estimaciones de conectividad aparece al comparar fibras y cofibras.
 
-\section{Conectividad del cociente}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conectividad del cociente}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{coro}
 Sea $A$ un subcomplejo punteado de un CW-complejo punteado $X$, y supongamos que $A$, $X$ y $X/A$ son simplemente conexos. Si $A$ es $a$-conexo y $X/A$ es $c$-conexo, el cociente induce $q_*\colon\pi_i(X,A)\to\pi_i(X/A,*)$, que es un isomorfismo para $i\leq a+c$ y un epimorfismo para $i=a+c+1$.
 \end{coro}
 \begin{proof}
-Primero observamos que la pareja $(X,A)$ es $c$-conexa. En efecto, existe un isomorfismo $H_i(X,A)\cong\widetilde H_i(X/A)$ y, como $X/A$ es $c$-conexo, estos grupos se anulan para $i\leq c$. Si algún grupo relativo de homotopía no se anulara en ese rango, el primer grupo no nulo sería isomorfo al grupo relativo de homología correspondiente por Hurewicz relativo, lo cual es imposible. Ahora formamos $Y=X\cup_A CA$. La intersección de $X$ y $CA$ es $A$, la pareja $(X,A)$ es $c$-conexa y $(CA,A)$ es $(a+1)$-conexa, pues $CA$ es contráctil y $\pi_i(CA,A)\cong\pi_{i-1}(A)$. Por escisión, $\pi_i(X,A)\to\pi_i(Y,CA)$ es un isomorfismo si $i<c+(a+1)$ y un epimorfismo si $i=c+a+1$. Finalmente, $CA$ es contráctil y $Y\simeq X/A$, de modo que $\pi_i(Y,CA)\cong\pi_i(X/A,*)$; esto da exactamente el rango afirmado.
+Primero observamos que la pareja $(X,A)$ es $c$-conexa. En efecto, existe un isomorfismo $H_i(X,A)\cong\widetilde H_i(X/A)$ y, como $X/A$ es $c$-conexo, estos grupos se anulan para $i\leq c$. Si algún grupo relativo de homotopía no se anulara en ese rango, el primer grupo no nulo sería isomorfo al grupo relativo de homología correspondiente por Hurewicz relativo ---que se aplica porque $X/A$ es simplemente conexo, y por tanto $c\geq1$---, lo cual es imposible. Ahora formamos $Y=X\cup_A CA$. La intersección de $X$ y $CA$ es $A$, la pareja $(X,A)$ es $c$-conexa y $(CA,A)$ es $(a+1)$-conexa, pues $CA$ es contráctil y $\pi_i(CA,A)\cong\pi_{i-1}(A)$. Por escisión, $\pi_i(X,A)\to\pi_i(Y,CA)$ es un isomorfismo si $i<c+(a+1)$ y un epimorfismo si $i=c+a+1$. Finalmente, $CA$ es contráctil, de modo que el cociente $Y\to Y/CA$ induce isomorfismos
+\[
+\pi_i(Y,CA)\xrightarrow{\ \cong\ }\pi_i(Y/CA)\cong\pi_i(X/A,*),
+\]
+donde la última identificación usa que $Y=X\cup_ACA$ y que $X\cup_ACA/CA\cong X/A$; esto da exactamente el rango afirmado.
 \end{proof}
 
-\section{El subcomplejo y la fibra homotópica del cociente}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El subcomplejo y la fibra homotópica del cociente}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 La fibra ordinaria de $q\colon X\to X/A$ sobre el punto base contiene a $A$, pero no tiene en general el tipo de homotopía correcto. Debe utilizarse la fibra homotópica
 \[
 F_q=\{(x,\gamma)\mid x\in X,\ \gamma\colon I\to X/A,\ \gamma(0)=q(x),\ \gamma(1)=*\}.
@@ -193,10 +254,30 @@ Por el corolario, el mapeo vertical de la segunda columna es un isomorfismo para
    En la pizarra el diagrama anterior se dibujó con cuatro columnas, empezando en $\pi_{i+1}(X,A)$. Como el lema de los cinco requiere cinco términos, aquí se añadió la columna de la izquierda: es la que aporta el isomorfismo $\pi_{i+1}(X)\to\pi_{i+1}(E_q)$ y permite aplicar el lema en su forma habitual.
 \end{nota}
 
-\section{Coincidencia estable de sucesiones cofibradas y fibradas}
-Suspendamos $n$ veces la sucesión $A\to X\to X/A$ y sea $F_n$ la fibra homotópica de $\Sigma^nX\to\Sigma^n(X/A)$. Para $n\geq2$, tanto $\Sigma^nA$ como $\Sigma^n(X/A)$ son al menos $(n-1)$-conexos. El teorema anterior proporciona entonces un mapeo $\Sigma^nA\to F_n$ que induce isomorfismos en $\pi_i$ para $i\leq2n-3$ y un epimorfismo para $i=2n-2$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Estructura algebraica y sus límites}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Si $W$ es un CW-complejo finito de dimensión $d$, elegimos $n$ con $2n-3>d$. La teoría de obstrucciones celular aplicada al mapeo $\Sigma^nA\to F_n$ muestra que induce una biyección $[W,\Sigma^nA]_*\to[W,F_n]_*$. Como para cada $W$ puede elegirse un $n$ suficientemente grande, la comparación se convierte en una equivalencia al pasar a clases estables. En consecuencia, dentro de $\SW$ la sucesión cofibrada $A_0\to X_0\to(X/A)_0\to A_1$ es también una sucesión fibrada. Esta coincidencia entre fibras y cofibras es uno de los rasgos característicos de la homotopía estable y constituye la motivación geométrica de la estructura triangulada de $\SW$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Coincidencia estable de sucesiones cofibradas y fibradas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Suspendamos $n$ veces la sucesión $A\to X\to X/A$ y sea $F_n$ la fibra homotópica de $\Sigma^nX\to\Sigma^n(X/A)$. Para $n\geq2$, tanto $\Sigma^nA$ como $\Sigma^n(X/A)$ son al menos $(n-1)$-conexos ---y $\Sigma^nX$ también---, de modo que en particular todos son simplemente conexos. El teorema anterior proporciona entonces un mapeo $\Sigma^nA\to F_n$ que induce isomorfismos en $\pi_i$ para $i\leq2n-3$ y un epimorfismo para $i=2n-2$. La sucesión de fibración correspondiente se prolonga hacia la izquierda con los espacios de lazos,
+\[
+\cdots\longrightarrow\Omega\Sigma^nX\longrightarrow\Omega\Sigma^n(X/A)\longrightarrow F_n\longrightarrow\Sigma^nX\longrightarrow\Sigma^n(X/A),
+\]
+y es esta sucesión la que acabará coincidiendo con la de cofibra.
+
+Además, el cociente de las suspensiones se identifica con la suspensión del cociente,
+\[
+\Sigma^nX/\Sigma^nA\cong\Sigma^n(X\cup_ACA)\cong\Sigma^nX\cup_{\Sigma^nA}C\Sigma^nA,
+\]
+lo que reconoce a $\Sigma^n(X/A)$ como la cofibra de $\Sigma^nA\to\Sigma^nX$ y explica por qué basta comparar los dos mapeos término a término.
+
+Si $W$ es un CW-complejo finito de dimensión $d$, elegimos $n$ con $2n-3>d$. La teoría de obstrucciones celular aplicada al mapeo $\Sigma^nA\to F_n$ muestra que induce una biyección $[W,\Sigma^nA]_*\to[W,F_n]_*$, y como $[W,\Sigma^nA]_*\cong[W,F_n]_*$ se tiene la sucesión exacta en $[Z,-]_*$
+\[
+[Z,F_n]_*\longrightarrow[Z,\Sigma^nX]_*\longrightarrow[Z,\Sigma^n(X/A)]_*\longrightarrow[Z,\Sigma^nA]_*\longrightarrow\cdots
+\]
+donde el primer término se ha escrito usando la biyección anterior. Lo mismo que se hizo con $Z$ puede hacerse con $\Sigma Z,\Sigma^2Z,\dots$, y los $n$ correspondientes crecerán, de modo que se obtiene la sucesión exacta en $\{(\Sigma^kZ,0),(\Sigma^mA,0)\}$ de la subsección anterior. Como para cada $W$ puede elegirse un $n$ suficientemente grande, la comparación se convierte en una equivalencia al pasar a clases estables. En consecuencia, dentro de $\SW$ la sucesión cofibrada $A_0\to X_0\to(X/A)_0\to A_1$ es también una sucesión fibrada. Esta coincidencia entre fibras y cofibras es uno de los rasgos característicos de la homotopía estable y constituye la motivación geométrica de la estructura triangulada de $\SW$.
 
 \begin{ejer}[Extensiones de las sucesiones exactas]
 Comprobar que la sucesión exacta así obtenida puede extenderse indefinidamente hacia la derecha y hacia la izquierda, repitiendo el argumento de suspensión y estabilización usado arriba.
@@ -216,12 +297,18 @@ La extensión hacia la izquierda se obtiene desplazando la fuente, operación qu
 de modo que el término que precede a $\set*{(Z,k),(A,m)}$ no es más que un término ya conocido, calculado con la fuente desplazada un lugar. Repitiendo el argumento, la sucesión se prolonga indefinidamente en ambas direcciones y los morfismos inducidos vuelven a ser los mismos.
 \end{sol}
 
-\section{Objeto cero y coproductos finitos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Objeto cero y coproductos finitos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{defi}
 Una categoría aditiva es una categoría enriquecida sobre grupos abelianos que posee un objeto cero y coproductos finitos. En una categoría preaditiva, todo coproducto finito es automáticamente también un producto finito, es decir, un biproducto.
 \end{defi}
 
-La categoría $\SW$ está enriquecida sobre grupos abelianos porque sus conjuntos de morfismos estables son grupos abelianos y la composición es bilineal. El objeto $*_0=(*,0)$ es un objeto cero: para cualquier $Z_m$, tanto $\set*{Z_m,*_0}$ como $\set*{*_0,Z_m}$ son el grupo trivial, ya que todas las suspensiones del espacio de un punto vuelven a ser el punto.
+La categoría $\SW$ está enriquecida sobre grupos abelianos porque sus conjuntos de morfismos estables son grupos abelianos y la composición es bilineal. El objeto $*_0=(*,0)$ es un objeto cero: para cualquier $Z_m$, tanto $\set*{Z_m,*_0}$ como $\set*{*_0,Z_m}$ son el grupo trivial. Por ejemplo,
+\[
+\set*{*_0,Z_m}=\varinjlim_k[\Sigma^k*,\Sigma^{m+k}Z]_*=\varinjlim_k[*,\Sigma^{m+k}Z]_*=[*],
+\]
+ya que la suspensión del punto es el punto y solo existe la clase de la función constante; el otro conjunto se calcula igual.
 
 Disponer de un objeto cero permite hablar del \emph{morfismo cero} $0\colon X_m\to Y_n$, definido como la composición
 \[
@@ -231,7 +318,11 @@ Como los únicos morfismos que llegan a $*_0$ o salen de él son clases de funci
 
 También existen coproductos finitos. Para dos objetos $Z_m$ y $W_n$, supongamos por ejemplo que $n\geq m$. Después de expresar ambos con el mismo índice se obtiene
 \[
-Z_m\oplus W_n\cong\bigl(Z\vee\Sigma^{n-m}W,m\bigr).
+(Z,m)\sqcup(W,n)\cong(Z,m)\sqcup(\Sigma^{n-m}W,m)\cong\bigl(Z\vee\Sigma^{n-m}W,m\bigr),
+\]
+donde el paso intermedio iguala los índices desplazando el segundo sumando. La otra vía consiste en desplazar los dos a índice cero: si $m,n\geq0$,
+\[
+(\Sigma^mZ,0)\sqcup(\Sigma^nW,0)\cong(\Sigma^mZ\vee\Sigma^nW,0).
 \]
 \begin{ejer}[Coproductos finitos]
 Comprobar categóricamente que $\bigl(Z\vee\Sigma^{n-m}W,m\bigr)$ satisface la propiedad universal del coproducto de $Z_m$ y $W_n$.
@@ -248,10 +339,14 @@ Como los conjuntos de morfismos son grupos abelianos, este coproducto es tambié
 
 Por tanto, $\SW$ es una categoría aditiva.
 
-\section{Por qué la categoría no es abeliana}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Por qué la categoría no es abeliana}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Aunque $\SW$ es aditiva, no es abeliana. En una categoría abeliana todo morfismo debe poseer núcleo y conúcleo y debe factorizar de manera compatible a través de su imagen y coimagen. Estas propiedades no se cumplen en $\SW$. Un ejemplo fundamental, cuya demostración se desarrollará posteriormente, es el morfismo de grado dos $2\colon S^0_0\to S^0_0$, representado después de suspender por $z\mapsto z^2\colon S^1\to S^1$: este morfismo no posee un conúcleo categórico en la categoría finita de Spanier--Whitehead. Su cofibra estable existe y forma parte de un triángulo distinguido, pero una cofibra no satisface en general la propiedad universal estricta de un conúcleo. Por ello, las categorías trianguladas sustituyen la exigencia de núcleos y conúcleos por triángulos distinguidos provenientes de sucesiones de cofibra.
 
-\section{Ausencia de construcciones infinitas y paso a espectros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ausencia de construcciones infinitas y paso a espectros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Conviene precisar qué es exactamente $\ESW$: es la \emph{estabilización naíf} de $\Ho(\CWstar)$ respecto de la suspensión, es decir, la construcción que uno escribiría de manera inmediata tomando colímites de clases de homotopía después de suspender suficientemente. El procedimiento es general ---dada una categoría con un endofuntor que se quiere invertir, se forma el colímite de los conjuntos de morfismos a lo largo de las potencias del funtor--- y por eso reaparece en otros contextos; por ejemplo, es el análogo del funtor de desplazamiento en complejos de cadena. Lo que muestra la discusión siguiente es que, aplicado a la suspensión, este procedimiento naíf no basta para obtener una categoría homotópica estable satisfactoria.
 
 La restricción a CW-complejos finitos implica que $\SW$ no posee coproductos infinitos generales y, en consecuencia, no es completa ni cocompleta. La categoría extendida $\ESW$ permite CW-complejos infinitos, pero la cuña infinita tampoco resuelve automáticamente el problema: al calcular mapeos desde una cuña aparece una expresión de la forma $\colim_k\prod_\alpha[\Sigma^kX_\alpha,\Sigma^kY]_*$, y un colímite filtrado no conmuta en general con un producto infinito. Por tanto, esta expresión puede diferir de $\prod_\alpha\colim_k[\Sigma^kX_\alpha,\Sigma^kY]_*$, que es la requerida por la propiedad universal del coproducto estable.

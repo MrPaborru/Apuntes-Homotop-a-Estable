@@ -3,7 +3,13 @@ En esta clase se introducen las ideas fundamentales de la homotopía estable, cu
 El teorema de suspensión de Freudenthal permitirá formalizar este proceso de estabilización y definir los grupos de homotopía estable y las clases estables de funciones como ciertos colímites. Después examinaremos algunas de sus aplicaciones, entre ellas la estabilidad de la homología y la cohomología y la formulación estable de la dualidad de Alexander. Finalmente, introduciremos los espectros y la categoría extendida de Spanier--Whitehead, en la cual la suspensión se vuelve formalmente invertible y los grupos de homotopía estable quedan representados por desplazamientos de la esfera. Esta construcción servirá como primer modelo de la categoría homotópica estable y motivará el estudio posterior de modelos más completos de espectros.
 
 
-\section{Espacios compactamente generados}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Herramientas de la homotopía estable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Espacios compactamente generados}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 La categoría natural de todos los espacios topológicos presenta dificultades cuando se pretende trabajar simultáneamente con productos y espacios de funciones. Si \(\Map(Y,Z)\) lleva la topología compacto-abierta, en general no se tiene un homeomorfismo
 \[
@@ -40,7 +46,9 @@ La naturalidad significa que este homeomorfismo es compatible con funciones en c
 
 También se considera la categoría punteada \(\Topstar\). Sus objetos son parejas \((X,x_0)\), y sus morfismos son funciones continuas que preservan el punto base.
 
-\section{Suma wedge, producto smash y suspensión reducida}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Suma wedge, producto smash y suspensión reducida}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Dados espacios punteados \(X\) y \(Y\), su suma wedge es el pushout
 \[
@@ -83,21 +91,35 @@ Además de colapsar los dos extremos \(X\times\{0\}\) y \(X\times\{1\}\), se col
 
 Cuando la inclusión \(\{x_0\}\hookrightarrow X\) es una cofibración ---por ejemplo, si \(X\) es un CW-complejo punteado en un vértice---, la suspensión reducida y la no reducida están estrechamente relacionadas. En el caso de las esferas ambas tienen el mismo tipo de homotopía y, de hecho, la suspensión reducida admite una identificación homeomorfa directa.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Suspensión de las esferas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Como \(S^m\wedge S^n\cong S^{m+n}\), se obtiene en particular
 \[
 \Sigma S^n=S^1\wedge S^n\cong S^{n+1}
 \]
-Una manera geométrica de verlo consiste en comenzar con la suspensión no reducida: \(S(S^n)\cong S^{n+1}\). En esta esfera aparece un arco entre los polos norte y sur correspondiente a la trayectoria del punto base de \(S^n\). La suspensión reducida se obtiene colapsando ese arco.
-
-Ese arco puede elegirse como un subcomplejo contractible de una estructura CW de \(S^{n+1}\). Su colapso deja nuevamente una esfera de dimensión \(n+1\). Esto no proporciona solamente una equivalencia homotópica, sino un homeomorfismo
+Una manera geométrica de verlo consiste en comenzar con la suspensión no reducida: \(S(S^n)\cong S^{n+1}\). En esta esfera aparece un arco entre los polos norte y sur correspondiente a la trayectoria del punto base de \(S^n\). La suspensión reducida se obtiene colapsando ese arco, de modo que
 \[
-\Sigma S^n\cong S^{n+1}
+\Sigma S^n=\frac{S^{n+1}}{\text{segmento del polo norte al polo sur}} .
+\]
+
+Para verlo con precisión se usa la estructura CW de \(S^{n+1}\) con \emph{dos celdas en cada dimensión}, en la que las \(0\)-celdas son los polos y el arco elegido es una de las dos \(1\)-celdas. Colapsar ese arco ---que es un subcomplejo contráctil--- da la estructura CW cociente de \(\Sigma S^n\), cuyos esqueletos son
+\[
+(\Sigma S^n)^{(0)}=*,\qquad
+(\Sigma S^n)^{(1)}\cong S^1,\qquad
+(\Sigma S^n)^{(2)}\cong S^2,\qquad\cdots,\qquad
+\Sigma S^n=(\Sigma S^n)^{(n+1)}\cong S^{n+1}.
+\]
+Cada paso añade una celda y pega su frontera, de modo que el esqueleto de dimensión \(k\) es \(S^k\). Esto no proporciona solamente una equivalencia homotópica, sino un homeomorfismo
+\[
+\Sigma S^n\cong S^{n+1} .
 \]
 
 
-\section{Espacio de lazos y adjunción}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Espacio de lazos y adjunción}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 El espacio de lazos de un espacio punteado \(Z\) es
 \[
@@ -120,12 +142,26 @@ Estas correspondencias respetan homotopías punteadas. En efecto, si \(I_+=I\ama
 \(
 H\colon X\wedge I_+\longrightarrow Y
 \)
-cuyas restricciones a los extremos son \(f_0\) y \(f_1\). Las inclusiones de los extremos pueden verse como funciones punteadas \(i_0,i_1\colon S^0\longrightarrow I_+\). La naturalidad de la adjunción muestra entonces que mapas homotópicos tienen adjuntos homotópicos. Por consiguiente, la adjunción desciende a las categorías homotópicas:
+cuyas restricciones a los extremos son \(f_0\) y \(f_1\). Las inclusiones de los extremos pueden verse como funciones punteadas \(i_0,i_1\colon S^0\longrightarrow I_+\). La compatibilidad se expresa diciendo que los conjuntos de morfismos son los coigualadores
+\[
+\Map_*(X\wedge Y\wedge I_+,Z)\ \substack{i_0^*\\[-0.4em] \rightrightarrows\\[-0.4em] i_1^*}\ \Map_*(X\wedge Y\wedge S^0,Z)\ \overset{\cong}{=}\ \Map_*(X\wedge Y,Z),
+\]
+y, del otro lado de la adjunción,
+\[
+\Map_*\bigl(Y\wedge I_+,\Map_*(X,Z)\bigr)\ \rightrightarrows\ \Map_*\bigl(Y,\Map_*(X,Z)\bigr).
+\]
+La naturalidad de la adjunción muestra entonces que mapas homotópicos tienen adjuntos homotópicos. Por consiguiente, la adjunción desciende a las categorías homotópicas:
 \[
 [\Sigma X,Z]_*\cong[X,\Omega Z]_*
 \]
 
-\section{Qué significa «estable»}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Estabilización}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Qué significa «estable»}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 La homotopía estable estudia propiedades que dejan de cambiar después de suspender suficientemente muchas veces.
 Esto no significa que \(\Sigma X\) determine siempre \(X\). La suspensión pierde información. La pregunta correcta es si una sucesión de objetos o morfismos
@@ -165,7 +201,9 @@ La diferencia puede detectarse mediante el producto cup. Si \(a\in H^3(S^3\times
 En una wedge, en cambio, los productos entre clases provenientes de sumandos distintos son nulos. La suspensión destruye estos productos cup, por lo que la diferencia deja de ser visible después de suspender.
 Este ejemplo ilustra la idea central: dos espacios pueden ser diferentes inestablemente, pero volverse equivalentes después de suspender.
 
-\section{Teorema de suspensión de Freudenthal}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Teorema de suspensión de Freudenthal}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Recordemos que \(X\) es \(r\)-conexo si \(\pi_i(X)=0\) para \(i\le r\). Por ejemplo, \((-1)\)-conexo significa no vacío; \(0\)-conexo significa conexo por trayectorias; y \(1\)-conexo significa simplemente conexo.
 Notemos que suspender incrementa la conectividad:
@@ -209,9 +247,7 @@ Equivalentemente, si \(X\) es \((n-1)\)-conexo, entonces \(E\) es un isomorfismo
 \end{nota}
 
 
-\subsection{Aplicación a suspensiones iteradas}
-
-Si \(X\) es \(r\)-conexo, entonces \(\Sigma^kX\) es \((r+k)\)-conexo. Freudenthal aplicado a \(\Sigma^kX\) da
+Una consecuencia inmediata, y es la que da contenido preciso a la palabra «estable», es la siguiente. Si \(X\) es \(r\)-conexo, entonces \(\Sigma^kX\) es \((r+k)\)-conexo. Freudenthal aplicado a \(\Sigma^kX\) da
 \[
 \pi_{i+k}(\Sigma^kX)\xrightarrow{\;\cong\;}\pi_{i+k+1}(\Sigma^{k+1}X)
 \]
@@ -222,9 +258,18 @@ Para \(i\) fijo, esta desigualdad se cumple cuando \(k\) es suficientemente gran
 \]
 es eventualmente una sucesión de isomorfismos.
 
-\section{Clases de homotopía estable}
+\begin{nota}
+   En la pizarra esta misma cuenta se escribió con el entero \(n\) de la convención «\((n-1)\)-conexo» en lugar de \(r\), y con la cota errónea \(i<2n+1\). Con esa convención \(r=n-1\), de modo que la cota correcta es
+   \[
+   i+k<2(r+k)+1=2(n-1+k)+1,
+   \]
+   es decir, \(k>i-2n+1\). La pizarra escribió \(k>i-2n-1\), que arrastra el mismo desliz de la nota anterior. Se conserva aquí la versión en términos de \(r\), que es la que no depende de la convención elegida.
+\end{nota}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Grupos de homotopía estable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 El \(i\)-ésimo grupo de homotopía estable de \(X\) se define mediante
 \[
 \pi_i^s(X)\coloneqq \varinjlim_k \pi_{i+k}(\Sigma^kX).
@@ -250,7 +295,11 @@ El primer isomorfismo proviene del grado de las funciones \(S^k\to S^k\). El gen
 \]
 Aunque se conocen muchos tallos estables, no existe una descripción completa de todos ellos.
 
-Para una esfera arbitraria,
+Para una esfera arbitraria, la misma cuenta da la relación recursiva
+\[
+\pi_i^s(S^d)\cong\pi_{i-1}^s(S^{d-1}),
+\]
+que se obtiene dejando que la suspensión absorba una dimensión de la esfera, y de la que se sigue la forma cerrada
 \[
 \begin{aligned}
 \pi_i^s(S^d)
@@ -260,7 +309,9 @@ Para una esfera arbitraria,
 \]
 Así, cambiar la dimensión de la esfera solamente desplaza la graduación.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Grados negativos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Si \(i<0\), se comienza el sistema en un \(k\) suficientemente grande para que \(i+k\ge1\):
 \[
@@ -276,9 +327,16 @@ y por tanto \(\pi_{i+k}(\Sigma^kX)=0\). En consecuencia,
 \quad\text{para}\;i<0
 \]
 para espacios ordinarios.
+El caso \(i=-1\) ilustra el mecanismo y se escribió explícitamente en clase: como \(\Sigma^kX\) es \((k-1)\)-conexo, basta arrancar el sistema en \(k\ge2\), y entonces
+\[
+\pi_{-1}^s(X)=\varinjlim_{k\ge2}\pi_{-1+k}(\Sigma^kX)=0,
+\]
+porque \(-1+k\le k-1\) para todo \(k\ge2\).
 Esto no vuelve inútiles los grados negativos: los espectros admiten desuspensiones genuinas y pueden tener grupos de homotopía no triviales en grados negativos.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Estabilización de clases de homotopía}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 La acción de suspender mapas induce una función $[X,Y]_* \to [\Sigma X, \Sigma Y]_*$. De modo que:
 
@@ -314,7 +372,9 @@ Esto es, dos funciones representan la misma clase estable si, después de suspen
 Ya vimos que si \(X\) es CW-complejo punteado finito-dimensional, este colímite se estabiliza eventualmente.
 En cambio, para complejos infinitos el sistema puede no estabilizarse en un término concreto. El colímite sigue siendo, no obstante, una definición válida.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Homología, cohomología y estabilidad}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 La homología reducida satisface el isomorfismo de suspensión
 \[
@@ -328,7 +388,9 @@ Estas fórmulas muestran que la homología y la cohomología reducidas ya son in
 
 Una teoría generalizada de homología o cohomología conserva esta propiedad, pero no tiene por qué satisfacer el axioma de dimensión de la homología ordinaria. Los espectros serán precisamente los objetos que representan estas teorías.
 
-\section{Dualidad de Alexander y complementos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dualidad de Alexander y complementos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Una forma clásica de la dualidad de Alexander (véase \cite{hatcher2002}) afirma que, si \(X\subseteq S^n\) es compacto, no vacío y suficientemente bien comportado ---por ejemplo, localmente contráctil---, entonces
 \[
@@ -338,7 +400,13 @@ Así, la cohomología de \(X\) determina la homología de su complemento.
 Esto no significa que determine su tipo de homotopía inestable. Por ejemplo, todos los nudos \(K\subseteq S^3\) son homeomorfos a \(S^1\), pero sus complementos \(S^3-K\) pueden tener grupos fundamentales diferentes. La homología de los complementos es esencialmente la misma, pero su homotopía inestable conserva información sobre cómo está encajado el nudo.
 Sin embargo, Spanier y Whitehead descubrieron una versión estable más fuerte: bajo las hipótesis de finitud apropiadas, el complemento proporciona un dual estable de \(X\), con un desplazamiento determinado por la dimensión de la esfera ambiente. En otras palabras, el tipo de homotopía estable de $X$ sí determina el tipo de homotopía estable de $S^n-X$.
 
-\section{Por qué introducir espectros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Hacia la categoría homotópica estable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Por qué introducir espectros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 La suspensión $\Sigma\colon\Ho(\Topstar)\longrightarrow\Ho(\Topstar)$ no es invertible. No todo espacio es una suspensión y, aun cuando lo sea, una desuspensión no tiene por qué ser única.
 Los espectros amplían la categoría de espacios para convertir formalmente la suspensión en una equivalencia.
 
@@ -370,12 +438,12 @@ El esquema siguiente resume las relaciones entre estos objetos.
 \emph{Resumen de algunas cosas que se logran con espectros}:
 \begin{enumerate}
 \item invertir formalmente la suspensión;
-\item representar teorías generalizadas de homología y cohomología;
-\item formular dualidades estables;
-\item construir espectros anillo y espectros módulo;
-\item interpretar orientaciones como datos estables;
-\item utilizar localizaciones, torres y sucesiones espectrales;
-\item desarrollar teorías equivariantes y parametrizadas.
+\item construir nuevas teorías de cohomología y de homología;
+\item dar un marco teórico a dualidades que no lo tenían en homotopía inestable, o mejorar las que sí lo tenían;
+\item justificar por qué las teorías de cohomología multiplicativa se comportan como anillos, y extender las nociones de anillo y de módulo a este contexto;
+\item expresar la orientabilidad como una propiedad estable;
+\item extender métodos de homotopía inestable ---localización, \emph{funtores derivados}, torres, sucesiones espectrales--- con el propósito de construir nuevas teorías de (co)homología;
+\item formar unos fundamentos sólidos para las generalizaciones equivariantes y parametrizadas.
 \end{enumerate}
 
 Por ejemplo, si \(E\) es un espectro, puede definirse esquemáticamente
@@ -387,7 +455,9 @@ mientras que la teoría homológica asociada viene dada por
 \widetilde E_q(X)=\pi_q(E\wedge\Sigma^\infty X).
 \]
 
-\section{Dificultad histórica de los modelos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dificultad histórica de los modelos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 En la homotopía inestable, primero se tienen espacios y funciones; después se pasa a clases de homotopía y, finalmente, a formalismos como categorías de modelos o \(\infty\)-categorías.
 
@@ -400,7 +470,7 @@ Históricamente, la homotopía estable siguió en parte el camino inverso. Prime
   \node (i2) [below=of i1] {Homotopía};
   \node (i3) [below=of i2] {Categoría homotópica \(\Ho(\Top)\)};
   \node (i4) [below=of i3] {Homotopía formal\\ (categoría de modelos)};
-  \node (i5) [below=of i4] {Otros modelos para \(\Ho(\Top)\)};
+  \node (i5) [below=of i4] {Otros modelos para \(\Ho(\Top)\)\\[0.1em] \itshape\scriptsize (p.\ ej.\ \underline{SSet})};
   \foreach \a/\b in {i1/i2, i2/i3, i3/i4, i4/i5}{\draw[->] (\a)--(\b);}
   \draw[->, line width=0.7pt] (-2.4,0.45) -- (-2.4,-5.1);
   \node[rotate=90, font=\itshape\footnotesize] at (-3.0,-2.3) {tiempo};
@@ -418,11 +488,13 @@ Históricamente, la homotopía estable siguió en parte el camino inverso. Prime
 \end{tikzpicture}
 \end{center}
 
-Los espectros secuenciales modelan la teoría homotópica estable, pero su producto smash puntual no proporciona con facilidad una categoría simétrica monoidal que satisfaga simultáneamente todas las propiedades deseadas. Estas limitaciones están relacionadas con el conocido teorema de imposibilidad de Lewis.
+Los espectros secuenciales modelan la teoría homotópica estable, pero su producto smash puntual no proporciona con facilidad una categoría simétrica monoidal que satisfaga simultáneamente todas las propiedades deseadas; la homotopía formal no resultó adecuada para los espectros secuenciales. Estas limitaciones están relacionadas con el conocido teorema de imposibilidad de Lewis.
 
-Los espectros simétricos y los espectros ortogonales incorporan simetrías adicionales y admiten categorías de modelos monoidales adecuadas. Desde una perspectiva moderna, todos estos modelos presentan la misma \(\infty\)-categoría estable de espectros, aunque sus propiedades puntuales sean distintas.
+Los espectros simétricos y los espectros ortogonales incorporan simetrías adicionales y admiten categorías de modelos monoidales adecuadas. En la valoración que se hizo en clase, los simétricos «se comportan bastante bien salvo detalles», mientras que los ortogonales son «los mejor portados pero muy técnicos». Desde una perspectiva moderna, todos estos modelos presentan la misma \(\infty\)-categoría estable de espectros, aunque sus propiedades puntuales sean distintas.
 
-\section{Propiedades esperadas de la categoría homotópica estable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Propiedades esperadas de la categoría homotópica estable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 La categoría homotópica estable \(\Ho(\Sp)\) debe satisfacer, entre otras, las siguientes propiedades (véase \cite{margolis1983}).
 
@@ -439,7 +511,14 @@ donde \(C_f\) es su cofibra homotópica. La suspensión debe ser una autoequival
 \[
 -\wedge-\colon\Ho(\Sp)\times\Ho(\Sp)\longrightarrow\Ho(\Sp)
 \]
-que sea aditivo, que haga de $\Ho(\Sp)$ una categoría simétrica monoidal con unidad $\Sph=\Sigma^\infty S^0$; además, \(X\wedge-\) debe preservar triángulos distinguidos.
+que sea aditivo ---y de hecho \emph{bilineal respecto del coproducto}---, que haga de $\Ho(\Sp)$ una categoría simétrica monoidal con unidad $\Sph=\Sigma^\infty S^0$; además, \(X\wedge-\) debe preservar triángulos distinguidos. La unidad debe ser coherente con la suspensión, en el sentido de que el diagrama
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+\Sigma X\wedge\Sph \arrow[rr,"\cong"] \arrow[dr,"\cong"'] & & \Sigma(X\wedge\Sph) \arrow[dl,"\cong"]\\
+& \Sigma X &
+\end{tikzcd}
+\]
+conmuta, lo que expresa que suspender y tensar por la unidad son la misma operación.
 
 \item\emph{La esfera como generador.} La esfera debe ser un generador débil graduado:
 \[
@@ -447,11 +526,13 @@ que sea aditivo, que haga de $\Ho(\Sp)$ una categoría simétrica monoidal con u
 \]
 Equivalentemente, los grupos de homotopía estable deben detectar equivalencias: una función de espectros \(f\colon X\to Y\) es una equivalencia estable cuando induce isomorfismos $\pi_n(X)\longrightarrow\pi_n(Y)$ para todo \(n\). La esfera también será compacta: $[\Sph,\bigvee_\alpha X_\alpha]\cong\bigoplus_\alpha[\Sph,X_\alpha]$.
 
-\item La subcategoría completa de objetos finitos es equivalente a la categoría de Spanier-Whitehead mediante una equivalencia que es triangulada, simétrica y monoidal.
+\item La subcategoría completa de objetos finitos ---los generados mediante un número finito de pasos a partir de \(\Sigma^r\Sph\)--- es equivalente a la categoría de Spanier--Whitehead mediante una equivalencia que es triangulada, simétrica monoidal y \emph{unital}.
 \end{enumerate}
 
 
-\section{Categoría extendida de Spanier--Whitehead}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Categoría extendida de Spanier--Whitehead}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 La categoría extendida de Spanier--Whitehead $\ESW$ constituye una primera formalización de la estabilización.
 Sus objetos son parejas $(X,m)$ donde \(X\) es un CW-complejo punteado y \(m\in\mathbb Z\). La interpretación es
@@ -473,9 +554,7 @@ De manera explícita, el colímite puede realizarse tomando la unión disjunta
 y cocientando por la relación generada por $[f]_k\sim[\Sigma f]_{k+1}$.
 Así, un morfismo estable es representado por alguna función entre suspensiones suficientemente altas, considerada salvo suspensiones posteriores.
 
-\subsection{Composición}
-
-Supongamos que \(f\) representa un morfismo \((X,m)\longrightarrow(Y,n)\) en el nivel \(k\), mientras que \(g\) representa un morfismo \((Y,n)\longrightarrow(Z,p)\) en el nivel \(\ell\). Entonces
+Queda por definir la composición, que es lo que completa la estructura de categoría. Supongamos que \(f\) representa un morfismo \((X,m)\longrightarrow(Y,n)\) en el nivel \(k\), mientras que \(g\) representa un morfismo \((Y,n)\longrightarrow(Z,p)\) en el nivel \(\ell\). Entonces
 \[
 f\colon\Sigma^{m+k}X\to\Sigma^{n+k}Y,
 \]
@@ -495,7 +574,9 @@ Se define
 \]
 Debe comprobarse que esta clase no depende de los representantes ni del nivel común \(r\). Esto se sigue de que la suspensión es functorial y preserva composición y homotopías.
 
-\section{Estructura abeliana de los morfismos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Estructura abeliana de los morfismos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 El pinchamiento del círculo induce
 \[
@@ -551,7 +632,9 @@ conmuta salvo homotopía. Por tanto
 Esto prueba la bilinealidad. En consecuencia, la categoría de Spanier--Whitehead es una categoría preaditiva.
 \end{sol}
 
-\section{Suspensión infinita hacia Spanier--Whitehead}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Suspensión infinita hacia Spanier--Whitehead}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Existe un funtor
 \[
@@ -575,7 +658,9 @@ X\longmapsto(X,n),
 \]
 pero todos estos desplazamientos se obtienen aplicando potencias positivas o negativas de la suspensión invertible.
 
-\section{Representabilidad de la homotopía estable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Representabilidad de la homotopía estable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 La definición de los morfismos da
 \[
