@@ -45,7 +45,7 @@ El último grupo es $\mathbb Z$ exactamente cuando $i-N-2=n$, es decir, cuando $
 
 La tabla deja claro cuál es el obstáculo: $\Sigma^NX$ tiene un único grupo de homotopía estable no nulo, pero infinitos grupos de homotopía inestable posiblemente no nulos. El plan es reemplazar $\Sigma^NX$ por un espacio en el que esos grupos se hayan matado, y compararlo con un espacio de Eilenberg--Mac Lane.
 
-\section{La construcción del espacio $Y$}
+\section{La construcción del espacio \texorpdfstring{$Y$}{Y}}
 
 La idea es la estándar para construir espacios de Eilenberg--Mac Lane: matar los grupos de homotopía superiores pegando celdas de dimensión creciente. La observación clave es que, gracias a la tabla, las primeras celdas que hay que pegar son muy gruesas, y eso hace que el espacio resultante coincida con $K(\mathbb Z,N+n+2)$ en un rango apreciable de grados.
 
@@ -363,7 +363,7 @@ La estrategia de la demostración es, por tanto, la anunciada: reducir el enunci
 
 \section{La categoría monoidal simétrica \texorpdfstring{$\SW$}{SW}}
 
-Con el producto smash ya bien definido, se puede enunciar la estructura que organiza toda la clase.
+% Con el producto smash ya bien definido, se puede enunciar la estructura que organiza toda la clase.
 
 \begin{prop}\label{prop:monoidal}
 $(\SW,\wedge)$ es una categoría monoidal simétrica con objeto unidad $(S^0,0)$. Los morfismos estructurales son los siguientes.
@@ -401,7 +401,7 @@ inducido a nivel $k$ por
 \end{enumerate}
 \end{prop}
 
-El signo $(-1)^{mn}$ de la trenza es el punto fino de la proposición, y su presencia es obligada: es exactamente el mismo fenómeno que apareció al definir la composición. Al intercambiar dos factores suspendidos, las esferas de suspensión se permutan, y una permutación de esferas puede tener grado $-1$; la suspensión no cambia ese grado, de modo que el signo es una propiedad intrínseca del producto smash y no una elección de conveniencia. Obsérvese que el signo depende solo de los índices de suspensión $m$ y $n$, no de los espacios subyacentes.
+El signo $(-1)^{mn}$ de la trenza es el punto fino de la proposición, y su presencia es obligatoria: es exactamente el mismo fenómeno que apareció al definir la composición. Al intercambiar dos factores suspendidos, las esferas de suspensión se permutan, y una permutación de esferas puede tener grado $-1$; la suspensión no cambia ese grado, de modo que el signo es una propiedad intrínseca del producto smash y no una elección de conveniencia. Obsérvese que el signo depende solo de los índices de suspensión $m$ y $n$, no de los espacios subyacentes.
 
 \section{Categorías monoidales simétricas}
 
@@ -410,7 +410,7 @@ La \myref{prop:monoidal} dice que $\SW$ tiene la estructura que en álgebra se l
 \begin{defi}\label{defi:monoidal}
 Una \emph{categoría monoidal} es una categoría $\mathcal C$ junto con
 \begin{enumerate}[label = \textup{(\roman*)}]
-\item un funtor $\otimes\colon\mathcal C\times\mathcal C\to\mathcal C$, el \emph{producto monoidal};
+\item un funtor $\otimes\colon \mathcal C\times\mathcal C\to\mathcal C$, el \emph{producto monoidal};
 \item un objeto $1$, la \emph{unidad monoidal};
 \item isomorfismos naturales
 \[
@@ -420,7 +420,7 @@ Una \emph{categoría monoidal} es una categoría $\mathcal C$ junto con
 \qquad
 \rho\colon-\otimes1\longrightarrow-,
 \]
-llamados \emph{asociador}, \emph{unidad izquierda} y \emph{unidad derecha}, cuyas componentes en $x$ son $\alpha_{x,y,z}$, $\lambda_x$ y $\rho_x$;
+llamados \emph{asociador}, \emph{unidad izquierda} y \emph{unidad derecha}, cuyas componentes son $\alpha_{x,y,z}$, $\lambda_x$ y $\rho_x$;
 \end{enumerate}
 sujetos a los axiomas de coherencia siguientes.
 \begin{enumerate}[label = \textup{(\arabic*)}]
@@ -432,19 +432,94 @@ sujetos a los axiomas de coherencia siguientes.
 \end{tikzcd}
 \]
 conmuta.
-\item \emph{Pentágono.} Para todos $w,x,y,z$ el diagrama que compara las cinco maneras de reasociar $((w\otimes x)\otimes y)\otimes z$ con $w\otimes(x\otimes(y\otimes z))$ conmuta.
+
+\item\emph{Pentágono.} Para todos $w,x,y,z$ el diagrama
+\[
+\begin{tikzcd}[
+    column sep={7em,between origins},
+    row sep={4em,between origins}
+]
+& ((w\otimes x)\otimes y)\otimes z
+    \arrow[dl, "{\alpha_{w,x,y}\otimes1_z}"']
+    \arrow[dr, "{\alpha_{w\otimes x,y,z}}"]
+&
+\\
+(w\otimes(x\otimes y))\otimes z
+    \arrow[d, "{\alpha_{w,x\otimes y,z}}"']
+&&
+(w\otimes x)\otimes(y\otimes z)
+    \arrow[d, "{\alpha_{w,x,y\otimes z}}"]
+\\
+w\otimes((x\otimes y)\otimes z)
+    \arrow[rr, "{1_w\otimes\alpha_{x,y,z}}"']
+&&
+w\otimes(x\otimes(y\otimes z))
+\end{tikzcd}
+\]
+conmuta.
 \end{enumerate}
+
 La categoría es \emph{simétrica} si además se tiene
 \begin{enumerate}[label = \textup{(\arabic*)}, start=3]
 \item una \emph{trenza}, es decir, un isomorfismo natural
 \[
 B_{x,y}\colon x\otimes y\longrightarrow y\otimes x,
 \]
-\item el \emph{hexágono}: los dos diagramas que comparan la trenza con el asociador conmutan, y
-\item $B_{y,x}\circ B_{x,y}=1_{x\otimes y}$ para todos $x,y$.
+
+\item\emph{Hexágono.} Para todos $x,y,z$ los diagramas
+\[\noindent%
+\begin{minipage}{0.49\textwidth}
+\raggedright
+\begin{tikzcd}[column sep = 1em, row sep = large]
+& (x\otimes y)\otimes z
+    \arrow[dl, "{B_{x,y}\otimes1_z}"']
+    \arrow[dr, "{\alpha_{x,y,z}}"]
+& \\
+(y\otimes x)\otimes z
+    \arrow[d, "{\alpha_{y,x,z}}"']
+& &
+x\otimes(y\otimes z)
+    \arrow[d, "{B_{x,y\otimes z}}"]
+\\
+y\otimes(x\otimes z)
+    \arrow[dr, "{1_y\otimes B_{x,z}}"']
+& &
+(y\otimes z)\otimes x
+    \arrow[dl, "{\alpha_{y,z,x}}"]
+\\
+& y\otimes(z\otimes x) &
+\end{tikzcd}
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\textwidth}
+\raggedleft
+\begin{tikzcd}[column sep = small, row sep = large]
+& x\otimes(y\otimes z)
+    \arrow[dl, "{1_x\otimes B_{y,z}}"']
+    \arrow[dr, "{\alpha^{-1}_{x,y,z}}"]
+& \\
+x\otimes(z\otimes y)
+    \arrow[d, "{\alpha^{-1}_{x,z,y}}"']
+& &
+(x\otimes y)\otimes z
+    \arrow[d, "{B_{x\otimes y,z}}"]
+\\
+(x\otimes z)\otimes y
+    \arrow[dr, "{B_{x,z}\otimes1_y}"']
+& &
+z\otimes(x\otimes y)
+    \arrow[dl, "{\alpha^{-1}_{z,x,y}}"]
+\\
+& (z\otimes x)\otimes y &
+\end{tikzcd}
+\end{minipage}
+\]
+conmutan.
+
+\item $B_{y,x}\circ B_{x,y}=1_{x\otimes y}$ para todos $x,y$.%
+\footnote{Con este axioma, cualquiera de los dos hexágonos conmutativos implica al otro.}
 \end{enumerate}
 \end{defi}
-
 Los axiomas de coherencia tienen un contenido único, que conviene enunciar por separado.
 
 \begin{teo}[Coherencia]\label{teo:coherencia}
@@ -465,21 +540,74 @@ Demostrar que en una categoría monoidal simétrica el diagrama
 \]
 es conmutativo.
 \end{ejer}
-
 \begin{sol}
-Se usan el axioma del triángulo y la naturalidad de $\rho$ y de $B$. Por el axioma del triángulo aplicado a $(1,x)$ se tiene
+En realidad, basta que la categoría sea monoidal trenzada. Usaremos las identidades de coherencia
 \[
-\rho_{1\otimes x}=(1_1\otimes\lambda_x)\circ\alpha_{1,x,1},
+\lambda_{a\otimes b}\circ\alpha_{1,a,b}
+=\lambda_a\otimes1_b,
+\qquad
+\rho_{a\otimes b}\circ\alpha^{-1}_{a,b,1}
+=1_a\otimes\rho_b,
+\qquad
+\lambda_1=\rho_1.
 \]
-y por naturalidad de $\rho$ en el morfismo $\lambda_x\colon1\otimes x\to x$,
+El segundo axioma del hexágono aplicado a la terna $(1,1,x)$ da
 \[
-\rho_x\circ(\lambda_x\otimes1_1)=\lambda_x\circ\rho_{1\otimes x}.
+(B_{1,x}\otimes1_1)\circ\alpha^{-1}_{1,x,1}
+\circ(1_1\otimes B_{1,x})
+=
+\alpha^{-1}_{x,1,1}\circ B_{1\otimes1,x}
+\circ\alpha^{-1}_{1,1,x}.
 \]
-Por otra parte, la naturalidad de $B$ en la primera variable aplicada a $\lambda_1=\rho_1\colon1\otimes1\to1$, junto con el axioma del triángulo para $(1,1)$, que da $\lambda_1\otimes1_x=1_1\otimes\lambda_x$, conduce a
+Componiendo ambos miembros por la izquierda con $\rho_{x\otimes1}$, el lado
+izquierdo se transforma, por naturalidad de $\rho$, en
+\begin{align*}
+&\rho_{x\otimes1}\circ(B_{1,x}\otimes1_1)
+\circ\alpha^{-1}_{1,x,1}\circ(1_1\otimes B_{1,x})\\
+&\qquad
+=B_{1,x}\circ\rho_{1\otimes x}
+\circ\alpha^{-1}_{1,x,1}\circ(1_1\otimes B_{1,x})\\
+&\qquad
+=B_{1,x}\circ
+\bigl(1_1\otimes(\rho_x\circ B_{1,x})\bigr).
+\end{align*}
+Por otro lado, usando $\rho_1=\lambda_1$, la naturalidad de $B$ respecto de
+$\lambda_1\colon1\otimes1\to1$ y la primera identidad de coherencia,
+\begin{align*}
+&\rho_{x\otimes1}\circ\alpha^{-1}_{x,1,1}
+\circ B_{1\otimes1,x}\circ\alpha^{-1}_{1,1,x}\\
+&\qquad
+=(1_x\otimes\rho_1)\circ B_{1\otimes1,x}
+\circ\alpha^{-1}_{1,1,x}\\
+&\qquad
+=B_{1,x}\circ(\lambda_1\otimes1_x)
+\circ\alpha^{-1}_{1,1,x}\\
+&\qquad
+=B_{1,x}\circ\lambda_{1\otimes x}.
+\end{align*}
+Como $B_{1,x}$ es un isomorfismo, podemos cancelarlo y obtenemos
 \[
-(1_x\otimes\rho_1)\circ B_{1\otimes1,x}=B_{1,x}\circ(1_1\otimes\lambda_x).
+1_1\otimes(\rho_x\circ B_{1,x})=\lambda_{1\otimes x}.
 \]
-Combinando estas identidades con el axioma del pentágono para la terna $(1,1,x)$, que compara $((1\otimes1)\otimes x)$ con $1\otimes(1\otimes x)$, se obtiene $\rho_x\circ B_{1,x}=\lambda_x$, que es la conmutatividad pedida. Es un ejemplo típico de cálculo de coherencia: la conmutatividad se sigue de los axiomas, pero la verificación es más larga que el enunciado.
+Sea $f\coloneq\rho_x\circ B_{1,x}\colon1\otimes x\to x$. Por naturalidad de
+$\lambda$ respecto de $f$,
+\[
+f\circ\lambda_{1\otimes x}
+=
+\lambda_x\circ(1_1\otimes f).
+\]
+Sustituyendo $1_1\otimes f=\lambda_{1\otimes x}$,
+\[
+f\circ\lambda_{1\otimes x}
+=
+\lambda_x\circ\lambda_{1\otimes x}.
+\]
+Finalmente, como $\lambda_{1\otimes x}$ es un isomorfismo, podemos cancelarlo
+y concluir que
+\[
+\rho_x\circ B_{1,x}=f=\lambda_x,
+\]
+que es precisamente la conmutatividad del diagrama.
 \end{sol}
 
 \section{Dualidad: evaluación, coevaluación y zigzag}
@@ -608,7 +736,7 @@ conmuta por la naturalidad del asociador en la primera variable evaluada en $f$.
 \emph{Segundo paso: el pentágono.} La parte central del cálculo se apoya en el axioma del pentágono para la cuádrupla $(B,X^\vee,X,X^\vee)$,
 \[
 \begin{tikzcd}[column sep=large, row sep=large]
-((B\otimes X^\vee)\otimes X)\otimes X^\vee \arrow[r,"a_{B\otimes X^\vee,X,X^\vee}"] \arrow[d,"a_{B,X^\vee,X}\otimes1_{X^\vee}"'] & (B\otimes X^\vee)\otimes(X\otimes X^\vee) \arrow[dd,"a_{B,X^\vee,X\otimes X^\vee}"] \arrow[dr,"1_{B\otimes X^\vee}\otimes a_{X^\vee,X,X^\vee}"'] & \\
+((B\otimes X^\vee)\otimes X)\otimes X^\vee \arrow[r,"a_{B\otimes X^\vee,X,X^\vee}"] \arrow[d,"a_{B,X^\vee,X}\otimes1_{X^\vee}"'] & (B\otimes X^\vee)\otimes(X\otimes X^\vee) \arrow[dd,"a_{B,X^\vee,X\otimes X^\vee}"] \arrow[dr,"1_{B\otimes X^\vee}\otimes a_{X^\vee,X,X^\vee}"] & \\
 (B\otimes(X^\vee\otimes X))\otimes X^\vee \arrow[dr,"a_{B,X^\vee\otimes X,X^\vee}"'] & & B\otimes(X^\vee\otimes(X\otimes X^\vee))\\
 & B\otimes((X^\vee\otimes X)\otimes X^\vee) \arrow[ur,"1_B\otimes a_{X^\vee,X,X^\vee}"'] &
 \end{tikzcd}
@@ -620,13 +748,13 @@ que iguala las dos maneras de reasociar $((B\otimes X^\vee)\otimes X)\otimes X^\
 (\rho_B\otimes1_{X^\vee})\circ\bigl((1_B\otimes\mathrm{ev})\otimes1_{X^\vee}\bigr)
 =(1_B\otimes\lambda_{X^\vee})\circ\bigl(1_B\otimes(\mathrm{ev}\otimes1_{X^\vee})\bigr)\circ a_{B,X^\vee\otimes X,X^\vee}
 \]
-se prueba en dos pasos: la naturalidad del asociador en la segunda variable evaluada en $\mathrm{ev}\colon X^\vee\otimes X\to1$ da
+se prueba en dos pasos: la naturalidad de $a$ en la segunda variable evaluada en $\mathrm{ev}\colon X^\vee\otimes X\to1$ da
 \[
 (1_B\otimes\mathrm{ev}\otimes1_{X^\vee})\circ a_{B,X^\vee\otimes X,X^\vee}=a_{B,1,X^\vee}\circ\bigl((1_B\otimes\mathrm{ev})\otimes1_{X^\vee}\bigr),
 \]
 y el axioma del triángulo para $(B,X^\vee)$, es decir, $\rho_B\otimes1_{X^\vee}=(1_B\otimes\lambda_{X^\vee})\circ a_{B,1,X^\vee}$, elimina el asociador restante. El diagrama que resume el tercer paso es
 \[
-\begin{tikzcd}[column sep=large, row sep=large]
+\begin{tikzcd}[column sep=7em, row sep=large]
 (B\otimes(X^\vee\otimes X))\otimes X^\vee \arrow[r,"(1_B\otimes\mathrm{ev})\otimes1_{X^\vee}"] \arrow[d,"a_{B,X^\vee\otimes X,X^\vee}"'] & (B\otimes1)\otimes X^\vee \arrow[dd,"\rho_B\otimes1_{X^\vee}"]\\
 B\otimes((X^\vee\otimes X)\otimes X^\vee) \arrow[d,"1_B\otimes(\mathrm{ev}\otimes1_{X^\vee})"'] & \\
 B\otimes(1\otimes X^\vee) \arrow[r,"1_B\otimes\lambda_{X^\vee}"'] & B\otimes X^\vee
@@ -635,7 +763,7 @@ B\otimes(1\otimes X^\vee) \arrow[r,"1_B\otimes\lambda_{X^\vee}"'] & B\otimes X^\
 
 \emph{El diagrama pegado.} Al pegar las aristas relevantes de los tres pasos —el cuadrado de naturalidad arriba, el pentágono en el centro y la eliminación de las unidades abajo— se obtiene el diagrama conmutativo
 \[
-\begin{tikzcd}[column sep=4em, row sep=large]
+\begin{tikzcd}[column sep=9em, row sep=large]
 A \arrow[r,"\rho_A^{-1}"] & A\otimes1 \arrow[d,"1_A\otimes\mathrm{coev}"] & \\
 (A\otimes X)\otimes X^\vee \arrow[r,"a_{A,X,X^\vee}"] \arrow[d,"(f\otimes1_X)\otimes1_{X^\vee}"'] & A\otimes(X\otimes X^\vee) \arrow[d,"f\otimes1_{X\otimes X^\vee}"'] & \\
 ((B\otimes X^\vee)\otimes X)\otimes X^\vee \arrow[r,"a_{B\otimes X^\vee,X,X^\vee}"] \arrow[d,"a_{B,X^\vee,X}\otimes1_{X^\vee}"'] & (B\otimes X^\vee)\otimes(X\otimes X^\vee) \arrow[d,"a_{B,X^\vee,X\otimes X^\vee}"'] & \\
@@ -723,9 +851,12 @@ A continuación se añaden las flechas que eliminan las unidades, que son las qu
 El diagrama completo que resulta es
 \[
 \begin{tikzcd}[column sep=large, row sep=large]
-((x\otimes y)\otimes1)\otimes1 \arrow[r,"a_{x\otimes y,1,1}"] \arrow[d,"a_{x,y,1}\otimes1_1"'] & (x\otimes y)\otimes(1\otimes1) \arrow[r,"a_{x,y,1\otimes1}"] & x\otimes(y\otimes(1\otimes1))\\
-(x\otimes(y\otimes1))\otimes1 \arrow[d,"\rho_{x\otimes y}\otimes1_1"{pos=0.8}] \arrow[r,"a_{x,y\otimes1,1}"'] & x\otimes((y\otimes1)\otimes1) \arrow[ur,"1_x\otimes a_{y,1,1}"'] \arrow[d,"1_x\otimes(\rho_y\otimes1_1)"'] & \\
-(x\otimes y)\otimes1 \arrow[r,"a_{x,y,1}"'] & x\otimes(y\otimes1) & &
+((x\otimes y)\otimes1)\otimes1 \arrow[r,"a_{x\otimes y,1,1}"] \arrow[dd,"\rho_{x\otimes y}\otimes1_1"', bend right = 90] \arrow[d,"a_{x,y,1}\otimes1_1"'] & %
+(x\otimes y)\otimes(1\otimes1) \arrow[r,"a_{x,y,1\otimes1}"] & x\otimes(y\otimes(1\otimes1))\\
+(x\otimes(y\otimes1))\otimes1 \arrow[d,"(1_x\otimes\rho_{y})\otimes 1_1"'] \arrow[r,"a_{x,y\otimes1,1}"'] & %
+x\otimes((y\otimes1)\otimes1) \arrow[ur,"1_x\otimes a_{y,1,1}"'] \arrow[d,"1_x\otimes(\rho_y\otimes1_1)"'] & \\
+(x\otimes y)\otimes1 \arrow[r,"a_{x,y,1}"'] & %
+x\otimes(y\otimes1) & &
 \end{tikzcd}
 \]
 Para aligerarlo se han omitido las dos flechas
