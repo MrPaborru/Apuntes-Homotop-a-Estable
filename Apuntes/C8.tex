@@ -20,7 +20,7 @@ donde $X_+$ es $X$ con un punto base disjunto. Así, $\Sigma^\infty_+X$ es un es
 
 Los espectros que aparecen en la práctica tienen propiedades adicionales que conviene nombrar por separado, porque simplifican los cálculos y porque cada modelo de la categoría homotópica estable se construye privilegiando unas u otras.
 
-\begin{defi}\label{defi:omega-espectro}
+\begin{defi}\label{defi:omega-espectro-c8}
 Un espectro secuencial $X$ es un \emph{$\Omega$-espectro} si, para todo $n$, la aplicación adjunta del morfismo estructural,
 \[
 \sigma_n^{\perp}\colon X_n\longrightarrow\Omega X_{n+1},
@@ -28,20 +28,20 @@ Un espectro secuencial $X$ es un \emph{$\Omega$-espectro} si, para todo $n$, la 
 es una equivalencia débil. Es un \emph{$\Omega$-espectro estricto} si $\sigma_n^{\perp}$ es un homeomorfismo para todo $n$.
 \end{defi}
 
-Los espectros que provienen de una teoría de cohomología reducida son $\Omega$-espectros: es exactamente el contenido del \myref{lema:omega} del capítulo anterior, donde se vio que las aplicaciones $E_n\to\Omega E_{n+1}$ inducidas por los isomorfismos de suspensión son equivalencias homotópicas.
+Los espectros que provienen de una teoría de cohomología reducida son $\Omega$-espectros: es exactamente el contenido del \myref{lema:omega} del capítulo anterior, donde se vio que las aplicaciones $E_n\to\Omega E_{n+1}$ inducidas por los isomorfismos de suspensión son equivalencias homotópicas. Conviene precisar la diferencia de hipótesis entre los dos enunciados, porque es fácil pasarla por alto: allí se trabajó con espacios del tipo de homotopía de un complejo CW, y las equivalencias obtenidas eran equivalencias homotópicas; en la definición general que se acaba de dar se pide solo que $\sigma_n^{\perp}$ sea una \emph{equivalencia débil}. Para espacios de tipo CW las dos nociones coinciden por el teorema de Whitehead, de modo que el lema anterior es un caso particular de la definición.
 
 \begin{defi}\label{defi:espectro-celular}
-Un espectro secuencial $X$ es un \emph{espectro celular} si cada $X_n$ es un complejo celular generalizado punteado y cada morfismo estructural $\sigma_n$ es la inclusión de un subcomplejo. Es un \emph{CW-espectro} si los $X_n$ son complejos CW.
+Un espectro secuencial $X$ es un \emph{espectro celular} si cada $X_n$ es un complejo celular generalizado punteado y cada morfismo estructural $\sigma_n$ es la inclusión de un subcomplejo. Es un \emph{CW-espectro} si los $X_n$ son complejos CW \emph{y} los morfismos estructurales siguen siendo inclusiones de subcomplejos: las dos condiciones son necesarias, y no basta con que cada nivel sea un complejo CW por separado.
 \end{defi}
 
-La condición es de naturaleza técnica: garantiza que los espectros se comporten bien respecto de las construcciones homotópicas, del mismo modo que los complejos CW lo hacen entre los espacios. El ejemplo básico es inmediato.
+La condición es de naturaleza técnica: garantiza que los espectros se comporten bien respecto de las construcciones homotópicas, del mismo modo que los complejos CW lo hacen entre los espacios. La generalidad de los complejos celulares generalizados ---frente a los CW--- es la que permite construir espectros cuyos niveles no se obtienen adjuntando celdas en orden creciente de dimensión, que es lo que aparece de forma natural al reemplazar un espectro arbitrario por uno celular equivalente. El ejemplo básico es inmediato.
 
 \begin{ejem}\label{ejem:suspension-cw}
 Si $A$ es un CW-complejo punteado, entonces $\Sigma^\infty A$ es un CW-espectro.
 \end{ejem}
 
 \begin{proof}
-Por definición $(\Sigma^\infty A)_n=\Sigma^nA$, que es un CW-complejo punteado, y el morfismo estructural $\sigma_n\colon\Sigma\Sigma^nA\to\Sigma^{n+1}A$ es la identidad una vez identificadas las dos formas de suspender, que es la inclusión de $\Sigma^nA$ en su suspensión. \qedhere
+Por definición $(\Sigma^\infty A)_n=\Sigma^nA$, que es un CW-complejo punteado, y el morfismo estructural $\sigma_n\colon\Sigma\Sigma^nA\to\Sigma^{n+1}A$ es la identidad una vez identificadas las dos formas de suspender: no es una inclusión propia, sino la identidad de $\Sigma^{n+1}A$ vista como inclusión del complejo en sí mismo. \qedhere
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -72,7 +72,7 @@ Que la composición esté bien definida es inmediato: el compuesto de dos cuadra
 Un morfismo $f\colon E\to F$ de espectros secuenciales es una \emph{equivalencia nivel a nivel} si cada $f_n\colon E_n\to F_n$ es una equivalencia débil de espacios.
 \end{defi}
 
-Esta noción es la primera candidata a «isomorfismo» en $\Sp_N$, pero resulta demasiado fina para los propósitos del curso: es rígida en cada nivel y no detecta la información estable. La noción correcta se introduce en la \myref{defi:equiv-estable}, una vez que se dispone de los grupos de homotopía.
+Esta noción es la primera candidata a «isomorfismo» en $\Sp_N$, pero resulta demasiado fina para los propósitos del curso: es rígida en cada nivel y no detecta la información estable. Su utilidad es otra, y conviene no perderla de vista: como las equivalencias nivel a nivel son fáciles de construir y de comprobar ---basta trabajar nivel a nivel con equivalencias de espacios---, sirven para producir equivalencias estables, ya que toda equivalencia nivel a nivel lo es en particular. La noción correcta de «el mismo espectro» se introduce en la \myref{defi:equiv-estable}, una vez que se dispone de los grupos de homotopía.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Los grupos de homotopía de un espectro}
@@ -93,12 +93,16 @@ donde el sistema dirigente tiene por aplicaciones
 \[
 \pi_{n+k}(X_n)\longrightarrow\pi_{n+k+1}(X_{n+1}),
 \qquad
-[r]\longmapsto\bigl[(\sigma_n)_*\circ\Sigma(r)\bigr],
+[r]\longmapsto(\sigma_n)_*\bigl(\Sigma[r]\bigr),
 \]
-es decir, se suspende la clase y se aplica el morfismo inducido por el morfismo estructural.
+es decir, se suspende la clase y se aplica el homomorfismo inducido por el morfismo estructural. La aplicación es, por tanto, el compuesto $(\sigma_n)_*\circ\Sigma$, donde $\Sigma$ denota el isomorfismo de suspensión entre los grupos de homotopía.
 \end{defi}
 
 La restricción $n+k\ge0$ es la que hace que todos los grupos del sistema estén definidos, y a medida que $n$ crece la condición se satisface automáticamente. El colímite es sobre un sistema dirigente, así que $\pi_k(X)$ está bien definido como conjunto; más adelante se verá que es un grupo abeliano.
+
+\begin{nota}
+   Conviene no confundir dos cosas que a veces se dan por supuestas. Que $\pi_k(X)$ sea un colímite no significa que el sistema \emph{estabilice}: las aplicaciones $\pi_{n+k}(X_n)\to\pi_{n+k+1}(X_{n+1})$ no tienen por qué ser isomorfismos, y en general no lo son. Lo que sí ocurre es que, para calcular el colímite, se puede restringir el sistema a cualquier subconjunto \emph{cofinal} de índices, y esa libertad es la que se explotará repetidamente en lo que sigue.
+\end{nota}
 
 El ejemplo que justifica la definición es el del espectro suspensión.
 
@@ -110,11 +114,15 @@ Para todo espacio punteado $A$ y todo $k\in\mathbb Z$,
 \end{ejem}
 
 \begin{proof}
-Por definición $(\Sigma^\infty A)_n=\Sigma^nA$, de modo que
+Por definición $(\Sigma^\infty A)_n=\Sigma^nA$, de modo que el sistema dirigente que define $\pi_k(\Sigma^\infty A)$ tiene por aplicaciones las suspensiones
 \[
-\pi_k(\Sigma^\infty A)=\varinjlim_{n}\pi_{n+k}(\Sigma^nA),
+\pi_{n+k}(\Sigma^nA)\longrightarrow\pi_{n+k+1}(\Sigma^{n+1}A),
 \]
-y el morfismo del sistema es el isomorfismo de suspensión $\pi_{n+k}(\Sigma^nA)\cong\pi_{n+k+1}(\Sigma^{n+1}A)$, que en este caso es un isomorfismo y no solo una aplicación. El colímite de un sistema cuyas aplicaciones son isomorfismos es el grupo común, que es precisamente la definición de $\pi_k^s(A)$. \qedhere
+y ese sistema es, palabra por palabra, el que define los grupos de homotopía estable de $A$. En efecto, $\pi_k^s(A)$ se define precisamente como el colímite
+\[
+\pi_k^s(A)=\varinjlim_n\pi_{n+k}(\Sigma^nA),
+\]
+así que los dos miembros de la igualdad son el mismo colímite calculado con las mismas aplicaciones. No hace falta invocar ningún teorema de estabilización, ni suponer que las aplicaciones del sistema son isomorfismos: no lo son en general, y es justamente por eso por lo que los grupos inestables $\pi_{n+k}(S^n)$ no coinciden con los estables. \qedhere
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,10 +189,14 @@ Ahora bien, los morfismos estructurales $E_n\to\Omega E_{n+1}$ son equivalencias
 \[
 \widetilde E^{\,n}(S^{n+k})\xrightarrow{\ \cong\ }\widetilde E^{\,n+1}(S^{n+k+1})
 \]
-es un isomorfismo para todo $n$, y el colímite de un sistema de isomorfismos es el grupo común $\widetilde E^{\,n}(S^{n+k})$ para cualquier $n$. Tomando $n=0$ se obtiene $\widetilde E^{\,0}(S^k)$, y tomando $n=-k$ se obtiene $\widetilde E^{\,-k}(S^0)$. \qedhere
+es un isomorfismo para todo $n$, de modo que el colímite es el grupo común. Para identificarlo con los coeficientes basta elegir $n$ suficientemente grande y aplicar repetidamente el isomorfismo de suspensión hasta alcanzar el grado deseado: así se llega a $\widetilde E^{\,-k}(S^0)$, y análogamente a $\widetilde E^{\,0}(S^k)$. \qedhere
 \end{proof}
 
 Los grupos $\pi_k(E)$ son, por tanto, los \emph{coeficientes} de la teoría de cohomología reducida $\widetilde E^{\,*}$, y el resultado dice que el espectro los codifica por completo. Dos ejemplos lo ilustran.
+
+\begin{nota}
+   La igualdad $\pi_k(E)\cong\widetilde E^{\,0}(S^k)$ merece una precisión, porque $\widetilde E^{\,*}$ está definida sobre espacios y las esferas $S^k$ solo tienen sentido para $k\ge0$. Para $k$ negativo hay que leer $\widetilde E^{\,0}(S^k)$ en sentido estable, es decir, como el grupo de coeficientes del grado correspondiente; la expresión que vale para todo $k\in\mathbb Z$ sin ambigüedad es la primera, $\pi_k(E)\cong\widetilde E^{\,-k}(S^0)$, que en el caso $k\le0$ evalúa la teoría en una esfera de dimensión no negativa. Se conserva la segunda porque es la que se escribió en clase y porque, en el rango en que está definida, es la más informativa.
+\end{nota}
 
 \begin{ejem}\label{ejem:pi-ha-ku}
 Para el espectro de Eilenberg--Mac Lane $HA$ y para la $K$-teoría compleja $KU$,
@@ -247,7 +259,7 @@ Demostrar que $\pi_k(X)$ es un grupo abeliano para todo espectro $X$ y todo $k$,
 \end{ejer}
 
 \begin{sol}
-Cada $\pi_{n+k}(X_n)$ es un grupo abeliano, porque $n+k\ge1$ para $n$ suficientemente grande y los grupos de homotopía de un espacio punteado son abelianos en grado positivo. Las aplicaciones del sistema dirigente son homomorfismos de grupos, de modo que $\pi_k(X)$ es el colímite de un sistema dirigente de grupos abelianos y homomorfismos, que es de nuevo un grupo abeliano. Para la segunda afirmación, $f_*$ está inducida por los homomorfismos $(f_n)_*$, y el paso al colímite de homomorfismos es un homomorfismo.
+Cada $\pi_{n+k}(X_n)$ es un grupo abeliano para $n$ suficientemente grande. Hay que tener cuidado con el umbral: los grupos de homotopía de un espacio punteado son abelianos en grado $\ge2$, y no en grado $1$. Pero eso no es un obstáculo, porque la condición $n+k\ge0$ permite restringir el sistema a la cola cofinal $n+k\ge2$, donde todos los grupos que aparecen son de grado al menos $2$ y por tanto abelianos. Las aplicaciones del sistema dirigente son homomorfismos de grupos, de modo que $\pi_k(X)$ es el colímite de un sistema dirigente de grupos abelianos y homomorfismos, que es de nuevo un grupo abeliano. Para la segunda afirmación, $f_*$ está inducida por los homomorfismos $(f_n)_*$, y el paso al colímite de homomorfismos es un homomorfismo.
 \end{sol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -295,7 +307,7 @@ y la aplicación entre ellos está inducida por la familia $(f_n)_*$. El punto c
 cuyas flechas verticales son isomorfismos por cofinalidad, y cuya flecha inferior es un isomorfismo porque para $n\ge0$ se tiene $(X_{\ge0})_n=X_n$ y $f_n=1_{X_n}$. Por tanto $f_*$ es un isomorfismo. \qedhere
 \end{proof}
 
-Vale la pena subrayar el mecanismo: la truncación \emph{añade} niveles, los que están por debajo de cero, y esos niveles son triviales. El argumento no funcionaría si los niveles añadidos aportaran algo al colímite.
+Vale la pena subrayar el mecanismo, porque es fácil describirlo mal: la truncación \emph{reemplaza} los niveles negativos por el punto, no los añade, y los niveles negativos del espectro original pueden perfectamente ser no triviales. Lo que hace que el colímite no cambie es que los índices $n\ge0$ forman una cola cofinal del sistema de índices: todo término del sistema está conectado hacia adelante con un término de la cola, de modo que el colímite no ve lo que queda por detrás. No es, por tanto, que los términos descartados sean triviales, sino que son irrelevantes para el colímite.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Por qué el zigzag es necesario}\label{subsec:zigzag-necesario}
@@ -337,7 +349,7 @@ y lo mismo ocurre con $X_{\ge0}$. Lo que falla es la existencia de un morfismo q
    \[
    \pi_k(X[d])\cong\pi_{k-d}(X),
    \]
-   que se obtiene directamente de la definición del desplazamiento, $X[d]_n=X_{n+d}$, y de la definición de $\pi_k$ como colímite. Es el análogo, para espectros, de la relación $\pi_{k}(\Sigma^dA)\cong\pi_{k-d}(A)$ para espacios.
+   que se obtiene directamente de la definición del desplazamiento, $X[d]_n=X_{n+d}$, y de la definición de $\pi_k$ como colímite. Es el análogo estable de la relación $\pi_{k}(\Sigma^dA)\cong\pi_{k-d}(A)$: desplazar los índices de un espectro equivale a suspenderlo, y esa conmutación entre desplazamiento y suspensión es precisamente lo que no se tiene en homotopía inestable, donde la suspensión solo es un isomorfismo a partir del rango del teorema de Freudenthal.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -357,12 +369,19 @@ es decir, la categoría que se obtiene al invertir formalmente todos los morfism
 Esta categoría es un modelo de la categoría homotópica estable, y cumple todas las propiedades que se enumeraron en la clase 1. Su ventaja es que no hay que construir nada nuevo: los objetos siguen siendo espectros secuenciales y los morfismos son clases de morfismos. Su inconveniente es el mismo que el de cualquier localización: los morfismos pasan a ser zigzags, y trabajar con clases de zigzags es incómodo. Eso es lo que motiva buscar otros modelos, en los que la inversión sea menos violenta.
 
 \begin{nota}
-   En la pizarra se señaló, entre paréntesis, que esta categoría es localmente pequeña, es decir, que los morfismos entre dos objetos forman un conjunto y no una clase propia. Es cierto, pero el argumento no se dio en clase; se cita aquí como dato. También se dejó como ejercicio la comprobación de que el modelo con espectros $\mathbb N$-secuenciales es equivalente al que usa espectros $\mathbb Z$-secuenciales,
-   \[
-   \Sp_N\bigl[\text{equiv.\ estables}^{-1}\bigr]\simeq\Sp_{\mathbb Z}\bigl[\text{equiv.\ estables}^{-1}\bigr],
-   \]
-   lo que permite pasar de un convenio de índices al otro según convenga.
+   En la pizarra se señaló, entre paréntesis, que esta categoría es localmente pequeña, es decir, que los morfismos entre dos objetos forman un conjunto y no una clase propia. Es cierto, pero el argumento no se dio en clase; se cita aquí como dato.
 \end{nota}
+
+\begin{ejer}\label{ejer:localizaciones-equivalentes}
+Comprobar que el modelo con espectros $\mathbb N$-secuenciales es equivalente al que usa espectros $\mathbb Z$-secuenciales,
+\[
+\Sp_N\bigl[\text{equiv.\ estables}^{-1}\bigr]\simeq\Sp_{\mathbb Z}\bigl[\text{equiv.\ estables}^{-1}\bigr].
+\]
+\end{ejer}
+
+\begin{sol}
+Se construyen funtores en las dos direcciones. De $\mathbb N$-secuenciales a $\mathbb Z$-secuenciales, se extiende un espectro $X$ por puntos: se declara $X_n=\ast$ para $n<0$, con los morfismos estructurales obvios. De $\mathbb Z$-secuenciales a $\mathbb N$-secuenciales, se restringe a los niveles no negativos, $X\mapsto X_{\ge0}$. Las dos composiciones no son la identidad, pero la segunda es precisamente la truncación del \myref{ejem:truncacion}, que ya se vio que es una equivalencia estable natural en el espectro original. Una vez localizada la categoría respecto de las equivalencias estables, esa equivalencia natural se convierte en un isomorfismo, de modo que las dos composiciones son isomorfas a la identidad y los dos modelos son equivalentes. El interés práctico es que permite pasar de un convenio de índices al otro según convenga.
+\end{sol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{La suspensión de espectros}
@@ -394,11 +413,11 @@ Que $\Sigma$ así definido sea un funtor es inmediato: si $f\colon X\to Y$ es un
    En la pizarra el objetivo de esta sección se resumió con un diagrama en el que aparecían las dos suspensiones y la relación entre ellas:
    \[
    \begin{tikzcd}[column sep=huge, row sep=large]
-   \Ho(\Topstar) \arrow[r] \arrow[d,"\Sigma"'] & \Sp_N\bigl[\text{equiv.\ estables}^{-1}\bigr] \arrow[d,"sh^1"]\\
-   \Ho(\Topstar) \arrow[r] & \Sp_N\bigl[\text{equiv.\ estables}^{-1}\bigr]
+   \Ho(\Topstar) \arrow[r,"\Sigma^\infty"] \arrow[d,"\Sigma"'] & \Sp_N\bigl[\text{equiv.\ estables}^{-1}\bigr] \arrow[d,shift left=1.5ex,"sh^1"] \arrow[d,shift right=1.5ex,"\Sigma"']\\
+   \Ho(\Topstar) \arrow[r,"\Sigma^\infty"'] & \Sp_N\bigl[\text{equiv.\ estables}^{-1}\bigr]
    \end{tikzcd}
    \]
-   junto a la anotación de que $\Sigma\neq sh^1$ pero $\Sigma\simeq sh^1$. Es decir: los dos funtores no son iguales sobre los espectros, pero sí son naturalmente isomorfos en la categoría homotópica estable. El resto de la clase se dedica a verificar el primer paso de esa identificación.
+   La columna izquierda es la suspensión de espacios y la derecha contiene \emph{dos} funtores, el desplazamiento $sh^1$ y la suspensión de espectros $\Sigma$. La anotación que acompañaba al diagrama era que $\Sigma\neq sh^1$ pero $\Sigma\simeq sh^1$: los dos funtores no son iguales sobre los espectros, pero sí son naturalmente isomorfos en la categoría homotópica estable. El resto de la clase se dedica a verificar el primer paso de esa identificación.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -457,30 +476,48 @@ y análogamente $\pi_{k+1}(\Sigma X)$ lo es del sistema
 \[
 \pi_{n+k+1}(S^1\wedge X_n)\xrightarrow{\ \Sigma\ }\pi_{n+k+2}\bigl((S^1\wedge X_n)\wedge S^1\bigr)\xrightarrow{\ (1\wedge\sigma_n)_*\ }\pi_{n+k+2}(S^1\wedge X_{n+1}).
 \]
-El argumento consiste en comparar los dos sistemas, y tiene tres piezas.
+\emph{Primer paso: el sistema intercalado.} Conviene escribir el primero de los dos sistemas con \emph{todos} sus términos, no solo con los que definen $\pi_k(X)$. Al desdoblar cada etapa en sus dos mitades aparece el sistema ampliado
+\[
+\pi_{n+k}(X_n)\xrightarrow{\ \Sigma\ }\pi_{n+k+1}(X_n\wedge S^1)\xrightarrow{\ (\sigma_n)_*}\pi_{n+k+1}(X_{n+1})\xrightarrow{\ \Sigma\ }\pi_{n+k+2}(X_{n+1}\wedge S^1)\xrightarrow{\ (\sigma_{n+1})_*}\cdots,
+\]
+en el que los términos de la forma $X_n$ y los intermedios de la forma $X_n\wedge S^1$ son dos subsucesiones cofinales. Por tanto
+\[
+\pi_k(X)=\varinjlim_n\pi_{n+k}(X_n)\cong\varinjlim_n\pi_{n+k+1}(X_n\wedge S^1),
+\]
+y en el sistema de la derecha las transiciones son $\Sigma\circ(\sigma_n)_*$, es decir, primero el morfismo estructural y después la suspensión, en ese orden. Los grupos de los dos sistemas coinciden, pero sus aplicaciones de transición no, y hay que tenerlo presente: es justo lo que hace que la comparación con $\pi_{k+1}(\Sigma X)$ no sea inmediata.
 
-\emph{Primera pieza: paso a los índices pares.} El sistema de índices admite subconjuntos cofinales, y por tanto se puede restringir el colímite a los índices pares $n=2m$ sin alterarlo. La razón de hacerlo es que, como se verá en la tercera pieza, la comparación de los dos sistemas introduce una permutación de factores cuyo signo es $(-1)$; al recorrer dos niveles de golpe, la permutación se aplica dos veces y el signo desaparece. Esta es la observación que se subrayó en clase: la flexibilidad de tomar cualquier subsucesión cofinal es lo que permite arreglar el signo, y es una ventaja que los espectros tienen sobre los espacios.
-
-\emph{Segunda pieza: la permutación.} Para cada $n$ hay una equivalencia
+\emph{Segundo paso: la trenza y la necesidad de ir de dos en dos.} Para cada $n$ hay una equivalencia
 \[
 f_n\colon X_n\wedge S^1\longrightarrow S^1\wedge X_n
 \]
-que intercambia los dos factores, la trenza del producto smash. Estas equivalencias son naturales y compatibles con los morfismos estructurales, de modo que inducen isomorfismos entre los términos de los dos sistemas y, por tanto, entre sus colímites.
+que intercambia los dos factores, la trenza del producto smash. Componiendo con ella se obtiene una aplicación entre los términos de los dos sistemas, y la cuestión es si conmuta con las transiciones. \emph{No lo hace en un solo paso}: la comparación de una etapa con la siguiente deja una transposición de factores, cuyo signo es $-1$, y no hay manera de eliminarla. Lo que sí funciona es comparar \emph{dos etapas de golpe}, restringiendo ambos sistemas a los índices pares $n=2m$, que también forman un subconjunto cofinal.
 
-\emph{Tercera pieza: el signo.} Falta comprobar que los isomorfismos inducidos por las $f_n$ conmutan con las aplicaciones de los dos sistemas dirigentes. La comprobación es explícita. Como las dos composiciones empiezan por el mismo morfismo, basta comparar el resto, y para ello se escriben las aplicaciones sobre las coordenadas del producto de tres esferas: un elemento $[x,z_1,z_2,z_3]$ se envía por un camino a
+\emph{Tercer paso: el cuadrado de dos pasos.} Restringidos a los índices pares, la comparación se hace en el nivel de los espacios, y para ello se escriben las dos composiciones sobre las coordenadas del producto de tres esferas. Partiendo de un elemento $[x,z_1,z_2,z_3]$, con $x\in X_{2m}$ y $z_i\in S^1$, uno de los caminos da
 \[
 \bigl[\sigma_{2m+1}\bigl(\sigma_{2m}(x,z_1),z_2\bigr),\ z_3\bigr],
 \]
-y por el otro a
+y el otro, tras el intercambio final, da
 \[
-\bigl[z_1,\ \sigma_{2m+1}\bigl(\sigma_{2m}(x,z_2),z_3\bigr)\bigr],
+\bigl[z_1,\ \sigma_{2m+1}\bigl(\sigma_{2m}(x,z_2),z_3\bigr)\bigr].
 \]
-de modo que las dos composiciones difieren por la permutación cíclica de los tres factores de $S^1$. Esa permutación es un homeomorfismo de $S^1\wedge S^1\wedge S^1$ cuyo grado es $+1$ cuando se aplica dos veces seguidas ---o, equivalentemente, cuyo signo es $(-1)$ cuando se aplica una sola vez---, y de ahí la necesidad de haber pasado a los índices pares en la primera pieza. Con eso los dos sistemas dirigentes son isomorfos y sus colímites coinciden. \qedhere
+Las dos expresiones viven ya en el mismo espacio, $S^1\wedge X_{2m+2}$, y difieren por la permutación cíclica
+\[
+\tau(z_1,z_2,z_3)=(z_2,z_3,z_1)
+\]
+de los tres factores de $S^1$: es decir, el primero de los caminos, precompuesto con $1_X\wedge\tau$, da exactamente el segundo. Ahora bien, $\tau$ es un ciclo de longitud tres, luego se descompone en dos transposiciones y su grado es $+1$. Por tanto $\tau$ es homótopa a la identidad y el cuadrado conmuta salvo homotopía. Con eso los dos sistemas dirigentes son isomorfos y sus colímites coinciden. \qedhere
 \end{proof}
 
 \begin{nota}
-   En la pizarra el cálculo se acompañó de un diagrama grande en el que aparecían las dos filas de grupos, una con $S^1$ antepuesta y otra con $S^1$ pospuesta, y las flechas verticales inducidas por las permutaciones $f_n$. Se reprodujo también, en rojo, el desarrollo de las dos composiciones sobre las coordenadas, que es la tercera pieza de la demostración anterior. La conclusión escrita fue la identificación $\pi_{k+1}(\Sigma X)\cong\pi_k(X)$, que es la que se acaba de probar.
+   En la pizarra el cálculo se acompañó de un diagrama grande en el que aparecían las dos filas de grupos, una con $S^1$ antepuesta y otra con $S^1$ pospuesta, y las flechas verticales inducidas por las permutaciones $f_n$. Se reprodujo también, en rojo, el desarrollo de las dos composiciones sobre las coordenadas, que es el tercer paso de la demostración anterior. La conclusión escrita fue la identificación $\pi_{k+1}(\Sigma X)\cong\pi_k(X)$, que es la que se acaba de probar.
 \end{nota}
+
+\begin{ejer}\label{ejer:signo-sin-pares}
+Comprobar que la comparación de un solo paso, sin restringir a los índices pares, deja una transposición de grado $-1$ en lugar de un ciclo de grado $+1$, y que por tanto el argumento falla en ese caso.
+\end{ejer}
+
+\begin{sol}
+Sin restringir a los índices pares, la comparación de una etapa con la siguiente enfrenta dos composiciones que difieren por el intercambio de dos de los tres factores de $S^1$, es decir, por una transposición. Una transposición tiene grado $-1$, de modo que no es homótopa a la identidad: induce la multiplicación por $-1$ en los grupos de homotopía correspondientes, y el cuadrado no conmuta. Al comparar dos etapas de golpe, la permutación que aparece es el cuadrado de una transposición, es decir, un ciclo de longitud tres, de grado $+1$, que sí es homótopo a la identidad. De ahí que el paso a los índices pares no sea una comodidad sino un requisito del argumento.
+\end{sol}
 
 \begin{nota}
    Conviene no confundir lo que se ha probado con lo que falta. La \myref{prop:pi-suspension} dice que $\Sigma X$ y $sh^1X$ tienen los mismos grupos de homotopía, pero \emph{no} exhibe un morfismo entre ellos, y menos aún una equivalencia estable. La construcción del morfismo es un paso posterior, y en clase se anunció que consta de tres etapas: primero la comparación de los grupos de homotopía ---que es la de esta clase---, después la noción de \emph{morfismo débil}, que permite construir un zigzag de morfismos a partir de una sola aplicación definida salvo homotopía, y finalmente la construcción del morfismo mismo. Con eso quedará establecida la identificación $\Sigma\simeq sh^1$ en la categoría homotópica estable.

@@ -160,16 +160,16 @@ Al tomar el colímite en cada columna se obtiene una sucesión exacta de grupos 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{La sucesión exacta biinfinita}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-La invertibilidad de la suspensión permite extender la sucesión de Puppe hacia la izquierda. En $\SW$ se obtiene la sucesión cofibrada estable
-\[
-\begin{aligned}
-\cdots\longrightarrow (X/A)_{-1}&\xrightarrow{\Sigma^{-1}\delta}A_0\xrightarrow{i}X_0\xrightarrow{q}(X/A)_0\xrightarrow{\delta}A_1\\
-&\xrightarrow{-\Sigma i}X_1\xrightarrow{-\Sigma q}(X/A)_1\longrightarrow\cdots .
-\end{aligned}
-\]
-El mecanismo de la extensión hacia la izquierda es la fórmula de desplazamiento aplicada al objetivo. Como suspender $Z$ no altera sus clases estables, se tiene
+La invertibilidad de la suspensión permite extender la sucesión de Puppe hacia la izquierda. El mecanismo de la extensión hacia la izquierda es la fórmula de desplazamiento aplicada al objetivo. Como suspender $Z$ no altera sus clases estables, se tiene
 \[
 \set*{(X/A)_{-1},Z_0}\cong\set*{(X/A)_0,Z_1}\cong\set*{(X/A)_0,(\Sigma Z)_0},
+\]
+de donde
+\[
+\begin{tikzcd}[column sep=small]
+{\set{A_0,(\Sigma Z)_0}} \arrow[d, phantom, "\cong" sloped] & {\set{X_0,(\Sigma Z)_0}} \arrow[d, phantom, "\cong" sloped] \arrow[l] & {\set{(X/A)_0,(\Sigma Z)_0}} \arrow[d, phantom, "\cong" sloped] \arrow[l] & {\set{\Sigma A_0,(\Sigma Z)_0}} \arrow[d, phantom, "\cong" sloped] \arrow[l] & \cdots \arrow[d, phantom, "\cong" sloped] \arrow[l]\\
+{\set{A_{-1},Z_0}} & {\set{X_{-1},Z_0}} \arrow[l] & {\set{(X/A)_{-1},Z_0}} \arrow[l] & {\set{\Sigma A_{-1},Z_0}} \arrow[l] & \cdots \arrow[l]
+\end{tikzcd}
 \]
 es decir, el término que falta a la izquierda no es más que el último término ya conocido, calculado con el objetivo desplazado $\Sigma Z$. Repitiendo el argumento con $\Sigma^2Z,\Sigma^3Z,\dots$ la sucesión se extiende indefinidamente, y como los mapeos inducidos vuelven a ser $i^*$, $q^*$ y $\delta^*$, el diagrama resultante conmuta. Dicho de otro modo: la sucesión obtenida para el objetivo $\Sigma Z$ es la misma que la obtenida para $Z$, recorrida un lugar.
 
