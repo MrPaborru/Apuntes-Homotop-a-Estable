@@ -148,6 +148,14 @@ X\xrightarrow{\ f\ }Y\xrightarrow{\ g\ }Z\xrightarrow{\ h\ }\Sigma X .
 El nombre proviene de que la última flecha regresa al vértice inicial salvo suspensión: si $X$, $Y$ y $Z$ se imaginan como los vértices de un triángulo, el morfismo $h$ cierra el recorrido tras desplazar $X$.
 \end{defi}
 
+\begin{nota}
+   En la literatura es frecuente dibujar el triángulo como un diagrama triangular cerrado, con los
+   tres objetos en los vértices y los tres morfismos sobre los lados, sobreentendiendo que la
+   tercera flecha va a $\Sigma X$ aunque no se indique. Esa notación se descarta aquí porque obliga
+   a fijar un vértice de referencia para decidir cuál es el primero. La notación lineal deja el
+   orden de los morfismos explícito y no requiere tal elección.
+\end{nota}
+
 \begin{defi}
 Un \emph{morfismo entre triángulos} es un diagrama conmutativo
 \[
@@ -196,7 +204,7 @@ X \arrow[r,"f"] \arrow[d,"\varphi"'] & Y \arrow[r,"g"] \arrow[d,"\psi"'] & Z \ar
 X' \arrow[r,"f'"'] & Y' \arrow[r,"g'"'] & Z' \arrow[r,"h'"'] & \Sigma X'
 \end{tikzcd}
 \]
-cuyas filas son triángulos distinguidos, existe $w\colon Z\to Z'$ tal que $(\varphi,\psi,w)$ es un morfismo de triángulos. Este es el \emph{axioma del relleno}.
+cuyas filas son triángulos distinguidos, existe $w\colon Z\to Z'$ tal que $(\varphi,\psi,w)$ es un morfismo de triángulos. Este es el \emph{axioma del relleno}. El morfismo $w$ no es necesariamente único: el axioma solo garantiza su existencia.
 
 \item (\emph{Axioma del octaedro}.) Dados tres triángulos distinguidos
 \[
@@ -411,6 +419,15 @@ El cono de $f$ es, en este contexto, la cofibra de $f$: concentra la informació
 
 \begin{nota}
    La verificación de los axiomas en $\mathcal K(\mathcal A)$ es un ejercicio de álgebra homológica elemental y puede hacerse por completo a mano. No ocurre lo mismo en los modelos modernos de espectros: en los artículos actuales la estructura triangulada se deduce de que la categoría homotópica proviene de una categoría de modelos estable, y rara vez se comprueban los axiomas uno por uno. Para los espectros secuenciales, el libro de Hovey sobre categorías de modelos contiene una verificación bastante detallada, al menos de las partes que no deja como ejercicio (véase \cite{hovey1999}).
+
+   Conviene precisar el alcance de ambas vías. Ni una categoría de modelos ni su categoría homotópica
+   tienen por qué ser trianguladas; lo son, en cambio, las categorías de modelos \emph{estables}. La
+   segunda vía es la de las localizaciones de Verdier: si se localiza una categoría triangulada
+   respecto de un conjunto de morfismos compatible con el desplazamiento, la categoría localizada
+   vuelve a ser triangulada. El ejemplo que nos ocupa es una instancia de esto, pues localizar
+   $\mathcal K(\mathcal A)$ respecto de los quasi-isomorfismos de complejos es compatible con el
+   desplazamiento, y por tanto la categoría derivada de una categoría abeliana resulta ser
+   triangulada.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -520,6 +537,8 @@ que satisface $F_0=q'\circ r$ y $F_1=-\Sigma f$. La aparición del signo menos n
 \]
 que es la fórmula que se escribió en la pizarra para materializar el signo.
 
+El mecanismo de las dos homotopías tiene un análogo elemental en el grupo fundamental. La homotopía que prueba que un camino concatenado con el camino constante es homótopo al camino original se construye reparametrizando el intervalo: el tramo constante va encogiendo mientras el otro se estira hasta ocuparlo todo. Aquí la idea es la misma, con el punto base en lugar del camino constante: la parte del cono que se manda al punto base se expande poco a poco hasta cubrir todo el cono, y ese reparto variable entre las dos mitades es lo que hace aparecer el signo.
+
 \begin{nota}
    Ambas homotopías son las mismas que aparecen al construir las sucesiones cofibradas en homotopía inestable; pueden encontrarse, por ejemplo, en el libro de May (véase \cite{may1999}). El morfismo $r$ es la equivalencia homotópica cuya existencia garantiza la sucesión cofibrada.
 \end{nota}
@@ -528,7 +547,7 @@ Con estas dos homotopías, la escalera de isomorfismos que conecta el triángulo
 \[
 \begin{tikzcd}[column sep=2.1em, row sep=large]
 (Y,n) \arrow[r,"{[i]}"] \arrow[d,equal] & (C_f,n) \arrow[r,"P"] \arrow[d,equal] & (X,n+1) \arrow[r,"{-\sh^1([f])}"] \arrow[d,"\cong"'] & (Y,n+1) \arrow[d,"\cong"]\\
-(Y,n) \arrow[r,"{[i]}"'] \arrow[d,equal] & (C_f,n) \arrow[r,"{[q]}"'] \arrow[d,equal] & (\Sigma X)_n \arrow[r,"{[\Sigma f]}"'] \arrow[d,"{[r]}"'] & (\Sigma Y)_n \arrow[d,equal]\\
+(Y,n) \arrow[r,"{[i]}"'] \arrow[d,equal] & (C_f,n) \arrow[r,"{[q]}"'] \arrow[d,equal] & (\Sigma X)_n \arrow[r,"{[-\Sigma f]}"] \arrow[d,"{[r]}"'] & (\Sigma Y)_n \arrow[d,equal]\\
 (Y,n) \arrow[r,"{[i]}"'] \arrow[d,equal] & (C_f,n) \arrow[r,"{[j]}"'] \arrow[d,equal] & (C_i,n) \arrow[r,"{[q']}"'] \arrow[d,equal] & (\Sigma Y)_n \arrow[d,"\cong"]\\
 (Y,n) \arrow[r,"{[i]}"'] & (C_f,n) \arrow[r,"{[j]}"'] & (C_i,n) \arrow[r,"P'"'] & (Y,n+1).
 \end{tikzcd}

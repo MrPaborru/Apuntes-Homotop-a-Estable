@@ -55,75 +55,70 @@ Comprobar directamente que la elección
 \[
 \mathrm{ev}\colon S^{-r}\wedge S^r\longrightarrow S
 \]
-que colapsa $S^{-r}\wedge S^r$ sobre su parte de dimensión cero hace de $S^{-r}$ un dual de $S^r$ en el sentido de la \myref{prop:dual-biyectiva}.
+inducida por el homeomorfismo $S^0\wedge S^0\cong S^0$, al escribir $S^{\pm r}=(S^0,\pm r)$, hace de $S^{-r}$ un dual de $S^r$ en el sentido de la \myref{prop:dual-biyectiva}.
 \end{ejer}
 
 \begin{sol}
-Por la Proposición~47 basta comprobar que, para todo $k\en\mathbb Z$, la aplicación
+Fijemos $r\in\mathbb Z$ y escribamos $E=S^r$, $D=S^{-r}$ y $S=(S^0,0)$. La evaluación $e\colon D\wedge E\to S$ y la coevaluación $c\colon S\to E\wedge D$ son las del \myref{ejer:17}, representadas por el homeomorfismo $u\colon S^0\wedge S^0\to S^0$ y su inverso. Se comprobarán las dos biyecciones del \myref{lema:criterio-dual}, usando $k$ para el índice variable.
+
+\emph{Primera biyección.} Para cualquier objeto $A$ de $\SW$ se considera
 \[
-\Phi_k\colon
-\{\Sigma^k\mathbb S,\mathbb S^{-r}\}
-\longrightarrow
-\{\Sigma^k\mathbb S^r,\mathbb S\},
+\Phi_A\colon\set*{A,D}\longrightarrow\set*{A\wedge E,S},
 \qquad
-\Phi_k(f)=\ev\circ(f\wedge1_{\mathbb S^r}),
+\Phi_A(f)=e\circ(f\wedge1_E).
 \]
-es una biyección. Aquí usamos $k$ para no confundir el índice de la proposición con el entero fijo $r$.
+Una inversa explícita envía $h\colon A\wedge E\to S$ al compuesto
+\[
+\begin{aligned}
+A&\xrightarrow{\ \rho_A^{-1}\ }A\wedge S
+\xrightarrow{\ 1_A\wedge c\ }A\wedge(E\wedge D)\\
+&\xrightarrow{\ \alpha^{-1}_{A,E,D}\ }(A\wedge E)\wedge D
+\xrightarrow{\ h\wedge1_D\ }S\wedge D
+\xrightarrow{\ \lambda_D\ }D.
+\end{aligned}
+\]
+Denotemos este compuesto por $\Theta_A(h)$. Para comprobar ambas composiciones se omiten los asociadores y unitores, que son los indicados arriba. La funtorialidad del smash y las identidades de zigzag verificadas en el \myref{ejer:17} dan
+\[
+\begin{aligned}
+\Theta_A(\Phi_A(f))
+&=(e\wedge1_D)\circ(f\wedge1_E\wedge1_D)\circ(1_A\wedge c)\\
+&=(e\wedge1_D)\circ(1_D\wedge c)\circ f=f,\\[0.4em]
+\Phi_A(\Theta_A(h))
+&=e\circ(h\wedge1_D\wedge1_E)\circ(1_A\wedge c\wedge1_E)\\
+&=h\circ\bigl(1_A\wedge[(1_E\wedge e)\circ(c\wedge1_E)]\bigr)=h.
+\end{aligned}
+\]
+Tomando $A=S^k$ resulta la biyección
+\[
+\Phi_k\colon\set*{S^k,S^{-r}}\xrightarrow{\ \cong\ }\set*{S^{k+r},S}.
+\]
 
-Como $\Sigma^k\mathbb S=\mathbb S^k$ y
-$\Sigma^k\mathbb S^r=\mathbb S^{k+r}$, la aplicación anterior se escribe
+\emph{Segunda biyección.} Se invierten los papeles de $E$ y $D$, con los morfismos
 \[
-\Phi_k\colon
-\{\mathbb S^k,\mathbb S^{-r}\}
-\longrightarrow
-\{\mathbb S^{k+r},\mathbb S\}.
+e'=e\circ B_{E,D}\colon E\wedge D\longrightarrow S,
+\qquad
+c'=B_{E,D}\circ c\colon S\longrightarrow D\wedge E.
 \]
-Por la propiedad de desplazamiento de índices de $\mathbf{SW}$ existe una biyección natural
+La simetría sobre las esferas tiene grado $(-1)^{r(-r)}=(-1)^r$. Por tanto, bajo las identificaciones con $S$, tanto $e'$ como $c'$ tienen grado $(-1)^r$, y los dos signos se cancelan en cada zigzag. El mismo cálculo anterior, con $E,D,e,c$ sustituidos por $D,E,e',c'$, prueba que
 \[
-\{\mathbb S^{k+r},\mathbb S\}
-\cong
-\{\mathbb S^k,\mathbb S^{-r}\}.
+\Psi_k\colon\set*{S^k,S^r}\xrightarrow{\ \cong\ }\set*{S^{k-r},S},
+\qquad
+\Psi_k(g)=e\circ B_{E,D}\circ(g\wedge1_D),
 \]
-Veamos que $\Phi_k$ es precisamente la inversa de esta biyección. En efecto, si
-$f\colon\mathbb S^k\to\mathbb S^{-r}$ es un morfismo estable, entonces
-\[
-f\wedge1_{\mathbb S^r}\colon
-\mathbb S^{k+r}
-\longrightarrow
-\mathbb S^{-r}\wedge\mathbb S^r.
-\]
-La evaluación elegida
-\[
-\ev\colon\mathbb S^{-r}\wedge\mathbb S^r\longrightarrow\mathbb S
-\]
-es justamente el morfismo de grado uno que realiza la identificación estable
-$\mathbb S^{-r}\wedge\mathbb S^r\cong\mathbb S$. Por tanto,
-$\ev\circ(f\wedge1_{\mathbb S^r})$ es el morfismo obtenido de $f$ al desplazar
-ambos índices en $r$.
+es una biyección para todo $k\in\mathbb Z$. En esta fórmula se identifica $S^{k-r}$ con $S^k\wedge D$; así quedan especificados el orden de los factores y el sentido de la trenza.
 
-Más explícitamente, si $f$ está representado, para $N$ suficientemente grande,
-por
-\[
-f_N\colon S^{N+k}\longrightarrow S^{N-r},
-\]
-entonces $\Phi_k(f)$ está representado, bajo las identificaciones
-$S^a\wedge S^b\cong S^{a+b}$, por
-\[
-f_N\wedge1_{S^r}\colon
-S^{N+k+r}\longrightarrow S^N,
-\]
-que es precisamente el representante obtenido por el desplazamiento de
-índices. Como dicho desplazamiento es una biyección en los conjuntos de
-morfismos estables, $\Phi_k$ es biyectiva para todo $k\en\mathbb Z$.
-
-Por la Proposición~47, $\mathbb S^{-r}$ es un dual de $\mathbb S^r$.
+Se satisfacen, por tanto, las dos condiciones del criterio y $S^{-r}$ es un dual de $S^r$. El argumento vale para todo $r\in\mathbb Z$: solo usa los objetos desplazados $(S^0,r)$ y $(S^0,-r)$ y morfismos estables, sin requerir espacios de dimensión negativa.
 \end{sol}
+
+\begin{nota}
+   La solución anterior es un desarrollo añadido a los apuntes. La evaluación se entiende mediante la identificación estable $S^{-r}\wedge S^r\cong S$; la expresión «colapsar sobre la parte de dimensión cero» no especificaba por sí sola ese morfismo.
+\end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{El dual de una cofibra}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-El resultado que cierra el problema es una propiedad de las sucesiones cofibradas.
+El resultado que cierra el problema es una propiedad de las sucesiones cofibradas. La motivación con la que se introdujo en clase es práctica: sirve para \emph{deducir cuándo un objeto tiene dual a partir de saber que otros lo tienen}, usando los triángulos y las sucesiones cofibradas.
 
 \begin{teo}\label{teo:cofibra-dual}
 Sea
@@ -172,7 +167,7 @@ Para probarlo usaremos la \myref{prop:dual-biyectiva}. Hay que exhibir una evalu
 \]
 y comprobar que induce biyecciones $\set*{\Sigma^rS,\ W}\cong\set*{\Sigma^rZ,\ S}$ para todo $r$. Las dos piezas son las del pizarrón: la construcción de $\mathrm{ev}$ y la inducción sobre el pegado de celdas.
 
-\emph{La construcción de la evaluación.} El punto de partida es el lema de la clase anterior. Recordemos su enunciado en la forma precisa en que se usó. Sea $f\colon X\to Y$ un morfismo de complejos y sea $f^*\colon Y^*\to X^*$ su dual. Supongamos que existen
+\emph{La construcción de la evaluación.} El punto de partida es el lema de la clase anterior. Antes de recordarlo conviene precisar de dónde sale su hipótesis: al tratar el dual de un mapeo se dejó como ejercicio que los duales satisfacen un cuadrado conmutativo entre las evaluaciones ---el que enfrenta $f^*\wedge1$ con $1\wedge f$--- y que esa conmutatividad, además de comprobarse sin dificultad, \emph{caracteriza} a $f^*$. Esa es la razón de que el lema se pueda formular con un cuadrado que conmuta salvo homotopía, y de que en la aplicación a la cofibra el cuadrado se satisfaga automáticamente. Recordemos su enunciado en la forma precisa en que se usó. Sea $f\colon X\to Y$ un morfismo de complejos y sea $f^*\colon Y^*\to X^*$ un morfismo entre dos complejos $X^*,Y^*$ ---que, como se advirtió en clase, \emph{no} se supone que sean los duales de $X$ e $Y$; el lema solo pide que existan los morfismos de evaluación. Supongamos entonces que existen
 \[
 \mu\colon X^*\wedge X\longrightarrow S^n ,
 \qquad
@@ -185,11 +180,13 @@ Y^*\wedge X \arrow[r,"f^*\wedge1"] \arrow[d,"1\wedge f"'] & X^*\wedge X \arrow[d
 Y^*\wedge Y \arrow[r,"\nu"'] & S^n
 \end{tikzcd}
 \]
-conmuta salvo homotopía. Entonces $f^*$ es el dual de $f$ con evaluaciones $\mu$ y $\nu$, y existe
+conmuta salvo homotopía. Entonces existe
 \[
 \pi\colon C_{f^*}\wedge C_f\longrightarrow S^{n+1}
 \]
-que sirve de evaluación para los conos. Es la parte del lema que se probó al final de la clase anterior mediante el cociente del producto de los conos.
+que sirve de evaluación para los conos. Es la parte del lema que se probó al final de la clase anterior mediante el cociente del producto de los conos; en la aplicación que sigue, $X^*$ e $Y^*$ sí serán los duales. Conviene reparar en el \emph{desplazamiento de uno} que aparece aquí, de $S^n$ a $S^{n+1}$: es el rastro de que la dualidad intercambia cofibras y fibras, y volverá a aparecer al final del argumento, cuando se concluya que el dual de la cofibra es la fibra del dual.
+
+La forma de leer $\mu$ y $\nu$ es la de evaluaciones \emph{salvo suspender}: tienen $S^n$ en el codominio en lugar de $S^0$, de modo que no son todavía las evaluaciones de $X$ e $Y$, sino sus suspensiones $n$ veces. Lo que se busca con el lema es precisamente una evaluación para el cono de $f$: si $X^*$ e $Y^*$ son los duales de $X$ e $Y$, entonces el cono de $f^*$ es el dual del cono de $f$, salvo suspender, y el morfismo $\pi$ es la evaluación que lo certifica.
 
 Con esto se construye $\mathrm{ev}$ en dos pasos, que son los dos diagramas que se escribieron en el pizarrón.
 
@@ -197,11 +194,11 @@ Con esto se construye $\mathrm{ev}$ en dos pasos, que son los dos diagramas que 
 \[
 \Sigma(Y^*\wedge X)\xrightarrow{\ 1\wedge f-f^*\wedge1\ }(\Sigma Y^*\wedge Y)\vee(X^*\wedge\Sigma X),
 \]
-que es la diferencia de los dos morfismos evidentes: el primero actúa como $f$ en el segundo factor y el segundo como $f^*$ en el primero. El signo $-$ es el que introduce la trenza al permutar los factores suspendidos, el mismo fenómeno de signos de la clase anterior. Componiendo con la evaluación del lema se obtiene
+que es la diferencia de los dos morfismos evidentes: el primero actúa como $f$ en el segundo factor y el segundo como $f^*$ en el primero. El signo $-$ es el que introduce la trenza al permutar los factores suspendidos, el mismo fenómeno de signos de la clase anterior. Componiendo con la evaluación del lema se obtiene el morfismo que en la pizarra se llamó $K$,
 \[
-\Sigma(Y^*\wedge X)\xrightarrow{\ \Sigma v\vee\Sigma\mu\ }S^{k+1},
+K\colon\ \Sigma(Y^*\wedge X)\xrightarrow{\ 1\wedge f-f^*\wedge1\ }(\Sigma Y^*\wedge Y)\vee(X^*\wedge\Sigma X)\xrightarrow{\ \Sigma\nu\vee\Sigma\mu\ }S^{n+1},
 \]
-donde $v\colon Y^*\wedge Y\to S^k$ y $\mu\colon X^*\wedge X\to S^k$ son las evaluaciones de $Y$ y de $X$.
+donde $\nu\colon Y^*\wedge Y\to S^n$ y $\mu\colon X^*\wedge X\to S^n$ son las evaluaciones de $Y$ y de $X$. El morfismo $K$ es \emph{nulhomotópico}: sus dos sumandos son $\Sigma\nu\circ(1\wedge f)$ y $-\Sigma\mu\circ(f^*\wedge1)$, y la conmutatividad salvo homotopía del cuadrado del lema dice precisamente que ambos son homótopos. Es esa nulhomotopía ---y no otra--- la que permite factorizar la evaluación a través de la cofibra de la coacción, que es el paso siguiente.
 
 \emph{Segundo paso: el cociente.} Ahora se calcula el producto de los conos. Como
 \[
@@ -220,29 +217,29 @@ donde los pegados de cada sumando se hacen a lo largo de $f^*$ y de $f$: bajo el
 \[
 C_{f^*}\wedge C_f\ \simeq\ X^*\wedge Y\ \cup\ \bigl(\Sigma Y^*\wedge Y\bigr)\ \cup\ \bigl(X^*\wedge\Sigma X\bigr).
 \]
-La inclusión
-\[
-\kappa\colon X^*\wedge Y\longrightarrow C_{f^*}\wedge C_f
-\]
-es entonces \emph{nulhomotópica}, y por eso se puede tomar el cociente por ella: el cociente
+El producto de los conos se identifica con esa unión mediante un homeomorfismo explícito: el producto smash no distribuye sobre la unión de manera exacta, y la comprobación de que existe tal homeomorfismo es el ejercicio que se dejó en clase. Con esa identificación, el cociente
 \[
 \frac{C_{f^*}\wedge C_f}{X^*\wedge Y}
 \]
 es la unión de $\Sigma Y^*\wedge Y$ y $X^*\wedge\Sigma X$ pegados a lo largo de $\Sigma(Y^*\wedge X)$ precisamente por el morfismo $1\wedge f-f^*\wedge1$ del primer paso. Es decir,
 \[
-\frac{C_{f^*}\wedge C_f}{X^*\wedge Y}\ \simeq\ \Bigl[\bigl(\Sigma Y^*\wedge Y\bigr)\vee\bigl(X^*\wedge\Sigma X\bigr)\Bigr]\cup_{1\wedge f-f^*\wedge1}C\bigl(\Sigma(Y^*\wedge X)\bigr).
+\frac{C_{f^*}\wedge C_f}{X^*\wedge Y}\ \simeq\ \Bigl[\bigl(\Sigma Y^*\wedge Y\bigr)\vee\bigl(X^*\wedge\Sigma X\bigr)\Bigr]\cup_{1\wedge f-f^*\wedge1}C\bigl(\Sigma(Y^*\wedge X)\bigr),
 \]
-Esta es la igualdad que se escribió en el pizarrón, y es la que explica por qué la coacción del primer paso era la diferencia $1\wedge f-f^*\wedge1$: es exactamente el morfismo de pegamento que aparece al tomar el cociente del producto de los conos.
+que no es otra cosa que la cofibra de la coacción. Esta es la igualdad que se escribió en el pizarrón, y es la que explica por qué la coacción del primer paso era la diferencia $1\wedge f-f^*\wedge1$: es exactamente el morfismo de pegamento que aparece al tomar el cociente del producto de los conos. La \emph{nulhomotopía de $K$} del primer paso es lo que hace que la evaluación $\Sigma(Y^*\wedge X)\to S^{n+1}$ se factorice a través de esa cofibra.
 
 \emph{Definición de $\pi$.} Con lo anterior se define
 \[
 \pi\colon C_{f^*}\wedge C_f\longrightarrow S^{k+1}
 \]
-como la composición de la evaluación $\rho\colon\Sigma(Y^*\wedge X)\to S^{k+1}$ del primer paso con el cociente
+como la composición del morfismo $\rho$ con el cociente
 \[
 C_{f^*}\wedge C_f\longrightarrow\frac{C_{f^*}\wedge C_f}{X^*\wedge Y},
 \]
-que está bien definida porque $\kappa$ es nulhomotópica. La letra $\rho$ para esa evaluación es la que se usó en la pizarra. La conmutatividad salvo homotopía que se necesita se lee en los dos cuadrados que allí se dibujaron, con las sucesiones cofibradas
+que está bien definido porque $K$ es nulhomotópica: la evaluación del primer paso se factoriza a través de la cofibra de la coacción. El morfismo $\rho$ es esa factorización, es decir,
+\[
+\rho\colon\frac{C_{f^*}\wedge C_f}{X^*\wedge Y}\longrightarrow S^{k+1},
+\]
+de modo que $\pi=\rho\circ(\text{cociente})$ está bien tipado. La letra $\rho$ para ese morfismo ya factorizado es la que se usó en la pizarra. La conmutatividad salvo homotopía que se necesita se lee en los dos cuadrados que allí se dibujaron, con las sucesiones cofibradas
 \[
 Y^*\xrightarrow{\ f^*\ }X^*\xrightarrow{\ r\ }C_{f^*}\xrightarrow{\ s\ }\Sigma Y^*,
 \qquad
@@ -261,6 +258,8 @@ X^*\wedge\Sigma X \arrow[r,"\Sigma\mu"'] & S^{k+1}
 \end{tikzcd}
 \]
 donde $\nu\colon Y^*\wedge Y\to S^k$ y $\mu\colon X^*\wedge X\to S^k$ son las evaluaciones, $r$ es la inclusión en el cono de $X^*$ y $s$ el cociente por él. La conmutatividad se comprueba sumando: en cada sumando del wedge la conmutatividad de los cuadrados da la del cuadrado que se pega a lo largo del cociente, y eso es exactamente lo que se veía en el pizarrón como «viendo lo que significa la conmutatividad salvo homotopía en cada sumando, obtenemos la conmutatividad salvo homotopía de los cuadrados deseados».
+
+La comprobación de uno de los dos cuadrados, que es la que se hizo en clase, consiste en tomar una clase $\varphi$ y comparar las dos composiciones. Por el camino de arriba, $\varphi$ se envía a la composición de la clase de $r$ con la de $\varphi$, seguida de $\pi$; por el de abajo, se le aplica $1\wedge h$ y luego la evaluación $\Sigma\mu$. La igualdad de ambas ---salvo suspender, porque las clases son estables--- es la conmutatividad del diagrama anterior, que es el punto donde entra realmente la hipótesis del lema. El otro cuadrado se comprueba de manera análoga.
 
 \emph{La evaluación.} Reemplazando en $\pi$ las suspensiones por los objetos correspondientes de $\SW$ ---es decir, tomando $A^*\coloneqq(X,m)$ y $B^*\coloneqq(Y,m')$ y desplazando los índices--- y tomando clases se obtiene
 \[
@@ -288,17 +287,21 @@ para todo $r\in\mathbb Z$. Eso se hace por inducción sobre el número de celdas
 \begin{nota}
    El pizarrón registra dos hechos auxiliares que conviene aislar porque son los dos lugares donde el argumento se apoya realmente en el lema de la clase anterior y no en generalidades.
 
-   \emph{(i) $\kappa$ es nulhomotópica.} La inclusión $X^*\wedge Y\hookrightarrow C_{f^*}\wedge C_f$ es nula. Es la razón por la que el cociente del segundo paso está bien definido: sin ella no se podría colapsar $X^*\wedge Y$ sin destruir información.
+   \emph{(i) $K$ es nulhomotópica.} El compuesto
+   \[
+   K\colon\ \Sigma(Y^*\wedge X)\xrightarrow{\ 1\wedge f-f^*\wedge1\ }(\Sigma Y^*\wedge Y)\vee(X^*\wedge\Sigma X)\xrightarrow{\ \Sigma\nu\vee\Sigma\mu\ }S^{n+1}
+   \]
+   es nulo. Sus dos sumandos son $\Sigma\nu\circ(1\wedge f)$ y $-\Sigma\mu\circ(f^*\wedge1)$, que son homótopos por la conmutatividad salvo homotopía del cuadrado del lema. Es la razón por la que la evaluación se factoriza a través de la cofibra de la coacción: sin la nulhomotopía no habría forma de bajar a $\rho$.
 
    \emph{(ii) El pegamento del cociente.} La igualdad
    \[
    \frac{C_{f^*}\wedge C_f}{X^*\wedge Y}\ \simeq\ \Bigl[\bigl(\Sigma Y^*\wedge Y\bigr)\vee\bigl(X^*\wedge\Sigma X\bigr)\Bigr]\cup_{1\wedge f-f^*\wedge1}C\bigl(\Sigma(Y^*\wedge X)\bigr)
    \]
-   identifica el morfismo de pegamento con la coacción del primer paso. Es la observación que hace funcionar la construcción de $\pi$: la evaluación del lema se factoriza a través del cociente. En la pizarra, junto al sumando $X^*\wedge Y$ de la descomposición, se dejó escrito al margen un «Ejercicio» que apunta precisamente a este punto: comprobar la nulhomotopía de $\kappa$ y la buena definición del cociente.
+   identifica el morfismo de pegamento con la coacción del primer paso. Es la observación que hace funcionar la construcción de $\pi$: la cofibra de la coacción, sobre la que vive $\rho$, es el cociente del producto de los conos. En la pizarra se dejó al margen un «Ejercicio» que apunta a este punto: comprobar formalmente el homeomorfismo que identifica el producto de los conos con la unión, y la buena definición del cociente.
 \end{nota}
 
-\begin{ejer}[La nulhomotopía de $\kappa$]
-Comprobar que la inclusión $\kappa\colon X^*\wedge Y\hookrightarrow C_{f^*}\wedge C_f$ es nulhomotópica, y deducir de ahí que el cociente $C_{f^*}\wedge C_f/(X^*\wedge Y)$ está bien definido. Es el ejercicio que se dejó apuntado en el margen de la pizarra.
+\begin{ejer}[El producto de los conos]
+Comprobar que el producto $C_{f^*}\wedge C_f$ se identifica con la unión $X^*\wedge Y\cup(\Sigma Y^*\wedge Y)\cup(X^*\wedge\Sigma X)$ mediante un homeomorfismo explícito ---el producto smash no distribuye sobre la unión de manera exacta--- y deducir de ahí que el cociente $C_{f^*}\wedge C_f/(X^*\wedge Y)$ es la cofibra de la coacción. Es el ejercicio que se dejó apuntado en el margen de la pizarra.
 \end{ejer}
 
 \begin{sol}
@@ -311,6 +314,8 @@ En la descomposición $C_{f^*}\wedge C_f\simeq X^*\wedge Y\cup(\Sigma Y^*\wedge 
 
 Falta cerrar la demostración de la \myref{teo:cofibra-dual}: hay que ver que el pegado de celdas no destruye las biyecciones. Ese es el paso que se apoya en que $X$ tenga dimensión finita, y el que cierra la inducción.
 
+El punto de partida es la conmutatividad del cuadrado del lema, que es una conmutatividad \emph{estable}, en $\SW$. Como el lema está enunciado para complejos CW punteados, hay que traducirla a esa categoría: allí la conmutatividad estable quiere decir conmutatividad \emph{salvo suspender}, de modo que basta reemplazar cada objeto por una suspensión suya suficientemente alta y trabajar con representantes inestables. Los morfismos que aparecen en esa traducción se llamaron en la pizarra $T$, $E$ y $E'$ ---el dual de $f$ y las dos evaluaciones---, todos ellos definidos tras suspender $m+k$ veces y para el mismo $k$.
+
 Sea $X$ un CW-complejo finito y sea $X'$ el subcomplejo del que se parte. El pegado de una celda de dimensión $m$ se describe con la sucesión cofibrada
 \[
 S^{m-1}\xrightarrow{\ \varphi\ }X'\xrightarrow{\ }X\xrightarrow{\ }\Sigma S^{m-1}=S^m ,
@@ -320,11 +325,13 @@ que en $\SW$ se escribe, con los desplazamientos explícitos,
 (S^m,0)\xrightarrow{\ [\varphi]\ }(X',m-1)\xrightarrow{\ }(X,m-1)\xrightarrow{\ }(S^{m+1},0).
 \]
 
+La sucesión se puede continuar hacia la izquierda, y es esa continuación la que aporta los términos que faltan en la inducción. Desplazándola $k$ lugares, la cofibra del morfismo del pegado pasa a escribirse $C_t^{-k}$, y un paso más a la izquierda aparece $C_t^{-k-1}$, que en la pizarra era el término extremo de la escalera de cinco términos del paso siguiente.
+
 El paso de inducción consiste en suponer que la biyección
 \[
 \set*{\Sigma^rS,\ C_{t-1}}\xrightarrow{\ \cong\ }\set*{\Sigma^rC_{t-1}\wedge W,\ S}
 \]
-ya se conoce para el complejo $C_{t-1}$ con menos celdas, y deducirla para $C_t$, el complejo que se obtiene pegando la celda $D=S^m$. El argumento es el mismo de la \myref{lema:criterio-dual}: se aplican los dos funtores a la sucesión cofibrada del pegado y se usa el lema de los cinco. Aquí los dos funtores tienen \emph{varianza opuesta} ---$\set*{\Sigma^rS,\ -}$ es covariante y $\set*{\ -\wedge W,\ S}$ es contravariante---, de modo que las dos filas del diagrama van en sentidos contrarios. Aplicándolos a la sucesión cofibrada
+ya se conoce para el complejo $C_{t-1}$ con menos celdas, y deducirla para $C_t$, el complejo que se obtiene pegando la celda $D=S^m$. El argumento es el mismo de la \myref{lema:criterio-dual}: se aplican los dos funtores a la sucesión cofibrada del pegado y se usa el lema de los cinco. Aquí los dos funtores tienen \emph{varianza opuesta} ---$\set*{\Sigma^rS,\ -}$ es covariante y $\set*{\ -\wedge W,\ S}$ es contravariante---, de modo que las dos filas del diagrama van en sentidos contrarios. Que eso sea posible se debe a que una sucesión cofibrada sirve tanto para mapeos \emph{hacia} un espacio como \emph{desde} un espacio: es exacta en las dos direcciones, y por eso los dos funtores pueden aplicarse a la misma sucesión aunque uno sea covariante y el otro contravariante. Aplicándolos a la sucesión cofibrada
 \[
 C_{t-1}\longrightarrow C_t\longrightarrow \Sigma D\longrightarrow \Sigma C_{t-1}
 \]
@@ -336,6 +343,8 @@ se obtiene
 \end{tikzcd}
 \]
 Las dos filas son exactas por la \myref{prop:exacta}: la superior en el sentido en que está escrita y la inferior leída de derecha a izquierda, que es lo que indica la dirección de sus flechas. El lema de los cinco se aplica a esta configuración cruzada ---equivalentemente, invirtiendo la fila inferior para que las dos vayan en el mismo sentido, que es lo que se hizo en el pizarrón---. Las flechas verticales de $C_{t-1}$, $\Sigma C_{t-1}$ y $\Sigma D$ son isomorfismos: las de $C_{t-1}$ y $\Sigma C_{t-1}$ por hipótesis de inducción, y las de $\Sigma D$ y $D$ porque $D$ y $\Sigma D$ son esferas y en ese caso la biyección es la hipótesis del criterio. Por el lema de los cinco, la flecha central ---la que corresponde a $C_t$--- también es un isomorfismo. Como los pegados se construyen con un número finito de pasos, la biyección vale para todo $Z$.
+
+En la pizarra el mismo argumento se escribió como una escalera de cinco términos inducida por la sucesión del pegado, en lugar de las dos filas de cuatro columnas. Las biyecciones de los extremos son las conocidas ---las de $X'$ y $Y'$ por la hipótesis de dualidad, las de la esfera por el criterio---, y la flecha central, la única que no se conoce de antemano, es el candidato que se construye tomando el producto smash con la identidad y componiendo con $\pi$; conviene leerla como una desuspensión de la cofibra $C_t$, que es lo que la hace encajar con los términos vecinos. Por el lema de los cinco, si las flechas laterales son isomorfismos, la central también lo es, y con ello queda cerrada la inducción. Los dos diagramas son el mismo argumento, escrito uno con la fila inferior invertida.
 
 Quedan las dos comprobaciones que en el pizarrón se hacían por separado, y que son las que garantizan que el lema de la clase anterior se puede aplicar en cada paso.
 

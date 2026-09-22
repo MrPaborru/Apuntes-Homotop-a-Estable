@@ -37,6 +37,7 @@ interpretados dentro de \(\Top\). En esta categoría:
 \item los espacios de funciones llevan la topología compacto-abierta compactamente generada;
 \item los cocientes, límites y colímites se interpretan dentro de \(\Top\), no simplemente dentro de la categoría ingenua de todos los espacios.
 \end{itemize}
+Conviene precisar en qué sentido se modifican estas construcciones. Al formar un límite, el conjunto subyacente no cambia, pero sí puede cambiar la topología; el producto es el caso típico, pues puede requerir una \(k\)-ificación. Al formar un colímite, en cambio, puede cambiar incluso el conjunto subyacente, como ocurre con los cocientes. La interpretación categórica descrita arriba permite tratar ambos casos sin tener que seguir cada modificación por separado.
 Conviene tener presente que cuando \(X\) y \(Y\) son espacios compactos Hausdorff o CW-complejos finitos ---la situación que aparecerá casi siempre en este curso--- ninguna de estas construcciones se modifica respecto de la categoría de todos los espacios topológicos.
 Con estas convenciones existe un homeomorfismo natural
 \[
@@ -281,6 +282,8 @@ Cuando Freudenthal garantiza que la sucesión se estabiliza, el colímite coinci
 \pi_i^s(X)\cong\pi_{i+k}(\Sigma^kX),\qquad k\gg0.
 \]
 El colímite sigue teniendo sentido aunque la sucesión no se vuelva literalmente constante. Esta observación será importante para espacios o espectros más generales.
+
+La estabilización tiene una consecuencia práctica apreciable. Calcular grupos de homotopía es bastante más difícil que calcular homología o cohomología: para estas últimas se dispone de Mayer--Vietoris y de la sucesión exacta del par, mientras que para homotopía las herramientas existentes son más débiles. La estabilización reduce el problema, pues para conocer todos los grupos \(\pi_{i+k}(\Sigma^kX)\) de las suspensiones de un mismo espacio basta calcular un número finito de ellos, los anteriores al rango en que la sucesión se estabiliza; a partir de ahí todos coinciden salvo isomorfismo.
 Se escribe
 \[
 \pi_i^s\coloneqq \pi_i^s(S^0)=\varinjlim_k\pi_{i+k}(S^k).
@@ -344,7 +347,7 @@ La acción de suspender mapas induce una función $[X,Y]_* \to [\Sigma X, \Sigma
 Si $X$ es un CW-complejo punteado de dimensión a lo más $2n$ y $Y$ es un CW-complejo punteado $n$-conexo, entonces $[X,Y]_* \to [\Sigma X, \Sigma Y]_*$ es una biyección.
 \end{prop}
 
-\begin{ejer}[Estabilización de clases de homotopía]
+\begin{ejer}[Estabilización de clases de homotopía]\label{ejer:biysus}
 Sean $X$ y $Y$ CW-complejos punteados, con $X$ de dimensión finita. Probar que existe $j_0$ tal que
 \[
 [\Sigma^jX,\Sigma^jY]_*\cong[\Sigma^{j+1}X,\Sigma^{j+1}Y]_*\qquad\text{para todo }j\ge j_0.
@@ -397,6 +400,9 @@ Una forma clásica de la dualidad de Alexander (véase \cite{hatcher2002}) afirm
 \widetilde H_i(S^n-X)\cong\widetilde H^{n-i-1}(X).
 \]
 Así, la cohomología de \(X\) determina la homología de su complemento.
+
+Este resultado fue el fenómeno estable que más motivó el desarrollo de la homotopía estable. Los demás fenómenos estables ya se conocían, pero no se les concedía mayor importancia, y los grupos de homotopía estable se veían más bien como una curiosidad. La dualidad de Alexander, en cambio, resultaba extraña y se quería entender con mayor profundidad. Su enunciado tiene un aire de dualidad de Poincaré, aunque el resultado sigue siendo llamativo: permite recuperar la homología de un espacio a partir de la de su complemento.
+
 Esto no significa que determine su tipo de homotopía inestable. Por ejemplo, todos los nudos \(K\subseteq S^3\) son homeomorfos a \(S^1\), pero sus complementos \(S^3-K\) pueden tener grupos fundamentales diferentes. La homología de los complementos es esencialmente la misma, pero su homotopía inestable conserva información sobre cómo está encajado el nudo.
 Sin embargo, Spanier y Whitehead descubrieron una versión estable más fuerte: bajo las hipótesis de finitud apropiadas, el complemento proporciona un dual estable de \(X\), con un desplazamiento determinado por la dimensión de la esfera ambiente. En otras palabras, el tipo de homotopía estable de $X$ sí determina el tipo de homotopía estable de $S^n-X$.
 
@@ -408,6 +414,7 @@ Sin embargo, Spanier y Whitehead descubrieron una versión estable más fuerte: 
 \subsection{Por qué introducir espectros}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 La suspensión $\Sigma\colon\Ho(\Topstar)\longrightarrow\Ho(\Topstar)$ no es invertible. No todo espacio es una suspensión y, aun cuando lo sea, una desuspensión no tiene por qué ser única.
+No se conoce una caracterización completa de los espacios que son suspensiones, pero sí hay condiciones necesarias que permiten descartar candidatos. La primera es cohomológica: en el anillo de cohomología de una suspensión, todo producto de clases de dimensión positiva es nulo, de modo que basta exhibir un producto no nulo para concluir que el espacio no es una suspensión. La segunda es homotópica: para todo espacio \(Z\), el conjunto \([\Sigma A,Z]_*\) tiene estructura de grupo, de modo que si para un espacio \(X\) existe algún \(Z\) tal que \([X,Z]_*\) no es un grupo, entonces \(X\) no puede ser una suspensión.
 Los espectros amplían la categoría de espacios para convertir formalmente la suspensión en una equivalencia.
 
 Un espectro secuencial \(E\) (noción introducida por \cite{lima1959}) consiste, de manera elemental, en espacios punteados $E_0,E_1,E_2,\ldots$ y funciones estructurales $\sigma_n\colon\Sigma E_n\longrightarrow E_{n+1}$
@@ -417,6 +424,8 @@ La categoría que construiremos de espectros $\Sp$ admite un funtor $\Sigma^\inf
 \Sigma^\infty X=(X,\Sigma X,\Sigma^2X,\ldots).
 \]
 Existe además un funtor de espacio de lazos infinitos $\Omega^\infty\colon\Sp\longrightarrow\Topstar$ que, bajo las condiciones apropiadas, es adjunto derecho de \(\Sigma^\infty\).
+
+Conviene leer \(\Sigma^\infty\) como una inclusión en cierto sentido: todo espacio da lugar a un espectro, pero hay más espectros que espacios. La diferencia es sustancial a la hora de construir teorías. Una teoría de (co)homología es un funtor, es decir, recibe un espacio y devuelve grupos abelianos. Los espectros no se comportan así; se parecen más a los espacios, en el sentido de que se pueden pegar y multiplicar entre sí. Esa posibilidad de fabricar espectros nuevos a partir de otros es lo que permite producir teorías de (co)homología nuevas a partir de teorías ya conocidas.
 
 El esquema siguiente resume las relaciones entre estos objetos.
 \begin{center}
@@ -437,7 +446,7 @@ El esquema siguiente resume las relaciones entre estos objetos.
 \vspace{0.5em}
 \emph{Resumen de algunas cosas que se logran con espectros}:
 \begin{enumerate}
-\item invertir formalmente la suspensión;
+\item invertir formalmente la suspensión; aunque no se haría por sí solo, este procedimiento da lugar a la inversión de otros funtores formales en contextos que no son el de la homotopía;
 \item construir nuevas teorías de cohomología y de homología;
 \item dar un marco teórico a dualidades que no lo tenían en homotopía inestable, o mejorar las que sí lo tenían;
 \item justificar por qué las teorías de cohomología multiplicativa se comportan como anillos, y extender las nociones de anillo y de módulo a este contexto;
@@ -460,6 +469,8 @@ mientras que la teoría homológica asociada viene dada por
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 En la homotopía inestable, primero se tienen espacios y funciones; después se pasa a clases de homotopía y, finalmente, a formalismos como categorías de modelos o \(\infty\)-categorías.
+
+Junto con las categorías de modelos, hoy se dispone de otras maneras de hacer homotopía formal, como las categorías de cofibraciones y las categorías homotópicas generales. Los conjuntos simpliciales proporcionan otro modelo de \(\Ho(\Top)\): todo lo que se puede hacer con espacios se puede hacer con ellos, y resultan preferibles en algunos contextos. Aun así, a nivel básico \(\Top\) sigue siendo la mejor opción, y es la primera categoría que se aprende.
 
 Históricamente, la homotopía estable siguió en parte el camino inverso. Primero se comprendieron las clases estables de mapas y la categoría que debían formar. Solo posteriormente se construyeron modelos puntuales de espectros que realizaran correctamente todas las operaciones esperadas.
 
@@ -492,11 +503,15 @@ Los espectros secuenciales modelan la teoría homotópica estable, pero su produ
 
 Los espectros simétricos y los espectros ortogonales incorporan simetrías adicionales y admiten categorías de modelos monoidales adecuadas. En la valoración que se hizo en clase, los simétricos «se comportan bastante bien salvo detalles», mientras que los ortogonales son «los mejor portados pero muy técnicos». Desde una perspectiva moderna, todos estos modelos presentan la misma \(\infty\)-categoría estable de espectros, aunque sus propiedades puntuales sean distintas.
 
+La elección de empezar por los espectros secuenciales y por la categoría de Spanier--Whitehead responde a un criterio expositivo: los espectros ortogonales son los que mejor se comportan, pero también los más técnicos, y estudiarlos desde el principio hace perder buena parte de la intuición sobre por qué las cosas se definen así. En la práctica conviene conocer varios modelos, pues cada uno resulta cómodo para fines distintos. Históricamente, al teorema de imposibilidad de Lewis le siguió un resultado de posibilidad obtenido al debilitar ciertas condiciones, y los espectros simétricos, que aportaron objetos bien portados, aparecieron en los años noventa.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Propiedades esperadas de la categoría homotópica estable}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 La categoría homotópica estable \(\Ho(\Sp)\) debe satisfacer, entre otras, las siguientes propiedades (véase \cite{margolis1983}).
+
+Estos axiomas provienen del desarrollo histórico. La categoría de Spanier--Whitehead era incompleta, pero ya poseía una parte buena que no se quería perder: la estructura triangulada y la estructura simétrica monoidal con unidad. Lo que se busca es una categoría que funcione bien y conserve esas propiedades, añadiendo además lo que faltaba, en particular los coproductos, que la categoría de Spanier--Whitehead no tenía.
 
 \begin{enumerate}
 \item\emph{Coproductos.} Debe admitir coproductos arbitrarios, representados por wedges: $\bigvee_{\alpha}E_\alpha$.
@@ -540,6 +555,10 @@ Sus objetos son parejas $(X,m)$ donde \(X\) es un CW-complejo punteado y \(m\in\
 (X,m)\simeq\Sigma^mX.
 \]
 Cuando \(m<0\), la expresión representa una desuspensión formal, i.e., $(X,-1)\simeq\Sigma^{-1}X$.
+
+\begin{nota}
+   El circunflejo de \(\ESW\) distingue la categoría extendida de la categoría de Spanier--Whitehead no extendida, que es la que funciona como categoría homotópica estable y a la que se llama \(\SW_F\). Hay quien denota simplemente \(SW\), sin circunflejo, a la versión extendida. Aquí se adopta el circunflejo porque \(\ESW\) será la que se use con mayor frecuencia.
+\end{nota}
 
 Los conjuntos de morfismos se definen por
 \[
@@ -632,6 +651,8 @@ conmuta salvo homotopía. Por tanto
 Esto prueba la bilinealidad. En consecuencia, la categoría de Spanier--Whitehead es una categoría preaditiva.
 \end{sol}
 
+Este es un fenómeno nuevo respecto de la categoría de espacios: en \(\Ho(\Topstar)\) los conjuntos de morfismos no son en general grupos abelianos.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Suspensión infinita hacia Spanier--Whitehead}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -640,12 +661,8 @@ Existe un funtor
 \[
 \Sigma^\infty\colon\Ho(\CWstar)\longrightarrow\ESW
 \]
-definido por $X\longmapsto(X,0),\qquad [f]\longmapsto[f]_0$.
-Este funtor no es plenamente fiel.%
-\footnote{
-    No es fiel porque dos funciones no homotópicas pueden volverse homotópicas después de suspender. Por ejemplo, la suspensión de un producto de Whitehead es nula, aunque el producto de Whitehead original puede no serlo.
-}
-
+definido por $X\longmapsto(X,0),\;[f]\longmapsto[f]_0$.
+Este funtor no es fiel porque dos funciones no homotópicas pueden volverse homotópicas después de suspender. Por ejemplo, la suspensión de un producto de Whitehead es nula, aunque el producto de Whitehead original puede no serlo.
 Tampoco es pleno porque una clase estable puede no desuspender hasta una función entre los espacios originales. Por ejemplo,
 \[
 \{(S^1,0),(S^0,0)\}\cong\pi_1^s\cong\mathbb Z/2,

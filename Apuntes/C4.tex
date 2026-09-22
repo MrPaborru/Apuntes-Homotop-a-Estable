@@ -106,6 +106,8 @@ es decir, $F_0=\Sigma\alpha\circ\pi$ y $F_1=\pi'\circ\gamma$. Así, $\pi'\circ\g
 
 \begin{nota}
    La homotopía $F$ es una reparametrización: en la etapa $s$ la región $[0,\tfrac12]$ del cono, que $\pi'\gamma$ envía al punto base, se encoge hasta $[0,\tfrac s2]$, y el resto del intervalo se reescala linealmente sobre $[0,1]$ mediante $t\mapsto\frac{2t-s}{2-s}$. La pizarra registra la reparametrización inversa, $u\mapsto(1-\tfrac s2)u+\tfrac s2$; la fórmula anterior es la que hace coincidir los valores en $s=0$ y $s=1$ con $\Sigma\alpha\circ\pi$ y $\pi'\circ\gamma$ respectivamente.
+
+   El mecanismo es el mismo que en $\pi_1$ al concatenar con el camino constante: las dos aplicaciones no coinciden, pero su discrepancia se reduce al tiempo que cada una permanece en el punto base, y una reparametrización del intervalo la elimina.
 \end{nota}
 
 Con esto queda verificada la única pieza que faltaba del axioma \textup{TR5}. El lema se aplica después de suspender los morfismos hasta un nivel común en el que ya están definidos directamente entre espacios, y las conmutaciones que se necesitan son todas salvo homotopía; por eso basta con $\gamma\circ i=i'\circ\beta$ y $\pi'\circ\gamma\simeq\Sigma\alpha\circ\pi$.
@@ -114,11 +116,19 @@ Con esto queda verificada la única pieza que faltaba del axioma \textup{TR5}. E
    Vale la pena observar la economía del enunciado: el morfismo $\gamma$ está \emph{forzado} sobre $Y$ (debe ser $i'\beta$) y sobre el cociente solo se le pide conmutar salvo homotopía. Esa holgura es exactamente la que permite construir $\gamma$ pegando dos fórmulas sobre las dos mitades del cono, y es también la razón de que el lema sea un enunciado inestable: en homotopía inestable las equivalencias homotópicas de conos son la herramienta natural, mientras que en la categoría estable ya se dispone del axioma.
 \end{nota}
 
+\begin{nota}
+   La utilidad práctica del axioma del octaedro es la que justifica su presencia: proporciona el enunciado de que la cofibra de un morfismo entre cofibras es la cofibra, y su dual de que la fibra de un morfismo entre fibras es la fibra. En los cálculos concretos esos dos enunciados ahorran trabajo. Una categoría \emph{pretriangulada} es la que resulta de suprimir el axioma del octaedro y conservar el resto de la estructura; todo lo desarrollado hasta aquí podría haberse formulado en ese marco, sin necesidad del axioma. La noción de categoría triangulada se atribuye a Verdier.
+\end{nota}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Teorías de homología y cohomología reducidas}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Con $\SW$ y $\ESW$ ya establecidas como categorías trianguladas, disponemos de sucesiones exactas largas asociadas a cada sucesión cofibrada. La pregunta de esta clase es si esas sucesiones provienen de una teoría de (co)homología, y conviene por tanto recordar los axiomas con precisión.
+
+\begin{nota}
+   Las sucesiones exactas largas se obtuvieron en $\SW$, sobre CW-complejos finitos, donde todos los conjuntos de morfismos estabilizan y la exactitud se lee tras estabilizar lo suficiente. En $\ESW$ los conjuntos de morfismos pueden no estabilizar, de modo que no se dispone de un nivel común; la exactitud sigue siendo válida y puede comprobarse directamente.
+\end{nota}
 
 \begin{defi}\label{defi:cohomologia-reducida}
 Una \emph{teoría de cohomología reducida} es una sucesión de funtores contravariantes
@@ -147,6 +157,10 @@ es exacta para todo $n\in\mathbb Z$, donde $i\colon A\hookrightarrow X$ es la in
 es un isomorfismo.
 \end{enumerate}
 \end{defi}
+
+\begin{nota}
+   Los axiomas admiten una presentación alternativa con cuatro puntos: se postula la existencia de las transformaciones naturales $\sigma^n$ y se añade como cuarto axioma, llamado a veces de escisión o de suspensión, que cada $\sigma^n$ sea un isomorfismo. Aquí $\sigma^n$ ya forma parte de la estructura del $\tilde h^n$, de modo que bastan los tres axiomas anteriores.
+\end{nota}
 
 El axioma de exactitud se enuncia solo para tres términos porque, junto con los isomorfismos de suspensión, produce automáticamente una sucesión exacta larga; ese encadenamiento es el contenido de la \myref{defi:cohomologia-reducida} y se detalla en la \myref{prop:les} más adelante. La dirección de las flechas merece un comentario: en $\tilde h^n(X/A)\to\tilde h^n(X)\to\tilde h^n(A)$ el funtor es contravariante, de modo que las flechas van \emph{al revés} que las de la sucesión cofibrada $A\to X\to X/A$.
 
@@ -254,7 +268,7 @@ Encadenando ambos tramos con el cambio de índice $n\mapsto n+1$ en el segundo s
 \subsection{Un primer intento de representación}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Ya disponemos de un mecanismo que produce sucesiones exactas largas: los conjuntos de morfismos de $\SW$. En efecto, por la clase anterior el funtor $\set*{C,-}$ convierte triángulos distinguidos en sucesiones exactas largas, y por tanto en algo muy parecido a una teoría de cohomología. La pregunta natural es si \emph{toda} la teoría puede obtenerse así, y el primer intento consiste en tomar un objeto fijo $(Z,m)$ de $\SW$ y definir
+Ya disponemos de un mecanismo que produce sucesiones exactas largas: los conjuntos de morfismos de $\SW$. En efecto, por la clase anterior el funtor $\set*{C,-}$ convierte triángulos distinguidos en sucesiones exactas largas, y por tanto en algo muy parecido a una teoría de cohomología. El punto de partida es la representabilidad clásica de la cohomología singular por espacios de Eilenberg--MacLane, donde los grupos se escriben como clases de homotopía a un espacio fijo; el mismo esquema puede intentarse dentro de $\SW$, reemplazando los espacios por objetos de la categoría. La pregunta natural es si \emph{toda} la teoría puede obtenerse así, y el primer intento consiste en tomar un objeto fijo $(Z,m)$ de $\SW$ y definir
 \[
 \tilde h^n(X)\coloneqq\set*{(X,-n),(Z,m)}.
 \]
@@ -406,7 +420,7 @@ es decir, $[f]=[\varphi]\in[\Sigma^nX,S^n]_*$. Escribiendo $\iota_r\colon S^r\to
 \]
 es decir, elementos de $\pi_{n+r}(S^n)$.
 
-Ahora bien, para $r\ge n$ el grupo $\pi_{n+r}(S^n)$ es \emph{finito}: el único grupo de homotopía inestable infinito de $S^n$ es $\pi_{2n-1}(S^n)\cong\mathbb Z\oplus(\text{finito})$, y $r\ge n$ fuerza $n+r\ge2n>2n-1$. Por tanto cada clase $\varphi\circ\Sigma^n\iota_r$ tiene orden finito; sea $e_r$ ese orden y sea $3^{a_r}$ la mayor potencia de $3$ que divide a $e_r$.
+Ahora bien, para $r\ge n$ el grupo $\pi_{n+r}(S^n)$ es \emph{finito}. En efecto, los únicos grupos de homotopía inestables de $S^n$ que pueden no ser finitos son $\pi_n(S^n)\cong\mathbb Z$ y $\pi_{2n-1}(S^n)\cong\mathbb Z\oplus(\text{finito})$; como $r\ge n$ fuerza $n+r\ge2n$, el índice $n+r$ no es ninguno de esos dos, y $\pi_{n+r}(S^n)$ es finito. Por tanto cada clase $\varphi\circ\Sigma^n\iota_r$ tiene orden finito; sea $e_r$ ese orden y sea $3^{a_r}$ la mayor potencia de $3$ que divide a $e_r$.
 
 La conclusión se obtiene comparando dos resultados de la literatura, que enunciamos por separado.
 \end{proof}
@@ -449,11 +463,15 @@ Finalmente, si $(X,0)$ fuera el coproducto de la familia $\{(S^r,0)\}_{r\ge0}$, 
    El argumento no usa nada especial del objeto $S^0_0$ salvo que sus grupos de homotopía estable son los de las esferas; el mismo esquema, con $S^0_0$ reemplazado por un objeto fijo cualquiera, muestra que la cuña infinita nunca se comporta como coproducto en $\SW$. Lo que falla, en el fondo, es que $\SW$ no es cerrada bajo coproductos infinitos y que el funtor canónico $\Ho(\CWstar)\to\SW$ no los preserva; es exactamente la limitación que motiva el paso a las categorías de espectros, donde la cuña infinita \emph{sí} es el coproducto.
 \end{nota}
 
+\begin{nota}
+   El resultado debe leerse con precisión: muestra que la cuña infinita no es el coproducto de la familia $\{S^r\}_{r\ge0}$, es decir, que el coproducto no es el candidato esperado. No decide si esa familia admite algún coproducto en $\SW$; el argumento no lo establece y la referencia de la que procede tampoco lo menciona.
+\end{nota}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{La cohomología singular no es representable así}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-El ejemplo anterior tiene una consecuencia inmediata sobre el problema de representación: el candidato $\tilde h^n(X)=\set*{(X,-n),(Z,m)}$ no puede coincidir con una teoría de cohomología que cumpla la aditividad general.
+El ejemplo anterior muestra que el candidato $\tilde h^n(X)=\set*{(X,-n),(Z,m)}$ no puede coincidir con una teoría de cohomología que cumpla la aditividad general. La contradicción puede alcanzarse, sin embargo, por una vía más barata, que es la que se siguió en clase: basta evaluar en $S^0$ y remitirse a la imposibilidad de un espacio con un solo grupo de homotopía estable no nulo.
 
 \begin{teo}\label{teo:no-representable}
 No existe un CW-complejo finito $Z$ ni un entero $m$ tales que
@@ -485,15 +503,12 @@ Por tanto
 \]
 Es decir, $Z$ tendría todos sus grupos de homotopía estable triviales excepto uno, en el que sería $\mathbb Z$. Como $\pi^s_k(Z)=0$ para $k<0$, ese único grado no nulo es $-m\ge0$.
 
-Pero la evaluación en $X=S^0$ agota las consecuencias de la hipótesis: para cualquier otro $X$, la compatibilidad con la aditividad ---que la hipótesis obliga a que se cumpla, pues $\tilde H^*$ la satisface--- forzaría que el candidato también la cumpliera. Tomando la familia $\{S^r\}_{r\ge0}$ y usando la naturalidad de las inclusiones se obtiene un diagrama conmutativo
-\[
-\begin{tikzcd}[column sep=large, row sep=large]
-\tilde H^n\bigl(\bigvee_{r\ge0}S^r\bigr) \arrow[r,"\cong"] \arrow[d,"\cong"'] & \prod_{r\ge0}\tilde H^n(S^r)\\
-\set*{(\bigvee_{r\ge0}S^r,-n),(Z,m)} \arrow[r] & \prod_{r\ge0}\set*{(S^r,-n),(Z,m)},
-\end{tikzcd}
-\]
-en el que la flecha superior es un isomorfismo por el axioma de aditividad y la inferior no es sobreyectiva por el \myref{ejem:cuna}. Contradicción.
+Pero eso es exactamente lo que la \myref{prop:no-existe} prohíbe: no existe ningún CW-complejo finito cuyos grupos de homotopía estable sean todos nulos salvo uno, en el que valgan $\mathbb Z$. La contradicción queda así remitida a esa proposición.
 \end{proof}
+
+\begin{nota}
+   Conviene subrayar el orden en que se procedió en clase, porque es el que explica la estructura del capítulo. La reducción anterior se anunció \emph{antes} de disponer de su cierre: el profesor evaluó en $S^0$, llegó a que $Z$ habría de tener un único grupo de homotopía estable no nulo y señaló que «a esto es a lo que queremos llegar a una contradicción». Solo después probó que $\pi_*^s(-)$ es una teoría de homología reducida ---que es lo que da sentido a la proposición--- y dejó la contradicción para el final, donde se cierra con la doble suspensión y el teorema de Hurewicz. El \myref{ejem:cuna} da una segunda vía a la misma contradicción, por el axioma de aditividad; es la que el profesor había explorado antes y no la que empleó para cerrar el argumento.
+\end{nota}
 
 \begin{nota}
    El \myref{teo:no-representable} explica por qué la homotopía estable no puede contentarse con $\SW$: uno de sus propósitos es \emph{parametrizar} las teorías de cohomología, y eso exige que los objetos representantes admitan cuñas infinitas. La cohomología singular es el primer ejemplo que muestra la insuficiencia.
@@ -507,7 +522,7 @@ en el que la flecha superior es un isomorfismo por el axioma de aditividad y la 
 \subsection{Los grupos de homotopía estable como teoría de homología}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-El fracaso anterior es de la cohomología, no de la homotopía estable. De hecho, los grupos de homotopía estable forman por sí mismos una teoría de homología reducida, y ese es el ejemplo positivo que buscábamos.
+El fracaso anterior es de la cohomología, no de la homotopía estable. De hecho, los grupos de homotopía estable forman por sí mismos una teoría de homología reducida, y ese es el ejemplo positivo que buscábamos. El contraste con los grupos de homotopía inestables es el que da sentido al resultado: los inestables no satisfacen los axiomas de homología, pues fallan la suspensión y la excisión, y es la estabilización la que repara ambas fallas.
 
 \begin{lema}\label{lema:pisteor}
 La asignación $X\mapsto\pi_n^s(X)$ define una teoría de homología reducida sobre $\CWstar$.
@@ -618,6 +633,10 @@ y de la \myref{prop:aditividad-pi}. Finalmente, $\tilde h_n(S^0)=\pi_n^s(S^0\wed
 \end{proof}
 
 \begin{nota}
+   La teoría de la \myref{prop:smash} tiene por coeficientes los grupos de homotopía estable de $K$, y para $K=S^0$ los de las esferas. Sus valores no se conocen en su totalidad, y sin embargo eso no impide disponer de la teoría y operar con ella.
+\end{nota}
+
+\begin{nota}
    Cuando $K=S^0$ se recupera la teoría del \myref{lema:pisteor}, con coeficientes $\pi_n^s$. Conviene tener cuidado con la notación: el símbolo $\pi_n^s(-)$ designa a la vez la teoría de homología reducida y el grupo de coeficientes, que en la pizarra se escribió $\pi_n^s(*)$ para distinguirlo,
    \[
    \pi_n^s(*)=\pi_n^s(S^0)=\pi_n^s,
@@ -691,6 +710,10 @@ Supongamos ahora $\tilde H_p(Z)=0$ para $1\le p\le k-1$ y consideremos la antidi
 \pi_n^s(Z)\cong\tilde H_n(Z). \qedhere
 \]
 \end{proof}
+
+\begin{nota}
+   El isomorfismo $\pi_n^s(Z)\cong\tilde H_n(Z)$ está inducido por el morfismo de Hurewicz. El homomorfismo de Hurewicz clásico factoriza a través de la estabilización, y esa factorización es la que proporciona el isomorfismo enunciado.
+\end{nota}
 
 \begin{nota}
    El \myref{teo:hurewicz} es el análogo estable del teorema de Hurewicz clásico, y su prueba ilustra bien el uso de la sucesión espectral de Atiyah--Hirzebruch: la hipótesis de que las primeras $n$ columnas de $\tilde H_*(Z)$ se anulan hace que el cálculo de $\pi_n^s(Z)$ quede reducido a un único término. En el caso inestable el enunciado es más delicado, porque la hipótesis debe incluir la simple conexión. Puede consultarse, junto con la construcción de la sucesión espectral, en \cite{switzer1975}; la referencia principal del curso es \cite{malkiewich}.

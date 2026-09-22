@@ -148,6 +148,8 @@ X\otimes X^\vee \arrow[r,"B_{X,X^\vee}"] \arrow[dr,"\mathrm{ev}'"'] & X^\vee\oti
 & X^\vee\otimes X
 \end{tikzcd}
 \]
+La dirección en que se aplica la trenza es indiferente. La dualidad en una categoría monoidal simétrica es el análogo de la noción de anillo conmutativo, donde el orden de los factores de un producto no importa, y aquí tampoco: las dos trenzas $B_{X,X^\vee}$ y $B_{X^\vee,X}$ son inversas entre sí, de modo que permutar los factores en un sentido o en el otro da el mismo resultado. Por eso la elección anterior es la natural, y la que hace encajar los dominios y codominios de $\mathrm{ev}'$ y $\mathrm{coev}'$.
+
 Para que $X$ sea un dual de $X^\vee$ hay que comprobar las dos identidades de zigzag con $\mathrm{ev}'$ y $\mathrm{coev}'$; por ejemplo, la que afirma que la composición
 \[
 X^\vee\xrightarrow{\ \lambda_{X^\vee}^{-1}\ }1\otimes X^\vee\xrightarrow{\ \mathrm{coev}'\otimes1_{X^\vee}\ }(X^\vee\otimes X)\otimes X^\vee\xrightarrow{\ \alpha_{X^\vee,X,X^\vee}\ }X^\vee\otimes(X\otimes X^\vee)\xrightarrow{\ 1_{X^\vee}\otimes\mathrm{ev}'\ }X^\vee\otimes1\xrightarrow{\ \rho_{X^\vee}\ }X^\vee
@@ -207,7 +209,7 @@ donde los isomorfismos de los extremos son las unidades monoidales.
 \end{proof}
 
 \begin{nota}
-   La unicidad es «salvo isomorfismo» y no «a secas», y esa diferencia tendrá consecuencias en la sección siguiente: significa que \emph{no} hay una manera canónica de asignar a cada objeto su dual, sino solo una clase de isomorfismo. Es la misma situación que en álgebra homológica con los funtores derivados: el funtor $\mathrm{Tor}$ que se define al principio depende de las resoluciones proyectivas elegidas, y solo después se comprueba que resoluciones distintas dan funtores naturalmente isomorfos. En las categorías que aparecen en la práctica —y en particular en las de espectros— suele haber una elección canónica y el problema desaparece. (Este paralelismo con el álgebra homológica, y el ejemplo de los $R$-módulos que aparece más adelante, no se escribieron en la pizarra; es probable que provengan de la explicación oral de la clase, que se contrastará con la transcripción.)
+   La unicidad es «salvo isomorfismo» y no «a secas», y esa diferencia tendrá consecuencias en la sección siguiente: significa que \emph{no} hay una manera canónica de asignar a cada objeto su dual, sino solo una clase de isomorfismo. Es la misma situación que en álgebra homológica con los funtores derivados: el funtor $\mathrm{Tor}$ que se define al principio depende de las resoluciones proyectivas elegidas, y solo después se comprueba que resoluciones distintas dan funtores naturalmente isomorfos. En las categorías que aparecen en la práctica —y en particular en las de espectros— suele haber una elección canónica y el problema desaparece. (Este paralelismo con el álgebra homológica se explicó oralmente en clase: el profesor lo compara expresamente con «cuando dices que quieres hacer funtores derivados y tienes que escoger una resolución».)
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -215,6 +217,8 @@ donde los isomorfismos de los extremos son las unidades monoidales.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 La \myref{coro:unicidad-dual} dice que tomar el dual no define un funtor: para definir un funtor habría que elegir un dual para cada objeto, y esa elección no es canónica. Lo que sí se puede hacer es fijar los duales y construir entonces el funtor.
+
+La costumbre de trabajar con el dual de espacios vectoriales induce aquí una mala costumbre: la de pensar que el dual define siempre un funtor. En este contexto general no es así, pero casi. En el momento en que se fijan los duales, con los duales escogidos sí se tiene un funtor; la única libertad que queda es la elección, y esa elección es única salvo isomorfismo.
 
 Supongamos fijados duales $X^\vee$ e $Y^\vee$ de $X$ e $Y$. La composición
 \[
@@ -299,6 +303,8 @@ que dice que una aplicación de dos variables es lo mismo que una aplicación de
    \ihom(-,-)\colon\mathcal C^{\mathrm{op}}\times\mathcal C\longrightarrow\mathcal C
    \]
    se le llama el \emph{hom interno de $\mathcal C$}. En las categorías de espectros que aparecerán más adelante el hom interno es una mejora del conjunto de morfismos, y su existencia es una de las cosas que se ganan al pasar a espectros.
+
+   No hay una receta general para calcular el dual de un objeto, ni tampoco para construir su hom interno: cada categoría exige su propio método y no se dispone de una descripción que sirva para todas a la vez. En el caso de los espectros, la existencia de un hom interno se prueba con relativa facilidad, pero construirlo explícitamente es otra cosa.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -354,6 +360,8 @@ Que es simétrica monoidal es inmediato. Que es cerrada se sigue de la adjunció
 \]
 donde el hom interno de dos espacios vectoriales es el espacio de aplicaciones lineales, que tiene estructura de espacio vectorial sobre $k$.
 
+Conviene precisar el estatus de los morfismos de la dualidad: dar una evaluación no quiere decir evaluar de verdad, sino que exista un morfismo formal de modo que unos diagramas conmuten. Lo mismo vale para la coevaluación.
+
 Veamos que los dualizables son los de dimensión finita. Si $V$ es dualizable con dual $V^\vee$, la coevaluación es un morfismo
 \[
 \mathrm{coev}\colon k\longrightarrow V\otimes_k V^\vee,
@@ -363,6 +371,8 @@ que está determinado por la imagen de $1$, y esa imagen es una suma finita
 1\longmapsto\sum_{i=1}^{m}v_i\otimes f_i
 \]
 con $v_i\in V$ y $f_i\in V^\vee$. Obsérvese que no se pide que los $v_i$ formen una base ni los $f_i$ una base dual: la suma finita es forzosa porque $1$ es un elemento de $V\otimes_k V^\vee$, y todo elemento de un producto tensorial es suma finita de tensores elementales.
+
+En los cálculos que siguen se omiten los asociadores y las unidades, que no intervienen en el argumento.
 
 Consideremos ahora la composición
 \[
@@ -462,7 +472,7 @@ adjunto de $X\otimes1\xrightarrow{\ \rho_X\ }X$. El morfismo $u$ es la \emph{uni
 \[
 1\otimes\ihom(X,Y)\xrightarrow{\ u\otimes1\ }\ihom(X,X)\otimes\ihom(X,Y)\xrightarrow{\ \text{composición}\ }\ihom(X,Y)
 \]
-es la unidad $\rho_{1\otimes\ihom(X,Y)}$, como se comprueba adjuntando los dos miembros y usando que la composición del hom interno es el adjunto de $\mathrm{ev}\circ(\mathrm{ev}\otimes1)$. Este es el diagrama que se dibujó en la pizarra junto al apartado.
+es la unidad $\lambda_{\ihom(X,Y)}$, como se comprueba adjuntando los dos miembros y usando que la composición del hom interno es el adjunto de $\mathrm{ev}\circ(\mathrm{ev}\otimes1)$. Este es el diagrama que se dibujó en la pizarra junto al apartado.
 \item \emph{Ensamble.} Existe un morfismo
 \[
 \ihom(X,Y)\otimes Z\longrightarrow\ihom(X,\ Y\otimes Z),
@@ -483,7 +493,9 @@ donde el dominio se reordena para que las evaluaciones actúen sobre los pares c
 \end{enumerate}
 \end{prop}
 
-Todas estas propiedades son las análogas de las de los conjuntos de morfismos, y todas se prueban igual: se construye el morfismo del miembro derecho y se toma su adjunto. El \myref{teo:mackane-kelly} se encarga de los reordenamientos.
+Todas estas propiedades son las análogas de las de los conjuntos de morfismos, y todas se prueban igual: se construye el morfismo del miembro derecho y se toma su adjunto. El \myref{teo:mackane-kelly} se encarga de los reordenamientos. Los dos últimos apartados admiten además una lectura común: el producto tensorial es un funtor monoidal, de modo que el comportamiento que tiene respecto de los morfismos lo tiene también respecto de los homs internos.
+
+Falta en la lista la traducción de la asociatividad de los conjuntos de morfismos. Su análoga se obtiene con la misma composición del hom interno: componer tres factores usando la composición en los dos primeros y después en el tercero, o en el primero y después en los dos últimos, da el mismo resultado salvo el reordenamiento de los tres factores, y se comprueba del mismo modo que las anteriores.
 
 \begin{prop}\label{prop:ensamble-iso}
 Si $Z$ es dualizable, el morfismo de ensamble
@@ -505,7 +517,7 @@ y por la \myref{prop:hom-dual} el miembro derecho es naturalmente isomorfo a $Z^
 \[
 Z^\vee\otimes\ihom(X,\ Y\otimes Z)\longrightarrow\ihom(X,Y),
 \]
-que se obtiene componiendo la evaluación de $Z$ con la del hom interno. Comprobar que este morfismo es el inverso requiere jugar con la naturalidad de la adjunción; no se hizo en clase.
+que se obtiene componiendo la evaluación de $Z$ con la del hom interno. Es la hipótesis «$Z$ dualizable» la que habilita todas estas maniobras: cada vez que $Z$ pasa de un lado al otro de la adjunción se está usando su dual. Comprobar que este morfismo es el inverso requiere jugar con la naturalidad de la adjunción; no se hizo en clase.
 \end{proof}
 
 \begin{nota}
@@ -516,11 +528,13 @@ que se obtiene componiendo la evaluación de $Z$ con la del hom interno. Comprob
    no es un isomorfismo en general pero sí lo es cuando $Z$ es un $R$-módulo libre finitamente generado, que es precisamente el caso dualizable. El mismo fenómeno reaparecerá con los espectros.
 \end{nota}
 
+El desarrollo completo de estas propiedades, con casi todas sus demostraciones, está en \cite{malkiewich}, la referencia principal del curso; allí algunas de ellas quedan como ejercicio.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Categorías enriquecidas sobre sí mismas}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-La \myref{prop:hom-mor} tiene una lectura estructural. Una categoría enriquecida sobre una categoría monoidal $\mathcal V$ es una categoría en la que los morfismos entre dos objetos son objetos de $\mathcal V$ y la composición es un morfismo de $\mathcal V$. En una categoría monoidal simétrica cerrada $\mathcal C$, los homs internos son objetos de $\mathcal C$ y las propiedades del hom interno dan precisamente eso.
+La \myref{prop:hom-mor} tiene una lectura estructural. Una categoría enriquecida sobre una categoría monoidal $\mathcal V$ es una categoría en la que los morfismos entre dos objetos son objetos de $\mathcal V$ y la composición es un morfismo de $\mathcal V$. En una categoría monoidal simétrica cerrada $\mathcal C$, los homs internos son objetos de $\mathcal C$ y las propiedades del hom interno dan precisamente eso. En todo el capítulo se trabaja con categorías localmente pequeñas, de modo que $\hom_{\mathcal C}(X,Y)$ es un conjunto.
 
 \begin{prop}\label{prop:enriquecida}
 Sea $\mathcal C$ una categoría monoidal simétrica cerrada. Entonces $\mathcal C$ es una categoría enriquecida sobre sí misma, con
@@ -535,6 +549,8 @@ La categoría original se recupera de la enriquecida aplicando $\hom_{\mathcal C
 \begin{nota}
    El ejemplo de los complejos de cadenas lo aclara: la categoría de complejos enriquecida sobre sí misma tiene como objetos de morfismos los complejos $\ihom(C_*,D_*)_*$, y al aplicar $H_0$ se recuperan los morfismos de complejos. La versión enriquecida conserva además toda la homología superior, que la versión ordinaria no ve.
 
+   El mismo cuidado hay que tener con la categoría de espectros: al enriquecerla sobre sí misma tomando como objetos de morfismos los espectros $\ihom(X,Y)$, la categoría que resulta se sigue llamando categoría de espectros, pero no es la categoría de espectros de partida.
+
    Una categoría enriquecida sobre $\mathcal C$ puede a su vez ser monoidal simétrica, pero la simetría hay que pedirla en el sentido enriquecido, lo que requiere que $\mathcal C$ sea monoidal simétrica; aquí lo es, ya que nos estamos enriqueciendo sobre $\mathcal C$ misma.
 \end{nota}
 
@@ -548,7 +564,7 @@ La categoría original se recupera de la enriquecida aplicando $\hom_{\mathcal C
 
 Se vuelve ahora al contexto estable. Recordemos que $(\SW,\wedge)$ es una categoría monoidal simétrica, con unidad monoidal $(S^0,0)$. Lo que \emph{no} se sabe todavía es si es cerrada: no hay por ahora un adjunto derecho conocido para $-\wedge X$, y por tanto tampoco un candidato canónico a dual. Pero las consecuencias generales ya dan bastante.
 
-En el contexto estable se usa la notación $X^*$ para el dual, y a veces $DX$. Empecemos por la unidad.
+En el contexto estable se usa la notación $X^*$ para el dual, y a veces $DX$. El hom interno, cuando exista, tiene que ser un objeto de la misma categoría, es decir, un espectro, y se le suele denotar $F(X,Y)$. Empecemos por la unidad.
 
 \begin{prop}\label{prop:s0-dual}
 La unidad monoidal $(S^0,0)$ es dualizable y es su propio dual: $(S^0,0)^*=(S^0,0)$.
@@ -561,11 +577,20 @@ A continuación, las esferas. Recordemos la propiedad de desplazamiento de índi
 \[
 \set*{(A,m+r),\ (B,n)}\cong\set*{(A,m),\ (B,n-r)}
 \]
-naturalmente en $A$ y en $B$. Tomando $A=S^0$ y $B=S^0$ se obtiene
+naturalmente en los objetos $(A,m)$ y $(B,n)$. Como se hizo en la pizarra, se mantienen ambos objetos arbitrarios y se reescriben los desplazamientos como productos smash:
 \[
-\set*{(S^0,m+r),\ (S^0,n)}\cong\set*{(S^0,m),\ (S^0,n-r)},
+\begin{aligned}
+\set*{(A,m)\wedge(S^0,r),\ (B,n)}
+&\cong\set*{(A,m+r),\ (B,n)}\\
+&\cong\set*{(A,m),\ (B,n-r)}\\
+&\cong\set*{(A,m),\ (B,n)\wedge(S^0,-r)}.
+\end{aligned}
 \]
-es decir, que la esfera de dimensión $-r$ es un dual de la esfera de dimensión $r$:
+Estas biyecciones son naturales en las dos variables, por lo que expresan la adjunción
+\[
+-\wedge(S^0,r)\ \dashv\ -\wedge(S^0,-r).
+\]
+Por la \myref{prop:adjuncion}, $(S^0,-r)$ es un dual de $(S^0,r)$. Escribiendo $S^r=(S^0,r)$ para todo $r\in\mathbb Z$, se obtiene
 \[
 S^{-r}=(S^r)^* .
 \]
@@ -575,14 +600,39 @@ Encontrar explícitamente los morfismos de evaluación y coevaluación que exhib
 \end{ejer}
 
 \begin{sol}
-El más económico es el caso $r=1$, del que los demás se obtienen por suspensión. Para $r=1$ hay que dar
+Se trabaja con los objetos $S^r=(S^0,r)$, $S^{-r}=(S^0,-r)$ y $S=(S^0,0)$ de $\SW$. Por la definición del producto smash,
 \[
-\mathrm{ev}\colon S^{-1}\wedge S^1\longrightarrow S^0,
+S^{-r}\wedge S^r=(S^0\wedge S^0,0),
 \qquad
-\mathrm{coev}\colon S^0\longrightarrow S^1\wedge S^{-1}.
+S^r\wedge S^{-r}=(S^0\wedge S^0,0).
 \]
-En representantes, $S^{-1}$ es la desuspensión de $S^0$, y la evaluación es la clase del morfismo de colapso $S^{-1}\wedge S^1\to S^0$, que existe porque $S^{-1}\wedge S^1$ es establemente equivalente a $S^0$. La coevaluación es su transpuesta, y las dos identidades de zigzag se comprueban directamente sobre representantes, ya que en este caso todos los objetos involucrados son esferas y los morfismos se pueden escribir con coordenadas.
+Sea $u\colon S^0\wedge S^0\to S^0$ el homeomorfismo punteado que envía el único punto no base al único punto no base. Se eligen
+\[
+\mathrm{ev}=[u]\colon S^{-r}\wedge S^r\longrightarrow S,
+\qquad
+\mathrm{coev}=[u^{-1}]\colon S\longrightarrow S^r\wedge S^{-r}.
+\]
+Son morfismos explícitos: en cualquier nivel $N\geq0$ están representados por $\Sigma^N u$ y $\Sigma^N(u^{-1})$, respectivamente. Identificando $\Sigma^N(S^0\wedge S^0)$ con $S^N$, ambos representantes son $\id_{S^N}$. Esto vale para cualquier entero $r$, pues los desplazamientos $-r+r$ y $r-r$ se anulan antes de escoger representantes.
+
+Queda verificar los zigzags. Abreviemos $E=S^r$ y $D=S^{-r}$. Las dos composiciones que exige la \myref{defi:dual} son
+\[
+\begin{aligned}
+&\rho_E\circ(1_E\wedge\mathrm{ev})\circ\alpha_{E,D,E}
+\circ(\mathrm{coev}\wedge1_E)\circ\lambda_E^{-1},\\
+&\lambda_D\circ(\mathrm{ev}\wedge1_D)\circ\alpha^{-1}_{D,E,D}
+\circ(1_D\wedge\mathrm{coev})\circ\rho_D^{-1}.
+\end{aligned}
+\]
+Si $e$ denota el punto no base de $S^0$, el primer compuesto inserta dos factores $e$ a la izquierda y elimina los dos de la derecha; el segundo los inserta a la derecha y elimina los dos de la izquierda. En ambos casos el punto base permanece fijo y el punto no base recorre
+\[
+e\longmapsto[e,e,e]\longmapsto e.
+\]
+Los asociadores solo cambian los paréntesis y los unitores eliminan un factor $S^0$. No se intercambian factores. Además, $u$ y $u^{-1}$ tienen desplazamiento cero tanto en la fuente como en el blanco, de modo que los signos de la definición del smash se cancelan al tensarlos con una identidad. Por tanto, en un nivel suficientemente alto los dos compuestos son las identidades de $S^{N+r}$ y $S^{N-r}$, respectivamente. Sus clases son $1_E$ y $1_D$, como se quería.
 \end{sol}
+
+\begin{nota}
+   El ejercicio se dejó planteado en clase; la solución anterior es un desarrollo añadido. La evaluación elegida es la identificación estable de grado uno, no un colapso de un espacio de dimensión negativa.
+\end{nota}
 
 El resultado siguiente permite trasladar la dualidad de un objeto a sus suspensiones.
 
@@ -681,4 +731,10 @@ natural en $A$ y en $B$.
    El lema reduce un problema sobre toda la categoría a un problema sobre las esferas, y la razón es estructural: todo objeto de $\SW$ se obtiene de $S^0$ mediante una cantidad finita de suspensiones y de sucesiones cofibradas, y las sucesiones cofibradas dan lugar a sucesiones exactas en cualquiera de las dos entradas. Por eso basta con tener la adjunción para las esferas y propagarla con el lema de los cinco.
 
    Lo que falta para cerrar el resultado general es el mismo argumento pero partiendo de una sucesión cofibrada con los tres términos arbitrarios: si dos de ellos son dualizables, el tercero también. Eso es más delicado que lo anterior, porque no hay una evaluación natural predefinida para el tercer objeto y hay que construirla, con detalles de topología de conjuntos. Se hará en la clase siguiente.
+\end{nota}
+
+\begin{nota}
+   Los objetos dualizables no determinan por sí solos toda la categoría. Con los dualizables de la categoría homotópica estable no se obtienen todas las teorías de cohomología, pero sí todo lo que se detecta mediante condiciones de finitud, es decir, lo que concierne a los objetos compactos. La categoría no se recupera a partir de ellos sin más, porque siempre se pueden añadir objetos superfluos que no intervienen en esa parte.
+
+   El paralelismo con los espacios vectoriales es instructivo: los espacios de dimensión infinita son colímites de los de dimensión finita y en ese sentido se recuperan de ellos, pero hay cosas que se pueden hacer con un espacio de dimensión infinita que no se reducen a lo que ocurre en dimensión finita. En la categoría derivada ocurre lo mismo con los complejos perfectos: hay propiedades de la categoría derivada que no provienen de ellos, y no hay una equivalencia entre la categoría derivada y la subcategoría plena de complejos perfectos. Lo que sí cabe esperar es que la categoría se genere a partir de los objetos dualizables mediante ciertas operaciones.
 \end{nota}

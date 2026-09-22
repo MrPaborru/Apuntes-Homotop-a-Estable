@@ -10,6 +10,8 @@ El hilo conductor de la segunda mitad es un fenómeno que ya apareció al estudi
 \subsection{El punto de partida: la tabla de grupos de homotopía}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+La pregunta que se venía persiguiendo no era ya si $\SW$ representa todas las teorías de cohomología, sino si sirve al menos para la más sencilla de ellas, la cohomología singular. Lo que se demuestra a continuación es que tampoco: la contradicción se produce ya en ese caso mínimo.
+
 Retomamos la \myref{prop:no-existe} de la clase anterior, cuya demostración quedó en la primera parte. Recordemos el enunciado: no existe un CW-complejo finito $Z$ ni un entero $n\ge0$ tales que
 \[
 \pi_k^s(Z)\cong
@@ -268,11 +270,17 @@ respectivamente. Como $m+k$ y $l+k$ no tienen por qué tener la misma paridad, l
 
 En resumen: la composición «obvia» está bien definida a nivel de homeomorfismos, pero no es independiente de la elección de los representantes, ni siquiera tras estabilizar.
 
+\begin{nota}
+   Conviene precisar la noción de grado que se está usando. Si $f\colon S^n\to S^n$ es una función continua, su \emph{grado} es el único entero $\deg f$ tal que el homomorfismo inducido sobre $H_n$ manda un generador a $\deg f$ veces ese generador. Para $n\ge1$, un mapeo de $S^n$ en $S^n$ queda determinado, salvo homotopía, por su grado, y la suspensión no lo altera. Un reordenamiento de los factores de un producto de esferas que intercambia un factor de dimensión $p$ con uno de dimensión $q$ tiene grado $(-1)^{pq}$. Los signos que aparecen al comparar los dos representantes son de esta forma, y también lo serán los que corrigen la definición de $f\wedge g$.
+\end{nota}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{La composición corregida}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 La salida es incorporar los signos a la definición, de manera que las permutaciones que aparecen al cambiar de representante queden compensadas.
+
+La construcción se apoya en que un mapeo de esferas queda determinado, salvo homotopía, por su grado: como la discrepancia entre representantes es exactamente un signo, basta con incorporar ese signo a la definición para que la clase de $f\wedge g$ deje de depender del representante.
 
 La construcción corregida es la siguiente. Se separan las esferas que vienen del mapeo original de las que se añaden al estabilizar, y se define $f\wedge g$ como la clase del morfismo compuesto
 \[
@@ -454,6 +462,8 @@ El signo $(-1)^{mn}$ de la trenza es el punto fino de la proposición, y su pres
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 La \myref{prop:monoidal} dice que $\SW$ tiene la estructura que en álgebra se llama monoidal simétrica. Conviene fijar los axiomas, porque son los que gobiernan todas las manipulaciones de la segunda mitad de la clase.
+
+La definición se guía por una analogía con el álgebra: el producto monoidal se comporta como el producto de un anillo asociativo, con la diferencia de que las igualdades se sustituyen por isomorfismos naturales; la simetría añade la conmutatividad, también salvo isomorfismos naturales. Los axiomas de coherencia que siguen son, en este sentido, las relaciones que en un anillo asociativo y conmutativo se cumplen sin más.
 
 \begin{defi}\label{defi:monoidal}
 Una \emph{categoría monoidal} es una categoría $\mathcal C$ junto con
@@ -1033,7 +1043,7 @@ que es la conmutatividad del cuadrado del enunciado.
 La \myref{defi:dual} plantea de inmediato la pregunta de qué objetos admiten un dual. En el caso de $\SW$ la respuesta es completa.
 
 \begin{nota}
-   Esta subsección anticipa material que no aparece en la pizarra de este día: allí el trazo termina en la verificación de que los dos rectángulos conmutativos dan las identidades de zigzag. El enunciado y su demostración se incluyen aquí porque el profesor los anunció al comienzo del curso y porque la clase siguiente los usa; es probable que provengan de la explicación oral de esta sesión, y se contrastarán con su transcripción. La demostración se completa en la clase del 17/09.
+   El enunciado de esta subsección no está en la pizarra de este día, pero \emph{sí} se explicó oralmente en la clase. Hacia el final de la sesión el profesor afirma que todos los objetos de $\SW$ serán dualizables; relaciona la dualizabilidad con el carácter constructivo de los objetos ---«se construyen mediante un proceso finito, lo cual es lo que permite probar que todos los objetos de este tipo sean dualizables, porque puedes hacer como un tipo de inducción sobre eso»--- y advierte que «en general, no es que dualizable vaya a estar relacionado con finito», porque hay categorías sin noción natural de finitud en las que se toma a los dualizables como sustituto de ella. Enuncia además el criterio de rigidez para categorías trianguladas: que los duales de la suspensión sean los desuspendidos de los duales y que el dual de la cofibra sea la fibra del mapeo dual. Es, por tanto, material de clase. Lo que no se desarrolla allí es la demostración por inducción sobre celdas: el profesor solo da la idea, y el cierre de la prueba corresponde a la clase del 17/09.
 \end{nota}
 
 \begin{prop}\label{prop:dualizable-sw}
