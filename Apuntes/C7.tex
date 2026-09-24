@@ -526,30 +526,35 @@ Se toma la inmersión estándar de $\mathbb{RP}^2$ en $\mathbb{R}^3$ como cocien
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Motivación cohomológica}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Recordemos que la cohomología reducida admite una representación $\Tilde{H}^n(-) \cong [-,K(\mathbb Z,n)]_*$, por lo cual, el isomorfismo de suspensión $\sigma_n \colon \tilde H^n(-)\to \tilde H^{n+1}(\Sigma(-))$ induce un diagrama de isomorfismos naturales
+\[\begin{tikzcd}
+   \tilde H^n(-) \arrow[r,"\sigma_n"] \arrow[d,"\cong"'] & \tilde H^{n+1}(\Sigma(-)) \arrow[d,"\cong"]\\
+   \bigl[-,K(\mathbb Z,n)\bigr]_* \arrow[r,"\cong"] \arrow[dr,"\cong"',grisCIMAT] & \bigl[\Sigma(-),K(\mathbb Z,n+1)\bigr]_*\\
+   & \color{grisCIMAT}\bigl[-,\Omega K(\mathbb Z,n+1)\bigr]_* \arrow[u,"\text{iso. de adjunción }\Sigma\dashv\Omega"',grisCIMAT]
+\end{tikzcd}\]
+Esta representación $\bigl[-,K(\mathbb Z,n)\bigr]_* \cong \bigl[\Sigma(-),K(\mathbb Z,n+1)\bigr]_*$ es inducida, gracias al lema de Yoneda, mediante un $[\xi_n]\in \bigl[\Sigma K(\mathbb Z,n),K(\mathbb Z,n+1)\bigr]_*$ (de modo que coincide con $[\xi_n] \circ \Sigma(-)$). Los espacios $K(\mathbb Z,n)$ y morfismos punteados $\xi_n \colon \Sigma K(\mathbb Z,n) \to K(\mathbb Z,n+1)$ determinan al funtor $\tilde{H}^*$.
+
+\begin{nota}
+El diagrama de arriba mediante la adjunción $\Sigma \dashv\Omega$ también da una representación de $[-,\Omega K(\mathbb Z, n+1)]$, lo cual induce equivalencias homotópicas $\xi^\perp_n\colon K(\mathbb Z,n) \xrightarrow{\simeq} \Omega K(\mathbb Z,n+1)$ adjuntas a las $\xi^n$. Estas motivan la definición de $\Omega$-espectros, que son un poco más restrictivos que los espectros secuenciales para poder inducir siempre una teoría de cohomología. En clase usamos los $\Omega$-espectros como intermediarios para inducir las flechas $\xi_n$, pero la versión más general del lema de Yoneda hace que no sea necesario hacer esto.
+\end{nota}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Definición y espectros suspensión}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Se pasa ahora a la segunda mitad de la clase. La categoría $\SW$ resultó inadecuada para representar teorías de (co)homología, y el profesor anunció desde el principio del curso que la construcción que lo arregla es la de espectro secuencial. Conviene empezar por la definición, que es la que da sentido a todo lo demás.
 
 \begin{defi}\label{defi:espectro-secuencial}
-Un \emph{espectro secuencial} es una sucesión de espacios punteados
+Un \emph{espectro secuencial} es una sucesión $X=\{X_n\en\Topstar\}_{n\in\mathbb N}$
+de espacios punteados, junto con mapas punteados
 \[
-X=\{X_n\}_{n\in\mathbb N},
-\qquad
-X_n\in\Topstar,
+\xi_n\colon\Sigma X_n\longrightarrow X_{n+1}
 \]
-junto con funciones continuas punteadas
-\[
-\sigma_n\colon\Sigma X_n\longrightarrow X_{n+1}
-\]
-para todo $n\in\mathbb N$, llamadas \emph{funciones estructurales}, donde $\Sigma$ denota la suspensión reducida.
+para todo $n\in\mathbb N$, llamados \emph{mapas estructurales}. Análogamente, un $\Omega$-espectro es una sucesión $X$ de espacios punteados junto con equivalencias débiles $X_n \xrightarrow{\simeq}\Omega X_{n+1}$ (se denomina estricto cuando estos mapas son homeomorfismos).
 \end{defi}
-
-\begin{nota}
-   En la pizarra las funciones estructurales se escribieron $\xi_n\colon\Sigma X_n\to X_{n+1}$, con la anotación «funciones estructurales» al margen. Aquí se usa $\sigma_n$, que es la letra empleada en el resto del capítulo, para no confundirla con el isomorfismo de suspensión $\sigma$ de las teorías de homología. Análogamente, el desplazamiento de un espectro se escribió en la pizarra como $sh^dE$ (y también $\Sigma^dE$), mientras que en estas notas se denota $E[d]$; ambas notaciones son la misma operación.
-\end{nota}
-
-La clase comienza fijando una notación que se usará en todo lo que sigue.
 
 \begin{nota}
    A partir de ahora se usará la notación reducida
@@ -563,18 +568,22 @@ La clase comienza fijando una notación que se usará en todo lo que sigue.
 \end{nota}
 
 \begin{defi}\label{defi:espectro-z}
-   También podemos definir espectros $\mathbb Z$-secuenciales, es decir, espectros indexados por $\mathbb Z$ en lugar de por $\mathbb N$. En ese caso una \emph{desuspensión} de un espectro no es más que un desplazamiento de los índices.
+De forma análoga se definen espectros $\mathbb Z$-secuenciales, es decir, espectros indexados por $\mathbb Z$ en lugar de por $\mathbb N$.
 \end{defi}
 
-\begin{ejem}\label{ejem:suspension-espectro}
-Dado un espacio punteado $A$, su \emph{espectro suspensión} $\Sigma^\infty A$ está dado por
+\begin{ejem}[Espectro suspensión]\label{ejem:suspension-espectro}
+Dado $A\in\Topstar$, su \emph{espectro suspensión} $\Sigma^\infty A$ está dado por
 \[
 (\Sigma^\infty A)_n=\Sigma^nA,
 \qquad
-\sigma_n\colon\Sigma\Sigma^nA\xrightarrow{\ 1\ }\Sigma^{n+1}A .
+\xi_n\colon\Sigma\Sigma^nA\xrightarrow{\ 1\ }\Sigma^{n+1}A .
 \]
-Es decir, las funciones estructurales son las identidades, una vez identificadas las dos formas de suspender.
+Es decir, las funciones estructurales son las identidades.
 \end{ejem}
+
+\begin{nota}
+Se puede probar que los mapas estructurales del espectro $\Sigma^\infty A$ (\cref{ejem:suspension-espectro}) no inducen, en general, un $\Omega$-espectro. De otro modo, los adjuntos $1^\perp\colon\Sigma^n A \to \Omega\Sigma^{n+1} A$ serían equivalencias, lo que haría de $\Omega$ un inverso homotópico de $\Sigma$. Esto invalidaría nuestra motivación para trabajar con homotopía estable, pues siempre tendríamos que $\pi_{n+k}(\Sigma^kA)$ se estabiliza desde el comienzo. 
+\end{nota}
 
 \begin{ejem}\label{ejem:espectro-z-secuencial}
 La versión $\mathbb Z$-secuencial del espectro suspensión se escribe
@@ -587,93 +596,111 @@ La versión $\mathbb Z$-secuencial del espectro suspensión se escribe
 \]
 con funciones estructurales
 \[
-\sigma_n\colon\Sigma(\Sigma^\infty A)_n\longrightarrow(\Sigma^\infty A)_{n+1},
+\xi_n\colon\Sigma(\Sigma^\infty A)_n\longrightarrow(\Sigma^\infty A)_{n+1},
 \qquad
-\sigma_n=
+\xi_n=
 \begin{cases}
 1, & n\ge0,\\
-\text{la inclusión del punto base}, & n=-1,\\
+\Sigma(*)=*\hookrightarrow A, & n=-1,\\
 1, & n<-1 .
 \end{cases}
 \]
-El caso $n=-1$ es el único que no es una identidad: el punto base $\ast$ se incluye en $\Sigma^0A=A$. Para $n<-1$ las funciones estructurales también están definidas, pero ahora sobre $\Sigma\ast=\ast$, de modo que vuelven a ser identidades; es lo que se escribió en la pizarra como $\xi_n\colon\Sigma\ast\xrightarrow{1}\ast$.
+El caso $n=-1$ es el único que no es una identidad: el punto base $\ast$ se incluye en $\Sigma^0A=A$. Para $n<-1$ las funciones estructurales también están definidas, pero ahora sobre $\Sigma(\ast)=\ast$, de modo que vuelven a ser identidades.
 \end{ejem}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{\texorpdfstring{$\Omega$}{Omega}-espectros}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-La definición de espectro secuencial admite una variante que resulta ser la más útil para representar teorías de cohomología, y que consiste en pedir que las funciones estructurales sean equivalencias.
-
-\begin{defi}\label{defi:omega-espectro}
-Un espectro secuencial $X$ es un \emph{$\Omega$-espectro} si las adjuntas de las funciones estructurales son equivalencias homotópicas
+\begin{ejem}[Espectro inducido por cohomología]\label{ejem:espcoho}
+Una teoría de cohomología reducida $\widetilde E^{\,*}$ induce un espectro $\mathbb Z$-secuencial $E$: por teorema de representabilidad de Brown, existen espacios punteados $E_n$ con $\widetilde E^{\,n}(-)\cong[-,E_n]_*$, de modo que, por el isomorfismo de suspensión:
 \[
-\sigma'_n\colon X_n\longrightarrow\Omega X_{n+1},
+[-,E_{n}]_* \cong [\Sigma(-),E_{n+1}]_*
 \]
-donde $\Omega$ denota el espacio de lazos.
-\end{defi}
+Luego, gracias al lema de Yoneda, esta representación coincide con $[\xi_n] \circ \Sigma(-)$ para una flecha $[\xi_n]\in[\Sigma E_n, E_{n+1}]_*$. Estos $\xi_n$ son los mapas estructurales de $E$. Si nos quedamos solo con los $E_n$ para $n\ge 0$ también se induce un espectro secuencial.
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Teoría}
+& Singular coef. en $A$
+& $\widetilde K$-teoría
+& $\widetilde{KO}$-teoría
+& Cobordismo complejo \\ \hline
 
-Suponer que un espectro es un $\Omega$-espectro es una condición que en la práctica no restringe: dado un espectro secuencial cualquiera, se puede reemplazar por uno equivalente cuyas funciones estructurales sí son equivalencias.
+\textbf{Espectro}
+& $HA$
+& $KU$
+& $KO$
+& $MU$ \\ \hline
 
-\begin{lema}\label{lema:omega}
-Todo espectro secuencial puede reemplazarse, salvo equivalencia homotópica, por un $\Omega$-espectro.
-\end{lema}
+\textbf{Entradas}
+& $K(A,n)$
+& alternan $\mathbb Z\times BU,\ U$
+& Periodo de 8 espacios (Bott)
+& alternan $\operatorname{Th}(\gamma_n^{\mathbb C}),\ 
+  \Sigma\operatorname{Th}(\gamma_n^{\mathbb C})$ \\ \hline
+\end{tabular}
+\end{center}
+\end{ejem}
 
-\begin{proof}
-Es el lema que se probó en clase, y su enunciado preciso es el siguiente: si se escogen modelos para $K(\mathbb Z,n)$ y para $\Omega K(\mathbb Z,n+1)$ con el tipo de homotopía de complejos CW, entonces la equivalencia homotópica
-\[
-K(\mathbb Z,n)\longrightarrow\Omega K(\mathbb Z,n+1)
-\]
-está inducida por el lema de Yoneda. La construcción se aplica término a término y produce las funciones estructurales
-\[
-K(\mathbb Z,n)\longrightarrow\Omega K(\mathbb Z,n+1),
-\]
-que son las adjuntas de las inclusiones y son equivalencias. El caso general se obtiene sustituyendo cada $X_n$ por un modelo de CW y aplicando el mismo procedimiento.
-\end{proof}
 
-\begin{nota}
-   El paso clave es el uso del lema de Yoneda, que es lo que permite identificar la equivalencia homotópica correcta sin construirla explícitamente. En la pizarra la equivalencia se escribió como
-   \[
-   K(\mathbb Z,n)\xrightarrow{\ \simeq\ }\Omega K(\mathbb Z,n+1),
-   \]
-   y la razón por la que es la única posible es que la adjunción $\Sigma\dashv\Omega$ da la biyección
-   \[
-   \set*{X,\ \Omega K(\mathbb Z,n+1)}\cong\set*{\Sigma X,\ K(\mathbb Z,n+1)},
-   \]
-   de modo que un elemento del primer conjunto es lo mismo que una clase de cohomología reducida de $\Sigma X$, y el lema de representabilidad de Yoneda dice cuál de todas ellas es la que corresponde a la suspensión de la clase fundamental.
+% \begin{ejer}
+% Comprobar que el espectro suspensión de un espacio punteado no es, en general, un $\Omega$-espectro, y encontrar el $\Omega$-espectro que lo reemplaza.
+% \end{ejer}
+% \begin{sol}
+% Para el espectro suspensión de un espacio punteado $A$ se tiene
+% \[
+% (\Sigma^\infty A)_n=\Sigma^nA,
+% \]
+% y sus funciones estructurales son las identificaciones
+% \[
+% \Sigma(\Sigma^nA)=\Sigma^{n+1}A\longrightarrow \Sigma^{n+1}A.
+% \]
+% Por adjunción, la función estructural en el nivel $n$ corresponde al mapa
+% \[
+% \eta_n\colon \Sigma^nA\longrightarrow\Omega\Sigma^{n+1}A.
+% \]
+% Para que $\Sigma^\infty A$ fuese un $\Omega$-espectro sería necesario que cada $\eta_n$ fuese una equivalencia débil, lo cual no ocurre en general.
 
-   El punto de partida de la pizarra fue el teorema de representabilidad de la cohomología singular: para $X$ un CW-complejo punteado,
-   \[
-   \tilde H^n(X)\cong_{\mathrm{nat}}\bigl[X,K(\mathbb Z,n)\bigr]_* .
-   \]
-   Con él, el isomorfismo de suspensión $\sigma^n\colon\tilde H^n(X)\to\tilde H^{n+1}(\Sigma X)$ se lee en el cuadrado
-   \[
-   \begin{tikzcd}[column sep=large, row sep=large]
-   \tilde H^n(X) \arrow[r,"\sigma^n"] \arrow[d,"\cong"'] & \tilde H^{n+1}(\Sigma X) \arrow[d,"\cong"]\\
-   \bigl[X,K(\mathbb Z,n)\bigr]_* \arrow[r] \arrow[dr,"\cong_{\mathrm{nat}}"'] & \bigl[\Sigma X,K(\mathbb Z,n+1)\bigr]_*\\
-   & \bigl[X,\Omega K(\mathbb Z,n+1)\bigr]_* \arrow[u,"\cong"']
-   \end{tikzcd}
-   \]
-   y su adjunta, $\Sigma K(\mathbb Z,n)\to K(\mathbb Z,n+1)$, es \emph{análoga} a la función estructural del espectro suspensión $\Sigma\Sigma^nX\xrightarrow{1}\Sigma^{n+1}X$. Esa analogía es la que sugiere que las adjuntas de las equivalencias $K(\mathbb Z,n)\to\Omega K(\mathbb Z,n+1)$ son las funciones estructurales de un espectro.
+% En efecto, basta tomar $A=S^0$. En el nivel $0$ se obtiene
+% \[
+% \eta_0\colon S^0\longrightarrow\Omega S^1.
+% \]
+% Ahora bien,
+% \[
+% \pi_0(S^0)\cong\{0,1\},
+% \qquad
+% \pi_0(\Omega S^1)\cong\pi_1(S^1)\cong\mathbb Z.
+% \]
+% Por tanto, $\eta_0$ no induce una biyección en componentes conexas y, en consecuencia, no puede ser una equivalencia débil. Así, el espectro suspensión de un espacio punteado no es, en general, un $\Omega$-espectro.
 
-   El enunciado que se escribió en la pizarra es solo el caso de Eilenberg--Mac Lane; el \myref{lema:omega} lo generaliza a cualquier espectro secuencial. La generalidad no aparece en la pizarra y es probable que provenga de la explicación oral de la clase, que se contrastará con la transcripción.
-\end{nota}
-
-\begin{ejer}
-Comprobar que el espectro suspensión de un espacio punteado no es, en general, un $\Omega$-espectro, y encontrar el $\Omega$-espectro que lo reemplaza.
-\end{ejer}
-
-\begin{sol}
-Para el espectro suspensión se tiene $(\Sigma^\infty A)_n=\Sigma^nA$, y la adjunta de la identidad es el morfismo
-\[
-\Sigma^nA\longrightarrow\Omega\Sigma^{n+1}A,
-\]
-que no es una equivalencia salvo que $A$ sea un espacio de lazos, porque estabilizar no es lo mismo que deloopear. El $\Omega$-espectro que reemplaza a $\Sigma^\infty A$ se construye tomando
-\[
-Y_n=\colim_k\Omega^k\Sigma^{n+k}A,
-\]
-y las funciones estructurales dadas por la inclusión del colímite, que son equivalencias.
-\end{sol}
+% Para obtener un $\Omega$-espectro que lo reemplace se aplica la construcción de estabilización. Definimos
+% \[
+% Y_n=\colim_k\Omega^k\Sigma^{n+k}A,
+% \]
+% donde los mapas del sistema dirigido son
+% \[
+% \Omega^k\Sigma^{n+k}A
+% \longrightarrow
+% \Omega^{k+1}\Sigma^{n+k+1}A,
+% \]
+% obtenidos al aplicar $\Omega^k$ a la unidad
+% \[
+% \Sigma^{n+k}A\longrightarrow\Omega\Sigma^{n+k+1}A.
+% \]
+% Estos mapas inducen
+% \[
+% Y_n\longrightarrow\Omega Y_{n+1},
+% \]
+% y, bajo las hipótesis usuales sobre la categoría de espacios, estos son equivalencias débiles; por tanto, $Y$ es un $\Omega$-espectro. Además, los mapas canónicos
+% \[
+% \Sigma^nA\longrightarrow
+% \colim_k\Omega^k\Sigma^{n+k}A=Y_n
+% \]
+% determinan una equivalencia estable
+% \[
+% \Sigma^\infty A\longrightarrow Y.
+% \]
+% Así, $Y$ es el $\Omega$-espectro asociado, o espectrificación, del espectro suspensión.
+% \end{sol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{El desplazamiento de un espectro}
@@ -682,139 +709,30 @@ y las funciones estructurales dadas por la inclusión del colímite, que son equ
 Las definiciones anteriores dejan pendiente un punto de notación que la clase resolvió al final: cómo se desplaza el índice de un espectro.
 
 \begin{defi}\label{defi:desplazamiento}
-Sea $E=\{E_n\}_{n\in\mathbb Z}$ un espectro $\mathbb Z$-secuencial y sea $d\in\mathbb Z$. El \emph{desplazamiento} $E[d]$ es el espectro cuyas funciones estructurales son las de $E$ desplazadas $d$ lugares,
+Sea $E=\{E_n\}_{n\in\mathbb Z}$ un espectro $\mathbb Z$-secuencial y sea $d\in\mathbb Z$. El \emph{desplazamiento} $\sh^d E$ es el espectro definido por
 \[
-E[d]_n=E_{n+d},
+(\sh^dE)_n=E_{n+d},
 \qquad
-\sigma'_n\colon\Sigma E_{n+d}\longrightarrow E_{n+d+1},
+\xi'_n =\xi_{n+d}\colon\Sigma E_{n+d}\longrightarrow E_{n+d+1},
 \]
 que son las mismas del caso $\mathbb Z$-secuencial, más las inclusiones de los puntos base y las funciones identidad entre los puntos cuando las haya.
 \end{defi}
 
-\begin{nota}
-   El desplazamiento es lo que hace conmutable la notación de suspensiones. Con la definición anterior, y para el espectro suspensión,
-   \[
-   \Sigma^\infty A[d]=\Sigma^{d}\Sigma^\infty A,
-   \]
-   es decir, desplazar el índice $d$ lugares equivale a suspender $d$ veces. Esta es la razón del nombre: un espectro es estable precisamente porque suspender y desplazar son la misma operación.    Se escribe también
-   \[
-   E[d]=\Sigma^dE,
-   \]
-   aunque el profesor prefirió no usar esta última notación por ahora.
-
-   Para un espectro $\mathbb Z$-secuencial el desplazamiento se escribe por casos, que es como se hizo en la pizarra:
-   \[
-   (sh^dE)_n=
-   \begin{cases}
-   *, & n+d<0,\\
-   E_{n+d}, & n+d\ge0,
-   \end{cases}
-   \]
-   donde la primera línea recoge las inclusiones de los puntos base. Los dos ejemplos que se escribieron son el espectro esfera desplazado
-   \[
-   sh^3\mathbb S\colon\quad S^3,S^4,S^5,\dots,
-   \qquad
-   sh^{-2}\mathbb S\colon\quad *,*,S^0,S^1,S^2,\dots,
-   \]
-   en los que se ve directamente que desplazar hacia abajo hace aparecer puntos base.
-\end{nota}
-
-\begin{ejer}
-Comprobar que el desplazamiento es coherente con la definición de espectro $\mathbb Z$-secuencial, es decir, que $E[d][e]=E[d+e]$ y que $E[0]=E$.
-\end{ejer}
-
-\begin{sol}
-Ambas cosas son inmediatas de la definición: $E[d][e]_n=E[d]_{n+e}=E_{n+e+d}=E[d+e]_n$, y las funciones estructurales se desplazan de la misma manera. Para $E[0]$ la definición devuelve $E[0]_n=E_n$ y las mismas funciones estructurales, que es $E$.
-\end{sol}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{De un espectro a una teoría de homología}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-La razón por la que se introducen los espectros secuenciales es la siguiente: producen teorías de (co)homología, y toda teoría razonable proviene de uno. La correspondencia va en las dos direcciones, y conviene describir cada una por separado.
-
-Sea $E=\{E_n\}$ un espectro secuencial. Su homología está dada en cada grado por
+Cuando $E$ es solamente secuencial, se define como:
 \[
-\widetilde E_n(X)=\bigl[\Sigma^\infty X,\ E\bigr]_{n},
+(sh^dE)_n=
+\begin{cases}
+*, & n+d<0,\\
+E_{n+d}, & n+d\ge0,
+\end{cases}
 \]
-que es la forma estable de escribir los grupos de homología reducida. Tomando el espectro en grados positivos, es decir, quedándose con los $E_n$ con $n\ge0$, se obtiene un espectro secuencial en el sentido de la \myref{defi:espectro-secuencial}.
-
-\begin{nota}
-   La homología de un espectro se define con el funtor $\Sigma^\infty$, que es el que pasa de espacios a espectros. Que la definición sea estable, es decir, que $\widetilde E_n(\Sigma X)=\widetilde E_{n-1}(X)$, es consecuencia de que el desplazamiento del espectro sea la suspensión, que es lo que se prueba en la sección anterior.
-\end{nota}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{De una teoría de homología a un espectro}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Recíprocamente, si $\widetilde E^*$ es una teoría de cohomología reducida, entonces
+donde la primera línea recoge las inclusiones de los puntos base. Por ejemplo:
 \[
-\widetilde E^n(X)\cong_{\mathrm{nat}}\set*{X,\ E_n}_*
+sh^3\mathbb S\colon\quad S^3,S^4,S^5,\dots,
+\qquad
+sh^{-2}\mathbb S\colon\quad *,*,S^0,S^1,S^2,\dots,
 \]
-define una sucesión de espacios $E_n$ ---cada uno con el tipo de homotopía de un CW-complejo, que es la hipótesis técnica que se escribió en la pizarra---, y los isomorfismos naturales
-\[
-\sigma^n\colon\widetilde E^n(X)\longrightarrow\widetilde E^{n+1}(\Sigma X)
-\]
-inducen equivalencias homotópicas
-\[
-E_n\longrightarrow\Omega E_{n+1},
-\]
-cuyas adjuntas
-\[
-\Sigma E_n\longrightarrow E_{n+1}
-\]
-\emph{definen un espectro $\mathbb Z$-secuencial}. Que ese espectro sea además un $\Omega$-espectro es una propiedad adicional, no el enunciado de la pizarra.
+en los que se ve directamente que desplazar hacia abajo hace aparecer puntos base.
 
-\begin{nota}
-   La construcción del recíproco es la que justifica el nombre de $\Omega$-espectro: la estructura de la teoría de cohomología, que es la que hace conmutar los isomorfismos de suspensión $\sigma^n$, se traduce en la existencia de las equivalencias $E_n\to\Omega E_{n+1}$. Es el mismo mecanismo que la representabilidad de Brown, aplicada grado a grado.
+Denotaremos $\Sigma^{\infty+d} \coloneq \sh^d\Sigma^\infty$ y en un futuro podríamos denotar $\Sigma^d = \sh^d$.
 
-   En la pizarra se escribió que las funciones estructurales se definen mediante los isomorfismos naturales
-   \[
-   \sigma^n\colon\widetilde E^n(X)\xrightarrow{\ \cong\ }\widetilde E^{n+1}(\Sigma X),
-   \]
-   y el hecho de que $E_n\to\Omega E_{n+1}$ sea una equivalencia homotópica es lo que permite hablar de un $\Omega$-espectro y no solo de un espectro secuencial.
-\end{nota}
-
-\begin{ejer}
-Probar que la homología singular con coeficientes en un grupo abeliano $A$ proviene de un espectro secuencial, y dar explícitamente sus espacios.
-\end{ejer}
-
-\begin{sol}
-Los espacios son los espacios de Eilenberg--Mac Lane $K(A,n)$, y las funciones estructurales son las adjuntas de las equivalencias
-\[
-K(A,n)\longrightarrow\Omega K(A,n+1)
-\]
-del \myref{lema:omega}. El espectro así construido se llama espectro de Eilenberg--Mac Lane y se denota $HA$.
-\end{sol}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Ejemplos de espectros}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-En clase se dejaron registrados los ejemplos que se irán usando como referencia. El primero es el que ya apareció, y los demás son las teorías que se usarán más adelante.
-
-El \emph{espectro suspensión} se describió en el \myref{ejem:suspension-espectro}: dado un espacio punteado $A$, su espectro suspensión tiene $(\Sigma^\infty A)_n=\Sigma^nA$ y funciones estructurales las identidades. Cuando $A=S^0$ se obtiene el espectro esfera $\mathbb S=\Sigma^\infty S^0$, y cuando $A=\ast$ se obtiene el espectro trivial.
-
-La \emph{cohomología singular} con coeficientes en un grupo abeliano $A$ da lugar al espectro de Eilenberg--Mac Lane
-\[
-HA,
-\]
-cuyos espacios son los $K(A,n)$. Es el ejemplo más sencillo de espectro que no proviene de un espacio punteado, y se usará repetidamente.
-
-Por último, las teorías multiplicativas que aparecen en la práctica son las siguientes.
-
-\begin{itemize}
-\item $K$-teoría compleja, denotada $KU$.
-\item $K$-teoría real, denotada $KO$.
-\item Cobordismo complejo, que da lugar al espectro $MU$.
-\end{itemize}
-
-\begin{nota}
-   La tabla que se escribió en el pizarrón asocia a cada teoría de homología el espectro que la representa. Esa asociación es biunívoca sobre las teorías que cumplen los axiomas habituales, y por eso la homología se puede estudiar indistintamente desde las teorías o desde los espectros. La clase termina aquí y la construcción de los espectros con estructura, en particular las suspensiones y el producto smash, queda para la clase siguiente.
-\end{nota}
-
-Quedan entonces dos frentes abiertos, y conviene dejar constancia de cómo quedan.
-
-Por un lado, la primera mitad de la clase cierra el problema de la dualidad en $\SW$: el \myref{teo:todo-dualizable} dice que todo objeto de $\SW$ admite un dual, con lo que la categoría de Spanier--Whitehead resulta ser \emph{rígida} en el sentido de la pregunta que se hizo al comienzo del curso. Los dos criterios prácticos para hallar el dual, el de la inclusión en una esfera y el de la \myref{teo:atiyah} para variedades suaves, quedan registrados como herramientas de cálculo.
-
-Por otro lado, la segunda mitad abre el tema de los espectros secuenciales. La \myref{defi:espectro-secuencial} da el objeto de estudio, el \myref{lema:omega} establece que siempre se puede suponer que las funciones estructurales son equivalencias, y la \myref{defi:desplazamiento} fija la notación de los índices. La clase siguiente continúa con la dualidad en categorías monoidales simétricas generales y después particulariza al caso de la categoría de Spanier--Whitehead.

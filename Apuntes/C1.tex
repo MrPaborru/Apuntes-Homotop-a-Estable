@@ -231,22 +231,23 @@ es un isomorfismo para \(i<2r+1\) y es sobreyectivo para \(i=2r+1\).
 
 Equivalentemente, si \(X\) es \((n-1)\)-conexo, entonces \(E\) es un isomorfismo para \(i<2n-1\) y es sobreyectivo para \(i=2n-1\).
 \begin{nota}
-   En la pizarra el teorema se ilustró con la tabla siguiente, en la que \(n\) designa el mismo entero que aparece en la hipótesis «\((n-1)\)-conexo»:
-   \begin{center}
-   \begin{tabular}{lccc}
-   \hline
-    & \((-1)\)-conexo & arcoconexo & \(1\)-conexo\\
-   \hline
-   \(n\) & \(0\) & \(1\) & \(2\)\\
-   morfismo & \(\pi_1(X)\to\pi_2(\Sigma X)\) & \(\pi_2(\Sigma X)\to\pi_3(\Sigma^2X)\) & \(\pi_3(\Sigma^2X)\to\pi_4(\Sigma^3X)\)\\
-   cota \(i<2n+1\) & \(1<1\) & \(2<3\) & \(3<5\)\\
-    & \(\times\) & \(\checkmark\) & \(\checkmark\)\\
-   \hline
-   \end{tabular}
-   \end{center}
    La pizarra original confunde la hipótesis «\((n-1)\)-conexo» con la cota \(i<2n+1\). Esas dos expresiones no son compatibles: $S^1$ es $(1-1)$-conexo, pero $\pi_2(S^1)\cong0$ no puede ser isomorfo a $\pi_3(\Sigma S^1) \cong \pi_3(S^2) \cong \mathbb{Z}$, a pesar de que $2 < 2 \cdot 1 + 1$.
 \end{nota}
 
+Si $X$ es un CW-complejo punteado arbitrario, siempre es $(-1)$-conexo (no vacío). Luego:
+
+\begin{center}\small
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+& \((-1)\)-conexo & arcoconexo & \(1\)-conexo & \(2\)-conexo\\
+\hline
+\(n\) & \(0\) & \(1\) & \(2\) & \(3\)\\
+morfismo & \(\pi_1(X)\to\pi_2(\Sigma X)\) & \(\pi_2(\Sigma X)\to\pi_3(\Sigma^2X)\) & \(\pi_3(\Sigma^2X)\to\pi_4(\Sigma^3X)\) & \(\pi_4(\Sigma^3X)\to\pi_5(\Sigma^4X)\)\\
+¿\(i<2n-1\)? & \(1<-1\) & \(2<1\) & \(3<5\) & \(4 < 5\)\\
+& \(\times\) & \(\times\) & \(\times\) & \(\checkmark\)\\
+\hline
+\end{tabular}
+\end{center}
 
 Una consecuencia inmediata, y es la que da contenido preciso a la palabra «estable», es la siguiente. Si \(X\) es \(r\)-conexo, entonces \(\Sigma^kX\) es \((r+k)\)-conexo. Freudenthal aplicado a \(\Sigma^kX\) da
 \[
