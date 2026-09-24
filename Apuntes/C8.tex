@@ -365,7 +365,9 @@ Se construyen funtores en las dos direcciones. De $\mathbb N$-secuenciales a $\m
 
 Para que la categoría homotópica de espectros sea estable, la suspensión deberá ser invertible en ella. El desplazamiento $\sh^1$ ya cumple esto, pero no extiende estrictamente la suspensión de espacios mediante $\Sigma^\infty$. Construiremos primero una suspensión de espectros que sí la extiende; después compararemos sus grupos de homotopía con los del desplazamiento.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{El funtor de suspensión}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Conviene distinguir el orden de los factores. En los morfismos estructurales de $X$ se utiliza $\xi_n\colon X_n\wedge S^1\to {n+1}$, mientras que para suspender $X$ pondremos la esfera a la izquierda. En particular, al hablar aquí de la suspensión de un espacio $A$ que queremos extender, escribimos $\Sigma A=S^1\wedge A$; las suspensiones iteradas que forman $\Sigma^\infty A$ están dadas por $(\Sigma^\infty A)_n=A\wedge(S^1)^{\wedge n}$.
 
@@ -401,7 +403,9 @@ conmuta bajo dichas identificaciones. El funtor $\sh^1$ no hace conmutar estrict
 
 El resto de esta clase y la siguiente se centrarán en probar que $\Sigma$ y $\sh^1$ son establemente equivalentes (naturalmente). A partir de aquí, omitiremos los símbolos de composición \enquote{$\circ$}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Comparación de los grupos de homotopía de \texorpdfstring{$\Sigma$ y $\sh^1$}{sigma y sh1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 El primer paso es construir isomorfismos $\pi_{n}(\Sigma X)\cong\pi_{n}(\sh^1X)$. Estos isomorfismos no necesariamente provendrán de una equivalencia estable de espectros, aún quedará trabajo por hacer.
 
@@ -453,74 +457,7 @@ por lo que conservando solo las entradas impares $2n+1$ (que son un subsistema c
 (recordemos $\Sigma (\xi_m)_*=(\xi_m\wedge1)_* \Sigma$ por naturalidad). De (\ref{eq:colsuspar}) y (\ref{eq:colimpar}) tenemos que $\pi_{k+1}(\Sigma)$ y $\pi_{k}(X)$ son colímites de sistemas con objetos isomorfos, pero falta comparar sus transiciones.
 
 Sea $f_n\colon X_{2n}\wedge S^1\longrightarrow S^1\wedge X_{2n}$ el homeomorfismo que intercambia los factores, $f_n[x,z]=[z,x]$. Afirmamos que las $f_n$ inducen isomorfismos entre los grupos de homotopía que conmuta hasta homotopía con los mapas de transición, es decir, que el siguiente diagrama conmuta hasta homotopía:
-\begingroup
-\everydisplay{\displaywidth=\dimexpr\linewidth+18mm\relax \displayindent=-9mm\relax}
-\[
-\begin{tikzcd}[cramped,column sep=large,row sep=small]
-	{\color{red}[g]}
-		\arrow[r,red,maps to]
-		\arrow[ddd,red,maps to,out=180,in=180,looseness=1]
-	&
-	{\color{red}\bigl[(\xi_{2n}\wedge1) (g\wedge1)\bigr]}
-		\arrow[r,red,maps to]
-	&
-	{\color{red}\Bigl[
-		\begin{gathered}
-			(\xi_{2n+1}\wedge1) (\xi_{2n}\wedge1\wedge1)\\[-.3em]
-			{} (g\wedge1\wedge1)
-		\end{gathered}
-	\Bigr]}
-		\arrow[ddd,red,maps to,out=-17,in=20,looseness=0.7]
-	\\
-	\pi_{2n+k+1}(X_{2n}\wedge S^1)
-		\arrow[r,"(\xi_{2n}\wedge1)_* \Sigma"]
-		\arrow[d,"(f_n)_*"']
-	&
-	\pi_{2n+k+2}(X_{2n+1}\wedge S^1)
-		\arrow[r,"(\xi_{2n+1}\wedge1)_* \Sigma"]
-	&
-	\pi_{2n+k+3}(X_{2n+2}\wedge S^1)
-		\arrow[d,"(f_{n+1})_*"]
-	\\[2em]
-	\pi_{2n+k+1}(S^1\wedge X_{2n})
-		\arrow[r,"(1\wedge\xi_{2n})_* \Sigma"']
-	&
-	\pi_{2n+k+2}(S^1\wedge X_{2n+1})
-		\arrow[r,"(1\wedge\xi_{2n+1})_* \Sigma"']
-	&
-	\pi_{2n+k+3}(S^1\wedge X_{2n+2})
-	\\
-	{\color{red}[f_n  g]}
-		\arrow[r,red,maps to]
-	&
-	{\color{red}\Bigl[
-		\begin{gathered}
-			(1\wedge\xi_{2n}) (f_n\wedge1)\\[-.3em]
-			{} (g\wedge1)
-		\end{gathered}
-	\Bigr]}
-		\arrow[dr,red,maps to]
-	&
-	{\color{red}\Bigl[
-		\begin{gathered}
-			f_{n+1} (\xi_{2n+1}\wedge1)\\[-.3em]
-			{} (\xi_{2n}\wedge1\wedge1)\\[-.3em]
-			{} (g\wedge1\wedge1)
-		\end{gathered}
-	\Bigr]}
-        \arrow[d, red, phantom, "\simeq"{description, font=\Large}, "\;\;\;(?)"{right}]
-	\\
-	& &
-	{\color{red}\Bigl[
-		\begin{gathered}
-			(1\wedge\xi_{2n+1}) (1\wedge\xi_{2n}\wedge1)\\[-.3em]
-			{} (f_n\wedge1\wedge1)\\[-.3em]
-			{} (g\wedge1\wedge1)
-		\end{gathered}
-	\Bigr]}
-\end{tikzcd}
-\]
-\endgroup
+\input{Figuras/Diagrama rojo.tex}
 Como ambos empiezan con $g\wedge1\wedge1$, podemos comparar solo lo que viene después. Esto conduce al siguiente cuadrado de espacios, cuya conmutatividad se entiende \emph{salvo homotopía}:
 \[
 \begin{tikzcd}[column sep=7em,row sep=large]

@@ -1,65 +1,68 @@
+\begingroup
+\everydisplay{\displaywidth=\dimexpr\linewidth+18mm\relax \displayindent=-9mm\relax}
 \[
 \begin{tikzcd}[cramped,column sep=large,row sep=small]
 	{\color{red}[g]}
 		\arrow[r,red,maps to]
 		\arrow[ddd,red,maps to,out=180,in=180,looseness=1]
 	&
-	{\color{red}\bigl[(\xi_{2n}\wedge1)\circ(g\wedge1)\bigr]}
+	{\color{red}\bigl[(\xi_{2n}\wedge1) (g\wedge1)\bigr]}
 		\arrow[r,red,maps to]
 	&
 	{\color{red}\Bigl[
 		\begin{gathered}
-			(\xi_{2n+1}\wedge1)\circ(\xi_{2n}\wedge1\wedge1)\\[-.3em]
-			{}\circ(g\wedge1\wedge1)
+			(\xi_{2n+1}\wedge1) (\xi_{2n}\wedge1\wedge1)\\[-.3em]
+			{} (g\wedge1\wedge1)
 		\end{gathered}
 	\Bigr]}
 		\arrow[ddd,red,maps to,out=-17,in=20,looseness=0.7]
 	\\
 	\pi_{2n+k+1}(X_{2n}\wedge S^1)
-		\arrow[r,"(\xi_{2n}\wedge1)_*\circ\Sigma"]
+		\arrow[r,"(\xi_{2n}\wedge1)_* \Sigma"]
 		\arrow[d,"(f_n)_*"']
 	&
 	\pi_{2n+k+2}(X_{2n+1}\wedge S^1)
-		\arrow[r,"(\xi_{2n+1}\wedge1)_*\circ\Sigma"]
+		\arrow[r,"(\xi_{2n+1}\wedge1)_* \Sigma"]
 	&
 	\pi_{2n+k+3}(X_{2n+2}\wedge S^1)
 		\arrow[d,"(f_{n+1})_*"]
 	\\[2em]
 	\pi_{2n+k+1}(S^1\wedge X_{2n})
-		\arrow[r,"(1\wedge\xi_{2n})_*\circ\Sigma"']
+		\arrow[r,"(1\wedge\xi_{2n})_* \Sigma"']
 	&
 	\pi_{2n+k+2}(S^1\wedge X_{2n+1})
-		\arrow[r,"(1\wedge\xi_{2n+1})_*\circ\Sigma"']
+		\arrow[r,"(1\wedge\xi_{2n+1})_* \Sigma"']
 	&
 	\pi_{2n+k+3}(S^1\wedge X_{2n+2})
 	\\
-	{\color{red}[f_n\circ g]}
+	{\color{red}[f_n  g]}
 		\arrow[r,red,maps to]
 	&
 	{\color{red}\Bigl[
 		\begin{gathered}
-			(1\wedge\xi_{2n})\circ(f_n\wedge1)\\[-.3em]
-			{}\circ(g\wedge1)
+			(1\wedge\xi_{2n}) (f_n\wedge1)\\[-.3em]
+			{} (g\wedge1)
 		\end{gathered}
 	\Bigr]}
 		\arrow[dr,red,maps to]
 	&
 	{\color{red}\Bigl[
 		\begin{gathered}
-			f_{n+1}\circ(\xi_{2n+1}\wedge1)\\[-.3em]
-			{}\circ(\xi_{2n}\wedge1\wedge1)\\[-.3em]
-			{}\circ(g\wedge1\wedge1)
+			f_{n+1} (\xi_{2n+1}\wedge1)\\[-.3em]
+			{} (\xi_{2n}\wedge1\wedge1)\\[-.3em]
+			{} (g\wedge1\wedge1)
 		\end{gathered}
 	\Bigr]}
-		\arrow[d,red,equals,"?"]
+        \arrow[d, red, phantom, "\simeq"{description, font=\Large}, "\;\;\;(?)"{right}]
 	\\
 	& &
 	{\color{red}\Bigl[
 		\begin{gathered}
-			(1\wedge\xi_{2n+1})\circ(1\wedge\xi_{2n}\wedge1)\\[-.3em]
-			{}\circ(f_n\wedge1\wedge1)\\[-.3em]
-			{}\circ(g\wedge1\wedge1)
+			(1\wedge\xi_{2n+1}) (1\wedge\xi_{2n}\wedge1)\\[-.3em]
+			{} (f_n\wedge1\wedge1)\\[-.3em]
+			{} (g\wedge1\wedge1)
 		\end{gathered}
 	\Bigr]}
 \end{tikzcd}
 \]
+\endgroup
