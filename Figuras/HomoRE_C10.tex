@@ -1,0 +1,132 @@
+% Para fijar otra posición de la homotopía, cambie \tHom (0<tHom<1).
+\begin{tikzpicture}[x=1cm,y=1cm,line width=.75pt,
+                    line cap=round,line join=round,>=stealth]
+  \def\L{2.2}       % Longitud común de los cilindros.
+  \def\separacion{5}
+  \def\tHom{.38}    % Valor de t representado.
+  \def\alturaImagen{.40} % Distancia sobre el cilindro más ancho.
+
+  \def\tapaVisible#1#2#3{%
+    \draw (#1,0) ellipse [x radius=#2,y radius=#3];%
+  }
+  \def\tapaDerecha#1#2#3{%
+    \draw[dashed] (#1,#3)
+      arc[start angle=90,end angle=270,
+          x radius=#2,y radius=#3];
+    \draw (#1,#3)
+      arc[start angle=90,end angle=-90,
+          x radius=#2,y radius=#3];%
+  }
+  \def\tapaIzquierda#1#2#3#4{%
+    \pgfmathsetmacro{\anguloOculto}{asin(#4/#3)}%
+    \draw (#1,#3)
+      arc[start angle=90,end angle={180-\anguloOculto},
+          x radius=#2,y radius=#3];
+    \draw[dashed] ({#1-#2*cos(\anguloOculto)},#4)
+      arc[start angle={180-\anguloOculto},
+          end angle={180+\anguloOculto},
+          x radius=#2,y radius=#3];
+    \draw ({#1-#2*cos(\anguloOculto)},{-#4})
+      arc[start angle={180+\anguloOculto},end angle=450,
+          x radius=#2,y radius=#3];%
+  }
+  \def\cuerpo#1#2{%
+    \draw ({#1*\L},#2) -- ({(#1+1)*\L},#2)
+          ({#1*\L},{-#2}) -- ({(#1+1)*\L},{-#2});%
+  }
+  \def\cuerpoAbierto#1#2{%
+    \draw ({#1*\L},#2) -- ({(#1+.85)*\L},#2)
+          ({#1*\L},{-#2}) -- ({(#1+.85)*\L},{-#2});
+    \draw[dotted]
+          ({(#1+.85)*\L},#2) -- ({(#1+1.2)*\L},#2)
+          ({(#1+.85)*\L},{-#2}) -- ({(#1+1.2)*\L},{-#2});%
+  }
+
+  % Telescopio superior: X_n, Omega X_{n+1}, ...
+  \cuerpo{0}{.38}
+  \tapaVisible{0}{.09}{.38}
+  \tapaDerecha{\L}{.09}{.38}
+  \node[above=2pt] at (0,.38) {$X_n$};
+
+  \cuerpo{1}{.72}
+  \tapaIzquierda{\L}{.15}{.72}{.38}
+  \tapaDerecha{2*\L}{.15}{.72}
+  \node[above=2pt] at (\L,.72) {$\Omega X_{n+1}$};
+
+  \cuerpo{2}{1.08}
+  \tapaIzquierda{2*\L}{.22}{1.08}{.72}
+  \tapaDerecha{3*\L}{.22}{1.08}
+  \node[above=2pt] at ({2*\L},1.08) {$\Omega^2X_{n+2}$};
+
+  \cuerpoAbierto{3}{1.50}
+  \tapaIzquierda{3*\L}{.30}{1.50}{1.08}
+  \node[above=2pt] at ({3*\L},1.50) {$\Omega^3X_{n+3}$};
+
+  % Telescopio inferior: se omite X_n y se añade Omega^4 X_{n+4}.
+  \begin{scope}[yshift=-\separacion cm]
+    \cuerpo{0}{.72}
+    \tapaVisible{0}{.15}{.72}
+    \tapaDerecha{\L}{.15}{.72}
+    \node[below=2pt] at (0,-.72) {$\Omega X_{n+1}$};
+
+    \cuerpo{1}{1.08}
+    \tapaIzquierda{\L}{.22}{1.08}{.72}
+    \tapaDerecha{2*\L}{.22}{1.08}
+    \node[below=2pt] at (\L,-1.08) {$\Omega^2X_{n+2}$};
+
+    \cuerpo{2}{1.50}
+    \tapaIzquierda{2*\L}{.30}{1.50}{1.08}
+    \tapaDerecha{3*\L}{.30}{1.50}
+    \node[below=2pt] at ({2*\L},-1.50) {$\Omega^3X_{n+3}$};
+
+    \cuerpoAbierto{3}{1.86}
+    \tapaIzquierda{3*\L}{.37}{1.86}{1.50}
+    \node[below=2pt] at ({3*\L},-1.86) {$\Omega^4X_{n+4}$};
+
+    % Segmentos de llegada por encima del cilindro más ancho
+    % que interviene en cada imagen: forman una escalerita.
+    % El primero representa [0,t] del primer cilindro inferior.
+    \draw[red,very thick]
+      (0,{.72+\alturaImagen})
+      -- ({\tHom*\L},{.72+\alturaImagen});
+    \foreach \x in {0,\tHom}{
+      \draw[red] ({\x*\L},{.72+\alturaImagen-.08})
+              -- ({\x*\L},{.72+\alturaImagen+.08});
+    }
+    \node[red,below=-1.5pt,font=\scriptsize]
+      at ({\tHom*\L},{.72+\alturaImagen-.08}) {$t$};
+
+    % Los demás atraviesan una pegadura:
+    % [t,1] del cilindro anterior unido a [0,t] del siguiente.
+    \foreach \m/\radio in {1/1.08,2/1.50,3/1.86}{
+      \pgfmathsetmacro{\ySegmento}{\radio+\alturaImagen}
+      \draw[red,very thick]
+        ({(\m-1+\tHom)*\L},\ySegmento)
+        -- ({(\m+\tHom)*\L},\ySegmento);
+      \foreach \extremo in {0,1}{
+        \draw[red]
+          ({(\m-1+\tHom+\extremo)*\L},{\ySegmento-.08})
+          -- ({(\m-1+\tHom+\extremo)*\L},{\ySegmento+.08});
+      }
+      \node[red,below=-1.5pt,font=\scriptsize]
+        at ({(\m+\tHom)*\L},{\ySegmento-.08}) {$t$};
+    }
+  \end{scope}
+
+  % Una flecha por cilindro superior; cada flecha termina
+  % exactamente sobre su segmento rojo de llegada.
+  \foreach \m/\radioSuperior/\radioInferior in
+    {0/.38/.72,1/.72/1.08,2/1.08/1.50,3/1.50/1.86}{
+    \pgfmathsetmacro{\xImagen}
+      {(\m==0 ? .5*\tHom : \m-.5+\tHom)*\L}
+    \pgfmathsetmacro{\yImagen}
+      {-\separacion+\radioInferior+\alturaImagen}
+    \pgfmathsetmacro{\yControl}{(-\radioSuperior+\yImagen)/2}
+    \draw[red,thick,->]
+      ({(\m+.5)*\L},{-\radioSuperior})
+      .. controls ({(\m+.5)*\L},\yControl)
+               and (\xImagen,\yControl)
+      .. (\xImagen,\yImagen);
+  }
+  \node[red] at (8.65,-2.35) {$H_t$};
+\end{tikzpicture}

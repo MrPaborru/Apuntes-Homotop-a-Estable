@@ -456,8 +456,10 @@ por lo que conservando solo las entradas impares $2n+1$ (que son un subsistema c
 \end{equation}
 (recordemos $\Sigma (\xi_m)_*=(\xi_m\wedge1)_* \Sigma$ por naturalidad). De (\ref{eq:colsuspar}) y (\ref{eq:colimpar}) tenemos que $\pi_{k+1}(\Sigma)$ y $\pi_{k}(X)$ son colímites de sistemas con objetos isomorfos, pero falta comparar sus transiciones.
 
-Sea $f_n\colon X_{2n}\wedge S^1\longrightarrow S^1\wedge X_{2n}$ el homeomorfismo que intercambia los factores, $f_n[x,z]=[z,x]$. Afirmamos que las $f_n$ inducen isomorfismos entre los grupos de homotopía que conmuta hasta homotopía con los mapas de transición, es decir, que el siguiente diagrama conmuta hasta homotopía:
+Sea $f_n\colon X_{2n}\wedge S^1\longrightarrow S^1\wedge X_{2n}$ el homeomorfismo $f_n[x,z]=[z,x]$. Afirmamos que $f_n$ induce un isomorfismo entre los grupos de homotopía, el cual conmuta hasta homotopía con los mapas de transición. En otras palabras, el siguiente diagrama conmuta hasta homotopía:
+
 \input{Figuras/Diagrama rojo.tex}
+
 Como ambos empiezan con $g\wedge1\wedge1$, podemos comparar solo lo que viene después. Esto conduce al siguiente cuadrado de espacios, cuya conmutatividad se entiende \emph{salvo homotopía}:
 \[
 \begin{tikzcd}[column sep=7em,row sep=large]
@@ -472,7 +474,6 @@ En coordenadas, si $x\in X_{2n}$ y $z_1,z_2,z_3\in S^1$, los caminos superior e 
 \bigl[z_1,\xi_{2n+1}(\xi_{2n}(x,z_2),z_3)\bigr].
 \]
 Sea $\tau\colon(S^1)^{\wedge3}\to(S^1)^{\wedge3}$ la permutación cíclica $[z_1,z_2,z_3]\mapsto[z_2,z_3,z_1]$. El camino superior precompuesto con $1_{X_{2n}}\wedge\tau$ coincide exactamente con el inferior. La permutación $\tau$ es producto de dos transposiciones de factores $S^1$, cada una de grado $-1$ sobre $S^1\wedge S^1$; por ello $\tau$ tiene grado $+1$ sobre $(S^1)^{\wedge3}\cong S^3$. Como las aplicaciones $S^3\to S^3$ se clasifican hasta homotopía por su grado, $\tau\simeq1_{S^3}$. Al tomar el smash con $X_{2n}$ obtenemos $1_{X_{2n}}\wedge\tau\simeq1$, de modo que el cuadrado conmuta salvo homotopía.
-
 En consecuencia, los isomorfismos $(f_n)_*$ son compatibles con las transiciones de los sistemas de niveles pares. Inducen un isomorfismo entre sus colímites y, por (\ref{eq:colsuspar}) y (\ref{eq:colimpar}), $\pi_k(X)\cong\pi_{k+1}(\Sigma X)$.
 \end{proof}
 

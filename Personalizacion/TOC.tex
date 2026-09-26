@@ -12,7 +12,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SEPARACIÓN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Capitulos
-\setlength{\cftchapnumwidth}{2em}
+\setlength{\cftchapnumwidth}{2.5em}
 \setlength{\cftbeforechapskip}{0.7em} % arriba
 \renewcommand{\cftchapafterpnum}{\vspace{0.5em}} % abajo
 % Secciones
@@ -26,27 +26,54 @@
 \setlength{\cftsubsubsecnumwidth}{3.6em}
 \setlength{\cftsubsubsecindent}{\dimexpr\cftsubsecindent+\cftsubsecnumwidth\relax}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CAPITULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CAPÍTULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cftpagenumbersoff{chap}
-\renewcommand{\cftchappresnum}{\bfseries\color{white}}
+
+% Contorno del renglón
 \newcommand{\chaptertocbox}{%
     \makebox[0pt][l]{%
-        \tikz[remember picture,overlay]{
+        \tikz[remember picture,overlay]{%
             \draw[color=grisCIMAT, line width=1pt]
-                ([xshift=-0.1em,yshift=-0.27em]0,0)
+                ([yshift=-0.27em]0,0)
                 rectangle
                 ++(\textwidth,1.22em);
-            \fill[color=grisCIMAT, line width=1pt]
-                ([xshift=-0.1em,yshift=-0.27em]0,0)
-                rectangle
-                ++(1.1em,1.22em);
         }%
     }%
 }
-\renewcommand{\cftchapfont}{\large\chaptertocbox}
-\renewcommand{\cftchapaftersnum}{\textordfeminine}
-\renewcommand{\cftchapaftersnumb}{\color{grisCIMAT!80!black}Clase: }
+
+% Recuadro del número, de ancho automático
+\newcommand{\chaptertocnumberline}[1]{%
+    \makebox[\cftchapnumwidth][l]{%
+        \begingroup
+        \setlength{\fboxsep}{0pt}%
+        \colorbox{grisCIMAT}{%
+            \hspace{0.15em}%
+            \rule[-0.27em]{0pt}{1.22em}%
+            \bfseries\color{white}#1\textordfeminine
+            \hspace{0.15em}%
+        }%
+        \endgroup
+    }%
+    {Clase:\enspace}%
+}
+
+% Formato de las entradas
+\renewcommand{\cftchapfont}{\color{grisCIMAT!80!black}\large\chaptertocbox}
+% \renewcommand{\cftchapaftersnumb}{%
+%     {\color{grisCIMAT!80!black}Clase:\enspace}%
+% }
+
+% Aplicamos el formato únicamente a los capítulos
+\makeatletter
+\let\oldl@chapter\l@chapter
+\renewcommand{\l@chapter}[2]{%
+    \begingroup
+    \let\numberline\chaptertocnumberline
+    \oldl@chapter{#1}{#2}%
+    \endgroup
+}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECCIONES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

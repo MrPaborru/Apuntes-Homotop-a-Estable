@@ -1,127 +1,94 @@
-En la clase anterior se estableció que la categoría de Spanier--Whitehead $\SW$ es aditiva: posee objeto cero, coproductos finitos y sus conjuntos de morfismos son grupos abelianos sobre los que la composición es bilineal. En esta clase se muestra que, a pesar de ello, $\SW$ \emph{no} es abeliana. El obstáculo lo exhibe el morfismo de grado dos $2\colon S^0_0\to S^0_0$, que no admite conúcleo. La razón profunda es que dicho morfismo no está representado por ninguna función entre espacios, sino solo por una clase estable; en consecuencia, tampoco su cofibra homotópica tiene un representante inestable.
-
-Este fenómeno obliga a sustituir las nociones de núcleo y conúcleo por las de fibra y cofibra homotópicas, y conduce a la noción de categoría triangulada. Tras introducir su definición y sus seis axiomas, se deducen las primeras consecuencias: la composición de dos morfismos consecutivos de un triángulo distinguido es nula, cada triángulo se extiende indefinidamente en ambas direcciones y, al aplicar un funtor de morfismos, se obtienen sucesiones exactas largas de grupos abelianos. Se presenta también el ejemplo de la categoría homotópica de complejos de cocadenas de una categoría abeliana y, finalmente, se verifica que $\SW$ ---y también su versión extendida $\ESW$--- es una categoría triangulada, con especial atención al axioma de rotación y al axioma del relleno.
+En la clase anterior se estableció que la categoría de Spanier--Whitehead $\SW$ es aditiva. En esta clase se demuestra que no es abeliana: el morfismo de grado dos $2\colon S^0_0\to S^0_0$ no posee conúcleo. Su cofibra estable sí existe y es $\mathbb{RP}^2_{-1}$, pero no satisface la propiedad universal del conúcleo. Esta distinción motiva la introducción de las categorías trianguladas, cuyos triángulos distinguidos organizan las sucesiones de cofibra y las sucesiones exactas largas de grupos de morfismos. Se presentan los axiomas, sus primeras consecuencias y el ejemplo de la categoría homotópica de complejos de cocadenas. Finalmente, se construye la estructura triangulada de $\SW$ y de $\ESW$, verificando los axiomas salvo el del octaedro y utilizando, sin demostrarlo, un lema de relleno de homotopía inestable.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{El morfismo de grado dos y la contradicción}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{El morfismo de grado dos en la categoría estable}
+\subsection{El conúcleo del morfismo de grado dos en la categoría estable}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-En la categoría de espacios punteados, los morfismos entre esferas de la misma dimensión están clasificados por su grado. Para $S^0$ solo existen los grados $1$ y $-1$, de modo que no hay ninguna función $S^0\to S^0$ de grado dos. En la categoría estable, en cambio, es posible suspender cuantas veces sea necesario antes de representar una clase, y esto permite hablar de un morfismo de grado dos.
-
-Explícitamente, el conjunto de morfismos de $S^0_0=(S^0,0)$ en sí mismo es
+No existe una función punteada $S^0\to S^0$ de grado dos, ya que $[S^0,S^0]_*=\mathbb{Z}/2$. En la categoría estable, en cambio, tenemos
 \[
-\set*{S^0_0,S^0_0}
-=\varinjlim_n\,[S^n,S^n]_*.
+\set*{S^0_0,S^0_0}=\varinjlim_d[S^d,S^d]_*\cong\mathbb Z.
 \]
-Para $n=0$ se tiene $[S^0,S^0]_*\cong\mathbb Z/2$, pero a partir de $n=1$ el morfismo de suspensión
-\[
-[S^n,S^n]_*\longrightarrow[S^{n+1},S^{n+1}]_*
-\]
-es un isomorfismo, por el teorema de suspensión de Freudenthal. El colímite es, por tanto, $\mathbb Z$, y cada entero define una clase estable. Se denota por
-\[
-2\colon S^0_0\longrightarrow S^0_0
-\]
-la clase estable correspondiente al entero $2$, es decir, la clase del morfismo de grado dos $z\mapsto z^2\colon S^1\to S^1$, vista a nivel estable.
+ya que, para $d\geq1$, el grado identifica $[S^d,S^d]_*$ con $\mathbb Z$, y la suspensión preserva el grado. El morfismo $2\colon S^0_0\to S^0_0$ es la clase correspondiente al entero $2$, representada por $z\mapsto z^2\colon S^1\to S^1$, como se indica en la pizarra; por la aditividad, también es $2\id_{S^0_0}$.
 
 \begin{nota}
    La notación es la habitual para morfismos entre esferas: se escribe $n$ para la clase de grado $n$. También tiene sentido hablar del grado de funciones entre variedades cerradas orientadas, pero esa noción no se usará aquí.
 \end{nota}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{El conúcleo del morfismo de grado dos}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Para hacer álgebra homológica se necesita, al menos al principio, que la categoría sea abeliana: todo morfismo debe tener núcleo y conúcleo, y debe factorizar de manera compatible a través de su imagen y su coimagen. Veremos que $\SW$ no cumple esta condición, mostrando que el morfismo $2\colon S^0_0\to S^0_0$ no posee conúcleo.
+En el marco clásico del álgebra homológica se trabaja con categorías abelianas: todo morfismo debe tener núcleo y conúcleo, y debe factorizar de manera compatible a través de su imagen y su coimagen. Veremos que $\SW$ no cumple esta condición, mostrando que el morfismo $2\colon S^0_0\to S^0_0$ no posee conúcleo.
 
 \begin{defi}
 Sea $f\colon X\to Y$ un morfismo en una categoría con objeto cero. Un \emph{conúcleo} de $f$ es un objeto $C$ junto con un morfismo $q\colon Y\to C$ tales que $q\circ f=0$ y que satisfacen la propiedad universal siguiente: para todo morfismo $r\colon Y\to Z$ con $r\circ f=0$ existe un único $\overline r\colon C\to Z$ tal que $\overline r\circ q=r$.
 \end{defi}
 
-Supongamos, con vistas a una contradicción, que $2\colon S^0_0\to S^0_0$ admite un conúcleo $C$, con morfismo $q\colon S^0_0\to C$. La propiedad universal dice que, para cualquier objeto $X$, componer con $q$ establece una biyección
+Supongamos, con vistas a una contradicción, que $2\colon S^0_0\to S^0_0$ admite un conúcleo $C$, con morfismo $q\colon S^0_0\to C$. La propiedad universal se expresa mediante el diagrama
 \[
-\set*{C,X}\;\cong\;\bigl\{r\in\set*{S^0_0,X}:\ r\circ 2=0\bigr\}.
+\begin{tikzcd}[column sep=large,row sep=large]
+S^0_0 \arrow[r,"2"] \arrow[rr,bend left=25,"0"] \arrow[dr,"0"'] & S^0_0 \arrow[r,"q"] \arrow[d,"r"'] & C \arrow[dl,dashed,"\exists!\,\overline r"]\\
+& X &
+\end{tikzcd}
+\]
+Para cualquier objeto $X$, componer con $q$ establece una biyección
+\[
+\set*{C,X}\;\cong\;\set*{r\in\set*{S^0_0,X}\given\ r\circ 2=0}.
 \]
 Ahora bien, $\set*{S^0_0,X}\cong\pi_0^s(X)$, y la condición $r\circ 2=0$ significa que $r$ es anulado por la multiplicación por dos. Por tanto
 \[
-\set*{C,X}\;\cong\;\bigl\{r\in\pi_0^s(X):\ 2r=0\bigr\}
+\set*{C,X}\;\cong\;\set*{r\in\pi_0^s(X)\given\ 2r=0}
 \ =:\ {}_2\pi_0^s(X),
 \]
-el subgrupo de dos torsión del grupo de homotopía estable de grado cero. Esta descripción vale para cualquier objeto $X$ de $\SW$.
+el subgrupo de elementos anulados por $2$. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{La contradicción}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Consideremos ahora la sucesión cofibrada inducida por $2$. El morfismo de grado dos $2\colon S^1\to S^1$ sí está representado por una función de espacios, y su cofibra homotópica es el plano proyectivo real $\mathbb{RP}^2$. En notación estable, la cofibra de $2\colon S^0_0\to S^0_0$ es su desuspensión, es decir, $\Sigma^{-1}\mathbb{RP}^2=\mathbb{RP}^2_{-1}$. Usando la extensión hacia la izquierda de las sucesiones cofibradas, se obtiene la sucesión
+La función de grado dos $2\colon S^1\to S^1$ tiene cono de mapeo homotópicamente equivalente a $\mathbb{RP}^2$. Su cono proporciona la sucesión cofibrada utilizada en la pizarra. Al estabilizar y prolongar hacia la izquierda, obtenemos el segmento
 \[
-\cdots\longrightarrow S^0_{-1}\xrightarrow{\,2\,}S^0_{-1}\longrightarrow
-\mathbb{RP}^2_{-1}\xrightarrow{\ \delta\ }S^0_0\xrightarrow{\,2\,}S^0_0
-\longrightarrow\mathbb{RP}^2_{-1}\xrightarrow{\ \delta\ }S^0_1\xrightarrow{\,2\,}S^0_1
-\longrightarrow\cdots
+\begin{tikzcd}[column sep=large]
+\cdots \arrow[r] &
+S^0_0 \arrow[r,"2"] &
+S^0_0 \arrow[r] &
+\mathbb{RP}^2_{-1} \arrow[r] &
+S^1_0 \arrow[r,"2"] &
+S^1_0 \arrow[r] &
+\mathbb{RP}^2_0 \arrow[r] &
+\cdots
+\end{tikzcd}
 \]
+% Aquí se han omitido signos que no afectan la exactitud de los grupos inducidos. 
+Aplicando $\set*{C,-}$ resulta (por lo visto la clase anterior) una sucesión exacta que contiene
+\[
+\begin{tikzcd}[column sep=small]
+\set*{C,S^0_0} \arrow[r,"2_*"] & \set*{C,S^0_0} \arrow[r] &
+\set*{C,\mathbb{RP}^2_{-1}} \arrow[r] & \set*{C,S^1_0}.
+\end{tikzcd}
+\]
+Por la propiedad universal supuesta, $\set*{C,S^0_0}\cong{}_2\mathbb Z=0$ y $\set*{C,S^1_0}\cong{}_2\pi_0^s(S^1)=0$. La última igualdad se sigue de que $\pi_0^s(S^1)=\varinjlim_r\pi_r(S^{r+1})=0$. Por exactitud, $\set*{C,\mathbb{RP}^2_{-1}}=0$.
 
-Aplicando el funtor $\set*{C,-}$, que por la clase anterior convierte sucesiones cofibradas en sucesiones exactas, resulta
+Por otra parte, la suspensión es una autoequivalencia y, por tanto, preserva la propiedad universal de los conúcleos. Esto garantiza que $\Sigma C$ es un \emph{conúcleo} de $2\colon S^1_0\to S^1_0$. En consecuencia, repitiendo el argumento del inicio de la sección (el isomorfismo izquierdo se sigue de que $\Sigma$ es equivalencia):
 \[
-\set*{C,S^0_0}\xrightarrow{\,2\,}\set*{C,S^0_0}\longrightarrow
-\set*{C,\Sigma^{-1}\mathbb{RP}^2}\longrightarrow
-\set*{C,S^0_1}\xrightarrow{\,2\,}\set*{C,S^0_1}.
+\set*{C,\mathbb{RP}^2_{-1}}
+\cong\set*{\Sigma C,\mathbb{RP}^2_0}
+\cong{}_2\pi_1^s(\mathbb{RP}^2).
 \]
-Calculemos los términos que enmarcan al que nos interesa. Por la descripción anterior,
+Calculemos este último grupo. Como $\mathbb{RP}^2$ es arcoconexo, $\Sigma^r\mathbb{RP}^2$ es $r$-conexo. Para $r\geq1$, Hurewicz y el isomorfismo de suspensión en homología dan
 \[
-\set*{C,S^0_0}\cong{}_2\pi_0^s(S^0)={}_2\mathbb Z=0,
+\pi_{r+1}(\Sigma^r\mathbb{RP}^2)
+\cong\widetilde H_{r+1}(\Sigma^r\mathbb{RP}^2)
+\cong H_1(\mathbb{RP}^2)\cong\mathbb Z/2.
 \]
-pues $\pi_0^s(S^0)\cong\mathbb Z$ es libre y no tiene elementos de dos torsión. Análogamente,
-\[
-\set*{C,S^0_1}\cong{}_2\pi_0^s(S^1)={}_2\,0=0,
-\]
-ya que $\pi_0^s(S^1)=\varinjlim_n\pi_n(S^{n+1})=0$: en efecto, $\pi_n(S^{n+1})=0$ para todo $n$ por aproximación celular, pues el esqueleto de dimensión $n$ de $S^{n+1}$ es un punto. Como los dos términos que rodean a $\set*{C,\Sigma^{-1}\mathbb{RP}^2}$ en la sucesión exacta son nulos, se concluye
-\[
-\set*{C,\Sigma^{-1}\mathbb{RP}^2}=0.
-\]
-
-Obtendremos ahora una contradicción calculando el mismo grupo de otra manera. Por la fórmula de desplazamiento, suspender el objetivo no altera las clases estables:
-\[
-\set*{C,\Sigma^{-1}\mathbb{RP}^2}
-=\set*{C_0,(\Sigma^{-1}\mathbb{RP}^2)_0}
-\cong\set*{C_1,\mathbb{RP}^2_0}
-=\set*{\Sigma C,\mathbb{RP}^2}.
-\]
-Como suspender es un isomorfismo que preserva la propiedad universal, $\Sigma C$ es el conúcleo del morfismo suspendido $2\colon S^0_1\to S^0_1$. Repitiendo el argumento con que calculamos $\set*{C,X}$, se tiene
-\[
-\set*{\Sigma C,X}\cong{}_2\pi_1^s(X)
-\]
-para todo objeto $X$, y en particular
-\[
-\set*{\Sigma C,\mathbb{RP}^2}\cong{}_2\pi_1^s(\mathbb{RP}^2).
-\]
-Calculemos el grupo de homotopía estable $\pi_1^s(\mathbb{RP}^2)$. Por definición,
-\[
-\pi_1^s(\mathbb{RP}^2)=\varinjlim_n\,\pi_{1+n}\bigl(\Sigma^n\mathbb{RP}^2\bigr).
-\]
-La suspensión incrementa la conectividad, de modo que $\Sigma^n\mathbb{RP}^2$ es $n$-conexo. En consecuencia, el primer grupo de homotopía que puede no ser trivial es el de grado $n+1$, y el teorema de Hurewicz lo identifica con el grupo de homología correspondiente:
-\[
-\pi_{1+n}\bigl(\Sigma^n\mathbb{RP}^2\bigr)\cong H_{1+n}\bigl(\Sigma^n\mathbb{RP}^2\bigr)\cong H_1(\mathbb{RP}^2)\cong\mathbb Z/2,
-\]
-donde la última igualdad es el isomorfismo de suspensión en homología. La sucesión es constante, así que
-\[
-\pi_1^s(\mathbb{RP}^2)\cong\mathbb Z/2.
-\]
-Sustituyendo,
-\[
-\set*{\Sigma C,\mathbb{RP}^2}\cong{}_2(\mathbb Z/2)=\mathbb Z/2\neq0,
-\]
-porque todo elemento de $\mathbb Z/2$ es anulado por la multiplicación por dos. Pero esto contradice la igualdad $\set*{C,\Sigma^{-1}\mathbb{RP}^2}=0$ obtenida antes. Por lo tanto, el morfismo $2\colon S^0_0\to S^0_0$ no tiene conúcleo.
+Estos isomorfismos son compatibles con los mapeos de suspensión: el homomorfismo de Hurewicz conmuta con la suspensión y los mapeos correspondientes en homología son isomorfismos. Por tanto, el colímite también es $\pi_1^s(\mathbb{RP}^2)\cong\mathbb Z/2$. Así, $\set*{C,\mathbb{RP}^2_{-1}}\cong{}_2(\mathbb Z/2)=\mathbb Z/2$, contradiciendo la anulación obtenida antes.
 
 \begin{teo}
 La categoría de Spanier--Whitehead $\SW$ no es abeliana. Más precisamente, el morfismo de grado dos $2\colon S^0_0\to S^0_0$ no posee conúcleo.
 \end{teo}
 
 \begin{nota}
-   Vale la pena subrayar qué es lo que hace posible la contradicción. El morfismo $2\colon S^0_0\to S^0_0$ es una clase estable que no desuspende a ninguna función $S^0\to S^0$, y por eso su cofibra homotópica $\Sigma^{-1}\mathbb{RP}^2$ tampoco admite un representante inestable: solo tiene sentido hablar de ella establemente. La categoría $\SW$ no se obtiene entonces de adornar ligeramente la categoría homotópica de espacios, sino que asigna fibras y cofibras a morfismos que inestablemente carecen de ellas.
+   El morfismo estable $2$ tiene un representante después de suspender, aunque no procede de ninguna función punteada $S^0\to S^0$. Su cofibra estable es $\mathbb{RP}^2_{-1}$, mientras que el argumento anterior demuestra que no tiene conúcleo.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,7 +118,14 @@ El nombre proviene de que la última flecha regresa al vértice inicial salvo su
 \begin{nota}
    En la literatura es frecuente dibujar el triángulo como un diagrama triangular cerrado, con los
    tres objetos en los vértices y los tres morfismos sobre los lados, sobreentendiendo que la
-   tercera flecha va a $\Sigma X$ aunque no se indique. Esa notación se descarta aquí porque obliga
+   tercera flecha va a $\Sigma X$ aunque no se indique. El dibujo es únicamente esquemático:
+\[
+\begin{tikzcd}[column sep=small,row sep=small]
+& X \arrow[dr,"f"] &\\
+Z \arrow[ur,"h\ \text{(hacia }\Sigma X\text{)}"] & & Y \arrow[ll,"g"]
+\end{tikzcd}
+\]
+   Esa notación se descarta en los argumentos porque obliga
    a fijar un vértice de referencia para decidir cuál es el primero. La notación lineal deja el
    orden de los morfismos explícito y no requiere tal elección.
 \end{nota}
@@ -173,7 +147,7 @@ donde las tres primeras flechas verticales son libres, pero la cuarta está forz
 
 \begin{defi}\label{defi:triangulada}
 Una \emph{categoría triangulada} es una terna $(\mathcal C,\Sigma,J)$, donde $\mathcal C$ es una categoría aditiva, $\Sigma$ es un isomorfismo aditivo y $J$ es una clase de triángulos de $\mathcal C$, llamados \emph{triángulos distinguidos}, que satisfacen los axiomas siguientes:
-\begin{enumerate}[label = \textup{TR\arabic*.}]
+\begin{enumerate}[label = \textup{TR\arabic*.},leftmargin=2.5em]
 \item $J$ es cerrado bajo isomorfismos de triángulos.
 
 \item Un triángulo
@@ -206,25 +180,23 @@ X' \arrow[r,"f'"'] & Y' \arrow[r,"g'"'] & Z' \arrow[r,"h'"'] & \Sigma X'
 \]
 cuyas filas son triángulos distinguidos, existe $w\colon Z\to Z'$ tal que $(\varphi,\psi,w)$ es un morfismo de triángulos. Este es el \emph{axioma del relleno}. El morfismo $w$ no es necesariamente único: el axioma solo garantiza su existencia.
 
-\item (\emph{Axioma del octaedro}.) Dados tres triángulos distinguidos
+\item (\emph{Axioma del octaedro}.) Sean $f\colon X\to Y$ y $g\colon Y\to Z$ y fijemos triángulos distinguidos para $f$, $gf$ y $g$. Usamos $Z'$, $Y'$ y $X'$ para sus respectivos terceros objetos. Existen $h\colon Z'\to Y'$ y $k\colon Y'\to X'$ que completan el diagrama
 \[
-\begin{array}{rcl}
-X&\xrightarrow{\ f\ }&Y\xrightarrow{\ p_1\ }Z\xrightarrow{\ d_1\ }\Sigma X,\\[2pt]
-X&\xrightarrow{\ gf\ }&Z\xrightarrow{\ p_2\ }Y'\xrightarrow{\ d_2\ }\Sigma X,\\[2pt]
-Y&\xrightarrow{\ p_1\ }&Z\xrightarrow{\ p_3\ }X'\xrightarrow{\ d_3\ }\Sigma Y,
-\end{array}
+\begin{tikzcd}[column sep=large,row sep=large]
+X \arrow[r,"f"] \arrow[d,equal] & Y \arrow[r,"p_1"] \arrow[d,"g"'] & Z' \arrow[r,"d_1"] \arrow[d,red,"h"] & \Sigma X \arrow[d,equal]\\
+X \arrow[r,"gf"'] & Z \arrow[r,"p_2"'] \arrow[d,"p_3"'] & Y' \arrow[r,"d_2"'] \arrow[d,red,"k"] & \Sigma X\\
+& X' \arrow[d,"d_3"'] & X' \arrow[d,red,"{(\Sigma p_1)d_3}"] &\\
+& \Sigma Y & \Sigma Z' &
+\end{tikzcd}
 \]
-existe un triángulo distinguido
+de manera que la primera y la segunda fila y la segunda columna son los triángulos dados, la tercera columna es un triángulo distinguido y las dos filas superiores forman un morfismo de triángulos. Además, existe el morfismo de triángulos
 \[
-Z\xrightarrow{\ p_2\ }Y'\xrightarrow{\ k\ }X'\xrightarrow{\ \Sigma p_1\circ d_3\ }\Sigma Z
+\begin{tikzcd}[column sep=large,row sep=large]
+X \arrow[r,"gf"] \arrow[d,blue,"f"'] & Z \arrow[r,"p_2"] \arrow[d,equal] & Y' \arrow[r,"d_2"] \arrow[d,blue,"k"'] & \Sigma X \arrow[d,blue,"\Sigma f"]\\
+Y \arrow[r,"g"'] & Z \arrow[r,"p_3"'] & X' \arrow[r,"d_3"'] & \Sigma Y.
+\end{tikzcd}
 \]
-y un morfismo de triángulos de la segunda fila a la segunda columna,
-\[
-(X\xrightarrow{gf}Z\xrightarrow{p_2}Y'\xrightarrow{d_2}\Sigma X)
-\longrightarrow
-(Y\xrightarrow{p_1}Z\xrightarrow{p_3}X'\xrightarrow{d_3}\Sigma Y),
-\]
-dado por $(f,\id_Z,k,\Sigma f)$.
+En particular, $hp_1=p_2g$, $d_2h=d_1$, $kp_2=p_3$ y $d_3k=(\Sigma f)d_2$.
 \end{enumerate}
 \end{defi}
 
@@ -232,24 +204,20 @@ dado por $(f,\id_Z,k,\Sigma f)$.
 \subsection{Comentarios sobre los axiomas}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-La definición anterior es larga, y conviene detenerse en el significado de sus dos axiomas menos evidentes.
-
 \begin{obs}
 La idea de triángulo distinguido es que el tercer objeto $Z$ es la \emph{cofibra homotópica} del morfismo $f$. En un contexto puramente algebraico se piensa simplemente en la cofibra, pero viniendo de la topología conviene conservar la palabra «homotópica». Recíprocamente, el morfismo $\Sigma^{-1}Z\to X$ que aparece al rotar el triángulo hacia la izquierda exhibe $\Sigma^{-1}Z$ como la \emph{fibra homotópica} de $f$. Que fibras y cofibras queden así directamente relacionadas es un rasgo característico de los contextos estables, y contrasta con la homotopía inestable, donde no guardan relación directa.
-\end{obs}
 
-\begin{obs}
-El axioma del octaedro recibe su nombre de que todos los morfismos que en él intervienen pueden disponerse formando un octaedro. Su contenido esencial, sin embargo, es la afirmación de que \emph{la cofibra del morfismo entre cofibras es la cofibra}: en la notación del axioma, $X'$ es a la vez la cofibra de $g$ y la cofibra del morfismo $Z\to Y'$ inducido entre las cofibras de $f$ y de $gf$. Escrito en cocientes formales, el axioma dice que
+El axioma del octaedro relaciona la cofibra de una composición con las cofibras de sus factores: $Z'$ es la cofibra de $f$, $Y'$ la de $gf$ y $X'$ la de $g$, y el nuevo triángulo exhibe $X'$ como cofibra de $h\colon Z'\to Y'$. La notación de cocientes formales resume la idea:
 \[
-``\,Z/Y\,''=X'=\,''\,Y'/Z'\,''=\frac{\text{``}Z/X\text{''}}{\text{``}Y/X\text{''}},
+\text{``}Z/Y\text{''}=X'
+=\text{``}Y'/Z'\text{''}
+=\frac{\text{``}Z/X\text{''}}{\text{``}Y/X\text{''}}.
 \]
-lo que recuerda al segundo teorema de isomorfismo: es como si la $X$ pudiera cancelarse. La última igualdad, que también se escribió en la pizarra, es la que hace visible la cancelación: el cociente de los dos cocientes recupera $Z/Y$. La misma idea aparece en homotopía inestable en el lema de los nueve, donde un cuadrado $3\times3$ de sucesiones cofibradas muestra que la cofibra de la cofibra es la cofibra, sin importar si el cálculo se hace en horizontal o en vertical.
-
-En el triángulo nuevo del axioma, el primer morfismo $Z\to Y'$ se rotuló $h$ en la pizarra (además de $p_2$, que es su nombre en el cuadrado de partida); en estas notas se conserva $p_2$ para no introducir una letra adicional.
+Esto recuerda al teorema de isomorfismo $(Z/X)/(Y/X)\cong Z/Y$; los cocientes entre comillas solo expresan una analogía, no cocientes categóricos ordinarios. Para evitar la repetición de la letra $Z$ del diagrama, hemos llamado $Z'$ a la cofibra de $f$ y reservado $Z$ para el objetivo de $g$.
 \end{obs}
 
 \begin{nota}
-   El axioma del octaedro es el menos utilizado en la práctica: los axiomas que se emplean constantemente son los cuatro primeros y el del relleno. En estas notas no se demostrará el axioma del octaedro.
+   En esta clase se utilizarán principalmente los cinco primeros axiomas. El axioma del octaedro se enuncia, pero su verificación para los ejemplos no se desarrolla.
 \end{nota}
 
 \begin{nota}
@@ -277,29 +245,40 @@ X \arrow[r,"\id_X"] \arrow[d,"\id_X"'] & X \arrow[r] \arrow[d,"f"'] & 0 \arrow[r
 X \arrow[r,"f"'] & Y \arrow[r,"g"'] & Z \arrow[r,"h"'] & \Sigma X .
 \end{tikzcd}
 \]
-El primer cuadrado conmuta por ser $\id_X$ la identidad, y el segundo porque ambos recorridos son el morfismo nulo $X\to0$. El axioma del relleno proporciona entonces la flecha punteada, y la conmutatividad del segundo cuadrado dice precisamente que $g\circ f=0$. La igualdad $h\circ g=0$ se obtiene aplicando el mismo argumento al triángulo desplazado, que es distinguido por \textup{TR2}.
+El primer cuadrado conmuta, pues ambos recorridos son $f$. El axioma del relleno proporciona la flecha punteada $0\to Z$, necesariamente nula, y hace conmutar los cuadrados restantes. Ahora el segundo cuadrado da $g\circ f=0$, porque el otro recorrido factoriza por el objeto cero. La igualdad $h\circ g=0$ se obtiene aplicando el mismo argumento al triángulo desplazado, que es distinguido por \textup{TR2}.
 \end{proof}
 
-El resultado anterior muestra que un triángulo distinguido es, en particular, un complejo: morfismos consecutivos componen a cero. Es, en palabras del profesor, una rigidificación de un complejo de cadenas, pues todavía no se exige ninguna propiedad algebraica adicional.
+El resultado anterior muestra que un triángulo distinguido es, en particular, un complejo: morfismos consecutivos componen a cero. Ser distinguido aporta estructura adicional: no todo complejo de tres morfismos con compuestos nulos es un triángulo distinguido.
 
 \begin{prop}\label{prop:infinita}
-Todo triángulo distinguido da lugar a una sucesión infinita en ambas direcciones,
-\[
-\begin{aligned}
-\cdots\longrightarrow{}&\Sigma^{-1}Z\xrightarrow{-\Sigma^{-1}h}\Sigma^{-1}Y
-\xrightarrow{-\Sigma^{-1}g}\Sigma^{-1}X\xrightarrow{\ \ }X\xrightarrow{\ f\ }Y\\
-&\xrightarrow{\ g\ }Z\xrightarrow{\ h\ }\Sigma X\xrightarrow{-\Sigma f}\Sigma Y
-\xrightarrow{-\Sigma g}\Sigma Z\xrightarrow{-\Sigma h}\Sigma^2X\longrightarrow\cdots,
-\end{aligned}
-\]
-en la que cada cuatro términos consecutivos forman un triángulo distinguido.
+Todo triángulo distinguido se prolonga indefinidamente mediante rotaciones:
+\[\begin{tikzcd}[cramped]
+\cdots
+\arrow[r] &
+\Sigma^{-1}Y
+\arrow[r,"-\Sigma^{-1}g"] &
+\Sigma^{-1}Z
+\arrow[r,"-\Sigma^{-1}h"] &
+X
+\arrow[r,"f"] &
+Y
+\arrow[r,"g"] &
+Z
+\arrow[r,"h"] &
+\Sigma X
+\arrow[r,"-\Sigma f"] &
+\Sigma Y
+\arrow[r] &
+\cdots
+\end{tikzcd}\]
+Cada bloque de cuatro términos consecutivos es un triángulo distinguido.
 \end{prop}
 \begin{proof}
 Es consecuencia directa de \textup{TR2}: al rotar el triángulo $X\to Y\to Z\to\Sigma X$ se obtiene el triángulo $Y\to Z\to\Sigma X\to\Sigma Y$, y al rotar de nuevo, $Z\to\Sigma X\to\Sigma Y\to\Sigma Z$. Iterando el proceso hacia la derecha y, usando la rotación inversa, hacia la izquierda, resultan todos los términos de la sucesión. Los signos provienen de que cada rotación introduce un signo menos en la suspensión del primer morfismo.
 \end{proof}
 
 \begin{obs}
-En virtud de la proposición anterior, el objeto $\Sigma^{-1}Z$ es la fibra homotópica de $f$, y el objeto $Z$ su cofibra homotópica. Así, en una categoría triangulada todo morfismo tiene fibra y cofibra, aunque no necesariamente núcleo y conúcleo en el sentido de la categoría abeliana.
+En virtud de la proposición anterior, el objeto $\Sigma^{-1}Z$ es la fibra homotópica de $f$, y el objeto $Z$ su cofibra homotópica. Así, en una categoría triangulada todo morfismo puede completarse con una fibra y una cofibra en este sentido. Estos objetos se eligen mediante un triángulo distinguido; no se les atribuye la propiedad universal de un núcleo o conúcleo categórico.
 \end{obs}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -309,28 +288,24 @@ En virtud de la proposición anterior, el objeto $\Sigma^{-1}Z$ es la fibra homo
 La consecuencia más importante de la definición es que los triángulos distinguidos producen sucesiones exactas largas de grupos abelianos, tal como ocurría en $\SW$ con las sucesiones cofibradas.
 
 \begin{prop}\label{prop:exacta}
-Sea $X\xrightarrow{f}Y\xrightarrow{g}Z\xrightarrow{h}\Sigma X$ un triángulo distinguido y sea $A$ un objeto de $\mathcal C$. Entonces las sucesiones inducidas
+Sea $X\xrightarrow{f}Y\xrightarrow{g}Z\xrightarrow{h}\Sigma X$ un triángulo distinguido y sea $A\in\mathcal C$. Al aplicar $\hom_{\mathcal C}(A,-)$ y $\hom_{\mathcal C}(-,A)$ a su prolongación se obtienen sucesiones exactas:
 \[
-\begin{aligned}
-\cdots\longrightarrow{}&\hom_{\mathcal C}(A,\Sigma^{-1}Z)\longrightarrow
-\hom_{\mathcal C}(A,X)\xrightarrow{\ f_*\ }\hom_{\mathcal C}(A,Y)\\
-&\xrightarrow{\ g_*\ }\hom_{\mathcal C}(A,Z)\xrightarrow{\ h_*}\hom_{\mathcal C}(A,\Sigma X)\longrightarrow\cdots
-\end{aligned}
+\cdots\longrightarrow{}\hom_{\mathcal C}(A,\Sigma^{-1}Z)\longrightarrow
+\hom_{\mathcal C}(A,X)\xrightarrow{\ f_*\ }\hom_{\mathcal C}(A,Y)
+\xrightarrow{\ g_*\ }\hom_{\mathcal C}(A,Z)\xrightarrow{\ h_*}\hom_{\mathcal C}(A,\Sigma X)\longrightarrow\cdots
 \]
 y
 \[
 \cdots\longleftarrow\hom_{\mathcal C}(\Sigma^{-1}Z,A)\longleftarrow
 \hom_{\mathcal C}(X,A)\xleftarrow{\ f^*\ }\hom_{\mathcal C}(Y,A)
-\xleftarrow{\ g^*\ }\hom_{\mathcal C}(Z,A)\longleftarrow\cdots
+\xleftarrow{\ g^*\ }\hom_{\mathcal C}(Z,A)\longleftarrow\hom_{\mathcal C}(A,\Sigma X)\longleftarrow\cdots
 \]
-son exactas.
 \end{prop}
 \begin{proof}
-Demostraremos el caso de $\hom_{\mathcal C}(A,-)$; el otro es análogo y se deja como ejercicio.
+Demostraremos el caso de $\hom_{\mathcal C}(A,-)$; el otro es análogo y se dejó como ejercicio.
+$\operatorname{Im}(f_*)\subseteq\ker(g_*)$ es inmediato: por la \abvref{prop:compuesta} se tiene $g\circ f=0$, luego $g_*f_*=(g\circ f)_*=0$.
 
-La inclusión $\operatorname{Im}(f_*)\subseteq\ker(g_*)$ es inmediata: por la \myref{prop:compuesta} se tiene $g\circ f=0$, luego $g_*f_*=(g\circ f)_*=0$.
-
-Veamos la inclusión recíproca. Sea $\varphi\colon A\to Y$ tal que $g\circ\varphi=0$. Rotando el triángulo dado, el triángulo
+Veamos la inclusión recíproca. Sea $\varphi\colon A\to Y$ tal que $g\circ\varphi=0$. Rotando el triángulo dado:
 \[
 Y\xrightarrow{\ g\ }Z\xrightarrow{\ h\ }\Sigma X\xrightarrow{-\Sigma f}\Sigma Y
 \]
@@ -345,7 +320,7 @@ A \arrow[r,"\id_A"] \arrow[d,"\Sigma^{-1}r"'] & A \arrow[r,"0"] \arrow[d,"\varph
 X \arrow[r,"f"'] & Y \arrow[r,"g"'] & Z \arrow[r,"h"'] & \Sigma X \arrow[r,"-\Sigma f"'] & \Sigma Y .
 \end{tikzcd}
 \]
-La primera columna es la que exhibe el levantamiento: su conmutatividad dice precisamente que $f\circ(\Sigma^{-1}r)=\varphi$, que es lo que hay que probar. El segundo cuadrado conmuta porque $g\circ\varphi=0$, que es la hipótesis. El tercero conmuta porque ambas composiciones son nulas. Como las filas son distinguidas, el axioma del relleno proporciona $r\colon\Sigma A\to\Sigma X$ que hace conmutar el cuarto cuadrado:
+Aplicamos el axioma del relleno al bloque de las cuatro columnas de la derecha, cuyas filas son triángulos distinguidos. Su primer cuadrado conmuta porque $g\circ\varphi=0$. El axioma proporciona $r\colon\Sigma A\to\Sigma X$ y garantiza la conmutatividad de los otros dos cuadrados. La flecha $\Sigma^{-1}r$ de la primera columna se define después de obtener $r$. El último cuadrado da
 \[
 (-\Sigma f)\circ r=\Sigma\varphi\circ(-\id_{\Sigma A})=-\Sigma\varphi,
 \]
@@ -359,7 +334,7 @@ Probar la exactitud de la sucesión inducida por $\hom_{\mathcal C}(-,A)$, repit
 \end{ejer}
 
 \begin{sol}
-Dualizamos el argumento. La inclusión $\operatorname{Im}(g^*)\subseteq\ker(f^*)$ es inmediata, pues $f^*g^*=(g\circ f)^*=0$.
+Dualizamos el argumento: $\operatorname{Im}(g^*)\subseteq\ker(f^*)$ es inmediata, pues $f^*g^*=(g\circ f)^*=0$.
 
 Para la inclusión recíproca, sea $\psi\colon Y\to A$ con $\psi\circ f=0$. El triángulo
 \[
@@ -382,7 +357,7 @@ Finalmente, como cada cuatro términos consecutivos de la sucesión infinita de 
 \end{sol}
 
 \begin{nota}
-   Los signos menos que aparecen en los triángulos desplazados son molestos mientras se trabaja en la categoría, pero desaparecen al pasar a la sucesión exacta de grupos abelianos: como en un grupo abeliano la imagen y el núcleo de $-\Sigma f_*$ coinciden con los de $\Sigma f_*$, la sucesión sigue siendo exacta si se omiten los signos. Sí es importante, en cambio, conservarlos en los triángulos distinguidos, pues el axioma de rotación afirma que es la rotación \emph{con} el signo la que vuelve a ser distinguida; el mismo triángulo sin el signo podría no serlo.
+   Los signos menos no desaparecen al aplicar los funtores de morfismos, pero pueden omitirse si solo interesa la exactitud: como en un grupo abeliano la imagen y el núcleo de $-\Sigma f_*$ coinciden con los de $\Sigma f_*$, la sucesión sigue siendo exacta si se omiten los signos. Sí es importante, en cambio, conservarlos en los triángulos distinguidos, pues el axioma de rotación afirma que es la rotación \emph{con} el signo la que vuelve a ser distinguida; el mismo triángulo sin el signo podría no serlo.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -393,7 +368,7 @@ Finalmente, como cada cuatro términos consecutivos de la sucesión infinita de 
 \subsection{El ejemplo de la categoría homotópica de complejos}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-El ejemplo más sencillo de categoría triangulada es la categoría homotópica $\mathcal K(\mathcal A)$ de una categoría abeliana $\mathcal A$. Al pasar a su categoría homotópica, $\mathcal A$ deja de ser abeliana, pero conserva la estructura triangulada.
+Un ejemplo fundamental es $\mathcal K(\mathcal A)$, la categoría cuyos objetos son complejos de cocadenas en una categoría abeliana $\mathcal A$ y cuyos morfismos son clases de homotopía de morfismos de complejos. La categoría $\mathcal K(\mathcal A)$ es triangulada y no es abeliana en general.
 
 El funtor de desplazamiento es
 \[
@@ -401,7 +376,14 @@ El funtor de desplazamiento es
 \qquad
 C\longmapsto C[1],
 \]
-donde el complejo desplazado se define por $(C[1])^k=C^{k+1}$, y su diferencial es la del complejo original con un signo menos: $\delta^k_{C[1]}=-\delta^{k+1}_C$. Este funtor sustituye a la suspensión y es un isomorfismo aditivo.
+donde el complejo desplazado se define por $(C[1])^k=C^{k+1}$, y su diferencial es la del complejo original con un signo menos: $\delta^k_{C[1]}=-\delta^{k+1}_C$. En particular, tenemos el diagrama
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+(C[1])^k \arrow[r,equal] \arrow[d,"\delta_{C[1]}^k"'] & C^{k+1} \arrow[d,"-\delta_C^{k+1}"]\\
+(C[1])^{k+1} \arrow[r,equal] & C^{k+2}.
+\end{tikzcd}
+\]
+Este funtor sustituye a la suspensión y es un automorfismo aditivo.
 
 Los triángulos distinguidos son los isomorfos a los de la forma
 \[
@@ -411,314 +393,204 @@ donde $C(f)$ es el \emph{cono} de $f$, definido en grado $n$ por
 \[
 C(f)^n=D^n\oplus C^{n+1},
 \qquad
-d^n(x,y)=\bigl(\delta_D^n x+fy,\ -\delta_C^{n+1}y\bigr).
+d^n=\begin{pmatrix}\delta_D^n&f^{n+1}\\0&-\delta_C^{n+1}\end{pmatrix}.
 \]
-La inclusión $i$ está dada por $x\mapsto(x,0)$ y la proyección $P$ por $(x,y)\mapsto-y$.
+La inclusión $i$ es la del primer sumando y $P=-p$ es el negativo de la proyección al segundo sumando. Se conserva así la convención de signos de la pizarra.
 
-El cono de $f$ es, en este contexto, la cofibra de $f$: concentra la información de $f$ y da lugar a una sucesión exacta larga de grupos de homología. Por ejemplo, $f$ induce isomorfismos en todos los grupos de homología si y solo si el cono $C(f)$ es acíclico.
+El cono de $f$ es, en este contexto, la cofibra de $f$: concentra la información de $f$ y da lugar a una sucesión exacta larga de grupos de cohomología. Por ejemplo, $f$ induce isomorfismos en todos los grupos de cohomología si y solo si el cono $C(f)$ es acíclico.
 
 \begin{nota}
-   La verificación de los axiomas en $\mathcal K(\mathcal A)$ es un ejercicio de álgebra homológica elemental y puede hacerse por completo a mano. No ocurre lo mismo en los modelos modernos de espectros: en los artículos actuales la estructura triangulada se deduce de que la categoría homotópica proviene de una categoría de modelos estable, y rara vez se comprueban los axiomas uno por uno. Para los espectros secuenciales, el libro de Hovey sobre categorías de modelos contiene una verificación bastante detallada, al menos de las partes que no deja como ejercicio (véase \cite{hovey1999}).
-
-   Conviene precisar el alcance de ambas vías. Ni una categoría de modelos ni su categoría homotópica
-   tienen por qué ser trianguladas; lo son, en cambio, las categorías de modelos \emph{estables}. La
-   segunda vía es la de las localizaciones de Verdier: si se localiza una categoría triangulada
-   respecto de un conjunto de morfismos compatible con el desplazamiento, la categoría localizada
-   vuelve a ser triangulada. El ejemplo que nos ocupa es una instancia de esto, pues localizar
-   $\mathcal K(\mathcal A)$ respecto de los quasi-isomorfismos de complejos es compatible con el
-   desplazamiento, y por tanto la categoría derivada de una categoría abeliana resulta ser
-   triangulada.
+   En la discusión se mencionaron otros ejemplos: las categorías homotópicas de categorías de modelos estables y las categorías derivadas. En particular, $\mathcal D(\mathcal A)$ se obtiene de $\mathcal K(\mathcal A)$ invirtiendo los cuasi-isomorfismos de complejos y también es triangulada.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{La estructura triangulada de Spanier--Whitehead}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Volvamos a $\SW$. El automorfismo aditivo de traslación es $\sh^1(X,n)=(X,n+1)$, naturalmente isomorfo a la suspensión. Cuando sea necesario distinguir ambas operaciones, escribiremos $\sigma(X_n)=(\Sigma X)_n$ y $\eta_{X_n}\colon(\Sigma X)_n\to X_{n+1}$ para el isomorfismo natural de la clase anterior.
 
-Después de todo el material abstracto, volvemos al ejemplo que nos interesa: la categoría de Spanier--Whitehead. Veremos que $\SW$ es triangulada, y que la misma verificación se aplica sin cambios a la categoría extendida $\ESW$.
-
-El funtor de desplazamiento es el que ya se introdujo en la clase anterior,
+Definiremos los triángulos distinguidos como los isomorfos a los de la forma
 \[
-\sh^1(X,n)=(X,n+1),
+X_n\xrightarrow{[f]}Y_n\xrightarrow{[i]}(C_f)_n
+\xrightarrow{P_n}X_{n+1},\qquad n\in\mathbb Z,
 \]
-que es un isomorfismo y preserva la estructura aditiva. En cuanto a los triángulos distinguidos, se declaran distinguidos los isomorfos a los de la forma
+donde $f\colon X\to Y$ es una función punteada, $C_f=Y\cup_f CX$ es su cono de mapeo, $i$ es la inclusión y $P_n=\eta_{X_n}\circ[q]$, con $q\colon C_f\to\Sigma X$ el cociente por $Y$. Podemos reemplazar $f$ por una aproximación celular punteada para que $C_f$ sea un CW-complejo, finito si $X$ y $Y$ lo son. La definición de $P_n$ se representa mediante
 \[
-(X,n)\xrightarrow{\ [f]\ }(Y,n)\xrightarrow{\ [i]\ }(C_f,n)\xrightarrow{\ P\ }(X,n+1),
+\begin{tikzcd}[column sep=large,row sep=large]
+X_n \arrow[r,"{[f]}"] & Y_n \arrow[r,"{[i]}"] & (C_f)_n \arrow[r,"P_n"] \arrow[dr,"{[q]}"'] & X_{n+1}\\
+& & & (\Sigma X)_n \arrow[u,"\eta_{X_n}"',"\cong"]
+\end{tikzcd}
 \]
-donde $f\colon X\to Y$ es una función punteada \emph{definida directamente entre los espacios} ---no en una suspensión--- y:
-\begin{itemize}
-\item $C_f=Y\cup_f CX$ es el cono de $f$, es decir, $Y$ con un cono sobre $X$ pegado a lo largo de $f$;
-\item $i\colon Y\to C_f$ es la inclusión natural;
-\item $q\colon C_f\to\Sigma X$ es el cociente por $Y$, que identifica la base del cono y produce la suspensión de $X$;
-\item $P$ es la composición de $[q]$ con el isomorfismo natural $\Sigma X_n\cong X_{n+1}$.
-\end{itemize}
+La misma definición se utiliza en $\ESW$, permitiendo complejos infinitos.
 
-\begin{nota}
-   La restricción a morfismos definidos directamente entre espacios no es esencial. Si un morfismo estable está representado por una función en un nivel suficientemente alto, basta suspender lo necesario para situarlo en un nivel donde ya sea una función entre espacios; una vez allí, se forma el cono y se rota el triángulo lo que haga falta. Por eso es suficiente considerar triángulos de la forma anterior, que son más fáciles de manejar.
-\end{nota}
+% \begin{nota}
+% La función $f$ de estos modelos está definida directamente entre espacios. Para tratar un morfismo estable general, en clase se elige un representante después de suspender suficientemente, se forma su cono y se utilizan las rotaciones para regresar a los objetos iniciales.
+% \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{El axioma de rotación}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-El primer axioma, \textup{TR1}, es inmediato por definición, pues los triángulos distinguidos se definieron como los isomorfos a uno de la forma anterior. El axioma \textup{TR2}, en cambio, requiere trabajo: hay que probar que el desplazado de un triángulo distinguido vuelve a ser distinguido.
-
-Partamos del triángulo distinguido
+El axioma \textup{TR1} se cumple por definición. Para \textup{TR2}, comenzamos con un modelo de cono de índice $n$ y comparamos su rotación
 \[
-(X,n)\xrightarrow{\ [f]\ }(Y,n)\xrightarrow{\ [i]\ }(C_f,n)\xrightarrow{\ P\ }(X,n+1)
+Y_n\xrightarrow{[i]}(C_f)_n\xrightarrow{P_n}X_{n+1}
+\xrightarrow{-\sh^1([f])}Y_{n+1}
 \]
-y consideremos su desplazado
+con el triángulo del cono de $i$. Sean $C_i=C_f\cup_i CY=(Y\cup_f CX)\cup_i CY$, $j\colon C_f\to C_i$ la inclusión y $q'\colon C_i\to\Sigma Y$ el cociente por $C_f$. Usamos conos con la base en $t=0$ y el vértice en $t=1$. Definimos $r\colon\Sigma X\to C_i$ mediante
 \[
-(Y,n)\xrightarrow{\ [i]\ }(C_f,n)\xrightarrow{\ P\ }(X,n+1)\xrightarrow{\ -\sh^1([f])\ }(Y,n+1).
-\]
-Como $\sh^1\cong\sigma$ por el isomorfismo natural $\eta$ de la clase anterior, el morfismo $-\sh^1([f])$ coincide con $-\Sigma f$ visto en otro grado. Se trata de conectar el triángulo desplazado con otro que ya sabemos distinguido mediante una cadena de isomorfismos.
-
-El paso central consiste en comparar el cono de $f$ con el cono de la inclusión $i\colon Y\to C_f$. Escribamos
-\[
-C_i=C_f\cup_i CY=\bigl(Y\cup_f CX\bigr)\cup_i CY,
-\]
-el cono de $i$. Se define
-\[
-r\colon\Sigma X\longrightarrow C_i
-\]
-como la equivalencia homotópica que existe por la sucesión cofibrada, dada explícitamente por
-\[
-[x_0,0]\longmapsto[x_0,0],
-\qquad
-[x,t]\longmapsto
+r([x,t])=
 \begin{cases}
-[x,\,2t-1]\in CX, & \tfrac12\le t\le1,\\[4pt]
-[f(x),\,1-2t]\in CY, & 0\le t\le\tfrac12 .
+[x,2t-1]\in CX,&\frac12\leq t\leq1,\\
+[f(x),1-2t]\in CY,&0\leq t\leq\frac12.
 \end{cases}
 \]
-Geométricamente, $C_i$ contiene una copia de $\Sigma X$: al recorrer $C_f\cup_i CY$ se distinguen la parte superior del cono sobre $X$ y la parte inferior, y ambas juntas forman una suspensión de $X$. El morfismo $r$ reparametriza la parte superior para recorrer el cono superior y la inferior, invertida, para recorrer el cono inferior.
+En $t=\frac12$ las dos fórmulas coinciden porque $[x,0]$ se identifica con $f(x)\in Y$. Este mapeo manda la mitad superior de $\Sigma X$ a $CX$ y la mitad inferior la mete dentro de $CY$ mediante $f$.
+\input{Figuras/ConoTR2_C3}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Verificación del axioma de rotación}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Para comprobar que $r$ encaja en el diagrama se necesitan dos homotopías. La primera muestra que $r$ compuesta con el cociente $q\colon C_f\to\Sigma X$ es homótopa a la inclusión $j\colon C_f\to C_i$:
-\[
-r\circ q\simeq j
-\]
-a través de la homotopía
-\[
-H\colon C_f\times I\longrightarrow C_i,
-\qquad
-H([y],s)=([y],s),
-\]
+Para verificar TR2, construiremos las dos homotopías necesarias. Primero, $r\circ q\simeq j$ mediante $H\colon C_f\times I\to C_i$, definida por $H([y],s)=[y,s]\in CY$ y
 \[
 H([x,t],s)=
 \begin{cases}
-\bigl[x,\ \tfrac{2t-s}{2-s}\bigr]\in CX, & \tfrac{s}{2}\le t\le1,\\[6pt]
-\bigl[f(x),\ s-2t\bigr]\in CY, & 0\le t\le\tfrac{s}{2},
+\bigl[x,\frac{2t-s}{2-s}\bigr]\in CX,&\frac{s}{2}\leq t\leq1,\\[3pt]
+[f(x),s-2t]\in CY,&0\leq t\leq\frac{s}{2}.
 \end{cases}
 \]
-que satisface $H_1=r\circ q$ y $H_0=j$. La idea es ir estirando poco a poco el cono inferior hasta llenarlo todo.
+En la frontera $t=s/2$ ambas expresiones representan $f(x)\in Y$; en $t=0$ coinciden con la fórmula de $H$ sobre $Y$, y los puntos base permanecen fijos. Se comprueba que $H_0=j$ y $H_1=rq$. La fórmula $H([y],s)=[y,s]$ describe el movimiento de los puntos de $Y$ por $CY$.
+Como se recordó en clase, $r$ es la equivalencia homotópica que aparece en la construcción de la sucesión cofibrada.
 
-La segunda homotopía muestra que el cociente $q'\colon C_i\to\Sigma Y$ por $C_f$ compuesto con $r$ es homótopo a $-\Sigma f$:
+El segundo compuesto que necesitamos comparar es
 \[
-q'\circ r\simeq-\Sigma f
-\]
-a través de
-\[
-F\colon\Sigma X\times I\longrightarrow\Sigma Y,
-\qquad
-F([x,t],s)=
-\begin{cases}
-[y_0,0], & \tfrac{1+s}{2}\le t\le1,\\[6pt]
-\bigl[f(x),\ \tfrac{1+s-2t}{1+s}\bigr], & 0\le t\le\tfrac{1+s}{2},
-\end{cases}
-\]
-que satisface $F_0=q'\circ r$ y $F_1=-\Sigma f$. La aparición del signo menos no es casual: proviene de que, al definir $r$, la mitad inferior de la suspensión se recorre invirtiendo el intervalo, y esa inversión es exactamente la que produce el signo en $-\Sigma f$. Explícitamente, el morfismo límite está dado por
-\[
--\Sigma f\colon\Sigma X\longrightarrow\Sigma Y,
-\qquad
-[x,t]\longmapsto[f(x),\,1-t],
-\]
-que es la fórmula que se escribió en la pizarra para materializar el signo.
-
-El mecanismo de las dos homotopías tiene un análogo elemental en el grupo fundamental. La homotopía que prueba que un camino concatenado con el camino constante es homótopo al camino original se construye reparametrizando el intervalo: el tramo constante va encogiendo mientras el otro se estira hasta ocuparlo todo. Aquí la idea es la misma, con el punto base en lugar del camino constante: la parte del cono que se manda al punto base se expande poco a poco hasta cubrir todo el cono, y ese reparto variable entre las dos mitades es lo que hace aparecer el signo.
-
-\begin{nota}
-   Ambas homotopías son las mismas que aparecen al construir las sucesiones cofibradas en homotopía inestable; pueden encontrarse, por ejemplo, en el libro de May (véase \cite{may1999}). El morfismo $r$ es la equivalencia homotópica cuya existencia garantiza la sucesión cofibrada.
-\end{nota}
-
-Con estas dos homotopías, la escalera de isomorfismos que conecta el triángulo desplazado con uno distinguido tiene cuatro filas:
-\[
-\begin{tikzcd}[column sep=2.1em, row sep=large]
-(Y,n) \arrow[r,"{[i]}"] \arrow[d,equal] & (C_f,n) \arrow[r,"P"] \arrow[d,equal] & (X,n+1) \arrow[r,"{-\sh^1([f])}"] \arrow[d,"\cong"'] & (Y,n+1) \arrow[d,"\cong"]\\
-(Y,n) \arrow[r,"{[i]}"'] \arrow[d,equal] & (C_f,n) \arrow[r,"{[q]}"'] \arrow[d,equal] & (\Sigma X)_n \arrow[r,"{[-\Sigma f]}"] \arrow[d,"{[r]}"'] & (\Sigma Y)_n \arrow[d,equal]\\
-(Y,n) \arrow[r,"{[i]}"'] \arrow[d,equal] & (C_f,n) \arrow[r,"{[j]}"'] \arrow[d,equal] & (C_i,n) \arrow[r,"{[q']}"'] \arrow[d,equal] & (\Sigma Y)_n \arrow[d,"\cong"]\\
-(Y,n) \arrow[r,"{[i]}"'] & (C_f,n) \arrow[r,"{[j]}"'] & (C_i,n) \arrow[r,"P'"'] & (Y,n+1).
+\begin{tikzcd}[column sep=large]
+\Sigma X \arrow[r,"r"] & C_i \arrow[r,"q'"] & \Sigma Y.
 \end{tikzcd}
 \]
-La fila inferior es distinguida por definición, y $P'$ es, por definición, la composición del cociente $[q']$ con el isomorfismo natural. La fila superior es el triángulo desplazado que queremos probar distinguido. Los isomorfismos verticales de la primera y la segunda columna son la identidad; el de la tercera, en la primera fila, es el isomorfismo natural $\eta$ entre $\sh^1$ y $\sigma$, y en la segunda fila es la equivalencia $r$; los de la cuarta columna son igualmente naturales. Como todas las flechas verticales son isomorfismos, por \textup{TR1} el triángulo desplazado también lo es. La fila intermedia es la que exhibe el cono $C_i$ de la inclusión como el objeto que hace de puente.
+Se tiene $q'r\simeq-\Sigma f$ mediante $F\colon\Sigma X\times I\to\Sigma Y$, dada por
+\[
+F([x,t],s)=
+\begin{cases}
+*,&\frac{1+s}{2}\leq t\leq1,\\[3pt]
+\bigl[f(x),1-\frac{2t}{1+s}\bigr],&0\leq t\leq\frac{1+s}{2}.
+\end{cases}
+\]
+Las fórmulas coinciden en la frontera y respetan las identificaciones de la suspensión. Además, $F_0=q'r$ y $F_1([x,t])=[f(x),1-t]$, que representa $-\Sigma f$. Durante esta homotopía se reduce el tramo que se envía al punto base y se amplía el tramo que recorre la suspensión de $Y$. El signo proviene de invertir la coordenada del intervalo.
+
+Estas homotopías muestran que los cuadrados de las última y penúltima columna en la fila del centro conmutan hasta homotopía:
+\[
+\begin{tikzcd}[sep=large]
+Y_n \arrow[r,"{[i]}"] \arrow[d,equal] & (C_f)_n \arrow[r,"P_n"] \arrow[d,equal] & X_{n+1} \arrow[r,"{-\sh^1([f])}"] \arrow[d,"\eta_{X_n}^{-1}"'] & Y_{n+1} \arrow[d,"\eta_{Y_n}^{-1}"]\\
+Y_n \arrow[r,"{[i]}"'] \arrow[d,equal] & (C_f)_n \arrow[r,"{[q]}"'] \arrow[d,equal] & (\Sigma X)_n \arrow[r,"{[-\Sigma f]}"'] \arrow[d,"{[r]}"'] & (\Sigma Y)_n \arrow[d,equal]\\
+Y_n \arrow[r,"{[i]}"'] \arrow[d,equal] & (C_f)_n \arrow[r,"{[j]}"'] \arrow[d,equal] & (C_i)_n \arrow[r,"{[q']}"'] \arrow[d,equal] & (\Sigma Y)_n \arrow[d,"\eta_{Y_n}"]\\
+Y_n \arrow[r,"{[i]}"'] & (C_f)_n \arrow[r,"{[j]}"'] & (C_i)_n \arrow[r,"P'_n"'] & Y_{n+1}.
+\end{tikzcd}
+\]
+Como también $P'_n=\eta_{Y_n}\circ[q']$ y el cuadro de la esquina superior derecha conmuta por naturalidad de $\eta^{-1}$, se sigue que todo el diagrama conmuta hasta homotopía. Como las flechas verticales son isomorfismos esto da un isomorfismo del triángulo rotado hasta $Y_n \to (C_f)_n \to (C_i)_n \to Y_{n+1}$, la cuál es distinguida por definición, así que también será distinguido el triángulo rotado.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Los axiomas de la identidad y del cono}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-El axioma \textup{TR3} afirma que el triángulo
+Para $X_n$, el axioma \textup{TR3} se obtiene del triángulo de cono de la identidad. El cono de la identidad es $C_{\id_X}=X\cup_{\id_X}CX\cong CX$, que es contráctil. El diagrama de la pizarra queda, manteniendo fijo el último objeto,
 \[
-(X,n)\xrightarrow{\ \id\ }(X,n)\longrightarrow(*,0)\longrightarrow(X,n+1)
-\]
-es distinguido, donde $(*,0)$ es el objeto cero. Partimos del triángulo, distinguido por definición,
-\[
-(X,n)\xrightarrow{\ [\id_X]\ }(X,n)\xrightarrow{\ [i]\ }(C_{\id_X},n)\xrightarrow{\ P\ }(X,n+1),
-\]
-y lo transformamos mediante isomorfismos. El cono de la identidad es
-\[
-C_{\id_X}=X\cup_{\id_X}CX=CX,
-\]
-es decir, el cono $CX$, que es contráctil. La escalera de isomorfismos que se escribió en la pizarra es
-\[
-\begin{tikzcd}[column sep=2.4em, row sep=large]
-(X,n) \arrow[r,equal] \arrow[d,equal] & (X,n) \arrow[r,"{[i]}"] \arrow[d,equal] & (C_{\id_X},n) \arrow[r,"P"] \arrow[d,"\cong"'] & (X,n+1) \arrow[d,equal]\\
-(X,n) \arrow[r,equal] \arrow[d,equal] & (X,n) \arrow[r,equal] \arrow[d,equal] & (CX,n) \arrow[r,"{[q]}"] \arrow[d,"\cong"'] & (\Sigma X,n) \arrow[d,"\cong"]\\
-(X,n) \arrow[r,equal] \arrow[d,equal] & (X,n) \arrow[r,equal] \arrow[d,equal] & (*,n) \arrow[r,"{[c]}"] \arrow[d,"\cong"'] & (\Sigma X,n) \arrow[d,equal]\\
-(X,n) \arrow[r,equal] & (X,n) \arrow[r] & (*,0) \arrow[r] & (\Sigma X,n),
+\begin{tikzcd}[sep=large]
+X_n \arrow[r,"\id"] \arrow[d,equal] & X_n \arrow[r,"{[i]}"] \arrow[d,equal] & (C_{\id_X})_n \arrow[r,"P_n"] \arrow[d,"\cong"'] & X_{n+1} \arrow[d,equal]\\
+X_n \arrow[r,"\id"] \arrow[d,equal] & X_n \arrow[r,"{[i]}"'] \arrow[d,equal] & (CX)_n \arrow[r,"{\eta_{X_n}[q]}"] \arrow[d,"{[c]}"',"\cong"] & X_{n+1} \arrow[d,equal]\\
+X_n \arrow[r,"\id"] \arrow[d,equal] & X_n \arrow[r,"0"'] \arrow[d,equal] & *_n \arrow[r,"0"] \arrow[d,"\cong"'] & X_{n+1} \arrow[d,equal]\\
+X_n \arrow[r,"\id"] & X_n \arrow[r,"0"'] & *_0 \arrow[r,"0"'] & X_{n+1}.
 \end{tikzcd}
 \]
-donde $[c]\colon(*,n)\to(\Sigma X,n)$ es la clase del morfismo constante. En la primera fila el tercer objeto se sustituye por $CX$; en la segunda, como $CX$ es contráctil, la inclusión del punto base induce un isomorfismo estable y el objeto pasa a ser $(*,n)$; y en la tercera se desplaza el índice hasta $(*,0)$, que es el objeto cero. Encadenando estos isomorfismos se obtiene el triángulo enunciado, que es por tanto distinguido.
+El cuadrado que contiene el cociente $q\colon CX\to\Sigma X$ conmuta en la categoría estable porque $CX$ es contráctil y $q$ es nulhomotópico. Todas las flechas verticales son isomorfismos, de modo que el triángulo inferior es distinguido. Esto prueba \textup{TR3}.
 
 \begin{teo}[Axioma del cono]\label{teo:cono}
-Sea $f\colon(X,n)\to(Y,m)$ un morfismo en $\SW$. Entonces $f$ es el primer morfismo de algún triángulo distinguido.
+Todo morfismo $f\colon X_n\to Y_m$ en $\SW$ es el primer morfismo de un triángulo distinguido.
 \end{teo}
 \begin{proof}
-Supongamos primero que $n\ge m$. Entonces
+Si $n\geq m$, podemos comenzar con la identificación utilizada en la pizarra:
 \[
-(X,n)\cong(\Sigma^{n-m}X,m),
+\begin{tikzcd}[column sep=large,row sep=large]
+X_n \arrow[r,"f"] & Y_m\\
+(\Sigma^{n-m}X)_m \arrow[u,"\cong"] \arrow[ur,"\widetilde f"'] &
+\end{tikzcd}
 \]
-pues desplazar el índice y suspender el espacio son la misma operación. El morfismo $f$ está representado, en un nivel suficientemente alto, por una función
+Elijamos un entero $k$ suficientemente grande para que $f$ esté representado por una función $g\colon\Sigma^{n+k}X\to\Sigma^{m+k}Y$. Su triángulo de cono, de índice cero, se relaciona con los objetos desplazados mediante
 \[
-g\colon\Sigma^{n-m+m+k}X\longrightarrow\Sigma^{m+k}Y
+\begin{tikzcd}[column sep=large,row sep=large]
+(\Sigma^{n+k}X)_0 \arrow[r,"{[g]}"] \arrow[d,"\cong"'] & (\Sigma^{m+k}Y)_0 \arrow[r,"{[i]}"] \arrow[d,"\cong"'] & (C_g)_0 \arrow[r,"P"] \arrow[d,equal] & (\Sigma^{n+k}X)_1 \arrow[d,"\cong"]\\
+X_{n+k} \arrow[r,"\sh^k f"'] & Y_{m+k} \arrow[r] & (C_g)_0 \arrow[r] & X_{n+k+1}.
+\end{tikzcd}
 \]
-para cierto $k\ge0$. Equivalentemente, $g$ define una función
+Las identificaciones verticales son las canónicas, y la cuarta es el desplazamiento de la primera. Como se indica en la pizarra, usamos el axioma de rotación para regresar a los objetos iniciales. Después de las identificaciones canónicas y los ajustes de signos mediante isomorfismos, se obtiene un triángulo distinguido de la forma
 \[
-g\colon\Sigma^{n+k}X\longrightarrow\Sigma^{m+k}Y,
+X_n\xrightarrow{f}Y_m\longrightarrow(C_g)_{-k}\longrightarrow X_{n+1}.
 \]
-es decir, un morfismo entre objetos de índice cero,
-\[
-[g]\colon(\Sigma^{n+k}X,0)\longrightarrow(\Sigma^{m+k}Y,0),
-\]
-que ya está definido directamente entre espacios. Formando su cono $C_g$ se obtiene el triángulo distinguido
-\[
-(\Sigma^{n+k}X,0)\xrightarrow{\ [g]\ }(\Sigma^{m+k}Y,0)\xrightarrow{\ [i]\ }(C_g,0)\xrightarrow{\ P\ }(\Sigma^{n+k}X,1).
-\]
-Aplicando ahora el funtor $\sh^{-k}$, que es un isomorfismo, resulta el triángulo
-\[
-(X,n)\xrightarrow{\ f\ }(Y,m)\xrightarrow{\ \sh^{-k}[i]\ }\sh^{-k}(C_g,0)\xrightarrow{\ \sh^{-k}P\ }(X,n+1),
-\]
-que es distinguido por \textup{TR1} y tiene a $f$ como primer morfismo. En la pizarra este último paso se atribuyó al \emph{axioma de rotación}: obtenido el triángulo distinguido con primer morfismo $g$, se rota hasta que el morfismo que encabeza el triángulo sea $f$. Ambos caminos son equivalentes, porque \textup{TR1} permite además reemplazar el triángulo por cualquier isomorfo.
-
-El caso $n<m$ es análogo: en lugar de suspender $X$ se suspende $Y$, o bien se desplazan ambos objetos para igualar los índices.
+Su primer morfismo es $f$, como se quería.
 \end{proof}
 
 \begin{ejer}[El caso $n<m$]
-Completar la demostración del teorema anterior cuando $n<m$, adaptando el argumento al caso en que es el objetivo el que se suspende.
+Completar la demostración anterior cuando $n<m$.
 \end{ejer}
-
 \begin{sol}
-Supongamos ahora $n<m$. De nuevo, $f$ está representado en un nivel suficientemente alto por una función de espacios
-\[
-g\colon\Sigma^{n+k}X\longrightarrow\Sigma^{m+k}Y,\qquad k\gg0,
-\]
-que conviene leer como $\Sigma^{n+k}X\to\Sigma^{n+k}(\Sigma^{m-n}Y)$: como $m-n>0$, ahora es el objetivo el que se suspende para igualar los índices, y no la fuente. La elección de $k$ garantiza que ambos índices $n+k$ y $m+k$ sean no negativos, de modo que $g$ sigue siendo un morfismo entre objetos de índice cero,
-\[
-[g]\colon(\Sigma^{n+k}X,0)\longrightarrow(\Sigma^{m+k}Y,0).
-\]
-Formando su cono $C_g$ se obtiene el triángulo distinguido
-\[
-(\Sigma^{n+k}X,0)\xrightarrow{\ [g]\ }(\Sigma^{m+k}Y,0)\xrightarrow{\ [i]\ }(C_g,0)\xrightarrow{\ P\ }(\Sigma^{n+k}X,1),
-\]
-y aplicando el isomorfismo $\sh^{-k}$ resulta
-\[
-(X,n)\xrightarrow{\ f\ }(Y,m)\xrightarrow{\ \sh^{-k}[i]\ }\sh^{-k}(C_g,0)\xrightarrow{\ \sh^{-k}P\ }(X,n+1),
-\]
-que es distinguido por \textup{TR1} y tiene a $f$ como primer morfismo. El argumento no usa en ningún momento la comparación entre $n$ y $m$, salvo en la forma de escribir la suspensión: por eso ambos casos se tratan igual.
+Ahora usamos $Y_m\cong(\Sigma^{m-n}Y)_n$ y representamos $f$ por $g\colon\Sigma^{n+k}X\to\Sigma^{n+k}(\Sigma^{m-n}Y)=\Sigma^{m+k}Y$, con $k$ suficientemente grande. A partir del triángulo de cono de $g$ en índice cero, mediante las rotaciones e identificaciones anteriores, obtenemos $X_n\xrightarrow{f}Y_m\to(C_g)_{-k}\to X_{n+1}$. Por tanto, la diferencia entre los casos solo afecta a la identificación inicial; la construcción mediante representantes funciona para cualesquiera $n,m\in\mathbb Z$.
 \end{sol}
 
 \begin{ejem}
-Calculemos la cofibra homotópica del morfismo de grado dos $2\colon S^0_0\to S^0_0$, que fue el protagonista de la primera parte de la clase. El obstáculo es precisamente el que aparece al probar el axioma del cono: el morfismo $2$ no está definido directamente entre espacios, sino solo después de suspender. Suspenderlo una vez lo convierte en el morfismo de grado dos
+Para el morfismo estable $2\colon S^0_0\to S^0_0$ usamos su representante $2\colon S^1\to S^1$. El diagrama de la pizarra compara el triángulo espacial con el desplazamiento formal:
 \[
-2\colon S^0_1\longrightarrow S^0_1,
+\begin{tikzcd}[column sep=large,row sep=large]
+S^1_0 \arrow[r,"2"] \arrow[d,"\cong"'] & S^1_0 \arrow[r] \arrow[d,"\cong"'] & \mathbb{RP}^2_0 \arrow[r] \arrow[d,equal] & S^1_1 \arrow[d,"\cong"]\\
+S^0_1 \arrow[r,"2"'] & S^0_1 \arrow[r] & \mathbb{RP}^2_0 \arrow[r] & S^0_2.
+\end{tikzcd}
 \]
-que sí es una función de espacios, con cofibra homotópica $\mathbb{RP}^2_0$. El triángulo
+Prolongando a la izquierda mediante rotaciones se obtiene un segmento $S^0_0\xrightarrow{-2}S^0_0\to\mathbb{RP}^2_{-1}\to S^0_1$. Un isomorfismo de triángulos que cambia signos en los objetos adecuados permite escribir el primer morfismo como $2$; las otras flechas se transportan mediante ese mismo isomorfismo. Así obtenemos
 \[
-S^0_1\xrightarrow{\ 2\ }S^0_1\longrightarrow\mathbb{RP}^2_0\longrightarrow S^0_2
+S^0_0\xrightarrow{2}S^0_0\longrightarrow\mathbb{RP}^2_{-1}\longrightarrow S^0_1.
 \]
-es distinguido. Para regresar al nivel de partida hay que rotar hacia la izquierda, y al hacerlo se obtiene el triángulo
-\[
-(S^0,0)\xrightarrow{\ 2\ }(S^0,0)\longrightarrow(\mathbb{RP}^2,-1)\longrightarrow(S^0,1),
-\]
-es decir, la cofibra homotópica de $2\colon S^0_0\to S^0_0$ es
-\[
-\Sigma^{-1}\mathbb{RP}^2=\mathbb{RP}^2_{-1}.
-\]
-El pizarrón escribió esta desuspensión como un diagrama: el triángulo de $(S^1,0)\xrightarrow{[2]}(S^1,0)$, con los isomorfismos de suspensión que bajan hasta $(S^0,1)\xrightarrow{[2]}(S^0,1)$, y el objeto $(\mathbb{RP}^2,-1)$ intercalado entre los dos niveles, de modo que el tercer vértice del triángulo rotado se lee directamente. Este es el mismo objeto que apareció en la sucesión cofibrada de la primera sección.
+La cofibra estable de $2$ es, por tanto, $\mathbb{RP}^2_{-1}$.
 \end{ejem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{El axioma del relleno}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Queda por comentar el axioma \textup{TR5}. Su dificultad es que los morfismos que aparecen en el diagrama están definidos solo establemente: si
+Para verificar \textup{TR5}, transportamos los triángulos dados a modelos de cono con índices $n,m$. El diagrama inicial es
 \[
-\begin{tikzcd}[column sep=large, row sep=large]
-(X,n) \arrow[r,"{[f]}"] \arrow[d,"\varphi"'] & (Y,n) \arrow[r,"{[i]}"] \arrow[d,"\psi"'] & (C_f,n) \arrow[r,"{[q]}"] & (\Sigma X,n)\\
-(Z,m) \arrow[r,"{[f']}"'] & (W,m) \arrow[r,"{[i']}"'] & (C_{f'},m) \arrow[r,"{[q']}"'] & (\Sigma Z,m)
+\begin{tikzcd}[column sep=large,row sep=large]
+X_n \arrow[r,"{[f]}"] \arrow[d,"\varphi"'] & Y_n \arrow[r,"{[i]}"] \arrow[d,"\psi"'] & (C_f)_n \arrow[r,"{[q]}"] & (\Sigma X)_n \arrow[d,"\sigma\varphi"]\\
+Z_m \arrow[r,"{[f']}"'] & W_m \arrow[r,"{[i']}"'] & (C_{f'})_m \arrow[r,"{[q']}"'] & (\Sigma Z)_m.
 \end{tikzcd}
 \]
-es un diagrama conmutativo con filas distinguidas, entonces $\varphi$ y $\psi$ están representados por funciones
+Se sobreentienden las identificaciones naturales del último objeto con el desplazamiento del primero. Elegimos un nivel común $k$ suficientemente alto y representantes $g\colon\Sigma^{n+k}X\to\Sigma^{m+k}Z$ y $h\colon\Sigma^{n+k}Y\to\Sigma^{m+k}W$ de $\varphi$ y $\psi$. El cuadrado
 \[
-\varphi=[g]\colon\Sigma^{n+k}X\longrightarrow\Sigma^{m+k}Z,
-\qquad
-\psi=[h]\colon\Sigma^{n+k}Y\longrightarrow\Sigma^{m+k}W
-\]
-para un mismo nivel $k$ suficientemente grande, y el cuadrado de la izquierda conmuta solo salvo homotopía y salvo suspensión:
-\[
-\begin{tikzcd}[column sep=large, row sep=large]
-(\Sigma^{n+k}X,0) \arrow[r,"{[\Sigma^{n+k}f]}"] \arrow[d,"{[g]}"'] & (\Sigma^{n+k}Y,0) \arrow[d,"{[h]}"']\\
-(\Sigma^{m+k}Z,0) \arrow[r,"{[\Sigma^{m+k}f']}"'] & (\Sigma^{m+k}W,0).
+\begin{tikzcd}[column sep=large,row sep=large]
+(\Sigma^{n+k}X)_0 \arrow[r,"{[\Sigma^{n+k}f]}"] \arrow[d,"{[g]}"'] & (\Sigma^{n+k}Y)_0 \arrow[d,"{[h]}"]\\
+(\Sigma^{m+k}Z)_0 \arrow[r,"{[\Sigma^{m+k}f']}"'] & (\Sigma^{m+k}W)_0
 \end{tikzcd}
 \]
-Para rellenar el diagrama se recurre a un resultado de homotopía inestable.
+conmuta establemente. La igualdad de clases estables implica que, después de suspender los representantes un número adicional de veces, los dos compuestos son homotópicos como funciones. Aumentamos $k$ hasta que
+$h\circ\Sigma^{n+k}f\simeq(\Sigma^{m+k}f')\circ g$. Este paso es necesario antes de aplicar el lema inestable.
 
 \begin{lema}[Lema de relleno]\label{lema:relleno}
-Consideremos un diagrama
+Sean $f\colon X\to Y$ y $f'\colon X'\to Y'$ funciones punteadas. Si $\beta f\simeq f'\alpha$ mediante una homotopía punteada, existe $\gamma\colon C_f\to C_{f'}$ en el diagrama
 \[
-\begin{tikzcd}[column sep=large, row sep=large]
-X \arrow[r,"f"] \arrow[d,"\alpha"'] & Y \arrow[r,"i"] \arrow[d,"\beta"'] & C_f \arrow[r,"\pi"] \arrow[d,dashed,"\gamma"'] & \Sigma X \arrow[d,"\Sigma\alpha"']\\
+\begin{tikzcd}[column sep=large,row sep=large]
+X \arrow[r,"f"] \arrow[d,"\alpha"'] & Y \arrow[r,"i"] \arrow[d,"\beta"'] & C_f \arrow[r,"\pi"] \arrow[d,dashed,"\gamma"'] & \Sigma X \arrow[d,"\Sigma\alpha"]\\
 X' \arrow[r,"f'"'] & Y' \arrow[r,"i'"'] & C_{f'} \arrow[r,"\pi'"'] & \Sigma X'
 \end{tikzcd}
 \]
-cuyas filas son sucesiones cofibradas y cuyo cuadrado de la izquierda conmuta solo salvo homotopía. Entonces existe $\gamma\colon C_f\to C_{f'}$ tal que
-\[
-\gamma\circ i=i'\circ\beta,
-\qquad
-\pi'\circ\gamma\simeq\Sigma\alpha\circ\pi .
-\]
+tal que $\gamma i=i'\beta$ y $\pi'\gamma\simeq(\Sigma\alpha)\pi$.
 \end{lema}
 
-Aplicando el lema de relleno al diagrama anterior se obtiene un morfismo $\gamma\colon C_{\Sigma^{n+k}f}\to C_{\Sigma^{m+k}f'}$ que hace conmutar, salvo homotopía, los cuadrados correspondientes:
+El lema se enunció en clase sin demostrarlo; se utiliza aquí como resultado auxiliar. Aplicándolo a las funciones suspendidas obtenemos el diagrama de la última pizarra. Para hacerlo legible, escribimos $U=\Sigma^{n+k}X$, $V=\Sigma^{n+k}Y$, $U'=\Sigma^{m+k}Z$, $V'=\Sigma^{m+k}W$, $F=\Sigma^{n+k}f$ y $F'=\Sigma^{m+k}f'$:
 \[
-\begin{tikzcd}[column sep=large, row sep=large]
-(\Sigma^{n+k}X,0) \arrow[r,"{[\Sigma^{n+k}f]}"] \arrow[d,"{[g]}"'] & (\Sigma^{n+k}Y,0) \arrow[r] \arrow[d,"{[h]}"'] & (C_{\Sigma^{n+k}f},0) \arrow[r] \arrow[d,dashed,"\gamma"'] & (\Sigma^{n+k+1}X,0) \arrow[d,"{[\Sigma g]}"']\\
-(\Sigma^{m+k}Z,0) \arrow[r,"{[\Sigma^{m+k}f']}"'] & (\Sigma^{m+k}W,0) \arrow[r] & (C_{\Sigma^{m+k}f'},0) \arrow[r] & (\Sigma^{m+k+1}Z,0).
+\begin{tikzcd}[column sep=large,row sep=large]
+U_0 \arrow[r,"{[F]}"] \arrow[d,"{[g]}"'] & V_0 \arrow[r] \arrow[d,"{[h]}"'] & (C_F)_0 \arrow[r] \arrow[d,dashed,"{[\gamma]}"'] & (\Sigma U)_0 \arrow[d,"{[\Sigma g]}"]\\
+U'_0 \arrow[r,"{[F']}"'] & V'_0 \arrow[r] & (C_{F'})_0 \arrow[r] & (\Sigma U')_0.
 \end{tikzcd}
 \]
-Como todas las conmutaciones que se necesitan son salvo homotopía, el lema basta para completar el diagrama. Rotando después lo necesario se obtiene el morfismo de triángulos buscado, y con ello el axioma \textup{TR5} queda verificado.
+Pasando a clases de homotopía estable y rotando lo necesario, como en la pizarra, obtenemos el morfismo $(C_f)_n\to(C_{f'})_m$ buscado. El argumento utiliza representantes, suspensiones y el lema de relleno, y también se aplica a $\ESW$.
 
-\begin{nota}
-   El lema de relleno se demuestra exhibiendo una fórmula explícita para $\gamma$, que no aporta demasiada visión geométrica: una vez escrita, solo resta comprobar que está bien definida y que es continua. Por eso se ha preferido enunciarlo como resultado auxiliar en lugar de reproducir aquí la fórmula.
-\end{nota}
-
-Con esto quedan verificados los axiomas \textup{TR1}--\textup{TR5} para $\SW$. El axioma del octaedro \textup{TR6} no se demuestra, como ya se advirtió. Se concluye el resultado central de la clase.
+En clase se desarrollan las verificaciones anteriores, utilizando el lema de relleno, y se enuncia el siguiente resultado. La verificación del axioma del octaedro no se realiza en esta sesión.
 
 \begin{teo}\label{teo:triangulada}
-La categoría de Spanier--Whitehead $\SW$ es una categoría triangulada. El mismo argumento, sin cambios, muestra que la categoría extendida $\ESW$ también lo es.
+Las categorías $\SW$ y $\ESW$, con la traslación y los triángulos distinguidos descritos, son trianguladas.
 \end{teo}
 
 \begin{nota}
-   La estructura triangulada de $\SW$ y de $\ESW$ no basta para hacerlas adecuadas como modelo de la categoría homotópica estable: $\ESW$ no posee coproductos, y aunque $\SW$ tampoco los tiene en general, es la subcategoría de objetos finitos la que se sumerge correctamente en la categoría de espectros. Estas limitaciones son las que motivan el paso a las categorías de modelos estables y a las categorías de espectros, en las que los coproductos de $\SW$ siguen siendo coproductos.
+Al final se preguntó si el cuadrado entre las cofibras del octaedro es un pushout. La cuestión quedó abierta en la discusión.
 \end{nota}
