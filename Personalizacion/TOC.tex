@@ -2,8 +2,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITULO TOC %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \setlength{\cftbeforetoctitleskip}{-2.5em}
-\setlength{\cftaftertoctitleskip}{7em}
+\setlength{\cftbeforetoctitleskip}{0em}
+% \setlength{\cftaftertoctitleskip}{7em}
 \renewcommand{\cfttoctitlefont}{\hfill\fontfamily{lmr}\selectfont\resizebox{!}{1.2cm}}
 \renewcommand{\cftaftertoctitle}{
     \resizebox{!}{1.2cm}{\,\colorbox{rojoCIMAT}{\!\vphantom{I}\!}}
@@ -17,10 +17,10 @@
 \renewcommand{\cftchapafterpnum}{\vspace{0.5em}} % abajo
 % Secciones
 \setlength{\cftsecnumwidth}{3em}   % hueco para números de dos cifras («5.14»)
-\setlength{\cftsecindent}{2em}
+\setlength{\cftsecindent}{0em}
 % \setlength{\cftbeforesecskip}{0.2em} % arriba
 % % Subsecciones
-\setlength{\cftsubsecnumwidth}{3.2em} % hueco para «5.14.1»
+\setlength{\cftsubsecnumwidth}{4em} % hueco para «5.14.1»
 \setlength{\cftsubsecindent}{\dimexpr\cftsecindent+\cftsecnumwidth\relax} % indentado
 % % Subsubsecciones
 \setlength{\cftsubsubsecnumwidth}{3.6em}
@@ -59,7 +59,7 @@
 }
 
 % Formato de las entradas
-\renewcommand{\cftchapfont}{\color{grisCIMAT!80!black}\large\chaptertocbox}
+\renewcommand{\cftchapfont}{\color{grisCIMAT!75!black}\large\chaptertocbox}
 % \renewcommand{\cftchapaftersnumb}{%
 %     {\color{grisCIMAT!80!black}Clase:\enspace}%
 % }
@@ -77,12 +77,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECCIONES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\renewcommand{\cftsecfont}{\fontfamily{bch}\selectfont}
-% \cftpagenumbersoff{sec}
-% \renewcommand{\cftsecpresnum}{\color{white}}
-% \renewcommand{\cftsecdotsep}{\cftnodots}
+\renewcommand{\cftsecfont}{\fontfamily{bch}\selectfont\color{rojoCIMAT!100!black}}
+\renewcommand{\cftsecaftersnum}{.}
 
-% \renewcommand{\cftsubsecfont}{\small\fontfamily{bch}\selectfont}
-% \renewcommand{\cftsubsecaftersnum}{.}
+\renewcommand{\cftsubsecfont}{\fontfamily{bch}\selectfont\color{grisCIMAT!0!black}}
+\renewcommand{\cftsubsecaftersnum}{.}
 
 % \renewcommand{\cftsubsubsecfont}{\small\fontfamily{cmss}\selectfont}
