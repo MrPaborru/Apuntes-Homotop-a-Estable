@@ -1,6 +1,6 @@
 La clase anterior terminó con la definición de espectro secuencial, sus dos fuentes principales ---el espectro suspensión $\Sigma^\infty A$ de un espacio punteado y el espectro $E$ asociado a una teoría de cohomología reducida $\widetilde E^{\,*}$--- y la construcción del desplazamiento $sh^d$. Esta clase empieza el trabajo con esa maquinaria: se fijan los tipos especiales de espectros que aparecerán, se define la categoría de espectros secuenciales y sus morfismos, y se introduce la noción de grupo de homotopía de un espectro, que es la que permite decir cuándo dos espectros son «el mismo» sin necesidad de exhibir un isomorfismo.
 
-El objetivo declarado al comienzo de la sesión es mostrar que \emph{la categoría homotópica estable es estable}, es decir, que en ella la suspensión es invertible. La segunda mitad de la clase se dedica al primer paso de esa demostración: construir la suspensión de un espectro y comprobar que coincide con el desplazamiento $sh^1$ en el nivel de los grupos de homotopía.
+El objetivo declarado al comienzo de la sesión es mostrar que \emph{la categoría homotópica estable es estable}, es decir, que en ella la suspensión es invertible. La segunda mitad de la clase se dedica al primer paso de esa demostración: construir la suspensión de un espectro y comprobar que coincide con el desplazamiento $\sh^1$ en el nivel de los grupos de homotopía.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{La categoría de espectros secuenciales}
@@ -84,8 +84,7 @@ donde el sistema dirigido tiene por flechas
 es decir, se suspende la clase y se aplica el homomorfismo inducido por el morfismo estructural. La aplicación es, por tanto, el compuesto $(\xi_n)_*\circ\Sigma$, donde $\Sigma$ denota el morfismo de suspensión entre los grupos de homotopía.
 \end{defi}
 
-La restricción $n+k\ge0$ hace que todos los grupos del sistema estén definidos, y a medida que $n$ crece la condición se satisface automáticamente. El colímite es sobre un sistema dirigido, así que $\pi_k(X)$ está bien definido como grupo; más adelante se verá que es un grupo abeliano.
-
+La restricción $n+k\ge0$ hace que todos los términos estén definidos, aunque en grado cero se trata de conjuntos punteados. La estructura de grupo abeliano se obtiene restringiendo a la cola cofinal $n+k\ge2$, como se hará en el \myref{ejer:pi-abeliano}.
 % \begin{nota}
 %    Conviene no confundir dos cosas que a veces se dan por supuestas. Que $\pi_k(X)$ sea un colímite no significa que el sistema \emph{estabilice}: las aplicaciones $\pi_{n+k}(X_n)\to\pi_{n+k+1}(X_{n+1})$ no tienen por qué ser isomorfismos, y en general no lo son. Lo que sí ocurre es que, para calcular el colímite, se puede restringir el sistema a cualquier subconjunto \emph{cofinal} de índices, y esa libertad es la que se explotará repetidamente en lo que sigue.
 % \end{nota}
@@ -154,7 +153,7 @@ y el diagrama anterior permite describir las aplicaciones del sistema dirigido d
 
 % Con el paréntesis anterior se calculan los grupos de homotopía de un espectro que proviene de una teoría de cohomología reducida, y el resultado tiene una interpretación limpia.
 
-Recordemos del \cref{ejem:espcoho} que una teoría de cohomología reducida $\Tilde{E}^*$ induce un espectro $E$ cuyos mapas estructurales dan una representación
+Recordemos del \cref{ejem:espcoho} que una teoría de cohomología reducida $\Tilde{E}^*$ induce un espectro $\mathbb Z$-secuencial $E$ cuyos mapas estructurales dan una representación
 \[
 \widetilde{E}^n\cong[-,E_n]\xrightarrow{(\xi_n)_*\circ \Sigma} [\Sigma(-),E_{n+1}]
 \]
@@ -166,7 +165,7 @@ En efecto, \myref{defi:pi-espectro} y la representabilidad,
 \[\textstyle
 \pi_k(E)\cong \varinjlim_n\pi_{n+k}(E_n)\cong\varinjlim_n\bigl[S^{n+k},E_n\bigr]_*
 \]
-Ahora bien, en el diagrama de este último colímite, sabemos que los morfismos estructurales $\Sigma E_n\to E_{n+1}$ inducen isomorfismos $[S^{n+k},E_{n}]_* \cong [S^{n+1+k},E_{n+1}]_*$ así que es un diagrama constante, por lo que para todo $n_0\en\mathbb Z$ con $n_0+k \ge0$:
+Ahora bien, en el diagrama de este último colímite, sabemos que los morfismos estructurales $\Sigma E_n\to E_{n+1}$ inducen isomorfismos $[S^{n+k},E_{n}]_* \cong [S^{n+1+k},E_{n+1}]_*$ así que el sistema es naturalmente isomorfo a uno constante, por lo que para todo $n_0\en\mathbb Z$ con $n_0+k \ge0$:
 \[\textstyle
 \pi_k(E)
 \cong \varinjlim_n\bigl[S^{n+k},E_n\bigr]_*
@@ -301,7 +300,7 @@ Vale la pena subrayar el mecanismo, porque es fácil describirlo mal: la truncac
 
 La \myref{defi:equiv-estable} admite zigzags, y no solo equivalencias, porque en general no existe una equivalencia estable en la dirección que uno querría. El ejemplo más simple es el espectro esfera desplazado.
 
-Sea $X=sh^1\mathbb S$, el espectro esfera desplazado un lugar. Sus niveles son
+Sea $X=\sh^1\mathbb S$, el espectro esfera desplazado un lugar. Sus niveles son
 \[
 X=(\ldots,\ \ast,\ \underset{-1}{S^0},\ \underset{0}{S^1},\ \underset{1}{S^2},\ \ldots),
 \]
@@ -318,7 +317,7 @@ No existe ninguna equivalencia estable $X\to X_{\ge0}$, pues si existiera $h\col
 \]
 Como el camino inferior es constante, la conmutatividad obliga a que $h_0$ sea constante. Repitiendo el argumento nivel a nivel, $h_1$ es constante, y por inducción $h_n$ es constante para todo $n\ge0$. Por tanto $h$ induce la aplicación nula en todos los grupos de homotopía, pero $\pi_1(X) \cong \mathbb{Z} \neq0$, así que $h_*$ no puede ser isomorfismo. 
 
-La conclusión no es que $X$ y $X_{\ge0}$ sean distintos: de hecho, ya probamos que son isomorfos (\cref{ejem:truncacion}). Lo que falla es la existencia de un morfismo que realice el isomorfismo en una de las direcciones. Por eso la definición de equivalencia estable para espectros, y no solo para morfismos, exige un zigzag.
+Por el \cref{ejem:truncacion}, $X$ y $X_{\ge0}$ son establemente equivalentes y, por tanto, se vuelven isomorfos al localizar respecto de las equivalencias estables. Sin embargo, no existe una equivalencia estable $X\to X_{\ge0}$. El ejemplo muestra por qué no podemos exigir una equivalencia estable en una dirección prefijada.
 
 \begin{nota}
 Se obtiene directamente de la definición del desplazamiento que:
@@ -327,7 +326,7 @@ Se obtiene directamente de la definición del desplazamiento que:
 \;\underset{\scriptscriptstyle m=n+d}{\cong}\;
 \varinjlim_{m}\pi_{m+k-d}(X_{m}) = \pi_{k-d}(X),
 \]
-Es el análogo estable de la relación $\pi_{k}(\Sigma^dA)\cong\pi_{k-d}(A)$: desplazar los índices de un espectro equivale a suspenderlo, y esa conmutación entre desplazamiento y suspensión es precisamente lo que no se tiene en homotopía inestable, donde la suspensión solo es un isomorfismo a partir del rango del teorema de Freudenthal.
+Es el análogo estable de la relación $\pi^s_{k}(\Sigma^dA)\cong\pi^s_{k-d}(A)$ para espacios: desplazar los índices de un espectro equivale a suspenderlo, y esa conmutación entre desplazamiento y suspensión es precisamente lo que no se tiene en homotopía inestable, donde la suspensión solo es un isomorfismo a partir del rango del teorema de Freudenthal.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -346,7 +345,7 @@ La \emph{categoría homotópica estable} es la localización de $\Sp^{\mathbb{N}
 es decir, la categoría que se obtiene al invertir formalmente todos los morfismos que son equivalencias estables.
 \end{defi}
 
-Esta categoría es un modelo de la categoría homotópica estable mediante las propiedades que se enumeraron en la clase 1. Su ventaja es que no hay que construir nada nuevo: los objetos siguen siendo espectros secuenciales y los morfismos son clases de morfismos. Su inconveniente es que tenemos que confiar en que la categoría es localmente pequeña (lo es, pero no es trivial de probar) y que los morfismos pasan a ser clases de zigzags, lo cual es incómodo. Eso es lo que motiva buscar otros modelos, en los que la inversión sea menos violenta.
+Esta categoría es un modelo de la categoría homotópica estable mediante las propiedades que se enumeraron en la clase 1. Su ventaja es que no hay que construir nada nuevo: los objetos siguen siendo espectros secuenciales y los morfismos son clases de zigzags de morfismos. Su inconveniente es que tenemos que confiar en que la categoría es localmente pequeña (lo es, pero no es trivial de probar) y que los morfismos pasan a ser clases de zigzags, lo cual es incómodo. Eso es lo que motiva buscar otros modelos, en los que la inversión sea menos violenta.
 
 \begin{ejer}\label{ejer:localizaciones-equivalentes}
 Comprobar que el modelo con espectros $\mathbb N$-secuenciales es equivalente al que usa espectros $\mathbb Z$-secuenciales,
@@ -354,9 +353,10 @@ Comprobar que el modelo con espectros $\mathbb N$-secuenciales es equivalente al
 \Sp^{\mathbb{N}}\bigl[\text{equiv.\ estables}^{-1}\bigr]\simeq\Sp^{\mathbb Z}\bigl[\text{equiv.\ estables}^{-1}\bigr].
 \]
 \end{ejer}
-
 \begin{sol}
-Se construyen funtores en las dos direcciones. De $\mathbb N$-secuenciales a $\mathbb Z$-secuenciales, se extiende un espectro $X$ por puntos: se declara $X_n=\ast$ para $n<0$, con los morfismos estructurales obvios. De $\mathbb Z$-secuenciales a $\mathbb N$-secuenciales, se restringe a los niveles no negativos, $X\mapsto X_{\ge0}$. Las dos composiciones no son la identidad, pero la segunda es precisamente la truncación del \myref{ejem:truncacion}, que ya se vio que es una equivalencia estable natural en el espectro original. Una vez localizada la categoría respecto de las equivalencias estables, esa equivalencia natural se convierte en un isomorfismo, de modo que las dos composiciones son isomorfas a la identidad y los dos modelos son equivalentes. El interés práctico es que permite pasar de un convenio de índices al otro según convenga.
+Sean $i\colon\Sp^{\mathbb N}\to\Sp^{\mathbb Z}$ el funtor que extiende por puntos en los niveles negativos y $r\colon\Sp^{\mathbb Z}\to\Sp^{\mathbb N}$ el que restringe a los niveles no negativos. Ambos preservan los grupos de homotopía por cofinalidad y, por tanto, las equivalencias estables; así, inducen funtores $\ubar i$ y $\ubar r$ entre las localizaciones.
+
+Se tiene $ri=1$ estrictamente, mientras que $ir(X)=X_{\ge0}$. Por el \myref{ejem:truncacion}, la inclusión canónica $\eta_X\colon X_{\ge0}\to X$ es una equivalencia estable. Estas inclusiones son naturales en $X$, pues para todo morfismo $f\colon X\to Y$ se cumple $f\circ\eta_X=\eta_Y\circ ir(f)$. Al localizar, obtenemos entonces $\ubar r\,\ubar i=1$ y un isomorfismo natural $\ubar i\,\ubar r\cong1$. Por tanto, los funtores inducidos son equivalencias inversas.
 \end{sol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -369,7 +369,7 @@ Para que la categoría homotópica de espectros sea estable, la suspensión debe
 \subsection{El funtor de suspensión}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Conviene distinguir el orden de los factores. En los morfismos estructurales de $X$ se utiliza $\xi_n\colon X_n\wedge S^1\to {n+1}$, mientras que para suspender $X$ pondremos la esfera a la izquierda. En particular, al hablar aquí de la suspensión de un espacio $A$ que queremos extender, escribimos $\Sigma A=S^1\wedge A$; las suspensiones iteradas que forman $\Sigma^\infty A$ están dadas por $(\Sigma^\infty A)_n=A\wedge(S^1)^{\wedge n}$.
+Conviene distinguir el orden de los factores. En los morfismos estructurales de $X$ se utiliza $\xi_n\colon X_n\wedge S^1\to X_{n+1}$, mientras que para suspender $X$ pondremos la esfera a la izquierda. En particular, al hablar aquí de la suspensión de un espacio $A$ que queremos extender, escribimos $\Sigma A=S^1\wedge A$; las suspensiones iteradas que forman $\Sigma^\infty A$ están dadas por $(\Sigma^\infty A)_n=A\wedge(S^1)^{\wedge n}$.
 
 \begin{defi}\label{defi:suspension-espectro}
 Sea $X=(X_n,\xi_n)$ un espectro secuencial. Su \emph{suspensión} $\Sigma X$ tiene por niveles $(\Sigma X)_n\coloneqq S^1\wedge X_n$ y por morfismos estructurales
@@ -435,14 +435,14 @@ En cambio, $\pi_k(X)=\varinjlim_n\pi_{n+k}(X_n)$ se calcula mediante las transic
     every label={font=\scriptscriptsize}, 
     cramped
 ]
-	{\phantom{\pi_{n+k}(X_n)}\cdots} \& {\pi_{n+k}(X_n)} \& {\pi_{n+k+1}(X_n\wedge S^1)} \& {\pi_{n+k+1}(X_{n+1})} \& {\pi_{n+k+2}(X_n\wedge S^1)} \& {\pi_{n+k+2}(X_{n+2})} \& {\cdots\phantom{\pi_{n+k}(X_n)}}
+	{\phantom{\pi_{n+k}(X_n)}\cdots} \& {\pi_{n+k}(X_n)} \& {\pi_{n+k+1}(X_n\wedge S^1)} \& {\pi_{n+k+1}(X_{n+1})} \& {\pi_{n+k+2}(X_{n+1}\wedge S^1)} \& {\pi_{n+k+2}(X_{n+2})} \& {\cdots\phantom{\pi_{n+k}(X_n)}}
 	\arrow["{(\xi_{n-1})_*}", from=1-1, to=1-2]
 	\arrow["{\Sigma(\xi_{n-1})_*}"', bend right=12, from=1-1, to=1-3]
 	\arrow["\Sigma", from=1-2, to=1-3]
 	\arrow["{(\xi_n)_*}", from=1-3, to=1-4]
 	\arrow["{\Sigma(\xi_n)_*}"', bend right=12, from=1-3, to=1-5]
 	\arrow["\Sigma", from=1-4, to=1-5]
-    \arrow["{\Sigma(\xi_{n-1})_*}"', bend right=12, from=1-5, to=1-7]
+    \arrow["{\Sigma(\xi_{n+1})_*}"', bend right=12, from=1-5, to=1-7]
 	\arrow["{(\xi_{n+1})_*}", from=1-5, to=1-6]
     \arrow["\Sigma", from=1-6, to=1-7]
 \end{tikzcd}
@@ -454,11 +454,11 @@ por lo que conservando solo las entradas impares $2n+1$ (que son un subsistema c
 \quad\text{con transición}\quad
 \Sigma(\xi_{2n+1})_*\Sigma(\xi_{2n})_*
 \end{equation}
-(recordemos $\Sigma (\xi_m)_*=(\xi_m\wedge1)_* \Sigma$ por naturalidad). De (\ref{eq:colsuspar}) y (\ref{eq:colimpar}) tenemos que $\pi_{k+1}(\Sigma)$ y $\pi_{k}(X)$ son colímites de sistemas con objetos isomorfos, pero falta comparar sus transiciones.
+(recordemos $\Sigma (\xi_m)_*=(\xi_m\wedge1)_* \Sigma$ por naturalidad). De (\ref{eq:colsuspar}) y (\ref{eq:colimpar}) tenemos que $\pi_{k+1}(\Sigma X)$ y $\pi_{k}(X)$ son colímites de sistemas con objetos isomorfos, pero falta comparar sus transiciones.
 
-Sea $f_n\colon X_{2n}\wedge S^1\longrightarrow S^1\wedge X_{2n}$ el homeomorfismo $f_n[x,z]=[z,x]$. Afirmamos que $f_n$ induce un isomorfismo entre los grupos de homotopía, el cual conmuta hasta homotopía con los mapas de transición. En otras palabras, el siguiente diagrama conmuta hasta homotopía:
+Sea $f_n\colon X_{2n}\wedge S^1\longrightarrow S^1\wedge X_{2n}$ el homeomorfismo $f_n[x,z]=[z,x]$. Afirmamos que $f_n$ induce un isomorfismo entre los grupos de homotopía, el cual conmuta con los mapas de transición. En otras palabras, el siguiente diagrama conmuta:
 
-\input{Figuras/Diagrama rojo.tex}
+\input{Figuras/DiagramaRojo_C8.tex}
 
 Como ambos empiezan con $g\wedge1\wedge1$, podemos comparar solo lo que viene después. Esto conduce al siguiente cuadrado de espacios, cuya conmutatividad se entiende \emph{salvo homotopía}:
 \[

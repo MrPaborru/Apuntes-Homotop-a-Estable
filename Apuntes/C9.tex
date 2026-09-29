@@ -38,14 +38,18 @@ Un morfismo de espectros es, en particular, un morfismo débil: basta tomar $H_n
 Sea $(f_*,H_*)\colon A\to B$ un morfismo débil. La idea es reemplazar $A$ por un espectro equivalente sobre el que las homotopías se hayan vuelto conmutatividades estrictas. Ese reemplazo es el \emph{telescopio} o \emph{colímite homotópico secuencial}.
 
 \begin{defi}\label{defi:telescopio}
-Se define, para cada $n\ge0$,
+Se define $C_0=A_0$ y, para cada $n\ge1$,
 \[
-C_n\coloneqq A_n\cup_{\xi_{n-1}}\bigl(\Sigma A_{n-1}\wedge I_+\bigr)\cup_{\Sigma\xi_{n-2}}\bigl(\Sigma^2A_{n-2}\wedge I_+\bigr)\cup_{\Sigma^{2}\xi_{n-3}}\cdots\cup_{\Sigma^{n-1}\xi_0}\bigl(\Sigma^{n-1}A_0\wedge I_+\bigr),
+C_n\coloneqq A_n
+\cup_{\xi_{n-1}}(\Sigma A_{n-1}\wedge I_+)
+\cup_{\Sigma\xi_{n-2}}(\Sigma^2A_{n-2}\wedge I_+)
+\cup\cdots
+\cup_{\Sigma^{n-1}\xi_0}(\Sigma^nA_0\wedge I_+).
 \]
-donde los $\Sigma^{k}A_{n-k}\wedge I_+$ se pegan por sus bases mediante $\Sigma^{k}\xi_{n-1-k}$.
+El extremo $t=0$ del primer cilindro se pega a $A_n$ mediante $\xi_{n-1}$; para $2\le k\le n$, el extremo $t=0$ del cilindro con base $\Sigma^kA_{n-k}$ se pega al extremo $t=1$ del anterior mediante $\Sigma^{k-1}\xi_{n-k}$.
 \end{defi}
 
-Geométricamente, $C_{n}$ se construye empezando con $A_{n}$ y pegando sucesivamente \enquote{cilindros} con base $\Sigma^k A_{n-k}$ mediante los mapas $\Sigma^{k}\xi_{n-1-k}$. La siguiente figura lo esquematiza.
+Geométricamente, $C_{n}$ se construye empezando con $A_{n}$ y pegando sucesivamente \enquote{cilindros} con base $\Sigma^k A_{n-k}$ mediante los mapas $\Sigma^{k-1}\xi_{n-k}$. La siguiente figura lo esquematiza.
 
 \begin{center}
 \input{Figuras/Telescopio_C9}
@@ -124,14 +128,14 @@ f'_n\bigl([x,s_1,t]\bigr)=H_{n-1}\bigl([x,s_1,t]\bigr)\quad\text{si }x\in A_{n-1
 \[
 f'_n\bigl([x,s_1,s_2,t]\bigr)=\xi'_{n-1}\circ\Sigma H_{n-2}\bigl([x,s_1,s_2,t]\bigr)\quad\text{si }x\in A_{n-2},
 \]
-y en general, para $x\in A_{k}$ con $k\le n$,
+y en general, para $x\in A_{k}$ con $k< n$,
 \[
 f'_n\bigl([x,s,t]\bigr)=\xi'_{n-1}\circ\Sigma\xi'_{n-2}\circ\cdots\circ\Sigma^{n-k-2}\xi'_{k+1}\circ\Sigma^{n-k-1}H_{k}\bigl([x,s,t]\bigr).
 \]
 \end{prop}
 
 \begin{proof}
-La fórmula tiene la siguiente lectura: la homotopía $H_{n-k}$ sólo ``come'' elementos de $\Sigma A_{n-k}\wedge I_+$ y devuelve elementos de $B_{n-k+1}$, de modo que hay que suspenderla $k-1$ veces para que su imagen viva en $B_n$, y a continuación aplicar los morfismos estructurales $\xi'$ de $B$ las veces necesarias. La comprobación de que $f'_n$ está bien definida es la parte delicada, y consiste en verificar que los dos representantes de una misma clase del telescopio reciben la misma imagen.
+Para $x\in A_k$, la homotopía $H_k$ toma valores en $B_{k+1}$. Al suspenderla $n-k-1$ veces obtenemos valores en $\Sigma^{n-k-1}B_{k+1}$, y los morfismos estructurales de $B$ permiten llegar después a $B_n$. La comprobación de que $f'_n$ está bien definida es la parte delicada, y consiste en verificar que los dos representantes de una misma clase del telescopio reciben la misma imagen.
 
 Sean $[x,s,0]\in\Sigma^{n-k}A_k \wedge I_+$ y $[\Sigma^{n-k-1}\xi_k(x,s),1]\in\Sigma^{n-k-1}A_{k+1} \wedge I_+$ los dos representantes de un punto de pegado del telescopio. Por una parte, aplicando la fórmula al primer representante y usando que la homotopía en cero es $H_{k}([-,-,0])=f_{k+1}\circ\xi_{k}(-,-)$, se obtiene
 \begin{align*}
@@ -166,14 +170,7 @@ f'_{n+1} \circ \nu_n([x,s,t,u])
 &= f'_{n+1}([x,s,u,t])
 =\xi'_n\circ\Sigma\xi'_{n-1}\circ\Sigma^2\xi'_{n-2}\circ\cdots\circ\Sigma^{n-k}H_{k}(x,s,u,t)
 \end{align*}
-% El cuadrado conmuta \emph{estrictamente} porque $\nu_n$ es precisamente el cambio de coordenadas que
-% hace coincidir los dos convenios: en $\Sigma C_n$ la coordenada nueva $u$ llega del smash exterior y
-% va al final, mientras que en $C_{n+1}$ ya es una suspensión más y va antes de la del cilindro $t$. Con
-% ese cambio los dos caminos son la misma composición ---aplicar $H_{k}$ suspendida, que absorbe $t$,
-% y subir después por los $\xi'$---, pues $\Sigma G([x,s,u,t])=[G([x,s,t]),u]$ por definición de la
-% suspensión de una aplicación. No hay homotopía que exhibir, ni aparece signo alguno, porque la
-% coordenada que se desplaza es la del intervalo $I_+$ y no una esfera: el orden de las coordenadas
-% esféricas no cambia.
+Identificamos las suspensiones de las homotopías colocando al final la coordenada del intervalo: $\Sigma H([x,s,u,t])=[H([x,s,t]),u]$. Bajo esta identificación, las dos expresiones coinciden; el orden de las coordenadas esféricas permanece inalterado.
 \end{proof}
 
 \begin{teo}\label{teo:zigzag-morfismo-debil}
@@ -194,16 +191,15 @@ conmuta salvo homotopía.
 \begin{proof}
 La primera afirmación es consecuencia de la \myref{prop:p-espectro}: como $p$ es una equivalencia nivel a nivel, y en particular una equivalencia estable, se puede invertir formalmente en la categoría localizada, y el zigzag define un morfismo de $A$ a $B$.
 
-Para la conmutatividad salvo homotopía, sea $i_n\colon A_n\to C_n$ la inclusión del nivel $A_n$ en el telescopio. Por construcción de $f'$, sobre $A_n$ la fórmula es simplemente $f'_n\circ i_n=f_n$, es decir, $f'_n i_n=f_n$ como aplicaciones. Por otra parte $i_n\circ p_n$ no es la identidad, porque un elemento de $C_n$ puede estar en un cilindro y no en $A_n$, pero sí es homótopo a la identidad: aplastar un cilindro y volver a incluirlo es homótopo a no hacer nada, ya que cada cilindro es contráctil. Componiendo la igualdad $f'_ni_n=f_n$ con $p_n$ por la derecha se obtiene $f'_n i_n p_n=f_n p_n$,
+Para la conmutatividad salvo homotopía, sea $i_n\colon A_n\to C_n$ la inclusión del nivel $A_n$ en el telescopio. Por construcción de $f'$, sobre $A_n$ la fórmula es simplemente $f'_n\circ i_n=f_n$, es decir, $f'_n i_n=f_n$ como aplicaciones. Por otra parte, se tiene $i_n\circ p_n\simeq1_{C_n}$ mediante la retracción por deformación obtenida al aplastar sucesivamente los cilindros de aplicación sobre sus espacios de llegada. Componiendo la igualdad $f'_ni_n=f_n$ con $p_n$ por la derecha se obtiene $f'_n i_n p_n=f_n p_n$,
 y como $i_np_n\simeq\id$, concluimos que $f'_n\simeq f_np_n$.
 \end{proof}
 
 \begin{coro}\label{coro:debil-equivalencia}
 Si en un morfismo débil todas las aplicaciones $f_n$ son equivalencias homotópicas, entonces el morfismo $f'$ del \myref{teo:zigzag-morfismo-debil} es una equivalencia nivel a nivel y, por tanto, una equivalencia estable.
 \end{coro}
-
 \begin{proof}
-Por el \myref{teo:zigzag-morfismo-debil} se tiene $f'_n\simeq f_n$ para todo $n$, de modo que $f'_n$ es una equivalencia homotópica siempre que lo sea $f_n$. Como esto ocurre en todos los niveles, $f'$ es una equivalencia nivel a nivel. \qedhere
+Por el \myref{teo:zigzag-morfismo-debil}, $f'_n\simeq f_n\circ p_n$. Como $f_n$ y $p_n$ son equivalencias homotópicas, también lo es $f'_n$. Por tanto, $f'$ es una equivalencia nivel a nivel.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -350,7 +346,7 @@ es decir, un zigzag de equivalencias estables que conecta $\sh^1X$ con $\Sigma X
 La naturalidad en $X$ se sigue de que en toda la construcción el espectro $X$ no desempeñó ningún papel especial: todas las aplicaciones se definieron mediante la trenza del producto smash, los morfismos estructurales y las homotopías del cálculo anterior, todas ellas naturales en $X$. \qedhere
 \end{proof}
 
-De esto se sigue que $\Sigma$ es invertible salvo isomorfismo natural en $\Sp^{\mathbb{N}}[\text{equiv.\ estables}^{-1}]$.
+De esto se sigue que $\Sigma$ es invertible salvo isomorfismo natural en $\Sp^{\mathbb{N}}[\text{equiv.\ estables}^{-1}]$, con quasi-inversa $\sh^{-1}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Construcciones con espectros}
@@ -401,27 +397,44 @@ El caso que interesa en la clase es $K=S^1$: dar una aplicación punteada desde 
 \Omega X\coloneqq F(S^1,X).
 \]
 
-\begin{prop}\label{prop:adjuncion-smash-funciones}
-Para todo espacio punteado $K$ y todos espectros $X$ e $Y$ existe una biyección natural
+\begin{ejer}\label{ejer:adjuncion-smash-funciones}
+Sea $K$ un espacio punteado. Comprobar que para cualesquiera espectros $X$ e $Y$ existe una biyección natural
 \[
-\hom_{\Sp^{\mathbb{N}}}(K\wedge X,Y)\cong\hom_{\Sp^{\mathbb{N}}}\bigl(X,F(K,Y)\bigr).
+\hom_{\Sp^{\mathbb N}}(K\wedge X,Y)
+\cong
+\hom_{\Sp^{\mathbb N}}\bigl(X,F(K,Y)\bigr).
 \]
-\end{prop}
-
-\begin{proof}
-Todo está definido nivel a nivel, de modo que basta aplicar en cada nivel la adjunción entre el producto smash y el espacio de aplicaciones punteadas, que es natural. La compatibilidad con los morfismos estructurales se comprueba también nivel a nivel, usando que el homeomorfismo que intercambia el lazo con la variable de $K$ es natural. \qedhere
-\end{proof}
-
-\begin{ejer}\label{ejer:adjuncion-suspension-lazos}
-Comprobar la biyección natural del caso $K=S^1$, es decir,
-\[
-\hom_{\Sp^{\mathbb{N}}}(\Sigma X,Y)\cong\hom_{\Sp^{\mathbb{N}}}(X,\Omega Y),
-\]
-y deducir de ahí que $\Sigma$ es adjunto izquierdo de $\Omega$.
+Deducir que $K\wedge(-)$ es adjunto izquierdo de $F(K,-)$ y, en particular, que $\Sigma$ es adjunto izquierdo de $\Omega$.
 \end{ejer}
-
 \begin{sol}
-Es el caso $K=S^1$ de la \myref{prop:adjuncion-smash-funciones}, teniendo en cuenta que $\Sigma X=S^1\wedge X$ y que $\Omega Y=F(S^1,Y)$ por definición. La naturalidad en $X$ y en $Y$ se hereda de la adjunción nivel a nivel. \qedhere
+La adjunción entre espacios punteados proporciona, en cada nivel, una biyección
+\[
+\hom_*(K\wedge X_n,Y_n)
+\cong
+\hom_*\bigl(X_n,\Map_*(K,Y_n)\bigr),
+\qquad
+f_n\longmapsto\widehat f_n,
+\]
+dada por $\widehat f_n(x)(a)=f_n([a,x])$. Basta comprobar que una familia $(f_n)$ define un morfismo de espectros si y solo si lo hace $(\widehat f_n)$.
+
+Denotemos por $\eta_n$ el morfismo estructural de $F(K,Y)$. Por su definición mediante adjuntos, se cumple $\eta_n([h,z])(a)=\xi_n^Y([h(a),z])$. Así, la condición de que $f\colon K\wedge X\to Y$ sea un morfismo de espectros es
+\[
+f_{n+1}([a,\xi_n^X([x,z])])
+=\xi_n^Y([f_n([a,x]),z])
+\]
+para todo $n$, $a\in K$, $x\in X_n$ y $z\in S^1$. Mediante la adjunción, esta igualdad se escribe
+\[
+\widehat f_{n+1}(\xi_n^X([x,z]))(a)
+=\eta_n([\widehat f_n(x),z])(a).
+\]
+Como vale para todo $a\in K$, equivale precisamente a
+$\widehat f_{n+1}\circ\xi_n^X
+=\eta_n\circ(\widehat f_n\wedge1)$, que es la condición de que $\widehat f\colon X\to F(K,Y)$ sea un morfismo de espectros. Por tanto, las biyecciones nivel a nivel se restringen a la biyección buscada.
+
+La naturalidad se hereda de la adjunción de espacios: si $u\colon X'\to X$ y $v\colon Y\to Y'$ son morfismos de espectros, entonces
+$\widehat{v\circ f\circ(1_K\wedge u)}
+=F(K,v)\circ\widehat f\circ u$.
+Esto demuestra la adjunción $K\wedge(-)\dashv F(K,-)$. Tomando $K=S^1$ y usando $\Sigma X=S^1\wedge X$ y $\Omega Y=F(S^1,Y)$, obtenemos $\Sigma\dashv\Omega$.
 \end{sol}
 
 \begin{nota}
@@ -471,17 +484,25 @@ con morfismos estructurales cuyos adjuntos están inducidos por los de cada $X(j
 \end{prop}
 
 \begin{proof}
-Para el colímite, se quiere construir un morfismo estructural
+Para el colímite, como $\Sigma$ es un adjunto izquierdo, preserva colímites. Por tanto, los morfismos estructurales de los espectros $X(j)$ inducen la composición
 \[
-\Sigma\Bigl(\varinjlim\nolimits_J X(-)_n\Bigr)\longrightarrow\varinjlim\nolimits_J X(-)_{n+1}.
+\Sigma\Bigl(\varinjlim\nolimits_J X(-)_n\Bigr)
+\xrightarrow{\ \cong\ }
+\varinjlim\nolimits_J\Sigma X(-)_n
+\xrightarrow{\ \varinjlim_J\xi_n\ }
+\varinjlim\nolimits_J X(-)_{n+1},
 \]
-Como $\Sigma$ es un adjunto izquierdo, preserva colímites, de modo que el dominio es $\varinjlim\nolimits_J\Sigma X(-)_n$ y basta inducir con los morfismos estructurales de cada $X(j)$ y la propiedad universal del colímite. La flecha que se obtiene es un isomorfismo precisamente porque $\Sigma$ preserva colímites.
+que define el morfismo estructural del espectro buscado. La primera flecha es la inversa de la comparación canónica; la segunda no tiene por qué ser un isomorfismo.
 
-Para el límite el argumento es dual y hay que describir los adjuntos de los morfismos estructurales, porque el morfismo natural va en la dirección contraria. Se quiere
+Para el límite, usamos los adjuntos $\xi_n^\perp\colon X(-)_n\to\Omega X(-)_{n+1}$ de los morfismos estructurales. Como $\Omega$ es un adjunto derecho, preserva límites, y obtenemos la composición
 \[
-\Bigl(\varprojlim\nolimits_J X(-)_n\Bigr)\longrightarrow\Omega\Bigl(\varprojlim\nolimits_J X(-)_{n+1}\Bigr),
+\varprojlim\nolimits_J X(-)_n
+\xrightarrow{\ \varprojlim_J\xi_n^\perp\ }
+\varprojlim\nolimits_J\Omega X(-)_{n+1}
+\xrightarrow{\ \cong\ }
+\Omega\Bigl(\varprojlim\nolimits_J X(-)_{n+1}\Bigr).
 \]
-y como $\Omega$ es un adjunto derecho, preserva límites, de modo que el codominio es $\varprojlim\nolimits_J\Omega X(-)_{n+1}$. Basta entonces inducir con los adjuntos de los morfismos estructurales de cada $X(j)$. \qedhere
+Su adjunta define el morfismo estructural del espectro buscado. En ambos casos, las aplicaciones canónicas del colímite o del límite de espacios son compatibles con estas estructuras por construcción.
 \end{proof}
 
 \begin{ejer}\label{ejer:colimite-es-el-colimite}

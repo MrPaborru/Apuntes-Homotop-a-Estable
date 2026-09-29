@@ -1,0 +1,62 @@
+\[
+\begin{tikzcd}[
+    sep=huge,
+    cells={nodes={font=\small}},
+    every label/.append style={font=\small}
+]
+    A
+        \arrow[r,"\rho_A^{-1}"]
+        \arrow[d,red,"f"']
+    & A\otimes1
+        \arrow[r,"1_A\otimes\mathrm{coev}"]
+        \arrow[d,red,"f\otimes1_1"]
+    & A\otimes(X\otimes X^\vee)
+        \arrow[d,"f\otimes1_{X\otimes X^\vee}"]
+    \\
+    |[text=red]| B\otimes X^\vee
+        \arrow[r,red,"\rho_{B\otimes X^\vee}^{-1}"]
+        \arrow[d,red,"1_B\otimes\rho_{X^\vee}^{-1}"']
+    & |[text=red]| (B\otimes X^\vee)\otimes1
+        \arrow[r,red,"1\otimes\mathrm{coev}"]
+        \arrow[dl,red,"\alpha" description]
+    & (B\otimes X^\vee)\otimes(X\otimes X^\vee)
+        \arrow[dl,red,"\alpha" description]
+    \\
+    |[text=red]| B\otimes(X^\vee\otimes1)
+        \arrow[r,red,"1\otimes(1\otimes\mathrm{coev})"']
+    & |[text=red]| B\otimes(X^\vee\otimes(X\otimes X^\vee))
+        \arrow[d,red,"1_B\otimes\alpha^{-1}"']
+    & ((B\otimes X^\vee)\otimes X)\otimes X^\vee
+        \arrow[u,"\alpha"']
+        \arrow[d,"\alpha\otimes1_{X^\vee}"]
+    \\
+    & |[text=red]| B\otimes((X^\vee\otimes X)\otimes X^\vee)
+        \arrow[d,red,"1_B\otimes(\mathrm{ev}\otimes1_{X^\vee})"']
+    & (B\otimes(X^\vee\otimes X))\otimes X^\vee
+        \arrow[l,red,"\alpha"]
+        \arrow[d,"(1_B\otimes\mathrm{ev})\otimes1_{X^\vee}"]
+    \\
+    & |[text=red]| B\otimes(1\otimes X^\vee)
+        \arrow[dr,red,"1_B\otimes\lambda_{X^\vee}"']
+    & (B\otimes1)\otimes X^\vee
+        \arrow[l,red,"\alpha"]
+        \arrow[d,"\rho_B\otimes1_{X^\vee}"]
+    \\
+    && B\otimes X^\vee
+    \arrow[phantom,from=1-1,to=2-2,"\color{grisCIMAT}\mathrm{(i)}" description]
+    \arrow[phantom,from=1-2,to=2-3,"\color{grisCIMAT}\mathrm{(ii)}" description]
+    \arrow[phantom,from=2-1,to=3-2,"\color{grisCIMAT}(\ast)"{description,pos=.25}]
+    \arrow[phantom,from=2-2,to=3-2,"\mathrm{\color{grisCIMAT}(iii)}" description]
+    \arrow[phantom,from=2-3,to=4-2,"\mathrm{\color{grisCIMAT}(iv)}"{description,pos=.6}]
+    \arrow[phantom,from=4-2,to=5-3,"\mathrm{\color{grisCIMAT}(v)}" description]
+    \arrow[phantom,from=5-2,to=6-3,"\mathrm{\color{grisCIMAT}(vi)}"{description,yshift=4mm,xshift=5mm}]
+    \arrow[from=2-1,to=6-3,red,out=190,in=195,looseness=0.85, overlay]
+    % \arrow[from=2-1,to=6-3,red,
+    %     "1_B\otimes1_{X^\vee}"'{pos=.65},
+    %     to path={
+    %         (\tikztostart.west)
+    %         .. controls +(-50mm,-20mm) and +(-35mm,-13mm) ..
+    %         (\tikztotarget.south)\tikztonodes
+    %     }]
+\end{tikzcd}
+\]

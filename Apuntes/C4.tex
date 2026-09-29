@@ -1,8 +1,8 @@
-En la clase anterior se verificó que la categoría de Spanier--Whitehead $\SW$ es triangulada, y quedó pendiente la demostración del lema de relleno, que se completa al inicio de esta clase. Con la estructura triangulada ya disponible, el objetivo se desplaza a un problema distinto: hasta qué punto la homotopía estable permite \emph{representar} teorías de (co)homología.
+En la clase anterior se presentó la estructura triangulada de $\SW$ y de $\ESW$, verificando los axiomas salvo el del octaedro y utilizando un lema de relleno. La demostración de ese lema se completa al inicio de esta clase. Con la estructura triangulada ya disponible, el objetivo se desplaza a un problema distinto: hasta qué punto la homotopía estable permite \emph{representar} teorías de (co)homología.
 
-Tras recordar los axiomas de Eilenberg--Steenrod en su forma reducida y construir el morfismo de conexión, se ensaya la representación más económica posible, $\tilde h^n(X)=\set*{(X,-n),(Z,m)}$, con $(Z,m)$ un objeto fijo de $\SW$. El candidato satisface la invarianza homotópica, la exactitud y la aditividad \emph{finita}, pero falla la aditividad general: el colímite que define los conjuntos de morfismos no conmuta con el producto infinito. El obstáculo se concreta en que la cuña infinita $\bigvee_{r\ge0}S^r$ no es el coproducto de la familia $\{S^r\}_{r\ge0}$, hecho que se demuestra combinando un teorema de Toda sobre el orden de las clases inestables con uno de Milnor sobre el homomorfismo $J$. Se concluye así que la cohomología singular no admite una representación de esta forma.
+Tras recordar los axiomas de Eilenberg--Steenrod en su forma reducida y construir el morfismo de conexión, se ensaya la representación más económica posible, $\tilde h^n(X)=\set*{(X,-n),(Z,m)}$, con $(Z,m)$ un objeto fijo de $\SW$. El candidato satisface la invarianza homotópica, la exactitud y la aditividad \emph{finita}. Al intentar extenderlo a todos los CW-complejos punteados surge un obstáculo: el colímite que define los conjuntos de morfismos no conmuta en general con productos infinitos. El obstáculo se concreta en que la cuña infinita $\bigvee_{r\ge0}S^r$ no es el coproducto de la familia $\{S^r\}_{r\ge0}$ en $\ESW$, hecho que se demuestra combinando los resultados de Toda y Milnor citados en clase. Por un argumento distinto, se inicia la prueba de que la cohomología singular no admite una representación de esta forma con $Z$ finito.
 
-La segunda mitad de la clase construye el ejemplo positivo: los grupos de homotopía estable $\pi_n^s(-)$ sí forman una teoría de homología reducida, y lo mismo ocurre con $\pi_n^s(X\wedge K)$ para cualquier CW-complejo punteado $K$. Con estas herramientas se enuncia y demuestra el teorema de Hurewicz estable, que sirve de entrada a la contradicción final: si un CW-complejo finito tuviera un solo grupo de homotopía estable no nulo, su doble suspensión sería un espacio con una cantidad imposible de grupos de homotopía no nulos. La contradicción se cierra en la clase siguiente.
+La segunda mitad de la clase construye el ejemplo positivo: los grupos de homotopía estable $\pi_n^s(-)$ sí forman una teoría de homología reducida, y lo mismo ocurre con $\pi_n^s(X\wedge K)$ para cualquier CW-complejo punteado $K$. Con estas herramientas se enuncia y demuestra el teorema de Hurewicz estable, que sirve de entrada a la contradicción final: si un CW-complejo finito tuviera como único grupo de homotopía estable no nulo una copia de $\mathbb Z$, las suspensiones de ese espacio tendrían una tabla de grupos de homotopía incompatible con lo que se probará después. La contradicción se cierra en la clase siguiente.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Teorías de (co)homología y representabilidad}
@@ -29,11 +29,7 @@ cuyas filas son sucesiones cofibradas y cuyo cuadrado de la izquierda conmuta so
 \]
 
 \begin{proof}
-Sea
-\[
-H\colon X\times I\longrightarrow Y'
-\]
-una homotopía de $\beta\circ f$ a $f'\circ\alpha$, es decir, $H_0=\beta f$ y $H_1=f'\alpha$. Recordemos que
+Sea $H\colon X\times I\longrightarrow Y'$ una homotopía punteada de $\beta\circ f$ a $f'\circ\alpha$, es decir, $H_0=\beta f$ y $H_1=f'\alpha$. Recordemos que
 \[
 C_f=Y\cup_f CX,\qquad C_{f'}=Y'\cup_{f'}CX',
 \]
@@ -53,7 +49,7 @@ La aplicación está bien definida: en $t=0$ se tiene $\gamma([x,0])=[H(x,0)]=[\
 \[
 \gamma\bigl([x,\tfrac12]\bigr)=[H(x,1)]=[f'\alpha(x)]=[\alpha(x),0].
 \]
-La continuidad se sigue de la continuidad de $H$ y de la topología cociente, ya que ambas ramas son continuas y coinciden en la costura.
+En $t=1$ la imagen es el vértice del cono, y sobre la recta del punto base es el punto base porque $H$ es punteada. La continuidad se sigue de la continuidad de $H$ y de la topología cociente, ya que ambas ramas son continuas y coinciden en la costura.
 
 \emph{La primera condición.} Como $i(y)=[y]$ y $i'(\beta(y))=[\beta(y)]$, se tiene
 \[
@@ -105,30 +101,31 @@ es decir, $F_0=\Sigma\alpha\circ\pi$ y $F_1=\pi'\circ\gamma$. Así, $\pi'\circ\g
 \end{proof}
 
 \begin{nota}
-   La homotopía $F$ es una reparametrización: en la etapa $s$ la región $[0,\tfrac12]$ del cono, que $\pi'\gamma$ envía al punto base, se encoge hasta $[0,\tfrac s2]$, y el resto del intervalo se reescala linealmente sobre $[0,1]$ mediante $t\mapsto\frac{2t-s}{2-s}$. La pizarra registra la reparametrización inversa, $u\mapsto(1-\tfrac s2)u+\tfrac s2$; la fórmula anterior es la que hace coincidir los valores en $s=0$ y $s=1$ con $\Sigma\alpha\circ\pi$ y $\pi'\circ\gamma$ respectivamente.
-
-   El mecanismo es el mismo que en $\pi_1$ al concatenar con el camino constante: las dos aplicaciones no coinciden, pero su discrepancia se reduce al tiempo que cada una permanece en el punto base, y una reparametrización del intervalo la elimina.
+   La homotopía $F$ reparametriza el intervalo: el tramo constante es $[0,s/2]$ y el restante se lleva linealmente a $[0,1]$ mediante $t\mapsto(2t-s)/(2-s)$. Cuando $s$ aumenta de $0$ a $1$, el tramo constante crece hasta ocupar la primera mitad. En clase fue dada por error la inversa $(1-\nicefrac{s}{2})t+\nicefrac{s}{2}$.
 \end{nota}
 
 Con esto queda verificada la única pieza que faltaba del axioma \textup{TR5}. El lema se aplica después de suspender los morfismos hasta un nivel común en el que ya están definidos directamente entre espacios, y las conmutaciones que se necesitan son todas salvo homotopía; por eso basta con $\gamma\circ i=i'\circ\beta$ y $\pi'\circ\gamma\simeq\Sigma\alpha\circ\pi$.
 
 \begin{nota}
-   Vale la pena observar la economía del enunciado: el morfismo $\gamma$ está \emph{forzado} sobre $Y$ (debe ser $i'\beta$) y sobre el cociente solo se le pide conmutar salvo homotopía. Esa holgura es exactamente la que permite construir $\gamma$ pegando dos fórmulas sobre las dos mitades del cono, y es también la razón de que el lema sea un enunciado inestable: en homotopía inestable las equivalencias homotópicas de conos son la herramienta natural, mientras que en la categoría estable ya se dispone del axioma.
+   La igualdad $\gamma i=i'\beta$ determina $\gamma$ sobre $Y$; sobre el cono, la homotopía $H$ permite enlazar esa prescripción con la aplicación inducida por $\alpha$. El argumento se realiza entre espacios y luego se aplica a representantes de los morfismos estables.
 \end{nota}
 
 \begin{nota}
-   La utilidad práctica del axioma del octaedro es la que justifica su presencia: proporciona el enunciado de que la cofibra de un morfismo entre cofibras es la cofibra, y su dual de que la fibra de un morfismo entre fibras es la fibra. En los cálculos concretos esos dos enunciados ahorran trabajo. Una categoría \emph{pretriangulada} es la que resulta de suprimir el axioma del octaedro y conservar el resto de la estructura; todo lo desarrollado hasta aquí podría haberse formulado en ese marco, sin necesidad del axioma. La noción de categoría triangulada se atribuye a Verdier.
+   La utilidad práctica del axioma del octaedro es la que justifica su presencia: relaciona las cofibras de dos morfismos componibles con la cofibra de su composición, como en el diagrama de la clase anterior. También puede utilizarse su versión dual para fibras. En los cálculos concretos esos dos enunciados ahorran trabajo. Una categoría \emph{pretriangulada} es la que resulta de suprimir el axioma del octaedro y conservar el resto de la estructura; todo lo desarrollado hasta aquí podría haberse formulado en ese marco, sin necesidad del axioma. La noción de categoría triangulada se atribuye a Verdier.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Teorías de homología y cohomología reducidas}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Con $\SW$ y $\ESW$ ya establecidas como categorías trianguladas, disponemos de sucesiones exactas largas asociadas a cada sucesión cofibrada. La pregunta de esta clase es si esas sucesiones provienen de una teoría de (co)homología, y conviene por tanto recordar los axiomas con precisión.
+Con $\SW$ y $\ESW$ ya establecidas como categorías trianguladas, disponemos de sucesiones exactas largas asociadas a cada sucesión cofibrada. La pregunta de esta clase es si esas sucesiones provienen de una teoría de (co)homología, y conviene por tanto recordar los axiomas con precisión.%
+\footnote{
+    Las sucesiones exactas largas se obtuvieron en $\SW$, sobre CW-complejos finitos, donde todos los conjuntos de morfismos estabilizan y la exactitud se lee tras estabilizar lo suficiente. En $\ESW$ los conjuntos de morfismos pueden no estabilizar. Aún así, exactitud sigue siendo válida: para cada igualdad concreta se puede suspender suficientemente y trabajar con representantes.
+}
 
-\begin{nota}
-   Las sucesiones exactas largas se obtuvieron en $\SW$, sobre CW-complejos finitos, donde todos los conjuntos de morfismos estabilizan y la exactitud se lee tras estabilizar lo suficiente. En $\ESW$ los conjuntos de morfismos pueden no estabilizar, de modo que no se dispone de un nivel común; la exactitud sigue siendo válida y puede comprobarse directamente.
-\end{nota}
+% \begin{nota}
+%    Las sucesiones exactas largas se obtuvieron en $\SW$, sobre CW-complejos finitos, donde todos los conjuntos de morfismos estabilizan y la exactitud se lee tras estabilizar lo suficiente. En $\ESW$ los conjuntos de morfismos pueden no estabilizar, por lo que no se puede elegir de antemano un nivel a partir del cual todos los conjuntos de morfismos permanezcan constantes. La exactitud sigue siendo válida; para cada igualdad concreta se puede suspender suficientemente y trabajar con representantes.
+% \end{nota}
 
 \begin{defi}\label{defi:cohomologia-reducida}
 Una \emph{teoría de cohomología reducida} es una sucesión de funtores contravariantes
@@ -136,10 +133,8 @@ Una \emph{teoría de cohomología reducida} es una sucesión de funtores contrav
 \tilde h^n\colon\CWstar\longrightarrow\Ab,
 \qquad n\in\mathbb Z,
 \]
-junto con isomorfismos naturales
-\[
-\sigma^n\colon\tilde h^n\longrightarrow\tilde h^{n+1}\circ\Sigma,
-\]
+junto con \emph{isomorfismos naturales
+$\sigma^n\colon\tilde h^n\longrightarrow\tilde h^{n+1}\circ\Sigma,$}
 que satisfacen las propiedades siguientes:
 \begin{enumerate}[label = \textup{\arabic*.}]
 \item \emph{Exactitud.} Si $A$ es un subcomplejo punteado de $X$, la sucesión
@@ -150,19 +145,13 @@ es exacta para todo $n\in\mathbb Z$, donde $i\colon A\hookrightarrow X$ es la in
 
 \item \emph{Invarianza homotópica.} Si $f\simeq g\colon X\to Y$, entonces $f^*=g^*$ en todas las dimensiones.
 
-\item \emph{Aditividad.} Para cualquier familia de espacios punteados $\{X_\alpha\}_{\alpha\in J}$, la aplicación inducida por las inclusiones
-\[
+\item \emph{Aditividad.} Para cualquier familia de espacios punteados $\{X_\alpha\}_{\alpha\in J}$, la aplicación 
+\[\textstyle
 \tilde h^n\Bigl(\bigvee_{\alpha\in J}X_\alpha\Bigr)\xrightarrow{\ (\iota_\alpha^*)\ }\prod_{\alpha\in J}\tilde h^n(X_\alpha)
 \]
-es un isomorfismo.
+inducida por las inclusiones es un isomorfismo.
 \end{enumerate}
 \end{defi}
-
-\begin{nota}
-   Los axiomas admiten una presentación alternativa con cuatro puntos: se postula la existencia de las transformaciones naturales $\sigma^n$ y se añade como cuarto axioma, llamado a veces de escisión o de suspensión, que cada $\sigma^n$ sea un isomorfismo. Aquí $\sigma^n$ ya forma parte de la estructura del $\tilde h^n$, de modo que bastan los tres axiomas anteriores.
-\end{nota}
-
-El axioma de exactitud se enuncia solo para tres términos porque, junto con los isomorfismos de suspensión, produce automáticamente una sucesión exacta larga; ese encadenamiento es el contenido de la \myref{defi:cohomologia-reducida} y se detalla en la \myref{prop:les} más adelante. La dirección de las flechas merece un comentario: en $\tilde h^n(X/A)\to\tilde h^n(X)\to\tilde h^n(A)$ el funtor es contravariante, de modo que las flechas van \emph{al revés} que las de la sucesión cofibrada $A\to X\to X/A$.
 
 La versión homológica se obtiene dualizando.
 
@@ -172,92 +161,72 @@ Una \emph{teoría de homología reducida} es una sucesión de funtores covariant
 \tilde h_n\colon\CWstar\longrightarrow\Ab,
 \qquad n\in\mathbb Z,
 \]
-junto con isomorfismos naturales $\sigma_n\colon\tilde h_n\to\tilde h_{n+1}\circ\Sigma$, que satisfacen la exactitud, la invarianza homotópica y la aditividad, esta última en la forma
-\[
+junto con isomorfismos naturales $\sigma_n\colon\tilde h_n\circ\Sigma\to\tilde h_{n-1}$, escritos en la dirección usada en clase. Se exige la invarianza homotópica, la exactitud de $\tilde h_n(A)\to\tilde h_n(X)\to\tilde h_n(X/A)$ para cada subcomplejo punteado $A\subseteq X$, y la aditividad en la forma
+\[\textstyle
 \bigoplus_{\alpha\in J}\tilde h_n(X_\alpha)\xrightarrow{\ \cong\ }\tilde h_n\Bigl(\bigvee_{\alpha\in J}X_\alpha\Bigr).
 \]
 \end{defi}
 
-\begin{nota}
-   La diferencia entre las dos formas de la aditividad no es cosmética: en la categoría de grupos abelianos el coproducto es la suma directa y el producto es el producto cartesiano, y ambos coinciden solo para familias finitas. Por eso el axioma de cohomología involucra un producto y el de homología una suma directa.
-\end{nota}
+% \begin{nota}
+%    Los axiomas admiten una presentación alternativa con cuatro puntos: se postula la existencia de las transformaciones naturales $\sigma^n$ y se añade como cuarto axioma, llamado a veces de escisión o de suspensión, que cada $\sigma^n$ sea un isomorfismo. Aquí $\sigma^n$ ya forma parte de la estructura del $\tilde h^n$, de modo que bastan los tres axiomas anteriores.
+% \end{nota}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{El morfismo de conexión}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+El axioma de exactitud se enuncia solo para tres términos porque, junto con los isomorfismos de suspensión, produce automáticamente una sucesión exacta larga mediante una flecha que enlaza el grado $n$ con el grado $n+1$. Esa flecha es el \emph{morfismo de conexión}.
 
-El axioma de exactitud por sí solo no exhibe la flecha que enlaza el grado $n$ con el grado $n+1$. Esa flecha es el \emph{morfismo de conexión}, y se construye a partir de la suspensión y de una equivalencia homotópica.
-
-Consideremos un subcomplejo punteado $A\subseteq X$ y el cono $CA$. La inclusión $X\hookrightarrow X\cup_A CA$ y el cociente por $CA$ dan lugar a las identificaciones
+Consideremos un subcomplejo punteado $A\subseteq X$ y pongamos $C_i=X\cup_A CA$, donde $i\colon A\hookrightarrow X$. Entonces se tiene:
 \[
-X/A\;\cong\;\frac{X\cup_A CA}{CA},
-\qquad
-X\cup_A CA\;\xrightarrow{\ \simeq\ }\;\Sigma A,
+\begin{tikzcd}[column sep=large]
+X/A \arrow[r,"\cong"] & C_i/CA & C_i \arrow[l,"c"',"\simeq"] \arrow[r,"p"] & \Sigma A.
+\end{tikzcd}
 \]
-donde la segunda es la equivalencia homotópica obtenida al colapsar $X$: como $CA$ es contráctil, el cociente $(X\cup_A CA)/X$ es precisamente la suspensión $\Sigma A$ de $A$.
+El cociente $c$ es una equivalencia homotópica porque $CA$ es un subcomplejo contráctil de $C_i$. En cambio, $p$ es el cociente por $X$, pues $C_i/X\cong\Sigma A$. Denotemos por $e\colon C_i\to X/A$ la equivalencia obtenida componiendo $c$ con el homeomorfismo anterior.
 
 \begin{defi}\label{defi:conexion}
-El \emph{morfismo de conexión}
+El \emph{morfismo de conexión} $\delta\colon\tilde h^n(A)\to\tilde h^{n+1}(X/A)$ es la composición
 \[
-\delta\colon\tilde h^n(A)\longrightarrow\tilde h^{n+1}(X/A)
+\begin{tikzcd}[column sep=small]
+\tilde h^n(A) \arrow[r,"\sigma^n_A"] & \tilde h^{n+1}(\Sigma A) \arrow[r,"p^*"] & \tilde h^{n+1}(C_i) \arrow[r,"(e^*)^{-1}"] & \tilde h^{n+1}(X/A).
+\end{tikzcd}
 \]
-es la composición
+En particular, su relación con la suspensión se resume en el diagrama conmutativo
 \[
-\tilde h^n(A)\xrightarrow{\ \sigma^n\ }\tilde h^{n+1}(\Sigma A)
-\longrightarrow\tilde h^{n+1}(X\cup_A CA)\xrightarrow{\ \cong\ }\tilde h^{n+1}(X/A),
+\begin{tikzcd}[column sep=large,row sep=large]
+\tilde h^n(A) \arrow[r,"\delta"] \arrow[d,"\sigma^n_A"',"\cong"] & \tilde h^{n+1}(X/A)\\
+\tilde h^{n+1}(\Sigma A) \arrow[ur,"{(e^*)^{-1}p^*}"'] &
+\end{tikzcd}
 \]
-donde la flecha central está inducida por la equivalencia $X\cup_A CA\simeq\Sigma A$ y la última por la identificación $(X\cup_A CA)/CA\cong X/A$.
+La inversa de $e^*$ existe por invarianza homotópica.
 \end{defi}
 
-\begin{prop}\label{prop:les}
-Sea $\tilde h^*$ una teoría de cohomología reducida y sea $A\subseteq X$ un subcomplejo punteado. Entonces la sucesión
+\begin{ejer}[La sucesión exacta larga del par]
+Sea $\tilde h^*$ una teoría de cohomología reducida y sea $A\subseteq X$ un subcomplejo punteado. Entonces la sucesión obtenida arriba
 \[
 \begin{aligned}
-\cdots\longrightarrow{}&\tilde h^n(X/A)\longrightarrow\tilde h^n(X)\longrightarrow\tilde h^n(A)\\
-&\xrightarrow{\ \delta\ }\tilde h^{n+1}(X/A)\longrightarrow\tilde h^{n+1}(X)\longrightarrow\tilde h^{n+1}(A)\longrightarrow\cdots
+\cdots\longrightarrow{}\tilde h^n(X/A)\longrightarrow\tilde h^n(X)\longrightarrow\tilde h^n(A)
+\xrightarrow{\ \delta\ }\tilde h^{n+1}(X/A)\longrightarrow\tilde h^{n+1}(X)\longrightarrow\tilde h^{n+1}(A)\longrightarrow\cdots
 \end{aligned}
 \]
-es exacta. La sucesión análoga de la versión homológica,
-\[
-\cdots\to\tilde h_n(A)\to\tilde h_n(X)\to\tilde h_n(X/A)\xrightarrow{\ \delta\ }\tilde h_{n-1}(A)\to\cdots,
-\]
-también es exacta.
-\end{prop}
-
-\begin{ejer}[La sucesión exacta larga del par]
-Comprobar que el morfismo de conexión de la \myref{defi:conexion} encadena los tramos de tres términos que proporciona el axioma de exactitud, de modo que se obtiene la sucesión exacta larga de la \myref{prop:les}.
+es exacta.
 \end{ejer}
 
 \begin{sol}
-Basta observar que la construcción del cociente puede repetirse con los pares desplazados. Para cada $j\in\mathbb Z$, el par $(\Sigma^jX,\Sigma^jA)$ tiene cociente $\Sigma^j(X/A)$, de modo que el axioma de exactitud da la exactitud de
+Para completar el ejercicio seguimos la construcción con conos utilizada al definir $\delta$. La sucesión de Puppe de la inclusión $i\colon A\hookrightarrow X$ es
 \[
-\tilde h^n\bigl(\Sigma^j(X/A)\bigr)\longrightarrow\tilde h^n(\Sigma^jX)\longrightarrow\tilde h^n(\Sigma^jA)
+A\xrightarrow{i}X\longrightarrow C_i\xrightarrow{p}\Sigma A
+\xrightarrow{\Sigma i}\Sigma X\longrightarrow\Sigma C_i\longrightarrow\cdots,
 \]
-para todo $n$. Tomando $j=-1$ y usando los isomorfismos de suspensión para reescribir los extremos, resulta que
+donde los signos de las flechas suspendidas no afectan la exactitud. Cada tramo de tres espacios es, salvo equivalencias homotópicas, una sucesión formada por un subcomplejo, el espacio y su cociente: se obtiene formando sucesivamente conos de mapeo. Podemos, por tanto, aplicar el axioma de exactitud a cada tramo. En grado $n+1$, los tramos centrales dan la exactitud de
 \[
-\tilde h^{n+1}(X/A)\longrightarrow\tilde h^n(A)\longrightarrow\tilde h^n(X)\longrightarrow\tilde h^n(X/A)\longrightarrow\tilde h^{n-1}(A)
+\tilde h^{n+1}(\Sigma X)\longrightarrow\tilde h^{n+1}(\Sigma A)
+\xrightarrow{p^*}\tilde h^{n+1}(C_i)\longrightarrow\tilde h^{n+1}(X).
 \]
-es exacta: los extremos son $\tilde h^n(\Sigma^{-1}X/\Sigma^{-1}A)$ y $\tilde h^n(\Sigma A)$ reescritos mediante $\sigma$, y la flecha central del tramo es, por construcción, el morfismo de conexión $\delta$ de la \myref{defi:conexion}.
+Por naturalidad de $\sigma^n$, los dos primeros términos se identifican con $\tilde h^n(X)$ y $\tilde h^n(A)$ y la primera flecha con $i^*$. Por la equivalencia $e$, el tercer término se identifica con $\tilde h^{n+1}(X/A)$; bajo estas identificaciones, la flecha que lo precede es precisamente $\delta$ y la que lo sigue es $q^*$, pues $e$ restringida a $X$ es $q$. Así obtenemos la exactitud en los dos términos que enlazan grados consecutivos. El axioma original aporta la exactitud en $\tilde h^n(X)$; dejando variar $n$ se obtiene toda la sucesión.
 
-Ahora bien, una sucesión de cinco términos
-\[
-A_2\to A_1\to A_0\to B_0\to B_1
-\]
-en la que cada terna consecutiva es exacta es exacta por completo: la exactitud en los tres términos centrales es parte de la hipótesis, y la exactitud en $A_2$ y en $B_1$ se sigue de la de las ternas vecinas. Aplicando esto a la sucesión anterior y dejando variar $n$ se obtiene la sucesión exacta larga enunciada.
-
-El caso homológico es idéntico, con la única diferencia de que las flechas van en el sentido de la sucesión cofibrada. Concretamente, para $j=0$ el axioma da la exactitud de
-\[
-\tilde h_n(A)\longrightarrow\tilde h_n(X)\longrightarrow\tilde h_n(X/A),
-\]
-y para $j=1$, usando $\tilde h_{n+1}(\Sigma Y)\cong\tilde h_n(Y)$, la de
-\[
-\tilde h_{n-1}(A)\longrightarrow\tilde h_{n-1}(X)\longrightarrow\tilde h_{n-1}(X/A).
-\]
-Encadenando ambos tramos con el cambio de índice $n\mapsto n+1$ en el segundo se obtiene la sucesión exacta larga homológica.
+En homología se aplica el funtor covariante a los mismos tramos. La conexión es $\delta=\sigma_n^A\,p_*\,(e_*)^{-1}$, con dominio $\tilde h_n(X/A)$ y codominio $\tilde h_{n-1}(A)$. El mismo razonamiento da la sucesión homológica.
 \end{sol}
 
 \begin{nota}
-   En la literatura, la sucesión de la \myref{prop:les} suele escribirse directamente como la sucesión exacta larga del par $(X,A)$,
+   En la literatura, la sucesión del \cref{ejer:8} suele escribirse directamente como la sucesión exacta larga del par $(X,A)$,
    \[
    \cdots\to\tilde h^n(X/A)\to\tilde h^n(X)\to\tilde h^n(A)\xrightarrow{\delta}\tilde h^{n+1}(X/A)\to\cdots,
    \]
@@ -268,20 +237,21 @@ Encadenando ambos tramos con el cambio de índice $n\mapsto n+1$ en el segundo s
 \subsection{Un primer intento de representación}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Ya disponemos de un mecanismo que produce sucesiones exactas largas: los conjuntos de morfismos de $\SW$. En efecto, por la clase anterior el funtor $\set*{C,-}$ convierte triángulos distinguidos en sucesiones exactas largas, y por tanto en algo muy parecido a una teoría de cohomología. El punto de partida es la representabilidad clásica de la cohomología singular por espacios de Eilenberg--MacLane, donde los grupos se escriben como clases de homotopía a un espacio fijo; el mismo esquema puede intentarse dentro de $\SW$, reemplazando los espacios por objetos de la categoría. La pregunta natural es si \emph{toda} la teoría puede obtenerse así, y el primer intento consiste en tomar un objeto fijo $(Z,m)$ de $\SW$ y definir
+Ya disponemos de un mecanismo que produce sucesiones exactas largas: los conjuntos de morfismos de $\SW$. En efecto, por la clase anterior el funtor $\set*{-,C}$ convierte triángulos distinguidos en sucesiones exactas largas, y por tanto en algo muy parecido a una teoría de cohomología. El punto de partida es la representabilidad clásica de la cohomología singular por espacios de Eilenberg--MacLane, donde los grupos se escriben como clases de homotopía a un espacio fijo; el mismo esquema puede intentarse dentro de $\SW$, reemplazando los espacios por objetos de la categoría. La pregunta natural es si \emph{toda} la teoría puede obtenerse así, y el primer intento consiste en tomar un objeto fijo $(Z,m)$ de $\SW$ y definir
 \[
 \tilde h^n(X)\coloneqq\set*{(X,-n),(Z,m)}.
 \]
 
 Se obtiene así, sobre la subcategoría de CW-complejos \emph{finitos} punteados, una sucesión de funtores contravariantes. Los isomorfismos de suspensión son inmediatos: como
 \[
-\Sigma(X,-n)\cong(X,-n-1),
+(\Sigma X,-n-1)\cong(X,-n),
 \]
 el desplazamiento de índices induce un isomorfismo natural
 \[
-\sigma^n_X\colon\tilde h^n(X)\xrightarrow{\ \cong\ }\tilde h^{n+1}(\Sigma X),
-\qquad
-\set*{(X,-n),(Z,m)}\longrightarrow\set*{(\Sigma X,-n-1),(Z,m)} .
+\begin{tikzcd}[column sep=large]
+\tilde h^n(X) \arrow[r,"\sigma^n_X","\cong"'] \arrow[d,equal] & \tilde h^{n+1}(\Sigma X) \arrow[d,equal]\\
+\set*{(X,-n),(Z,m)} \arrow[r,"\cong"'] & \set*{(\Sigma X,-n-1),(Z,m)}.
+\end{tikzcd}
 \]
 El candidato es, por tanto, una teoría de cohomología reducida sobre $\CWstar^{\mathrm{fin}}$ siempre que verifiquemos los tres axiomas. Veamos qué ocurre con cada uno.
 
@@ -292,7 +262,7 @@ El candidato es, por tanto, una teoría de cohomología reducida sobre $\CWstar^
 El primero de los axiomas se cumple sin dificultad, y la razón es puramente categórica.
 
 \begin{prop}\label{prop:invarianza}
-Sea $(Z,m)$ un objeto de $\SW$. El candidato $\tilde h^n(X)=\set*{(X,-n),(Z,m)}$ satisface la invarianza homotópica.
+Para $(Z,m)\in\SW$, la asignación $\tilde h^n(X)=\set*{(X,-n),(Z,m)}$ es homotópicamente invariante.
 \end{prop}
 \begin{proof}
 Sea $f\colon X\to Y$ y sea $[f]\colon(X,-n)\to(Y,-n)$ el morfismo inducido. Si $f\simeq g$, entonces $[f]=[g]$ en $\set*{(X,-n),(Y,-n)}$: en efecto, ambos están representados por funciones homótopas en cualquier nivel común, y la homotopía se conserva al pasar al colímite. Componiendo con $\set*{(Y,-n),(Z,m)}$ se sigue $f^*=g^*$ en todas las dimensiones.
@@ -302,10 +272,10 @@ La exactitud también se hereda de la estructura triangulada. Recordemos que la 
 \[
 (X,-n)\xrightarrow{\ f\ }(Y,-n)\xrightarrow{\ g\ }(Z',-n)\xrightarrow{\ h\ }(X,-n+1)
 \]
-es un triángulo distinguido, entonces la sucesión inducida por $\set*{-,W}$ o por $\set*{W,-}$ es exacta. Como las sucesiones cofibradas de espacios dan lugar a triángulos distinguidos en $\SW$, se obtiene la exactitud deseada.
+es un triángulo distinguido, entonces la sucesión inducida por $\set*{-,W}$ o por $\set*{W,-}$ es exacta. Como las sucesiones cofibradas de CW-complejos finitos dan lugar a triángulos distinguidos en $\SW$, se obtiene la exactitud deseada.
 
 \begin{prop}\label{prop:exactitud}
-Sea $(Z,m)$ un objeto de $\SW$ y sea $A\subseteq X$ un subcomplejo punteado. Entonces la sucesión
+Sea $(Z,m)$ un objeto de $\SW$ y sea $A\subseteq X$ un subcomplejo punteado de un CW-complejo finito. Entonces la sucesión
 \[
 \set*{(X/A,-n),(Z,m)}\longrightarrow\set*{(X,-n),(Z,m)}\longrightarrow\set*{(A,-n),(Z,m)}
 \]
@@ -316,38 +286,41 @@ La inclusión $A\hookrightarrow X$ y el cociente $X\to X/A$ dan lugar a la suces
 \[
 \set*{(X/A,-n),(Z,m)}\longrightarrow\set*{(X,-n),(Z,m)}\longrightarrow\set*{(A,-n),(Z,m)}.
 \]
-La observación clave es que el isomorfismo
+La identificación utilizada en la pizarra procede de la equivalencia $e\colon C_i=X\cup_A CA\to X/A$. Si $j\colon X\to C_i$ es la inclusión, entonces $ej=q$, de modo que tenemos el diagrama conmutativo
 \[
-\set*{(X/A,-n),(Z,m)}\cong\set*{(X\cup_A CA,-n),(Z,m)}
+\begin{tikzcd}[column sep=large,row sep=large]
+\set*{(X/A,-n),Z_m} \arrow[r,"e^*","\cong"'] \arrow[dr,"q^*"'] & \set*{(C_i,-n),Z_m} \arrow[d,"j^*"]\\
+& \set*{(X,-n),Z_m} \arrow[r,"i^*"] & \set*{(A,-n),Z_m}.
+\end{tikzcd}
 \]
-identifica el primer término con el que aparece en la construcción del morfismo de conexión, de modo que la flecha coincide con $\delta$ y la sucesión se prolonga como en la \myref{prop:les}.
+Esto identifica la flecha que llega a $\tilde h^n(X)$ con $q^*$, como exige el axioma.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{La aditividad y los productos de morfismos}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Queda el tercer axioma, y es aquí donde el candidato falla. Antes de exhibir el fallo conviene aislar el mecanismo, que es un hecho elemental de teoría de categorías.
+Queda el tercer axioma: funciona para familias finitas, pero su extensión a familias infinitas requiere atención. Antes de exhibir el fallo conviene aislar el mecanismo, que es un hecho elemental de teoría de categorías.
 
-\begin{prop}\label{prop:prod-morfismos}
+\begin{lema}\label{lema:prod-morfismos}
 En cualquier categoría con coproductos, la aplicación inducida por las inclusiones $\iota_j\colon X_j\to\coprod_{j\in J}X_j$,
 \[
 \hom_{\mathcal C}\Bigl(\coprod_{j\in J}X_j,\ Y\Bigr)\xrightarrow{\ (\iota_j^*)\ }\prod_{j\in J}\hom_{\mathcal C}(X_j,Y),
 \]
 es una biyección.
-\end{prop}
+\end{lema}
 \begin{proof}
-Es exactamente la propiedad universal del coproducto: dar un morfismo desde $\coprod_jX_j$ equivale a dar una familia de morfismos desde cada $X_j$, y la correspondencia es natural en $Y$.
+Es exactamente la propiedad universal: dar un morfismo desde $\coprod_jX_j$ equivale a dar una familia de morfismos desde cada $X_j$, y la correspondencia es natural en $Y$.
 \end{proof}
 
-En $\CWstar^{\mathrm{fin}}$ el coproducto es la cuña $\bigvee_jX_j$, y lo mismo ocurre en $\SW$ mientras la familia sea finita: para una familia finita, coproducto y producto coinciden, pues la categoría es aditiva. En cambio, en general \emph{solo existen los coproductos finitos}, tanto en $\CWstar^{\mathrm{fin}}$ como en $\SW$: una cuña infinita de complejos finitos no es un complejo finito, y por tanto no es un objeto de $\SW$.
+En $\CWstar^{\mathrm{fin}}$ la cuña de una familia finita es su coproducto, y también lo es en $\SW$. Para estudiar la misma fórmula en CW-complejos no necesariamente finitos, trabajamos en $\ESW$, donde la cuña infinita sí es un objeto. La cuestión es si ese objeto conserva la propiedad universal del coproducto.
 
 \begin{prop}\label{prop:aditividad-familias}
-Para toda familia $\{X_j\}_{j\in J}$ y todo objeto $(Z,m)$ de $\SW$, la aplicación
+Para toda familia de CW-complejos punteados $\{X_j\}_{j\in J}$ y todo objeto fijo $(Z,m)$, las inclusiones inducen en $\ESW$ la aplicación
 \[
 \Bigl\{\Bigl(\bigvee_{j\in J}X_j,-n\Bigr),(Z,m)\Bigr\}\xrightarrow{\ (\iota_j^*)\ }\prod_{j\in J}\set*{(X_j,-n),(Z,m)}
 \]
-es inyectiva, y es un isomorfismo cuando $J$ es finito.
+que es un isomorfismo cuando $J$ es finito. Para familias infinitas, la comparación con el producto de los colímites no garantiza un isomorfismo.
 \end{prop}
 \begin{proof}
 Escribiendo la definición del colímite,
@@ -355,54 +328,47 @@ Escribiendo la definición del colímite,
 \Bigl\{\Bigl(\bigvee_{j\in J}X_j,-n\Bigr),(Z,m)\Bigr\}
 =\varinjlim_k\Bigl[\Sigma^{-n+k}\bigvee_{j\in J}X_j,\ \Sigma^{m+k}Z\Bigr]_* .
 \]
-Como la suspensión conmuta con la cuña, el dominio se reescribe como $\bigvee_{j\in J}\Sigma^{-n+k}X_j$, y por la \myref{prop:prod-morfismos} aplicada a $\Ho(\CWstar)$,
+La suspensión conmuta con la cuña: el dominio es $\bigvee_{j\in J}\Sigma^{-n+k}X_j$, y por la \myref{lema:prod-morfismos} aplicada a $\Ho(\CWstar)$,
 \[
 \Bigl[\bigvee_{j\in J}\Sigma^{-n+k}X_j,\ \Sigma^{m+k}Z\Bigr]_*
 \cong\prod_{j\in J}\Bigl[\Sigma^{-n+k}X_j,\ \Sigma^{m+k}Z\Bigr]_* .
 \]
-Para obtener el resultado habría que conmutar el colímite sobre $k$ con el producto sobre $J$. Cuando $J$ es finito esto es legítimo, porque el producto finito es un coproducto finito y los colímites conmutan con los coproductos finitos; resulta entonces
+Para obtener el resultado habría que conmutar el colímite sobre $k$ con el producto sobre $J$. Cuando $J$ es finito esto es legítimo: los colímites filtrados conmutan con productos finitos; resulta entonces
 \[
 \varinjlim_k\prod_{j=1}^r\Bigl[\Sigma^{-n+k}X_j,\Sigma^{m+k}Z\Bigr]_*
 \cong\prod_{j=1}^r\varinjlim_k\Bigl[\Sigma^{-n+k}X_j,\Sigma^{m+k}Z\Bigr]_*
 =\prod_{j=1}^r\set*{(X_j,-n),(Z,m)},
 \]
-que es el isomorfismo enunciado. Para $J$ infinito solo se obtiene la flecha canónica del colímite al producto de los colímites, que es inyectiva pero no sobreyectiva en general.
+que es el isomorfismo enunciado. Para $J$ infinito solo se obtiene la flecha canónica del colímite al producto de los colímites, sin que este cálculo permita afirmar que sea inyectiva o sobreyectiva. El ejemplo siguiente mostrará que la sobreyectividad puede fallar.
 \end{proof}
 
 \begin{nota}
-   Conviene subrayar dónde está el obstáculo: no es la cuña infinita como espacio, sino el \emph{colímite} que define los morfismos estables. Cada nivel $k$ contribuye con un producto infinito, y pasar al colímite no conmuta con ese producto. Por eso el candidato satisface la aditividad finita ---y con ella la exactitud, que solo involucra familias finitas de sumandos--- pero no la aditividad general.
+   Conviene subrayar dónde está el obstáculo: no es la cuña infinita como espacio, sino el \emph{colímite} que define los morfismos estables. Cada nivel $k$ contribuye con un producto infinito, y pasar al colímite no conmuta con ese producto. La aditividad finita queda demostrada; la exactitud se obtuvo por separado mediante las sucesiones cofibradas. La aditividad infinita no se deduce de estos argumentos.
 \end{nota}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{La cuña infinita de esferas no es el coproducto}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 El fallo de la aditividad tiene un ejemplo concreto, y es el que muestra que la cuña infinita no se comporta como coproducto de sus sumandos.
 
 \begin{ejem}\label{ejem:cuna}
-Sea
-\[
-X=\bigvee_{r\ge0}S^r .
-\]
+Consideremos $\bigvee_{r\ge0} S^r$.
 Entonces el morfismo inducido por las inclusiones,
 \[
-\Psi\colon\set*{(X,0),S^0_0}\longrightarrow\prod_{r\ge0}\set*{(S^r,0),S^0_0},
+\Psi\colon\set*{X_0,S^0_0}\longrightarrow\prod_{r\ge0}\set*{S^r_0,S^0_0},
 \]
-no es sobreyectivo. En consecuencia $(X,0)$ \emph{no} es el coproducto de la familia $\{(S^r,0)\}_{r\ge0}$ en $\SW$.
+no es sobre. Por tanto, $X_0$ no representa en $\ESW$ el coproducto de los objetos $S^r_0$, para $r\geq0$.
 \end{ejem}
 
 \begin{proof}
 Desarrollemos primero ambos miembros. Por un lado,
-\[
-\set*{(X,0),S^0_0}=\varinjlim_n[\Sigma^nX,S^n]_*=\varinjlim_n\Bigl[\bigvee_{r\ge0}S^{n+r},S^n\Bigr]_*,
+\[\textstyle
+\set*{X_0,S^0_0}=\varinjlim_n[\Sigma^nX,S^n]_*=\varinjlim_n\Bigl[\bigvee_{r\ge0}S^{n+r},S^n\Bigr]_*,
 \]
 y como la cuña es el coproducto en $\Ho(\CWstar)$, el conjunto de clases de homotopía de una cuña en un espacio es el producto de los conjuntos de clases de cada sumando:
 \[
-\Bigl[\bigvee_{r\ge0}S^{n+r},S^n\Bigr]_*\cong\prod_{r\ge0}\bigl[S^{n+r},S^n\bigr]_*=\prod_{r\ge0}\pi_{n+r}(S^n).
+\Bigl[\bigvee\nolimits_{r\ge0}S^{n+r},S^n\Bigr]_*\cong\prod_{r\ge0}\bigl[S^{n+r},S^n\bigr]_*=\prod_{r\ge0}\pi_{n+r}(S^n).
 \]
 Por otro lado,
 \[
-\prod_{r\ge0}\set*{(S^r,0),S^0_0}=\prod_{r\ge0}\varinjlim_n\pi_{n+r}(S^n)=\prod_{r\ge0}\pi_r^s(S^0).
+\prod_{r\ge0}\set*{S^r_0,S^0_0}=\prod_{r\ge0}\varinjlim_n\pi_{n+r}(S^n)=\prod_{r\ge0}\pi_r^s(S^0).
 \]
 El morfismo $\Psi$ es, con estas identificaciones, la aplicación canónica del colímite al producto de los colímites,
 \[
@@ -410,68 +376,51 @@ El morfismo $\Psi$ es, con estas identificaciones, la aplicación canónica del 
 \]
 que envía la clase de una familia $(x_r)_{r\ge0}$ en el nivel $n$ a la familia de sus estabilizaciones.
 
-Supongamos, con vistas a una contradicción, que $\Psi$ es sobreyectiva. Sea $f\in\set*{(X,0),S^0_0}$ y supongamos que $f$ está representado, en un nivel $n$ suficientemente alto, por una función punteada
+Veamos primero qué restricción satisfacen las familias de la imagen de $\Psi$. Sea $f\in\set*{X_0,S^0_0}$ y supongamos que $f$ está representado, en un nivel $n\geq2$ suficientemente alto, por una función punteada
 \[
 \varphi\colon\Sigma^nX\longrightarrow S^n,
 \]
-es decir, $[f]=[\varphi]\in[\Sigma^nX,S^n]_*$. Escribiendo $\iota_r\colon S^r\to X$ para la inclusión de la $r$-ésima esfera, las componentes de $\Psi(f)$ son las clases
+es decir, $f$ es la clase estable del representante $\varphi$. Escribiendo $\iota_r\colon S^r\to X$ para la inclusión de la $r$-ésima esfera, las componentes de $\Psi(f)$ son las clases
 \[
 \varphi\circ\Sigma^n\iota_r\colon S^{n+r}\longrightarrow S^n,
 \]
 es decir, elementos de $\pi_{n+r}(S^n)$.
 
-Ahora bien, para $r\ge n$ el grupo $\pi_{n+r}(S^n)$ es \emph{finito}. En efecto, los únicos grupos de homotopía inestables de $S^n$ que pueden no ser finitos son $\pi_n(S^n)\cong\mathbb Z$ y $\pi_{2n-1}(S^n)\cong\mathbb Z\oplus(\text{finito})$; como $r\ge n$ fuerza $n+r\ge2n$, el índice $n+r$ no es ninguno de esos dos, y $\pi_{n+r}(S^n)$ es finito. Por tanto cada clase $\varphi\circ\Sigma^n\iota_r$ tiene orden finito; sea $e_r$ ese orden y sea $3^{a_r}$ la mayor potencia de $3$ que divide a $e_r$.
+Ahora bien, para $r\ge n$ el grupo $\pi_{n+r}(S^n)$ es \emph{finito}. 
+% En efecto, los únicos grupos de homotopía inestables de $S^n$ que pueden no ser finitos son $\pi_n(S^n)\cong\mathbb Z$ y, cuando $n$ es par, $\pi_{2n-1}(S^n)$; como $r\ge n$ fuerza $n+r\ge2n$, el índice $n+r$ no es ninguno de esos dos, y $\pi_{n+r}(S^n)$ es finito. 
+Por tanto cada clase $\varphi\circ\Sigma^n\iota_r$ tiene orden finito; sea $e_r$ ese orden y sea $3^{a_r}$ la mayor potencia de $3$ que divide a $e_r$.
+La conclusión se obtiene mediante dos resultados de la literatura.
 
-La conclusión se obtiene comparando dos resultados de la literatura, que enunciamos por separado.
-\end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Los teoremas de Toda y Milnor}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{teo}[Toda]\label{teo:toda}
-Sea $n\ge0$ fijo y sea $\varphi\colon\bigvee_{r\ge0}S^{n+r}\to S^n$ una función punteada. Con la notación anterior, la sucesión $(a_r)_{r\ge n}$ está acotada: existe una constante $C_n$, que depende solo de $n$, tal que $3^{a_r}\le C_n$ para todo $r\ge n$.
+\begin{teo}[\cite{toda1956}]\label{teo:toda}
+Sean $n\ge2$ fijo y $\varphi\colon\bigvee_{r\ge0}S^{n+r}\to S^n$ mapa punteado. Con la notación anterior, la sucesión $(a_r)_{r\ge n}$ está acotada.
 \end{teo}
 
-\begin{teo}[Milnor]\label{teo:milnor}
+\begin{teo}[\cite{milnor1958}]\label{teo:milnor}
 Existe una familia
 \[
-(f_r)_{r\ge0}\in\prod_{r\ge0}\set*{(S^r,0),S^0_0}=\prod_{r\ge0}\pi_r^s(S^0)
+(f_r)_{r\ge0}\in\prod_{r\ge0}\set*{S^r_0,S^0_0}=\prod_{r\ge0}\pi_r^s(S^0)
 \]
-tal que la sucesión análoga $(b_r)_{r\ge0}$, formada por las partes $3$-primarias de los órdenes de las clases $f_r$, no está acotada.
+con $f_0=0$, tal que la sucesión $(b_r)_{r\ge1}$, definida por $3^{b_r}$ igual a la máxima potencia de $3$ que divide a $\ord(f_r)$, no está acotada.
 \end{teo}
 
-\begin{nota}
-   Ambos enunciados son resultados profundos de la teoría de homotopía inestable y se citan sin demostración; sus pruebas ocupan los artículos \emph{On the double suspension $E^2$} de Toda \cite{toda1956} y \emph{On the Whitehead homomorphism} de Milnor \cite{milnor1958}, que son los títulos que se escribieron en la pizarra junto a cada nombre.
+Retomemos la prueba. Sea $(f_r)_{r\ge0}$ la familia del \cref{teo:milnor} y supongamos que está en la imagen de $\Psi$. Entonces existe $f\in\set*{X_0,S^0_0}$ con $\Psi(f)=(f_r)_{r\ge0}$, representado en algún nivel $n\geq2$ por una función $\varphi\colon\Sigma^nX\to S^n$, y las componentes de $\Psi(f)$ son las clases $\varphi\circ\Sigma^n\iota_r\in\pi_{n+r}(S^n)$.
 
-   El \myref{teo:toda} dice, en esencia, que las partes $3$-primarias de los órdenes de los elementos de $\pi_{n+r}(S^n)$, para $n$ fijo, no crecen con $r$: aunque el grupo $\pi_{n+r}(S^n)$ cambia con $r$, la potencia de $3$ que hace falta para anular su torsión está uniformemente acotada.
+Fijémonos en un índice $r\ge n$. La clase $f_r\in\pi_r^s(S^0)$ es la estabilización de $\varphi\circ\Sigma^n\iota_r$; como la estabilización es un homomorfismo, el orden de $f_r$ divide al orden $e_r$ de $\varphi\circ\Sigma^n\iota_r$. En particular, la parte $3$-primaria de $\ord(f_r)$ divide a $3^{a_r}$, y por el \cref{teo:toda} está acotada por $3^C$ uniformemente en $r$. Equivalentemente, $b_r\le a_r\le C$.
 
-   El \myref{teo:milnor} procede del estudio del homomorfismo $J$. Los elementos que exhibe son imágenes de clases en los grupos ortogonales estables, y sus órdenes son los denominadores de los números de Bernoulli, que por el teorema de von Staudt--Clausen tienen partes $3$-primarias arbitrariamente grandes. En particular, en los grupos de homotopía estable de las esferas hay elementos de orden arbitrariamente grande.
-\end{nota}
+Pero por el \cref{teo:milnor} la sucesión de exponentes $(b_r)$ no está acotada. Eliminar los primeros términos no cambia este hecho, por lo que $b_r\le a_r\le C$ para todo $r\ge n$ contradice el \cref{teo:toda}. Por lo tanto $\Psi$ no es sobreyectiva.
 
-\begin{proof}[Conclusión de la demostración]
-Retomamos el \myref{ejem:cuna}. Sea $(f_r)_{r\ge0}$ la familia del \myref{teo:milnor} y supongamos que está en la imagen de $\Psi$. Entonces existe $f\in\set*{(X,0),S^0_0}$ con $\Psi(f)=(f_r)_{r\ge0}$, representado en algún nivel $n$ por una función $\varphi\colon\Sigma^nX\to S^n$, y las componentes de $\Psi(f)$ son las clases $\varphi\circ\Sigma^n\iota_r\in\pi_{n+r}(S^n)$.
-
-Fijémonos en un índice $r\ge n$. La clase $f_r\in\pi_r^s(S^0)$ es la estabilización de $\varphi\circ\Sigma^n\iota_r$; como la estabilización es un homomorfismo, el orden de $f_r$ divide al orden $e_r$ de $\varphi\circ\Sigma^n\iota_r$. En particular, la parte $3$-primaria de $\ord(f_r)$ divide a $3^{a_r}$, y por el \myref{teo:toda} está acotada por $C_n$ uniformemente en $r$.
-
-Pero por el \myref{teo:milnor} la sucesión $b_r$ de las partes $3$-primarias de los órdenes de las clases $f_r$ no está acotada. Como $b_r$ divide a $3^{a_r}$ para todo $r\ge n$, la sucesión $(3^{a_r})_{r\ge n}$ tampoco estaría acotada, en contradicción con el \myref{teo:toda}. Por lo tanto $\Psi$ no es sobreyectiva.
-
-Finalmente, si $(X,0)$ fuera el coproducto de la familia $\{(S^r,0)\}_{r\ge0}$, la aplicación $\Psi$ sería una biyección por la \myref{prop:prod-morfismos}, lo que acabamos de refutar.
+Finalmente, si $X_0$ fuera el coproducto de la familia $\{S^r_0\}_{r\ge0}$, la aplicación $\Psi$ sería una biyección por la \myref{lema:prod-morfismos}, lo que acabamos de refutar.
 \end{proof}
 
 \begin{nota}
-   El argumento no usa nada especial del objeto $S^0_0$ salvo que sus grupos de homotopía estable son los de las esferas; el mismo esquema, con $S^0_0$ reemplazado por un objeto fijo cualquiera, muestra que la cuña infinita nunca se comporta como coproducto en $\SW$. Lo que falla, en el fondo, es que $\SW$ no es cerrada bajo coproductos infinitos y que el funtor canónico $\Ho(\CWstar)\to\SW$ no los preserva; es exactamente la limitación que motiva el paso a las categorías de espectros, donde la cuña infinita \emph{sí} es el coproducto.
-\end{nota}
-
-\begin{nota}
-   El resultado debe leerse con precisión: muestra que la cuña infinita no es el coproducto de la familia $\{S^r\}_{r\ge0}$, es decir, que el coproducto no es el candidato esperado. No decide si esa familia admite algún coproducto en $\SW$; el argumento no lo establece y la referencia de la que procede tampoco lo menciona.
+   El resultado debe leerse con precisión: muestra que la cuña infinita no es el coproducto de la familia $\{S^r\}_{r\ge0}$, es decir, que el coproducto no es el candidato esperado. No decide si esa familia admite algún coproducto en $\ESW$; el argumento no lo establece y esa cuestión quedó expresamente abierta en la discusión de clase.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{La cohomología singular no es representable así}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-El ejemplo anterior muestra que el candidato $\tilde h^n(X)=\set*{(X,-n),(Z,m)}$ no puede coincidir con una teoría de cohomología que cumpla la aditividad general. La contradicción puede alcanzarse, sin embargo, por una vía más barata, que es la que se siguió en clase: basta evaluar en $S^0$ y remitirse a la imposibilidad de un espacio con un solo grupo de homotopía estable no nulo.
+El ejemplo anterior muestra que la construcción no satisface la aditividad general para toda elección del objeto representante: falla, en particular, para $S^0_0$. No excluye por sí mismo otras elecciones de $(Z,m)$. Para la cohomología singular se inicia un argumento distinto: se evalúa en $S^0$ y se reduce el problema a excluir un complejo finito cuyo único grupo de homotopía estable no nulo sea $\mathbb Z$.
 
 \begin{teo}\label{teo:no-representable}
 No existe un CW-complejo finito $Z$ ni un entero $m$ tales que
@@ -480,25 +429,17 @@ No existe un CW-complejo finito $Z$ ni un entero $m$ tales que
 \]
 naturalmente para todo $X\in\CWstar^{\mathrm{fin}}$.
 \end{teo}
-\begin{proof}
+\begin{proof}[Reducción utilizada en clase]
 Supongamos que tales $Z$ y $m$ existen. Evaluando en $X=S^0$ y recordando que $\tilde H^0(S^0)\cong\mathbb Z$ y $\tilde H^n(S^0)=0$ para $n\neq0$, se tiene
 \[
-\set*{(S^0,-n),(Z,m)}\cong
+\pi^s_{-n-m}(Z)
+\cong\set*{(S^0,-n-m),(Z,0)}
+\cong\set*{(S^0,-n),(Z,m)}
+\cong \Tilde{H}^n(S^0)
+\cong
 \begin{cases}
 \mathbb Z, & n=0,\\
 0, & n\neq0 .
-\end{cases}
-\]
-Por la propiedad de desplazamiento de índices, $\set*{(S^0,-n),(Z,m)}\cong\set*{(S^0,-n-m),(Z,0)}$, y por la definición del colímite,
-\[
-\set*{(S^0,k),(Z,0)}=\varinjlim_j\bigl[\Sigma^{j+k}S^0,\Sigma^jZ\bigr]_*=\varinjlim_j\pi_{j+k}(\Sigma^jZ)=\pi^s_k(Z).
-\]
-Por tanto
-\[
-\pi^s_k(Z)\cong
-\begin{cases}
-\mathbb Z, & k=-m,\\
-0, & k\neq-m .
 \end{cases}
 \]
 Es decir, $Z$ tendría todos sus grupos de homotopía estable triviales excepto uno, en el que sería $\mathbb Z$. Como $\pi^s_k(Z)=0$ para $k<0$, ese único grado no nulo es $-m\ge0$.
@@ -507,11 +448,11 @@ Pero eso es exactamente lo que la \myref{prop:no-existe} prohíbe: no existe nin
 \end{proof}
 
 \begin{nota}
-   Conviene subrayar el orden en que se procedió en clase, porque es el que explica la estructura del capítulo. La reducción anterior se anunció \emph{antes} de disponer de su cierre: el profesor evaluó en $S^0$, llegó a que $Z$ habría de tener un único grupo de homotopía estable no nulo y señaló que «a esto es a lo que queremos llegar a una contradicción». Solo después probó que $\pi_*^s(-)$ es una teoría de homología reducida ---que es lo que da sentido a la proposición--- y dejó la contradicción para el final, donde se cierra con la doble suspensión y el teorema de Hurewicz. El \myref{ejem:cuna} da una segunda vía a la misma contradicción, por el axioma de aditividad; es la que el profesor había explorado antes y no la que empleó para cerrar el argumento.
+   La reducción anterior se obtiene evaluando en $S^0$; la contradicción se prepara en la última subsección y se completa en la clase siguiente. El ejemplo de la cuña infinita tiene otra función: muestra el fallo de la aditividad para el representante $S^0_0$, pero no prueba por sí solo la no representabilidad de la cohomología singular.
 \end{nota}
 
 \begin{nota}
-   El \myref{teo:no-representable} explica por qué la homotopía estable no puede contentarse con $\SW$: uno de sus propósitos es \emph{parametrizar} las teorías de cohomología, y eso exige que los objetos representantes admitan cuñas infinitas. La cohomología singular es el primer ejemplo que muestra la insuficiencia.
+   El \myref{teo:no-representable} explica por qué la homotopía estable no puede contentarse con $\SW$: uno de sus propósitos es \emph{parametrizar} las teorías de cohomología, y el ejemplo muestra que los objetos de $\SW$ no bastan para representar todas ellas. La cohomología singular es el primer ejemplo que muestra la insuficiencia.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -522,78 +463,77 @@ Pero eso es exactamente lo que la \myref{prop:no-existe} prohíbe: no existe nin
 \subsection{Los grupos de homotopía estable como teoría de homología}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-El fracaso anterior es de la cohomología, no de la homotopía estable. De hecho, los grupos de homotopía estable forman por sí mismos una teoría de homología reducida, y ese es el ejemplo positivo que buscábamos. El contraste con los grupos de homotopía inestables es el que da sentido al resultado: los inestables no satisfacen los axiomas de homología, pues fallan la suspensión y la excisión, y es la estabilización la que repara ambas fallas.
+La limitación anterior corresponde al intento de representar cohomología dentro de $\SW$ y de extender esa fórmula a todos los CW-complejos. De hecho, los grupos de homotopía estable forman por sí mismos una teoría de homología reducida, y ese es el ejemplo positivo que buscábamos. El contraste con los grupos de homotopía inestables es el que da sentido al resultado: los inestables no satisfacen los axiomas de homología, pues fallan la suspensión y la excisión, y es la estabilización la que repara ambas fallas.
 
 \begin{lema}\label{lema:pisteor}
 La asignación $X\mapsto\pi_n^s(X)$ define una teoría de homología reducida sobre $\CWstar$.
 \end{lema}
 \begin{proof}
-\emph{Funtorialidad.} Para $f\colon X\to Y$, la asignación
+\emph{Funtorialidad e invarianza homotópica.} Si $f\colon X\to Y$ y $r\colon S^{n+k}\to\Sigma^kX$ representa una clase estable, definimos $\pi_n^s(f)([r])=[\Sigma^kf\circ r]$. La composición es compatible con las homotopías y con la suspensión, de modo que induce un homomorfismo bien definido en el colímite y respeta identidades y composiciones. Si $f\simeq g$, entonces $\Sigma^kf\simeq\Sigma^kg$ y
 \[
-\pi_n^s(f)\colon\pi_n^s(X)\longrightarrow\pi_n^s(Y),
-\qquad
-[r]\longmapsto[f\circ r]
+\pi_n^s(f)([r])=[\Sigma^kf\circ r]=[\Sigma^kg\circ r]=\pi_n^s(g)([r]).
 \]
-está bien definida y es un homomorfismo de grupos. En efecto, en un nivel $k$ suficientemente alto una clase $[r]$ está representada por $r\colon S^{n+k}\to\Sigma^kX$, y
-\[
-\pi_n^s(f)([r])=f_*[r]=\bigl[\Sigma^kf\circ r\bigr]=\bigl[\Sigma^k(g\circ r)\bigr]=\pi_n^s(g)([r])
-\]
-para cualquier representante $g$ de $f$; de ahí la invarianza homotópica, pues si $f\simeq g$ entonces $\Sigma^kf\simeq\Sigma^kg$ para todo $k$ y por tanto $\Sigma^kf\circ r\simeq\Sigma^kg\circ r$.
 
-\emph{Suspensión.} El isomorfismo natural $\sigma_n\colon\pi_n^s\to\pi_{n+1}^s\circ\Sigma$ viene dado por
+\emph{Suspensión.} El isomorfismo natural $\sigma_n\colon\pi_n^s\circ\Sigma\to\pi_{n-1}^s$ viene dado por
 \[
-\sigma_n^X\colon\pi_n^s(\Sigma X)\xrightarrow{\ \cong\ }\pi_{n-1}^s(X),
+\sigma_n\colon\pi_n^s(\Sigma X)\xrightarrow{\ \cong\ }\pi_{n-1}^s(X),
 \qquad
-\set*{(S^0,n),(\Sigma X,0)}\cong\set*{(S^0,n-1),(X,0)},
+\set*{(S^0,n),(\Sigma X,0)} \cong_{\text{nat}} \set*{(S^0,n),(X,1)} \cong_{\text{nat}} \set*{(S^0,n-1),(X,0)},
 \]
-que es un caso particular del desplazamiento de índices. La identificación se lee mejor factorizándola por el término auxiliar $\{(S^0,n),(X,1)\}$, que es el mismo objeto escrito con los dos índices desplazados un lugar:
+% \[
+% \begin{tikzcd}%[column sep=large, row sep=large]
+% \{(S^0,n),(\Sigma X,0)\} \arrow[rr,"\cong_{\mathrm{nat}}"] \arrow[dr,"\cong_{\mathrm{nat}}"'] & & \{(S^0,n-1),(X,0)\}\\
+% & \{(S^0,n),(X,1)\} \arrow[ur,"\cong_{\mathrm{nat}}"'] &
+% \end{tikzcd}
+% \]
+La primera flecha usa $(\Sigma X,0)\cong(X,1)$ y la segunda inducida por $\sh^1$.
+
+\emph{Exactitud.} Sea $A\subseteq X$ un subcomplejo punteado. La sucesión cofibrada $A\to X\to X/A$ se completa a un triángulo distinguido en $\ESW$, y el funtor covariante $\set*{S^0_n,-}$ transforma triángulos distinguidos en sucesiones exactas por la clase anterior. Las identificaciones de la pizarra forman el diagrama
 \[
-\begin{tikzcd}[column sep=large, row sep=large]
-\{(S^0,n),(\Sigma X,0)\} \arrow[rr,"\cong_{\mathrm{nat}}"] \arrow[dr,"\cong_{\mathrm{nat}}"'] & & \{(S^0,n-1),(X,0)\}\\
-& \{(S^0,n),(X,1)\} \arrow[ur,"\cong_{\mathrm{nat}}"'] &
+\begin{tikzcd}[column sep=small,row sep=large]
+\set*{S^0_n,A_0} \arrow[r,"i_*"] \arrow[d,"\cong"'] & \set*{S^0_n,X_0} \arrow[r,"q_*"] \arrow[d,"\cong"'] & \set*{S^0_n,(X/A)_0} \arrow[d,"\cong"]\\
+\pi_n^s(A) \arrow[r,"i_*"'] & \pi_n^s(X) \arrow[r,"q_*"'] & \pi_n^s(X/A).
 \end{tikzcd}
 \]
-Ambas flechas son el desplazamiento simultáneo de los dos índices, que no altera el conjunto de morfismos.
-
-\emph{Exactitud.} Sea $A\subseteq X$ un subcomplejo punteado. La sucesión cofibrada $A\to X\to X/A$ es un triángulo distinguido en $\SW$, y el funtor covariante $\set*{S^0_n,-}$ transforma triángulos distinguidos en sucesiones exactas por la clase anterior. Como $\set*{S^0_n,A_0}\cong\pi_n^s(A)$, se obtiene la exactitud de
-\[
-\pi_n^s(A)\xrightarrow{\ i_*\ }\pi_n^s(X)\xrightarrow{\ q_*\ }\pi_n^s(X/A).
-\]
+La fila superior es exacta y, por tanto, también lo es la inferior.
 El axioma de aditividad se demuestra aparte, en la \myref{prop:aditividad-pi}.
 \end{proof}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{La aditividad de los grupos de homotopía estable}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Falta comprobar el último axioma, que es el que sí distingue a $\pi_n^s(-)$ del candidato fallido de la sección anterior.
+Falta comprobar aditividad, que es la que falló en el candidato anterior.
 
 \begin{prop}\label{prop:aditividad-pi}
-Para toda familia de espacios punteados $\{X_\alpha\}_{\alpha\in J}$, la aplicación
+Para toda familia de CW-complejos punteados $\{X_\alpha\}_{\alpha\in J}$, la aplicación canónica
 \[
-\Phi\colon\bigoplus_{\alpha\in J}\pi_n^s(X_\alpha)\longrightarrow\pi_n^s\Bigl(\bigvee_{\alpha\in J}X_\alpha\Bigr),
+\Phi\colon\bigoplus_{\alpha\in J}\pi_n^s(X_\alpha)\longrightarrow\pi_n^s\Bigl(\bigvee\nolimits_{\!\alpha\in J}X_\alpha\Bigr),
 \qquad
 (f_\alpha)_\alpha\longmapsto\sum_{\alpha\in J}\iota_\alpha\circ f_\alpha,
 \]
-es un isomorfismo, donde $\iota_\alpha\colon X_\alpha\to\bigvee_{\alpha\in J}X_\alpha$ son las inclusiones.
+inducida por las inclusiones $\iota_\alpha\colon X_\alpha\to\bigvee_{\!\alpha}X_\alpha$, es un isomorfismo.
 \end{prop}
 \begin{proof}
 \emph{Inyectividad.} Sea $(f_\alpha)_\alpha$ en el núcleo de $\Phi$, de modo que $\Phi(f_\alpha)=0$. Como cada $f_\alpha\in\pi_n^s(X_\alpha)$ está representada en un nivel común $k$ suficientemente alto por una función $S^{n+k}\to\Sigma^kX_\alpha$, y como una suma directa solo tiene finitos sumandos no nulos, existen índices $\alpha_1,\dots,\alpha_m$ tales que $f_\alpha=0$ para todo $\alpha\notin\{\alpha_1,\dots,\alpha_m\}$.
 
 Consideremos el diagrama
 \[
-\begin{tikzcd}[column sep=large, row sep=large]
+\begin{tikzcd}[sep=large, every cell/.append style={nodes={execute at begin node=\textstyle}}]
 \bigoplus_{j=1}^m\pi_n^s(X_{\alpha_j}) \arrow[r,"{\Phi'}"] \arrow[d,hook] & \pi_n^s\Bigl(\bigvee_{j=1}^mX_{\alpha_j}\Bigr) \arrow[d,hook]\\
 \bigoplus_{\alpha\in J}\pi_n^s(X_\alpha) \arrow[r,"\Phi"'] & \pi_n^s\Bigl(\bigvee_{\alpha\in J}X_\alpha\Bigr),
 \end{tikzcd}
 \]
-donde las flechas verticales están inducidas por la inclusión de la subcuña finita, que es un \emph{retraído} de la cuña infinita: existe una retracción $\bigvee_{\alpha\in J}X_\alpha\to\bigvee_{j=1}^mX_{\alpha_j}$ que colapsa los sumandos restantes, y de ahí que las flechas verticales sean inyectivas. Por la \myref{prop:aditividad-familias} ---o, más directamente, porque $\SW$ es aditiva y en una categoría aditiva el coproducto finito coincide con el producto finito--- la aplicación $\Phi'$ es un isomorfismo. Como $\Phi(f_\alpha)=0$ y las flechas verticales son inyectivas, se sigue $\Phi'(f_{\alpha_j})_j=0$ y por tanto $f_{\alpha_j}=0$ para todo $j$. Así $(f_\alpha)_\alpha=0$, que es lo que queríamos.
+donde las flechas verticales están inducidas por la inclusión de la subcuña finita, que es un \emph{retraído} de la cuña infinita: existe una retracción $\bigvee_{\alpha\in J}X_\alpha\to\bigvee_{j=1}^mX_{\alpha_j}$ que colapsa los sumandos restantes, y de ahí que las flechas verticales sean inyectivas. El caso finito se identifica con los morfismos al biproducto en la categoría aditiva $\ESW$:
+\[
+\begin{tikzcd}[sep=large, every cell/.append style={nodes={execute at begin node=\textstyle}}]
+\bigoplus_{j=1}^m\pi_n^s(X_{\alpha_j}) \arrow[r,"\Phi'"] \arrow[d,"\cong"'] & \pi_n^s\!\left(\bigvee_{j=1}^mX_{\alpha_j}\right) \arrow[d,"\cong"]\\
+\bigoplus_{j=1}^m\set*{S^0_n,(X_{\alpha_j})_0} \arrow[r,"\cong"'] & \set*{S^0_n,\left(\bigvee_{j=1}^mX_{\alpha_j}\right)_0}.
+\end{tikzcd}
+\]
+La cuña finita representa tanto el coproducto como el producto de los $(X_{\alpha_j})_0$; por la propiedad universal del producto, la flecha inferior es un isomorfismo. Así, $\Phi'$ también lo es. Como $\Phi(f_\alpha)=0$ y las flechas verticales son inyectivas, se sigue $\Phi'(f_{\alpha_j})_j=0$ y por tanto $f_{\alpha_j}=0$ para todo $j$. Así $(f_\alpha)_\alpha=0$, que es lo que queríamos.
 
 \emph{Sobreyectividad.} Sea $g\in\pi_n^s(\bigvee_{\alpha\in J}X_\alpha)$. En un nivel $k$ suficientemente alto, $g$ está representada por una función
 \[
-g=[f]\colon S^{n+k}\longrightarrow\Sigma^k\bigvee_{\alpha\in J}X_\alpha=\bigvee_{\alpha\in J}\Sigma^kX_\alpha .
+f\colon S^{n+k}\longrightarrow\Sigma^k\bigvee_{\alpha\in J}X_\alpha=\bigvee_{\alpha\in J}\Sigma^kX_\alpha .
 \]
-Como $S^{n+k}$ es \emph{compacta}, su imagen bajo $f$ está contenida en una subcuña finita: existe un subconjunto finito $\{\alpha_1,\dots,\alpha_m\}\subseteq J$ tal que $f$ factoriza por $\bigvee_{j=1}^m\Sigma^kX_{\alpha_j}$. Escribamos $g'$ para la clase de esa función restringida. Por el caso finito, $\Phi'$ es sobreyectiva, de modo que $g'=\Phi'((f_{\alpha_j})_j)$ para ciertas clases $f_{\alpha_j}\in\pi_n^s(X_{\alpha_j})$. Definiendo
+Como $S^{n+k}$ es \emph{compacta}, su imagen es compacta y está contenida en un subcomplejo finito de la cuña de CW-complejos. Ese subcomplejo solo intersecta fuera del punto base un número finito de sumandos: existe un subconjunto finito $\{\alpha_1,\dots,\alpha_m\}\subseteq J$ tal que $f$ factoriza por $\bigvee_{j=1}^m\Sigma^kX_{\alpha_j}$. Escribamos $g'$ para la clase de $f$ considerada con esa subcuña finita como codominio. Por el caso finito, $\Phi'$ es sobreyectiva, de modo que $g'=\Phi'((f_{\alpha_j})_j)$ para ciertas clases $f_{\alpha_j}\in\pi_n^s(X_{\alpha_j})$. Definiendo
 \[
 f_\alpha\coloneqq
 \begin{cases}
@@ -605,7 +545,7 @@ se tiene $\Phi(f_\alpha)=g$. Por tanto $\Phi$ es sobreyectiva, y con ello un iso
 \end{proof}
 
 \begin{nota}
-   La compacidad de $S^{n+k}$ es el único punto en el que se usa que el dominio de una clase de homotopía estable es una esfera, y es precisamente lo que no está disponible en el candidato de la \myref{defi:cohomologia-reducida}: allí el obstáculo aparece al pasar del producto finito al producto infinito, sin que la compacidad intervenga.
+   La compacidad de $S^{n+k}$ es el único punto en el que se usa que el dominio de una clase de homotopía estable es una esfera, y es precisamente lo que no está disponible en el intento de representar cohomología mediante $\set*{(X,-n),(Z,m)}$: allí el obstáculo aparece al pasar del producto finito al producto infinito, sin que la compacidad intervenga.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -637,93 +577,100 @@ y de la \myref{prop:aditividad-pi}. Finalmente, $\tilde h_n(S^0)=\pi_n^s(S^0\wed
 \end{nota}
 
 \begin{nota}
-   Cuando $K=S^0$ se recupera la teoría del \myref{lema:pisteor}, con coeficientes $\pi_n^s$. Conviene tener cuidado con la notación: el símbolo $\pi_n^s(-)$ designa a la vez la teoría de homología reducida y el grupo de coeficientes, que en la pizarra se escribió $\pi_n^s(*)$ para distinguirlo,
-   \[
-   \pi_n^s(*)=\pi_n^s(S^0)=\pi_n^s,
-   \]
-   con «reducido» sobre la teoría $\pi_n^s(Z)$ y «no reducida» sobre el grupo de coeficientes $\pi_n^s(*)$. En general, para una teoría de homología reducida $\tilde h_*$ la versión no reducida se recupera mediante
-   \[
-   h_n(X)=\tilde h_n(X_+),
-   \qquad
-   X_+=X\sqcup\{*\},
-   \]
-   y análogamente $h^n(X)=\tilde h^n(X_+)$ en cohomología.
-\end{nota}
+   La versión no reducida de una teoría reducida se define por $h_n(X)=\tilde h_n(X_+)$, donde $X_+=X\sqcup\{*\}$; análogamente, $h^n(X)=\tilde h^n(X_+)$. Para la teoría $\tilde h_n(X)=\pi_n^s(X\wedge K)$, los coeficientes son
+\[
+h_n(*)=\tilde h_n(*_+)=\tilde h_n(S^0)=\pi_n^s(S^0\wedge K)=\pi_n^s(K).
+\]
+En el caso $K=S^0$ coinciden también con los grupos $\pi^s_n$. 
 
-\begin{nota}
-   La construcción de la \myref{prop:smash} es la razón por la que basta con tomar $K$ un CW-complejo punteado: para definir una teoría de homología reducida con coeficientes arbitrarios se reemplaza $K$ por un espectro y el producto smash por el producto smash de espectros. Es el paso que conduce a los espectros secuenciales de Lima y, en última instancia, a la categoría homotópica estable, donde la cuña infinita vuelve a ser el coproducto y la representabilidad se recupera.
+La notación usual $\pi_n^s(-)$ también se emplea para la teoría no reducida. Como se advirtió en clase, hay que interpretar el símbolo por el contexto:
+\[
+\begin{tikzcd}[column sep=large,row sep=small]
+& 0\\
+\pi_n^s(*) \arrow[ur,"\text{reducida}" sloped] \arrow[dr,"\text{no reducida}"' sloped] &\\
+& \pi_n^s
+\end{tikzcd}
+\]
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{El teorema de Hurewicz estable}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-La teoría $\pi_n^s(-)$ de la \myref{prop:smash} permite enunciar un criterio que relaciona la homotopía estable de un espacio con su homología ordinaria. Es la herramienta que cierra la clase.
+La teoría $\pi_n^s(-)$ del \myref{lema:pisteor} permite relacionar el primer grupo no nulo de homotopía estable de un espacio con su homología ordinaria.
 
 \begin{teo}[Hurewicz estable]\label{teo:hurewicz}
-Sea $Z$ un espacio punteado y sea $n\ge0$. Si $\pi_k^s(Z)=0$ para todo $k<n$, entonces
-\[
-\tilde H_k(Z)=0\quad\text{para todo }k<n,
-\qquad
-\pi_n^s(Z)\cong\tilde H_n(Z).
-\]
+Sea $Z$ un CW-complejo punteado y sea $n\ge0$. Si $\pi_k^s(Z)=0$ para todo $k<n$, entonces $\tilde H_k(Z)=0$ para todo $k<n$ y $\pi_n^s(Z)\cong\tilde H_n(Z)$.
 \end{teo}
 
 \begin{proof}
-Se usa la \emph{sucesión espectral de Atiyah--Hirzebruch}, que para la teoría de homología $\pi_*^s(-)$ y un espacio punteado $Z$ tiene término inicial
+Como $\pi_*^s(-)$ es una teoría de homología reducida, podemos aplicar la sucesión espectral de Atiyah--Hirzebruch a la pareja $(Z,z_0)$:
 \[
-E^2_{p,q}=\tilde H_p\bigl(Z;\pi_q^s(*)\bigr)\;\Longrightarrow\;\pi^s_{p+q}(Z),
+E^2_{p,q}=H_p(Z,z_0;\pi_q^s)=\tilde H_p(Z;\pi_q^s)
+\quad\Longrightarrow\quad\pi_{p+q}^s(Z),
 \]
-donde $\tilde H_p(Z;\pi_q^s(*))=H_p(Z,Z_0;\pi_q^s(*))$ es la homología \emph{reducida} con coeficientes en $\pi_q^s(*)$ y la convergencia es a la versión reducida de la teoría. Esta es la forma en que se escribió en la pizarra, con la homología relativa al punto base y el grupo $\pi^s_{p+q}(Z,Z_0)$ en el lado derecho.
-Los coeficientes que aparecen son los grupos de homotopía estable de las esferas, $\pi_q^s(*)=\pi_q^s(S^0)$, con
-\[
-\pi_0^s\cong\mathbb Z,
-\qquad
-\pi_1^s\cong\mathbb Z/2,
-\]
-y $\pi_q^s=0$ para $q<0$. La página $E^2$ se dibujó en la pizarra como una tabla en la que el eje horizontal es $p$ y el vertical es $q$, con la fila $q=1$ formada por $\tilde H_0(Z;\mathbb Z/2)$ y la fila $q=0$ por $\tilde H_0(Z),\tilde H_1(Z),\tilde H_2(Z),\dots,\tilde H_n(Z)$; los términos de las antidiagonales bajas se marcaron con «$=0$», y el diferencial que sale de la fila $q=0$ apunta a la fila superior:
-\[
-\begin{array}{c|cccccc}
-q & & & & & &\\[2pt]
-2 & \tilde H_0(Z;\pi_2^s) & \tilde H_1(Z;\pi_2^s) & \tilde H_2(Z;\pi_2^s) & \cdots & &\\[2pt]
-1 & \tilde H_0(Z;\mathbb Z/2) & \tilde H_1(Z;\mathbb Z/2) & \cdots & & &\\[2pt]
-0 & \tilde H_0(Z;\mathbb Z) & \tilde H_1(Z;\mathbb Z) & \tilde H_2(Z;\mathbb Z) & \cdots & \tilde H_n(Z;\mathbb Z) &\\[2pt]
-\hline
- & p=0 & p=1 & p=2 & \cdots & p=n &
-\end{array}
-\]
-En la pizarra la inducción se escribió como la cadena
-\[
-\tilde H_i(Z;\pi_q^s)=0\quad\text{para }i\le n-1,
-\]
-que es la forma abreviada de lo que sigue.
+donde $\pi_q^s=\pi_q^s(S^0)$ son los coeficientes de la teoría, es decir, la teoría \emph{no reducida} evaluada en el punto; en cambio, el grupo al que converge es la teoría \emph{reducida} evaluada en $Z$. Recordemos que $\pi_0^s\cong\mathbb Z$, $\pi_1^s\cong\mathbb Z/2$ y $\pi_q^s=0$ para $q<0$. Por tanto, la sucesión está concentrada en el primer cuadrante y su fila $q=0$ es la homología reducida de $Z$. Sus diferenciales tienen la forma $d_r\colon E^r_{p,q}\to E^r_{p-r,q+r-1}$, con $r\ge2$.
 
-\emph{Primer paso: las columnas bajas.} Razonamos por inducción sobre $k$. Para $k=0$, el único término de la antidiagonal $p+q=0$ con $q\ge0$ es $E^2_{0,0}=\tilde H_0(Z;\pi_0^s)$, y todos los términos con $q<0$ son nulos. Por tanto $E^\infty_{0,0}=E^2_{0,0}$, y como $E^\infty_{0,0}$ es un subcociente de $\pi_0^s(Z)=0$ por la hipótesis, se concluye $\tilde H_0(Z)=0$.
-
-Supongamos ahora $\tilde H_p(Z)=0$ para $1\le p\le k-1$ y consideremos la antidiagonal $p+q=k$. Sus términos son $E^2_{p,k-p}=\tilde H_p(Z;\pi_{k-p}^s)$. Si $1\le p\le k-1$, el grupo se anula porque lo hace $\tilde H_p(Z)$; si $p=0$, se anula porque lo hace $\tilde H_0(Z)$; y si $p=k$, se obtiene $E^2_{k,0}=\tilde H_k(Z;\pi_0^s)=\tilde H_k(Z)$, que es el término que queremos calcular. Los diferenciales que salen de $(k,0)$ van a términos de la antidiagonal $k-1$, todos nulos, y los que entran provienen de índices con $q<0$. Por tanto $E^\infty_{k,0}=E^2_{k,0}=\tilde H_k(Z)$, y como $E^\infty_{k,0}$ es un subcociente de $\pi_k^s(Z)=0$, resulta $\tilde H_k(Z)=0$. Esto cierra la inducción hasta $k=n-1$, es decir,
+El siguiente esquema reproduce las posiciones que utilizaremos. Los recuadros rojos señalan los términos de grado total $1$; el diferencial dibujado será nulo una vez que anulemos la primera columna.
 \[
-\tilde H_k(Z)=0\quad\text{para todo }k\le n-1 .
+\begin{tikzpicture}[x=1.45cm,y=1.05cm,every node/.style={font=\small}]
+    \draw[->] (-1.1,-.55) -- (6.1,-.55) node[right] {$p$};
+    \draw[->] (-1.1,-.55) -- (-1.1,3.1) node[above] {$q$};
+    \node at (-1.35,0) {$0$};
+    \node at (-1.35,1.15) {$1$};
+    \node at (-1.35,2.6) {$q$};
+    \node at (0,-.85) {$0$};
+    \node at (1.5,-.85) {$1$};
+    \node at (3,-.85) {$2$};
+    \node at (5.5,-.85) {$n$};
+    \node (h00) at (0,0) {$\tilde H_0(Z)$};
+    \node[draw=red,inner sep=4pt] (h10) at (1.5,0) {$\tilde H_1(Z)$};
+    \node (h20) at (3,0) {$\tilde H_2(Z)$};
+    \node at (4.25,0) {$\cdots$};
+    \node at (5.5,0) {$\tilde H_n(Z)$};
+    \node[draw=red,inner sep=4pt] (h01) at (0,1.15) {$\tilde H_0(Z;\mathbb Z/2)$};
+    \node at (3,1.15) {$\cdots$};
+    \node at (0,1.9) {$\vdots$};
+    \node at (0,2.6) {$\tilde H_0(Z;\pi_q^s)$};
+    \draw[->,dashed] (h20.north) to[bend right=15]
+        node[above] {$d_2=0$} (h01.east);
+\end{tikzpicture}
 \]
+Comenzamos en grado $0$. El único término de la antidiagonal $p+q=0$ es $E^2_{0,0}=\tilde H_0(Z)$, y ningún diferencial puede entrar o salir de él con origen o destino no nulo. En consecuencia, $\pi_0^s(Z)\cong E^\infty_{0,0}=\tilde H_0(Z)$. Si $n=0$, esto prueba el resultado. Si $n>0$, la hipótesis implica que $\tilde H_0(Z)=0$ y, por el teorema de coeficientes universales, también $\tilde H_0(Z;\pi_q^s)=0$ para todo $q$. Así, toda la columna $p=0$ es nula desde la página $E^2$.
 
-\emph{Segundo paso: la antidiagonal $n$.} Todos los términos $E^2_{p,n-p}$ con $p<n$ se anulan por lo anterior, y los que tienen $q<0$ también. El único término que sobrevive es $E^2_{n,0}=\tilde H_n(Z)$, y por el mismo argumento sobre los diferenciales, $E^\infty_{n,0}=E^2_{n,0}$. Como la antidiagonal $n$ es la única que contribuye a $\pi_n^s(Z)$ de forma no nula, se concluye
+Si $1<n$, pasamos al grado $1$. Los términos que pueden contribuir a $\pi_1^s(Z)$ son $E^\infty_{0,1}$ y $E^\infty_{1,0}$. El primero ya es cero, mientras que $E^2_{1,0}=\tilde H_1(Z)$ tampoco puede ser modificado por ningún diferencial: los salientes llegan a $p<0$ y los entrantes provienen de $q<0$. Por tanto, $\tilde H_1(Z)\cong\pi_1^s(Z)=0$. Como ya sabemos que $\tilde H_0(Z)=0$, coeficientes universales da $\tilde H_1(Z;\pi_q^s)=0$ para todo $q$, de modo que también se anula toda la columna $p=1$.
+
+Si $2<n$, en grado $2$ pueden contribuir las posiciones $(0,2)$, $(1,1)$ y $(2,0)$, pero las dos primeras ya son nulas. Ahora sí hay un posible diferencial desde $E^2_{2,0}=\tilde H_2(Z)$ dentro del primer cuadrante: $d_2\colon E^2_{2,0}\to E^2_{0,1}$; sin embargo, la primera columna ya es cero. Los demás diferenciales salientes llegan a $p<0$ y los entrantes provienen de $q<0$, por lo que
 \[
-\pi_n^s(Z)\cong\tilde H_n(Z). \qedhere
+\tilde H_2(Z)=E^\infty_{2,0}\cong\pi_2^s(Z)=0
+\]
+Aplicando de nuevo coeficientes universales, se anula toda la columna $p=2$.
+
+Continuamos de esta manera hasta el grado $n-1$. En efecto, si $k<n$ y ya hemos probado que $\tilde H_p(Z)=0$ para $p<k$, el teorema de coeficientes universales da $\tilde H_p(Z;\pi_q^s)=0$ para $p<k$ y todo $q$. Por tanto, en la antidiagonal $p+q=k$ solo puede contribuir $E^\infty_{k,0}$. Además, los diferenciales que salen de $E^r_{k,0}$ llegan a columnas anteriores, ya nulas, y los que entran provienen de $q<0$. Así, 
+\[
+\tilde H_k(Z)=E^2_{k,0}=E^\infty_{k,0}\cong\pi_k^s(Z)=0
+\]
+coeficientes universales anula entonces también la columna $p=k$. Esto prueba que $\tilde H_k(Z)=0$ para todo $k<n$.
+
+Finalmente, $\pi_n^s(Z)$ está determinado por la antidiagonal $p+q=n$ de la página $E^\infty$. Como todas las columnas $p<n$ son nulas, el único término posiblemente no nulo es $E^\infty_{n,0}$. Por el mismo argumento sobre los diferenciales, este coincide con $E^2_{n,0}=\tilde H_n(Z)$. La filtración de $\pi_n^s(Z)$ tiene un único cociente graduado posiblemente no nulo y, por tanto,
+\[
+\pi_n^s(Z)\cong E^\infty_{n,0}=E^2_{n,0}=\tilde H_n(Z).
 \]
 \end{proof}
 
 \begin{nota}
-   El isomorfismo $\pi_n^s(Z)\cong\tilde H_n(Z)$ está inducido por el morfismo de Hurewicz. El homomorfismo de Hurewicz clásico factoriza a través de la estabilización, y esa factorización es la que proporciona el isomorfismo enunciado.
+El isomorfismo anterior es el homomorfismo de Hurewicz estable. Se obtiene estabilizando los homomorfismos de Hurewicz de las suspensiones de $Z$. En particular, para $n\ge1$, el homomorfismo clásico $\pi_n(Z)\to\tilde H_n(Z)$ se factoriza a través de la estabilización $\pi_n(Z)\to\pi_n^s(Z)$.
 \end{nota}
 
 \begin{nota}
-   El \myref{teo:hurewicz} es el análogo estable del teorema de Hurewicz clásico, y su prueba ilustra bien el uso de la sucesión espectral de Atiyah--Hirzebruch: la hipótesis de que las primeras $n$ columnas de $\tilde H_*(Z)$ se anulan hace que el cálculo de $\pi_n^s(Z)$ quede reducido a un único término. En el caso inestable el enunciado es más delicado, porque la hipótesis debe incluir la simple conexión. Puede consultarse, junto con la construcción de la sucesión espectral, en \cite{switzer1975}; la referencia principal del curso es \cite{malkiewich}.
+En cada paso, coeficientes universales permite anular la columna completa porque ya se han anulado tanto $\tilde H_k(Z)$ como $\tilde H_{k-1}(Z)$. Esto elimina los dos términos que pueden contribuir a $\tilde H_k(Z;G)$: el producto tensorial con $\tilde H_k(Z)$ y el término $\operatorname{Tor}_1^{\mathbb Z}(\tilde H_{k-1}(Z),G)$. Para $k=0$ usamos $\tilde H_{-1}(Z)=0$.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Hacia la contradicción: la doble suspensión}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Con el \myref{teo:hurewicz} podemos plantear la contradicción que cierra la discusión. El objetivo es demostrar que no existe un CW-complejo finito con un solo grupo de homotopía estable no nulo.
+Con el \myref{teo:hurewicz} podemos plantear la contradicción que cierra la discusión. El objetivo es demostrar que no existe un CW-complejo finito cuyo único grupo de homotopía estable no nulo sea isomorfo a $\mathbb Z$.
 
 \begin{prop}\label{prop:no-existe}
 No existe un CW-complejo finito $Z$ ni un entero $n\ge0$ tales que
@@ -782,23 +729,15 @@ El último grupo es $\mathbb Z$ exactamente cuando $i-N-2=n$, es decir, cuando $
 \text{?} & i\ge2(N+n)+3 .
 \end{cases}
 \]
-La primera línea refleja la $(N+n+1)$-conexidad de $\Sigma^NX$; la segunda, que $\pi^s_n(Z)\cong\mathbb Z$; la tercera, que fuera del grado $n+2$ los grupos de homotopía estable de $X$ se anulan, mientras Freudenthal garantiza que la suspensión es un isomorfismo. La cuarta línea recoge los grados que el argumento no determina: por encima del rango de Freudenthal la suspensión deja de ser un isomorfismo y no se sabe si aparecen nuevos grupos no nulos.
+La primera línea refleja la $(N+n+1)$-conexidad de $\Sigma^NX$; la segunda, que $\pi^s_n(Z)\cong\mathbb Z$; la tercera, que fuera del grado $n+2$ los grupos de homotopía estable de $X$ se anulan, mientras Freudenthal garantiza que la suspensión es un isomorfismo. La cuarta línea recoge los grados que el argumento no determina: fuera del rango indicado, Freudenthal ya no garantiza que la suspensión sea un isomorfismo y no se sabe si aparecen nuevos grupos no nulos.
 
 La contradicción consiste en mostrar que un espacio finito con esta tabla de grupos de homotopía no puede existir; se obtiene en la clase siguiente.
 \end{proof}
 
 \begin{nota}
-   La cota superior de la tercera línea proviene del rango de validez del teorema de Freudenthal, y en la pizarra figura la igualdad
-   \[
-   2(N+n+2)-1=2(N+n)-3 .
-   \]
-   Hay aquí un desliz aritmético: el miembro derecho correcto es
-   \[
-   2(N+n+2)-1=2(N+n)+3 .
-   \]
-   Con la corrección, la tercera línea de la tabla se lee $0$ para $N+n+2<i<2(N+n)+3$. El desliz no afecta a la conclusión, que solo necesita que la anulación se extienda a un intervalo no vacío por encima de $N+n+2$. Por otra parte, como la conectividad de $\Sigma^NX$ es $(N+n+1)$ y no $(N+n+2)$, el rango que proporciona Freudenthal es en rigor $i<2(N+n+1)$; la cota de la pizarra es algo más generosa, pero contiene a la anterior y basta para el argumento.
+En la pizarra, el profesor cometió un error aritmético al escribir $2(N+n+2)-1=2(N+n)-3$. La igualdad correcta es $2(N+n+2)-1=2(N+n)+3$. Este error es arrastrado hasta la clase siguiente.
 \end{nota}
 
 \begin{nota}
-   Vale la pena detenerse en la estrategia. En lugar de atacar directamente la no existencia de un CW-complejo finito con un solo grupo de homotopía estable, se suspende dos veces para ganar simple conexidad y poder invocar Hurewicz inestable, y luego se suspende muchas veces para entrar en el rango estable. La doble suspensión es, por tanto, un recurso puramente técnico: convierte un enunciado estable en uno inestable, donde las herramientas de conectividad están disponibles. Que el obstáculo aparezca justo después de la clase de homotopía estable no nula es lo que sugiere que la tabla anterior es imposible.
+   Vale la pena detenerse en la estrategia. En lugar de atacar directamente la no existencia de un CW-complejo finito con un solo grupo de homotopía estable, se suspende dos veces para ganar simple conexidad y poder invocar Hurewicz inestable, y luego se suspende muchas veces para entrar en el rango estable. La doble suspensión es, por tanto, un recurso puramente técnico: convierte un enunciado estable en uno inestable, donde las herramientas de conectividad están disponibles. El argumento que relaciona esa tabla con la cohomología de un complejo finito se deja para la clase siguiente.
 \end{nota}

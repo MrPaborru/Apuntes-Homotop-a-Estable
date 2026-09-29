@@ -1,0 +1,738 @@
+Cerramos en esta clase el problema que quedó abierto al final de la anterior. Recordemos dónde nos quedamos: el \myref{lema:criterio-dual} reduce la dualidad de un objeto arbitrario de $\SW$ a una condición sobre las esferas, y la nota que lo acompaña señala que lo que falta es el mismo argumento pero partiendo de una sucesión cofibrada con los tres términos arbitrarios. La primera parte de esta clase resuelve precisamente eso, y de paso produce el criterio general anunciado: \emph{todo} objeto de $\SW$ es dualizable.
+
+La segunda parte cambia de registro y va en la dirección en la que el profesor venía anunciando que continuaría el curso: se abandona el universo de Spanier--Whitehead y se entra en el de los \emph{espectros secuenciales}. La motivación es que $\SW$ es demasiado pequeña para representar todas las teorías de (co)homología, y la construcción que lo arregla es la de espectro secuencial, junto con su consecuencia inmediata: todo espectro secuencial da lugar a una teoría de homología reducida, y toda teoría de homología razonable proviene de uno. La clase se detiene en el umbral de esa construcción, con la definición de espectro secuencial, de espectro $\Omega$ y de desplazamiento de espectros.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{El cierre de la dualidad de Spanier--Whitehead}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dualizabilidad y biyecciones de morfismos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Conviene primero reescribir el \myref{lema:criterio-dual} en la forma en que se va a usar. La observación que lo hace manejable es que las dos biyecciones que allí aparecen son la misma cosa escrita dos veces.
+
+\begin{prop}\label{prop:dual-biyectiva}
+Sea $X$ un objeto de $\SW$ y sea $X^*$ otro objeto. Entonces $X^*$ es un dual de $X$ si y solo si existe un morfismo
+\[
+\mathrm{ev}\colon X^*\wedge X\longrightarrow S,
+\qquad
+S\coloneqq(S^0,0),
+\]
+tal que las dos aplicaciones
+\[
+\Phi\colon\set*{\Sigma^rS,\ X^*}\longrightarrow\set*{\Sigma^rX,\ S},
+\qquad
+\Psi\colon\set*{\Sigma^rS,\ X}\longrightarrow\set*{\Sigma^rX^*,\ S},
+\]
+definidas por
+\[
+\Phi(f)\coloneqq\mathrm{ev}\circ(f\wedge1_X),
+\qquad
+\Psi(f)\coloneqq\mathrm{ev}\circ B_{X^*,X}\circ(1_{X^*}\wedge f),
+\]
+son biyecciones para todo $r\in\mathbb Z$. En la pizarra las dos biyecciones forman parte del enunciado.
+\end{prop}
+
+\begin{proof}
+El lema da las dos biyecciones; la segunda se obtiene de la primera con $X$ y $X^*$ intercambiados, lo que es legítimo porque el \myref{lema:criterio-dual} no supone nada sobre el objeto $X^*$. Basta entonces con probar la implicación \emph{hacia adelante} de la primera, que es la \myref{prop:adjuncion}.
+
+En efecto, por la \myref{prop:adjuncion} escrita con $A=\Sigma^rS$ y $B=S$,
+\[
+\set*{\Sigma^rS,\ S\wedge X^*}\xrightarrow{\ \cong\ }\set*{\Sigma^rS\wedge X,\ S},
+\qquad
+f\longmapsto\mathrm{ev}\circ(f\wedge1_X),
+\]
+donde el factor $S\wedge X^*$ se ha vuelto a escribir como $X^*$ por la unidad derecha, y $\Sigma^rS\wedge X=\Sigma^rX$ por la propiedad de desplazamiento. El recíproco es la \myref{prop:dual-biyectiva} en la dirección inversa: si existe tal $\mathrm{ev}$ con $\Phi$ biyectiva, el mismo argumento que cierra la \myref{prop:adjuncion} exhibe las identidades de zigzag.
+\end{proof}
+
+\begin{nota}
+   Vale la pena detenerse en por qué \emph{una sola} de las dos biyecciones basta. La razón es que el lema es simétrico en $X$ y en $X^*$, mientras que la hipótesis «$X^*$ es un dual de $X$» no distingue cuál de los dos se piensa como el objeto y cuál como su dual. La \myref{prop:simetria-dual} ya estableció que esa distinción es inofensiva.
+\end{nota}
+
+\begin{ejer}[El dual de la esfera]
+Comprobar directamente que la elección
+\[
+\mathrm{ev}\colon S^{-r}\wedge S^r\longrightarrow S
+\]
+inducida por el homeomorfismo $S^0\wedge S^0\cong S^0$, al escribir $S^{\pm r}=(S^0,\pm r)$, hace de $S^{-r}$ un dual de $S^r$ en el sentido de la \myref{prop:dual-biyectiva}.
+\end{ejer}
+
+\begin{sol}
+Fijemos $r\in\mathbb Z$ y escribamos $E=S^r$, $D=S^{-r}$ y $S=(S^0,0)$. La evaluación $e\colon D\wedge E\to S$ y la coevaluación $c\colon S\to E\wedge D$ son las del \myref{ejer:17}, representadas por el homeomorfismo $u\colon S^0\wedge S^0\to S^0$ y su inverso. Se comprobarán las dos biyecciones del \myref{lema:criterio-dual}, usando $k$ para el índice variable.
+
+\emph{Primera biyección.} Para cualquier objeto $A$ de $\SW$ se considera
+\[
+\Phi_A\colon\set*{A,D}\longrightarrow\set*{A\wedge E,S},
+\qquad
+\Phi_A(f)=e\circ(f\wedge1_E).
+\]
+Una inversa explícita envía $h\colon A\wedge E\to S$ al compuesto
+\[
+\begin{aligned}
+A&\xrightarrow{\ \rho_A^{-1}\ }A\wedge S
+\xrightarrow{\ 1_A\wedge c\ }A\wedge(E\wedge D)\\
+&\xrightarrow{\ \alpha^{-1}_{A,E,D}\ }(A\wedge E)\wedge D
+\xrightarrow{\ h\wedge1_D\ }S\wedge D
+\xrightarrow{\ \lambda_D\ }D.
+\end{aligned}
+\]
+Denotemos este compuesto por $\Theta_A(h)$. Para comprobar ambas composiciones se omiten los asociadores y unitores, que son los indicados arriba. La funtorialidad del smash y las identidades de zigzag verificadas en el \myref{ejer:17} dan
+\[
+\begin{aligned}
+\Theta_A(\Phi_A(f))
+&=(e\wedge1_D)\circ(f\wedge1_E\wedge1_D)\circ(1_A\wedge c)\\
+&=(e\wedge1_D)\circ(1_D\wedge c)\circ f=f,\\[0.4em]
+\Phi_A(\Theta_A(h))
+&=e\circ(h\wedge1_D\wedge1_E)\circ(1_A\wedge c\wedge1_E)\\
+&=h\circ\bigl(1_A\wedge[(1_E\wedge e)\circ(c\wedge1_E)]\bigr)=h.
+\end{aligned}
+\]
+Tomando $A=S^k$ resulta la biyección
+\[
+\Phi_k\colon\set*{S^k,S^{-r}}\xrightarrow{\ \cong\ }\set*{S^{k+r},S}.
+\]
+
+\emph{Segunda biyección.} Se invierten los papeles de $E$ y $D$, con los morfismos
+\[
+e'=e\circ B_{E,D}\colon E\wedge D\longrightarrow S,
+\qquad
+c'=B_{E,D}\circ c\colon S\longrightarrow D\wedge E.
+\]
+La simetría sobre las esferas tiene grado $(-1)^{r(-r)}=(-1)^r$. Por tanto, bajo las identificaciones con $S$, tanto $e'$ como $c'$ tienen grado $(-1)^r$, y los dos signos se cancelan en cada zigzag. El mismo cálculo anterior, con $E,D,e,c$ sustituidos por $D,E,e',c'$, prueba que
+\[
+\Psi_k\colon\set*{S^k,S^r}\xrightarrow{\ \cong\ }\set*{S^{k-r},S},
+\qquad
+\Psi_k(g)=e\circ B_{E,D}\circ(g\wedge1_D),
+\]
+es una biyección para todo $k\in\mathbb Z$. En esta fórmula se identifica $S^{k-r}$ con $S^k\wedge D$; así quedan especificados el orden de los factores y el sentido de la trenza.
+
+Se satisfacen, por tanto, las dos condiciones del criterio y $S^{-r}$ es un dual de $S^r$. El argumento vale para todo $r\in\mathbb Z$: solo usa los objetos desplazados $(S^0,r)$ y $(S^0,-r)$ y morfismos estables, sin requerir espacios de dimensión negativa.
+\end{sol}
+
+\begin{nota}
+   La solución anterior es un desarrollo añadido a los apuntes. La evaluación se entiende mediante la identificación estable $S^{-r}\wedge S^r\cong S$; la expresión «colapsar sobre la parte de dimensión cero» no especificaba por sí sola ese morfismo.
+\end{nota}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El dual de una cofibra}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+El resultado que cierra el problema es una propiedad de las sucesiones cofibradas. La motivación con la que se introdujo en clase es práctica: sirve para \emph{deducir cuándo un objeto tiene dual a partir de saber que otros lo tienen}, usando los triángulos y las sucesiones cofibradas.
+
+\begin{teo}\label{teo:cofibra-dual}
+Sea
+\[
+A\xrightarrow{\ f\ }B\xrightarrow{\ g\ }C\xrightarrow{\ h\ }\Sigma A
+\]
+un triángulo distinguido en $\SW$. Si $A$ y $B$ son dualizables, entonces $C$ también lo es.
+\end{teo}
+
+El enunciado se probó en clase en el caso de un \emph{triángulo estándar} ---es decir, cuando los tres términos son conos y cofibras de morfismos entre complejos--- y de ahí se pasa al caso general por el argumento de siempre. La demostración es la que sigue. En la pizarra se enunció como \emph{proposición}; aquí se registra como teorema porque es el resultado que cierra el problema de la dualidad en $\SW$.
+
+\begin{proof}[Demostración del teorema anterior]
+\emph{Reducción al caso estándar.} Por el \myref{lema:suspension-dual}, $(X,n)$ es dualizable si y solo si lo es $(X,0)$; suspendiendo un número suficiente de veces podemos suponer que el triángulo es de la forma
+\[
+X\xrightarrow{\ f\ }Y\xrightarrow{\ g\ }Z\xrightarrow{\ h\ }\Sigma X ,
+\]
+con $X$ e $Y$ complejos finitos punteados. Además el cono $C_f$ es establemente equivalente a $Z$, de modo que basta probar el enunciado para el triángulo
+\[
+X\xrightarrow{\ f\ }Y\xrightarrow{\ i\ }C_f\xrightarrow{\ \pi\ }\Sigma X ,
+\]
+donde $C_f=Y\cup_f CX$ es el cono de $f$ e $i$ es la inclusión del pegamento. Escribiremos $Z\coloneqq C_f$.
+
+\emph{El dual de la cofibra es la fibra del dual.} Sea $W$ la fibra de
+\[
+Y^*\xrightarrow{\ f^*\ }X^* ,
+\]
+es decir, el objeto que completa la sucesión cofibrada
+\[
+\Sigma^{-1}(X^*)\xrightarrow{\ \ }\ Y^*\xrightarrow{\ f^*\ }X^*\xrightarrow{\ \partial\ }W\xrightarrow{\ \ }\Sigma(Y^*) ,
+\]
+que es lo que en el pizarrón se escribió con los desplazamientos explícitos como
+\[
+\cdots\longrightarrow(X,0)^*\xrightarrow{\ f^*\ }(Y,0)^*\xrightarrow{\ \delta\ }W\longrightarrow\cdots
+\]
+El enunciado geométrico es entonces
+\[
+X\xrightarrow{\ f\ }Y\longrightarrow Z=C_f
+\qquad\rightsquigarrow\qquad
+Y^*\xrightarrow{\ f^*\ }X^*\longrightarrow W ,
+\]
+es decir: \emph{el dual de la cofibra de $f$ es la fibra de $f^*$}, leyendo la primera fila hacia la derecha y la segunda hacia la izquierda.
+
+Para probarlo usaremos la \myref{prop:dual-biyectiva}. Hay que exhibir una evaluación
+\[
+\mathrm{ev}\colon W\wedge Z\longrightarrow S
+\]
+y comprobar que induce biyecciones $\set*{\Sigma^rS,\ W}\cong\set*{\Sigma^rZ,\ S}$ para todo $r$. Las dos piezas son las del pizarrón: la construcción de $\mathrm{ev}$ y la inducción sobre el pegado de celdas.
+
+\emph{La construcción de la evaluación.} El punto de partida es el lema de la clase anterior. Antes de recordarlo conviene precisar de dónde sale su hipótesis: al tratar el dual de un mapeo se dejó como ejercicio que los duales satisfacen un cuadrado conmutativo entre las evaluaciones ---el que enfrenta $f^*\wedge1$ con $1\wedge f$--- y que esa conmutatividad, además de comprobarse sin dificultad, \emph{caracteriza} a $f^*$. Esa es la razón de que el lema se pueda formular con un cuadrado que conmuta salvo homotopía, y de que en la aplicación a la cofibra el cuadrado se satisfaga automáticamente. Recordemos su enunciado en la forma precisa en que se usó. Sea $f\colon X\to Y$ un morfismo de complejos y sea $f^*\colon Y^*\to X^*$ un morfismo entre dos complejos $X^*,Y^*$ ---que, como se advirtió en clase, \emph{no} se supone que sean los duales de $X$ e $Y$; el lema solo pide que existan los morfismos de evaluación. Supongamos entonces que existen
+\[
+\mu\colon X^*\wedge X\longrightarrow S^n ,
+\qquad
+\nu\colon Y^*\wedge Y\longrightarrow S^n
+\]
+tales que el cuadrado
+\[
+\begin{tikzcd}[column sep=7em, row sep=large]
+Y^*\wedge X \arrow[r,"f^*\wedge1"] \arrow[d,"1\wedge f"'] & X^*\wedge X \arrow[d,"\mu"]\\
+Y^*\wedge Y \arrow[r,"\nu"'] & S^n
+\end{tikzcd}
+\]
+conmuta salvo homotopía. Entonces existe
+\[
+\pi\colon C_{f^*}\wedge C_f\longrightarrow S^{n+1}
+\]
+que sirve de evaluación para los conos. Es la parte del lema que se probó al final de la clase anterior mediante el cociente del producto de los conos; en la aplicación que sigue, $X^*$ e $Y^*$ sí serán los duales. Conviene reparar en el \emph{desplazamiento de uno} que aparece aquí, de $S^n$ a $S^{n+1}$: es el rastro de que la dualidad intercambia cofibras y fibras, y volverá a aparecer al final del argumento, cuando se concluya que el dual de la cofibra es la fibra del dual.
+
+La forma de leer $\mu$ y $\nu$ es la de evaluaciones \emph{salvo suspender}: tienen $S^n$ en el codominio en lugar de $S^0$, de modo que no son todavía las evaluaciones de $X$ e $Y$, sino sus suspensiones $n$ veces. Lo que se busca con el lema es precisamente una evaluación para el cono de $f$: si $X^*$ e $Y^*$ son los duales de $X$ e $Y$, entonces el cono de $f^*$ es el dual del cono de $f$, salvo suspender, y el morfismo $\pi$ es la evaluación que lo certifica.
+
+Con esto se construye $\mathrm{ev}$ en dos pasos, que son los dos diagramas que se escribieron en el pizarrón.
+
+\emph{Primer paso: la coacción.} Consideremos el morfismo
+\[
+\Sigma(Y^*\wedge X)\xrightarrow{\ 1\wedge f-f^*\wedge1\ }(\Sigma Y^*\wedge Y)\vee(X^*\wedge\Sigma X),
+\]
+que es la diferencia de los dos morfismos evidentes: el primero actúa como $f$ en el segundo factor y el segundo como $f^*$ en el primero. El signo $-$ es el que introduce la trenza al permutar los factores suspendidos, el mismo fenómeno de signos de la clase anterior. Componiendo con la evaluación del lema se obtiene el morfismo que en la pizarra se llamó $K$,
+\[
+K\colon\ \Sigma(Y^*\wedge X)\xrightarrow{\ 1\wedge f-f^*\wedge1\ }(\Sigma Y^*\wedge Y)\vee(X^*\wedge\Sigma X)\xrightarrow{\ \Sigma\nu\vee\Sigma\mu\ }S^{n+1},
+\]
+donde $\nu\colon Y^*\wedge Y\to S^n$ y $\mu\colon X^*\wedge X\to S^n$ son las evaluaciones de $Y$ y de $X$. El morfismo $K$ es \emph{nulhomotópico}: sus dos sumandos son $\Sigma\nu\circ(1\wedge f)$ y $-\Sigma\mu\circ(f^*\wedge1)$, y la conmutatividad salvo homotopía del cuadrado del lema dice precisamente que ambos son homótopos. Es esa nulhomotopía ---y no otra--- la que permite factorizar la evaluación a través de la cofibra de la coacción, que es el paso siguiente.
+
+\emph{Segundo paso: el cociente.} Ahora se calcula el producto de los conos. Como
+\[
+C_{f^*}=X^*\cup_{f^*}CY^* ,
+\qquad
+C_f=Y\cup_fCX ,
+\]
+el producto smash se expande en
+\[
+C_{f^*}\wedge C_f
+=\bigl[X^*\cup_{f^*}CY^*\bigr]\wedge\bigl[Y\cup_fCX\bigr]
+=
+X^*\wedge Y\ \cup\ \Bigl[\bigl(CY^*\wedge Y\bigr)\vee\bigl(X^*\wedge CX\bigr)\Bigr]\ \cup\ \bigl(CY^*\wedge CX\bigr),
+\]
+donde los pegados de cada sumando se hacen a lo largo de $f^*$ y de $f$: bajo el segundo sumando se escribió en la pizarra el rótulo $(f^*\wedge1)\vee(1\wedge f)$ y bajo el tercero $(1\wedge f)\vee(f^*\wedge1)$, que son los morfismos de pegamento concretos. El segundo sumando se agrupa como un wedge, que es la agrupación que se escribió en la pizarra y la que hace visible el wedge del paso siguiente. Como $CY^*$ es contráctil, los dos últimos sumandos son conos y se contraen, de modo que establemente
+\[
+C_{f^*}\wedge C_f\ \simeq\ X^*\wedge Y\ \cup\ \bigl(\Sigma Y^*\wedge Y\bigr)\ \cup\ \bigl(X^*\wedge\Sigma X\bigr).
+\]
+El producto de los conos se identifica con esa unión mediante un homeomorfismo explícito: el producto smash no distribuye sobre la unión de manera exacta, y la comprobación de que existe tal homeomorfismo es el ejercicio que se dejó en clase. Con esa identificación, el cociente
+\[
+\frac{C_{f^*}\wedge C_f}{X^*\wedge Y}
+\]
+es la unión de $\Sigma Y^*\wedge Y$ y $X^*\wedge\Sigma X$ pegados a lo largo de $\Sigma(Y^*\wedge X)$ precisamente por el morfismo $1\wedge f-f^*\wedge1$ del primer paso. Es decir,
+\[
+\frac{C_{f^*}\wedge C_f}{X^*\wedge Y}\ \simeq\ \Bigl[\bigl(\Sigma Y^*\wedge Y\bigr)\vee\bigl(X^*\wedge\Sigma X\bigr)\Bigr]\cup_{1\wedge f-f^*\wedge1}C\bigl(\Sigma(Y^*\wedge X)\bigr),
+\]
+que no es otra cosa que la cofibra de la coacción. Esta es la igualdad que se escribió en el pizarrón, y es la que explica por qué la coacción del primer paso era la diferencia $1\wedge f-f^*\wedge1$: es exactamente el morfismo de pegamento que aparece al tomar el cociente del producto de los conos. La \emph{nulhomotopía de $K$} del primer paso es lo que hace que la evaluación $\Sigma(Y^*\wedge X)\to S^{n+1}$ se factorice a través de esa cofibra.
+
+\emph{Definición de $\pi$.} Con lo anterior se define
+\[
+\pi\colon C_{f^*}\wedge C_f\longrightarrow S^{k+1}
+\]
+como la composición del morfismo $\rho$ con el cociente
+\[
+C_{f^*}\wedge C_f\longrightarrow\frac{C_{f^*}\wedge C_f}{X^*\wedge Y},
+\]
+que está bien definido porque $K$ es nulhomotópica: la evaluación del primer paso se factoriza a través de la cofibra de la coacción. El morfismo $\rho$ es esa factorización, es decir,
+\[
+\rho\colon\frac{C_{f^*}\wedge C_f}{X^*\wedge Y}\longrightarrow S^{k+1},
+\]
+de modo que $\pi=\rho\circ(\text{cociente})$ está bien tipado. La letra $\rho$ para ese morfismo ya factorizado es la que se usó en la pizarra. La conmutatividad salvo homotopía que se necesita se lee en los dos cuadrados que allí se dibujaron, con las sucesiones cofibradas
+\[
+Y^*\xrightarrow{\ f^*\ }X^*\xrightarrow{\ r\ }C_{f^*}\xrightarrow{\ s\ }\Sigma Y^*,
+\qquad
+X\xrightarrow{\ f\ }Y\xrightarrow{\ g\ }C_f\xrightarrow{\ h\ }\Sigma X,
+\]
+y los cuadrados
+\[
+\begin{tikzcd}[column sep=6.5em, row sep=large]
+C_{f^*}\wedge Y \arrow[r,"s\wedge1"] \arrow[d,"1\wedge g"'] & \Sigma Y^*\wedge Y \arrow[d,"\Sigma\nu"]\\
+C_{f^*}\wedge C_f \arrow[r,"\pi"'] & S^{k+1}
+\end{tikzcd}
+\qquad\qquad
+\begin{tikzcd}[column sep=6.5em, row sep=large]
+X^*\wedge C_f \arrow[r,"r\wedge1"] \arrow[d,"1\wedge h"'] & C_{f^*}\wedge C_f \arrow[d,"\pi"]\\
+X^*\wedge\Sigma X \arrow[r,"\Sigma\mu"'] & S^{k+1}
+\end{tikzcd}
+\]
+donde $\nu\colon Y^*\wedge Y\to S^k$ y $\mu\colon X^*\wedge X\to S^k$ son las evaluaciones, $r$ es la inclusión en el cono de $X^*$ y $s$ el cociente por él. La conmutatividad se comprueba sumando: en cada sumando del wedge la conmutatividad de los cuadrados da la del cuadrado que se pega a lo largo del cociente, y eso es exactamente lo que se veía en el pizarrón como «viendo lo que significa la conmutatividad salvo homotopía en cada sumando, obtenemos la conmutatividad salvo homotopía de los cuadrados deseados».
+
+La comprobación de uno de los dos cuadrados, que es la que se hizo en clase, consiste en tomar una clase $\varphi$ y comparar las dos composiciones. Por el camino de arriba, $\varphi$ se envía a la composición de la clase de $r$ con la de $\varphi$, seguida de $\pi$; por el de abajo, se le aplica $1\wedge h$ y luego la evaluación $\Sigma\mu$. La igualdad de ambas ---salvo suspender, porque las clases son estables--- es la conmutatividad del diagrama anterior, que es el punto donde entra realmente la hipótesis del lema. El otro cuadrado se comprueba de manera análoga.
+
+\emph{La evaluación.} Reemplazando en $\pi$ las suspensiones por los objetos correspondientes de $\SW$ ---es decir, tomando $A^*\coloneqq(X,m)$ y $B^*\coloneqq(Y,m')$ y desplazando los índices--- y tomando clases se obtiene
+\[
+\mathrm{ev}\colon W\wedge Z\longrightarrow S ,
+\]
+que es la evaluación buscada.
+
+\emph{Fin de la demostración.} Falta ver que $\mathrm{ev}$ induce las biyecciones de la \myref{prop:dual-biyectiva};
+\[
+\set*{\Sigma^rS,\ W}\xrightarrow{\ \cong\ }\set*{\Sigma^rZ,\ S}
+\]
+para todo $r\in\mathbb Z$. Eso se hace por inducción sobre el número de celdas que definen el pegado de $Z$ sobre $Y$, y es el contenido de la subsección siguiente. \qedhere
+\end{proof}
+
+\begin{nota}
+   El contenido geométrico del enunciado es que \emph{el dual de la cofibra de $f$ es la fibra de $f^*$}, y el diagrama que lo resume es
+   \[
+   X\xrightarrow{\ f\ }Y\longrightarrow C_f
+   \qquad\rightsquigarrow\qquad
+   \Sigma^{-1}(X^*)\longrightarrow Y^*\xrightarrow{\ f^*\ }X^*\longrightarrow W .
+   \]
+   La primera fila se lee hacia la derecha y la segunda hacia la izquierda, que es exactamente lo que hace el funtor $(-)^*$ con las sucesiones cofibradas: las invierte. Vale la pena comparar con el caso de los espacios vectoriales de dimensión finita, donde el dual de una sucesión exacta corta es la sucesión exacta corta de los duales en orden invertido. Aquí el fenómeno es el mismo, con las fibras haciendo el papel de los núcleos.
+\end{nota}
+
+\begin{nota}
+   El pizarrón registra dos hechos auxiliares que conviene aislar porque son los dos lugares donde el argumento se apoya realmente en el lema de la clase anterior y no en generalidades.
+
+   \emph{(i) $K$ es nulhomotópica.} El compuesto
+   \[
+   K\colon\ \Sigma(Y^*\wedge X)\xrightarrow{\ 1\wedge f-f^*\wedge1\ }(\Sigma Y^*\wedge Y)\vee(X^*\wedge\Sigma X)\xrightarrow{\ \Sigma\nu\vee\Sigma\mu\ }S^{n+1}
+   \]
+   es nulo. Sus dos sumandos son $\Sigma\nu\circ(1\wedge f)$ y $-\Sigma\mu\circ(f^*\wedge1)$, que son homótopos por la conmutatividad salvo homotopía del cuadrado del lema. Es la razón por la que la evaluación se factoriza a través de la cofibra de la coacción: sin la nulhomotopía no habría forma de bajar a $\rho$.
+
+   \emph{(ii) El pegamento del cociente.} La igualdad
+   \[
+   \frac{C_{f^*}\wedge C_f}{X^*\wedge Y}\ \simeq\ \Bigl[\bigl(\Sigma Y^*\wedge Y\bigr)\vee\bigl(X^*\wedge\Sigma X\bigr)\Bigr]\cup_{1\wedge f-f^*\wedge1}C\bigl(\Sigma(Y^*\wedge X)\bigr)
+   \]
+   identifica el morfismo de pegamento con la coacción del primer paso. Es la observación que hace funcionar la construcción de $\pi$: la cofibra de la coacción, sobre la que vive $\rho$, es el cociente del producto de los conos. En la pizarra se dejó al margen un «Ejercicio» que apunta a este punto: comprobar formalmente el homeomorfismo que identifica el producto de los conos con la unión, y la buena definición del cociente.
+\end{nota}
+
+\begin{ejer}[El producto de los conos]
+Comprobar que el producto $C_{f^*}\wedge C_f$ se identifica con la unión $X^*\wedge Y\cup(\Sigma Y^*\wedge Y)\cup(X^*\wedge\Sigma X)$ mediante un homeomorfismo explícito ---el producto smash no distribuye sobre la unión de manera exacta--- y deducir de ahí que el cociente $C_{f^*}\wedge C_f/(X^*\wedge Y)$ es la cofibra de la coacción. Es el ejercicio que se dejó apuntado en el margen de la pizarra.
+\end{ejer}
+
+\begin{sol}
+En la descomposición $C_{f^*}\wedge C_f\simeq X^*\wedge Y\cup(\Sigma Y^*\wedge Y)\cup(X^*\wedge\Sigma X)$ el sumando $X^*\wedge Y$ aparece como el cono inferior de $\Sigma Y^*\wedge Y$ y de $X^*\wedge\Sigma X$, de modo que la inclusión se factoriza por el cono de la coacción y es nula. Como consecuencia, el morfismo al cociente $C_{f^*}\wedge C_f\to C_{f^*}\wedge C_f/(X^*\wedge Y)$ induce el mismo morfismo en clases de homotopía que cualquier otro representante, y $\rho$ se factoriza a través de él.
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El pegado de celdas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Falta cerrar la demostración de la \myref{teo:cofibra-dual}: hay que ver que el pegado de celdas no destruye las biyecciones. Ese es el paso que se apoya en que $X$ tenga dimensión finita, y el que cierra la inducción.
+
+El punto de partida es la conmutatividad del cuadrado del lema, que es una conmutatividad \emph{estable}, en $\SW$. Como el lema está enunciado para complejos CW punteados, hay que traducirla a esa categoría: allí la conmutatividad estable quiere decir conmutatividad \emph{salvo suspender}, de modo que basta reemplazar cada objeto por una suspensión suya suficientemente alta y trabajar con representantes inestables. Los morfismos que aparecen en esa traducción se llamaron en la pizarra $T$, $E$ y $E'$ ---el dual de $f$ y las dos evaluaciones---, todos ellos definidos tras suspender $m+k$ veces y para el mismo $k$.
+
+Sea $X$ un CW-complejo finito y sea $X'$ el subcomplejo del que se parte. El pegado de una celda de dimensión $m$ se describe con la sucesión cofibrada
+\[
+S^{m-1}\xrightarrow{\ \varphi\ }X'\xrightarrow{\ }X\xrightarrow{\ }\Sigma S^{m-1}=S^m ,
+\]
+que en $\SW$ se escribe, con los desplazamientos explícitos,
+\[
+(S^m,0)\xrightarrow{\ [\varphi]\ }(X',m-1)\xrightarrow{\ }(X,m-1)\xrightarrow{\ }(S^{m+1},0).
+\]
+
+La sucesión se puede continuar hacia la izquierda, y es esa continuación la que aporta los términos que faltan en la inducción. Desplazándola $k$ lugares, la cofibra del morfismo del pegado pasa a escribirse $C_t^{-k}$, y un paso más a la izquierda aparece $C_t^{-k-1}$, que en la pizarra era el término extremo de la escalera de cinco términos del paso siguiente.
+
+El paso de inducción consiste en suponer que la biyección
+\[
+\set*{\Sigma^rS,\ C_{t-1}}\xrightarrow{\ \cong\ }\set*{\Sigma^rC_{t-1}\wedge W,\ S}
+\]
+ya se conoce para el complejo $C_{t-1}$ con menos celdas, y deducirla para $C_t$, el complejo que se obtiene pegando la celda $D=S^m$. El argumento es el mismo de la \myref{lema:criterio-dual}: se aplican los dos funtores a la sucesión cofibrada del pegado y se usa el lema de los cinco. Aquí los dos funtores tienen \emph{varianza opuesta} ---$\set*{\Sigma^rS,\ -}$ es covariante y $\set*{\ -\wedge W,\ S}$ es contravariante---, de modo que las dos filas del diagrama van en sentidos contrarios. Que eso sea posible se debe a que una sucesión cofibrada sirve tanto para mapeos \emph{hacia} un espacio como \emph{desde} un espacio: es exacta en las dos direcciones, y por eso los dos funtores pueden aplicarse a la misma sucesión aunque uno sea covariante y el otro contravariante. Aplicándolos a la sucesión cofibrada
+\[
+C_{t-1}\longrightarrow C_t\longrightarrow \Sigma D\longrightarrow \Sigma C_{t-1}
+\]
+se obtiene
+\[
+\begin{tikzcd}[column sep=2em, row sep=large]
+\set*{\Sigma^rS,\ C_{t-1}} \arrow[r] \arrow[d,"\cong"'] & \set*{\Sigma^rS,\ C_t} \arrow[r] \arrow[d,dashed] & \set*{\Sigma^rS,\ \Sigma D} \arrow[r] \arrow[d,"\cong"'] & \set*{\Sigma^rS,\ \Sigma C_{t-1}} \arrow[d,"\cong"']\\
+\set*{\Sigma^rC_{t-1}\wedge W,\ S} & \set*{\Sigma^rC_t\wedge W,\ S} \arrow[l] & \set*{\Sigma^r(\Sigma D\wedge W),\ S} \arrow[l] & \set*{\Sigma^r(\Sigma C_{t-1}\wedge W),\ S} \arrow[l]
+\end{tikzcd}
+\]
+Las dos filas son exactas por la \myref{prop:exacta}: la superior en el sentido en que está escrita y la inferior leída de derecha a izquierda, que es lo que indica la dirección de sus flechas. El lema de los cinco se aplica a esta configuración cruzada ---equivalentemente, invirtiendo la fila inferior para que las dos vayan en el mismo sentido, que es lo que se hizo en el pizarrón---. Las flechas verticales de $C_{t-1}$, $\Sigma C_{t-1}$ y $\Sigma D$ son isomorfismos: las de $C_{t-1}$ y $\Sigma C_{t-1}$ por hipótesis de inducción, y las de $\Sigma D$ y $D$ porque $D$ y $\Sigma D$ son esferas y en ese caso la biyección es la hipótesis del criterio. Por el lema de los cinco, la flecha central ---la que corresponde a $C_t$--- también es un isomorfismo. Como los pegados se construyen con un número finito de pasos, la biyección vale para todo $Z$.
+
+En la pizarra el mismo argumento se escribió como una escalera de cinco términos inducida por la sucesión del pegado, en lugar de las dos filas de cuatro columnas. Las biyecciones de los extremos son las conocidas ---las de $X'$ y $Y'$ por la hipótesis de dualidad, las de la esfera por el criterio---, y la flecha central, la única que no se conoce de antemano, es el candidato que se construye tomando el producto smash con la identidad y componiendo con $\pi$; conviene leerla como una desuspensión de la cofibra $C_t$, que es lo que la hace encajar con los términos vecinos. Por el lema de los cinco, si las flechas laterales son isomorfismos, la central también lo es, y con ello queda cerrada la inducción. Los dos diagramas son el mismo argumento, escrito uno con la fila inferior invertida.
+
+Quedan las dos comprobaciones que en el pizarrón se hacían por separado, y que son las que garantizan que el lema de la clase anterior se puede aplicar en cada paso.
+
+\emph{La primera cuenta de suspensiones.} Los mapas que aparecen en el lema son los que hacen conmutar el diagrama
+\[
+\begin{tikzcd}[column sep=6.5em, row sep=large]
+\Sigma^{m+k}Y^*\wedge X \arrow[r,"t\wedge1"] \arrow[d,"1\wedge f"'] & \Sigma^{m+k}X^*\wedge X \arrow[d,"\mu"]\\
+\Sigma^{m+k}Y^*\wedge Y \arrow[r,"\nu"'] & \Sigma^{m+k}S^n=S^{n+m+k}
+\end{tikzcd}
+\]
+salvo homotopía, con $t=\Sigma^{m+k}f^*\colon\Sigma^{m+k}Y^*\to\Sigma^{m+k}X^*$ el dual de $f$ suspendido $m+k$ veces y $\mu,\nu$ las evaluaciones suspendidas. Es el cuadrado del lema, desplazado $m+k$ lugares en todos sus vértices. La comprobación se reduce a tomar representantes y sumar los índices de suspensión: como las suspensiones se desplazan entre los factores del producto smash, los índices de los dos caminos coinciden y los signos que introduce la trenza son los mismos porque los exponentes que los producen también lo son.
+
+\emph{La segunda cuenta de suspensiones.} Del lema se concluye
+\[
+C_t\wedge C_s\xrightarrow{\ \pi\ }S^{k+1},
+\]
+donde $C_t$ y $C_s$ son las cofibras que intervienen en el pegado. De nuevo es una cuenta de índices: el desplazamiento del índice $k$ por la suspensión de un factor se compensa con el que introduce el otro.
+
+\begin{nota}
+   Las dos cuentas se reducen al mismo mecanismo que obligaba a introducir los signos en la definición del producto smash de la clase anterior: al desplazar una suspensión de un factor al otro hay que pagar el signo $(-1)^{ab}$, donde $a$ y $b$ son los índices que se permutan. En los dos casos que aparecen aquí los exponentes son iguales en los dos caminos del cuadrado, de modo que los signos se cancelan y no hay ninguna dificultad nueva.
+\end{nota}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Todo objeto de SW es dualizable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{teo}\label{teo:todo-dualizable}
+Todo objeto de $\SW$ es dualizable.
+\end{teo}
+
+\begin{proof}
+Un objeto de $\SW$ es una clase de suspensión de un CW-complejo finito punteado. La construcción del dual es compatible con la suspensión por el \myref{lema:suspension-dual}, de modo que basta tratar el caso de un complejo finito $X$.
+
+Se procede por inducción sobre el número de celdas de $X$. Si $X=S^0$ el dual es $S^0$ mismo, con $\mathrm{ev}$ y $\mathrm{coev}$ dadas por las unidades; es la \myref{prop:s0-dual}. Si $X$ se obtiene de un subcomplejo $X'$ pegando una celda, la sucesión cofibrada
+\[
+X'\longrightarrow X\longrightarrow S^r
+\]
+tiene como términos extremos objetos dualizables: $S^r$ lo es por el párrafo anterior y $X'$ lo es por hipótesis de inducción. La \myref{teo:cofibra-dual} da entonces que $X$ también lo es. La finitud es lo que hace que la inducción termine.
+\end{proof}
+
+\begin{nota}
+   La \myref{prop:dualizable-sw} de la clase anterior enunciaba ya este resultado, pero su demostración quedaba condicionada a la \myref{teo:cofibra-dual}, que es lo que se acaba de cerrar. Con esto, la clase de este día completa el argumento y el teorema queda establecido.
+
+   El enunciado tiene una consecuencia que se usará enseguida: como $\wedge$ tiene un adjunto derecho para todo objeto de $\SW$, la categoría tiene un hom interno. En efecto, por la \myref{lema:criterio-dual} aplicada a $B$ en lugar de $S$ se obtiene un isomorfismo natural
+   \[
+   \hom_{\SW}(A\wedge B,\ C)\cong\hom_{\SW}\bigl(A,\ B^*\wedge C\bigr),
+   \]
+   \begin{proof}
+   Por la \myref{prop:adjuncion} con $X=B$ y el dual $B^*$, que existe por el \myref{teo:todo-dualizable}.
+   \end{proof}
+   de modo que
+   \[
+   \ihom(A,B)=A^*\wedge B
+   \]
+   es un hom interno para $\SW$. Que $A^*$ exista para todo $A$ es justamente lo que se acaba de probar.
+\end{nota}
+
+\begin{ejer}
+Probar que tomar el producto smash con un objeto fijo preserva triángulos distinguidos. Es decir: si $Z\xrightarrow{\ f\ }W\xrightarrow{\ }C_f\xrightarrow{\ }\Sigma Z$ es un triángulo distinguido, entonces al tensar por un objeto $A$ a la derecha o a la izquierda se obtiene otro triángulo distinguido.
+\end{ejer}
+
+\begin{sol}
+No es difícil, y es más topología de conjuntos que otra cosa. La idea es reducirse al caso de complejos CW, es decir, a sucesiones cofibradas: en ese caso se puede suponer que $C_f$ es la cofibra de $f$, el cono de $f$, y lo que hay que mirar realmente es que
+\[
+C_f\wedge A\simeq C_{f\wedge1_A},
+\]
+es decir, que el cono de $f\wedge1_A$ es el cono de $f$ tensado por $A$. Una vez que se ha hecho eso para espacios, se usa que siempre se puede suspender a la izquierda y a la derecha y que el triángulo sigue siendo distinguido.
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ejemplos: el plano proyectivo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+El criterio se puede aplicar a objetos concretos. El ejemplo que se trabajó es el plano proyectivo real.
+
+\begin{ejem}\label{ejem:rp2-dual}
+El dual de $\mathbb{RP}^2=(\mathbb{RP}^2,0)$ en $\SW$ es $\Sigma^{-3}\mathbb{RP}^2$.
+\end{ejem}
+
+\begin{proof}
+Se parte de la sucesión cofibrada
+\[
+S^1\xrightarrow{\ 2\ }S^1\xrightarrow{\ }\mathbb{RP}^2\xrightarrow{\ }S^2 ,
+\]
+que describe a $\mathbb{RP}^2$ como el cono del morfismo de grado $2$ sobre $S^1$. Desuspendiendo dos veces se obtienen las dos sucesiones que se escribieron en la pizarra,
+\[
+S^0\xrightarrow{\ 2\ }S^0\longrightarrow\Sigma^{-1}\mathbb{RP}^2\longrightarrow S^1\xrightarrow{\ 2\ }S^1\longrightarrow\mathbb{RP}^2 ,
+\]
+\[
+\Sigma^{-3}\mathbb{RP}^2\longrightarrow S^{-1}\xrightarrow{\ 2\ }S^{-1}\longrightarrow\Sigma^{-2}\mathbb{RP}^2\longrightarrow S^0\xrightarrow{\ 2\ }S^0 .
+\]
+La primera dice que la cofibra de $2\colon S^0\to S^0$ es $\Sigma^{-1}\mathbb{RP}^2$; la segunda, que la cofibra de $2\colon S^{-1}\to S^{-1}$ es $\Sigma^{-2}\mathbb{RP}^2$ y que su \emph{fibra} es $\Sigma^{-3}\mathbb{RP}^2$.
+
+Por la \myref{teo:cofibra-dual}, el dual de $\mathbb{RP}^2$ es la fibra de
+\[
+(S^1)^*\xrightarrow{\ 2^*\ }(S^1)^*,
+\]
+y como $(S^1)^*=S^{-1}$ por el párrafo sobre las esferas, hay que calcular la fibra del morfismo
+\[
+S^{-1}\xrightarrow{\ 2^*\ }S^{-1}.
+\]
+Ese morfismo es el dual del morfismo de grado $2$, y en el grupo cíclico infinito de morfismos de $S^{-1}$ en $S^{-1}$ actúa multiplicando por $2$. En la sucesión cofibrada de un morfismo, la fibra es el desplazamiento hacia la izquierda de la cofibra, $\mathrm{fib}=\Sigma^{-1}\mathrm{cofib}$; como la cofibra de $2\colon S^{-1}\to S^{-1}$ es $\Sigma^{-2}\mathbb{RP}^2$, resulta
+\[
+(\mathbb{RP}^2)^*=\mathrm{fib}(2^*)=\Sigma^{-1}\bigl(\Sigma^{-2}\mathbb{RP}^2\bigr)=\Sigma^{-3}\mathbb{RP}^2 . \qedhere
+\]
+\end{proof}
+
+\begin{nota}
+   La pizarra escribió directamente $(\mathbb{RP}^2)^*=\Sigma^{-3}\mathbb{RP}^2$ en la notación de suspensiones, leyéndolo de la segunda sucesión. Las cuentas que se hicieron allí con representantes de las esferas $S^1,S^0$ y $S^{-1}$ muestran que los grados que intervienen son todos $\pm1$ o $\pm2$, y que los signos se cancelan porque la trenza introduce $(-1)^{ab}$ con índices $a$ o $b$ nulos.
+\end{nota}
+
+\begin{ejer}
+Comprobar, con el mismo método, que el dual de $\mathbb{RP}^2$ evaluado contra $\mathbb{RP}^2$ da la clase de la evaluación sobre la parte de dimensión cero, y que el signo que introduce la trenza $B_{\mathbb{RP}^2,\Sigma^{-3}\mathbb{RP}^2}$ es $+1$.
+\end{ejer}
+
+\begin{sol}
+Se toman representantes con el número de suspensiones suficientes para que todos los morfismos involucrados estén definidos, se escribe la evaluación como la clase de un morfismo de colapso y se comprueba que el diagrama
+\[
+\begin{tikzcd}[column sep=6em, row sep=large]
+(\mathbb{RP}^2,0)\wedge(\mathbb{RP}^2,-3) \arrow[r,"B"] \arrow[dr,"\mathrm{ev}"'] & (\mathbb{RP}^2,-3)\wedge(\mathbb{RP}^2,0) \arrow[d,"\mathrm{ev}'"]\\
+& S
+\end{tikzcd}
+\]
+conmuta salvo homotopía. La trenza es la identidad sobre los representantes salvo el signo $(-1)^{0\cdot(-3)}=1$ que da el convenio de signos de la composición.
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dual por inclusión en una esfera}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+La \myref{teo:cofibra-dual} da un método, pero no siempre es el más cómodo. El primer criterio práctico que se registró en clase es el siguiente.
+
+Supongamos que $X$ es un CW-complejo finito punteado que admite una inmersión en una esfera de radio $r$,
+\[
+X\subseteq S^n_r .
+\]
+Entonces el dual de $X$ está dado por
+\[
+X^*=\Sigma^{-n}\bigl(S^n_r-X\bigr)=\Sigma^{-n}F,
+\qquad
+F=S^n_r-X ,
+\]
+donde $F$ es el complemento de $X$ en la esfera, que es a su vez un CW-complejo finito ---es lo que el profesor subrayó al escribir la fórmula, y es lo que permite aplicar el criterio de la cofibra. La comprobación es directa: el cociente $S^n/X$ es la cofibra de la inclusión y $S^n/(S^n-X)$ es un desplazamiento del dual, pues $S^n/(S^n-X)$ es el cono sobre $S^n-X$; calculando los dos con el mismo argumento de la \myref{teo:cofibra-dual} se obtiene la identificación.
+
+\begin{nota}
+   El criterio tiene la forma del conocido isomorfismo de Alexander, y no es casualidad: en el contexto estable el dual de Spanier--Whitehead de un subcomplejo de $S^n$ es el complemento, desplazado $n$ veces. La dimensión del desplazamiento es la de la esfera ambiente, y es lo que compensa el que la dualidad invierta las dimensiones. En la pizarra la esfera se escribió $S^n_{r\text{-radio}}$ para dejar claro que solo importa su tipo de homotopía, y no se pidió ninguna condición sobre la dimensión de $X$ más allá de la inclusión.
+\end{nota}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El teorema de dualidad de Atiyah}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+El segundo criterio es el teorema de dualidad de Atiyah, que se citó en clase sin demostración.
+
+\begin{teo}[Dualidad de Atiyah]\label{teo:atiyah}
+Sea $M$ una variedad suave cerrada de dimensión $k$ y sea $N(M\hookrightarrow\mathbb{R}^k)$ su haz normal en una inmersión en un espacio euclídeo de dimensión suficientemente grande. Entonces el dual de Spanier--Whitehead de $M_+$ ---es decir, de $M$ con un punto base disjunto--- está dado por
+\[
+(M_+)^*=\Sigma^{-k}\bigl(\mathrm{Th}(N(M\hookrightarrow\mathbb{R}^k))\bigr),
+\]
+donde $\mathrm{Th}$ denota el espacio de Thom del haz normal.
+\end{teo}
+
+\begin{nota}
+   La \myref{teo:atiyah} se cita sin demostración; es el teorema de dualidad de Atiyah, y la forma en que aparece en las notas de \textcite{malkiewich}. En la pizarra se escribió con el punto base disjunto, $(M_+)^*$, y con el haz normal nombrado $N(M\hookrightarrow\mathbb{R}^k)$; aquí se conserva esa notación. La construcción del espacio de Thom de un fibrado vectorial es el cociente del disco unidad por el círculo unidad del fibrado, que es la forma precisa del «haz normal» que se mencionó en el pizarrón.
+
+   Los dos criterios coinciden en el caso en que $X$ es una variedad: el cociente $S^n-X$ es precisamente el espacio de Thom del fibrado normal de la inclusión, lo que da una demostración del enunciado general a partir del caso de las variedades.
+\end{nota}
+
+\begin{ejer}
+Verificar que la \myref{teo:atiyah} recupera la \myref{ejem:rp2-dual} para $M=\mathbb{RP}^2$.
+\end{ejer}
+
+\begin{sol}
+Se toma la inmersión estándar de $\mathbb{RP}^2$ en $\mathbb{R}^3$ como cociente de $S^2$ por la acción antipodal; el fibrado normal es la recta trivial, de modo que su espacio de Thom es $\Sigma^3S^0$ y el dual es $\Sigma^{-3}\Sigma^3S^0\wedge\mathbb{RP}^2=\Sigma^{-3}\mathbb{RP}^2$, que es el enunciado de la \myref{ejem:rp2-dual}.
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Espectros secuenciales}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Motivación cohomológica}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Recordemos que la cohomología reducida admite una representación $\Tilde{H}^n(-) \cong [-,K(\mathbb Z,n)]_*$, por lo cual, el isomorfismo de suspensión $\sigma_n \colon \tilde H^n(-)\to \tilde H^{n+1}(\Sigma(-))$ induce un diagrama de isomorfismos naturales
+\[\begin{tikzcd}
+   \tilde H^n(-) \arrow[r,"\sigma_n"] \arrow[d,"\cong"'] & \tilde H^{n+1}(\Sigma(-)) \arrow[d,"\cong"]\\
+   \bigl[-,K(\mathbb Z,n)\bigr]_* \arrow[r,"\cong"] \arrow[dr,"\cong"',grisCIMAT] & \bigl[\Sigma(-),K(\mathbb Z,n+1)\bigr]_*\\
+   & \color{grisCIMAT}\bigl[-,\Omega K(\mathbb Z,n+1)\bigr]_* \arrow[u,"\text{iso. de adjunción }\Sigma\dashv\Omega"',grisCIMAT]
+\end{tikzcd}\]
+Esta representación $\bigl[-,K(\mathbb Z,n)\bigr]_* \cong \bigl[\Sigma(-),K(\mathbb Z,n+1)\bigr]_*$ es inducida, gracias al lema de Yoneda, mediante un $[\xi_n]\in \bigl[\Sigma K(\mathbb Z,n),K(\mathbb Z,n+1)\bigr]_*$ (de modo que coincide con $[\xi_n] \circ \Sigma(-)$). Los espacios $K(\mathbb Z,n)$ y morfismos punteados $\xi_n \colon \Sigma K(\mathbb Z,n) \to K(\mathbb Z,n+1)$ determinan al funtor $\tilde{H}^*$.
+
+\begin{nota}
+El diagrama de arriba mediante la adjunción $\Sigma \dashv\Omega$ también da una representación de $[-,\Omega K(\mathbb Z, n+1)]$, lo cual induce equivalencias homotópicas $\xi^\perp_n\colon K(\mathbb Z,n) \xrightarrow{\simeq} \Omega K(\mathbb Z,n+1)$ adjuntas a las $\xi^n$. Estas motivan la definición de $\Omega$-espectros, que son un poco más restrictivos que los espectros secuenciales para poder inducir siempre una teoría de cohomología. En clase usamos los $\Omega$-espectros como intermediarios para inducir las flechas $\xi_n$, pero la versión más general del lema de Yoneda hace que no sea necesario hacer esto.
+\end{nota}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Definición y espectros suspensión}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Se pasa ahora a la segunda mitad de la clase. La categoría $\SW$ resultó inadecuada para representar teorías de (co)homología, y el profesor anunció desde el principio del curso que la construcción que lo arregla es la de espectro secuencial. Conviene empezar por la definición, que es la que da sentido a todo lo demás.
+
+\begin{defi}\label{defi:espectro-secuencial}
+Un \emph{espectro secuencial} es una sucesión $X=\{X_n\en\Topstar\}_{n\in\mathbb N}$
+de espacios punteados, junto con mapas punteados
+\[
+\xi_n\colon\Sigma X_n\longrightarrow X_{n+1}
+\]
+para todo $n\in\mathbb N$, llamados \emph{mapas estructurales}. Análogamente, un $\Omega$-espectro es una sucesión $X$ de espacios punteados junto con equivalencias débiles $X_n \xrightarrow{\simeq}\Omega X_{n+1}$ (se denomina estricto cuando estos mapas son homeomorfismos).
+\end{defi}
+
+\begin{nota}
+   A partir de ahora se usará la notación reducida
+   \[
+   \Sigma X=X\wedge S^1
+   \]
+   para la suspensión reducida, y $\Sigma^\infty A$ denotará el espectro suspensión de un espacio punteado $A$. Cuando $A=\ast$ se obtiene el espectro \emph{cero} o \emph{trivial}, y cuando $A=S^0$ se obtiene el espectro esfera
+   \[
+   \mathbb S=\Sigma^\infty S^0 .
+   \]
+\end{nota}
+
+\begin{defi}\label{defi:espectro-z}
+De forma análoga se definen espectros $\mathbb Z$-secuenciales, es decir, espectros indexados por $\mathbb Z$ en lugar de por $\mathbb N$.
+\end{defi}
+
+\begin{ejem}[Espectro suspensión]\label{ejem:suspension-espectro}
+Dado $A\in\Topstar$, su \emph{espectro suspensión} $\Sigma^\infty A$ está dado por
+\[
+(\Sigma^\infty A)_n=\Sigma^nA,
+\qquad
+\xi_n\colon\Sigma\Sigma^nA\xrightarrow{\ 1\ }\Sigma^{n+1}A .
+\]
+Es decir, las funciones estructurales son las identidades.
+\end{ejem}
+
+\begin{nota}
+Se puede probar que los mapas estructurales del espectro $\Sigma^\infty A$ (\cref{ejem:suspension-espectro}) no inducen, en general, un $\Omega$-espectro. De otro modo, los adjuntos $1^\perp\colon\Sigma^n A \to \Omega\Sigma^{n+1} A$ serían equivalencias, lo que haría de $\Omega$ un inverso homotópico de $\Sigma$. Esto invalidaría nuestra motivación para trabajar con homotopía estable, pues siempre tendríamos que $\pi_{n+k}(\Sigma^kA)$ se estabiliza desde el comienzo. 
+\end{nota}
+
+\begin{ejem}\label{ejem:espectro-z-secuencial}
+La versión $\mathbb Z$-secuencial del espectro suspensión se escribe
+\[
+(\Sigma^\infty A)_n=
+\begin{cases}
+\Sigma^nA, & n\ge0,\\
+\ast, & n<0,
+\end{cases}
+\]
+con funciones estructurales
+\[
+\xi_n\colon\Sigma(\Sigma^\infty A)_n\longrightarrow(\Sigma^\infty A)_{n+1},
+\qquad
+\xi_n=
+\begin{cases}
+1, & n\ge0,\\
+\Sigma(*)=*\hookrightarrow A, & n=-1,\\
+1, & n<-1 .
+\end{cases}
+\]
+El caso $n=-1$ es el único que no es una identidad: el punto base $\ast$ se incluye en $\Sigma^0A=A$. Para $n<-1$ las funciones estructurales también están definidas, pero ahora sobre $\Sigma(\ast)=\ast$, de modo que vuelven a ser identidades.
+\end{ejem}
+
+\begin{ejem}[Espectro inducido por cohomología]\label{ejem:espcoho}
+Una teoría de cohomología reducida $\widetilde E^{\,*}$ induce un espectro $\mathbb Z$-secuencial $E$: por teorema de representabilidad de Brown, existen espacios punteados $E_n$ con $\widetilde E^{\,n}(-)\cong[-,E_n]_*$, de modo que, por el isomorfismo de suspensión:
+\[
+[-,E_{n}]_* \cong [\Sigma(-),E_{n+1}]_*
+\]
+Luego, gracias al lema de Yoneda, esta representación coincide con $[\xi_n] \circ \Sigma(-)$ para una flecha $[\xi_n]\in[\Sigma E_n, E_{n+1}]_*$. Estos $\xi_n$ son los mapas estructurales de $E$. Si nos quedamos solo con los $E_n$ para $n\ge 0$ también se induce un espectro secuencial.
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Teoría}
+& Singular coef. en $A$
+& $\widetilde K$-teoría
+& $\widetilde{KO}$-teoría
+& Cobordismo complejo \\ \hline
+
+\textbf{Espectro}
+& $HA$
+& $KU$
+& $KO$
+& $MU$ \\ \hline
+
+\textbf{Entradas}
+& $K(A,n)$
+& alternan $\mathbb Z\times BU,\ U$
+& Periodo de 8 espacios (Bott)
+& alternan $\operatorname{Th}(\gamma_n^{\mathbb C}),\ 
+  \Sigma\operatorname{Th}(\gamma_n^{\mathbb C})$ \\ \hline
+\end{tabular}
+\end{center}
+\end{ejem}
+
+
+% \begin{ejer}
+% Comprobar que el espectro suspensión de un espacio punteado no es, en general, un $\Omega$-espectro, y encontrar el $\Omega$-espectro que lo reemplaza.
+% \end{ejer}
+% \begin{sol}
+% Para el espectro suspensión de un espacio punteado $A$ se tiene
+% \[
+% (\Sigma^\infty A)_n=\Sigma^nA,
+% \]
+% y sus funciones estructurales son las identificaciones
+% \[
+% \Sigma(\Sigma^nA)=\Sigma^{n+1}A\longrightarrow \Sigma^{n+1}A.
+% \]
+% Por adjunción, la función estructural en el nivel $n$ corresponde al mapa
+% \[
+% \eta_n\colon \Sigma^nA\longrightarrow\Omega\Sigma^{n+1}A.
+% \]
+% Para que $\Sigma^\infty A$ fuese un $\Omega$-espectro sería necesario que cada $\eta_n$ fuese una equivalencia débil, lo cual no ocurre en general.
+
+% En efecto, basta tomar $A=S^0$. En el nivel $0$ se obtiene
+% \[
+% \eta_0\colon S^0\longrightarrow\Omega S^1.
+% \]
+% Ahora bien,
+% \[
+% \pi_0(S^0)\cong\{0,1\},
+% \qquad
+% \pi_0(\Omega S^1)\cong\pi_1(S^1)\cong\mathbb Z.
+% \]
+% Por tanto, $\eta_0$ no induce una biyección en componentes conexas y, en consecuencia, no puede ser una equivalencia débil. Así, el espectro suspensión de un espacio punteado no es, en general, un $\Omega$-espectro.
+
+% Para obtener un $\Omega$-espectro que lo reemplace se aplica la construcción de estabilización. Definimos
+% \[
+% Y_n=\colim_k\Omega^k\Sigma^{n+k}A,
+% \]
+% donde los mapas del sistema dirigido son
+% \[
+% \Omega^k\Sigma^{n+k}A
+% \longrightarrow
+% \Omega^{k+1}\Sigma^{n+k+1}A,
+% \]
+% obtenidos al aplicar $\Omega^k$ a la unidad
+% \[
+% \Sigma^{n+k}A\longrightarrow\Omega\Sigma^{n+k+1}A.
+% \]
+% Estos mapas inducen
+% \[
+% Y_n\longrightarrow\Omega Y_{n+1},
+% \]
+% y, bajo las hipótesis usuales sobre la categoría de espacios, estos son equivalencias débiles; por tanto, $Y$ es un $\Omega$-espectro. Además, los mapas canónicos
+% \[
+% \Sigma^nA\longrightarrow
+% \colim_k\Omega^k\Sigma^{n+k}A=Y_n
+% \]
+% determinan una equivalencia estable
+% \[
+% \Sigma^\infty A\longrightarrow Y.
+% \]
+% Así, $Y$ es el $\Omega$-espectro asociado, o espectrificación, del espectro suspensión.
+% \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El desplazamiento de un espectro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Las definiciones anteriores dejan pendiente un punto de notación que la clase resolvió al final: cómo se desplaza el índice de un espectro.
+
+\begin{defi}\label{defi:desplazamiento}
+Sea $E=\{E_n\}_{n\in\mathbb Z}$ un espectro $\mathbb Z$-secuencial y sea $d\in\mathbb Z$. El \emph{desplazamiento} $\sh^d E$ es el espectro definido por
+\[
+(\sh^dE)_n=E_{n+d},
+\qquad
+\xi'_n =\xi_{n+d}\colon\Sigma E_{n+d}\longrightarrow E_{n+d+1},
+\]
+que son las mismas del caso $\mathbb Z$-secuencial, más las inclusiones de los puntos base y las funciones identidad entre los puntos cuando las haya.
+\end{defi}
+
+Cuando $E$ es solamente secuencial, se define como:
+\[
+(sh^dE)_n=
+\begin{cases}
+*, & n+d<0,\\
+E_{n+d}, & n+d\ge0,
+\end{cases}
+\]
+donde la primera línea recoge las inclusiones de los puntos base. Por ejemplo:
+\[
+sh^3\mathbb S\colon\quad S^3,S^4,S^5,\dots,
+\qquad
+sh^{-2}\mathbb S\colon\quad *,*,S^0,S^1,S^2,\dots,
+\]
+en los que se ve directamente que desplazar hacia abajo hace aparecer puntos base.
+
+Denotaremos $\Sigma^{\infty+d} \coloneq \sh^d\Sigma^\infty$ y en un futuro podríamos denotar $\Sigma^d = \sh^d$.
+

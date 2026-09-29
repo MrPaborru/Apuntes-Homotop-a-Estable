@@ -1,4 +1,4 @@
-La clase anterior concluyó la comparación entre la suspensión y el desplazamiento de espectros e introdujo varias construcciones nivel a nivel. Ahora completaremos esa discusión con el producto smash de dos espectros y explicaremos por qué su definición requiere signos. Después estudiaremos los $\Omega$-espectros: calcularemos sus grupos de homotopía, probaremos que una equivalencia estable entre ellos es una equivalencia nivel a nivel y construiremos explícitamente un reemplazo cofibrante $X\to RX$. Finalmente introduciremos las celdas estables de un espectro celular y veremos que, con su estructura celular habitual, el espectro esfera tiene una única celda estable de dimensión cero.
+La clase anterior concluyó la comparación entre la suspensión y el desplazamiento de espectros e introdujo varias construcciones nivel a nivel. Ahora completaremos esa discusión con el producto smash de dos espectros y explicaremos por qué su definición requiere signos. Después estudiaremos los $\Omega$-espectros: calcularemos sus grupos de homotopía, probaremos que una equivalencia estable entre ellos es una equivalencia nivel a nivel y construiremos explícitamente un reemplazo fibrante $X\to RX$. Finalmente introduciremos las celdas estables de un espectro celular y veremos que, con su estructura celular habitual, el espectro esfera tiene una única celda estable de dimensión cero.
 
 Trabajaremos con aplicaciones y homotopías punteadas. Los morfismos estructurales se escribirán $\xi_n\colon X_n\wedge S^1\to X_{n+1}$ y sus adjuntos $\xi_n^{\perp}\colon X_n\to\Omega X_{n+1}$. Cuando intervengan dos espectros, distinguiremos sus morfismos mediante los superíndices $X$ e $Y$. Omitiremos las identificaciones asociativas del producto smash; al usar adjunciones indicaremos qué coordenada se evalúa, pues su orden será esencial.
 
@@ -40,7 +40,7 @@ Aquí $\tau_q\colon Y_q\wedge S^1\to S^1\wedge Y_q$ está dada por $\tau_q[y,z]=
 
 La elección de $(p_n,q_n)$ forma parte de esta definición. Se mencionó en clase el resultado de Adams según el cual distintas elecciones producen espectros establemente equivalentes; su demostración no se desarrollará aquí. El objetivo inmediato es entender el signo de la definición y comprobar que los grupos de homotopía no dependen del camino elegido.
 
-% P3--P6. Los diagramas de evaluaciones de P4 y P5 se escriben como fórmulas.
+% P3--P6. Malla de grupos, primer cuadrado y comparación de sus dos caminos.
 \subsection{Por qué aparecen los signos}
 
 La motivación es que $\pi_k(X\wedge Y)$ sea el colímite de una malla cuyos términos sean $\pi_{k+p+q}(X_p\wedge Y_q)$ y cuyas flechas procedan de los morfismos estructurales. El comienzo de la malla es
@@ -60,7 +60,16 @@ La motivación es que $\pi_k(X\wedge Y)$ sea el colímite de una malla cuyos té
 \]
 Cada flecha consiste en suspender una clase y componer con el correspondiente morfismo estructural. Las verticales utilizan $1\wedge\xi^Y_q$ y las horizontales utilizan $(\xi^X_p\wedge1)\circ(1\wedge\tau_q)$. Para representar esta malla como un diagrama sobre el conjunto ordenado $\mathbb N^2$ necesitamos que todos sus cuadrados conmuten. Si $k<0$, se omiten los términos cuyo índice de homotopía aún no está definido; en cualquier caso podemos restringirnos a una región cofinal donde esos índices sean al menos dos.
 
-Veamos qué ocurriría si usáramos la permutación ordinaria $\tau[y,z]=[z,y]$, sin conjugación. Consideremos el primer cuadrado y una clase representada por $g\colon S^k\to X_0\wedge Y_0$. El camino vertical seguido del horizontal daría la clase de
+Veamos qué ocurriría si usáramos la permutación ordinaria $\tau[y,z]=[z,y]$, sin conjugación. Escribamos $v_{p,q}=(1\wedge\xi_q^Y)_*\circ\Sigma$ y $u_{p,q}=((\xi_p^X\wedge1)\circ(1\wedge\tau))_*\circ\Sigma$ para las transiciones sin signo. El primer cuadrado sería
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\pi_{k+1}(X_0\wedge Y_1) \arrow[r,"u_{0,1}"]
+& \pi_{k+2}(X_1\wedge Y_1)\\
+\pi_k(X_0\wedge Y_0) \arrow[u,"v_{0,0}"] \arrow[r,"u_{0,0}"']
+& \pi_{k+1}(X_1\wedge Y_0) \arrow[u,"v_{1,0}"'].
+\end{tikzcd}
+\]
+Este cuadrado no conmuta en general. Para ver la diferencia, tomemos una clase representada por $g\colon S^k\to X_0\wedge Y_0$; en este primer cuadrado suponemos $k\ge0$, y para los demás grados hacemos la misma cuenta a partir de un término donde el grupo esté definido. El camino vertical seguido del horizontal daría la clase de
 \[
 (\xi^X_0\wedge1)\circ(1\wedge\tau)
 \circ(1\wedge\xi^Y_0\wedge1)\circ(g\wedge1\wedge1),
@@ -113,10 +122,41 @@ La sucesión $(p_n,q_n)$ determina un camino cofinal en la malla: dada cualquier
 Por tanto, todas las elecciones del camino dan los mismos grupos de homotopía. Esto no demuestra por sí solo la equivalencia estable entre las construcciones: todavía haría falta un morfismo, o un zigzag de morfismos, que indujera los isomorfismos. Esa es la parte adicional del resultado de Adams mencionado antes.
 
 \begin{ejer}\label{ejer:c10-unidad-smash}
-Sea $\mathbb S$ el espectro esfera. Probar que $Y\wedge\mathbb S\simeq_s Y$. Como pista, elegir una sucesión $(p_n,q_n)$ conveniente y utilizar las composiciones de los morfismos estructurales $Y_n\wedge S^k\to Y_{n+k}$, incorporando los signos necesarios para obtener un morfismo de espectros. También se tiene $\mathbb S\wedge Y\simeq_s Y$.
+Sea $\mathbb S$ el espectro esfera. Probar que $Y\wedge\mathbb S\simeq_s Y$. Como pista, elegir una sucesión $(p_n,q_n)$ conveniente y utilizar las composiciones de los morfismos estructurales $Y_p\wedge S^q\to Y_{p+q}$, teniendo en cuenta los signos del producto smash.
 \end{ejer}
+\begin{sol}
+Identificamos $S^q=(S^1)^{\wedge q}$ y escribimos $\sigma_{p,q}\colon Y_p\wedge S^q\to Y_{p+q}$ para la composición de $q$ morfismos estructurales, con $\sigma_{p,0}=1$. Fijado un camino admisible, pongamos $Z=Y\wedge\mathbb S$ y definamos $a_n=\sigma_{p_n,q_n}\colon Z_n\to Y_n$.
 
-El ejercicio expresa el papel del espectro esfera como unidad del producto smash en la categoría homotópica estable. No se trata de una igualdad nivel a nivel: en general, un nivel de $Y\wedge\mathbb S$ tiene la forma $Y_{p_n}\wedge S^{q_n}$, que no coincide con $Y_n$. La estructura monoidal simétrica completa se estudiará más adelante.
+\emph{Estas aplicaciones forman un morfismo débil.} Si aumenta $q_n$, el cuadrado estructural conmuta estrictamente, pues $\sigma_{p,q+1}=\xi_{p+q}^Y\circ(\sigma_{p,q}\wedge1)$. Si aumenta $p_n$, los dos caminos son $\sigma_{p,q+1}$ y $\sigma_{p,q+1}\circ(1\wedge\beta_q)$, donde
+\[
+\beta_q[z_1,\ldots,z_q,t]
+=[t^{(-1)^q},z_1,\ldots,z_q].
+\]
+La permutación cíclica tiene grado $(-1)^q$ y la posible conjugación aporta otro factor $(-1)^q$. Por tanto, $\beta_q$ tiene grado $1$ y es homotópica a la identidad; para $q=0$ es la identidad. Así, los cuadrados conmutan hasta homotopía punteada. Por el resultado sobre morfismos débiles de la clase anterior, obtenemos un zigzag $Z\xleftarrow{r}C\xrightarrow{a'}Y$, con $r$ una equivalencia nivel a nivel y $a'_n\simeq a_n\circ r_n$.
+
+\emph{El morfismo inducido en homotopía estable es un isomorfismo.} Fijemos $k\in\mathbb Z$ y consideremos $A_{p,q}=\pi_{k+p+q}(Y_p\wedge S^q)$, restringiéndonos, si hace falta, a $p\ge\max\{0,2-k\}$. Sean $H_{p,q}$ y $V_{p,q}$ las transiciones horizontal y vertical de la malla con signos; aquí $V_{p,q}$ es simplemente la suspensión. Hay además diagonales
+\[
+D_{p,q+1}=(\xi_p^Y\wedge1_{S^q})_*\colon
+A_{p,q+1}\longrightarrow A_{p+1,q}.
+\]
+Estas dividen cada cuadrado en dos triángulos conmutativos:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+A_{p,q+1} \arrow[r,"H_{p,q+1}"] \arrow[dr,"D_{p,q+1}" description]
+& A_{p+1,q+1}\\
+A_{p,q} \arrow[u,"V_{p,q}"] \arrow[r,"H_{p,q}"']
+& A_{p+1,q} \arrow[u,"V_{p+1,q}"'].
+\end{tikzcd}
+\]
+En efecto, $D_{p,q+1}V_{p,q}=H_{p,q}$ porque las aplicaciones que las inducen difieren por $1\wedge\beta_q\simeq1$; de igual manera, $V_{p+1,q}D_{p,q+1}=H_{p,q+1}$ usando $\beta_{q+1}\simeq1$. Estas identidades también hacen compatibles las diagonales con las transiciones horizontales. Al tomar colímites en $p$, las verticales y las diagonales inducen aplicaciones inversas: sus composiciones son transiciones horizontales, que representan la identidad en el colímite. Por ello todos los colímites de las filas se identifican con el de la fila $q=0$, que es $\pi_k(Y)$, y
+\[
+\pi_k(Z)\cong\operatorname*{colim}_{q}\operatorname*{colim}_{p}A_{p,q}
+\cong\operatorname*{colim}_{p}A_{p,0}=\pi_k(Y).
+\]
+El primer isomorfismo es el de cofinalidad probado antes. El segundo está inducido por aplicar sucesivamente las diagonales; sobre $A_{p,q}$, su composición es precisamente $(\sigma_{p,q})_*$. Por tanto, el isomorfismo obtenido es el inducido por $(a_n)$. Como $a'_n\simeq a_n r_n$ y $r$ es una equivalencia estable, $a'$ también induce isomorfismos en todos los grupos estables. El zigzag anterior demuestra $Y\wedge\mathbb S\simeq_sY$.
+\end{sol}
+
+El ejercicio expresa el papel del espectro esfera como unidad por la derecha del producto smash en la categoría homotópica estable. El profesor mencionó también que $\mathbb S\wedge Y\simeq_sY$, aunque precisó que el ejercicio propuesto era el anterior. No se trata de una igualdad nivel a nivel: en general, un nivel de $Y\wedge\mathbb S$ tiene la forma $Y_{p_n}\wedge S^{q_n}$, que no coincide con $Y_n$. La estructura monoidal simétrica completa se estudiará más adelante.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Los \texorpdfstring{$\Omega$}{Omega}-espectros y el reemplazo fibrante}
@@ -170,7 +210,7 @@ Las verticales son los isomorfismos calculados antes y la horizontal inferior es
 
 Esto prueba que $f_n$ restringe a una equivalencia débil entre las componentes del punto base. Para concluir que es una equivalencia débil de todo el espacio hay que considerar las demás componentes. Aplicamos lo anterior en el nivel $n+1$: todo lazo basado en $X_{n+1}$ permanece en su componente del punto base, y lo mismo ocurre en $Y_{n+1}$. Así, $\Omega f_{n+1}$ es una equivalencia débil. En detalle, induce una biyección en componentes porque estas son los elementos de $\pi_1$, y los grupos de homotopía en cualquier componente se trasladan a los de la componente del lazo constante mediante concatenación con un lazo y su inverso.
 
-La condición de que $f$ sea un morfismo de espectros, escrita mediante adjuntos, da
+La condición de que $f$ sea un morfismo de espectros, escrita mediante adjuntos, da el siguiente cuadrado, con los índices y la orientación correspondientes a $\xi_n^\perp\colon X_n\to\Omega X_{n+1}$:
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
 X_n \arrow[r,"f_n"] \arrow[d,"\xi_n^{X,\perp}"',"\simeq_w"]
@@ -252,7 +292,7 @@ Definimos los adjuntos de los morfismos estructurales de $RX$ por la composició
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
 (RX)_n \arrow[r,"g_n"] \arrow[dr,"(\xi'_n)^{\perp}"']
-& \displaystyle\operatorname*{hocolim}_{m\ge0}\Omega^{m+1}X_{n+m+1}
+& \smash[b]{\operatorname*{hocolim}_{m\ge0}}\Omega^{m+1}X_{n+m+1}
 \arrow[d,"\lambda_n", "\simeq_w"']\\
 & \Omega(RX)_{n+1}.
 \end{tikzcd}
@@ -277,7 +317,8 @@ H([a,s],t)=
 &a\in\Omega^mX_{n+m},\ m\ge1,\ 1-t\le s\le1.
 \end{cases}
 \]
-En el segundo caso se usa el cilindro de $\Omega^mX_{n+m}$ en el telescopio de llegada y en el tercero se pasa al siguiente. Geométricamente, el primer cilindro se aplasta sobre el comienzo del telescopio de llegada, mientras que los demás se desplazan, repartiendo cada cilindro entre dos cilindros consecutivos.
+% En el segundo caso se usa el cilindro de $\Omega^mX_{n+m}$ en el telescopio de llegada y en el tercero se pasa al siguiente. 
+Geométricamente, el primer cilindro se aplasta sobre el comienzo del telescopio de llegada, mientras que los demás se desplazan, repartiendo cada cilindro entre dos cilindros consecutivos.
 
 \begin{center}
 \input{Figuras/HomoRE_C10}
@@ -290,7 +331,13 @@ Cuando $t=1$, cada cilindro pasa al siguiente mediante la aplicación estructura
 % P14--P15.
 \subsection{La inclusión de \texorpdfstring{$X$}{X} en su reemplazo}
 
-Definimos $h_n\colon X_n\to(RX)_n$ mediante $h_n(x)=[x,0]$, es decir, incluyendo $X_n$ en el comienzo del primer cilindro. Estas aplicaciones forman un morfismo de espectros, como muestra el cuadrado de adjuntos
+Definimos $h_n\colon X_n\to(RX)_n$ mediante $h_n(x)=[x,0]$, es decir, incluyendo $X_n$ en el comienzo del primer cilindro.
+
+\begin{ejer}\label{ejer:c10-inclusion-reemplazo}
+Comprobar que las aplicaciones $h_n$ forman un morfismo de espectros $h\colon X\to RX$.
+\end{ejer}
+\begin{sol}
+Basta comprobar que conmuta el cuadrado de adjuntos
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
 X_n \arrow[r,"h_n"] \arrow[d,"\xi_n^{\perp}"']
@@ -298,7 +345,10 @@ X_n \arrow[r,"h_n"] \arrow[d,"\xi_n^{\perp}"']
 \Omega X_{n+1} \arrow[r,"\Omega h_{n+1}"'] & \Omega(RX)_{n+1}.
 \end{tikzcd}
 \]
-En efecto, al evaluar ambas composiciones en $x\in X_n$ y después en $t\in S^1$, se obtiene en los dos casos $[\xi_n^{\perp}(x)(t),0]$. Por adjunción también conmuta el cuadrado de los morfismos estructurales, de modo que tenemos $h\colon X\to RX$. Falta demostrar que este morfismo induce los isomorfismos de homotopía estable.
+Al evaluar ambas composiciones en $x\in X_n$ y después en $t\in S^1$, se obtiene en los dos casos $[\xi_n^{\perp}(x)(t),0]$: $g_n$ aplica $\xi_n^\perp$ en el primer cilindro y $\lambda_n$ evalúa el lazo, mientras que $\Omega h_{n+1}$ incluye su valor en el comienzo del telescopio siguiente. Por adjunción también conmuta el cuadrado de los morfismos estructurales, de modo que $h$ es un morfismo de espectros.
+\end{sol}
+
+Falta demostrar que este morfismo induce los isomorfismos de homotopía estable.
 
 % P16--P21.
 \subsection{El doble sistema de grupos de homotopía}
@@ -397,7 +447,16 @@ El triángulo superior izquierdo conmuta por la definición de la flecha vertica
 \longrightarrow
 \operatorname*{colim}_n\pi_{k+n}(\Omega^{m+1}X_{n+m+1}),
 \]
-mientras que las diagonales inducen otro en sentido contrario, usando que eliminar el primer término de un sistema secuencial no cambia su colímite. La compatibilidad de estas diagonales con las transiciones verticales se obtiene pegando dos de los triángulos conmutativos consecutivos.
+mientras que las diagonales inducen otro en sentido contrario, usando que eliminar el primer término de un sistema secuencial no cambia su colímite. Para explicitar su compatibilidad con las transiciones verticales, escribamos aquí $A_{n,m}=\pi_{k+n}(\Omega^mX_{n+m})$, y denotemos por $a_{n,m}$, $v_{n,m}$ y $d_{n,m}$ las flechas horizontal, vertical y diagonal, respectivamente. Los dos triángulos anteriores afirman que $d_{n,m}a_{n,m}=v_{n,m}$ y $a_{n+1,m}d_{n,m}=v_{n,m+1}$. Al pegarlos se obtiene el diagrama auxiliar
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+& A_{n,m+1} \arrow[dl,"d_{n,m}"'] \arrow[d,"v_{n,m+1}"]\\
+A_{n+1,m} \arrow[r,"a_{n+1,m}"] \arrow[d,"v_{n+1,m}"']
+& A_{n+1,m+1} \arrow[dl,"d_{n+1,m}"]\\
+A_{n+2,m} &
+\end{tikzcd}
+\]
+Cada triángulo conmuta por una de esas identidades. Por tanto, el contorno exterior también conmuta: $d_{n+1,m}v_{n,m+1}=v_{n+1,m}d_{n,m}$. Esta es exactamente la compatibilidad necesaria para que las diagonales induzcan el morfismo entre colímites.
 
 Las composiciones de los dos morfismos inducidos son las identidades: horizontal seguida de diagonal es una transición vertical de la primera columna, y diagonal seguida de horizontal es una transición vertical de la segunda. En un colímite, avanzar un paso mediante una transición representa el mismo elemento. Por ello cada flecha horizontal entre colímites de columnas es un isomorfismo. Identificándolos sucesivamente con el de la primera columna, el sistema horizontal se vuelve constante y obtenemos
 \[
@@ -438,7 +497,7 @@ Solo resta justificar la naturalidad. Un morfismo $f\colon X\to Y$ induce en la 
 % P25 y discusión final, 2:07:25--2:10:03.
 \subsection{El funtor \texorpdfstring{$\Omega^\infty$}{Omega infinito}}
 
-El reemplazo permite definir, para un espectro arbitrario, $\Omega^\infty E=(RE)_0$, y para un morfismo $f$ la aplicación $\Omega^\infty f=(Rf)_0$. Cuando $E$ ya es un $\Omega$-espectro, $h\colon E\to RE$ es una equivalencia estable entre $\Omega$-espectros; por la proposición~\ref{prop:c10-omega-equivalencias}, $E_0\to(RE)_0$ es una equivalencia débil. Por ello la nueva definición coincide, salvo equivalencia débil natural, con la notación $\Omega^\infty E=E_0$ utilizada antes.
+El reemplazo permite definir, para un espectro arbitrario, $\Omega^\infty E=(RE)_0$, y para un morfismo $f$ la aplicación $\Omega^\infty f=(Rf)_0$. La naturalidad de $h$ y la propiedad de dos de tres muestran que $R$ preserva equivalencias estables. Como sus valores son $\Omega$-espectros, la proposición~\ref{prop:c10-omega-equivalencias} implica que $\Omega^\infty$ las transforma en equivalencias débiles de espacios. Cuando $E$ ya es un $\Omega$-espectro, la misma proposición aplicada a $h\colon E\to RE$ muestra que $E_0\to(RE)_0$ es una equivalencia débil. Por ello la nueva definición coincide, salvo equivalencia débil natural, con la notación $\Omega^\infty E=E_0$ utilizada antes.
 
 Esta construcción representa el funtor derivado derecho de evaluación en el nivel cero. La adjunción anunciada en clase con $\Sigma^\infty$ se entiende en las categorías homotópicas: el funtor derivado de suspensión infinita es adjunto izquierdo de $\Omega^\infty$. Para un espacio punteado arbitrario $A$, se puede representarlo por $\Sigma^\infty(QA)$, donde $QA\to A$ es un reemplazo cofibrante del \emph{espacio}. La pregunta de cuándo se puede omitir ese reemplazo quedó abierta en la discusión final de la clase; no se usará tal omisión en los argumentos anteriores.
 

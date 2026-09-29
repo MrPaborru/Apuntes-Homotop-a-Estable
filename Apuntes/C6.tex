@@ -3,7 +3,7 @@ La clase anterior estableció la dualidad en categorías monoidales simétricas 
 La segunda mitad de la clase vuelve al contexto estable. La categoría de Spanier--Whitehead con el producto smash no se sabe todavía que sea cerrada, de modo que no hay un candidato evidente para el dual de un objeto arbitrario; pero las esferas sí tienen dual, y se demuestra que basta con comprobar la dualidad sobre las esferas para obtenerla en toda la categoría. El caso general se deja para la clase siguiente.
 
 \begin{nota}
-   La clase se abre reenunciando el criterio de la sesión anterior, que se usará una y otra vez: \emph{$X^\vee$ es un dual de $X$ si y solo si $-\otimes X$ es adjunto izquierdo a $-\otimes X^\vee$}. Es el enunciado de la \myref{prop:adjuncion} leído como una equivalencia entre la existencia del dual y la existencia de la adjunción, y es la forma en que se aplicará en todo el capítulo.
+   La clase se abre reenunciando el criterio de la sesión anterior, que se usará una y otra vez: \emph{$X^\vee$ es un dual de $X$ si y solo si $-\otimes X$ es adjunto izquierdo a $-\otimes X^\vee$}. En la \myref{prop:adjuncion} se construyeron las biyecciones a partir de una dualidad; al inicio de esta sesión se recordó el criterio en esta forma, que será la utilizada en el capítulo.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -16,52 +16,47 @@ La segunda mitad de la clase vuelve al contexto estable. La categoría de Spanie
 
 La clase comienza con una corrección. Al final de la clase anterior se escribió un diagrama que debía probar que las transformaciones $\Phi$ y $\Psi$ de la \myref{prop:adjuncion} son inversas, y el diagrama presentado era ya una \emph{simplificación}: faltaba el paso que reduce el cálculo a ese diagrama. El paso omitido es un cuadrado de naturalidad, y su ausencia hacía que el término de una de las esquinas apareciera desplazado.
 
-La versión completa, siguiendo los pasos en el orden en que se construyen, es la siguiente. Partimos de $f\colon A\to B\otimes X^\vee$ y aplicamos $\Psi$ y después $\Phi$: la primera parte del cálculo es
+La versión completa parte de $f\colon A\to B\otimes X^\vee$. Primero se obtiene $\Psi(f)$ mediante el diagrama de la izquierda de la pizarra:
+% P01, izquierda.
 \[
-\begin{aligned}
-A
-&\xrightarrow{\ \rho_A^{-1}\ } A\otimes1
-\xrightarrow{\ 1_A\otimes\mathrm{coev}\ } A\otimes(X\otimes X^\vee)
-\xrightarrow{\ \alpha^{-1}_{A,X,X^\vee}\ } (A\otimes X)\otimes X^\vee ,
-\end{aligned}
-\]
-y a partir de ahí el cálculo se abre en dos caminos que deben coincidir. El primero pasa por el espacio de la izquierda,
-\[
-\begin{aligned}
-(A\otimes X)\otimes X^\vee
-&\xrightarrow{\ (f\otimes1_X)\otimes1_{X^\vee}\ } ((B\otimes X^\vee)\otimes X)\otimes X^\vee
-\xrightarrow{\ \alpha_{B,X^\vee,X}\otimes1_{X^\vee}\ } (B\otimes(X^\vee\otimes X))\otimes X^\vee\\
-&\xrightarrow{\ (1_B\otimes\mathrm{ev})\otimes1_{X^\vee}\ } (B\otimes1)\otimes X^\vee
-\xrightarrow{\ \rho_B\otimes1_{X^\vee}\ } B\otimes X^\vee ,
-\end{aligned}
-\]
-y el segundo reasocia primero y elimina las unidades al final,
-\[
-\begin{aligned}
-A\otimes(X\otimes X^\vee)
-&\xrightarrow{\ f\otimes1_{X\otimes X^\vee}\ } (B\otimes X^\vee)\otimes(X\otimes X^\vee)
-\xrightarrow{\ \alpha^{-1}_{B,X^\vee,X\otimes X^\vee}\ } B\otimes(X^\vee\otimes(X\otimes X^\vee))\\
-&\xrightarrow{\ 1_B\otimes \alpha^{-1}_{X^\vee,X,X^\vee}\ } B\otimes((X^\vee\otimes X)\otimes X^\vee)
-\xrightarrow{\ 1_B\otimes(\mathrm{ev}\otimes1_{X^\vee})\ } B\otimes(1\otimes X^\vee)\\
-&\xrightarrow{\ 1_B\otimes\lambda_{X^\vee}\ } B\otimes X^\vee .
-\end{aligned}
-\]
-Los dos caminos no empiezan en el mismo sitio: el primero en $(A\otimes X)\otimes X^\vee$ y el segundo en $A\otimes(X\otimes X^\vee)$. Lo que los conecta es precisamente el cuadrado de naturalidad del asociador
-\[
-\begin{tikzcd}[column sep=large, row sep=large]
-(A\otimes X)\otimes X^\vee \arrow[r,"\alpha_{A,X,X^\vee}"] \arrow[d,"(f\otimes1_X)\otimes1_{X^\vee}"'] & A\otimes(X\otimes X^\vee) \arrow[d,"f\otimes1_{X\otimes X^\vee}"]\\
-((B\otimes X^\vee)\otimes X)\otimes X^\vee \arrow[r,"\alpha_{B\otimes X^\vee,X,X^\vee}"'] & (B\otimes X^\vee)\otimes(X\otimes X^\vee)
+\begin{tikzcd}[column sep=large,row sep=large]
+A\otimes X \arrow[r,"{f\otimes1_X}"]
+ & (B\otimes X^\vee)\otimes X \arrow[d,"{\alpha_{B,X^\vee,X}}"]\\
+ & B\otimes(X^\vee\otimes X) \arrow[d,"{1_B\otimes\mathrm{ev}}"]\\
+ & B\otimes1 \arrow[d,"{\rho_B}"]\\
+ & B .
 \end{tikzcd}
 \]
-que es el paso que se había omitido. En la pizarra del día anterior faltaba esta esquina, y por eso el término de la derecha aparecía escrito en el lugar del de la izquierda.
+Para calcular $\Phi\Psi(f)$ se tensoriza este camino con $X^\vee$ y se anteponen la unidad inversa, la coevaluación y el asociador inverso. El diagrama completo del pizarrón puede disponerse así:
+% P01, derecha. Las dos flechas con etiqueta alpha se recorren al revés
+% cuando se sigue el compuesto Phi Psi.
+\[
+\begin{tikzcd}[column sep=3em,row sep=2em]
+ & A \arrow[d,"{\rho_A^{-1}}"]\\
+ & A\otimes1 \arrow[d,"{1_A\otimes\mathrm{coev}}"]\\
+(A\otimes X)\otimes X^\vee
+ \arrow[r,"{\alpha_{A,X,X^\vee}}"]
+ \arrow[d,"{(f\otimes1_X)\otimes1_{X^\vee}}"']
+ & A\otimes(X\otimes X^\vee)
+ \arrow[d,"{f\otimes1_{X\otimes X^\vee}}"]\\
+((B\otimes X^\vee)\otimes X)\otimes X^\vee
+ \arrow[r,"{\alpha_{B\otimes X^\vee,X,X^\vee}}"']
+ \arrow[d,"{\alpha_{B,X^\vee,X}\otimes1_{X^\vee}}"']
+ & (B\otimes X^\vee)\otimes(X\otimes X^\vee)\\
+(B\otimes(X^\vee\otimes X))\otimes X^\vee
+ \arrow[d,"{(1_B\otimes\mathrm{ev})\otimes1_{X^\vee}}"'] &\\
+(B\otimes1)\otimes X^\vee \arrow[d,"{\rho_B\otimes1_{X^\vee}}"'] &\\
+B\otimes X^\vee &
+\end{tikzcd}
+\]
+El cuadrado central conmuta por naturalidad del asociador. Por ello se puede recorrer el cuadrado por cualquiera de sus dos lados, invirtiendo los asociadores cuando corresponda. Este es el paso que faltaba antes de llegar al diagrama simplificado de la sesión anterior.
 
 \begin{nota}
-   La demostración que aparece en la \myref{prop:adjuncion} es exactamente la descomposición de este diagrama en sus piezas: el cuadrado de naturalidad anterior, el pentágono para $(B,X^\vee,X,X^\vee)$, la eliminación de las unidades y, para cerrar, la identidad de zigzag junto con el \myref{lema:coherencia}. Por eso la corrección no obliga a cambiar nada de lo ya escrito; se deja constancia de ella porque el diagrama completo, tal como se escribió en la pizarra, es el que muestra de una sola vez que la composición vale $f$.
-
-   Conviene precisar qué había exactamente en la pizarra: allí el diagrama consta del cuadrado de naturalidad del asociador, del tramo horizontal $A\otimes(X\otimes X^\vee)\to(B\otimes X^\vee)\otimes(X\otimes X^\vee)$ y de \emph{una sola} columna de descenso, la que baja desde $((B\otimes X^\vee)\otimes X)\otimes X^\vee$. Del vértice $(B\otimes X^\vee)\otimes(X\otimes X^\vee)$ no sale ninguna flecha, y la convergencia de los dos caminos se lee sobre la columna compartida. El «segundo camino» escrito aquí con sus cinco pasos hace explícita esa lectura.
+En la primera flecha de la pizarra aparece $\rho$; con las convenciones de la clase debe leerse $\rho_A^{-1}$, pues la flecha va de $A$ a $A\otimes1$. La corrección explicada oralmente se refiere, además, a la esquina que faltaba en el diagrama de la clase anterior. Para concluir que $\Phi\Psi(f)=f$ se usan la naturalidad, el pentágono, las unidades y la identidad de zigzag, como en la \myref{prop:adjuncion}. No se deduce esa igualdad solamente del cuadrado central.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Consecuencias inmediatas: la unidad y el producto tensorial}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -71,15 +66,15 @@ De la caracterización de la dualidad por adjunciones se obtienen dos consecuenc
 La unidad monoidal $1$ es un dual de sí misma.
 \end{coro}
 \begin{proof}
-Por la \myref{prop:adjuncion}, basta exhibir un isomorfismo natural entre los funtores $-\otimes1$ y $-\otimes1$. Pero
+Por la \myref{prop:adjuncion}, basta exhibir la adjunción $-\otimes1\dashv-\otimes1$. Pero
 \[
 \hom_{\mathcal C}(A\otimes1,\ B)\cong\hom_{\mathcal C}(A,\ B\otimes1)
 \]
-naturalmente en $A$ y en $B$: ambos miembros son naturalmente isomorfos a $\hom_{\mathcal C}(A,B)$, porque $A\otimes1\cong A$ y $B\otimes1\cong B$ mediante las unidades $\rho_A$ y $\rho_B$, que son naturales. Los dos funtores son por tanto el mismo y la adjunción es la identidad.
+naturalmente en $A$ y en $B$: ambos miembros son naturalmente isomorfos a $\hom_{\mathcal C}(A,B)$, porque $A\otimes1\cong A$ y $B\otimes1\cong B$ mediante las unidades $\rho_A$ y $\rho_B$, que son naturales. Así, $-\otimes1$ es adjunto de sí mismo; mediante $\rho$ esta adjunción se identifica con la adjunción del funtor identidad consigo mismo.
 \end{proof}
 
 \begin{coro}\label{coro:dual-tensor}
-Si $X^\vee$ e $Y^\vee$ son duales de $X$ e $Y$ respectivamente, entonces $Y^\vee\otimes X^\vee$ es un dual de $X\otimes Y$.
+Si $X^\vee$ e $Y^\vee$ son duales de $X$ e $Y$ respectivamente, $Y^\vee\otimes X^\vee$ es dual de $X\otimes Y$.
 \end{coro}
 \begin{proof}
 Se aplica la caracterización de la dualidad dos veces, omitiendo los paréntesis por comodidad ya que los asociadores son naturales:
@@ -91,7 +86,7 @@ Se aplica la caracterización de la dualidad dos veces, omitiendo los paréntesi
 donde el primer isomorfismo usa que $Y^\vee$ es un dual de $Y$ y el segundo que $X^\vee$ lo es de $X$. La composición es un isomorfismo natural en $A$ y en $B$, de modo que $-\otimes(X\otimes Y)$ es adjunto izquierdo de $-\otimes(Y^\vee\otimes X^\vee)$, es decir, $Y^\vee\otimes X^\vee$ es un dual de $X\otimes Y$.
 \end{proof}
 
-Obsérvese el orden: el dual de $X\otimes Y$ es $Y^\vee\otimes X^\vee$ y no $X^\vee\otimes Y^\vee$. El orden es el esperado para un funtor contravariante, y en una categoría simétrica ambos coinciden salvo la trenza, que no es la identidad pero sí un isomorfismo.
+Obsérvese el orden: el dual de $X\otimes Y$ es $Y^\vee\otimes X^\vee$ y no $X^\vee\otimes Y^\vee$. La inversión del orden proviene de aplicar sucesivamente las dos adjunciones. En una categoría simétrica ambos órdenes están relacionados por la trenza, que es un isomorfismo y no tiene por qué ser la identidad.
 
 \begin{defi}\label{defi:dualizable}
 Un objeto $X$ de una categoría monoidal simétrica es \emph{dualizable} si admite un dual.
@@ -104,165 +99,230 @@ Un objeto $X$ de una categoría monoidal simétrica es \emph{dualizable} si admi
 Los cálculos de la clase anterior y de esta son diagramas formados por asociadores, unidades y trenzas. El resultado siguiente dice que no hace falta verificarlos uno por uno.
 
 \begin{teo}[Mac Lane--Kelly]\label{teo:mackane-kelly}
-Sea $(\mathcal C,\otimes,1,a,\lambda,\rho,B)$ una categoría con un producto monoidal, una unidad, un asociador $\alpha$, unidades $\lambda$ y $\rho$ y una trenza $B$. Entonces $(\mathcal C,\otimes,1,a,\lambda,\rho,B)$ es una categoría monoidal simétrica si y solo si todo diagrama formado por tensores finitos de $a$, $\lambda$, $\rho$ y $B$ es conmutativo.
+En una categoría monoidal simétrica $(\mathcal C,\otimes,1,\alpha,\lambda,\rho,B)$, dos composiciones de asociadores, unidades, simetrías, sus inversas y sus productos tensoriales con identidades son iguales si tienen los mismos extremos formales e inducen la misma permutación de las apariciones de los factores. En particular, todo diagrama de este tipo cuyos caminos paralelos inducen la misma permutación conmuta.
 \end{teo}
 
 \begin{nota}
-   La dirección no trivial es la que se usa en la práctica: si $(\mathcal C,\otimes,1,a,\lambda,\rho,B)$ es simétrica monoidal, entonces cualquier diagrama cuyas aristas se obtengan tensando y componiendo $a$, $\lambda$, $\rho$ y $B$ —y las identidades y los morfismos dados— conmuta. Los diagramas que aparecen en la \myref{defi:monoidal} son algunos de estos, y en este sentido los axiomas \emph{generan} todos los demás. La demostración se debe a Mac Lane para el caso de la asociatividad y a Mac Lane y Kelly para el caso con la trenza (véanse \cite{maclane1998} y \cite{kelly1964}).
-
-   En lo que sigue se invocará este teorema para justificar de una vez los reordenamientos que solo involucran $a$, $\lambda$, $\rho$ y $B$; cuando el diagrama incluya además morfismos arbitrarios, habrá que usar su naturalidad.
+El enunciado dicho en clase «cualquier diagrama formado por tensores finitos de $a,\lambda,\rho,B$ es conmutativo», necesita la condición sobre las permutaciones. Hay que distinguir las apariciones de un factor aunque representen el mismo objeto: en general $B_{X,X}\ne1_{X\otimes X}$. Sin simetrías basta mantener el orden de los factores. Los axiomas de la \myref{defi:monoidal} son los diagramas básicos que generan estas igualdades; véanse \cite{maclane1998,kelly1964}.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{La dualidad es simétrica}
+\subsection{Simetría y unicidad del dual}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-La primera consecuencia formal de la definición es que la relación «ser dual de» es simétrica.
 
 \begin{prop}\label{prop:simetria-dual}
 Si $X^\vee$ es un dual de $X$, entonces $X$ es un dual de $X^\vee$.
 \end{prop}
 
 \begin{proof}
-Sean
+Sean $\mathrm{ev}\colon X^\vee\otimes X\to1$ y
+$\mathrm{coev}\colon1\to X\otimes X^\vee$ los morfismos de la dualidad. Como en clase, se definen $\mathrm{ev}'=\mathrm{ev}\circ B_{X,X^\vee}$ y $\mathrm{coev}'=B_{X,X^\vee}\circ\mathrm{coev}$
+% P03, izquierda.
 \[
-\mathrm{ev}\colon X^\vee\otimes X\longrightarrow1,
-\qquad
-\mathrm{coev}\colon1\longrightarrow X\otimes X^\vee
-\]
-los morfismos de la dualidad. Se definen
-\[
-\mathrm{ev}'\coloneqq\mathrm{ev}\circ B_{X,X^\vee}\colon X\otimes X^\vee\longrightarrow X^\vee\otimes X\longrightarrow1,
-\qquad
-\mathrm{coev}'\coloneqq B_{X,X^\vee}\circ\mathrm{coev}\colon1\longrightarrow X\otimes X^\vee\longrightarrow X^\vee\otimes X,
-\]
-es decir, se permutan los factores con la trenza y después se evalúa, y dualmente se coevalúa y después se permutan:
-\[
-\begin{tikzcd}[column sep=large, row sep=large]
-X\otimes X^\vee \arrow[r,"B_{X,X^\vee}"] \arrow[dr,"\mathrm{ev}'"'] & X^\vee\otimes X \arrow[d,"\mathrm{ev}"]\\
-& 1
+\begin{tikzcd}[column sep=large,row sep=large]
+X\otimes X^\vee \arrow[r,"{B_{X,X^\vee}}"] \arrow[dr,"{\mathrm{ev}'}"']
+ & X^\vee\otimes X \arrow[d,"{\mathrm{ev}}"]\\
+ &1
 \end{tikzcd}
-\qquad\qquad
-\begin{tikzcd}[column sep=large, row sep=large]
-1 \arrow[r,"\mathrm{coev}"] \arrow[dr,"\mathrm{coev}'"'] & X\otimes X^\vee \arrow[d,"B_{X,X^\vee}"]\\
-& X^\vee\otimes X
+\qquad
+\begin{tikzcd}[column sep=large,row sep=large]
+1 \arrow[r,"{\mathrm{coev}}"] \arrow[dr,"{\mathrm{coev}'}"']
+ & X\otimes X^\vee \arrow[d,"{B_{X,X^\vee}}"]\\
+ &X^\vee\otimes X
 \end{tikzcd}
 \]
-La dirección en que se aplica la trenza es indiferente. La dualidad en una categoría monoidal simétrica es el análogo de la noción de anillo conmutativo, donde el orden de los factores de un producto no importa, y aquí tampoco: las dos trenzas $B_{X,X^\vee}$ y $B_{X^\vee,X}$ son inversas entre sí, de modo que permutar los factores en un sentido o en el otro da el mismo resultado. Por eso la elección anterior es la natural, y la que hace encajar los dominios y codominios de $\mathrm{ev}'$ y $\mathrm{coev}'$.
-
-Para que $X$ sea un dual de $X^\vee$ hay que comprobar las dos identidades de zigzag con $\mathrm{ev}'$ y $\mathrm{coev}'$; por ejemplo, la que afirma que la composición
+Se debe comprobar que estos morfismos satisfacen las dos identidades de zigzag. Reproducimos la comparación de caminos de la pizarra, abreviando $Y=X^\vee$ y omitiendo los subíndices de $\alpha,\lambda,\rho$ y de las identidades cuando el dominio los determina. El camino negro es el zigzag nuevo sobre $Y$; el rojo es el zigzag original.
+% P03, derecha. Se separan las dos apariciones de Y tensor (X tensor Y).
 \[
-X^\vee\xrightarrow{\ \lambda_{X^\vee}^{-1}\ }1\otimes X^\vee\xrightarrow{\ \mathrm{coev}'\otimes1_{X^\vee}\ }(X^\vee\otimes X)\otimes X^\vee\xrightarrow{\ \alpha_{X^\vee,X,X^\vee}\ }X^\vee\otimes(X\otimes X^\vee)\xrightarrow{\ 1_{X^\vee}\otimes\mathrm{ev}'\ }X^\vee\otimes1\xrightarrow{\ \rho_{X^\vee}\ }X^\vee
+\begin{tikzcd}[column sep=6em,row sep=1.8em]
+Y \arrow[d,"{\lambda^{-1}}"'] \arrow[r,"{\rho^{-1}}",red]
+ & Y\otimes1 \arrow[d,"{1\otimes\mathrm{coev}}",red]\\
+1\otimes Y \arrow[d,"{\mathrm{coev}\otimes1}"']
+ \arrow[ur,"{B_{1,Y}}" description,red]
+ &Y\otimes(X\otimes Y)
+ \arrow[dddd,"{\alpha^{-1}}",red]\\
+(X\otimes Y)\otimes Y \arrow[d,"{B_{X,Y}\otimes1}"']
+ \arrow[ur,"{B_{X\otimes Y,Y}}" description,red]&\\
+(Y\otimes X)\otimes Y \arrow[d,"{\alpha}"']&\\
+Y\otimes(X\otimes Y) \arrow[d,"{1\otimes B_{X,Y}}"']&\\
+Y\otimes(Y\otimes X) \arrow[d,"{1\otimes\mathrm{ev}}"']
+ \arrow[r,"{B_{Y,Y\otimes X}}",red]
+ &(Y\otimes X)\otimes Y \arrow[d,"{\mathrm{ev}\otimes1}",red]\\
+Y\otimes1 \arrow[d,"{\rho}"'] \arrow[r,"{B_{Y,1}}",red]
+ &1\otimes Y \arrow[dl,"{\lambda}",red]\\
+Y&
+\end{tikzcd}
 \]
-es $1_{X^\vee}$. Obsérvese que $\mathrm{coev}'$ aterriza en $X^\vee\otimes X$ y $\mathrm{ev}'$ sale de $X\otimes X^\vee$, que es lo que hace que las componentes encajen. La verificación se hace sustituyendo las definiciones y reordenando. Como todos los morfismos que intervienen en los reordenamientos son $a$, $\lambda$, $\rho$ y $B$, el \myref{teo:mackane-kelly} permite trabajar en el modelo estricto, donde $a$, $\lambda$ y $\rho$ son identidades; allí la composición anterior se reduce a
+Los triángulos de unidades conmutan por coherencia. La comparación que contiene $\mathrm{coev}$ y la que contiene $\mathrm{ev}$ conmutan por naturalidad de $B$. En la región central, si distinguimos las dos apariciones de $Y$ mediante $Y_1,Y_2$, los dos caminos llevan
 \[
-(1_{X^\vee}\otimes\mathrm{ev}')\circ(\mathrm{coev}'\otimes1_{X^\vee}),
+(X\otimes Y_1)\otimes Y_2
+\quad\text{a}\quad
+(Y_2\otimes X)\otimes Y_1.
 \]
-y sustituyendo $\mathrm{coev}'=B_{X,X^\vee}\circ\mathrm{coev}$ y $\mathrm{ev}'=\mathrm{ev}\circ B_{X,X^\vee}$ esta expresión es la identidad de zigzag original de $X^\vee$ ---que vale $1_{X^\vee}$ por hipótesis--- con la trenza insertada dos veces:
-\[
-(1_{X^\vee}\otimes\mathrm{ev}')\circ(\mathrm{coev}'\otimes1_{X^\vee})=(1_{X^\vee}\otimes\mathrm{ev})\circ(1_{X^\vee}\otimes B_{X,X^\vee})\circ(B_{X,X^\vee}\otimes1_{X^\vee})\circ(\mathrm{coev}\otimes1_{X^\vee}).
-\]
-Las dos inserciones de $B_{X,X^\vee}$ vienen de las definiciones de $\mathrm{coev}'$ y $\mathrm{ev}'$: la primera del producto $\mathrm{coev}'\otimes1_{X^\vee}$ y la segunda del producto $1_{X^\vee}\otimes\mathrm{ev}'$. El axioma del hexágono, que es el que gobierna cómo interactúan las trenzas con la composición, permite reordenarlas y reducir la expresión a la identidad de zigzag de la hipótesis. En el caso de los espacios vectoriales de dimensión finita el cálculo es explícito: tomando $\mathrm{coev}(1)=\sum_i v_i\otimes\varphi^i$ se obtiene
-\[
-\sum_i\varphi^i\otimes v_i\otimes\varphi
-\ \longmapsto\ \sum_i\varphi^i\otimes\varphi\otimes v_i
-\ \longmapsto\ \sum_i\varphi^i\,\varphi(v_i)=\varphi,
-\]
-es decir, $1_{X^\vee}$. La otra identidad de zigzag se prueba de manera parecida.
-
-\begin{nota}
-   Este paso es el más delicado del capítulo, y en la pizarra se escribió dibujando \emph{dos caminos} sobre el mismo diagrama: uno en negro, que es la identidad de zigzag que se quiere probar, y otro en rojo, que es la identidad de zigzag de la hipótesis, con las flechas de naturalidad que los conectan. Trabajar en el modelo estricto, como se hace aquí, evita tener que arrastrar los asociadores en cada paso, pero oculta el trazado de los dos caminos; conviene tener el diagrama del pizarrón a la vista al seguir la sustitución.
-\end{nota}
+Por el \myref{teo:mackane-kelly} esos caminos coinciden. El camino negro es, por tanto, igual al rojo, que vale $1_Y$ por la dualidad original.La otra identidad se comprueba de forma similar.
 \end{proof}
 
-\begin{ejer}[La otra identidad de zigzag]
-Completar la demostración de la \myref{prop:simetria-dual} comprobando la identidad de zigzag restante.
-\end{ejer}
+\begin{nota}
+En la pizarra se reutilizó el vértice $X^\vee\otimes(X\otimes X^\vee)$ para dos lugares del trazado. Para que la comparación sea válida se han separado esas dos apariciones: no se puede identificar cada camino que llega a ellas invocando únicamente que los objetos escritos coinciden. Las apariciones de $X^\vee$ pueden haber sido permutadas. También se escribe $\lambda^{-1}$ en la primera flecha, en lugar de la etiqueta $1\otimes\lambda^{-1}$ que aparece en la captura.
+\end{nota}
 
-\begin{sol}
-Es el mismo cálculo con los papeles de $X$ y $X^\vee$ intercambiados. La composición que hay que verificar es
-\[
-X\xrightarrow{\ \lambda_X^{-1}\ }1\otimes X\xrightarrow{\ \mathrm{coev}'\otimes1_X\ }(X^\vee\otimes X)\otimes X\xrightarrow{\ \alpha_{X^\vee,X,X}\ }X^\vee\otimes(X\otimes X)\cdots
-\]
-y la sustitución de $\mathrm{coev}'=B_{X,X^\vee}\circ\mathrm{coev}$ y $\mathrm{ev}'=\mathrm{ev}\circ B_{X,X^\vee}$ reduce la expresión, en el modelo estricto, a
-\[
-(1_X\otimes\mathrm{ev}')\circ(\mathrm{coev}'\otimes1_X)=(1_X\otimes\mathrm{ev})\circ(1_X\otimes B_{X^\vee,X})\circ(B_{X,X^\vee}\otimes1_X)\circ(\mathrm{coev}\otimes1_X),
-\]
-que vuelve a ser la identidad de zigzag original con la trenza insertada dos veces; el hexágono las cancela y el resultado es $1_X$. Nótese que en esta dirección el orden en que aparecen las dos trenzas se invierte respecto de la anterior, que es justamente lo que hace que ambas se cancelen.
-\end{sol}
+% \begin{ejer}[La otra identidad de zigzag]
+% Completar la demostración de la \myref{prop:simetria-dual} comprobando la identidad restante.
+% \end{ejer}
+% \begin{sol}
+% Con $Y=X^\vee$, el compuesto correcto es
+% \[
+% \begin{tikzcd}[column sep=large,row sep=large]
+% X \arrow[r,"{\rho_X^{-1}}"] \arrow[ddd,equal]
+%  &X\otimes1 \arrow[d,"{1_X\otimes\mathrm{coev}'}"]\\
+%  &X\otimes(Y\otimes X) \arrow[d,"{\alpha^{-1}_{X,Y,X}}"]\\
+%  &(X\otimes Y)\otimes X \arrow[d,"{\mathrm{ev}'\otimes1_X}"]\\
+% X &1\otimes X \arrow[l,"{\lambda_X}"']
+% \end{tikzcd}
+% \]
+% Suprimiendo solo los asociadores y las unidades, el compuesto es
+% \[
+% \begin{aligned}
+% &(\mathrm{ev}\otimes1_X)
+%  (B_{X,Y}\otimes1_X)(1_X\otimes B_{X,Y})
+%  (1_X\otimes\mathrm{coev})\\
+% &\quad=(\mathrm{ev}\otimes1_X)
+%  B_{X,Y\otimes X}B_{X,X\otimes Y}
+%  (1_X\otimes\mathrm{coev})\\
+% &\quad=(1_X\otimes\mathrm{ev})
+%  B_{X,X\otimes Y}(1_X\otimes\mathrm{coev})\\
+% &\quad=(1_X\otimes\mathrm{ev})
+%  (\mathrm{coev}\otimes1_X)
+% =1_X.
+% \end{aligned}
+% \]
+% En la primera igualdad se comparan dos permutaciones de los tres factores: ambas llevan $X_1\otimes X_2\otimes Y$ a $Y\otimes X_1\otimes X_2$. La segunda y la tercera usan la naturalidad de $B$ con $\mathrm{ev}$ y $\mathrm{coev}$, respectivamente. La última es el zigzag original de $X$. Al reinsertar los asociadores y las unidades se obtiene la igualdad del diagrama.
+
+% \end{sol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Unicidad del dual}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-El dual de un objeto, cuando existe, es único en el sentido más débil posible: único salvo isomorfismo.
+% \subsection{Unicidad del dual}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{coro}\label{coro:unicidad-dual}
-Si $X$ admite un dual, este es único salvo isomorfismo natural.
+Si $X$ admite un dual, este es único salvo isomorfismo.
 \end{coro}
 \begin{proof}
 Sean $X^\vee$ y $X^*$ dos duales de $X$. Por la \myref{prop:adjuncion}, los funtores $-\otimes X^\vee$ y $-\otimes X^*$ son ambos adjuntos derechos de $-\otimes X$. Como los adjuntos derechos son únicos salvo isomorfismo natural, existe un isomorfismo natural $-\otimes X^\vee\cong-\otimes X^*$. Evaluándolo en el objeto unidad se obtiene
 \[
-X^\vee\cong1\otimes X^\vee\cong1\otimes X^*\cong X^*,
+\begin{tikzcd}[column sep=large,row sep=large]
+1\otimes X^\vee \arrow[r,"{\cong}"] \arrow[d,"{\lambda_{X^\vee}}"',"{\cong}"]
+ &1\otimes X^* \arrow[d,"{\lambda_{X^*}}","{\cong}"']\\
+X^\vee \arrow[r,"{\cong}"'] &X^*
+\end{tikzcd}
 \]
 donde los isomorfismos de los extremos son las unidades monoidales.
 \end{proof}
 
 \begin{nota}
-   La unicidad es «salvo isomorfismo» y no «a secas», y esa diferencia tendrá consecuencias en la sección siguiente: significa que \emph{no} hay una manera canónica de asignar a cada objeto su dual, sino solo una clase de isomorfismo. Es la misma situación que en álgebra homológica con los funtores derivados: el funtor $\mathrm{Tor}$ que se define al principio depende de las resoluciones proyectivas elegidas, y solo después se comprueba que resoluciones distintas dan funtores naturalmente isomorfos. En las categorías que aparecen en la práctica —y en particular en las de espectros— suele haber una elección canónica y el problema desaparece. (Este paralelismo con el álgebra homológica se explicó oralmente en clase: el profesor lo compara expresamente con «cuando dices que quieres hacer funtores derivados y tienes que escoger una resolución».)
+   La unicidad es «salvo isomorfismo» y no «a secas», y esa diferencia tendrá consecuencias en la sección siguiente: la sola existencia de duales no especifica una elección de objeto y de morfismos de dualidad para cada $X$. Una vez fijadas dos dualidades de $X$, existe un único isomorfismo entre ellas compatible con sus evaluaciones y coevaluaciones. Es la misma situación que en álgebra homológica con los funtores derivados: el funtor $\mathrm{Tor}$ que se define al principio depende de las resoluciones proyectivas elegidas, y solo después se comprueba que resoluciones distintas dan funtores naturalmente isomorfos. En las categorías que aparecen en la práctica —y en particular en las de espectros— suele haber una elección canónica y el problema desaparece. (Este paralelismo con el álgebra homológica se explicó oralmente en clase: el profesor lo compara expresamente con «cuando dices que quieres hacer funtores derivados y tienes que escoger una resolución».)
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{El dual de un morfismo}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-La \myref{coro:unicidad-dual} dice que tomar el dual no define un funtor: para definir un funtor habría que elegir un dual para cada objeto, y esa elección no es canónica. Lo que sí se puede hacer es fijar los duales y construir entonces el funtor.
+El \myref{coro:unicidad-dual} dice que tomar el dual no define un funtor: para definir un funtor habría que elegir un dual para cada objeto, y esa elección no es canónica. Lo que sí se puede hacer es fijar los duales y construir entonces el funtor. En el momento en que se fijan los duales, con los duales escogidos sí se tiene un funtor; la única libertad que queda es la elección, y esa elección es única salvo isomorfismo.
 
-La costumbre de trabajar con el dual de espacios vectoriales induce aquí una mala costumbre: la de pensar que el dual define siempre un funtor. En este contexto general no es así, pero casi. En el momento en que se fijan los duales, con los duales escogidos sí se tiene un funtor; la única libertad que queda es la elección, y esa elección es única salvo isomorfismo.
-
-Supongamos fijados duales $X^\vee$ e $Y^\vee$ de $X$ e $Y$. La composición
+Supongamos fijados duales $X^\vee$ e $Y^\vee$ de $X$ e $Y$, junto con sus evaluaciones y coevaluaciones. La composición
 \[
 \hom_{\mathcal C}(X,Y)\cong\hom_{\mathcal C}(X\otimes Y^\vee,\ 1)\cong\hom_{\mathcal C}(Y^\vee\otimes X,\ 1)\cong\hom_{\mathcal C}(Y^\vee,\ X^\vee)
 \]
 es una biyección, donde el primer isomorfismo usa que $Y$ es un dual de $Y^\vee$ —por la \myref{prop:simetria-dual}— y el último que $X^\vee$ es un dual de $X$. La imagen de $f$ se denota $f^\vee$ y se llama el \emph{dual} de $f$.
 
-Explícitamente, $f^\vee\colon Y^\vee\to X^\vee$ es la composición
+Explícitamente, las primeras dos biyecciones envían $f$ a la composición
+% P05, derecha, diagrama superior.
 \[
-Y^\vee\xrightarrow{\ 1_{Y^\vee}\otimes\mathrm{coev}\ }Y^\vee\otimes X\otimes X^\vee\xrightarrow{\ 1_{Y^\vee}\otimes f\otimes1_{X^\vee}\ }Y^\vee\otimes Y\otimes X^\vee\xrightarrow{\ \mathrm{ev}\otimes1_{X^\vee}\ }1\otimes X^\vee\xrightarrow{\ \lambda_{X^\vee}\ }X^\vee .
+\begin{tikzcd}[column sep=large,row sep=large]
+Y^\vee\otimes X \arrow[r,"{1\otimes f}"] \arrow[dr,"{\mathrm{ev}_Y(1\otimes f)}"']
+ &Y^\vee\otimes Y \arrow[d,"{\mathrm{ev}_Y}"]\\
+ &1 .
+\end{tikzcd}
+\]
+La última adjunción produce el siguiente diagrama. Se omiten los asociadores y las unidades, como en la pizarra; en particular, la primera flecha incluye $\rho_{Y^\vee}^{-1}$ y la última incluye $\lambda_{X^\vee}$.
+% P05, derecha, diagrama inferior.
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+Y^\vee \arrow[r,"{1\otimes\mathrm{coev}_X}"]
+ \arrow[d,"{f^\vee}"']
+ &Y^\vee\otimes X\otimes X^\vee \arrow[d,"{1\otimes f\otimes1}"]\\
+X^\vee
+ &Y^\vee\otimes Y\otimes X^\vee \arrow[l,"{\mathrm{ev}_Y\otimes1}"']
+\end{tikzcd}
 \]
 
-\begin{ejer}[El dual de la identidad y de una composición]
-Comprobar que $1_X^\vee=1_{X^\vee}$ y que $(g\circ f)^\vee=f^\vee\circ g^\vee$, eligiendo en cada caso los duales de manera que las composiciones tengan sentido.
-\end{ejer}
-
-\begin{sol}
-Para la identidad, la biyección $\hom(X,X)\to\hom(X^\vee,X^\vee)$ envía $1_X$ a $1_{X^\vee}$: la composición que define $1_X^\vee$ es
-\[
-X^\vee\xrightarrow{\ 1\otimes\mathrm{coev}\ }X^\vee\otimes X\otimes X^\vee\xrightarrow{\ 1\otimes1_X\otimes1\ }X^\vee\otimes X\otimes X^\vee\xrightarrow{\ \mathrm{ev}\otimes1\ }1\otimes X^\vee\xrightarrow{\ \lambda\ }X^\vee,
-\]
-que es la identidad de zigzag de la \myref{defi:dual} y por tanto vale $1_{X^\vee}$.
-
-Para la composición, sean $f\colon X\to Y$ y $g\colon Y\to Z$ y fíjense duales $X^\vee$, $Y^\vee$, $Z^\vee$. La construcción de $(g\circ f)^\vee$ inserta $\mathrm{coev}$ de $X$ y evalúa con $\mathrm{ev}$ de $Z$; la de $f^\vee\circ g^\vee$ inserta $\mathrm{coev}$ de $Y$ en $g^\vee$ y evalúa con $\mathrm{ev}$ de $Y$ en $f^\vee$. La igualdad se sigue de la identidad de zigzag de $Y$, que dice que insertar $\mathrm{coev}$ y después $\mathrm{ev}$ en $Y$ es la identidad; el resto es reasociar, lo que el \myref{teo:mackane-kelly} permite hacer sin verificar nada.
-\end{sol}
+Por practicidad, invertiré el orden de los ejercicios que fueron planteados.
 
 \begin{ejer}[El cuadrado que caracteriza a $f^\vee$]
 Probar que el diagrama
 \[
-\begin{tikzcd}[column sep=large, row sep=large]
-Y^\vee\otimes X \arrow[r,"1_{Y^\vee}\otimes f"] \arrow[d,"f^\vee\otimes1_X"'] & Y^\vee\otimes Y \arrow[d,"\mathrm{ev}_Y"]\\
-X^\vee\otimes X \arrow[r,"\mathrm{ev}_X"'] & 1
+\begin{tikzcd}[column sep=large,row sep=large]
+Y^\vee\otimes X
+    \arrow[r,"1_{Y^\vee}\otimes f"]
+    \arrow[d,"f^\vee\otimes1_X"']
+& Y^\vee\otimes Y \arrow[d,"\mathrm{ev}_Y"]\\
+X^\vee\otimes X \arrow[r,"\mathrm{ev}_X"']
+& 1
 \end{tikzcd}
 \]
 conmuta, y que la conmutatividad de este diagrama caracteriza a $f^\vee$.
 \end{ejer}
-
 \begin{sol}
-La conmutatividad se comprueba sustituyendo la definición de $f^\vee$ y simplificando con las identidades de zigzag; es un cálculo diagramático del mismo tipo que los anteriores.
+La biyección
+\[
+\hom_{\mathcal C}(Y^\vee,X^\vee)
+\longrightarrow\hom_{\mathcal C}(Y^\vee\otimes X,1),
+\qquad h\longmapsto\mathrm{ev}_X\circ(h\otimes1_X).
+\]
+tiene inversa que envía un morfismo $q\colon Y^\vee\otimes X\to1$ a $(q\otimes1_{X^\vee})\circ(1_{Y^\vee}\otimes\mathrm{coev}_X)$, omitiendo los asociadores y las unidades como en la definición. Al tomar $q=\mathrm{ev}_Y\circ(1_{Y^\vee}\otimes f)$ obtenemos exactamente la fórmula que define $f^\vee$. Por tanto, la imagen de $f^\vee$ bajo la biyección anterior es $\mathrm{ev}_Y\circ(1_{Y^\vee}\otimes f)$, lo que prueba la conmutatividad del cuadrado. La inyectividad de esa misma biyección prueba que $f^\vee$ es el único morfismo que lo hace conmutar.
+\end{sol}
 
-Para la caracterización, supongamos que $h\colon Y^\vee\to X^\vee$ hace conmutar el cuadrado. Entonces $\mathrm{ev}_X\circ(h\otimes1_X)=\mathrm{ev}_Y\circ(1_{Y^\vee}\otimes f)$, y componiendo ambos miembros por la derecha con $1_{Y^\vee}\otimes\mathrm{coev}_X$ y usando la identidad de zigzag de $X$ se obtiene $h=f^\vee$. Esto da una manera más conceptual de pensar el dual: $f^\vee$ es el único morfismo que hace conmutar el cuadrado de la evaluación, es decir, el único que respeta el «emparejamiento» entre un objeto y su dual.
+\begin{ejer}[Funtorialidad del dual]
+Comprobar que $1_X^\vee=1_{X^\vee}$ y que $(g\circ f)^\vee=f^\vee\circ g^\vee$, eligiendo en cada caso los duales de manera que las composiciones tengan sentido.
+\end{ejer}
+\begin{sol}
+Para la identidad, $1_{X^\vee}$ hace conmutar el cuadrado del ejercicio anterior con $f=1_X$, pues ambos caminos son $\mathrm{ev}_X$. Por la unicidad allí demostrada, $1_X^\vee=1_{X^\vee}$.
+
+Para la composición, sean $f\colon X\to Y$ y $g\colon Y\to Z$, con datos de dualidad fijados para $X$, $Y$ y $Z$. Consideremos el diagrama
+\[
+\begin{tikzcd}[column sep=large,row sep=large,cramped]
+Z^\vee\otimes X
+    \arrow[r,"g^\vee\otimes1_X"]
+    \arrow[d,"1_{Z^\vee}\otimes f"']
+& Y^\vee\otimes X
+    \arrow[r,"f^\vee\otimes1_X"]
+    \arrow[d,"1_{Y^\vee}\otimes f"]
+& X^\vee\otimes X
+    \arrow[dd,"\mathrm{ev}_X"]
+\\
+Z^\vee\otimes Y
+    \arrow[r,"g^\vee\otimes1_Y"]
+    \arrow[d,"1_{Z^\vee}\otimes g"']
+& Y^\vee\otimes Y
+    \arrow[dr,"\mathrm{ev}_Y"]
+&
+\\
+Z^\vee\otimes Z
+    \arrow[rr,"\mathrm{ev}_Z"']
+&& 1.
+\end{tikzcd}
+\]
+El cuadrado superior izquierdo conmuta por la funtorialidad de $\otimes$: ambos caminos son $g^\vee\otimes f$. Las regiones derecha e inferior conmutan por el ejercicio anterior, aplicado a $f$ y a $g$, respectivamente. Por tanto, conmuta el contorno exterior, es decir,
+\[
+\mathrm{ev}_X\circ\bigl((f^\vee\circ g^\vee)\otimes1_X\bigr)
+=\mathrm{ev}_Z\circ\bigl(1_{Z^\vee}\otimes(g\circ f)\bigr).
+\]
+Así, $f^\vee\circ g^\vee$ satisface el cuadrado que caracteriza a $(g\circ f)^\vee$. Por unicidad, $(g\circ f)^\vee=f^\vee\circ g^\vee$.
 \end{sol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Categorías monoidales cerradas y el hom interno}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -275,18 +335,18 @@ En una categoría monoidal simétrica general no todo objeto tiene dual, y el du
 \begin{defi}\label{defi:cerrada}
 Una categoría monoidal simétrica $\mathcal C$ es \emph{cerrada} si para todo objeto $X$ el funtor
 \[
--\otimes X\colon\mathcal C\longrightarrow\mathcal C
+X\otimes-\colon\mathcal C\longrightarrow\mathcal C
 \]
 admite un adjunto derecho, que se denota $\ihom(X,-)$ y se llama el \emph{hom interno}.
 \end{defi}
 
-La adjunción se escribe, para todos $X,Y,Z$,
+Se conserva la convención de P06: el objeto fijo $X$ está a la izquierda. Por simetría, esta adjunción también da una para $-\otimes X$. Para todos $X,Y,Z$,
 \[
-\hom_{\mathcal C}(Y\otimes X,\ Z)\cong\hom_{\mathcal C}\bigl(Y,\ \ihom(X,Z)\bigr).
+\hom_{\mathcal C}(X\otimes Y,\ Z)\cong\hom_{\mathcal C}\bigl(Y,\ \ihom(X,Z)\bigr).
 \]
 
 \begin{ejem}\label{ejem:top-cerrada}
-La categoría $\Top$ de espacios compactamente generados débilmente Hausdorff, con el producto, es monoidal simétrica cerrada. El hom interno es el espacio de mapeos con la topología compacto-abierta:
+La categoría $\Top$ de espacios compactamente generados débilmente Hausdorff, con el producto en esa categoría, es monoidal simétrica cerrada. El hom interno es el espacio de mapeos con la topología compacto-abierta \emph{compactamente generada} (la $k$-ificación de la topología compacto-abierta):
 \[
 \ihom(X,Z)=\Map(X,Z),
 \]
@@ -314,7 +374,7 @@ que dice que una aplicación de dos variables es lo mismo que una aplicación de
 La noción de hom interno está relacionada con la de dual por la unicidad de los adjuntos.
 
 \begin{prop}\label{prop:hom-dual}
-Si $X$ es dualizable con dual $X^\vee$, entonces existe un isomorfismo natural
+En una categoría monoidal simétrica cerrada, si $X$ es dualizable con dual $X^\vee$, existe un isomorfismo natural
 \[
 \ihom(X,-)\cong-\otimes X^\vee .
 \]
@@ -324,7 +384,7 @@ X^\vee\cong1\otimes X^\vee\cong\ihom(X,1).
 \]
 \end{prop}
 \begin{proof}
-Por la \myref{prop:adjuncion}, $-\otimes X^\vee$ es adjunto derecho de $-\otimes X$; por la \myref{defi:cerrada}, $\ihom(X,-)$ también lo es. La unicidad de los adjuntos derechos da el isomorfismo natural. Evaluando en el objeto unidad y usando la unidad monoidal se obtiene la segunda afirmación.
+Por la \myref{prop:adjuncion}, $-\otimes X^\vee$ es adjunto derecho de $-\otimes X$; por la \myref{defi:cerrada} y la simetría, $\ihom(X,-)$ también lo es. La unicidad de los adjuntos derechos da el isomorfismo natural. Evaluando en el objeto unidad y usando la unidad monoidal se obtiene la segunda afirmación.
 \end{proof}
 
 Lo interesante de la \myref{prop:hom-dual} es que la expresión $\ihom(X,1)$ tiene sentido aunque $X$ no sea dualizable, porque el hom interno existe para todo objeto en una categoría cerrada. Eso permite definir un candidato a dual en toda la categoría.
@@ -338,10 +398,18 @@ y también cada uno de sus valores, se llama el \emph{dual funcional}. Se denota
 \[
 DX\coloneqq\ihom(X,1).
 \]
+Su acción sobre morfismos invierte las flechas:
+% P07, derecha.
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+X \arrow[d,"{f}"'] \arrow[r,mapsto] &\ihom(X,1)\\
+Y \arrow[r,mapsto] &\ihom(Y,1) \arrow[u,"{f^*=\ihom(f,1)}"']
+\end{tikzcd}
+\]
 \end{defi}
 
 \begin{nota}
-   El dual funcional está definido sobre toda la categoría y es funtor sin necesidad de elegir nada: al ser el hom interno un funtor en cada variable, $\ihom(-,1)$ lo es. Sin embargo, \emph{no siempre es un dual}: la \myref{prop:hom-dual} dice que si $X$ es dualizable entonces $DX$ es un dual de $X$, pero el recíproco es falso. El ejemplo siguiente lo muestra.
+   El dual funcional está definido sobre toda la categoría una vez fijado el hom interno: al ser el hom interno un funtor en cada variable, $\ihom(-,1)$ lo es. Sin embargo, \emph{no siempre es un dual}: la \myref{prop:hom-dual} dice que si $X$ es dualizable entonces $DX$ es un dual de $X$, pero la mera existencia de $DX$ no implica que $X$ sea dualizable. Si $DX$ es efectivamente un dual de $X$, entonces $X$ es dualizable por definición. El ejemplo siguiente lo muestra.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -365,35 +433,60 @@ Conviene precisar el estatus de los morfismos de la dualidad: dar una evaluació
 Veamos que los dualizables son los de dimensión finita. Si $V$ es dualizable con dual $V^\vee$, la coevaluación es un morfismo
 \[
 \mathrm{coev}\colon k\longrightarrow V\otimes_k V^\vee,
+\qquad \mathrm{ev}\colon V^\vee\otimes_k V\longrightarrow k,
 \]
 que está determinado por la imagen de $1$, y esa imagen es una suma finita
 \[
 1\longmapsto\sum_{i=1}^{m}v_i\otimes f_i
 \]
-con $v_i\in V$ y $f_i\in V^\vee$. Obsérvese que no se pide que los $v_i$ formen una base ni los $f_i$ una base dual: la suma finita es forzosa porque $1$ es un elemento de $V\otimes_k V^\vee$, y todo elemento de un producto tensorial es suma finita de tensores elementales.
+con $v_i\in V$ y $f_i\in V^\vee$. Obsérvese que no se pide que los $v_i$ formen una base ni los $f_i$ una base dual: la suma finita es forzosa porque $\mathrm{coev}(1)$ es un elemento de $V\otimes_k V^\vee$, y todo elemento de un producto tensorial es suma finita de tensores elementales.
 
 En los cálculos que siguen se omiten los asociadores y las unidades, que no intervienen en el argumento.
 
-Consideremos ahora la composición
+Consideremos el zigzag que se calculó en clase:
+% P09, izquierda.
 \[
-V^\vee\xrightarrow{\ 1\otimes\mathrm{coev}\ }V^\vee\otimes_k V\otimes_k V^\vee\xrightarrow{\ \mathrm{ev}\otimes1\ }k\otimes_k V^\vee\cong V^\vee .
+\begin{tikzcd}[column sep=large]
+V^\vee \arrow[r,"{1\otimes\mathrm{coev}}"]
+ \arrow[rr,bend left=28,"{1_{V^\vee}}"]
+ &V^\vee\otimes_k V\otimes_k V^\vee
+ \arrow[r,"{\mathrm{ev}\otimes1}"] &V^\vee .
+\end{tikzcd}
 \]
-Sobre un elemento $f\in V^\vee$ actúa así:
+Sobre un elemento $f\in V^\vee$ actúa como
 \[
-f\longmapsto\sum_{i=1}^{m}f\otimes v_i\otimes f_i\longmapsto\sum_{i=1}^{m}\mathrm{ev}(f\otimes v_i)\otimes f_i=\sum_{i=1}^{m}f(v_i)\,f_i,
+f\longmapsto\sum_{i=1}^m f\otimes v_i\otimes f_i
+\longmapsto\sum_{i=1}^m\mathrm{ev}(f\otimes v_i)f_i.
 \]
-donde el último paso usa que el isomorfismo $k\otimes_k V^\vee\cong V^\vee$ está dado por multiplicar. Por la identidad de zigzag esta composición es la identidad de $V^\vee$, de modo que para todo $f\in V^\vee$ se tiene
+Como el compuesto es la identidad, $V^\vee$ está generado por $f_1,\ldots,f_m$.
+Para concluir también la finitud de $V$, se usa el otro zigzag:
 \[
-f=\sum_{i=1}^{m}f(v_i)\,f_i\in\langle f_1,\dots,f_m\rangle .
+\begin{tikzcd}[column sep=large]
+V \arrow[r,"{\mathrm{coev}\otimes1}"]
+ \arrow[rr,bend left=28,"{1_V}"]
+ &V\otimes_k V^\vee\otimes_k V
+ \arrow[r,"{1\otimes\mathrm{ev}}"] &V .
+\end{tikzcd}
 \]
-Es decir, $V^\vee$ está contenido en el subespacio generado por los $m$ elementos fijos $f_1,\dots,f_m$, y por tanto es de dimensión finita; como $\dim V^\vee=\dim V$ cuando ambos son finitos, $V$ también lo es. Recíprocamente, si $V$ es de dimensión finita ya se sabe que $V^\vee=\Hom_k(V,k)$ es un dual de $V$ (véase el \myref{ejem:vect}).
+En consecuencia,
+\[
+v=\sum_{i=1}^m v_i\,\mathrm{ev}(f_i\otimes v)
+\in\langle v_1,\ldots,v_m\rangle
+\qquad(v\in V).
+\]
+Así, $V$ tiene dimensión finita. Recíprocamente, en dimensión finita ya se construyó el dual usual $\Hom_k(V,k)$ en el \myref{ejem:vect}.
 \end{proof}
 
+% \begin{nota}
+% El cálculo muestra directamente que $V^\vee$ es finito-dimensional, aunque debajo se concluye que lo es $V$. El segundo zigzag completa ese paso sin suponer de antemano que $\dim V=\dim V^\vee$. Además, mientras no se identifique el dual abstracto con $\Hom_k(V,k)$, el coeficiente debe escribirse $\mathrm{ev}(f\otimes v_i)$, no $f(v_i)$.
+% \end{nota}
+
 \begin{nota}
-   Lo que el ejemplo ilustra es que el dual funcional $DV=\Hom_k(V,k)$ está definido para cualquier espacio vectorial, incluso de dimensión infinita, y que sin embargo solo es un dual en el sentido de categorías monoidales simétricas cuando $V$ es de dimensión finita. En dimensión infinita $DV$ es estrictamente más grande que $V$ y la coevaluación no puede existir, porque $1$ tendría que ir a una suma infinita.
+El dual funcional $DV=\Hom_k(V,k)$ existe también en dimensión infinita. Lo que no puede existir en ese caso es una coevaluación que satisfaga los zigzags: su imagen de $1$ sería una suma finita, y el argumento anterior obligaría a que $V$ fuera finito-dimensional.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{El hom interno como mejora de los conjuntos de morfismos}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -406,9 +499,9 @@ En una categoría monoidal simétrica cerrada existe una biyección natural
 \]
 \end{prop}
 \begin{proof}
-Se usa la adjunción que define el hom interno con $Y=1$:
+Se usa la adjunción que define el hom interno con el objeto unidad en la variable libre:
 \[
-\hom_{\mathcal C}(1,\ \ihom(X,Y))\cong\hom_{\mathcal C}(1\otimes X,\ Y)\cong\hom_{\mathcal C}(X,Y),
+\hom_{\mathcal C}(1,\ \ihom(X,Y))\cong\hom_{\mathcal C}(X\otimes1,\ Y)\cong\hom_{\mathcal C}(X,Y),
 \]
 donde el último paso es la unidad monoidal.
 \end{proof}
@@ -420,20 +513,30 @@ En $\Top$ el hom interno es $\Map(X,Y)$ \emph{como espacio}, mientras que $\hom_
 \end{ejem}
 
 \begin{ejem}\label{ejem:ch}
-Sea $\Ch(\Ab)$ la categoría de complejos de cadenas de grupos abelianos, con el producto tensorial de complejos. Es monoidal simétrica cerrada, y el hom interno es el complejo de homomorfismos de complejos:
+Sea $\Ch(\Ab)$ la categoría de complejos de cadenas de grupos abelianos, con diferenciales que bajan el grado. Es monoidal simétrica cerrada para el producto tensorial de complejos. Su hom interno es
 \[
-\ihom(C_*,D_*)_n=\prod_{i\in\mathbb Z}\Hom_{\Ab}(C_i,\ D_{i+n}),
+\ihom(C_*,D_*)_n=\prod_{i\in\mathbb Z}\Hom_{\Ab}(C_i,D_{i+n}).
 \]
-con las diferenciales inducidas por las de $C_*$ y $D_*$, que llevan signos. En cambio, los morfismos de complejos son las familias $(f_i\colon C_i\to D_i)$ que conmutan con las diferenciales, es decir, tales que
+Si $f=(f_i)$ tiene grado $n$, su diferencial es
 \[
-\partial'_i\circ f_i=f_{i-1}\circ\partial_i .
+(\partial f)_i=\partial^D_{i+n}f_i-(-1)^n f_{i-1}\partial^C_i.
 \]
-La diferencia es visible: los morfismos de $\ihom(C_*,D_*)_n$ van de $C_i$ a $D_{i+n}$ y saltan de grado, mientras que los morfismos de complejos van de $C_i$ a $D_i$ y no saltan. La relación entre ambos es la esperada por la \myref{prop:hom-mor}: tomando $Z[0]$ como unidad monoidal,
+En particular, una familia de grado cero es un morfismo de complejos precisamente cuando
+$\partial^D_i f_i=f_{i-1}\partial^C_i$, es decir, cuando es un ciclo de grado cero del hom interno. Por tanto, con unidad monoidal $\mathbb Z[0]$,
+% P11, izquierda, con Z_0 en lugar de H_0.
 \[
-\hom_{\Ch(\Ab)}(Z[0],\ \ihom(C_*,D_*)_*)\cong H_0\bigl(\ihom(C_*,D_*)_*\bigr)\cong\hom_{\Ch(\Ab)}(C_*,D_*),
+\begin{aligned}
+\hom_{\Ch(\Ab)}(C_*,D_*)
+&\cong Z_0\bigl(\ihom(C_*,D_*)_*\bigr)\\
+&\cong\hom_{\Ch(\Ab)}
+ \bigl(\mathbb Z[0],\ihom(C_*,D_*)_*\bigr).
+\end{aligned}
 \]
-que es el conocido cálculo del grupo de homología cero del complejo de homomorfismos.
 \end{ejem}
+
+\begin{nota}
+En P11 y en la explicación oral se escribió $H_0$ en lugar de $Z_0$. En la categoría de complejos, los morfismos son los ciclos; al pasar al cociente por los bordes se identifican los morfismos homotópicos. Así, $H_0(\ihom(C_*,D_*)_*)$ corresponde a las clases de homotopía de morfismos de complejos, no a los morfismos de $\Ch(\Ab)$.
+\end{nota}
 
 \begin{nota}
    El \myref{ejem:ch} es el más ilustrativo de los tres: en los dos primeros el hom interno y el conjunto de morfismos están dados por el mismo conjunto subyacente, lo que oculta la diferencia, mientras que aquí el hom interno es un complejo con mucha más estructura. Conviene volver a este ejemplo cuando la notación del hom interno resulte confusa.
@@ -446,91 +549,144 @@ que es el conocido cálculo del grupo de homología cero del complejo de homomor
 El hom interno satisface una lista de propiedades que son las análogas de las de los conjuntos de morfismos. Todas ellas se obtienen como adjuntos de morfismos evidentes.
 
 \begin{prop}\label{prop:hom-propiedades}
-En una categoría monoidal simétrica cerrada $\mathcal C$:
-\begin{enumerate}[label = \textup{(\roman*)}]
+En una categoría monoidal simétrica cerrada $\mathcal C$, escribamos
+$H_{U,V}=\ihom(U,V)$. Se tienen los siguientes morfismos.
+\begin{enumerate}[label=\textup{(\roman*)}]
 \item \emph{Evaluación.} El morfismo
+$\mathrm{ev}_{X,Y}\colon X\otimes H_{X,Y}\to Y$
+es el adjunto de $1_{H_{X,Y}}$:
+% P11, derecha.
 \[
-X\otimes\ihom(X,Y)\xrightarrow{\ \mathrm{ev}\ }Y
+\begin{tikzcd}[column sep=large,row sep=1em]
+\hom_{\mathcal C}(X\otimes H_{X,Y},Y)
+ \arrow[r,"{\cong}"]
+ &\hom_{\mathcal C}(H_{X,Y},H_{X,Y})\\
+\mathrm{ev}_{X,Y}
+ &1_{H_{X,Y}}\arrow[l,mapsto]
+\end{tikzcd}
 \]
-es el adjunto de la identidad de $\ihom(X,Y)$, es decir, corresponde a $1_{\ihom(X,Y)}$ bajo
+\item \emph{Composición.} Existe
+$c_{X,Y,Z}\colon H_{X,Y}\otimes H_{Y,Z}\to H_{X,Z}$,
+adjunto del compuesto del diagrama:
+% P12, izquierda.
 \[
-\hom_{\mathcal C}\bigl(X\otimes\ihom(X,Y),\ Y\bigr)\cong\hom_{\mathcal C}\bigl(\ihom(X,Y),\ \ihom(X,Y)\bigr).
+\begin{tikzcd}[column sep=large,row sep=large]
+X\otimes H_{X,Y}\otimes H_{Y,Z}
+ \arrow[r,"{\mathrm{ev}_{X,Y}\otimes1}"]
+ \arrow[dr,"{\mathrm{ev}_{Y,Z}(\mathrm{ev}_{X,Y}\otimes1)}"']
+ &Y\otimes H_{Y,Z}\arrow[d,"{\mathrm{ev}_{Y,Z}}"]\\
+ &Z .
+\end{tikzcd}
 \]
-\item \emph{Composición.} Existe un morfismo
+\item \emph{Identidad.} Existe
+$u_X\colon1\to H_{X,X}$, adjunto de
+$\rho_X\colon X\otimes1\to X$. Es una unidad para la composición; la identidad izquierda se expresa en
+% P12, derecha.
 \[
-\ihom(X,Y)\otimes\ihom(Y,Z)\longrightarrow\ihom(X,Z),
+\begin{tikzcd}[column sep=large,row sep=large]
+1\otimes H_{X,Y}\arrow[r,"{u_X\otimes1}"]
+ \arrow[dr,"{\lambda_{H_{X,Y}}}"']
+ &H_{X,X}\otimes H_{X,Y}\arrow[d,"{c_{X,X,Y}}"]\\
+ &H_{X,Y}.
+\end{tikzcd}
+\]
+La conmutatividad se comprueba tomando adjuntos. La identidad derecha se obtiene de la misma manera.
+\item \emph{Ensamble.} Existe
+\[
+H_{X,Y}\otimes Z\xrightarrow{\ a_{X,Y,Z}\ }H_{X,Y\otimes Z},
 \]
 adjunto de
+$X\otimes H_{X,Y}\otimes Z
+\xrightarrow{\mathrm{ev}_{X,Y}\otimes1_Z}Y\otimes Z$.
+La letra $a_{X,Y,Z}$ denota aquí el ensamble; el asociador sigue denotándose $\alpha$.
+\item \emph{Tensor externo.} Existe
 \[
-X\otimes\ihom(X,Y)\otimes\ihom(Y,Z)\xrightarrow{\ \mathrm{ev}\otimes1\ }Y\otimes\ihom(Y,Z)\xrightarrow{\ \mathrm{ev}\ }Z .
+H_{X,Y}\otimes H_{W,Z}\longrightarrow H_{X\otimes W,Y\otimes Z},
 \]
-\item \emph{Identidad.} Existe un morfismo
+adjunto del siguiente compuesto:
+% P13, derecha.
 \[
-1\xrightarrow{\ u\ }\ihom(X,X),
+\begin{tikzcd}[column sep=large,row sep=large]
+X\otimes W\otimes H_{X,Y}\otimes H_{W,Z}
+ \arrow[d,"{1_X\otimes B_{W,H_{X,Y}}\otimes1}"']
+ \arrow[dr]\\
+X\otimes H_{X,Y}\otimes W\otimes H_{W,Z}
+ \arrow[r,"{\mathrm{ev}_{X,Y}\otimes\mathrm{ev}_{W,Z}}"']
+ &Y\otimes Z .
+\end{tikzcd}
 \]
-adjunto de $X\otimes1\xrightarrow{\ \rho_X\ }X$. El morfismo $u$ es la \emph{unidad por la izquierda} para la composición del hom interno: el compuesto
-\[
-1\otimes\ihom(X,Y)\xrightarrow{\ u\otimes1\ }\ihom(X,X)\otimes\ihom(X,Y)\xrightarrow{\ \text{composición}\ }\ihom(X,Y)
-\]
-es la unidad $\lambda_{\ihom(X,Y)}$, como se comprueba adjuntando los dos miembros y usando que la composición del hom interno es el adjunto de $\mathrm{ev}\circ(\mathrm{ev}\otimes1)$. Este es el diagrama que se dibujó en la pizarra junto al apartado.
-\item \emph{Ensamble.} Existe un morfismo
-\[
-\ihom(X,Y)\otimes Z\longrightarrow\ihom(X,\ Y\otimes Z),
-\]
-adjunto de
-\[
-X\otimes\ihom(X,Y)\otimes Z\xrightarrow{\ \mathrm{ev}\otimes1\ }Y\otimes Z .
-\]
-\item \emph{Tensor externo.} Existe un morfismo
-\[
-\ihom(X,Y)\otimes\ihom(W,Z)\longrightarrow\ihom(X\otimes W,\ Y\otimes Z),
-\]
-adjunto de
-\[
-X\otimes W\otimes\ihom(X,Y)\otimes\ihom(W,Z)\xrightarrow{\ \mathrm{ev}\otimes\mathrm{ev}\ }Y\otimes Z,
-\]
-donde el dominio se reordena para que las evaluaciones actúen sobre los pares correctos.
 \end{enumerate}
+En estos diagramas se omiten únicamente los asociadores que quedan determinados por los extremos.
 \end{prop}
 
-Todas estas propiedades son las análogas de las de los conjuntos de morfismos, y todas se prueban igual: se construye el morfismo del miembro derecho y se toma su adjunto. El \myref{teo:mackane-kelly} se encarga de los reordenamientos. Los dos últimos apartados admiten además una lectura común: el producto tensorial es un funtor monoidal, de modo que el comportamiento que tiene respecto de los morfismos lo tiene también respecto de los homs internos.
-
-Falta en la lista la traducción de la asociatividad de los conjuntos de morfismos. Su análoga se obtiene con la misma composición del hom interno: componer tres factores usando la composición en los dos primeros y después en el tercero, o en el primero y después en los dos últimos, da el mismo resultado salvo el reordenamiento de los tres factores, y se comprueba del mismo modo que las anteriores.
+Todas estas construcciones se obtienen tomando adjuntos de los morfismos indicados. La naturalidad de la adjunción permite comprobar las identidades; la coherencia justifica los reagrupamientos y las permutaciones especificadas. La asociatividad de $c$ compara las dos maneras de componer tres homs internos, sin cambiar su orden; es el análogo de la asociatividad de los conjuntos de morfismos que se comentó en clase.
 
 \begin{prop}\label{prop:ensamble-iso}
 Si $Z$ es dualizable, el morfismo de ensamble
 \[
-\ihom(X,Y)\otimes Z\longrightarrow\ihom(X,\ Y\otimes Z)
+\ihom(X,Y)\otimes Z\longrightarrow\ihom(X,Y\otimes Z)
 \]
 es un isomorfismo.
 \end{prop}
 \begin{proof}[Idea de la demostración]
-Se construye el inverso. Como $Z$ es dualizable, para dar un morfismo
+Se sigue la construcción del inverso por adjunciones de P14. Escribamos
+$A=\ihom(X,Y\otimes Z)$ y $H=\ihom(X,Y)$.
+Como $Z$ es un dual de $Z^\vee$, la \myref{prop:hom-dual} da
 \[
-\ihom(X,\ Y\otimes Z)\longrightarrow\ihom(X,Y)\otimes Z
+H\otimes Z\cong\ihom(Z^\vee,H).
 \]
-basta, por adjunción, con dar
+Por tanto, construir un morfismo en sentido inverso al ensamble equivale, sucesivamente, a dar uno de los siguientes:
 \[
-\ihom(X,\ Y\otimes Z)\longrightarrow\ihom(Z^\vee,\ \ihom(X,Y)),
+\begin{array}{c}
+A\longrightarrow H\otimes Z\\[2pt]
+\Updownarrow\\[2pt]
+A\longrightarrow\ihom(Z^\vee,H)\\[2pt]
+\Updownarrow\\[2pt]
+Z^\vee\otimes A\longrightarrow H\\[2pt]
+\Updownarrow\\[2pt]
+X\otimes Z^\vee\otimes A\longrightarrow Y .
+\end{array}
 \]
-y por la \myref{prop:hom-dual} el miembro derecho es naturalmente isomorfo a $Z^\vee\otimes\ihom(X,Y)$. Así, basta con exhibir un morfismo
+Además,
 \[
-Z^\vee\otimes\ihom(X,\ Y\otimes Z)\longrightarrow\ihom(X,Y),
+Y\otimes Z\cong\ihom(Z^\vee,Y),
+\qquad
+A\cong Q\coloneqq\ihom\bigl(X,\ihom(Z^\vee,Y)\bigr).
 \]
-que se obtiene componiendo la evaluación de $Z$ con la del hom interno. Es la hipótesis «$Z$ dualizable» la que habilita todas estas maniobras: cada vez que $Z$ pasa de un lado al otro de la adjunción se está usando su dual. Comprobar que este morfismo es el inverso requiere jugar con la naturalidad de la adjunción; no se hizo en clase.
+Con esta identificación, el último morfismo se construye así:
+% P14, derecha: la primera flecha es una simetría, no una evaluación.
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+X\otimes Z^\vee\otimes Q \arrow[r,"{\mu}"]
+ \arrow[d,"{B_{X,Z^\vee}\otimes1_Q}"']
+ &Y\\
+Z^\vee\otimes X\otimes Q
+ \arrow[d,"{1_{Z^\vee}\otimes\mathrm{ev}_{X,\ihom(Z^\vee,Y)}}"'] &\\
+Z^\vee\otimes\ihom(Z^\vee,Y)
+ \arrow[uur,"{\mathrm{ev}_{Z^\vee,Y}}"'] &
+\end{tikzcd}
+\]
+Tomando los adjuntos en sentido inverso obtenemos
+$b\colon A\to H\otimes Z$.
+La comprobación de $ba_{X,Y,Z}=1$ y $a_{X,Y,Z}b=1$ se hace por naturalidad de las adjunciones y las identidades de zigzag de $Z$. En clase se dio la construcción y se dejó esa comprobación sin desarrollar.
 \end{proof}
 
 \begin{nota}
-   El morfismo de ensamble aparece en muchas situaciones de álgebra y de topología, y a menudo interesa saber cuándo es un isomorfismo. La \myref{prop:ensamble-iso} da una condición suficiente: que $Z$ sea dualizable. El ejemplo clásico es el de los $R$-módulos, donde el ensamble
-   \[
-   \Hom_R(X,Y)\otimes_R Z\longrightarrow\Hom_R(X,\ Y\otimes_R Z)
-   \]
-   no es un isomorfismo en general pero sí lo es cuando $Z$ es un $R$-módulo libre finitamente generado, que es precisamente el caso dualizable. El mismo fenómeno reaparecerá con los espectros.
+En la primera flecha vertical del diagrama de P14 se lee $\mathrm{ev}$, pero sus extremos solo intercambian $X$ y $Z^\vee$: corresponde a $B_{X,Z^\vee}\otimes1$. También hay que conservar correctamente el dual: $\ihom(Z^\vee,H)\cong H\otimes Z$, no $Z^\vee\otimes H$.
 \end{nota}
 
-El desarrollo completo de estas propiedades, con casi todas sus demostraciones, está en \cite{malkiewich}, la referencia principal del curso; allí algunas de ellas quedan como ejercicio.
+\begin{nota}
+Para módulos sobre un anillo \emph{conmutativo} $R$, el ensamble es
+\[
+\Hom_R(X,Y)\otimes_R Z\longrightarrow\Hom_R(X,Y\otimes_R Z).
+\]
+En clase se mencionó el caso de $Z$ libre finitamente generado, que ciertamente es dualizable. Si se pretende caracterizar todos los módulos dualizables, la condición correcta es ser \emph{proyectivo finitamente generado}; no se exige que sea libre.
+\end{nota}
+
+Para más propiedades y demostraciones del hom interno, la referencia recomendada en clase es \cite{malkiewich}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Categorías enriquecidas sobre sí mismas}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -544,17 +700,42 @@ Sea $\mathcal C$ una categoría monoidal simétrica cerrada. Entonces $\mathcal 
 y con la composición dada por el morfismo del hom interno construido en la \myref{prop:hom-propiedades}.
 \end{prop}
 
-La categoría original se recupera de la enriquecida aplicando $\hom_{\mathcal C}(1,-)$ a los homs internos, por la \myref{prop:hom-mor}, y esa recuperación es compatible con la composición. Hay que tener cuidado en no confundir las dos categorías: la enriquecida es una categoría distinta, con más estructura, y la original es su «imagen débil» bajo $\hom_{\mathcal C}(1,-)$.
+La categoría original se recupera de la enriquecida aplicando
+$\Gamma=\hom_{\mathcal C}(1,-)$ a los homs internos. Para explicar la compatibilidad con la composición, escribamos otra vez $H_{U,V}=\ihom(U,V)$. El diagrama de P13 debe leerse con una aplicación canónica $\gamma$, no con un isomorfismo en su lado izquierdo:
+% P13, izquierda, completado con la aplicación lax monoidal.
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\Gamma(H_{X,Y}\otimes H_{Y,Z})
+ \arrow[r,"{\Gamma(c_{X,Y,Z})}"]
+ &\Gamma(H_{X,Z}) \arrow[d,"{\cong}"]\\
+\hom_{\mathcal C}(X,Y)\times\hom_{\mathcal C}(Y,Z)
+ \arrow[u,"{\gamma}"]
+ \arrow[r,"{(f,g)\mapsto g\circ f}"']
+ &\hom_{\mathcal C}(X,Z).
+\end{tikzcd}
+\]
+Si $\widehat f\colon1\to H_{X,Y}$ y $\widehat g\colon1\to H_{Y,Z}$ son los elementos correspondientes a $f$ y $g$, entonces
+\[
+\gamma(f,g)=
+\bigl(1\xrightarrow{\lambda_1^{-1}}1\otimes1
+\xrightarrow{\widehat f\otimes\widehat g}H_{X,Y}\otimes H_{Y,Z}\bigr).
+\]
+Al componer con $c_{X,Y,Z}$ se recupera $g\circ f$, como afirma el cuadrado.
 
 \begin{nota}
-   El ejemplo de los complejos de cadenas lo aclara: la categoría de complejos enriquecida sobre sí misma tiene como objetos de morfismos los complejos $\ihom(C_*,D_*)_*$, y al aplicar $H_0$ se recuperan los morfismos de complejos. La versión enriquecida conserva además toda la homología superior, que la versión ordinaria no ve.
+En P13 se identificó $\hom_{\mathcal C}(1,U\otimes V)$ con
+$\hom_{\mathcal C}(1,U)\times\hom_{\mathcal C}(1,V)$.
+Esto no es un isomorfismo en una categoría monoidal simétrica cerrada general. Existe la aplicación canónica del producto de conjuntos hacia los morfismos al tensor que se ha escrito arriba. Esa aplicación basta para recuperar la composición ordinaria.
+\end{nota}
 
-   El mismo cuidado hay que tener con la categoría de espectros: al enriquecerla sobre sí misma tomando como objetos de morfismos los espectros $\ihom(X,Y)$, la categoría que resulta se sigue llamando categoría de espectros, pero no es la categoría de espectros de partida.
+\begin{nota}
+En el ejemplo de complejos, la recuperación usa $Z_0$ de los complejos de homs; usar $H_0$ daría la categoría de complejos con morfismos módulo homotopía. El enriquecimiento conserva los mismos objetos y añade los objetos de morfismos y sus operaciones; su categoría ordinaria subyacente es la original.
 
-   Una categoría enriquecida sobre $\mathcal C$ puede a su vez ser monoidal simétrica, pero la simetría hay que pedirla en el sentido enriquecido, lo que requiere que $\mathcal C$ sea monoidal simétrica; aquí lo es, ya que nos estamos enriqueciendo sobre $\mathcal C$ misma.
+En clase se advirtió que hay que distinguir estos dos niveles de estructura, también cuando se habla de espectros. La estructura monoidal simétrica puede formularse en el sentido enriquecido; aquí la categoría sobre la que se enriquece es la propia $\mathcal C$, que ya es monoidal simétrica.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{La dualidad de Spanier--Whitehead sobre las esferas}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -564,7 +745,7 @@ La categoría original se recupera de la enriquecida aplicando $\hom_{\mathcal C
 
 Se vuelve ahora al contexto estable. Recordemos que $(\SW,\wedge)$ es una categoría monoidal simétrica, con unidad monoidal $(S^0,0)$. Lo que \emph{no} se sabe todavía es si es cerrada: no hay por ahora un adjunto derecho conocido para $-\wedge X$, y por tanto tampoco un candidato canónico a dual. Pero las consecuencias generales ya dan bastante.
 
-En el contexto estable se usa la notación $X^*$ para el dual, y a veces $DX$. El hom interno, cuando exista, tiene que ser un objeto de la misma categoría, es decir, un espectro, y se le suele denotar $F(X,Y)$. Empecemos por la unidad.
+En el contexto estable se usa la notación $X^*$ para el dual, y a veces $DX$. Más adelante, en las categorías de espectros, el hom interno será a su vez un espectro y se denotará habitualmente $F(X,Y)$. Aquí seguimos trabajando con los objetos de $\SW$. Empecemos por la unidad.
 
 \begin{prop}\label{prop:s0-dual}
 La unidad monoidal $(S^0,0)$ es dualizable y es su propio dual: $(S^0,0)^*=(S^0,0)$.
@@ -575,32 +756,26 @@ Es el \myref{coro:unidad-autodual} aplicado a $\SW$.
 
 A continuación, las esferas. Recordemos la propiedad de desplazamiento de índices, que es la forma en que se expresa la estabilidad:
 \[
-\set*{(A,m+r),\ (B,n)}\cong\set*{(A,m),\ (B,n-r)}
+\begin{tikzcd}[column sep=large,row sep=large]
+\set*{(A,m+r),(B,n)} \arrow[r,"{\cong}"] \arrow[d,"{\cong}"']
+ &\set*{(A,m),(B,n-r)} \arrow[d,"{\cong}"]\\
+\set*{(A,m)\wedge(S^0,r),(B,n)}
+ \arrow[r,"{\cong}"']
+ &\set*{(A,m),(B,n)\wedge (S^0,-r)} .
+\end{tikzcd}
 \]
-naturalmente en los objetos $(A,m)$ y $(B,n)$. Como se hizo en la pizarra, se mantienen ambos objetos arbitrarios y se reescriben los desplazamientos como productos smash:
-\[
-\begin{aligned}
-\set*{(A,m)\wedge(S^0,r),\ (B,n)}
-&\cong\set*{(A,m+r),\ (B,n)}\\
-&\cong\set*{(A,m),\ (B,n-r)}\\
-&\cong\set*{(A,m),\ (B,n)\wedge(S^0,-r)}.
-\end{aligned}
-\]
-Estas biyecciones son naturales en las dos variables, por lo que expresan la adjunción
+Estas biyecciones son naturales en las dos variables, por lo que prueban la adjunción
 \[
 -\wedge(S^0,r)\ \dashv\ -\wedge(S^0,-r).
 \]
-Por la \myref{prop:adjuncion}, $(S^0,-r)$ es un dual de $(S^0,r)$. Escribiendo $S^r=(S^0,r)$ para todo $r\in\mathbb Z$, se obtiene
-\[
-S^{-r}=(S^r)^* .
-\]
+Por la \myref{prop:adjuncion}, $(S^0,-r)$ es un dual de $(S^0,r)$. Escribiendo $S^r=(S^0,r)$ para cualquier $r\in\mathbb Z$, se obtiene $S^{-r}=(S^r)^*$.
+
 
 \begin{ejer}[Evaluación y coevaluación de las esferas]
 Encontrar explícitamente los morfismos de evaluación y coevaluación que exhiben $S^{-r}$ como dual de $S^r$.
 \end{ejer}
-
 \begin{sol}
-Se trabaja con los objetos $S^r=(S^0,r)$, $S^{-r}=(S^0,-r)$ y $S=(S^0,0)$ de $\SW$. Por la definición del producto smash,
+Por la definición del producto smash,
 \[
 S^{-r}\wedge S^r=(S^0\wedge S^0,0),
 \qquad
@@ -630,23 +805,19 @@ e\longmapsto[e,e,e]\longmapsto e.
 Los asociadores solo cambian los paréntesis y los unitores eliminan un factor $S^0$. No se intercambian factores. Además, $u$ y $u^{-1}$ tienen desplazamiento cero tanto en la fuente como en el blanco, de modo que los signos de la definición del smash se cancelan al tensarlos con una identidad. Por tanto, en un nivel suficientemente alto los dos compuestos son las identidades de $S^{N+r}$ y $S^{N-r}$, respectivamente. Sus clases son $1_E$ y $1_D$, como se quería.
 \end{sol}
 
-\begin{nota}
-   El ejercicio se dejó planteado en clase; la solución anterior es un desarrollo añadido. La evaluación elegida es la identificación estable de grado uno, no un colapso de un espacio de dimensión negativa.
-\end{nota}
-
 El resultado siguiente permite trasladar la dualidad de un objeto a sus suspensiones.
 
 \begin{lema}\label{lema:suspension-dual}
-Si $(Y,m)$ es un dual de $(X,n)$, entonces $(Y,m-k)$ es un dual de $(X,n+k)$ para todo $k\in\mathbb Z$.
+Si $(Y,m)$ es un dual de $(X,n)$, $(Y,m-k)$ es un dual de $(X,n+k)$ para todo $k\in\mathbb Z$.
 \end{lema}
 \begin{proof}
 Por el \myref{coro:dual-tensor} y la \myref{prop:s0-dual},
 \[
-(X,n+k)=(X,n)\wedge(S^0,k),
+(X,n+k)\cong(X,n)\wedge(S^0,k),
 \]
 y como $(S^0,k)^*=(S^0,-k)$ por el párrafo anterior, el dual de un producto es el producto de los duales en el orden invertido:
 \[
-(X,n+k)^*=(S^0,k)^*\wedge(X,n)^*=(S^0,-k)\wedge(Y,m)=(Y,m-k). \qedhere
+(X,n+k)^*\cong(S^0,-k)\wedge(Y,m)\cong(Y,m-k). \qedhere
 \]
 \end{proof}
 
@@ -657,74 +828,148 @@ y como $(S^0,k)^*=(S^0,-k)$ por el párrafo anterior, el dual de un producto es 
 El objetivo de esta parte es demostrar que \emph{todo} objeto de $\SW$ es dualizable. Por el \myref{lema:suspension-dual} es suficiente probarlo para los objetos de la forma $(X,0)$, y el resultado siguiente reduce la comprobación a una condición sobre las esferas.
 
 \begin{lema}\label{lema:criterio-dual}
-Sea $X$ un objeto de $\SW$ y sea $X^*$ otro objeto. Entonces $X^*$ es un dual de $X$ si y solo si existe un morfismo
+Sean $X,X^*$ objetos de $\SW$ y $S=(S^0,0)$. El objeto $X^*$ es un dual de $X$ si y solo si existe un morfismo
+$\mathrm{ev}\colon X^*\wedge X\to S$
+para el cual las aplicaciones
 \[
-\mathrm{ev}\colon X^*\wedge X\longrightarrow S,
-\qquad
-S\coloneqq(S^0,0),
+\begin{aligned}
+\Phi_r\colon\set*{\Sigma^rS,X^*}&\longrightarrow\set*{\Sigma^rX,S},\\
+\widetilde\Phi_r\colon\set*{\Sigma^rS,X}&\longrightarrow\set*{\Sigma^rX^*,S}
+\end{aligned}
 \]
-tal que las dos aplicaciones
+son biyecciones para todo $r\in\mathbb Z$. Sus valores son los compuestos de los siguientes diagramas, usando las identificaciones de suspensión:
+% P16, derecha.
 \[
-\set*{\Sigma^r S,\ X^*}\longrightarrow\set*{\Sigma^r X,\ S},
-\qquad
-\set*{\Sigma^r S,\ X}\longrightarrow\set*{\Sigma^r X^*,\ S}
+\begin{tikzcd}[column sep=large,row sep=large]
+\Sigma^rX \arrow[r,"{\cong}"] \arrow[d,"{\Phi_r(f)}"']
+ &\Sigma^rS\wedge X \arrow[d,"{f\wedge1_X}"]\\
+S &X^*\wedge X \arrow[l,"{\mathrm{ev}}"']
+\end{tikzcd}
 \]
-definidas por
+% P17, izquierda.
 \[
-f\longmapsto\mathrm{ev}\circ(f\wedge1_X),
-\qquad
-f\longmapsto\mathrm{ev}\circ B_{X,X^*}\circ(f\wedge1_{X^*})
+\begin{tikzcd}[column sep=large,row sep=large]
+\Sigma^rX^* \arrow[r,"{\cong}"]
+ \arrow[dd,"{\widetilde\Phi_r(f)}"']
+ &\Sigma^rS\wedge X^* \arrow[d,"{f\wedge1_{X^*}}"]\\
+ &X\wedge X^* \arrow[d,"{B_{X,X^*}}"]\\
+S &X^*\wedge X \arrow[l,"{\mathrm{ev}}"']
+\end{tikzcd}
 \]
-son biyecciones para todo $r\in\mathbb Z$.
+Los símbolos $f$ representan morfismos estables, no representantes a un nivel fijo, como se aclaró oralmente en clase.
 \end{lema}
 
 \begin{proof}
-\emph{Si $X^*$ es el dual de $X$, las dos aplicaciones son biyecciones.} Es la adjunción de la \myref{prop:adjuncion} escrita con $A=\Sigma^rS$ y $B=S$:
+\emph{Necesidad.} Si $X^*$ es un dual de $X$, la adjunción proporciona
 \[
-\set*{\Sigma^rS,\ B\wedge X^*}\xrightarrow{\ \cong\ }\set*{\Sigma^rS\wedge X,\ B},
-\qquad
-f\longmapsto\mathrm{ev}\circ(f\wedge1_X),
+\set*{\Sigma^rS,S\wedge X^*}
+\xrightarrow{\ \cong\ }
+\set*{\Sigma^rS\wedge X,S}.
 \]
-donde $B$ es cualquier objeto. Tomando $B=S$ se obtiene la primera biyección. La segunda es la misma adjunción con $X$ y $X^*$ intercambiados, usando la \myref{prop:simetria-dual} y que la evaluación correspondiente es $\mathrm{ev}'=\mathrm{ev}\circ B_{X,X^*}$, con la trenza $B_{X,X^*}\colon X\wedge X^*\to X^*\wedge X$.
-
-\emph{Recíprocamente.} Supongamos que las biyecciones se cumplen y sea $A$ un CW-complejo finito. Se prueba que
+El isomorfismo está dado por el diagrama:
 \[
-\set*{A,\ X^*}\xrightarrow{\ \cong\ }\set*{A\wedge X,\ S}
-\]
-por inducción sobre el número de celdas de $A$. Sea
-\[
-D\xrightarrow{\ f\ }B\xrightarrow{\ g\ }C\xrightarrow{\ h\ }\Sigma D
-\]
-una sucesión cofibrada de CW-complejos, donde $C$ se obtiene de $B$ pegando una celda a lo largo de $D=S^m$. Aplicando los dos funtores ---ambos contravariantes en la primera variable--- se obtiene el diagrama
-\[
-\begin{tikzcd}[column sep=small, row sep=large]
-\set*{\Sigma B,\ X^*} \arrow[r] \arrow[d,"\cong"'] & \set*{\Sigma D,\ X^*} \arrow[r] \arrow[d,"\cong"'] & \set*{C,\ X^*} \arrow[r] \arrow[d,dashed] & \set*{B,\ X^*} \arrow[r] \arrow[d,"\cong"'] & \set*{D,\ X^*} \arrow[d,"\cong"']\\
-\set*{\Sigma B\wedge X,\ S} \arrow[r] & \set*{\Sigma D\wedge X,\ S} \arrow[r] & \set*{C\wedge X,\ S} \arrow[r] & \set*{B\wedge X,\ S} \arrow[r] & \set*{D\wedge X,\ S}
+\begin{tikzcd}[column sep=large,row sep=large]
+\Sigma^rS\wedge X \arrow[r,"{f\wedge1_X}"] \arrow[dr]
+ &(S\wedge X^*)\wedge X
+ \arrow[d,"{{\rho_S(1_S\wedge\mathrm{ev})\alpha}}"]\\
+ &S .
 \end{tikzcd}
 \]
-Las filas son exactas por la \myref{prop:exacta}, y están escritas en el orden de los morfismos inducidos: como los dos funtores son contravariantes, ese orden es el \emph{inverso} del de la sucesión cofibrada $D\to B\to C\to\Sigma D\to\Sigma B$. Las flechas verticales de los extremos son isomorfismos: las de $D$ y de $\Sigma D$ porque $D$ y $\Sigma D$ son esferas, y en ese caso la biyección es la hipótesis; las de $B$ y $\Sigma B$ por hipótesis de inducción, ya que $B$ tiene menos celdas que $C$ y $\Sigma B$ tiene las mismas que $B$. Por el lema de los cinco, la flecha central también es un isomorfismo. Como los CW-complejos finitos se construyen con un número finito de pasos de este tipo, la biyección vale para todo CW-complejo finito $A$.
+Identificando $S\wedge X^*$ con $X^*$ se obtiene $\Phi_r$.
+Para $\widetilde\Phi_r$ se usa la simetría de la dualidad y la evaluación
+$\mathrm{ev}'=\mathrm{ev}\circ B_{X,X^*}$.
 
-\emph{Paso a todos los objetos.} Sea ahora $A$ un objeto arbitrario de $\SW$ y $n$ tal que $\Sigma^nA$ sea un CW-complejo finito. Aplicando lo anterior a $\Sigma^nA$ y a los objetos $\Sigma^nX^*$ y $\Sigma^{-n}X$,
+\emph{Suficiencia: primera entrada.}
+Supongamos las biyecciones del enunciado. Para cualquier objeto $A$ está definida la aplicación
 \[
-\set*{\Sigma^nA,\ \Sigma^nX^*}\cong\set*{\Sigma^nA\wedge\Sigma^{-n}X,\ S},
+\theta_A\colon\set*{A,X^*}\longrightarrow\set*{A\wedge X,S},
+\qquad
+f\longmapsto\mathrm{ev}(f\wedge1_X),
 \]
-donde la evaluación que hace de $\Sigma^nX^*$ un dual de $\Sigma^{-n}X$ se construye explícitamente reordenando los factores y aplicando la evaluación original:
-\[
-\Sigma^nX^*\wedge\Sigma^{-n}X\xrightarrow{\ \cong\ }S^n\wedge X^*\wedge S^{-n}\wedge X\longrightarrow S^n\wedge S^{-n}\wedge X^*\wedge X\xrightarrow{\ \mathrm{ev}\wedge\mathrm{ev}\ }S,
-\]
-que cumple las mismas propiedades que la de partida. Por la propiedad de desplazamiento ambos miembros se reescriben como
-\[
-\set*{A,\ X^*}\cong\set*{A\wedge X,\ S},
-\]
-con lo que la biyección vale para todo $A$. Todas las biyecciones que aparecen en el argumento son naturales, de modo que la biyección final es natural en $A$.
+natural en $A$. Primero se prueba que es un isomorfismo para CW-complejos finitos punteados, por inducción sobre las celdas. La inducción se hace simultáneamente para sus suspensiones no negativas; estas desplazan las celdas no base y permiten aplicar la misma hipótesis a $\Sigma B$.
 
-\emph{Segunda entrada.} Repitiendo el mismo argumento en la segunda variable se obtiene una biyección
+Si
 \[
-\set*{A,\ B\wedge X^*}\cong\set*{A\wedge X,\ B}
+D\xrightarrow{f}B\xrightarrow{g}C\xrightarrow{h}\Sigma D
 \]
-natural en $A$ y en $B$.
+es una sucesión cofibrada, la naturalidad de $\theta$ da el siguiente diagrama. Como en P18, las sucesiones exactas se leen de abajo hacia arriba:
+% P18, derecha: todos los mapas inducidos y sus direcciones.
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\set*{D,X^*}\arrow[r,"{\theta_D}"]
+ &\set*{D\wedge X,S}\\
+\set*{B,X^*}\arrow[u,"{f^*}"]\arrow[r,"{\theta_B}"]
+ &\set*{B\wedge X,S}\arrow[u,"{(f\wedge1_X)^*}"']\\
+\set*{C,X^*}\arrow[u,"{g^*}"]\arrow[r,"{\theta_C}"]
+ &\set*{C\wedge X,S}\arrow[u,"{(g\wedge1_X)^*}"']\\
+\set*{\Sigma D,X^*}\arrow[u,"{h^*}"]\arrow[r,"{\theta_{\Sigma D}}"]
+ &\set*{\Sigma D\wedge X,S}\arrow[u,"{(h\wedge1_X)^*}"']\\
+\set*{\Sigma B,X^*}\arrow[u,"{(-\Sigma f)^*}"]\arrow[r,"{\theta_{\Sigma B}}"]
+ &\set*{\Sigma B\wedge X,S}\arrow[u,"{((-\Sigma f)\wedge1_X)^*}"']
+\end{tikzcd}
+\]
+Las columnas son exactas por la \myref{prop:exacta}, pues $-\wedge X$ preserva los triángulos distinguidos. Se ha escrito el signo de la rotación del triángulo; omitirlo simultáneamente en ambas columnas no cambia la exactitud ni el argumento.
 
-\emph{Conclusión.} La biyección anterior dice que $-\wedge X$ es adjunto izquierdo de $-\wedge X^*$. Por la \myref{prop:adjuncion}, esto es exactamente decir que $X^*$ es un dual de $X$.
+Para pegar una celda se toma $D=S^m$ y $C$ su cono de adjunción a $B$. Las aplicaciones $\theta_D$ y $\theta_{\Sigma D}$ son isomorfismos por hipótesis, y las de $B$ y $\Sigma B$ por inducción. El lema de los cinco da que $\theta_C$ es un isomorfismo. El caso inicial de dimensión cero es una cuña finita de $S^0$, para la cual se usa la aditividad; el objeto cero tampoco presenta dificultad. Así se obtiene el resultado para todo CW-complejo finito.
+
+\emph{Desplazamientos.}
+Para pasar a todos los objetos de $\SW$. Definamos un emparejamiento
+$\mathrm{ev}_n\colon\Sigma^nX^*\wedge\Sigma^{-n}X\to S$
+mediante
+% P19, derecha.
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\Sigma^nX^*\wedge\Sigma^{-n}X
+ \arrow[d,"{\cong}"'] \arrow[r,"{\mathrm{ev}_n}"]&S\\
+S^n\wedge X^*\wedge S^{-n}\wedge X
+ \arrow[d,"{1\wedge B_{X^*,S^{-n}}\wedge1}"']&\\
+S^n\wedge S^{-n}\wedge X^*\wedge X
+ \arrow[uur,"{{\rho_S(\mathrm{ev}_{S^{-n}}\wedge\mathrm{ev})}}"']&
+\end{tikzcd}
+\]
+Aquí $\mathrm{ev}_{S^{-n}}\colon S^n\wedge S^{-n}\to S$ es la evaluación de las esferas ya construida. Todavía no se afirma que $\mathrm{ev}_n$ sea una dualidad. Por las biyecciones de desplazamiento, las condiciones sobre esferas para este emparejamiento se identifican con las de $\mathrm{ev}$, cambiando $r$ por $r-n$ en la primera y por $r+n$ en la segunda; las simetrías intermedias son isomorfismos. Por tanto, se le puede aplicar la inducción anterior.
+
+Para un CW-complejo finito $K$ resulta el cuadrado de P20:
+% P20, izquierda.
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\set*{K,\Sigma^nX^*} \arrow[r,"{\cong}"]\arrow[d,"{\cong}"']
+ &\set*{K\wedge\Sigma^{-n}X,S}\arrow[d,"{\cong}"]\\
+\set*{\Sigma^{-n}K,X^*}\arrow[r,"{\theta_{\Sigma^{-n}K}}"',"{\cong}"]
+ &\set*{\Sigma^{-n}K\wedge X,S}.
+\end{tikzcd}
+\]
+Los isomorfismos son naturales y se eligen con las mismas identificaciones de suspensión del diagrama anterior. Todo objeto de $\SW$ es isomorfo a $\Sigma^{-n}K$ para algún $n\geq0$ y algún CW-complejo finito $K$. Así, $\theta_A$ es un isomorfismo para todo $A$. El argumento intercambiando $X$ y $X^*$ se aplica a la segunda biyección.
+
+\emph{Segunda entrada.}
+Hagamos explícito el último paso que se resumió oralmente. Para $A,B\in\SW$ se tiene la aplicación natural
+\[
+T_{A,B}\colon\set*{A,B\wedge X^*}
+\longrightarrow\set*{A\wedge X,B},
+\]
+\[
+T_{A,B}(f)=
+\rho_B(1_B\wedge\mathrm{ev})\alpha_{B,X^*,X}(f\wedge1_X).
+\]
+Para $B=S^r$ es un isomorfismo por el paso ya probado:
+\[
+\begin{aligned}
+\set*{A,S^r\wedge X^*}
+&\cong\set*{\Sigma^{-r}A,X^*}\\
+&\xrightarrow[\cong]{\theta_{\Sigma^{-r}A}}
+\set*{\Sigma^{-r}A\wedge X,S}
+\cong\set*{A\wedge X,S^r}.
+\end{aligned}
+\]
+Para $A$ fijo, ambos lados de $T_{A,B}$ son funtores covariantes exactos en $B$. Si $D\to B\to C\to\Sigma D$ es un triángulo, se comparan sus sucesiones exactas con $T_{A,-}$. En el tramo
+$D\to B\to C\to\Sigma D\to\Sigma B$,
+el lema de los cinco propaga el isomorfismo al término $C$ desde $D,B$ y sus suspensiones. Partiendo de las esferas y procediendo por la misma inducción celular, ahora simultáneamente para todos los desplazamientos enteros de $B$, se obtiene que $T_{A,B}$ es un isomorfismo para todo $B$.
+
+Se ha construido así una biyección natural en las dos variables,
+\[
+\set*{A,B\wedge X^*}\cong\set*{A\wedge X,B}.
+\]
+Esta es la adjunción $-\wedge X\dashv-\wedge X^*$, dada por el emparejamiento elegido. Por el criterio de dualidad recordado al comienzo, $X^*$ es un dual de $X$.
 \end{proof}
 
 \begin{nota}
@@ -734,7 +979,6 @@ natural en $A$ y en $B$.
 \end{nota}
 
 \begin{nota}
-   Los objetos dualizables no determinan por sí solos toda la categoría. Con los dualizables de la categoría homotópica estable no se obtienen todas las teorías de cohomología, pero sí todo lo que se detecta mediante condiciones de finitud, es decir, lo que concierne a los objetos compactos. La categoría no se recupera a partir de ellos sin más, porque siempre se pueden añadir objetos superfluos que no intervienen en esa parte.
+En las preguntas finales se discutió en qué sentido los objetos dualizables permiten recuperar una categoría más grande. No se formuló un teorema general: se distinguió entre pertenecer a la subcategoría de objetos finitos y generar otros objetos mediante operaciones, por ejemplo colímites. Los espacios vectoriales son colímites de sus subespacios de dimensión finita; análogamente, estudiar complejos perfectos no significa identificar la categoría derivada con su subcategoría de perfectos. El alcance de una afirmación de generación depende de la categoría y de las operaciones permitidas.
 
-   El paralelismo con los espacios vectoriales es instructivo: los espacios de dimensión infinita son colímites de los de dimensión finita y en ese sentido se recuperan de ellos, pero hay cosas que se pueden hacer con un espacio de dimensión infinita que no se reducen a lo que ocurre en dimensión finita. En la categoría derivada ocurre lo mismo con los complejos perfectos: hay propiedades de la categoría derivada que no provienen de ellos, y no hay una equivalencia entre la categoría derivada y la subcategoría plena de complejos perfectos. Lo que sí cabe esperar es que la categoría se genere a partir de los objetos dualizables mediante ciertas operaciones.
 \end{nota}
