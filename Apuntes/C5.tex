@@ -200,22 +200,18 @@ En la categoría de Spanier--Whitehead $\SW$, probar que el producto smash con u
 \end{ejer}
 
 \begin{sol}
-Los triángulos distinguidos en $\SW$ son aquellos isomorfos a uno de la forma
+Los triángulos distinguidos en $\SW$ se obtienen, salvo isomorfismo y desplazamiento, de sucesiones de cofibración inestables
 \[
-(X,n)\xrightarrow{f}(Y,m)\xrightarrow{i}(C_f,0)\xrightarrow{q}\Sigma(X,n),
+X\xrightarrow{f}Y\xrightarrow{i}C_f\xrightarrow{q}\Sigma X,
 \]
-donde, eligiendo representantes inestables y un representante $f\colon X\to Y$,
+donde $f\colon X\to Y$ es un mapa de CW-complejos finitos punteados,
 \[
-C_f=Y\cup_X CX
+C_f=Y\cup_X CX,
 \]
-es el cono de $f$, $i$ es la inclusión y $q$ es la proyección al cociente seguida por $C_f/X\cong \Sigma X$.\\
+$i$ es la inclusión y $q$ es la proyección al cociente $C_f/Y\cong\Sigma X$. Por tanto, basta probar la afirmación para una sucesión de esta forma; el caso general se recupera aplicando el desplazamiento correspondiente.\\
 \medskip
 \noindent\emph{Smash por la derecha.}
-Sea
-\[
-X\xrightarrow{f}Y\xrightarrow{i}C_f\xrightarrow{q}\Sigma X
-\]
-una sucesión de cofibración inestable de CW-complejos finitos punteados que representa un triángulo distinguido en $\SW$ (tras añadir el desplazamiento correspondiente). Aplicando $(-)\wedge A$ obtenemos el diagrama
+Aplicando $(-)\wedge A$ obtenemos el diagrama
 \[
 X\wedge A \xrightarrow{f\wedge 1_A} Y\wedge A \xrightarrow{i\wedge 1_A} C_f\wedge A \xrightarrow{q\wedge 1_A} \Sigma X\wedge A.
 \]
@@ -257,11 +253,21 @@ C_{f\wedge1} \arrow[r,"q'"] &
 \Sigma(X\wedge A)
 \end{tikzcd}
 \]
-conmuta donde $q' = \sigma_A\circ(q\wedge1)\circ\Phi$. El hecho de que $q'$ es mapa cociente de $C_{f\wedge1}/(X \wedge A) \cong \Sigma(X \wedge A)$ se sigue de la identificación canónica
+conmuta; equivalentemente,
 \[
-(Y\wedge A)/(X\wedge A)\cong (Y/X)\wedge A
+q'\circ\Phi_A=\sigma_A\circ(q\wedge1_A),
 \]
-Esto prueba que la fila de abajo del diagrama es un diagrama distinguido, así que también lo es la sucesión deseada.
+donde $q'\colon C_{f\wedge1_A}\to\Sigma(X\wedge A)$ es el mapa cociente canónico. En efecto,
+\[
+C_{f\wedge1_A}/(Y\wedge A)\cong\Sigma(X\wedge A),
+\]
+y, mediante $\Phi_A$, esta identificación corresponde al compuesto
+\[
+C_f\wedge A\longrightarrow (C_f/Y)\wedge A
+\cong(\Sigma X)\wedge A
+\xrightarrow{\sigma_A}\Sigma(X\wedge A).
+\]
+Esto prueba que la fila de abajo es un triángulo distinguido y, por tanto, también lo es la sucesión deseada.
 
 Para probar el resultado para $A \wedge -$ basta con aplicar el isomorfismo que conmuta las entradas:
 \[

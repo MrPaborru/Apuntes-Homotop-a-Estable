@@ -56,27 +56,48 @@ Geométricamente, $C_{n}$ se construye empezando con $A_{n}$ y pegando sucesivam
 \end{center}
 
 \begin{prop}\label{prop:nu-bien-definido}
-La asignación
+Las asignaciones
 \[
 \nu_n\colon\Sigma C_n\longrightarrow C_{n+1},
-\qquad
-[x,s,t,u]\longmapsto[x,s,u,t],
 \]
-donde $x\in A_k$, $s$ recoge las coordenadas de suspensión en $\Sigma^{n-k}A_k$, $t$ es la coordenada en $I_+$ del cilindro y $u$ es la coordenada de la última suspensión, está bien definida y dota a $C=(C_n,\nu_n)$ de estructura de espectro secuencial.
+definidas sobre el sumando $\Sigma A_n\subseteq\Sigma C_n$ por
+$\nu_n[a,u]=[a,u,1]$,%
+\footnote{
+    En clase se obvió este caso pero, por si se presentan dudas, decidí incluirlo en estos apuntes.
+}
+donde el lado derecho pertenece al primer cilindro $\Sigma A_n\wedge I_+\subseteq C_{n+1}$, y sobre los demás cilindros por
+\[
+\nu_n[x,s,t,u]=[x,s,u,t],
+\]
+donde $x\in A_k$ con $k<n$, $s$ recoge las coordenadas de suspensión en $\Sigma^{n-k}A_k$, $t$ es la coordenada en $I_+$ y $u$ la coordenada de la última suspensión, están bien definidas y dotan a $C=(C_n,\nu_n)$ de estructura de espectro secuencial.
 \end{prop}
-
 \begin{proof}
-El punto delicado es la compatibilidad con las identificaciones del telescopio. En $\Sigma C_n$ los elementos $[x,s,0,u]$ y $[\Sigma^{n-k-1}\xi_k(x,s),1,u]$ representan la misma clase, porque $[x,s,0]$ es la base superior del cilindro $\Sigma^{n-k}A_k\wedge I_+$ y $[\Sigma^{n-k-1}\xi_k(x,s),1]$ es la base inferior del cilindro siguiente. Aplicando $\nu_n$ a ambos se obtiene
+Hay que comprobar que las fórmulas respetan las pegaduras del telescopio. Consideremos primero la pegadura del primer cilindro con $A_n$. Si $x\in A_{n-1}$, en $\Sigma C_n$ se identifican
+\[
+[x,s,0,u]
+\qquad\text{y}\qquad
+[\xi_{n-1}(x,s),u].
+\]
+Sus imágenes por $\nu_n$ son, respectivamente,
+\[
+[x,s,u,0]
+\qquad\text{y}\qquad
+[\xi_{n-1}(x,s),u,1].
+\]
+Estas clases coinciden en $C_{n+1}$ por la pegadura del segundo cilindro con el primero, inducida por $\Sigma\xi_{n-1}$.
+Para las demás pegaduras, si $k\le n-2$, los representantes
+\[
+[x,s,0,u]
+\qquad\text{y}\qquad
+[\Sigma^{n-k-1}\xi_k(x,s),1,u]
+\]
+tienen por imágenes
 \[
 [x,s,u,0]
 \qquad\text{y}\qquad
 [\Sigma^{n-k-1}\xi_k(x,s),u,1],
 \]
-y hay que comprobar que estas dos clases coinciden en $C_{n+1}$. En efecto, en $C_{n+1}$ la identificación que define el telescopio es precisamente
-\[
-[\Sigma^{n-k-1}\xi_k(x,s),u,1]=[x,s,u,0],
-\]
-pues la coordenada $u$ no interviene en la relación de pegadura y puede atravesarla. Por tanto $\nu_n$ está bien definida. La comprobación de que $\nu$ es compatible con las estructuras, es decir, que dota a $C$ de estructura de espectro, es la misma cuenta aplicada a cada nivel. \qedhere
+que nuevamente representan la misma clase en $C_{n+1}$ por la relación de pegadura correspondiente. Por tanto, $\nu_n$ está bien definida. \qedhere
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,7 +120,14 @@ Probemos que el siguiente cuadrado conmuta
 \Sigma A_n \arrow[r,"\xi_n"'] & A_{n+1}
 \end{tikzcd}
 \]
-Tomando $[x,s,t,u]\in\Sigma C_n$ con $x\in A_k$, $\Sigma p_n[x,s,t,u]=\bigl[\xi_{n-1}\circ\cdots\circ\Sigma^{n-k-1}\xi_k(x,s),\,u\bigr]$, de donde
+Sobre el sumando $\Sigma A_n\subseteq\Sigma C_n$ la conmutatividad es inmediata: para $a\in A_n$,
+\[
+p_{n+1}\bigl(\nu_n[a,u]\bigr)
+=p_{n+1}[a,u,1]
+=\xi_n[a,u]
+=\xi_n\bigl(\Sigma p_n[a,u]\bigr).
+\]
+Sobre los cilindros, tomando $[x,s,t,u]\in\Sigma C_n$ con $x\in A_k$, se satisface que $\Sigma p_n[x,s,t,u]=\bigl[\xi_{n-1}\circ\cdots\circ\Sigma^{n-k-1}\xi_k(x,s),\,u\bigr]$, de donde
 \[
 \xi_n\bigl(\Sigma p_n[x,s,t,u]\bigr) = \xi_n\circ\Sigma\xi_{n-1}\circ\cdots\circ\Sigma^{n-k}\xi_k(x,s,u)
 \]
@@ -158,7 +186,15 @@ La verificación de que $f'$ conmuta con los morfismos estructurales, es decir, 
 C_{n+1} \arrow[r,"f'_{n+1}"'] & B_{n+1}
 \end{tikzcd}
 \]
-es un cálculo parecido al de la \cref{prop:p-espectro}. En efecto, si $x\en A_k$ entonces
+es un cálculo parecido al de la \cref{prop:p-espectro}. Sobre el sumando $\Sigma A_n$, para $a\in A_n$ se tiene
+\[
+f'_{n+1}\circ\nu_n[a,u]
+=f'_{n+1}[a,u,1]
+=H_n[a,u,1]
+=\xi'_n\circ\Sigma f_n[a,u]
+=\xi'_n\circ\Sigma f'_n[a,u],
+\]
+pues $H_n(-,1)=\xi'_n\circ\Sigma f_n$. Sobre los demás cilindros, si $x\en A_k$ con $k<n$, entonces
 \begin{align*}
 \xi'_n\circ\Sigma f'_n([x,s,t,u])
 &= \xi'_n\left(\bigl[\xi'_{n-1}\circ\Sigma\xi'_{n-2}\circ\cdots\circ\Sigma^{n-k-1}H_{k}(x,s,t),\,u\bigr]\right)\\

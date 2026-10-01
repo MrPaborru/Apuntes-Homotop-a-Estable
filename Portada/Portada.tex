@@ -52,13 +52,17 @@
 
         \begin{center}
             \setlength{\fboxrule}{1.5pt}
+            \setlength{\fboxsep}{3pt}
+            
             {\Huge\scshape\Materia}\\[2cm]
-            \fcolorbox{rojoCIMAT}{rojoCIMAT}{%
-                \makebox[4cm][c]{%
-                    \color{white}\fontsize{49}{0}\selectfont%
+            
+            \colorbox{rojoCIMAT}{%
+                \makebox[\dimexpr4cm+2\fboxrule\relax][c]{%
+                    \color{white}\fontsize{49}{49}\selectfont
                     \textbf{1\textordfeminine{-}\NumClases\textordfeminine}%
                 }%
             }\\[-0.1cm]
+            
             \fcolorbox{rojoCIMAT}{white}{%
                 \makebox[4cm][c]{\Huge\scshape\so{clase}}%
             }\\[2cm]

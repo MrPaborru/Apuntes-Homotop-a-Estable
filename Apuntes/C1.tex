@@ -93,9 +93,10 @@ Además de colapsar los dos extremos \(X\times\{0\}\) y \(X\times\{1\}\), se col
 Cuando la inclusión \(\{x_0\}\hookrightarrow X\) es una cofibración ---por ejemplo, si \(X\) es un CW-complejo punteado en un vértice---, la suspensión reducida y la no reducida están estrechamente relacionadas. En el caso de las esferas ambas tienen el mismo tipo de homotopía y, de hecho, la suspensión reducida admite una identificación homeomorfa directa.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Suspensión de las esferas}
+% \subsection{Suspensión de las esferas}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{ejem}
 Como \(S^m\wedge S^n\cong S^{m+n}\), se obtiene en particular
 \[
 \Sigma S^n=S^1\wedge S^n\cong S^{n+1}
@@ -105,17 +106,11 @@ Una manera geométrica de verlo consiste en comenzar con la suspensión no reduc
 \Sigma S^n=\frac{S^{n+1}}{\text{segmento del polo norte al polo sur}} .
 \]
 
-Para verlo con precisión se usa la estructura CW de \(S^{n+1}\) con \emph{dos celdas en cada dimensión}, en la que las \(0\)-celdas son los polos y el arco elegido es una de las dos \(1\)-celdas. Colapsar ese arco ---que es un subcomplejo contráctil--- da la estructura CW cociente de \(\Sigma S^n\), cuyos esqueletos son
+Para verlo geométricamente, podemos usar la estructura CW de \(S^{n+1}\) asociada a su descomposición hemisférica, en la que el arco anterior aparece como un meridiano estándar. Al colapsarlo obtenemos precisamente el cociente que define la suspensión reducida, y dicho cociente vuelve a ser homeomorfo a \(S^{n+1}\). Esta es la descripción geométrica del homeomorfismo ya mencionado
 \[
-(\Sigma S^n)^{(0)}=*,\qquad
-(\Sigma S^n)^{(1)}\cong S^1,\qquad
-(\Sigma S^n)^{(2)}\cong S^2,\qquad\cdots,\qquad
-\Sigma S^n=(\Sigma S^n)^{(n+1)}\cong S^{n+1}.
+\Sigma S^n=S^1\wedge S^n\cong S^{n+1}.
 \]
-Cada paso añade una celda y pega su frontera, de modo que el esqueleto de dimensión \(k\) es \(S^k\). Esto no proporciona solamente una equivalencia homotópica, sino un homeomorfismo
-\[
-\Sigma S^n\cong S^{n+1} .
-\]
+\end{ejem}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -145,11 +140,26 @@ H\colon X\wedge I_+\longrightarrow Y
 \)
 cuyas restricciones a los extremos son \(f_0\) y \(f_1\). Las inclusiones de los extremos pueden verse como funciones punteadas \(i_0,i_1\colon S^0\longrightarrow I_+\). La compatibilidad se expresa diciendo que los conjuntos de morfismos son los coigualadores
 \[
-\Map_*(X\wedge Y\wedge I_+,Z)\ \substack{i_0^*\\[0em] \rightrightarrows\\[0em] i_1^*}\ \Map_*(X\wedge Y\wedge S^0,Z)\ \cong\ \Map_*(X\wedge Y,Z),
+\begin{tikzcd}[column sep=large]
+\Map_*(X\wedge Y\wedge I_+,Z)
+\arrow[r, shift left=.6ex, "i_0^*"]
+\arrow[r, shift right=.6ex, swap, "i_1^*"]
+&
+\Map_*(X\wedge Y\wedge S^0,Z)
+\arrow[r, "\cong"]
+&
+\Map_*(X\wedge Y,Z).
+\end{tikzcd}
 \]
 y, del otro lado de la adjunción,
 \[
-\Map_*\bigl(Y\wedge I_+,\Map_*(X,Z)\bigr)\ \rightrightarrows\ \Map_*\bigl(Y,\Map_*(X,Z)\bigr).
+\begin{tikzcd}[column sep=large]
+\Map_*\bigl(Y\wedge I_+,\Map_*(X,Z)\bigr)
+\arrow[r, shift left=.6ex, "i_0^*"]
+\arrow[r, shift right=.6ex, swap, "i_1^*"]
+&
+\Map_*\bigl(Y,\Map_*(X,Z)\bigr).
+\end{tikzcd}
 \]
 La naturalidad de la adjunción muestra entonces que mapas homotópicos tienen adjuntos homotópicos. Por consiguiente, la adjunción desciende a las categorías homotópicas:
 \[
@@ -234,7 +244,7 @@ Equivalentemente, si \(X\) es \((n-1)\)-conexo, entonces \(E\) es un isomorfismo
    La pizarra original confunde la hipótesis «\((n-1)\)-conexo» con la cota \(i<2n+1\). Esas dos expresiones no son compatibles: $S^1$ es $(1-1)$-conexo, pero $\pi_2(S^1)\cong0$ no puede ser isomorfo a $\pi_3(\Sigma S^1) \cong \pi_3(S^2) \cong \mathbb{Z}$, a pesar de que $2 < 2 \cdot 1 + 1$.
 \end{nota}
 
-Si $X$ es un CW-complejo punteado arbitrario, siempre es $(-1)$-conexo (no vacío). Luego:
+Si $X$ es un espacio punteado arbitrario, siempre es $(-1)$-conexo (no vacío). Luego:
 
 \begin{center}\small
 \begin{tabular}{|l|c|c|c|c|}
@@ -243,7 +253,7 @@ Si $X$ es un CW-complejo punteado arbitrario, siempre es $(-1)$-conexo (no vací
 \hline
 \(n\) & \(0\) & \(1\) & \(2\) & \(3\)\\
 morfismo & \(\pi_1(X)\to\pi_2(\Sigma X)\) & \(\pi_2(\Sigma X)\to\pi_3(\Sigma^2X)\) & \(\pi_3(\Sigma^2X)\to\pi_4(\Sigma^3X)\) & \(\pi_4(\Sigma^3X)\to\pi_5(\Sigma^4X)\)\\
-¿\(i<2n-1\)? & \(1<-1\) & \(2<1\) & \(3<5\) & \(4 < 5\)\\
+¿\(i<2n-1\)? & \(1<-1\) & \(2<1\) & \(3<3\) & \(4 < 5\)\\
 & \(\times\) & \(\times\) & \(\times\) & \(\checkmark\)\\
 \hline
 \end{tabular}
@@ -254,7 +264,7 @@ Una consecuencia inmediata, y es la que da contenido preciso a la palabra «esta
 \pi_{i+k}(\Sigma^kX)\xrightarrow{\;\cong\;}\pi_{i+k+1}(\Sigma^{k+1}X)
 \]
 siempre que $i+k<2(r+k)+1$, es decir, $k>i-2r-1$.
-Para \(i\) fijo, esta desigualdad se cumple cuando \(k\) es suficientemente grande. Por tanto, la sucesión
+Para \(i\) fijo, esta desigualdad se cumple cuando \(k\) es suficientemente grande. Por tanto, para todo espacio punteado $X$ la sucesión
 \[
 \pi_i(X)\longrightarrow\pi_{i+1}(\Sigma X)\longrightarrow\pi_{i+2}(\Sigma^2X)\longrightarrow\cdots
 \]
@@ -396,7 +406,7 @@ Una teoría generalizada de homología o cohomología conserva esta propiedad, p
 \subsection{Dualidad de Alexander y complementos}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Una forma clásica de la dualidad de Alexander (véase \cite{hatcher2002}) afirma que, si \(X\subseteq S^n\) es compacto, no vacío y suficientemente bien comportado ---por ejemplo, localmente contráctil---, entonces
+Una forma clásica de la dualidad de Alexander (véase \cite{hatcher2002}) afirma que, si \(X\subsetneq S^n\) es compacto, no vacío y suficientemente bien comportado ---por ejemplo, localmente contráctil---, entonces
 \[
 \widetilde H_i(S^n-X)\cong\widetilde H^{n-i-1}(X).
 \]
@@ -527,14 +537,14 @@ donde \(C_f\) es su cofibra homotópica. La suspensión debe ser una autoequival
 \[
 -\wedge-\colon\Ho(\Sp)\times\Ho(\Sp)\longrightarrow\Ho(\Sp)
 \]
-que sea aditivo ---y de hecho \emph{bilineal respecto del coproducto}---, que haga de $\Ho(\Sp)$ una categoría simétrica monoidal con unidad $\Sph=\Sigma^\infty S^0$; además, \(X\wedge-\) debe preservar triángulos distinguidos. La unidad debe ser coherente con la suspensión, en el sentido de que el diagrama
+que sea aditivo ---y de hecho \emph{bilineal respecto del coproducto}---, que haga de $\Ho(\Sp)$ una categoría simétrica monoidal con unidad $\Sph=\Sigma^\infty S^0$; además, \(X\wedge-\) debe preservar triángulos distinguidos. La unidad debe ser compatible con la suspensión, en el sentido de que el diagrama
 \[
 \begin{tikzcd}[column sep=large, row sep=large]
 \Sigma X\wedge\Sph \arrow[rr,"\cong"] \arrow[dr,"\cong"'] & & \Sigma(X\wedge\Sph) \arrow[dl,"\cong"]\\
 & \Sigma X &
 \end{tikzcd}
 \]
-conmuta, lo que expresa que suspender y tensar por la unidad son la misma operación.
+conmuta.
 
 \item\emph{La esfera como generador.} La esfera debe ser un generador débil graduado:
 \[
@@ -558,7 +568,7 @@ Sus objetos son parejas $(X,m)$ donde \(X\) es un CW-complejo punteado y \(m\in\
 Cuando \(m<0\), la expresión representa una desuspensión formal, i.e., $(X,-1)\simeq\Sigma^{-1}X$.
 
 \begin{nota}
-   El circunflejo de \(\ESW\) distingue la categoría extendida de la categoría de Spanier--Whitehead no extendida, que es la que funciona como categoría homotópica estable y a la que se llama \(\SW_F\). Hay quien denota simplemente \(SW\), sin circunflejo, a la versión extendida. Aquí se adopta el circunflejo porque \(\ESW\) será la que se use con mayor frecuencia.
+En estos apuntes denotaremos por \(\ESW\) la categoría extendida, cuyos objetos permiten CW-complejos punteados arbitrarios. La notación \(\SW\) se reservará para la subcategoría completa en la que \(X\) es un CW-complejo punteado finito, que introduciremos en la siguiente clase. Las convenciones de notación varían en la literatura.
 \end{nota}
 
 Los conjuntos de morfismos se definen por
@@ -610,19 +620,20 @@ En los morfismos de Spanier--Whitehead podemos aumentar \(k\) hasta conseguir qu
 \bigl\{(X,m),(Y,n)\bigr\}
 \]
 es siempre un grupo abeliano.
-Además,
+Además, los mapas del sistema dirigido son homomorfismos. En efecto, si \(f,g\colon\Sigma A\to Z\), entonces
 \[
 \Sigma(f+g)
-=\Sigma f \vee \Sigma g \circ \Sigma\operatorname{pinch}_A
-=\Sigma f \vee \Sigma g \circ \operatorname{pinch}_{\Sigma A}
-=\Sigma f+\Sigma g,
+=(\Sigma f\vee\Sigma g)\circ\Sigma\operatorname{pinch}_A
 \]
-así que los mapas del sistema dirigido son homomorfismos.
-Más aún, la composición es bilineal:
+Los mapas $\Sigma\operatorname{pinch}_A$ y $\operatorname{pinch}_{\Sigma A}$ corresponden a pinchar las dos coordenadas distintas de la doble suspensión y no tienen por qué coincidir como mapas. Sin embargo, las dos operaciones que inducen en clases de homotopía coinciden por el argumento de Eckmann--Hilton. Por tanto,
 \[
-h\circ(f+g)=h\circ f+h\circ g,
+[\Sigma(f+g)]=[\Sigma f+\Sigma g],
 \]
+y los mapas de transición del sistema dirigido son homomorfismos.
+Más aún, se tiene que la composición es bilineal:
 \[
+h\circ(f+g)=h\circ f+h\circ g
+\qquad\text{y}\qquad
 (f+g)\circ u=f\circ u+g\circ u.
 \]
 \begin{ejer}[Bilinealidad de la composición]
@@ -630,29 +641,41 @@ Probar las dos identidades anteriores.
 \end{ejer}
 
 \begin{sol}
-Recordemos que $f+g=(f\vee g)\circ\operatorname{pinch}_A$ para $f,g\colon\Sigma A\to Z$.
-
-Para la distributividad por la izquierda, sea $h\colon Z\to W$. Entonces
+\emph{Para la distributividad por la izquierda}, sea $h\colon Z\to W$. Entonces
 \[
 h\circ(f+g)=h\circ(f\vee g)\circ\operatorname{pinch}_A=(h\circ f\vee h\circ g)\circ\operatorname{pinch}_A=h\circ f+h\circ g,
 \]
 pues la cuña es funtorial: sobre cada sumando de $\Sigma A\vee\Sigma A$, la función $h\circ(f\vee g)$ coincide con $h\circ f$ en el primero y con $h\circ g$ en el segundo.
 
-Para la distributividad por la derecha, sea $u\colon\Sigma B\to\Sigma A$. La estructura de cogrupo es natural, es decir, el cuadrado
+\emph{Para la distributividad por la derecha}, sea $u\colon\Sigma B\to\Sigma A$. Como estamos trabajando con morfismos estables, podemos suspender una vez más los representantes. Entonces $\Sigma u$ es un mapa suspendido y la naturalidad del pinchamiento da un cuadrado conmutativo salvo homotopía:
 \[
 \begin{tikzcd}[column sep=large, row sep=large]
-\Sigma B \arrow[r,"{\operatorname{pinch}_B}"] \arrow[d,"u"'] & \Sigma B\vee\Sigma B \arrow[d,"u\vee u"]\\
-\Sigma A \arrow[r,"{\operatorname{pinch}_A}"'] & \Sigma A\vee\Sigma A
+\Sigma^2 B \arrow[r,"{\operatorname{pinch}_{\Sigma B}}"] \arrow[d,"\Sigma u"'] &
+\Sigma^2B\vee\Sigma^2B \arrow[d,"\Sigma u\vee\Sigma u"]\\
+\Sigma^2 A \arrow[r,"{\operatorname{pinch}_{\Sigma A}}"'] &
+\Sigma^2A\vee\Sigma^2A.
 \end{tikzcd}
 \]
-conmuta salvo homotopía. Por tanto
+Por tanto,
 \[
-(f+g)\circ u=(f\vee g)\circ\operatorname{pinch}_A\circ u\simeq(f\vee g)\circ(u\vee u)\circ\operatorname{pinch}_B=(f\circ u\vee g\circ u)\circ\operatorname{pinch}_B=f\circ u+g\circ u .
+(\Sigma f+\Sigma g)\circ\Sigma u
+\simeq
+(\Sigma f\circ\Sigma u)+(\Sigma g\circ\Sigma u).
 \]
-Esto prueba la bilinealidad. En consecuencia, la categoría de Spanier--Whitehead es una categoría preaditiva.
+Usando la funtorialidad de la suspensión y la compatibilidad de esta con la suma demostrada arriba:
+\[
+[\Sigma((f+g)\circ u)]
+=
+[\Sigma(f\circ u)+\Sigma(g\circ u)].
+\]
+Luego ambas clases representan el mismo morfismo estable y, por tanto,
+\[
+(f+g)\circ u=f\circ u+g\circ u.
+\]
+En consecuencia, la categoría de Spanier--Whitehead es una categoría preaditiva.
 \end{sol}
 
-Este es un fenómeno nuevo respecto de la categoría de espacios: en \(\Ho(\Topstar)\) los conjuntos de morfismos no son en general grupos abelianos.
+Este es un fenómeno nuevo respecto de la categoría de espacios: en \(\Ho(\Topstar)\) los conjuntos de morfismos no son generalmente grupos abelianos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Suspensión infinita hacia Spanier--Whitehead}
@@ -686,13 +709,12 @@ La definición de los morfismos da
 \bigl\{(S^0,n),(X,0)\bigr\}
 &=\varinjlim_k[\Sigma^{n+k}S^0,\Sigma^kX]_*\\
 &=\varinjlim_k[S^{n+k},\Sigma^kX]_*\\
-&=\varinjlim_k\pi_{n+k}(\Sigma^kX)\\
-&=\pi_n^s(X).
+&=\varinjlim_k\pi_{n+k}(\Sigma^kX)=\pi_n^s(X)
 \end{aligned}
 \]
 Por tanto, el funtor \(\pi_n^s\) está representado en la categoría estable por la esfera desplazada \((S^0,n)\).
 
-Esto no ocurre en la categoría homotópica ordinaria de espacios. Supongamos, por ejemplo, que existiera un espacio punteado \(Z\) tal que
+Esto no ocurre en la categoría homotópica ordinaria de CW-complejos punteados. Supongamos, por ejemplo, que existiera un CW-complejo punteado \(Z\) tal que
 \[
 \pi_0^s(X)\cong[Z,X]_*
 \]
@@ -700,7 +722,7 @@ naturalmente en \(X\). Al evaluar en \(S^0\) se obtendría
 \[
 \mathbb Z\cong\pi_0^s(S^0)\cong[Z,S^0]_*.
 \]
-Una función \(Z\to S^0\) es constante en cada componente conexa. Por tanto,
+Como \(Z\) es un CW-complejo, sus componentes por caminos son abiertas y cerradas. Por tanto, una función punteada \(Z\to S^0\) queda determinada precisamente por la elección de un valor en cada componente por caminos distinta de la componente del punto base, y
 \[
 [Z,S^0]_*\cong\Map\bigl(\pi_0(Z)-\{[z_0]\},\{0,1\}\bigr).
 \]

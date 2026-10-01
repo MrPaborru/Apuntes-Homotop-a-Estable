@@ -349,7 +349,7 @@ que es el isomorfismo enunciado. Para $J$ infinito solo se obtiene la flecha can
 El fallo de la aditividad tiene un ejemplo concreto, y es el que muestra que la cuña infinita no se comporta como coproducto de sus sumandos.
 
 \begin{ejem}\label{ejem:cuna}
-Consideremos $\bigvee_{r\ge0} S^r$.
+Consideremos $X\coloneq\bigvee_{r\ge0} S^r$.
 Entonces el morfismo inducido por las inclusiones,
 \[
 \Psi\colon\set*{X_0,S^0_0}\longrightarrow\prod_{r\ge0}\set*{S^r_0,S^0_0},
@@ -423,11 +423,11 @@ Finalmente, si $X_0$ fuera el coproducto de la familia $\{S^r_0\}_{r\ge0}$, la a
 El ejemplo anterior muestra que la construcción no satisface la aditividad general para toda elección del objeto representante: falla, en particular, para $S^0_0$. No excluye por sí mismo otras elecciones de $(Z,m)$. Para la cohomología singular se inicia un argumento distinto: se evalúa en $S^0$ y se reduce el problema a excluir un complejo finito cuyo único grupo de homotopía estable no nulo sea $\mathbb Z$.
 
 \begin{teo}\label{teo:no-representable}
-No existe un CW-complejo finito $Z$ ni un entero $m$ tales que
+No existe un CW-complejo finito $Z$ ni un entero $m$ tales que, para todo $n\in\mathbb Z$, se tenga un isomorfismo
 \[
 \tilde H^n(X)\cong\set*{(X,-n),(Z,m)}
 \]
-naturalmente para todo $X\in\CWstar^{\mathrm{fin}}$.
+naturalmente para todo $X\in\CWstar^{\mathrm{fin}}$, con el mismo par $(Z,m)$ para todos los grados.
 \end{teo}
 \begin{proof}[Reducción utilizada en clase]
 Supongamos que tales $Z$ y $m$ existen. Evaluando en $X=S^0$ y recordando que $\tilde H^0(S^0)\cong\mathbb Z$ y $\tilde H^n(S^0)=0$ para $n\neq0$, se tiene
@@ -731,7 +731,11 @@ El último grupo es $\mathbb Z$ exactamente cuando $i-N-2=n$, es decir, cuando $
 \]
 La primera línea refleja la $(N+n+1)$-conexidad de $\Sigma^NX$; la segunda, que $\pi^s_n(Z)\cong\mathbb Z$; la tercera, que fuera del grado $n+2$ los grupos de homotopía estable de $X$ se anulan, mientras Freudenthal garantiza que la suspensión es un isomorfismo. La cuarta línea recoge los grados que el argumento no determina: fuera del rango indicado, Freudenthal ya no garantiza que la suspensión sea un isomorfismo y no se sabe si aparecen nuevos grupos no nulos.
 
-La contradicción consiste en mostrar que un espacio finito con esta tabla de grupos de homotopía no puede existir; se obtiene en la clase siguiente.
+La contradicción se obtendrá en la clase siguiente combinando esta franja de grupos de homotopía con la finitud de $Z$. En efecto, si $d=\dim Z$, entonces
+\[
+\dim(\Sigma^NX)=N+d+2,
+\]
+mientras que el rango controlado por Freudenthal se extiende hasta $2(N+n)+3$. Eligiendo $N$ suficientemente grande respecto de $d$, esta diferencia permitirá obtener la contradicción cohomológica correspondiente.
 \end{proof}
 
 \begin{nota}

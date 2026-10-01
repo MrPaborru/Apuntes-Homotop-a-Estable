@@ -1,4 +1,4 @@
-En esta clase se continúa el estudio de la categoría extendida de Spanier--Whitehead y se formaliza la idea de que la suspensión debe ser invertible en homotopía estable. Para ello se introducen los funtores de desplazamiento, se compara el desplazamiento del índice con la suspensión del espacio y se demuestra que ambas operaciones son naturalmente isomorfas. Esto permite interpretar cada objeto como una suspensión o desuspensión formal, representar los grupos de homotopía estable mediante esferas desplazadas y caracterizar los isomorfismos estables en términos de equivalencias homotópicas entre suspensiones suficientemente altas. Posteriormente se restringe la construcción a CW-complejos punteados finitos para definir la categoría de Spanier--Whitehead y se estudian las sucesiones cofibradas asociadas a una inclusión $A\subseteq X$. Al aplicar clases de homotopía y estabilizar se obtienen sucesiones exactas largas en ambas direcciones. Los teoremas de escisión y de Hurewicz permiten comparar el subcomplejo $A$ con la fibra homotópica del cociente $X\to X/A$; después de suspender suficientemente, esta comparación se convierte en una equivalencia estable, por lo que las sucesiones cofibradas y fibradas coinciden en la categoría estable. Finalmente se analiza la estructura aditiva de la categoría, así como sus limitaciones: no es abeliana, no posee en general coproductos infinitos ni todos los límites y colímites, y no admite un funtor $\Omega^\infty$ intrínseco. Estas deficiencias motivan el paso posterior a categorías de espectros y categorías de modelos.
+En esta clase se continúa el estudio de la categoría extendida de Spanier--Whitehead y se formaliza la idea de que la suspensión debe ser invertible en homotopía estable. Para ello se introducen los funtores de desplazamiento, se compara el desplazamiento del índice con la suspensión del espacio y se demuestra que ambas operaciones son naturalmente isomorfas. Esto permite interpretar cada objeto como una suspensión o desuspensión formal, representar los grupos de homotopía estable mediante esferas desplazadas y caracterizar los isomorfismos estables en términos de equivalencias homotópicas entre suspensiones suficientemente altas. Posteriormente se restringe la construcción a CW-complejos punteados finitos para definir la categoría de Spanier--Whitehead y se estudian las sucesiones cofibradas asociadas a una inclusión $A\subseteq X$. Al aplicar clases de homotopía y estabilizar se obtienen sucesiones exactas largas en ambas direcciones. Los teoremas de escisión y de Hurewicz permiten comparar el subcomplejo $A$ con la fibra homotópica del cociente $X\to X/A$; al suspender, la conectividad de esta comparación crece arbitrariamente, lo que basta para obtener la exactitud covariante desde complejos finitos y explicar la coincidencia estable entre el comportamiento de las sucesiones cofibradas y fibradas. Finalmente se analiza la estructura aditiva de la categoría, así como sus limitaciones: no es abeliana, no posee en general coproductos infinitos ni todos los límites y colímites, y no admite un funtor $\Omega^\infty$ intrínseco. Estas deficiencias motivan el paso posterior a categorías de espectros y categorías de modelos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{La categoría de Spanier--Whitehead}
@@ -15,11 +15,10 @@ Los mapeos del sistema dirigido son inducidos por la suspensión. Así, un morfi
 
 Como se vio en la clase anterior, cada conjunto $\set*{X_m,Y_n}$ es un grupo abeliano y la composición es bilineal. En efecto, puede elegirse un nivel en el cual el dominio sea al menos una doble suspensión; el mapeo de pinchamiento proporciona entonces una suma abeliana en las clases de homotopía, y los mapeos de transición son homomorfismos. Además, el funtor $\Sigma^\infty\colon\Ho(\CWstar)\to\ESW$, dado por $X\mapsto X_0$, permite identificar
 \[
-\pi_n^s(X)\cong\bigl\{(S^n,0),(X,0)\bigr\}\cong\set*{S^0_n,X_0},
+\pi_n^s(X)\cong\bigl\{(S^0,n),(X,0)\bigr\}\equiv\set*{S^0_n,X_0},
 \]
-donde la primera identificación es la del grupo de homotopía estable con las clases estables de funciones desde la esfera, y la segunda es el desplazamiento de índices.
+En particular, $\pi_n^s$ pasa a ser correpresentable en $\ESW$ por $S^0_n$, en contraste con lo demostrado en la clase anterior para $\Ho(\CWstar)$.
 
-La correpresentabilidad de $\pi_n^s$ es una propiedad nueva de esta categoría: en $\Ho(\CWstar)$ el mismo funtor no es correpresentable. Ese contraste es una de las razones por las que se introduce $\ESW$.
 
 % \begin{nota}
 %    En la pizarra la categoría extendida se denotó $\ESW$ para distinguirla de la categoría finita $\SW$, y se abrió la sesión con un encabezado organizativo («Ayer: introducción y la categoría extendida; hoy: la categoría de Spanier--Whitehead»). Aquí se conserva la notación $\ESW$ que venía usándose desde la clase anterior.
@@ -119,13 +118,29 @@ aunque conservar la expresión como colímite permite trabajar sin elegir un niv
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 En homotopía inestable las sucesiones cofibradas y las fibradas se comportan de manera asimétrica. Una sucesión cofibrada $A\to X\to X/A\to\Sigma A\to\cdots$ da lugar a una sucesión exacta larga al aplicarle el funtor contravariante $[-,Z]_*$, es decir, tomando mapeos desde los espacios de la sucesión hacia un espacio fijo, y solo en esa dirección. Una sucesión fibrada da lugar a una sucesión exacta larga al aplicarle el funtor covariante $[Z,-]_*$, tomando mapeos desde un espacio fijo hacia los espacios de la sucesión, y de nuevo solo en una dirección. Lo que ocurre en $\SW$ es distinto: ambas sucesiones se extienden indefinidamente en las dos direcciones y, además, la construcción de la sucesión cofibrada y la de la fibrada coinciden. No hay, por tanto, diferencia entre los dos tipos de sucesión asociados a una misma inclusión.
 
-Sea $A\subseteq X$ un subcomplejo punteado de un CW-complejo punteado. La inclusión $i\colon A\hookrightarrow X$ es una cofibración y su cofibra es el cociente $X/A$. Si $q\colon X\to X/A$ es el cociente, el cono de mapeo $X\cup_iCA$ es homotópicamente equivalente a $X/A$. La equivalencia existe porque todo par CW satisface la propiedad de extensión de homotopía: la identidad de $A$ se extiende al cono $CA$ y, junto con la inclusión de $X$, produce el mapeo que induce la equivalencia y hace conmutar el diagrama. Al colapsar $X$ dentro de este cono se obtiene el mapeo de conexión $\delta\colon X/A\to\Sigma A$. Repitiendo la construcción se obtiene la sucesión de cofibras de Puppe
+Sea $A\subseteq X$ un subcomplejo punteado de un CW-complejo punteado. La inclusión $i\colon A\hookrightarrow X$ es una cofibración y su cofibra es el cociente $X/A$. El cono de mapeo
+\(
+C_i=X\cup_iCA
+\)
+admite un mapa canónico
+\(
+e\colon C_i\longrightarrow X/A
+\)
+que se restringe al cociente $X\to X/A$ sobre $X$ y colapsa $CA$ al punto base. Como $i$ es una cofibración, $e$ es una equivalencia homotópica. Si $s\colon X/A\to C_i$ es una inversa homotópica y
+\(
+p\colon C_i\longrightarrow C_i/X\cong\Sigma A
+\)
+es el cociente, el mapeo de conexión está representado por
+\[
+\delta=p\circ s\colon X/A\longrightarrow\Sigma A.
+\]
+Repitiendo la construcción se obtiene la sucesión de cofibras de Puppe
 \[
 A\xrightarrow{i}X\xrightarrow{q}X/A\xrightarrow{\delta}\Sigma A\xrightarrow{-\Sigma i}\Sigma X\xrightarrow{-\Sigma q}\Sigma(X/A)\xrightarrow{-\Sigma\delta}\Sigma^2A\longrightarrow\cdots
 \]
 Los signos aparecen al rotar la sucesión y son los que posteriormente hacen compatibles las rotaciones de los triángulos distinguidos. Concretamente, $-\Sigma f$ denota la función inducida por la suspensión compuesta con la inversión de los dos conos de $S^1$, es decir,
 \[
--\Sigma f(x,t)=f(x,1-t).
+-\Sigma f([t,x])=[1-t,f(x)].
 \]
 Para la exactitud de los conjuntos de clases de homotopía el signo no altera el núcleo, pero sí es relevante para la estructura triangulada.
 
@@ -143,12 +158,23 @@ Esta sucesión es exacta como sucesión de conjuntos punteados en los primeros t
 Podemos suspender simultáneamente $A$, $X$, $X/A$ y $Z$ y formar un diagrama cuyas filas son las sucesiones exactas anteriores y cuyas columnas son los sistemas dirigidos de suspensión:
 \[
 \begin{tikzcd}[column sep=small, row sep=large]
-{[A,Z]_*} & {[X,Z]_*} \arrow[l,"i^*"'] & {[X/A,Z]_*} \arrow[l,"q^*"'] & {[\Sigma A,Z]_*} \arrow[l,"\delta^*"'] & {[\Sigma X,Z]_*} \arrow[l,"{(-\Sigma i)^*}"'] & \cdots \arrow[l]\\
-{[\Sigma A,\Sigma Z]_*} \arrow[u,"\Sigma"] & {[\Sigma X,\Sigma Z]_*} \arrow[l,"{(\Sigma i)^*}"'] \arrow[u,"\Sigma"] & {[\Sigma(X/A),\Sigma Z]_*} \arrow[l,"{(\Sigma q)^*}"'] \arrow[u,"\Sigma"] & {[\Sigma^2A,\Sigma Z]_*} \arrow[l,"{(\Sigma\delta)^*}"'] \arrow[u,"\Sigma"] & {[\Sigma^2X,\Sigma Z]_*} \arrow[l,"{(-\Sigma^2i)^*}"'] \arrow[u,"\Sigma"] & \cdots \arrow[l] \arrow[u,"\Sigma"]\\
-\vdots \arrow[u] & \vdots \arrow[u] & \vdots \arrow[u] & \vdots \arrow[u] & \vdots \arrow[u] &
+{[A,Z]_*} \arrow[d,"\Sigma"'] &
+{[X,Z]_*} \arrow[l,"i^*"'] \arrow[d,"\Sigma"'] &
+{[X/A,Z]_*} \arrow[l,"q^*"'] \arrow[d,"\Sigma"'] &
+{[\Sigma A,Z]_*} \arrow[l,"\delta^*"'] \arrow[d,"\Sigma"'] &
+{[\Sigma X,Z]_*} \arrow[l,"{(-\Sigma i)^*}"'] \arrow[d,"\Sigma"'] &
+\cdots \arrow[l]\\
+{[\Sigma A,\Sigma Z]_*} \arrow[d,"\Sigma"'] &
+{[\Sigma X,\Sigma Z]_*} \arrow[l,"{(\Sigma i)^*}"'] \arrow[d,"\Sigma"'] &
+{[\Sigma(X/A),\Sigma Z]_*} \arrow[l,"{(\Sigma q)^*}"'] \arrow[d,"\Sigma"'] &
+{[\Sigma^2A,\Sigma Z]_*} \arrow[l,"{(\Sigma\delta)^*}"'] \arrow[d,"\Sigma"'] &
+{[\Sigma^2X,\Sigma Z]_*} \arrow[l,"{(-\Sigma^2i)^*}"'] \arrow[d,"\Sigma"'] &
+\cdots \arrow[l]\\
+\vdots & \vdots & \vdots & \vdots & \vdots & {}
 \end{tikzcd}
 \]
-Al tomar el colímite en cada columna se obtiene una sucesión exacta de grupos abelianos. La razón es que los colímites filtrados de grupos abelianos son exactos: conmutan con núcleos, imágenes y conúcleos, de modo que el colímite de una sucesión exacta de sistemas dirigidos vuelve a ser exacto. Cuando $X$ es finito-dimensional la conclusión también puede comprobarse directamente por estabilización: fijados tres términos consecutivos, la \myref{prop:biysus} garantiza que existe un nivel $k$ a partir del cual los tres sistemas ya son constantes, y en ese nivel la sucesión es una de las sucesiones exactas anteriores. En ningún caso aparece un término derivado de un límite inverso, pues aquí se toman colímites directos y no límites inversos.
+Al tomar el colímite en cada columna se obtiene una sucesión exacta de grupos abelianos. En efecto, podemos descartar un número finito de filas y trabajar en una cola cofinal en la que todos los dominios son al menos dobles suspensiones; a partir de allí todas las filas son sucesiones exactas de grupos abelianos. Los colímites filtrados de grupos abelianos son exactos, de modo que el colímite de estas sucesiones vuelve a ser exacto.
+Cuando $X$ es finito-dimensional la conclusión también puede comprobarse directamente por estabilización: fijados tres términos consecutivos, la \myref{prop:biysus} garantiza que existe un nivel $k$ a partir del cual los tres sistemas ya son constantes, y en ese nivel la sucesión es una de las sucesiones exactas anteriores. En ningún caso aparece un término derivado de un límite inverso, pues aquí se toman colímites directos y no límites inversos.
 \[
 \begin{tikzcd}[column sep=small, row sep=large]
 {\set{A_0,Z_0}} & {\set{X_0,Z_0}} \arrow[l] & {\set{(X/A)_0,Z_0}} \arrow[l] & {\set{\Sigma A_0,Z_0}} \arrow[l] & {\set{\Sigma X_0,Z_0}} \arrow[l] & \cdots \arrow[l]
@@ -158,7 +184,7 @@ Al tomar el colímite en cada columna se obtiene una sucesión exacta de grupos 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{La sucesión exacta bi-infinita}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-La invertibilidad de la suspensión permite extender la sucesión de Puppe hacia la izquierda. El mecanismo de la extensión hacia la izquierda es la fórmula de desplazamiento aplicada al objetivo. Como suspender $Z$ no altera sus clases estables, se tiene
+La invertibilidad de la suspensión permite extender la sucesión de Puppe hacia la izquierda. El mecanismo consiste en compensar la suspensión del objetivo mediante un desplazamiento de la fuente. En efecto,
 \[
 \set*{(X/A)_{-1},Z_0}\cong\set*{(X/A)_0,Z_1}\cong\set*{(X/A)_0,(\Sigma Z)_0},
 \]
@@ -180,7 +206,7 @@ Para cualquier $Z_m\in\SW$, la aplicación del funtor $\set*{-,Z_m}$ produce la 
 \]
 No es necesario restringirse a objetivos de la forma $Z_0$. Si $m\geq0$, entonces $Z_m\cong(\Sigma^mZ)_0$; si $m<0$, al desplazar simultáneamente fuente y objetivo se obtiene $\set*{W_n,Z_m}\cong\set*{W_{n-m},Z_0}$. Por tanto, la exactitud para objetivos generales se reduce a la ya demostrada para un objeto con índice cero.
 
-La finitud de $X$ interviene en todo el argumento anterior, pues es lo que permite detener la estabilización en cada término. Estas sucesiones exactas también pueden establecerse en la categoría extendida $\ESW$, aunque allí la demostración requiere un argumento distinto, que no se apoya en la estabilización término a término.
+La dimensión finita de $X$ interviene en la demostración alternativa por estabilización término a término. La demostración anterior mediante colímites filtrados no requiere este paso y permite establecer análogamente estas sucesiones exactas en la categoría extendida $\ESW$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{La sucesión de fibras de Puppe}
@@ -295,7 +321,7 @@ Aumentando $r$ si es necesario, Freudenthal permite identificar simultáneamente
 Extender la sucesión anterior indefinidamente hacia la derecha y hacia la izquierda.
 \end{ejer}
 \begin{sol}
-Como cada par de flechas en $A \to X \to X/A \to \Sigma X\to\cdots$ es sucesión cofibrada, podemos aplicar el resultado ya obtenido para tener la exactitud en cada punto de 
+Como cada par de flechas en $A \to X \to X/A \to \Sigma A\to\cdots$ es sucesión cofibrada, podemos aplicar el resultado ya obtenido para tener la exactitud en cada punto de 
 \[
 \set{Z_k,A_m} \longrightarrow
 \set{Z_k,X_m} \longrightarrow

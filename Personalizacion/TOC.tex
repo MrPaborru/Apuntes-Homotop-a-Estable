@@ -2,11 +2,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITULO TOC %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\setlength{\cftbeforetoctitleskip}{0em}
-% \setlength{\cftaftertoctitleskip}{7em}
-\renewcommand{\cfttoctitlefont}{\hfill\fontfamily{lmr}\selectfont\resizebox{!}{1.2cm}}
+% \setlength{\cftbeforetoctitleskip}{0em}
+\setlength{\cftaftertoctitleskip}{7em}
+\renewcommand{\cfttoctitlefont}{\hfill\fontfamily{lmr}\selectfont\resizebox{!}{1.3cm}}
 \renewcommand{\cftaftertoctitle}{
-    \resizebox{!}{1.2cm}{\,\colorbox{rojoCIMAT}{\!\vphantom{I}\!}}
+    \resizebox{!}{1.3cm}{\,\colorbox{rojoCIMAT}{\!\vphantom{I}\!}}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SEPARACIÓN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -16,13 +16,15 @@
 \setlength{\cftbeforechapskip}{0.7em} % arriba
 \renewcommand{\cftchapafterpnum}{\vspace{0.5em}} % abajo
 % Secciones
-\setlength{\cftsecnumwidth}{3em}   % hueco para números de dos cifras («5.14»)
+\setlength{\cftsecnumwidth}{\cftchapnumwidth}   
 \setlength{\cftsecindent}{0em}
-% \setlength{\cftbeforesecskip}{0.2em} % arriba
-% % Subsecciones
-\setlength{\cftsubsecnumwidth}{4em} % hueco para «5.14.1»
+\setlength{\cftbeforesecskip}{0.2em} % arriba
+\renewcommand{\cftsecafterpnum}{\vspace{0.1em}} % abajo
+% Subsecciones
+\setlength{\cftsubsecnumwidth}{4em} % hueco para tres números «5.14.1»
 \setlength{\cftsubsecindent}{\dimexpr\cftsecindent+\cftsecnumwidth\relax} % indentado
-% % Subsubsecciones
+\setlength{\cftbeforesubsecskip}{0.1em}
+% Subsubsecciones
 \setlength{\cftsubsubsecnumwidth}{3.6em}
 \setlength{\cftsubsubsecindent}{\dimexpr\cftsubsecindent+\cftsubsecnumwidth\relax}
 
@@ -77,8 +79,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECCIONES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\cftpagenumbersoff{sec}
 \renewcommand{\cftsecfont}{\fontfamily{bch}\selectfont\color{rojoCIMAT!100!black}}
-\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsecpresnum}{\color{white}}
 
 \renewcommand{\cftsubsecfont}{\fontfamily{bch}\selectfont\color{grisCIMAT!0!black}}
 \renewcommand{\cftsubsecaftersnum}{.}

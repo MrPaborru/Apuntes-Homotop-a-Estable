@@ -8,9 +8,9 @@ En la clase anterior se estableció que la categoría de Spanier--Whitehead $\SW
 \subsection{El conúcleo del morfismo de grado dos en la categoría estable}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-No existe una función punteada $S^0\to S^0$ de grado dos, ya que $[S^0,S^0]_*=\mathbb{Z}/2$. En la categoría estable, en cambio, tenemos
+No existe una función punteada $S^0\to S^0$ de grado dos: una función punteada entre dos copias de $S^0$ es necesariamente la función constante o la identidad, y por tanto tiene grado $0$ o $1$. En la categoría estable, en cambio, tenemos
 \[
-\set*{S^0_0,S^0_0}=\varinjlim_d[S^d,S^d]_*\cong\mathbb Z.
+\set*{S^0_0,S^0_0}=\varinjlim_d[S^d,S^d]_*\cong\mathbb Z,
 \]
 ya que, para $d\geq1$, el grado identifica $[S^d,S^d]_*$ con $\mathbb Z$, y la suspensión preserva el grado. El morfismo $2\colon S^0_0\to S^0_0$ es la clase correspondiente al entero $2$, representada por $z\mapsto z^2\colon S^1\to S^1$, como se indica en la pizarra; por la aditividad, también es $2\id_{S^0_0}$.
 
@@ -201,7 +201,7 @@ En particular, $hp_1=p_2g$, $d_2h=d_1$, $kp_2=p_3$ y $d_3k=(\Sigma f)d_2$.
 \end{defi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Comentarios sobre los axiomas}
+% \subsection{Comentarios sobre los axiomas}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{obs}
@@ -298,7 +298,8 @@ y
 \[
 \cdots\longleftarrow\hom_{\mathcal C}(\Sigma^{-1}Z,A)\longleftarrow
 \hom_{\mathcal C}(X,A)\xleftarrow{\ f^*\ }\hom_{\mathcal C}(Y,A)
-\xleftarrow{\ g^*\ }\hom_{\mathcal C}(Z,A)\longleftarrow\hom_{\mathcal C}(A,\Sigma X)\longleftarrow\cdots
+\xleftarrow{\ g^*\ }\hom_{\mathcal C}(Z,A)
+\xleftarrow{\ h^*\ }\hom_{\mathcal C}(\Sigma X,A)\longleftarrow\cdots
 \]
 \end{prop}
 \begin{proof}
@@ -361,10 +362,6 @@ Finalmente, como cada cuatro términos consecutivos de la sucesión infinita de 
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{La estructura triangulada de \texorpdfstring{$\SW$}{SW}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{El ejemplo de la categoría homotópica de complejos}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -404,7 +401,11 @@ El cono de $f$ es, en este contexto, la cofibra de $f$: concentra la informació
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{La estructura triangulada de Spanier--Whitehead}
+\section{La estructura triangulada de \texorpdfstring{$\SW$}{SW}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Triángulos distinguidos}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Volvamos a $\SW$. El automorfismo aditivo de traslación es $\sh^1(X,n)=(X,n+1)$, naturalmente isomorfo a la suspensión. Cuando sea necesario distinguir ambas operaciones, escribiremos $\sigma(X_n)=(\Sigma X)_n$ y $\eta_{X_n}\colon(\Sigma X)_n\to X_{n+1}$ para el isomorfismo natural de la clase anterior.
 
@@ -474,7 +475,7 @@ Las fórmulas coinciden en la frontera y respetan las identificaciones de la sus
 
 Estas homotopías muestran que los cuadrados de las última y penúltima columna en la fila del centro conmutan hasta homotopía:
 \[
-\begin{tikzcd}[sep=large]
+\begin{tikzcd}[sep=huge]
 Y_n \arrow[r,"{[i]}"] \arrow[d,equal] & (C_f)_n \arrow[r,"P_n"] \arrow[d,equal] & X_{n+1} \arrow[r,"{-\sh^1([f])}"] \arrow[d,"\eta_{X_n}^{-1}"'] & Y_{n+1} \arrow[d,"\eta_{Y_n}^{-1}"]\\
 Y_n \arrow[r,"{[i]}"'] \arrow[d,equal] & (C_f)_n \arrow[r,"{[q]}"'] \arrow[d,equal] & (\Sigma X)_n \arrow[r,"{[-\Sigma f]}"'] \arrow[d,"{[r]}"'] & (\Sigma Y)_n \arrow[d,equal]\\
 Y_n \arrow[r,"{[i]}"'] \arrow[d,equal] & (C_f)_n \arrow[r,"{[j]}"'] \arrow[d,equal] & (C_i)_n \arrow[r,"{[q']}"'] \arrow[d,equal] & (\Sigma Y)_n \arrow[d,"\eta_{Y_n}"]\\
@@ -489,7 +490,7 @@ Como también $P'_n=\eta_{Y_n}\circ[q']$ y el cuadro de la esquina superior dere
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Para $X_n$, el axioma \textup{TR3} se obtiene del triángulo de cono de la identidad. El cono de la identidad es $C_{\id_X}=X\cup_{\id_X}CX\cong CX$, que es contráctil. El diagrama de la pizarra queda, manteniendo fijo el último objeto,
 \[
-\begin{tikzcd}[sep=large]
+\begin{tikzcd}[sep=huge]
 X_n \arrow[r,"\id"] \arrow[d,equal] & X_n \arrow[r,"{[i]}"] \arrow[d,equal] & (C_{\id_X})_n \arrow[r,"P_n"] \arrow[d,"\cong"'] & X_{n+1} \arrow[d,equal]\\
 X_n \arrow[r,"\id"] \arrow[d,equal] & X_n \arrow[r,"{[i]}"'] \arrow[d,equal] & (CX)_n \arrow[r,"{\eta_{X_n}[q]}"] \arrow[d,"{[c]}"',"\cong"] & X_{n+1} \arrow[d,equal]\\
 X_n \arrow[r,"\id"] \arrow[d,equal] & X_n \arrow[r,"0"'] \arrow[d,equal] & *_n \arrow[r,"0"] \arrow[d,"\cong"'] & X_{n+1} \arrow[d,equal]\\
@@ -504,7 +505,7 @@ Todo morfismo $f\colon X_n\to Y_m$ en $\SW$ es el primer morfismo de un triángu
 \begin{proof}
 Si $n\geq m$, podemos comenzar con la identificación utilizada en la pizarra:
 \[
-\begin{tikzcd}[column sep=large,row sep=large]
+\begin{tikzcd}[column sep=large]
 X_n \arrow[r,"f"] & Y_m\\
 (\Sigma^{n-m}X)_m \arrow[u,"\cong"] \arrow[ur,"\widetilde f"'] &
 \end{tikzcd}

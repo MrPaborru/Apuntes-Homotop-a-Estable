@@ -188,7 +188,7 @@ Los cuadrados extremos conmutan por la compatibilidad de $[f]^*$ con las evaluac
 
 Detallemos el cuadrado que se calculó en clase. Para $\varphi\colon\Sigma^rS\to\Sigma^{-1}A^*=(X',m-1)$, sea $e_{-1}\colon\Sigma^{-1}A^*\wedge\Sigma X\to S$ la evaluación inducida por $e$. Los dos recorridos son
 \[
-\begin{tikzcd}[column sep=large,row sep=large]
+\begin{tikzcd}[column sep=large]
 \Sigma^r C_f \arrow[r,"\varphi\wedge1"] \arrow[d,"\Sigma^rh"'] & \Sigma^{-1}A^*\wedge C_f \arrow[r,"b\wedge1"] \arrow[d,"1\wedge h"] & W\wedge C_f \arrow[d,"p"]\\
 \Sigma^{r+1}X \arrow[r,"\varphi\wedge1"'] & \Sigma^{-1}A^*\wedge\Sigma X \arrow[r,"e_{-1}"'] & S.
 \end{tikzcd}
@@ -202,7 +202,7 @@ Esto reproduce los dos compuestos de la pizarra sin perder el índice $-k-1$ de 
 
 Para completar las \emph{dos} condiciones del criterio, usamos $p'=pB_{Z,W}\colon Z\wedge W\to S$. La misma compatibilidad, con los factores intercambiados, produce la segunda escalera exacta:
 \[
-\begin{tikzcd}[column sep=huge,row sep=large]
+\begin{tikzcd}[column sep=large]
 \set*{\Sigma^rS,X} \arrow[d,"f_*"] \arrow[r,"\cong"] & \set*{\Sigma^rA^*,S} \arrow[d]\\
 \set*{\Sigma^rS,Y} \arrow[d,"g_*"] \arrow[r,"\cong"] & \set*{\Sigma^rB^*,S} \arrow[d]\\
 \set*{\Sigma^rS,Z} \arrow[d,"h_*"] \arrow[r,"\Psi_r"] & \set*{\Sigma^rW,S} \arrow[d]\\
@@ -218,15 +218,23 @@ Las flechas de la derecha son precomposición por los mapas de la sucesión de $
 \begin{teo}\label{teo:todo-dualizable}
 Todo objeto de $\SW$ es dualizable.
 \end{teo}
-
 \begin{proof}
-Basta tratar $(X,0)$ con $X$ un CW-complejo finito punteado, pues la dualizabilidad se conserva al desplazar. El punto es el objeto cero y es dualizable; también lo son las esferas y las sumas finitas de objetos dualizables. En particular lo es el $0$-esqueleto, que es un wedge finito de copias de $S^0$.
+Basta tratar $(X,0)$ con $X$ un CW-complejo finito punteado, pues la dualizabilidad se conserva al desplazar. El $0$-esqueleto es un wedge finito de copias de $S^0$, y por tanto es dualizable.
 
-Al pegar una celda de dimensión $q\ge1$ a un subcomplejo $X'$, tenemos
+Procedemos por inducción sobre los esqueletos. Si $X^{(q-1)}$ es dualizable, la estructura celular da un triángulo distinguido
 \[
-S^{q-1}\xrightarrow{\varphi}X'\longrightarrow X'\cup_\varphi D^q\longrightarrow S^q.
+X^{(q-1)}\longrightarrow X^{(q)}
+\longrightarrow \bigvee\nolimits_{\!\!\alpha\in I_q}S^q
+\longrightarrow \Sigma X^{(q-1)},
 \]
-Los \emph{dos primeros} términos son dualizables por el caso de las esferas y la hipótesis de inducción. La \myref{teo:cofibra-dual} prueba la dualizabilidad del tercero. Como hay un número finito de celdas, se obtiene el resultado.
+donde $I_q$ es el conjunto finito de $q$-celdas. Rotándolo una vez obtenemos
+\[
+\Sigma^{-1}\!\left(\bigvee\nolimits_{\!\!\alpha\in I_q}S^q\right)
+\longrightarrow X^{(q-1)}
+\longrightarrow X^{(q)}
+\longrightarrow \bigvee\nolimits_{\!\!\alpha\in I_q}S^q.
+\]
+Los dos primeros términos son dualizables: el primero por ser un desplazamiento de una suma finita de esferas y el segundo por hipótesis de inducción. La \myref{teo:cofibra-dual} implica entonces que $X^{(q)}$ también es dualizable. Como $X$ tiene dimensión finita, se obtiene el resultado.
 \end{proof}
 
 \begin{nota}
