@@ -138,7 +138,7 @@ Estas correspondencias respetan homotopías punteadas. En efecto, si \(I_+=I\ama
 \(
 H\colon X\wedge I_+\longrightarrow Y
 \)
-cuyas restricciones a los extremos son \(f_0\) y \(f_1\). Las inclusiones de los extremos pueden verse como funciones punteadas \(i_0,i_1\colon S^0\longrightarrow I_+\). La compatibilidad se expresa diciendo que los conjuntos de morfismos son los coigualadores
+cuyas restricciones a los extremos son \(f_0\) y \(f_1\). Las inclusiones de los extremos pueden verse como funciones punteadas \(i_0,i_1\colon S^0\longrightarrow I_+\). Las inclusiones de los extremos inducen las aplicaciones de restricción de los siguientes diagramas
 \[
 \begin{tikzcd}[column sep=large]
 \Map_*(X\wedge Y\wedge I_+,Z)
@@ -181,10 +181,14 @@ X,\quad \Sigma X,\quad \Sigma^2X,\quad \ldots
 \]
 alcanza un comportamiento regular cuando el número de suspensiones tiende a infinito.
 
-Un primer ejemplo es la descomposición
+Un primer ejemplo es la siguiente descomposición.
+\begin{ejer}
+Probar que
 \begin{equation}\label{eq:susprod}
     \Sigma(X\times Y)\simeq \Sigma X\vee\Sigma Y\vee\Sigma(X\wedge Y)
 \end{equation}
+\end{ejer}
+\begin{sol}
 En efecto, antes de suspender existe una sucesión de cofibración
 \[
 X\vee Y\longrightarrow X\times Y\longrightarrow X\wedge Y.
@@ -198,6 +202,7 @@ Esta escisión garantiza que se tiene la equivalencia (\ref{eq:susprod}), así q
 \Sigma(X\times Y)\simeq \Sigma( X\vee Y\vee(X\wedge Y))
 \]
 pero en general $X\times Y \not\simeq  X\vee Y\vee(X\wedge Y)$.
+\end{sol}
 
 Por ejemplo, para $X=S^3,\,Y=S^5$ se tiene \(S^3\wedge S^5\cong S^8\), de modo que
 \[
@@ -232,7 +237,7 @@ E\colon\pi_i(X)\longrightarrow\pi_{i+1}(\Sigma X).
 La versión estándar del teorema de suspensión (véase \cite{freudenthal1938}) afirma:
 
 \begin{teo}[Freudenthal]
-Si \(X\) es \(r\)-conexo, entonces
+Si \(X\) es un CW-complejo punteado, con punto base una $0$-celda, y es \(r\)-conexo, entonces
 \[
 E\colon\pi_i(X)\longrightarrow\pi_{i+1}(\Sigma X)
 \]
@@ -244,7 +249,7 @@ Equivalentemente, si \(X\) es \((n-1)\)-conexo, entonces \(E\) es un isomorfismo
    La pizarra original confunde la hipótesis «\((n-1)\)-conexo» con la cota \(i<2n+1\). Esas dos expresiones no son compatibles: $S^1$ es $(1-1)$-conexo, pero $\pi_2(S^1)\cong0$ no puede ser isomorfo a $\pi_3(\Sigma S^1) \cong \pi_3(S^2) \cong \mathbb{Z}$, a pesar de que $2 < 2 \cdot 1 + 1$.
 \end{nota}
 
-Si $X$ es un espacio punteado arbitrario, siempre es $(-1)$-conexo (no vacío). Luego:
+Si $X$ es un CW-complejo punteado como los anteriores, siempre es $(-1)$-conexo (no vacío). Luego:
 
 \begin{center}\small
 \begin{tabular}{|l|c|c|c|c|}
@@ -264,7 +269,7 @@ Una consecuencia inmediata, y es la que da contenido preciso a la palabra «esta
 \pi_{i+k}(\Sigma^kX)\xrightarrow{\;\cong\;}\pi_{i+k+1}(\Sigma^{k+1}X)
 \]
 siempre que $i+k<2(r+k)+1$, es decir, $k>i-2r-1$.
-Para \(i\) fijo, esta desigualdad se cumple cuando \(k\) es suficientemente grande. Por tanto, para todo espacio punteado $X$ la sucesión
+Para \(i\) fijo, esta desigualdad se cumple cuando \(k\) es suficientemente grande. Por tanto, para todo CW-complejo punteado $X$, con punto base una $0$-celda, la sucesión
 \[
 \pi_i(X)\longrightarrow\pi_{i+1}(\Sigma X)\longrightarrow\pi_{i+2}(\Sigma^2X)\longrightarrow\cdots
 \]
@@ -366,7 +371,7 @@ Sean $X$ y $Y$ CW-complejos punteados, con $X$ de dimensión finita. Probar que 
 \end{ejer}
 
 \begin{sol}
-Sea $r$ la dimensión de $X$. Para cada $j\ge1$ consideramos los espacios $\Sigma^jX$ y $\Sigma^jY$. El primero es un CW-complejo punteado de dimensión $j+r$, y el segundo es $(j-1)$-conexo, pues suspender un espacio punteado arbitrario eleva en uno su conectividad. Aplicando la \myref{prop:biysus} con $n=j-1$, la condición del enunciado se lee
+Sea $r$ la dimensión de $X$. Para cada $j\ge1$ consideramos los espacios $\Sigma^jX$ y $\Sigma^jY$. El primero es un CW-complejo punteado de dimensión $j+r$, y el segundo es $(j-1)$-conexo, pues la suspensión de un CW-complejo punteado eleva en uno su conectividad. Aplicando la \myref{prop:biysus} con $n=j-1$, la condición del enunciado se lee
 \[
 \dim\Sigma^jX=j+r\le 2(j-1),
 \]

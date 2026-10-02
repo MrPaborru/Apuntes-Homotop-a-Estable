@@ -85,6 +85,8 @@ es decir, se suspende la clase y se aplica el homomorfismo inducido por el morfi
 \end{defi}
 
 La restricción $n+k\ge0$ hace que todos los términos estén definidos, aunque en grado cero se trata de conjuntos punteados. La estructura de grupo abeliano se obtiene restringiendo a la cola cofinal $n+k\ge2$, como se hará en el \myref{ejer:pi-abeliano}.
+Que $\pi_k(X)$ sea un colímite no implica que las aplicaciones de su sistema dirigido sean finalmente isomorfismos.
+
 % \begin{nota}
 %    Conviene no confundir dos cosas que a veces se dan por supuestas. Que $\pi_k(X)$ sea un colímite no significa que el sistema \emph{estabilice}: las aplicaciones $\pi_{n+k}(X_n)\to\pi_{n+k+1}(X_{n+1})$ no tienen por qué ser isomorfismos, y en general no lo son. Lo que sí ocurre es que, para calcular el colímite, se puede restringir el sistema a cualquier subconjunto \emph{cofinal} de índices, y esa libertad es la que se explotará repetidamente en lo que sigue.
 % \end{nota}
@@ -291,6 +293,13 @@ y la aplicación entre ellos está inducida por la familia $(f_n)_*$. El punto c
 cuyas flechas verticales son isomorfismos por cofinalidad, y cuya flecha inferior es la identidad porque para $n\ge0$ se tiene $(X_{\ge0})_n=X_n$ y $\xi'_n=\xi_n$. Por tanto $f_* \colon \pi_k(X_{\ge0}) \to \pi_k(X)$ es un isomorfismo para cada $k\en\mathbb Z$. Esto prueba que $f$ es equivalencia estable. 
 \end{ejem}
 
+\begin{ejer}
+Comprobar que las componentes $f_n$ del \myref{ejem:truncacion} definen un morfismo $f\colon X_{\ge0}\to X$.
+\end{ejer}
+\begin{sol}
+Si $\xi'_n$ son los mapas estructurales de $X_{\ge0}$, debemos probar $f_{n+1}\circ\xi'_n=\xi_n\circ\Sigma f_n$. Para $n\ge0$, ambos lados son $\xi_n$, pues las dos componentes de $f$ son identidades. Para $n=-1$, ambos son la única aplicación punteada $\Sigma *\to X_0$: a la izquierda se usa $f_0=1_{X_0}$ y a la derecha que $\xi_{-1}$ preserva el punto base. Para $n<-1$, ambos son igualmente la única aplicación punteada $\Sigma *\to X_{n+1}$. Así conmutan todos los cuadrados estructurales.
+\end{sol}
+
 
 Vale la pena subrayar el mecanismo, porque es fácil describirlo mal: la truncación \emph{reemplaza} los niveles negativos por el punto, no los añade, y los niveles negativos del espectro original pueden perfectamente ser no triviales. Lo que hace que el colímite no cambie es que los índices $n\ge0$ forman una cola cofinal del sistema de índices: todo término del sistema está conectado hacia adelante con un término de la cola, de modo que el colímite no ve lo que queda por detrás. No es, por tanto, que los términos descartados sean triviales, sino que son irrelevantes para el colímite.
 
@@ -477,7 +486,17 @@ Sea $\tau\colon(S^1)^{\wedge3}\to(S^1)^{\wedge3}$ la permutación cíclica $[z_1
 En consecuencia, los isomorfismos $(f_n)_*$ son compatibles con las transiciones de los sistemas de niveles pares. Inducen un isomorfismo entre sus colímites y, por (\ref{eq:colsuspar}) y (\ref{eq:colimpar}), $\pi_k(X)\cong\pi_{k+1}(\Sigma X)$.
 \end{proof}
 
-\begin{nota}
-El paso a niveles pares es decisivo para esta comparación mediante las trenzas $f_n$: si se intenta comparar niveles consecutivos, aparece una sola transposición de factores $S^1$, de grado $-1$, y el cuadrado correspondiente no conmuta salvo homotopía en general. Esto no impide definir otras comparaciones con ajustes de signo; explica por qué funciona la construcción anterior.
-\end{nota}
+\begin{ejer}
+Intentar la comparación de la prueba anterior usando niveles consecutivos en lugar de niveles pares e identificar la obstrucción para las mismas trenzas.
+\end{ejer}
+\begin{sol}
+Sea $b_n\colon X_n\wedge S^1\to S^1\wedge X_n$ la transposición de factores. Desde $X_n\wedge S^1\wedge S^1$, los recorridos $b_{n+1}(\xi_n\wedge1)$ y $(1\wedge\xi_n)(b_n\wedge1)$ tienen evaluaciones
+\[
+\begin{aligned}
+b_{n+1}(\xi_n\wedge1)[x,z_1,z_2]&=[z_2,\xi_n(x,z_1)],\\
+(1\wedge\xi_n)(b_n\wedge1)[x,z_1,z_2]&=[z_1,\xi_n(x,z_2)].
+\end{aligned}
+\]
+El primero precompuesto con $1_{X_n}\wedge T$, donde $T$ intercambia los dos factores $S^1$, coincide con el segundo. Pero $T\colon S^1\wedge S^1\to S^1\wedge S^1$ tiene grado $-1$, de modo que no es homótopo a la identidad y el cuadrado no conmuta salvo homotopía en general. El paso a niveles pares reemplaza esta transposición por la permutación cíclica de tres factores, de grado $+1$, utilizada en la prueba. Esto no impide definir otras comparaciones con ajustes de signo; explica por qué funciona la construcción anterior.
+\end{sol}
 

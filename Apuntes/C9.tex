@@ -29,13 +29,13 @@ A_{n+1} \arrow[r,"f_{n+1}"'] \arrow[ur,Rightarrow,"H_n",nfold] & B_{n+1}
 Es decir, $H_n$ es una homotopía de $f_{n+1}\circ\xi_n$ a $\xi'_n\circ\Sigma f_n$, donde $\xi_*$ y $\xi'_*$ son los morfismos estructurales de $A$ y de $B$.
 \end{defi}
 
-Un morfismo de espectros es, en particular, un morfismo débil: basta tomar $H_n$ constante. Lo que se gana al relajar la condición es que los morfismos débiles son mucho más fáciles de construir, y lo que se pierde ---no poder componerlos de la manera obvia--- se recupera con la construcción de la subsección siguiente.
+Un morfismo de espectros es, en particular, un morfismo débil: basta tomar $H_n$ constante. Los morfismos débiles son más fáciles de construir. La construcción siguiente permite representar un morfismo débil mediante un zigzag de morfismos estrictos, una de cuyas flechas es una equivalencia nivel a nivel.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{El telescopio asociado a un morfismo débil}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Sea $(f_*,H_*)\colon A\to B$ un morfismo débil. La idea es reemplazar $A$ por un espectro equivalente sobre el que las homotopías se hayan vuelto conmutatividades estrictas. Ese reemplazo es el \emph{telescopio} o \emph{colímite homotópico secuencial}.
+Sea $(f_*,H_*)\colon A\to B$ un morfismo débil. La idea es reemplazar $A$ por un espectro equivalente sobre el que las homotopías se hayan vuelto conmutatividades estrictas. El reemplazo se construye nivel a nivel mediante telescopios finitos.
 
 \begin{defi}\label{defi:telescopio}
 Se define $C_0=A_0$ y, para cada $n\ge1$,
@@ -626,12 +626,16 @@ X_n\times_{Y_n}PY_n\longrightarrow\Omega\bigl(X_{n+1}\times_{Y_{n+1}}PY_{n+1}\bi
 \]
 donde el superíndice $\perp$ denota el adjunto del morfismo estructural correspondiente.
 
-\begin{nota}
-   La fibra homotópica viene también provista de un morfismo
-   \[
-   p\colon F_f\longrightarrow X
-   \]
-   que en el nivel $n$ es la proyección de la fibra homotópica de $f_n$ sobre $X_n$. La comprobación de que es un morfismo de espectros es análoga a la del caso de la cofibra y se deja al lector.
-\end{nota}
+\begin{ejer}
+Probar que las proyecciones $p_n\colon F_{f_n}\to X_n$ definen un morfismo de espectros $p\colon F_f\to X$.
+\end{ejer}
+\begin{sol}
+La primera componente de la fórmula del adjunto estructural de $F_f$ da, para todo $(x,\alpha)\in F_{f_n}$ y $t\in S^1$,
+\[
+p_{n+1}\bigl((\xi_n^{F_f})^\perp(x,\alpha)(t)\bigr)
+=(\xi_n^X)^\perp(x)(t).
+\]
+Por tanto, $\Omega p_{n+1}\circ(\xi_n^{F_f})^\perp=(\xi_n^X)^\perp\circ p_n$. Tomando adjuntos obtenemos $p_{n+1}\circ\xi_n^{F_f}=\xi_n^X\circ\Sigma p_n$, que es precisamente la compatibilidad estructural requerida.
+\end{sol}
 
 Con esto quedan recogidas las construcciones que se usarán en las clases siguientes. El profesor anunció que el paso siguiente es el producto smash de espectros, que en el caso secuencial no se comportará tan bien como uno querría, y que después se estudiarán con detenimiento los $\Omega$-espectros, que hasta ahora se habían dejado de lado. Más adelante se construirán también los colímites y límites homotópicos, que son más importantes una vez que se disponga de la categoría homotópica propiamente dicha.

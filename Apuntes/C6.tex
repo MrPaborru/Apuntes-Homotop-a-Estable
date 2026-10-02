@@ -3,7 +3,7 @@ La clase anterior estableció la dualidad en categorías monoidales simétricas 
 La segunda mitad de la clase vuelve al contexto estable. La categoría de Spanier--Whitehead con el producto smash no se sabe todavía que sea cerrada, de modo que no hay un candidato evidente para el dual de un objeto arbitrario; pero las esferas sí tienen dual, y se demuestra que basta con comprobar la dualidad sobre las esferas para obtenerla en toda la categoría. El caso general se deja para la clase siguiente.
 
 \begin{nota}
-   La clase se abre reenunciando el criterio de la sesión anterior, que se usará una y otra vez: \emph{$X^\vee$ es un dual de $X$ si y solo si $-\otimes X$ es adjunto izquierdo a $-\otimes X^\vee$}. En la \myref{prop:adjuncion} se construyeron las biyecciones a partir de una dualidad; al inicio de esta sesión se recordó el criterio en esta forma, que será la utilizada en el capítulo.
+   La clase se abre reenunciando el criterio de la sesión anterior, que se usará una y otra vez: \emph{$X^\vee$ es un dual de $X$ si y solo si $-\otimes X$ es adjunto izquierdo a $-\otimes X^\vee$}. En la \myref{prop:adjuncion} se construyeron las biyecciones a partir de una dualidad; al inicio de esta sesión se recordó el criterio en esta forma, que será la utilizada en el capítulo. Entendemos aquí la adjunción con la \hyperref[nota:compatibilidad-adjuncion-dual]{compatibilidad con tensorizar precisada al final de C5}.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -166,39 +166,39 @@ Por el \myref{teo:mackane-kelly} esos caminos coinciden. El camino negro es, por
 En la pizarra se reutilizó el vértice $X^\vee\otimes(X\otimes X^\vee)$ para dos lugares del trazado. Para que la comparación sea válida se han separado esas dos apariciones: no se puede identificar cada camino que llega a ellas invocando únicamente que los objetos escritos coinciden. Las apariciones de $X^\vee$ pueden haber sido permutadas. También se escribe $\lambda^{-1}$ en la primera flecha, en lugar de la etiqueta $1\otimes\lambda^{-1}$ que aparece en la captura.
 \end{nota}
 
-% \begin{ejer}[La otra identidad de zigzag]
-% Completar la demostración de la \myref{prop:simetria-dual} comprobando la identidad restante.
-% \end{ejer}
-% \begin{sol}
-% Con $Y=X^\vee$, el compuesto correcto es
-% \[
-% \begin{tikzcd}[column sep=large,row sep=large]
-% X \arrow[r,"{\rho_X^{-1}}"] \arrow[ddd,equal]
-%  &X\otimes1 \arrow[d,"{1_X\otimes\mathrm{coev}'}"]\\
-%  &X\otimes(Y\otimes X) \arrow[d,"{\alpha^{-1}_{X,Y,X}}"]\\
-%  &(X\otimes Y)\otimes X \arrow[d,"{\mathrm{ev}'\otimes1_X}"]\\
-% X &1\otimes X \arrow[l,"{\lambda_X}"']
-% \end{tikzcd}
-% \]
-% Suprimiendo solo los asociadores y las unidades, el compuesto es
-% \[
-% \begin{aligned}
-% &(\mathrm{ev}\otimes1_X)
-%  (B_{X,Y}\otimes1_X)(1_X\otimes B_{X,Y})
-%  (1_X\otimes\mathrm{coev})\\
-% &\quad=(\mathrm{ev}\otimes1_X)
-%  B_{X,Y\otimes X}B_{X,X\otimes Y}
-%  (1_X\otimes\mathrm{coev})\\
-% &\quad=(1_X\otimes\mathrm{ev})
-%  B_{X,X\otimes Y}(1_X\otimes\mathrm{coev})\\
-% &\quad=(1_X\otimes\mathrm{ev})
-%  (\mathrm{coev}\otimes1_X)
-% =1_X.
-% \end{aligned}
-% \]
-% En la primera igualdad se comparan dos permutaciones de los tres factores: ambas llevan $X_1\otimes X_2\otimes Y$ a $Y\otimes X_1\otimes X_2$. La segunda y la tercera usan la naturalidad de $B$ con $\mathrm{ev}$ y $\mathrm{coev}$, respectivamente. La última es el zigzag original de $X$. Al reinsertar los asociadores y las unidades se obtiene la igualdad del diagrama.
+\begin{ejer}[La otra identidad de zigzag]
+Completar la demostración de la \myref{prop:simetria-dual} comprobando la identidad restante.
+\end{ejer}
+\begin{sol}
+Con $Y=X^\vee$, el compuesto correcto es
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+X \arrow[r,"{\rho_X^{-1}}"] \arrow[ddd,equal]
+ &X\otimes1 \arrow[d,"{1_X\otimes\mathrm{coev}'}"]\\
+ &X\otimes(Y\otimes X) \arrow[d,"{\alpha^{-1}_{X,Y,X}}"]\\
+ &(X\otimes Y)\otimes X \arrow[d,"{\mathrm{ev}'\otimes1_X}"]\\
+X &1\otimes X \arrow[l,"{\lambda_X}"']
+\end{tikzcd}
+\]
+Suprimiendo solo los asociadores y las unidades, el compuesto es
+\[
+\begin{aligned}
+&(\mathrm{ev}\otimes1_X)
+ (B_{X,Y}\otimes1_X)(1_X\otimes B_{X,Y})
+ (1_X\otimes\mathrm{coev})\\
+&\quad=(\mathrm{ev}\otimes1_X)
+ B_{X,Y\otimes X}B_{X,X\otimes Y}
+ (1_X\otimes\mathrm{coev})\\
+&\quad=(1_X\otimes\mathrm{ev})
+ B_{X,X\otimes Y}(1_X\otimes\mathrm{coev})\\
+&\quad=(1_X\otimes\mathrm{ev})
+ (\mathrm{coev}\otimes1_X)
+=1_X.
+\end{aligned}
+\]
+En la primera igualdad se comparan dos permutaciones de los tres factores: ambas llevan $X_1\otimes X_2\otimes Y$ a $Y\otimes X_1\otimes X_2$. La segunda y la tercera usan la naturalidad de $B$ con $\mathrm{ev}$ y $\mathrm{coev}$, respectivamente. La última es el zigzag original de $X$. Al reinsertar los asociadores y las unidades se obtiene la igualdad del diagrama.
 
-% \end{sol}
+\end{sol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -358,7 +358,7 @@ que dice que una aplicación de dos variables es lo mismo que una aplicación de
 \end{ejem}
 
 \begin{nota}
-   El hom interno es un funtor en cada variable. Es covariante en la segunda por construcción, y contravariante en la primera; esto último es un ejercicio que se comprueba con la adjunción y la naturalidad. Al funtor de dos variables
+   El hom interno es un funtor en cada variable. Es covariante en la segunda por construcción, y contravariante en la primera, como se comprueba en el siguiente ejercicio. Al funtor de dos variables
    \[
    \ihom(-,-)\colon\mathcal C^{\mathrm{op}}\times\mathcal C\longrightarrow\mathcal C
    \]
@@ -366,6 +366,22 @@ que dice que una aplicación de dos variables es lo mismo que una aplicación de
 
    No hay una receta general para calcular el dual de un objeto, ni tampoco para construir su hom interno: cada categoría exige su propio método y no se dispone de una descripción que sirva para todas a la vez. En el caso de los espectros, la existencia de un hom interno se prueba con relativa facilidad, pero construirlo explícitamente es otra cosa.
 \end{nota}
+
+\begin{ejer}
+Probar que $\ihom(-,-)$ es un bifuntor $\mathcal C^{\mathrm{op}}\times\mathcal C\to\mathcal C$.
+\end{ejer}
+\begin{sol}
+Escribamos $H_{X,Y}=\ihom(X,Y)$ y sea $\mathrm{ev}_{X,Y}\colon X\otimes H_{X,Y}\to Y$ la counidad. Para $a\colon X'\to X$ y $b\colon Y\to Y'$, definimos $H(a,b)\colon H_{X,Y}\to H_{X',Y'}$ como el adjunto de $b\circ\mathrm{ev}_{X,Y}\circ(a\otimes1)$. Su ecuación caracterizadora es
+\[
+\mathrm{ev}_{X',Y'}\circ(1_{X'}\otimes H(a,b))
+=b\circ\mathrm{ev}_{X,Y}\circ(a\otimes1).
+\]
+Para $a=1_X$ y $b=1_Y$, el adjunto es $\mathrm{ev}_{X,Y}$, de modo que $H(1_X,1_Y)=1_{H_{X,Y}}$. Si además $a'\colon X''\to X'$ y $b'\colon Y'\to Y''$, aplicando dos veces la ecuación anterior, el adjunto de $H(a',b')\circ H(a,b)$ es $b'\circ b\circ\mathrm{ev}_{X,Y}\circ((a\circ a')\otimes1)$. Por unicidad del adjunto,
+\[
+H(a',b')\circ H(a,b)=H(a\circ a',b'\circ b).
+\]
+Esto verifica simultáneamente las composiciones en ambas variables, con la contravarianza requerida en la primera.
+\end{sol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{El hom interno y el dual funcional}
@@ -699,6 +715,37 @@ Sea $\mathcal C$ una categoría monoidal simétrica cerrada. Entonces $\mathcal 
 \]
 y con la composición dada por el morfismo del hom interno construido en la \myref{prop:hom-propiedades}.
 \end{prop}
+
+\begin{ejer}
+Verificar las leyes de unidad y asociatividad de la composición interna de la \myref{prop:enriquecida}.
+\end{ejer}
+\begin{sol}
+Usamos $H_{X,Y}$, $c_{X,Y,Z}$ y $u_X$ de la \myref{prop:hom-propiedades}, omitiendo los asociadores y las unidades canónicos al comparar adjuntos. Por definición, $\mathrm{ev}_{X,X}(1_X\otimes u_X)=\rho_X$ y
+\[
+\mathrm{ev}_{X,Z}(1_X\otimes c_{X,Y,Z})
+=\mathrm{ev}_{Y,Z}(\mathrm{ev}_{X,Y}\otimes1).
+\]
+El adjunto de $c_{X,X,Y}(u_X\otimes1)$ evalúa primero la identidad de $X$ y después $H_{X,Y}$; el de $c_{X,Y,Y}(1\otimes u_Y)$ evalúa primero $H_{X,Y}$ y después la identidad de $Y$. Ambos son $\mathrm{ev}_{X,Y}$, tras las identificaciones de unidad. Por unicidad de adjuntos se obtienen, respectivamente, $\lambda_{H_{X,Y}}$ y $\rho_{H_{X,Y}}$, que son las dos leyes de unidad.
+
+Para la asociatividad, los dos mapas desde $H_{X,Y}\otimes H_{Y,Z}\otimes H_{Z,W}$ a $H_{X,W}$ son
+\[
+\begin{aligned}
+&c_{X,Z,W}(c_{X,Y,Z}\otimes1),\\
+&c_{X,Y,W}(1\otimes c_{Y,Z,W}).
+\end{aligned}
+\]
+Aplicando dos veces la ecuación de evaluación de $c$, ambos tienen como adjunto el mismo compuesto
+\[
+\begin{tikzcd}[column sep=small,row sep=large]
+X\otimes H_{X,Y}\otimes H_{Y,Z}\otimes H_{Z,W}
+\arrow[d,"{\mathrm{ev}_{X,Y}\otimes1\otimes1}"']\\
+Y\otimes H_{Y,Z}\otimes H_{Z,W}
+\arrow[r,"{\mathrm{ev}_{Y,Z}\otimes1}"]
+& Z\otimes H_{Z,W}\arrow[r,"{\mathrm{ev}_{Z,W}}"] & W.
+\end{tikzcd}
+\]
+El orden de los tres homs internos no cambia. La unicidad del adjunto prueba la asociatividad, con los asociadores correspondientes restituidos.
+\end{sol}
 
 La categoría original se recupera de la enriquecida aplicando
 $\Gamma=\hom_{\mathcal C}(1,-)$ a los homs internos. Para explicar la compatibilidad con la composición, escribamos otra vez $H_{U,V}=\ihom(U,V)$. El diagrama de P13 debe leerse con una aplicación canónica $\gamma$, no con un isomorfismo en su lado izquierdo:

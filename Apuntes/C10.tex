@@ -539,21 +539,21 @@ Como la suspensión reducida es un adjunto izquierdo, preserva pushouts. Obtenem
 & \Sigma X \arrow[ul,phantom,"\ulcorner",very near start].
 \end{tikzcd}
 \]
-Para interpretar este diagrama como la adjunción de una celda hay que distinguir dos suspensiones. Escribamos $\Sigma_{\mathrm u}$ para la suspensión no reducida. Para $n\ge1$, el par $(\Sigma_{\mathrm u}D^n,\Sigma_{\mathrm u}S^{n-1})$ es homeomorfo a $(D^{n+1},S^n)$. En cambio, $\Sigma((D^n)_+)$ se obtiene de $\Sigma_{\mathrm u}D^n$ identificando sus dos polos; no es el disco $D^{n+1}$.
+Para interpretar este diagrama como la adjunción de una celda, usamos el disco parametrizador $D^n\times I\cong D^{n+1}$. Para $n\ge1$, su borde es $(S^{n-1}\times I)\cup(D^n\times\{0,1\})\cong S^n$. La aplicación de adjunción a $\Sigma Y$ vale $[f(a),t]$ en el borde lateral y el punto base en ambos extremos. Estas fórmulas coinciden en las intersecciones. El disco parametrizador no debe confundirse con $\Sigma((D^n)_+)$: este último es el cociente que colapsa conjuntamente $D^n\times\{0,1\}$ al punto base.
 
-Esto no altera el espacio adjuntado en el pushout: ambos polos están en $\Sigma_{\mathrm u}S^{n-1}$ y la aplicación a $\Sigma Y$ ya los envía al punto base. Por la propiedad universal, el diagrama anterior equivale al pushout no punteado
+Como la aplicación del borde ya envía ambos extremos al punto base, colapsarlos antes de formar el pushout no cambia el espacio adjuntado. Por la propiedad universal, el diagrama anterior equivale al pushout no punteado
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
-S^n\cong\Sigma_{\mathrm u}S^{n-1}
+S^n\cong\partial(D^n\times I)
 \arrow[r,"\widetilde{\Sigma f}"] \arrow[d,hook]
 & \Sigma Y \arrow[d]\\
-D^{n+1}\cong\Sigma_{\mathrm u}D^n \arrow[r]
+D^{n+1}\cong D^n\times I \arrow[r]
 & \Sigma X \arrow[ul,phantom,"\ulcorner",very near start].
 \end{tikzcd}
 \]
-La aplicación $\widetilde{\Sigma f}$ envía $[a,t]$ a $[f(a),t]$ y los dos polos al punto base. Así, suspender una adjunción de una $n$-celda equivale a adjuntar una $(n+1)$-celda. Para $n=0$, adjuntar una $0$-celda distinta del punto base añade, después de suspender, un intervalo con sus dos extremos en el punto base, es decir, una $1$-celda.
+La aplicación $\widetilde{\Sigma f}$ del borde es la descrita arriba. Así, suspender una adjunción de una $n$-celda equivale a adjuntar una $(n+1)$-celda. Para $n=0$, el disco parametrizador es $D^0\times I\cong I$ y su borde consta de los dos extremos: adjuntar una $0$-celda distinta del punto base añade, después de suspender, un intervalo con sus dos extremos en el punto base, es decir, una $1$-celda.
 
-El dibujo usado en clase para $D^1$ representa la suspensión no reducida de $(D^1)_+$ antes de colapsar el segmento correspondiente al punto añadido:
+El dibujo de clase para $D^1$ ilustra el colapso de los extremos al punto base; se conserva el segmento correspondiente al punto añadido:
 \begin{center}
 \begin{tikzpicture}[x=1cm,y=1cm,line width=.65pt,line cap=round,line join=round]
 \coordinate (N) at (0,1.2);
@@ -573,7 +573,7 @@ El dibujo usado en clase para $D^1$ representa la suspensión no reducida de $(D
 \node[align=center,text width=3.6cm] at (5,0) {El segmento quebrado $N* S$ se colapsa al punto base.};
 \end{tikzpicture}
 \end{center}
-El rombo es $\Sigma_{\mathrm u}D^1\cong D^2$. Al colapsar la suspensión del punto añadido, sus polos $N$ y $S$ quedan identificados. En el pushout podemos trabajar directamente con el disco, porque esa identificación ya la impone la aplicación del borde a $\Sigma Y$.
+El rombo es un disco $D^2$; puede obtenerse de $D^1\times I$ colapsando cada extremo por separado a $N$ y $S$. El segmento quebrado $N* S$ se colapsa después al punto base, identificando esos vértices. En el pushout podemos usar directamente $D^1\times I\cong D^2$, porque su aplicación de borde ya envía ambos extremos al punto base.
 
 Repitiendo el argumento en las etapas de la construcción celular, y usando que la suspensión preserva también sus colímites, concluimos que $\Sigma X$ es un complejo celular. Su estructura tiene una $(n+1)$-celda por cada $n$-celda de $X$ distinta del punto base. El punto base permanece como una $0$-celda y no genera una celda adicional al suspender.
 
@@ -582,12 +582,12 @@ Repitiendo el argumento en las etapas de la construcción celular, y usando que 
 
 Sea $X$ un espectro celular. Como $\xi_r\colon\Sigma X_r\hookrightarrow X_{r+1}$ es una inclusión de subcomplejo, cada $m$-celda de $X_r$, distinta del punto base, determina una $(m+1)$-celda de $X_{r+1}$. Queremos considerar estas dos celdas como representantes de una misma celda del espectro.
 
-Describamos la relación mediante funciones características, como en clase. Sean $\Phi\colon D^m\to X_r$ una $m$-celda y $\Psi\colon D^{m-n}\to X_{r-n}$ una $(m-n)$-celda, con $0\le n\le\min\{m,r\}$. Suspender una función característica significa usar la construcción de discos de la subsección anterior. Por ello, al escribir $\Sigma^n\Psi$ sobre un disco, entendemos la aplicación obtenida suspendiendo $\Psi$ de esa manera, con las identificaciones $\Sigma_{\mathrm u}^nD^{m-n}\cong D^m$; no estamos afirmando que la suspensión reducida de $(D^{m-n})_+$ sea un disco.
+Describamos la relación mediante funciones características, como en clase. Sean $\Phi\colon D^m\to X_r$ una $m$-celda y $\Psi\colon D^{m-n}\to X_{r-n}$ una $(m-n)$-celda, con $0\le n\le\min\{m,r\}$. Para una función característica $\Psi\colon D^d\to X$, la función característica suspendida se parametriza por $D^d\times I\cong D^{d+1}$ y vale $[\Psi(x),t]$; los extremos van al punto base y el borde lateral procede de la aplicación de adjunción. Al escribir $\Sigma^n\Psi$ sobre un disco entendemos esta construcción sucesiva, con disco parametrizador $D^{m-n}\times I^n\cong D^m$, no la identificación de la suspensión reducida de $(D^{m-n})_+$ con un disco.
 
 Diremos que $\Phi$ es la \emph{$n$-ésima suspensión de $\Psi$ en el espectro} si, con funciones características compatibles, conmuta el diagrama
 \[
 \begin{tikzcd}[column sep=huge]
-D^m\cong\Sigma_{\mathrm u}^nD^{m-n}
+D^m\cong D^{m-n}\times I^n
 \arrow[r,"\Sigma^n\Psi"] \arrow[ddddr,"\Phi"']
 & \Sigma^nX_{r-n}
 \arrow[d,"\Sigma^{n-1}\xi_{r-n}"]\\

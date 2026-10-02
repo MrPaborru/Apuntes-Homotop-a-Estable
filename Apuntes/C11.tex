@@ -16,13 +16,13 @@ La clase anterior introdujo los espectros celulares y sus celdas estables. Ahora
 Recordemos que un \emph{espectro celular} es un espectro secuencial $X=(X_n,\xi_n)$ cuyos niveles son complejos celulares punteados y los mapas $\xi_n\colon\Sigma X_n\to X_{n+1}$ son inclusiones de subcomplejos. Si los niveles son CW complejos, hablamos de un \emph{CW espectro}. Una celda de $X_r$, distinta del punto base y con función característica $\Phi\colon D^m\to X_r$, determina una celda de $X_{r+1}$ mediante el diagrama
 \[
 \begin{tikzcd}[cramped,column sep=large,row sep=large]
-D^{m+1}\cong\Sigma_{\mathrm u}D^m
+D^{m+1}\cong D^m\times I
 \arrow[r,"\widetilde{\Sigma\Phi}"] \arrow[dr,"\Phi'"']
 & \Sigma X_r \arrow[d,"\xi_r"]\\
 & X_{r+1}.
 \end{tikzcd}
 \]
-Como en la clase anterior, $\Sigma_{\mathrm u}$ denota la suspensión no reducida del disco y $\widetilde{\Sigma\Phi}$ envía sus polos al punto base de $\Sigma X_r$. Las \emph{celdas estables} son las clases de equivalencia generadas por estas identificaciones $\Phi\sim\Phi'$, omitiendo siempre el punto base. La dimensión estable de esta clase es $m-r$, que permanece constante al pasar al nivel siguiente.
+Como en la clase anterior, $\widetilde{\Sigma\Phi}$ se parametriza por $D^m\times I$ y vale $[\Phi(x),t]$: envía los extremos al punto base de $\Sigma X_r$ y el borde lateral según la aplicación de adjunción. Las \emph{celdas estables} son las clases de equivalencia generadas por estas identificaciones $\Phi\sim\Phi'$, omitiendo siempre el punto base. La dimensión estable de esta clase es $m-r$, que permanece constante al pasar al nivel siguiente.
 
 \begin{enumerate}
 \item El espectro esfera $\mathbb S=(S^0,S^1,S^2,\ldots)$, con su estructura celular habitual, tiene una única $0$-celda estable. Está representada por la $0$-celda de $S^0$ distinta del punto base y por sus suspensiones sucesivas.
@@ -240,10 +240,10 @@ La última condición significa que, dada una celda de $X_n$, al suspenderla suf
 \circ\Sigma^{m-1}\xi^X_n\colon\Sigma^mX_n\longrightarrow X_{n+m}
 \qquad(m\ge1),
 \]
-y $\xi^X_{n,0}=1_{X_n}$. Omitiremos el superíndice cuando el espectro sea claro. Si la celda tiene función característica $\Phi\colon D^{n+k}\to X_n$, la cofinalidad afirma que para algún $m$ la aplicación suspendida del siguiente diagrama factoriza por $A_{n+m}$:
+y $\xi^X_{n,0}=1_{X_n}$. Omitiremos el superíndice cuando el espectro sea claro. Si la celda tiene función característica $\Phi\colon D^{n+k}\to X_n$, la cofinalidad afirma que para algún $m$ la aplicación del siguiente diagrama, obtenida construyendo sucesivamente las funciones características suspendidas, factoriza por $A_{n+m}$:
 \[
 \begin{tikzcd}[cramped,column sep=large,row sep=large]
-D^{n+k+m}\cong\Sigma_{\mathrm u}^mD^{n+k}
+D^{n+k+m}\cong D^{n+k}\times I^m
 \arrow[r,"\widetilde{\Sigma^m\Phi}"]
 \arrow[dddd,dashed] \arrow[ddddr]
 & \Sigma^mX_n \arrow[d,"\Sigma^{m-1}\xi_n"]\\
