@@ -1,0 +1,472 @@
+% C11 -- 1 de octubre de 2026.
+% Fragmento para integrar en el documento principal, sin preámbulo ni \chapter.
+% Fuentes: Screenshots C11/P01--P25.png y C11.txt.
+% Se conservan \Sp, \sh y \Map, usados en C9, y los entornos del documento.
+% Las referencias Pxx permiten cotejar el desarrollo con las pizarras.
+
+La clase anterior introdujo los espectros celulares y sus celdas estables. Ahora describiremos la adjunción de estas celdas directamente en la categoría de espectros y construiremos una aproximación celular de cualquier espectro secuencial. Después estudiaremos los subespectros cofinales, que conservan todas las celdas estables aunque algunos de sus representantes aparezcan más tarde, y probaremos que sus inclusiones son equivalencias estables. Esto permitirá introducir los morfismos y las homotopías eventualmente definidos. Los ejemplos con la fibración de Hopf mostrarán por qué necesitamos esta flexibilidad para describir la categoría homotópica estable; al final anunciaremos la composición y la comparación de categorías que se desarrollarán en la siguiente clase.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Construcción y aproximación celular de espectros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P01--P02. Recordatorio y cuatro ejemplos.
+\subsection{Celdas estables y ejemplos}
+
+Recordemos que un \emph{espectro celular} es un espectro secuencial $X=(X_n,\xi_n)$ cuyos niveles son complejos celulares punteados y los mapas $\xi_n\colon\Sigma X_n\to X_{n+1}$ son inclusiones de subcomplejos. Si los niveles son CW complejos, hablamos de un \emph{CW espectro}. Una celda de $X_r$, distinta del punto base y con función característica $\Phi\colon D^m\to X_r$, determina una celda de $X_{r+1}$ mediante el diagrama
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+D^{m+1}\cong\Sigma_{\mathrm u}D^m
+\arrow[r,"\widetilde{\Sigma\Phi}"] \arrow[dr,"\Phi'"']
+& \Sigma X_r \arrow[d,"\xi_r"]\\
+& X_{r+1}.
+\end{tikzcd}
+\]
+Como en la clase anterior, $\Sigma_{\mathrm u}$ denota la suspensión no reducida del disco y $\widetilde{\Sigma\Phi}$ envía sus polos al punto base de $\Sigma X_r$. Las \emph{celdas estables} son las clases de equivalencia generadas por estas identificaciones $\Phi\sim\Phi'$, omitiendo siempre el punto base. La dimensión estable de esta clase es $m-r$, que permanece constante al pasar al nivel siguiente.
+
+\begin{enumerate}
+\item El espectro esfera $\mathbb S=(S^0,S^1,S^2,\ldots)$, con su estructura celular habitual, tiene una única $0$-celda estable. Está representada por la $0$-celda de $S^0$ distinta del punto base y por sus suspensiones sucesivas.
+\item Si $K$ es un complejo celular punteado, $\Sigma^\infty K$ tiene una $m$-celda estable por cada $m$-celda de $K$ distinta del punto base. Todas ellas tienen un representante en el nivel cero.
+\item El desplazamiento $\sh^m(\Sigma^\infty K)$ tiene una $(k+m)$-celda estable por cada $k$-celda de $K$ distinta del punto base. En efecto, desplazar los niveles modifica la diferencia entre la dimensión de una celda y el nivel en que aparece. Aquí $m$ puede ser negativo, por lo que pueden aparecer celdas estables de dimensión negativa.
+\item Consideremos el espectro $X$ dado por $X_0=S^0$, $X_1=S^1$ y $X_n=\Sigma^{n-2}(S^2\cup_2D^3)$ para $n\ge2$, donde el subíndice $2$ indica que el disco se adjunta mediante una aplicación $S^2\to S^2$ de grado $2$. Sus primeros morfismos estructurales son
+\[
+\begin{tikzcd}[cramped,column sep=large]
+\Sigma S^0 \arrow[r,"\cong"] & S^1
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[cramped,column sep=large]
+\Sigma S^1 \arrow[r,"\cong"] & S^2 \arrow[r,hook] & S^2\cup_2D^3,
+\end{tikzcd}
+\]
+y, a partir del nivel $2$, son los homeomorfismos de suspensión. Este espectro tiene una $0$-celda estable, originada en $X_0$, y una $1$-celda estable, representada por la $3$-celda adjuntada en el nivel $2$. Así, las celdas estables no tienen por qué originarse todas en un mismo nivel.
+\end{enumerate}
+
+% P03. Construcción nivel a nivel y versión relativa.
+\subsection{La construcción nivel a nivel}
+
+La idea es formar un espectro celular pegando celdas y, simultáneamente, sus suspensiones en los niveles posteriores. Empezamos con el espectro cero $\Sigma^\infty *=(*,*,\ldots)$ y adjuntamos las celdas necesarias para construir $X_0$. Esto genera el espectro de suspensión $\Sigma^\infty X_0$. A continuación adjuntamos las celdas necesarias para obtener $X_1$ a partir del subcomplejo $\Sigma X_0$ y propagamos nuevamente esas celdas por suspensión. El comienzo del proceso se resume en el diagrama
+\[
+\begin{tikzcd}[cramped,row sep=large]
+(*,*,*,\ldots)
+\arrow[d,"\text{celdas para formar }X_0"]\\
+(X_0,\Sigma X_0,\Sigma^2X_0,\ldots)
+\arrow[d,"\text{celdas para formar }X_1"]\\
+(X_0,X_1,\Sigma X_1,\Sigma^2X_1,\ldots)
+\arrow[d]\\
+\vdots
+\end{tikzcd}
+\]
+La expresión $\Sigma X_1$ de la tercera fila contiene tanto $\Sigma^2X_0$ como las suspensiones de las celdas añadidas al construir $X_1$. Es la unión que en la pizarra se escribió esquemáticamente como $\Sigma^2X_0\cup\Sigma C$, donde $C$ representa las nuevas celdas, con sus respectivas aplicaciones de adjunción.
+
+También podemos empezar con un espectro $A$ en lugar del espectro cero, adjuntar celdas en $A_0$ para formar $X_0$ y continuar de manera compatible en los niveles siguientes. El resultado viene acompañado de un morfismo $A\to X$. Un \emph{espectro celular relativo} se refiere a este morfismo y a su construcción por adjunción de celdas, no solo al espectro final $X$.
+
+% P04--P05. Espectro libre, adjunción y pushout de una celda.
+\subsection{Espectros libres y adjunción de celdas}
+
+Para expresar la construcción anterior directamente en la categoría de espectros, introducimos una notación. Si $K$ es un espacio punteado y $n\ge0$, escribimos $F_nK=\sh^{-n}(\Sigma^\infty K)$. Explícitamente,
+\[
+(F_nK)_r=
+\begin{cases}
+*,&r<n,\\
+\Sigma^{r-n}K,&r\ge n.
+\end{cases}
+\]
+Así, $F_nK=(*,\ldots,*,K,\Sigma K,\Sigma^2K,\ldots)$, con $K$ en el nivel $n$ y los homeomorfismos canónicos como morfismos estructurales a partir de ese nivel. Si $K$ no está punteado, escribimos $K_+=K\amalg\{*\}$.
+
+\begin{lema}\label{lema:c11-adjuncion-libre}
+Para todo espacio $K$, espectro secuencial $X$ y entero $n\ge0$, existe una biyección natural
+\[
+\hom_{\Sp^{\mathbb N}}(F_n(K_+),X)
+\cong\Map_*(K_+,X_n)\cong\Map(K,X_n),
+\]
+donde en esta fórmula consideramos los conjuntos de aplicaciones continuas, punteadas en el término intermedio.
+\end{lema}
+\begin{proof}
+Un morfismo $f\colon F_n(K_+)\to X$ está determinado por su componente $f_n\colon K_+\to X_n$: antes del nivel $n$ las componentes son las únicas aplicaciones punteadas desde $*$ y, a partir de ese nivel, la compatibilidad con los morfismos estructurales determina las demás. El primer cuadrado es
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma(K_+) \arrow[r,"\Sigma f_n"] \arrow[d,equal]
+& \Sigma X_n \arrow[d,"\xi_n"]\\
+\Sigma(K_+) \arrow[r,"f_{n+1}"'] & X_{n+1}.
+\end{tikzcd}
+\]
+Por tanto, $f_{n+1}=\xi_n\circ\Sigma f_n$, y la misma regla construye recursivamente todas las componentes posteriores. Recíprocamente, cualquier aplicación punteada $f_n$ produce de este modo un morfismo de espectros. Finalmente, dar $K_+\to X_n$ de manera punteada equivale a dar una aplicación, sin condición sobre puntos base, $K\to X_n$. Las correspondencias son naturales porque se obtienen restringiendo al nivel $n$ y componiendo con las aplicaciones dadas.
+\end{proof}
+
+\begin{defi}\label{defi:c11-celda-libre}
+Para $n\ge0$ y $n+k\ge0$, el espectro $F_n((D^{n+k})_+)$ se llama una \emph{$k$-celda estable libre en el nivel $n$}. Su borde es $F_n((S^{n+k-1})_+)$. El término ``libre'' expresa que todos los niveles posteriores están generados por suspensión a partir del nivel $n$.
+\end{defi}
+
+Si $\varphi\colon S^{n+k-1}\to X_n$ es una aplicación de adjunción, el lema proporciona un morfismo $\operatorname{adj}(\varphi)\colon F_n((S^{n+k-1})_+)\to X$. El resultado de \emph{adjuntar una $k$-celda estable a $X$ a lo largo de $\varphi$} es el pushout
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+F_n((S^{n+k-1})_+)
+\arrow[r,"\operatorname{adj}(\varphi)"] \arrow[d,hook]
+& X \arrow[d]\\
+F_n((D^{n+k})_+) \arrow[r]
+& X' \arrow[ul,phantom,"\ulcorner",very near start].
+\end{tikzcd}
+\]
+Para incluir las $0$-celdas ordinarias adoptamos la convención $S^{-1}=\varnothing$; entonces $(S^{-1})_+=*$. Como los pushouts de espectros se calculan nivel a nivel, los niveles anteriores a $n$ no cambian, en el nivel $n$ se adjunta una $(n+k)$-celda y en el nivel $n+r$ se adjunta su $r$-ésima suspensión, de dimensión $n+k+r$. Todas representan una misma celda estable, pues $(n+k+r)-(n+r)=k$.
+
+% P06--P07. Filtración numerable. Se incluyen los puntos base disjuntos
+% omitidos abreviadamente en P06 y se distingue etapa r de nivel m_r.
+\subsection{Filtraciones celulares}
+
+La construcción por adjunción de celdas admite la siguiente descripción. Un espectro celular se obtiene como el colímite de una sucesión
+\[
+\begin{tikzcd}[cramped,column sep=large]
+\Sigma^\infty *=X^{(-1)} \arrow[r]
+& X^{(0)} \arrow[r] & X^{(1)} \arrow[r] & \cdots,
+\end{tikzcd}
+\]
+en la que cada paso adjunta una familia de celdas estables. Podemos organizar las etapas de modo que las celdas adjuntadas en una misma etapa se generen en un mismo nivel $m_r$. El paso de $X^{(r-1)}$ a $X^{(r)}$ queda entonces descrito por
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\bigvee_{i\in J_r}F_{m_r}((S^{m_r+k_i-1})_+)
+\arrow[r,"\bigvee_i\operatorname{adj}(\varphi_i)"] \arrow[d]
+& X^{(r-1)} \arrow[d]\\
+\bigvee_{i\in J_r}F_{m_r}((D^{m_r+k_i})_+) \arrow[r]
+& X^{(r)} \arrow[ul,phantom,"\ulcorner",very near start].
+\end{tikzcd}
+\]
+Aquí $m_r$ es el nivel en que se generan las nuevas celdas, $m_r+k_i$ es su dimensión como celdas de espacios y $k_i$ es su dimensión estable; se supone $m_r+k_i\ge0$. El índice $r$ cuenta las etapas de adjunción, no los niveles del espectro, y un mismo nivel puede aparecer en varias etapas. Además, que el proceso sea numerable no significa que cada conjunto $J_r$ deba ser numerable. El espectro final es $X\cong\operatorname*{colim}_{r\ge-1}X^{(r)}$.
+
+Esta descripción traduce la construcción nivel a nivel usando el lema de adjunción y el cálculo de colímites de espectros. La reorganización de las etapas se mencionó en clase sin desarrollar sus detalles. La versión relativa se obtiene empezando con $X^{(-1)}=A$: el morfismo canónico $A\to\operatorname*{colim}_rX^{(r)}$ es un espectro celular relativo. En la versión CW, las construcciones relativas en cada nivel se realizan como CW complejos relativos.
+
+% P08--P10. Factorización: se reproducen los diagramas de la inducción.
+\subsection{Aproximación celular}
+
+\begin{prop}\label{prop:c11-factorizacion-celular}
+Todo morfismo de espectros secuenciales $f\colon A\to X$ admite una factorización $f=g\circ h$, donde $h\colon A\to B$ es un CW espectro relativo y $g\colon B\to X$ es una equivalencia nivel a nivel.
+\end{prop}
+\begin{proof}
+Usaremos la factorización de aplicaciones de espacios como un CW complejo relativo seguido de una equivalencia débil. Aplicándola a $f_0\colon A_0\to X_0$, obtenemos
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+A_0 \arrow[rr,"f_0"] \arrow[dr,"h_0"'] && X_0\\
+& B_0 \arrow[ur,"g_0"',"\simeq_w"] &
+\end{tikzcd}
+\]
+con $h_0$ un CW complejo relativo. Para pasar al nivel $1$ de manera compatible con esta elección, formamos $P_1=A_1\cup_{\Sigma A_0}\Sigma B_0$. Las aplicaciones $f_1$ y $\xi^X_0\circ\Sigma g_0$ coinciden sobre $\Sigma A_0$, porque
+\[
+\xi^X_0\circ\Sigma g_0\circ\Sigma h_0
+=\xi^X_0\circ\Sigma f_0
+=f_1\circ\xi^A_0.
+\]
+La primera igualdad usa $g_0\circ h_0=f_0$ y la segunda que $f$ es un morfismo de espectros. La propiedad universal del pushout proporciona, por tanto, una aplicación $u_1\colon P_1\to X_1$:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma A_0 \arrow[r,"\Sigma h_0"] \arrow[d,"\xi^A_0"']
+& \Sigma B_0 \arrow[d,"j_B"]
+\arrow[ddr,bend left=15,"\xi^X_0\circ\Sigma g_0"] &\\
+A_1 \arrow[r,"j_A"'] \arrow[drr,bend right=15,"f_1"']
+& P_1 \arrow[ul,phantom,"\ulcorner",very near start]
+\arrow[dr,dashed,"u_1"] &\\
+&& X_1.
+\end{tikzcd}
+\]
+Factorizamos ahora $u_1$ de la misma manera:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+P_1 \arrow[rr,"u_1"] \arrow[dr,"h'_1"'] && X_1\\
+& B_1 \arrow[ur,"g_1"',"\simeq_w" sloped] &
+\end{tikzcd}
+\]
+Definimos $h_1=h'_1\circ j_A$ y $\xi^B_0=h'_1\circ j_B$. La compatibilidad de $h_0$ y $h_1$ con los morfismos estructurales queda expresada en el diagrama
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+A_1 \arrow[r,"j_A"] \arrow[rr,bend left=30,"h_1"]
+& P_1 \arrow[r,"h'_1"] & B_1\\
+\Sigma A_0 \arrow[u,"\xi^A_0"] \arrow[r,"\Sigma h_0"']
+& \Sigma B_0 \arrow[u,"j_B"] \arrow[ur,"\xi^B_0"'] &
+\end{tikzcd}
+\]
+El cuadrado izquierdo conmuta por la definición del pushout, el triángulo derecho por la definición de $\xi^B_0$ y el triángulo superior por la de $h_1$. En consecuencia, el contorno da $h_1\circ\xi^A_0=\xi^B_0\circ\Sigma h_0$.
+
+La compatibilidad de $g_0$ y $g_1$ se comprueba en el segundo diagrama:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma B_0 \arrow[rr,"\Sigma g_0"] \arrow[dd,"\xi^B_0"']
+\arrow[dr,"j_B"] && \Sigma X_0 \arrow[dd,"\xi^X_0"]\\
+& P_1 \arrow[dl,"h'_1"] \arrow[dr,"u_1"'] &\\
+B_1 \arrow[rr,"g_1"'] && X_1.
+\end{tikzcd}
+\]
+El triángulo izquierdo conmuta por la definición de $\xi^B_0$, el inferior por la factorización $u_1=g_1\circ h'_1$ y la región superior derecha por la definición de $u_1$. Así, $g_1\circ\xi^B_0=\xi^X_0\circ\Sigma g_0$. También $g_1\circ h_1=u_1\circ j_A=f_1$.
+
+Repetimos el mismo procedimiento. Si ya construimos $B_n$, $h_n$ y $g_n$ con $g_n\circ h_n=f_n$, formamos $P_{n+1}=A_{n+1}\cup_{\Sigma A_n}\Sigma B_n$ y la aplicación $u_{n+1}\colon P_{n+1}\to X_{n+1}$ inducida por $f_{n+1}$ y $\xi^X_n\circ\Sigma g_n$. Factorizamos $u_{n+1}=g_{n+1}\circ h'_{n+1}$, con $h'_{n+1}$ un CW complejo relativo y $g_{n+1}$ una equivalencia débil. Las dos aplicaciones canónicas a $P_{n+1}$, seguidas de $h'_{n+1}$, definen $h_{n+1}$ y $\xi^B_n$. Las mismas conmutatividades prueban que $h$ y $g$ son morfismos de espectros y que $g\circ h=f$. Los mapas relativos $P_{n+1}\to B_{n+1}$ muestran que $h$ es un CW espectro relativo, y cada $g_n$ es una equivalencia débil por construcción. Obtenemos la factorización anunciada:
+\[
+\begin{tikzcd}[cramped,column sep=7em]
+A \arrow[r,"h","\text{\tiny{CW relativo}}"']
+\arrow[rr,bend right=20,"f"']
+& B \arrow[r,"g","\text{\tiny{equiv. nivel a nivel}}"'] & X.
+\end{tikzcd}
+\]
+\end{proof}
+
+\begin{coro}\label{coro:c11-aproximacion-cw}
+Todo espectro secuencial $X$ admite una equivalencia nivel a nivel $q_X\colon QX\to X$, donde $QX$ es un CW espectro. La construcción puede hacerse funtorialmente en $X$. Además, todo espectro es establemente equivalente a un CW $\Omega$-espectro $QRX$.
+\end{coro}
+\begin{proof}
+Aplicamos la proposición al morfismo del espectro cero a $X$:
+\[
+\begin{tikzcd}[cramped,column sep=large]
+\Sigma^\infty * \arrow[r] & QX \arrow[r,"q_X","\simeq_\ell"'] & X.
+\end{tikzcd}
+\]
+Un CW espectro relativo que parte del espectro cero es un CW espectro. Usando factorizaciones funtoriales de espacios, el proceso inductivo anterior produce un funtor $Q$ y una transformación natural $q\colon Q\Rightarrow\operatorname{Id}$; en clase se anunció esta elección funtorial sin desarrollar su construcción en espacios.
+
+Para la segunda afirmación, tomamos primero el reemplazo $X\to RX$ de la clase anterior y luego $q_{RX}\colon QRX\to RX$. Tenemos el zigzag de equivalencias estables $X\to RX\leftarrow QRX$. Como $q_{RX}$ es una equivalencia nivel a nivel y $RX$ es un $\Omega$-espectro, la compatibilidad de $q_{RX}$ con los morfismos estructurales adjuntos y la propiedad de dos de tres implican que $(QRX)_n\to\Omega(QRX)_{n+1}$ es una equivalencia débil para todo $n$. Aquí se usa que $\Omega$ preserva equivalencias débiles. Por tanto, $QRX$ es también un $\Omega$-espectro.
+\end{proof}
+
+En términos de estructuras de modelos, $QX$ desempeña el papel de un reemplazo cofibrante, mientras que $RX$ desempeña el de un reemplazo fibrante. En esta clase la aproximación se construyó explícitamente, a partir de la factorización de aplicaciones de espacios.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Subespectros cofinales}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P11. Definición y diagrama de representantes suspendidos.
+\subsection{Definición y representantes de las celdas}
+
+\begin{defi}\label{defi:c11-subespectro-cofinal}
+Sea $X$ un espectro secuencial. Un \emph{subespectro} $A\subseteq X$ consiste en subespacios punteados $A_n\subseteq X_n$ tales que $\xi^X_n(\Sigma A_n)\subseteq A_{n+1}$, con morfismos estructurales $\xi^A_n=\xi^X_n|_{\Sigma A_n}$, considerados con codominio $A_{n+1}$. Si $X$ es un CW espectro, diremos que $A$ es \emph{cofinal} en $X$ cuando cada $A_n$ sea un subcomplejo de $X_n$ y toda celda estable de $X$ tenga un representante en $A$.
+\end{defi}
+
+La última condición significa que, dada una celda de $X_n$, al suspenderla suficientemente y aplicar los morfismos estructurales llegamos a una celda contenida en algún $A_{n+m}$. Para abreviar las composiciones, escribiremos
+\[
+\xi^X_{n,m}
+=\xi^X_{n+m-1}\circ\Sigma\xi^X_{n+m-2}\circ\cdots
+\circ\Sigma^{m-1}\xi^X_n\colon\Sigma^mX_n\longrightarrow X_{n+m}
+\qquad(m\ge1),
+\]
+y $\xi^X_{n,0}=1_{X_n}$. Omitiremos el superíndice cuando el espectro sea claro. Si la celda tiene función característica $\Phi\colon D^{n+k}\to X_n$, la cofinalidad afirma que para algún $m$ la aplicación suspendida del siguiente diagrama factoriza por $A_{n+m}$:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+D^{n+k+m}\cong\Sigma_{\mathrm u}^mD^{n+k}
+\arrow[r,"\widetilde{\Sigma^m\Phi}"]
+\arrow[dddd,dashed] \arrow[ddddr]
+& \Sigma^mX_n \arrow[d,"\Sigma^{m-1}\xi_n"]\\
+& \Sigma^{m-1}X_{n+1} \arrow[d,"\Sigma^{m-2}\xi_{n+1}"]\\
+& \vdots \arrow[d]\\
+& \Sigma X_{n+m-1} \arrow[d,"\xi_{n+m-1}"]\\
+A_{n+m} \arrow[r,hook] & X_{n+m}.
+\end{tikzcd}
+\]
+El diagrama se escribe para $m\ge2$; para $m=1$ solo interviene $\xi_n$, y para $m=0$ la celda ya está en $A_n$. Una vez que un representante pertenece a $A$, todas sus suspensiones posteriores también pertenecen a $A$, porque este es un subespectro. El número de suspensiones necesario puede depender de la celda: no se exige que $A_n=X_n$ a partir de un único nivel.
+
+% P12--P13. Los dos ejemplos de cofinalidad.
+\subsection{Ejemplos}
+
+\emph{Una cola del espectro esfera.} Sea $N\ge1$. El espectro $A=F_N(S^N)=\sh^{-N}(\Sigma^\infty S^N)$ tiene niveles $A_n=*$ para $n<N$ y $A_n=S^n$ para $n\ge N$. Es un subespectro de $\mathbb S$, pues sus morfismos estructurales son las restricciones de los de $\mathbb S$, y cada nivel es un subcomplejo de la esfera correspondiente. Tanto $A$ como $\mathbb S$ tienen una única $0$-celda estable: en $\mathbb S$ comienza con la celda de $S^0$ distinta del punto base; en $A$, con la $N$-celda de $S^N$ situada en el nivel $N$. Estas celdas representan la misma clase en $\mathbb S$. Por tanto, $A$ es cofinal, aunque no coincide con $\mathbb S$ en los primeros niveles.
+
+Usaremos también la notación $X^{\ge N}$ para el subespectro con niveles $*$ si $n<N$ y $X_n$ si $n\ge N$, con los morfismos estructurales inducidos. Si $X$ es un CW espectro, $X^{\ge N}$ es cofinal en $X$: toda celda estable tiene representantes en niveles arbitrariamente altos.
+
+\emph{Retrasar solo una celda.} Retomemos el espectro $X$ con $X_0=S^0$, $X_1=S^1$ y $X_n=\Sigma^{n-2}(S^2\cup_2D^3)$ para $n\ge2$. Definimos $Y\subseteq X$ mediante
+\[
+Y_0=S^0,\qquad Y_1=S^1,\qquad Y_2=S^2,\qquad
+Y_n=\Sigma^{n-2}(S^2\cup_2D^3)\quad(n\ge3).
+\]
+Los morfismos estructurales son las restricciones de los de $X$; en particular, $\Sigma Y_2=S^3$ se incluye como subcomplejo en $Y_3=\Sigma(S^2\cup_2D^3)$. La $0$-celda estable de $X$ ya tiene un representante en $Y_0$. La $1$-celda estable no aparece en $Y_2$, pero sí en $Y_3$, donde está representada por la $4$-celda que suspende la $3$-celda de $X_2$. Así, $Y$ es cofinal en $X$. Este ejemplo conserva la primera celda desde el principio y retrasa únicamente la aparición de la segunda.
+
+% P14--P16. Prueba completa del lema por compacidad.
+\subsection{Las inclusiones cofinales son equivalencias estables}
+
+\begin{lema}\label{lema:c11-cofinal-equivalencia}
+Si $X$ es un CW espectro y $A\subseteq X$ es un subespectro cofinal, entonces la inclusión $i\colon A\hookrightarrow X$ es una equivalencia estable.
+\end{lema}
+\begin{proof}
+Fijemos $k\in\mathbb Z$. Probaremos que $i_*\colon\pi_k(A)\to\pi_k(X)$ es un isomorfismo. Los representantes pueden tomarse en niveles suficientemente altos para que los grupos de homotopía de espacios que aparecen estén definidos y sean grupos.
+
+\emph{Sobreyectividad.} Sea una clase de $\pi_k(X)$ representada por $f\colon S^{k+n}\to X_n$. Como $S^{k+n}$ es compacto y $X_n$ es un CW complejo, la imagen de $f$ está contenida en un subcomplejo finito $K\subseteq X_n$. Por cofinalidad, cada una de las finitísimas celdas de $K$ tiene una suspensión que pertenece a $A$. Tomando el máximo de los números de suspensiones necesarios y usando que $A$ es un subespectro, obtenemos un mismo $m$ tal que $\xi^X_{n,m}(\Sigma^mK)\subseteq A_{n+m}$. En particular, la aplicación $\xi^X_{n,m}\circ\Sigma^m f$ tiene imagen en $A_{n+m}$. Sea $\bar f\colon S^{k+n+m}\to A_{n+m}$ esa misma aplicación con el codominio restringido. Por la definición de las transiciones del colímite,
+\[
+i_*[\bar f]
+=[i_{n+m}\circ\bar f]
+=[\xi^X_{n,m}\circ\Sigma^m f]
+=[f]\quad\text{en }\pi_k(X).
+\]
+Luego $i_*$ es sobreyectiva.
+
+\emph{Inyectividad.} Sea $[g]\in\pi_k(A)$, representada por $g\colon S^{k+n}\to A_n$, y supongamos que $i_*[g]=0$. La igualdad con cero en el colímite significa que existe $m\ge0$ y una homotopía punteada $H\colon I_+\wedge S^{k+n+m}\to X_{n+m}$ desde $\xi^X_{n,m}\circ\Sigma^m(i_n\circ g)$ hasta la aplicación constante $c$. El dominio de $H$ es compacto, así que su imagen está contenida en un subcomplejo finito de $X_{n+m}$. Aplicando el mismo argumento de cofinalidad, existe $r\ge0$ tal que, después de suspender $r$ veces y aplicar los morfismos estructurales, toda esa imagen queda en $A_{n+m+r}$.
+
+Suspendemos la homotopía dejando fija su coordenada en $I$; mediante la identificación $\Sigma^r(I_+\wedge S^{k+n+m})\cong I_+\wedge S^{k+n+m+r}$, obtenemos
+\[
+H'=\xi^X_{n+m,r}\circ\Sigma^rH
+\colon I_+\wedge S^{k+n+m+r}\longrightarrow A_{n+m+r}.
+\]
+Aquí restringimos el codominio a $A_{n+m+r}$. La identidad $\xi^X_{n+m,r}\circ\Sigma^r\xi^X_{n,m}=\xi^X_{n,m+r}$ y la compatibilidad de la inclusión $i$ con los morfismos estructurales muestran que $H'$ es una homotopía, ya dentro de $A_{n+m+r}$, desde $\xi^A_{n,m+r}\circ\Sigma^{m+r}g$ hasta la constante. Por tanto, $[g]=[\xi^A_{n,m+r}\circ\Sigma^{m+r}g]=0$ en $\pi_k(A)$. Esto prueba la inyectividad y concluye la demostración.
+\end{proof}
+
+La importancia del lema es que las inclusiones cofinales se vuelven invertibles en la categoría homotópica $\operatorname{Ho}(\Sp^{\mathbb N})=\Sp^{\mathbb N}[\text{equiv.\ estables}^{-1}]$. Si $A\subseteq X$ es cofinal y $f\colon A\to Y$ es un morfismo de espectros, el zigzag
+\[
+\begin{tikzcd}[cramped,column sep=large]
+X & A \arrow[l,hook',"i"'] \arrow[r,"f"] & Y
+\end{tikzcd}
+\]
+representa el morfismo $[f]\circ[i]^{-1}$ de $X$ a $Y$ en esa localización. Esta observación motiva la definición siguiente.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Morfismos eventualmente definidos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P16--P17. Definición y motivación.
+\subsection{Morfismos eventualmente definidos}
+
+\begin{defi}\label{defi:c11-morfismo-eventual}
+Sean $X$ un CW espectro e $Y$ un espectro secuencial. Un \emph{morfismo eventualmente definido de $X$ a $Y$} consiste en un subespectro cofinal $A\subseteq X$ y un morfismo de espectros $f\colon A\to Y$.
+\end{defi}
+
+Aunque el dominio efectivo de $f$ sea $A$, lo consideramos un morfismo eventualmente definido desde $X$: toda celda estable de $X$ tiene algún representante en $A$, y sobre ese representante y sus suspensiones posteriores sí está definido $f$. No se exige que $f$ esté definido en todas las celdas de todos los niveles de $X$ desde el comienzo. En particular, cualquier morfismo ordinario $X\to Y$ es eventualmente definido tomando $A=X$. La asociación con el zigzag anterior será la base de la comparación con la categoría homotópica.
+
+% P18--P20. Obstrucción para morfismos estrictos y ejemplo de Hopf.
+\subsection{El primer grupo estable de las esferas}
+
+Esperamos recuperar $\pi_1^S=\pi_1(\mathbb S)$ mediante los morfismos de $\Sigma^\infty S^1$ a $\mathbb S$ en la categoría homotópica estable. En la notación de clases de morfismos, la identificación esperada es $\pi_1^S\cong[\Sigma^\infty S^1,\mathbb S]$. Sin embargo, los morfismos estrictos de espectros entre esos dos objetos no bastan para describirla.
+
+En efecto, si $f\colon\Sigma^\infty S^1\to\mathbb S$ es un morfismo de espectros, entonces $f_0\colon S^1\to S^0$ es constante porque $S^1$ es conexo. Como además es punteada, su valor es el punto base. La compatibilidad con los morfismos estructurales da
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma S^1 \arrow[r,"\Sigma f_0"] \arrow[d,"\cong"']
+& \Sigma S^0 \arrow[d,"\cong"]\\
+S^2 \arrow[r,"f_1"'] & S^1.
+\end{tikzcd}
+\]
+La aplicación superior es constante y los morfismos verticales son homeomorfismos, de modo que $f_1$ también es constante. Repitiendo el argumento, todas las componentes $f_n$ son constantes. Por tanto, $f$ factoriza por el espectro cero:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma^\infty S^1 \arrow[rr,"f"] \arrow[dr]
+&& \mathbb S\\
+& \Sigma^\infty * \arrow[ur] &
+\end{tikzcd}
+\]
+Así, los morfismos estrictos solo proporcionan la clase cero, mientras que $\pi_1^S\cong\mathbb Z/2$. Este ejemplo muestra por qué debemos permitir representantes cuyo dominio sea un subespectro cofinal.
+
+Tomemos $A=(\Sigma^\infty S^1)^{\ge2}=(*,*,S^3,S^4,\ldots)$, que es cofinal en $\Sigma^\infty S^1$. Si $h\colon S^3\to S^2$ es la fibración de Hopf punteada, definimos $f\colon A\to\mathbb S$ mediante
+\[
+f_0=f_1=c,\qquad
+f_2=h,\qquad
+f_n=\Sigma^{n-2}h\colon S^{n+1}\longrightarrow S^n\quad(n\ge3).
+\]
+Estas componentes respetan los morfismos estructurales: a partir del nivel $2$ cada una es la suspensión de la anterior, y en los niveles iniciales las compatibilidades son las de las aplicaciones constantes. Obtenemos así un morfismo eventualmente definido de $\Sigma^\infty S^1$ a $\mathbb S$, representado por
+\[
+\begin{tikzcd}[cramped,column sep=large]
+\Sigma^\infty S^1
+& (\Sigma^\infty S^1)^{\ge2} \arrow[l,hook'] \arrow[r,"f"]
+& \mathbb S.
+\end{tikzcd}
+\]
+La clase de $h$, seguida de sus suspensiones, representa el elemento no nulo de $\pi_1^S=\operatorname*{colim}_n\pi_{n+1}(S^n)$. El sistema se estabiliza a partir de $\pi_4(S^3)$: el paso $\pi_3(S^2)\to\pi_4(S^3)$ todavía no es un isomorfismo. Precisamente ese paso aparecerá en el siguiente ejemplo.
+
+% P21. Homotopías e inclusiones de los extremos del cilindro.
+\subsection{Homotopías eventualmente definidas}
+
+\begin{defi}\label{defi:c11-homotopia-espectros}
+Sean $f,g\colon X\to Y$ morfismos de espectros. Una \emph{homotopía de $f$ a $g$} es un morfismo de espectros $H\colon I_+\wedge X\to Y$ tal que $H_n[0,x]=f_n(x)$ y $H_n[1,x]=g_n(x)$ para todo $n$ y todo $x\in X_n$.
+\end{defi}
+
+El cilindro $I_+\wedge X$ se forma nivel a nivel. Sus inclusiones de extremos son los morfismos $i_j\colon X\to I_+\wedge X$, para $j=0,1$. Sus evaluaciones y las de las composiciones con $H$ son
+\[
+\begin{aligned}
+(i_j)_n(x)&=[j,x],\qquad j=0,1,\\
+(H\circ i_0)_n(x)&=H_n[0,x]=f_n(x),\\
+(H\circ i_1)_n(x)&=H_n[1,x]=g_n(x).
+\end{aligned}
+\]
+Por tanto, la condición anterior equivale a $H\circ i_0=f$ y $H\circ i_1=g$. No basta con escoger homotopías arbitrarias entre las componentes: la familia $H_n$ debe respetar los morfismos estructurales, pues $H$ es un morfismo de espectros.
+
+\begin{defi}\label{defi:c11-homotopia-eventual}
+Sean $f\colon A\to Y$ y $g\colon B\to Y$ morfismos eventualmente definidos de un CW espectro $X$ a un espectro $Y$. Una \emph{homotopía eventualmente definida de $f$ a $g$} consiste en un subespectro $C\subseteq A\cap B$, cofinal en $X$, y una homotopía $H\colon I_+\wedge C\to Y$ tal que $H\circ i_0=f|_C$ y $H\circ i_1=g|_C$.
+\end{defi}
+
+La homotopía solo tiene que existir sobre algún subespectro cofinal común, que puede ser menor que $A\cap B$. Las intersecciones finitas de subespectros cofinales son cofinales: para cada celda estable basta tomar un representante suficientemente suspendido para que pertenezca a todos ellos. Esto permite comparar las aplicaciones sobre dominios comunes y, cuando sea necesario, restringir nuevamente esos dominios.
+
+% P21--P24. Ejemplo h frente a 3h. En P23 se define H_1=F por separado;
+% la fórmula H_n=Sigma^{n-1}F unifica todos los niveles n>=1.
+\emph{Ejemplo: la fibración de Hopf y su triple.} Consideremos los morfismos estrictos $f,g\colon\Sigma^\infty S^3\to\Sigma^\infty S^2$ dados por $f_n=\Sigma^nh$ y $g_n=\Sigma^n(3h)$. Aquí $3h\colon S^3\to S^2$ es una aplicación que representa $[h]+[h]+[h]$ en $\pi_3(S^2)$; puede elegirse mediante la suma habitual de aplicaciones de una esfera, usando el pinzamiento $S^3\to S^3\vee S^3\vee S^3$. No se trata de una suma puntual de valores en $S^2$.
+
+Recordemos el comienzo del sistema de suspensión:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\pi_3(S^2) \arrow[r,"\cong"] \arrow[d,"\Sigma"']
+& \mathbb Z \arrow[d,"\text{reducción módulo }2"]\\
+\pi_4(S^3) \arrow[r,"\cong"] \arrow[d,"\Sigma","\cong"']
+& \mathbb Z/2\\
+\pi_5(S^4) \arrow[d,"\Sigma","\cong"'] &\\
+\vdots &
+\end{tikzcd}
+\]
+La clase $[h]$ corresponde a $1\in\mathbb Z$ y $[\Sigma h]$ corresponde a $\overline1\in\mathbb Z/2$. La suspensión satisface
+\[
+\Sigma_*([h])=[\Sigma h]=\overline1,\qquad
+\Sigma_*(3[h])=[\Sigma(3h)]=3\overline1=\overline1.
+\]
+En consecuencia, $[h]\ne[3h]$ en $\pi_3(S^2)$, pero $[\Sigma h]=[\Sigma(3h)]$ en $\pi_4(S^3)$. No existe una homotopía de espectros $f\simeq g$ en todo $\Sigma^\infty S^3$, pues su componente de nivel cero daría una homotopía entre $h$ y $3h$. Sí existe, en cambio, una homotopía eventualmente definida.
+
+Elijamos una homotopía punteada $F\colon I_+\wedge S^4\to S^3$ de $\Sigma h$ a $\Sigma(3h)$. Para $n\ge1$ definimos $H_n=\Sigma^{n-1}F$, entendida como homotopía sobre la esfera suspendida:
+\[
+H_n\colon I_+\wedge S^{n+3}\longrightarrow S^{n+2},\qquad
+H_n[0,x]=\Sigma^nh(x),\qquad
+H_n[1,x]=\Sigma^n(3h)(x).
+\]
+En particular, $H_1=F$. Las identificaciones usadas dejan la coordenada del intervalo en el primer factor; de ese modo, la compatibilidad de $H_{n+1}$ con $H_n$ es exactamente la obtenida al suspender la homotopía. En el nivel cero tomamos la única aplicación $H_0\colon I_+\wedge *\to S^2$. Esto define un morfismo de espectros
+\[
+H\colon I_+\wedge(\Sigma^\infty S^3)^{\ge1}
+\longrightarrow\Sigma^\infty S^2,
+\]
+que relaciona las restricciones de $f$ y $g$ al subespectro cofinal considerado. Así, $f$ y $g$ son eventualmente homótopos, aunque no sean homótopos como morfismos definidos en todo el espectro.
+
+% P24 y pregunta de 1:55:29--1:55:56.
+\begin{defi}\label{defi:c11-clases-eventuales}
+Para un CW espectro $X$ y un espectro $Y$, denotamos por $[X,Y]_e$ el conjunto de morfismos eventualmente definidos de $X$ a $Y$, módulo homotopía eventualmente definida.
+\end{defi}
+
+La homotopía que relaciona dos representantes no tiene por qué ser única. Sin embargo, dos representantes eventualmente homótopos inducen el mismo homomorfismo en los grupos de homotopía estable. Para un representante $f\colon A\to Y$, el homomorfismo correspondiente es $f_*\circ(i_A)_*^{-1}\colon\pi_k(X)\to\pi_k(Y)$, donde $i_A\colon A\hookrightarrow X$. Si $f$ y $g$ son homótopos sobre un subespectro cofinal $C$, sus restricciones inducen lo mismo en $\pi_k(C)$; como las inclusiones cofinales inducen isomorfismos, también coinciden los homomorfismos definidos desde $\pi_k(X)$.
+
+% P25 y discusión final. Solo se anunció la construcción categórica.
+\subsection{La categoría de CW espectros con morfismos eventuales}
+
+Se anunció la categoría $e\Sp^{\mathrm{CW}}$, cuyos objetos son los CW espectros y cuyos conjuntos de morfismos son $\hom_{e\Sp^{\mathrm{CW}}}(X,Y)=[X,Y]_e$. La identidad está representada por $1_X\colon X\to X$. El punto que requiere trabajo es definir la composición
+\[
+[X,Y]_e\times[Z,X]_e\longrightarrow[Z,Y]_e.
+\]
+Supongamos que las clases están representadas por $f\colon A\to Y$, con $A$ cofinal en $X$, y $g\colon B\to X$, con $B$ cofinal en $Z$. No podemos componer directamente $f$ con $g$ sin asegurar que la imagen de $g$ quede en $A$. La idea expuesta en clase fue elegir otro representante $g'\colon B'\to X$ de la misma clase, con $B'$ cofinal en $Z$, tal que $g'_n(B'_n)\subseteq A_n$ para todo $n$. Considerándolo entonces como un morfismo a $A$, se define
+\[
+[g']=[g],\qquad ([f]\circ[g])=[f\circ g'].
+\]
+El dominio $B'$ puede ser un subespectro cofinal menor que el dominio original $B$. Probar que puede elegirse un representante con esa propiedad, y que la composición no depende de las elecciones, quedó pendiente para la siguiente clase; la comprobación de buena definición se anunció como ejercicio para después de esa construcción.
+
+% Ejercicio anunciado al final de C11 (transcripción, entre 1:55:56 y 2:02:06).
+% La solución es un desarrollo añadido a los apuntes, no una prueba dada en clase.
+\begin{ejer}\label{ejer:c11-composicion-eventual}
+Probar que la regla de composición descrita está bien definida sobre las clases de homotopía eventualmente definida. En particular, probar que la clase $[f\circ g']$ no depende de los representantes de $[f]$ y $[g]$, ni de la elección de $g'$ cuya imagen está contenida en el dominio de $f$.
+\end{ejer}
+\begin{sol}
+\emph{Una restricción cofinal auxiliar.} Sean $W$ y $X$ CW espectros, $A\subseteq X$ cofinal y $K=S^0$ o $K=I_+$. Si $\Phi\colon K\wedge W\to X$ es un morfismo de espectros, existe un subespectro cofinal $E\subseteq W$ tal que $\Phi(K\wedge E)\subseteq A$. Esto permitirá restringir tanto aplicaciones como homotopías.
+
+Para probarlo, definimos $E_n$ como la unión de todos los subcomplejos $L\subseteq W_n$ que contienen el punto base y satisfacen $\Phi_n(K\wedge L)\subseteq A_n$. Esta unión es un subcomplejo. Además, la compatibilidad de $\Phi$ con los morfismos estructurales y la condición de subespectro de $A$ implican que $\xi^W_n(\Sigma E_n)\subseteq E_{n+1}$: si un subcomplejo $L$ cumple la condición en el nivel $n$, su suspensión también la cumple en el nivel siguiente. Así, $E$ es un subespectro de $W$.
+
+Veamos que es cofinal. Dada una celda de $W_n$, elegimos un subcomplejo finito $L\subseteq W_n$ que la contenga junto con el punto base. Como $K\wedge L$ es compacto, $\Phi_n(K\wedge L)$ está contenida en un subcomplejo finito $M\subseteq X_n$. Por cofinalidad de $A$, existe $m$ tal que $\xi^X_{n,m}(\Sigma^mM)\subseteq A_{n+m}$. La compatibilidad de $\Phi$ con las suspensiones muestra entonces que el subcomplejo $\xi^W_{n,m}(\Sigma^mL)$ satisface la condición que define $E_{n+m}$. En particular, la celda elegida tiene un representante suspendido en $E$. Esto prueba la afirmación auxiliar.
+
+\emph{Independencia de todas las elecciones.} Consideremos dos elecciones admisibles $f_j\colon A_j\to Y$ y $\gamma_j\colon B_j\to A_j$, para $j=0,1$, donde $A_j$ es cofinal en $X$, $B_j$ es cofinal en $Z$, los $f_j$ representan la misma clase de $[X,Y]_e$ y los $\gamma_j$, considerados con codominio $X$, representan la misma clase de $[Z,X]_e$. Debemos demostrar que $f_0\circ\gamma_0$ y $f_1\circ\gamma_1$ son eventualmente homótopos.
+
+Por la igualdad de las clases de $f_0$ y $f_1$, existen $C\subseteq A_0\cap A_1$, cofinal en $X$, y una homotopía $F\colon I_+\wedge C\to Y$ entre $f_0|_C$ y $f_1|_C$. De igual manera, existen $D\subseteq B_0\cap B_1$, cofinal en $Z$, y una homotopía $G\colon I_+\wedge D\to X$ entre $\gamma_0|_D$ y $\gamma_1|_D$. Aplicando la afirmación auxiliar a $G$ y al subespectro cofinal $C\subseteq X$, encontramos $E\subseteq D$, cofinal en $D$ y, por tanto, en $Z$, tal que $G(I_+\wedge E)\subseteq C$.
+
+Ahora $f_0\circ G|_{I_+\wedge E}$ es una homotopía entre $f_0\circ\gamma_0|_E$ y $f_0\circ\gamma_1|_E$. Como $\gamma_1(E)\subseteq C$, también está definida la homotopía $F\circ(1_{I_+}\wedge\gamma_1|_E)$ entre $f_0\circ\gamma_1|_E$ y $f_1\circ\gamma_1|_E$. Concatenándolas obtenemos
+\[
+(f_0\circ\gamma_0)|_E\simeq(f_0\circ\gamma_1)|_E
+\simeq(f_1\circ\gamma_1)|_E.
+\]
+Todas las homotopías son morfismos de espectros y su concatenación también lo es, pues se realiza con la misma reparametrización del intervalo en cada nivel. Puesto que $E$ es cofinal en $Z$, las composiciones representan la misma clase en $[Z,Y]_e$. Esto incluye los cambios del representante $g'$, de los dominios cofinales y de los representantes originales de ambas clases. Por tanto, la composición está bien definida. \qedhere
+\end{sol}
+
+Una vez establecida la estructura de categoría, se comparará con la localización de la categoría de CW espectros. Si $\Sp^{\mathrm{CW}}$ denota la subcategoría plena de $\Sp^{\mathbb N}$ formada por los CW espectros y $\operatorname{Ho}(\Sp^{\mathrm{CW}})$ su localización en las equivalencias estables, el resultado anunciado es
+\[
+\begin{tikzcd}[cramped,column sep=large]
+e\Sp^{\mathrm{CW}} \arrow[r,"\cong"]
+& \operatorname{Ho}(\Sp^{\mathrm{CW}}) \arrow[r,"\simeq"]
+& \operatorname{Ho}(\Sp^{\mathbb N}).
+\end{tikzcd}
+\]
+La primera comparación será un isomorfismo de categorías, con los mismos objetos, y la segunda una equivalencia; el reemplazo $q_X\colon QX\to X$ proporciona la aproximación por CW espectros necesaria para esta última. La comparación enviará el representante $f\colon A\to Y$ al zigzag $X\leftarrow A\to Y$ considerado anteriormente.
+
+En la discusión final se aclaró que las definiciones de morfismo y homotopía eventualmente definidos permiten un codominio arbitrario. Para formar la categoría anterior, en cambio, se escogen CW espectros como objetos, de modo que cualquiera de ellos pueda desempeñar también el papel de dominio. Asimismo, se adelantó que las equivalencias estables entre CW espectros admitirán inversas en el sentido de homotopía eventualmente definida; ese resultado explicará por qué las inclusiones cofinales bastan para obtener todos los morfismos de la categoría homotópica. Estas afirmaciones quedaron anunciadas, no demostradas, en esta clase.
