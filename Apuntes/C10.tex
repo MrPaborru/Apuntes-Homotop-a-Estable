@@ -112,7 +112,7 @@ La misma corrección debe alternarse de una fila a la siguiente. En el cuadrado 
 % P7.
 \subsection{Cofinalidad y el espectro esfera}
 
-La sucesión $(p_n,q_n)$ determina un camino cofinal en la malla: dada cualquier pareja $(p,q)$, existe $n$ tal que $p\le p_n$ y $q\le q_n$, porque ambos índices tienden a infinito. Como además $p_n+q_n=n$, obtenemos
+La sucesión $(p_n,q_n)$ determina un camino cofinal en la malla: dada cualquier pareja $(p,q)$, existe $n$ tal que $p\le p_n$ y $q\le q_n$, pues ambos índices tienden a infinito. Como $p_n+q_n=n$, obtenemos
 \[
 \operatorname*{colim}_{(p,q)\in\mathbb N^2}
 \pi_{k+p+q}(X_p\wedge Y_q)
@@ -173,7 +173,7 @@ Recordemos que $X$ es un \emph{$\Omega$-espectro} si cada adjunto $\xi_n^{\perp}
 \xrightarrow[\cong]{\operatorname{adj}}
 \pi_{k+n+1}(X_{n+1}).
 \]
-El primer morfismo es un isomorfismo porque $\xi_n^{\perp}$ es una equivalencia débil y el segundo lo es por adjunción. Por tanto, el colímite se identifica con cualquiera de sus términos: $\pi_k(X)\cong\pi_{k+n}(X_n)$ siempre que $n\ge0$ y $k+n\ge0$. Para índice cero, la identificación se entiende primero como una biyección de componentes, con la estructura de grupo inducida por las identificaciones con espacios de lazos.
+El primer morfismo es un isomorfismo porque $\xi_n^{\perp}$ es una equivalencia débil y el segundo lo es por adjunción. Por tanto, el colímite se identifica con cualquiera de sus términos: $\pi_k(X)\cong\pi_{k+n}(X_n)$ siempre que $n\ge0$ y $k+n\ge0$. Para índice cero obtenemos primero una biyección de componentes; las identificaciones con espacios de lazos le dan la estructura de grupo.
 
 En particular, $\pi_k(X)\cong\pi_k(X_0)$ para $k\ge0$, mientras que para $k\le0$ podemos escribir $\pi_k(X)\cong\pi_0(X_{-k})$. La expresión uniforme es $\pi_k(X)\cong\pi_{n_0}(X_{n_0-k})$, con $n_0\ge\max\{k,0\}$. No se utiliza el nivel $X_{-k}$ cuando $-k<0$ en un espectro indexado por $\mathbb N$.
 
@@ -232,7 +232,7 @@ Dado un espectro secuencial $X$, definimos
 \xrightarrow{\Omega\xi_{n+1}^{\perp}}\Omega^2X_{n+2}
 \xrightarrow{\Omega^2\xi_{n+2}^{\perp}}\cdots\bigr).
 \]
-Este colímite homotópico es el telescopio punteado de la sucesión. Concretamente, tomamos los cilindros $(\Omega^mX_{n+m})\wedge I_+$ y pegamos el extremo $s=1$ del cilindro $m$ al extremo $s=0$ del siguiente mediante $\Omega^m\xi_{n+m}^{\perp}$. Si $a\in\Omega^mX_{n+m}$, la identificación es
+Este colímite homotópico es el telescopio punteado de la sucesión. Se forma con los cilindros $(\Omega^mX_{n+m})\wedge I_+$, pegando el extremo $s=1$ del cilindro $m$ al extremo $s=0$ del siguiente por $\Omega^m\xi_{n+m}^{\perp}$. Para $a\in\Omega^mX_{n+m}$, la pegadura es
 \[
 [a,1]=[\Omega^m\xi_{n+m}^{\perp}(a),0],
 \]
@@ -326,7 +326,7 @@ Geométricamente, el primer cilindro se aplasta sobre el comienzo del telescopio
 
 Comprobemos que las fórmulas se pegan. En el punto $s=1-t$ del cilindro $m\ge1$, la segunda da $[a,1]$ y la tercera da $[\Omega^m\xi_{n+m}^{\perp}(a),0]$; son el mismo punto por la relación del telescopio. Para la primera pegadura, si $a\in X_n$, tanto $H([a,1],t)$ como $H([\xi_n^{\perp}(a),0],t)$ son $[\xi_n^{\perp}(a),t]$. Para las demás pegaduras, si $a\in\Omega^mX_{n+m}$ con $m\ge1$, las imágenes de $[a,1]$ y $[\Omega^m\xi_{n+m}^{\perp}(a),0]$ son ambas $[\Omega^m\xi_{n+m}^{\perp}(a),t]$. Las fórmulas son continuas en cada pieza y preservan el punto base, por lo que definen una homotopía punteada.
 
-Cuando $t=1$, cada cilindro pasa al siguiente mediante la aplicación estructural correspondiente, conservando $s$; por tanto, $H_1=g_n$. Cuando $t=0$, el primer cilindro se aplasta sobre $\Omega X_{n+1}$ y todos los restantes quedan fijos. Este último mapa es la retracción del primer cilindro de aplicación sobre su extremo de llegada, así que es una equivalencia homotópica. Por consiguiente, $g_n$ también lo es. Como $\lambda_n$ es una equivalencia débil, $(\xi'_n)^{\perp}=\lambda_n\circ g_n$ es una equivalencia débil para todo $n$, y $RX$ es un $\Omega$-espectro.
+Cuando $t=1$, cada cilindro pasa al siguiente mediante la aplicación estructural correspondiente, conservando $s$; por tanto, $H_1=g_n$. Cuando $t=0$, el primer cilindro se aplasta sobre $\Omega X_{n+1}$ y todos los restantes quedan fijos. Este último mapa es la retracción del primer cilindro de aplicación sobre su extremo de llegada, así que es una equivalencia homotópica. Por consiguiente, $g_n$ también lo es. Como $\lambda_n$ es una equivalencia débil, $(\xi'_n)^{\perp}=\lambda_n\circ g_n$ es una equivalencia débil para todo $n$. Luego $RX$ es un $\Omega$-espectro.
 
 % P14--P15.
 \subsection{La inclusión de \texorpdfstring{$X$}{X} en su reemplazo}
@@ -384,7 +384,7 @@ En cada fila, el índice de homotopía permanece fijo y las aplicaciones son las
 & \pi_{k+n+1}(\Omega^{m+1}X_{n+m+2}).
 \end{tikzcd}
 \]
-La conmutatividad exige atender al lugar donde se toma el adjunto. Para comprobarla, sea $g\colon S^{k+n}\to\Omega^mX_{n+m}$. El camino superior seguido del derecho está representado por
+Para comprobar la conmutatividad, precisemos dónde se toma el adjunto. Sea $g\colon S^{k+n}\to\Omega^mX_{n+m}$. El camino superior seguido del derecho está representado por
 \[
 \Bigl((\Omega^{m+1}\xi_{n+m+1}^{\perp})
 \circ(\Omega^m\xi_{n+m}^{\perp})\circ g\Bigr)^{\perp},
@@ -414,7 +414,7 @@ Para $m=0$, ambos son $\xi_{n+1}(\xi_n(g(x),t),u_1)$. Así, los caminos coincide
 % P21--P24.
 \subsection{Paso a colímites y equivalencia estable}
 
-Por la descripción de los grupos de homotopía del telescopio y por la conmutatividad recién probada,
+Por la descripción de los grupos de homotopía del telescopio y la conmutatividad anterior,
 \[
 \begin{aligned}
 \pi_k(RX)
@@ -497,7 +497,7 @@ Solo resta justificar la naturalidad. Un morfismo $f\colon X\to Y$ induce en la 
 % P25 y discusión final, 2:07:25--2:10:03.
 \subsection{El funtor \texorpdfstring{$\Omega^\infty$}{Omega infinito}}
 
-El reemplazo permite definir, para un espectro arbitrario, $\Omega^\infty E=(RE)_0$, y para un morfismo $f$ la aplicación $\Omega^\infty f=(Rf)_0$. La naturalidad de $h$ y la propiedad de dos de tres muestran que $R$ preserva equivalencias estables. Como sus valores son $\Omega$-espectros, la proposición~\ref{prop:c10-omega-equivalencias} implica que $\Omega^\infty$ las transforma en equivalencias débiles de espacios. Cuando $E$ ya es un $\Omega$-espectro, la misma proposición aplicada a $h\colon E\to RE$ muestra que $E_0\to(RE)_0$ es una equivalencia débil. Por ello la nueva definición coincide, salvo equivalencia débil natural, con la notación $\Omega^\infty E=E_0$ utilizada antes.
+El reemplazo permite definir, para un espectro arbitrario, $\Omega^\infty E=(RE)_0$, y para un morfismo $f$ la aplicación $\Omega^\infty f=(Rf)_0$. La naturalidad de $h$ y la propiedad de dos de tres muestran que $R$ preserva equivalencias estables. Como sus valores son $\Omega$-espectros, la proposición~\ref{prop:c10-omega-equivalencias} implica que $\Omega^\infty$ las transforma en equivalencias débiles de espacios. Cuando $E$ ya es un $\Omega$-espectro, la misma proposición aplicada a $h\colon E\to RE$ muestra que $E_0\to(RE)_0$ es una equivalencia débil. Por ello la nueva definición coincide, salvo equivalencia débil natural, con la notación anterior $\Omega^\infty E=E_0$.
 
 Esta construcción representa el funtor derivado derecho de evaluación en el nivel cero. La adjunción anunciada en clase con $\Sigma^\infty$ se entiende en las categorías homotópicas: el funtor derivado de suspensión infinita es adjunto izquierdo de $\Omega^\infty$. Para un espacio punteado arbitrario $A$, se puede representarlo por $\Sigma^\infty(QA)$, donde $QA\to A$ es un reemplazo cofibrante del \emph{espacio}. La pregunta de cuándo se puede omitir ese reemplazo quedó abierta en la discusión final de la clase; no se usará tal omisión en los argumentos anteriores.
 
@@ -509,10 +509,10 @@ Esta construcción representa el funtor derivado derecho de evaluación en el ni
 \subsection{La suspensión de un complejo celular}
 
 \begin{defi}\label{defi:c10-espectro-celular}
-Un \emph{espectro celular} es un espectro secuencial $X$ tal que cada $X_n$ es un complejo celular punteado y cada morfismo estructural $\xi_n\colon\Sigma X_n\to X_{n+1}$ es la inclusión de un subcomplejo. Si cada nivel es un CW complejo, hablamos de un \emph{CW espectro}. El punto base se toma como una $0$-celda.
+Un \emph{espectro celular} es un espectro secuencial $X$ tal que cada $X_n$ es un complejo celular punteado y cada morfismo estructural $\xi_n\colon\Sigma X_n\to X_{n+1}$ es la inclusión de un subcomplejo. Si cada nivel es un CW complejo, hablamos de un \emph{CW espectro}. El punto base es una $0$-celda.
 \end{defi}
 
-Aquí ``complejo celular'' se usa en el sentido generalizado: no se imponen de entrada todas las condiciones adicionales de un CW complejo. Estos espectros desempeñarán el papel dual al de los $\Omega$-espectros en la estructura de modelos: los objetos cofibrantes serán retractos de espectros celulares. Antes de estudiar sus celdas, debemos justificar que $\Sigma X_n$ tiene una estructura celular natural.
+Aquí ``complejo celular'' se usa en el sentido generalizado: no se imponen de entrada todas las condiciones adicionales de un CW complejo. Estos espectros desempeñarán el papel dual al de los $\Omega$-espectros en la estructura de modelos: los objetos cofibrantes serán retractos de espectros celulares. Veamos primero la estructura celular natural de $\Sigma X_n$.
 
 Supongamos que se obtiene $X$ a partir de $Y$ adjuntando una $n$-celda. Tenemos el pushout no punteado de la izquierda; al añadir un punto base disjunto a la esfera y al disco, obtenemos el pushout punteado de la derecha:
 \[
@@ -528,26 +528,26 @@ D^n \arrow[r] & X \arrow[ul,phantom,"\ulcorner",very near start]
 (D^n)_+ \arrow[r] & X \arrow[ul,phantom,"\ulcorner",very near start].
 \end{tikzcd}
 \]
-La notación $f_+$ significa aquí que extendemos $f$ enviando el punto añadido al punto base de $Y$. Este punto adicional no crea un punto nuevo en el pushout: queda identificado con el punto base que ya tenía $Y$.
+La notación $f_+$ significa aquí que extendemos $f$ enviando el punto añadido al punto base de $Y$. Este punto adicional no crea un punto nuevo en el pushout: se identifica con el punto base de $Y$.
 
 Como la suspensión reducida es un adjunto izquierdo, preserva pushouts. Obtenemos, por tanto,
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
-\Sigma((S^{n-1})_+) \arrow[r,"\Sigma f_+"] \arrow[d,hook]
+\Sigma S^{n-1}_+ \arrow[r,"\Sigma f_+"] \arrow[d,hook]
 & \Sigma Y \arrow[d]\\
-\Sigma((D^n)_+) \arrow[r]
+\Sigma D^n_+ \arrow[r]
 & \Sigma X \arrow[ul,phantom,"\ulcorner",very near start].
 \end{tikzcd}
 \]
-Para interpretar este diagrama como la adjunción de una celda, usamos el disco parametrizador $D^n\times I\cong D^{n+1}$. Para $n\ge1$, su borde es $(S^{n-1}\times I)\cup(D^n\times\{0,1\})\cong S^n$. La aplicación de adjunción a $\Sigma Y$ vale $[f(a),t]$ en el borde lateral y el punto base en ambos extremos. Estas fórmulas coinciden en las intersecciones. El disco parametrizador no debe confundirse con $\Sigma((D^n)_+)$: este último es el cociente que colapsa conjuntamente $D^n\times\{0,1\}$ al punto base.
+Para interpretar este diagrama como la adjunción de una celda, usamos el disco parametrizador $D^n\times I\cong D^{n+1}$. Para $n\ge1$, su borde es $(S^{n-1}\times I)\cup(D^n\times\{0,1\})\cong S^n$. La aplicación de adjunción a $\Sigma Y$ vale $[f(a),t]$ en el borde lateral y el punto base en ambos extremos. Estas fórmulas coinciden en las intersecciones. El disco parametrizador no debe confundirse con $\Sigma D^n_+$: este último es el cociente que colapsa conjuntamente $D^n\times\{0,1\}$ al punto base.
 
 Como la aplicación del borde ya envía ambos extremos al punto base, colapsarlos antes de formar el pushout no cambia el espacio adjuntado. Por la propiedad universal, el diagrama anterior equivale al pushout no punteado
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
-S^n\cong\partial(D^n\times I)
+S^n
 \arrow[r,"\widetilde{\Sigma f}"] \arrow[d,hook]
 & \Sigma Y \arrow[d]\\
-D^{n+1}\cong D^n\times I \arrow[r]
+D^{n+1} \arrow[r]
 & \Sigma X \arrow[ul,phantom,"\ulcorner",very near start].
 \end{tikzcd}
 \]
@@ -582,22 +582,24 @@ Repitiendo el argumento en las etapas de la construcción celular, y usando que 
 
 Sea $X$ un espectro celular. Como $\xi_r\colon\Sigma X_r\hookrightarrow X_{r+1}$ es una inclusión de subcomplejo, cada $m$-celda de $X_r$, distinta del punto base, determina una $(m+1)$-celda de $X_{r+1}$. Queremos considerar estas dos celdas como representantes de una misma celda del espectro.
 
-Describamos la relación mediante funciones características, como en clase. Sean $\Phi\colon D^m\to X_r$ una $m$-celda y $\Psi\colon D^{m-n}\to X_{r-n}$ una $(m-n)$-celda, con $0\le n\le\min\{m,r\}$. Para una función característica $\Psi\colon D^d\to X$, la función característica suspendida se parametriza por $D^d\times I\cong D^{d+1}$ y vale $[\Psi(x),t]$; los extremos van al punto base y el borde lateral procede de la aplicación de adjunción. Al escribir $\Sigma^n\Psi$ sobre un disco entendemos esta construcción sucesiva, con disco parametrizador $D^{m-n}\times I^n\cong D^m$, no la identificación de la suspensión reducida de $(D^{m-n})_+$ con un disco.
+Para suspender una función característica $\Psi\colon D^d\to X$, la extendemos a una aplicación punteada $\Psi_+\colon D^d_+\to X$. Su suspensión es $\Sigma^n\Psi_+\colon\Sigma^nD^d_+\to\Sigma^nX$. Aquí $\Sigma$ sigue siendo la suspensión reducida y el signo $+$ añade un punto base disjunto. Como en la construcción anterior, una función característica de la celda suspendida se obtiene precomponiendo con $q\colon D^{d+n}\to\Sigma^nD^d_+$; véase \cite[Lema~2.6.1.1]{malkiewich}. Para $n\ge1$, $q$ es el cociente que, en el modelo $D^{d+n}\cong D^d\times I^n$, colapsa $D^d\times\partial I^n$ al punto base. Para $n=0$, es la inclusión $D^d\to D^d_+$. En particular, $\Sigma^nD^d_+$ no se identifica con el disco: ya $\Sigma D^0_+=S^1$.\label{nota:c10-suspension-celda}
+
+Sean ahora $\Phi\colon D^m\to X_r$ y $\Psi\colon D^{m-n}\to X_{r-n}$ funciones características, con $0\le n\le\min\{m,r\}$. La suspensión de la segunda celda está representada por $\Sigma^n\Psi_+\circ q\colon D^m\to\Sigma^nX_{r-n}$. Distinguimos así la aplicación punteada suspendida de la función característica cuyo dominio es un disco.
 
 Diremos que $\Phi$ es la \emph{$n$-ésima suspensión de $\Psi$ en el espectro} si, con funciones características compatibles, conmuta el diagrama
 \[
-\begin{tikzcd}[column sep=huge]
-D^m\cong D^{m-n}\times I^n
-\arrow[r,"\Sigma^n\Psi"] \arrow[ddddr,"\Phi"']
+\begin{tikzcd}[column sep=large]
+D^m \arrow[r,"q"] \arrow[ddddrr,"\Phi"']
+& \Sigma^nD^{m-n}_+ \arrow[r,"\Sigma^n\Psi_+"]
 & \Sigma^nX_{r-n}
 \arrow[d,"\Sigma^{n-1}\xi_{r-n}"]\\
-& \Sigma^{n-1}X_{r-n+1} \arrow[d]\\
-& \vdots \arrow[d]\\
-& \Sigma X_{r-1} \arrow[d,"\xi_{r-1}"]\\
-& X_r.
+&& \Sigma^{n-1}X_{r-n+1} \arrow[d]\\
+&& \vdots \arrow[d]\\
+&& \Sigma X_{r-1} \arrow[d,"\xi_{r-1}"]\\
+&& X_r.
 \end{tikzcd}
 \]
-Para $n=0$ la composición es la identidad. La expresión ``suspensión de una celda'' incluye, por tanto, tanto la suspensión como el paso a los niveles siguientes mediante los morfismos estructurales.
+El diagrama se escribe para $n\ge2$; para $n=1$, el compuesto es $\xi_{r-1}\circ\Sigma\Psi_+\circ q$. Si $n=0$, no intervienen morfismos estructurales y $\Psi_+\circ q=\Psi$. La expresión ``suspensión de una celda'' incluye, por tanto, tanto la suspensión como el paso a los niveles siguientes mediante los morfismos estructurales.
 
 \begin{defi}\label{defi:c10-celda-estable}
 Una \emph{celda estable} de $X$ es una clase de celdas distintas del punto base bajo la relación de equivalencia generada por identificar cada celda con su suspensión en el nivel siguiente. Si una clase está representada por $\Phi\colon D^m\to X_r$, su \emph{dimensión estable} es $m-r$.

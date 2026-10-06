@@ -16,13 +16,13 @@ La clase anterior introdujo los espectros celulares y sus celdas estables. Ahora
 Recordemos que un \emph{espectro celular} es un espectro secuencial $X=(X_n,\xi_n)$ cuyos niveles son complejos celulares punteados y los mapas $\xi_n\colon\Sigma X_n\to X_{n+1}$ son inclusiones de subcomplejos. Si los niveles son CW complejos, hablamos de un \emph{CW espectro}. Una celda de $X_r$, distinta del punto base y con función característica $\Phi\colon D^m\to X_r$, determina una celda de $X_{r+1}$ mediante el diagrama
 \[
 \begin{tikzcd}[cramped,column sep=large,row sep=large]
-D^{m+1}\cong D^m\times I
-\arrow[r,"\widetilde{\Sigma\Phi}"] \arrow[dr,"\Phi'"']
+D^{m+1} \arrow[r,"q"] \arrow[drr,"\Phi'"']
+& \Sigma D^m_+ \arrow[r,"\Sigma\Phi_+"]
 & \Sigma X_r \arrow[d,"\xi_r"]\\
-& X_{r+1}.
+&& X_{r+1}.
 \end{tikzcd}
 \]
-Como en la clase anterior, $\widetilde{\Sigma\Phi}$ se parametriza por $D^m\times I$ y vale $[\Phi(x),t]$: envía los extremos al punto base de $\Sigma X_r$ y el borde lateral según la aplicación de adjunción. Las \emph{celdas estables} son las clases de equivalencia generadas por estas identificaciones $\Phi\sim\Phi'$, omitiendo siempre el punto base. La dimensión estable de esta clase es $m-r$, que permanece constante al pasar al nivel siguiente.
+Aquí $\Phi_+\colon D^m_+\to X_r$ extiende $\Phi$ por el punto base y $q$ es el cociente descrito al estudiar la \hyperref[nota:c10-suspension-celda]{suspensión de una celda}. Así, $\Phi'=\xi_r\circ\Sigma\Phi_+\circ q$. Las \emph{celdas estables} son las clases de equivalencia generadas por estas identificaciones $\Phi\sim\Phi'$, omitiendo siempre el punto base. Su dimensión estable es $m-r$, invariante al pasar al nivel siguiente.
 
 \begin{enumerate}
 \item El espectro esfera $\mathbb S=(S^0,S^1,S^2,\ldots)$, con su estructura celular habitual, tiene una única $0$-celda estable. Está representada por la $0$-celda de $S^0$ distinta del punto base y por sus suspensiones sucesivas.
@@ -82,7 +82,7 @@ Para todo espacio $K$, espectro secuencial $X$ y entero $n\ge0$, existe una biye
 donde en esta fórmula consideramos los conjuntos de aplicaciones continuas, punteadas en el término intermedio.
 \end{lema}
 \begin{proof}
-Un morfismo $f\colon F_n(K_+)\to X$ está determinado por su componente $f_n\colon K_+\to X_n$: antes del nivel $n$ las componentes son las únicas aplicaciones punteadas desde $*$ y, a partir de ese nivel, la compatibilidad con los morfismos estructurales determina las demás. El primer cuadrado es
+Un morfismo $f\colon F_n(K_+)\to X$ está determinado por su componente $f_n\colon K_+\to X_n$: antes del nivel $n$ las componentes son las únicas aplicaciones punteadas desde $*$ y la compatibilidad estructural determina las demás a partir de ese nivel. El primer cuadrado es
 \[
 \begin{tikzcd}[cramped,column sep=large,row sep=large]
 \Sigma(K_+) \arrow[r,"\Sigma f_n"] \arrow[d,equal]
@@ -97,7 +97,7 @@ Por tanto, $f_{n+1}=\xi_n\circ\Sigma f_n$, y la misma regla construye recursivam
 Para $n\ge0$ y $n+k\ge0$, el espectro $F_n((D^{n+k})_+)$ se llama una \emph{$k$-celda estable libre en el nivel $n$}. Su borde es $F_n((S^{n+k-1})_+)$. El término ``libre'' expresa que todos los niveles posteriores están generados por suspensión a partir del nivel $n$.
 \end{defi}
 
-Si $\varphi\colon S^{n+k-1}\to X_n$ es una aplicación de adjunción, el lema proporciona un morfismo $\operatorname{adj}(\varphi)\colon F_n((S^{n+k-1})_+)\to X$. El resultado de \emph{adjuntar una $k$-celda estable a $X$ a lo largo de $\varphi$} es el pushout
+Una aplicación $\varphi\colon S^{n+k-1}\to X_n$ induce $\operatorname{adj}(\varphi)\colon F_n(S^{n+k-1}_+)\to X$ por el lema. El resultado de \emph{adjuntar una $k$-celda estable a $X$ a lo largo de $\varphi$} es el pushout
 \[
 \begin{tikzcd}[cramped,column sep=large,row sep=large]
 F_n((S^{n+k-1})_+)
@@ -107,7 +107,11 @@ F_n((D^{n+k})_+) \arrow[r]
 & X' \arrow[ul,phantom,"\ulcorner",very near start].
 \end{tikzcd}
 \]
-Para incluir las $0$-celdas ordinarias adoptamos la convención $S^{-1}=\varnothing$; entonces $(S^{-1})_+=*$. Como los pushouts de espectros se calculan nivel a nivel, los niveles anteriores a $n$ no cambian, en el nivel $n$ se adjunta una $(n+k)$-celda y en el nivel $n+r$ se adjunta su $r$-ésima suspensión, de dimensión $n+k+r$. Todas representan una misma celda estable, pues $(n+k+r)-(n+r)=k$.
+Para incluir las $0$-celdas ordinarias adoptamos la convención $S^{-1}=\varnothing$; entonces $(S^{-1})_+=*$. Como los pushouts de espectros se calculan nivel a nivel, los niveles anteriores a $n$ no cambian, en el nivel $n$ se adjunta una $(n+k)$-celda y en el nivel $n+r$ se adjunta su $r$-ésima suspensión, de dimensión $n+k+r$. Todas representan una misma celda estable, pues $(n+k+r)-(n+r)=k$. Explícitamente, para $r\ge0$, el pushout en ese nivel es
+\[
+X'_{n+r}\cong X_{n+r}\cup_{\Sigma^r S^{n+k-1}_+}\Sigma^rD^{n+k}_+.
+\]
+La aplicación desde $\Sigma^r S^{n+k-1}_+$ se obtiene suspendiendo $\varphi_+$ y aplicando los morfismos estructurales de $X$. Este pushout adjunta una celda ordinaria de dimensión $n+k+r$, aunque el espacio $\Sigma^rD^{n+k}_+$ no sea un disco cuando $r>0$; véase \cite[Definición~2.6.2.2]{malkiewich}.
 
 % P06--P07. Filtración numerable. Se incluyen los puntos base disjuntos
 % omitidos abreviadamente en P06 y se distingue etapa r de nivel m_r.
@@ -138,7 +142,7 @@ Esta descripción traduce la construcción nivel a nivel usando el lema de adjun
 \subsection{Aproximación celular}
 
 \begin{prop}\label{prop:c11-factorizacion-celular}
-Todo morfismo de espectros secuenciales $f\colon A\to X$ admite una factorización $f=g\circ h$, donde $h\colon A\to B$ es un CW espectro relativo y $g\colon B\to X$ es una equivalencia nivel a nivel.
+Todo morfismo de espectros secuenciales $f\colon A\to X$ se factoriza como $f=g\circ h$, donde $h\colon A\to B$ es un CW espectro relativo y $g\colon B\to X$ es una equivalencia nivel a nivel.
 \end{prop}
 \begin{proof}
 Usaremos la factorización de aplicaciones de espacios como un CW complejo relativo seguido de una equivalencia débil. Aplicándola a $f_0\colon A_0\to X_0$, obtenemos
@@ -215,7 +219,7 @@ Aplicamos la proposición al morfismo del espectro cero a $X$:
 \Sigma^\infty * \arrow[r] & QX \arrow[r,"q_X","\simeq_\ell"'] & X.
 \end{tikzcd}
 \]
-Un CW espectro relativo que parte del espectro cero es un CW espectro. Usando factorizaciones funtoriales de espacios, el proceso inductivo anterior produce un funtor $Q$ y una transformación natural $q\colon Q\Rightarrow\operatorname{Id}$; en clase se anunció esta elección funtorial sin desarrollar su construcción en espacios.
+Un CW espectro relativo que parte del espectro cero es un CW espectro. Usando factorizaciones funtoriales de espacios, el proceso inductivo anterior produce un funtor $Q$ y una transformación natural $q\colon Q\Rightarrow\operatorname{Id}$; la elección funtorial de esas factorizaciones solo se anunció en clase.
 
 Para la segunda afirmación, tomamos primero el reemplazo $X\to RX$ de la clase anterior y luego $q_{RX}\colon QRX\to RX$. Tenemos el zigzag de equivalencias estables $X\to RX\leftarrow QRX$. Como $q_{RX}$ es una equivalencia nivel a nivel y $RX$ es un $\Omega$-espectro, la compatibilidad de $q_{RX}$ con los morfismos estructurales adjuntos y la propiedad de dos de tres implican que $(QRX)_n\to\Omega(QRX)_{n+1}$ es una equivalencia débil para todo $n$. Aquí se usa que $\Omega$ preserva equivalencias débiles. Por tanto, $QRX$ es también un $\Omega$-espectro.
 \end{proof}
@@ -240,11 +244,11 @@ La última condición significa que, dada una celda de $X_n$, al suspenderla suf
 \circ\Sigma^{m-1}\xi^X_n\colon\Sigma^mX_n\longrightarrow X_{n+m}
 \qquad(m\ge1),
 \]
-y $\xi^X_{n,0}=1_{X_n}$. Omitiremos el superíndice cuando el espectro sea claro. Si la celda tiene función característica $\Phi\colon D^{n+k}\to X_n$, la cofinalidad afirma que para algún $m$ la aplicación del siguiente diagrama, obtenida construyendo sucesivamente las funciones características suspendidas, factoriza por $A_{n+m}$:
+y $\xi^X_{n,0}=1_{X_n}$. Omitiremos el superíndice cuando el espectro sea claro. Si la celda tiene función característica $\Phi\colon D^{n+k}\to X_n$, extendemos $\Phi$ a $\Phi_+\colon D^{n+k}_+\to X_n$. La cofinalidad afirma que, para algún $m$, el compuesto $\xi_{n,m}\circ\Sigma^m\Phi_+$ factoriza por $A_{n+m}$:
 \[
-\begin{tikzcd}[cramped,column sep=large,row sep=large]
-D^{n+k+m}\cong D^{n+k}\times I^m
-\arrow[r,"\widetilde{\Sigma^m\Phi}"]
+\begin{tikzcd}[cramped,column sep=7em,row sep=large]
+\Sigma^mD^{n+k}_+
+\arrow[r,"\Sigma^m\Phi_+"]
 \arrow[dddd,dashed] \arrow[ddddr]
 & \Sigma^mX_n \arrow[d,"\Sigma^{m-1}\xi_n"]\\
 & \Sigma^{m-1}X_{n+1} \arrow[d,"\Sigma^{m-2}\xi_{n+1}"]\\
@@ -253,7 +257,7 @@ D^{n+k+m}\cong D^{n+k}\times I^m
 A_{n+m} \arrow[r,hook] & X_{n+m}.
 \end{tikzcd}
 \]
-El diagrama se escribe para $m\ge2$; para $m=1$ solo interviene $\xi_n$, y para $m=0$ la celda ya está en $A_n$. Una vez que un representante pertenece a $A$, todas sus suspensiones posteriores también pertenecen a $A$, porque este es un subespectro. El número de suspensiones necesario puede depender de la celda: no se exige que $A_n=X_n$ a partir de un único nivel.
+Para $m\ge1$, precomponer con el cociente sobreyectivo $q\colon D^{n+k+m}\to\Sigma^mD^{n+k}_+$ da la función característica de la celda suspendida, con la misma imagen. Por tanto, la factorización equivale a que esa celda esté en $A_{n+m}$. Para $m=0$, añadir el punto base tampoco cambia la condición, pues $A_n$ lo contiene. El diagrama se escribe para $m\ge2$; para $m=1$ solo interviene $\xi_n$, y para $m=0$ la celda ya está en $A_n$. Una vez que un representante pertenece a $A$, todas sus suspensiones posteriores también pertenecen a $A$, porque este es un subespectro. El número de suspensiones necesario puede depender de la celda: no se exige que $A_n=X_n$ a partir de un único nivel.
 
 % P12--P13. Los dos ejemplos de cofinalidad.
 \subsection{Ejemplos}
@@ -408,7 +412,7 @@ H_n\colon I_+\wedge S^{n+3}\longrightarrow S^{n+2},\qquad
 H_n[0,x]=\Sigma^nh(x),\qquad
 H_n[1,x]=\Sigma^n(3h)(x).
 \]
-En particular, $H_1=F$. Las identificaciones usadas dejan la coordenada del intervalo en el primer factor; de ese modo, la compatibilidad de $H_{n+1}$ con $H_n$ es exactamente la obtenida al suspender la homotopía. En el nivel cero tomamos la única aplicación $H_0\colon I_+\wedge *\to S^2$. Esto define un morfismo de espectros
+En particular, $H_1=F$. Las identificaciones usadas dejan la coordenada del intervalo en el primer factor; de ese modo, la compatibilidad de $H_{n+1}$ con $H_n$ es exactamente la obtenida al suspender la homotopía. En el nivel cero tomamos la única aplicación $H_0\colon I_+\wedge *\to S^2$. Esto define \mbox{un morfismo de espectros}
 \[
 H\colon I_+\wedge(\Sigma^\infty S^3)^{\ge1}
 \longrightarrow\Sigma^\infty S^2,
@@ -438,7 +442,7 @@ El dominio $B'$ puede ser un subespectro cofinal menor que el dominio original $
 % Ejercicio anunciado al final de C11 (transcripción, entre 1:55:56 y 2:02:06).
 % La solución es un desarrollo añadido a los apuntes, no una prueba dada en clase.
 \begin{ejer}\label{ejer:c11-composicion-eventual}
-Probar que la regla de composición descrita está bien definida sobre las clases de homotopía eventualmente definida. En particular, probar que la clase $[f\circ g']$ no depende de los representantes de $[f]$ y $[g]$, ni de la elección de $g'$ cuya imagen está contenida en el dominio de $f$.
+Probar que la regla de composición descrita está bien definida sobre las clases de homotopía eventualmente definida. En particular, probar que la clase $[f\circ g']$ no depende de los representantes de $[f]$ y $[g]$, ni de la elección de $g'$ con imagen contenida en el dominio de $f$.
 \end{ejer}
 \begin{sol}
 \emph{Una restricción cofinal auxiliar.} Sean $W$ y $X$ CW espectros, $A\subseteq X$ cofinal y $K=S^0$ o $K=I_+$. Si $\Phi\colon K\wedge W\to X$ es un morfismo de espectros, existe un subespectro cofinal $E\subseteq W$ tal que $\Phi(K\wedge E)\subseteq A$. Esto permitirá restringir tanto aplicaciones como homotopías.
