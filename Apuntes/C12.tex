@@ -1,0 +1,539 @@
+% C12 -- 5 de octubre de 2026.
+% Fragmento del documento principal, sin preámbulo ni \chapter.
+% Fuentes: Screenshots C12/P01--P24.png y Transcripciones/C12.txt.
+% Whisper recupera el desarrollo hasta P16; P17--P24 se cotejan con la pizarra.
+% Se conserva la notación de C10--C11, incluidos los discos parametrizadores
+% de las celdas suspendidas. Las referencias Pxx son solo para cotejo.
+
+La clase anterior introdujo los morfismos y las homotopías eventualmente definidos. Ahora completaremos la composición en la categoría de CW espectros y probaremos que esta categoría es isomorfa a la localización en las equivalencias estables. El paso central será construir una inversa eventualmente definida de cada equivalencia estable, retrasando las celdas hasta que desaparezcan las obstrucciones relativas. Después compararemos con los modelos obtenidos mediante los reemplazos celular y fibrante, y demostraremos el teorema de Whitehead para $\Omega$-espectros celulares, donde la inversa y las homotopías pueden definirse en todo el espectro.
+
+Usaremos $\xi^X_{n,m}\colon\Sigma^mX_n\to X_{n+m}$ con el significado fijado en C11. Todas las aplicaciones y homotopías de espectros serán punteadas. El producto $I_+\wedge X$ es el cilindro formado nivel a nivel.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{La categoría homotópica mediante morfismos eventuales}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Composición y restricciones cofinales}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P01--P04; transcripción 00:00--00:13.
+Recordemos que los objetos de $e\Sp^{\mathrm{CW}}$ son los CW espectros y que $\hom_{e\Sp^{\mathrm{CW}}}(X,Y)=[X,Y]_e$. La notación de esta categoría sigue la del libro de espectros~(\cite{malkiewich}). Una clase está representada por $f\colon A\to Y$, donde $A\subseteq X$ es cofinal. Restringir $f$ a un subespectro cofinal menor no cambia su clase.
+
+\begin{lema}\label{lema:c12-restriccion-cofinal}
+Sean $g\colon B\to X$ un morfismo entre CW espectros y $A\subseteq X$ cofinal. Existe un subespectro cofinal $R\subseteq B$ tal que $g_n(R_n)\subseteq A_n$ para todo $n$.
+\end{lema}
+\begin{proof}
+Consideremos una celda de $B_k$, con función característica $\Phi\colon D^d\to B_k$. Su imagen por $g_k\circ\Phi$ es compacta y está contenida en un subcomplejo finito de $X_k$. Como $A$ es cofinal, después de un número suficiente $m$ de suspensiones todas las celdas de ese subcomplejo están en $A_{k+m}$. La compatibilidad de $g$ con los morfismos estructurales da
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma^mD^d_+ \arrow[r,"\Sigma^m\Phi_+"]
+& \Sigma^mB_k \arrow[r,"\Sigma^mg_k"] \arrow[d,"\xi^B_{k,m}"']
+& \Sigma^mX_k \arrow[d,"\xi^X_{k,m}"]\\
+& B_{k+m} \arrow[r,"g_{k+m}"'] & X_{k+m}.
+\end{tikzcd}
+\]
+La aplicación hacia $X_{k+m}$ tiene imagen en $A_{k+m}$. Por tanto, cada celda estable de $B$ tiene un representante cuya imagen por $g$ está en $A$.
+
+Para reunir estos representantes, usamos una filtración celular $B=\operatorname*{colim}_iB^{(i)}$, con $B^{(-1)}=\Sigma^\infty *$, como en C11. La etapa de nacimiento $n_i$ adjunta una familia de celdas de dimensiones estables $k_j$, para $j\in J_i$, mediante aplicaciones
+\[
+\varphi_j\colon S^{n_i+k_j-1}\longrightarrow B^{(i)}_{n_i}.
+\]
+Al añadir el punto base y pasar a las celdas libres, la fórmula de adjunción es
+\[
+B^{(i+1)}=B^{(i)}
+\cup_{\bigvee_{j\in J_i}F_{n_i}(S^{n_i+k_j-1}_+)}
+\left(\bigvee_{j\in J_i}F_{n_i}(D^{n_i+k_j}_+)\right).
+\]
+Los mapas del borde hacia $B^{(i)}$ son los determinados por las $\varphi_j$.
+
+Construimos una nueva filtración adjuntando esas mismas celdas, pero con representantes suficientemente suspendidos. Comenzamos con
+\[
+R^{(-1)}=B^{(-1)}=\Sigma^\infty *.
+\]
+Si la celda $j$ se retrasa $r_j$ niveles, escribimos
+\[
+E_{i,j}=F_{n_i+r_j}(D^{n_i+k_j+r_j}_+),\qquad
+\partial E_{i,j}=F_{n_i+r_j}(S^{n_i+k_j+r_j-1}_+).
+\]
+Así se conserva la dimensión estable $k_j$. Escogemos $r_j$ de modo que la imagen de la celda esté en $A$ y que su borde esté en la parte de $R$ ya construida. Esto último es posible porque la aplicación de adjunción tiene imagen en un subcomplejo finito y cada una de sus celdas ya tiene un representante en $R$; basta suspender hasta alcanzar todos ellos. El mapa de pegadura de $\partial E_{i,j}$ es el obtenido de $\varphi_j$ por suspensión y por los morfismos estructurales, usando los discos parametrizadores de C10. Los números $r_j$ pueden variar entre las celdas de una misma familia. Las etapas quedan descritas por
+\[
+\begin{aligned}
+R^{(0)}&=R^{(-1)}\cup_{\bigvee_{j\in J_0}\partial E_{0,j}}
+\left(\bigvee_{j\in J_0}E_{0,j}\right),\\
+R^{(i+1)}&=R^{(i)}\cup_{\bigvee_{j\in J_i}\partial E_{i,j}}
+\left(\bigvee_{j\in J_i}E_{i,j}\right).
+\end{aligned}
+\]
+
+El colímite $R=\operatorname*{colim}_iR^{(i)}$ es un subespectro de $B$. Contiene un representante de cada celda estable de $B$, de modo que es cofinal, y por construcción $g_n(R_n)\subseteq A_n$.
+\end{proof}
+
+En la aplicación a la composición, $B$ es un subespectro cofinal de $Z$. Podemos entonces empezar con una celda estable de $Z$ y una función característica $\Phi\colon D^d\to Z_k$. La cofinalidad de $B$ dice que, para algún $m$, la aplicación que representa su suspensión factoriza como en el diagrama de la pizarra:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=small]
+\Sigma^mD^d_+ \arrow[r,"\Sigma^m\Phi_+"] \arrow[dddd]
+& \Sigma^mZ_k \arrow[d,"\Sigma^{m-1}\xi^Z_k"]\\
+& \Sigma^{m-1}Z_{k+1} \arrow[d]\\
+& \vdots \arrow[d]\\
+& \Sigma Z_{k+m-1} \arrow[d,"\xi^Z_{k+m-1}"]\\
+B_{k+m} \arrow[r,hook] & Z_{k+m}.
+\end{tikzcd}
+\]
+Una vez elegido ese representante en $B$, el primer diagrama de la demostración permite suspenderlo más hasta que su imagen por $g$ esté en $A$. Las dos versiones del argumento describen, por tanto, la misma elección de representantes, primero en $B$ y después con imagen en $A$.
+
+\begin{nota}
+Escribir $\Sigma^mC\subseteq B$ para una celda estable $C$ es un abuso de notación: significa suspender su función característica y componer con los morfismos estructurales hasta obtener una aplicación cuya imagen está en $B$. Hay que añadir el punto base al disco y al borde para que la suspensión reducida tenga sentido. Del mismo modo, las celdas de la construcción de $R$ se escriben abreviadamente como $\Sigma^{r_j}C_j$, donde $C_j$ estaba representada en el nivel $n_i$ por $F_{n_i}(D^{n_i+k_j}_+)$. Esta escritura designa el representante retrasado $E_{i,j}$, nacido en el nivel $n_i+r_j$, junto con su mapa de pegadura suspendido.
+\end{nota}
+
+Sean $[f\colon A\to Y]\in[X,Y]_e$ y $[g\colon B\to X]\in[Z,X]_e$. Aplicamos el lema y restringimos $g$ a $R\subseteq B$, cofinal también en $Z$. Denotando por $\widehat g\colon R\to A$ la restricción de codominio, definimos
+\[
+[f]\circ[g]=[f\circ\widehat g\colon R\to Y].
+\]
+En efecto, $[g]=[g|_R]$ y ahora las aplicaciones se pueden componer. La identidad de $X$ está representada por $1_X\colon X\to X$.
+
+\begin{ejer}\label{ejer:c12-composicion-eventual}
+Comprobar que esta composición no depende de las restricciones cofinales escogidas ni de los representantes de las clases de homotopía eventualmente definida. Es el ejercicio~\ref{ejer:c11-composicion-eventual}, retomado después de construir la restricción necesaria.
+\end{ejer}
+\begin{sol}[Indicación]
+Dos subespectros cofinales admiten una restricción cofinal común: su intersección. Esto reduce la comparación de dos elecciones a comparar una aplicación con su restricción. Para cambiar los representantes hay que restringir también las homotopías a un dominio cuya imagen esté en el subespectro donde se realiza la composición. La demostración completa ya está escrita en la solución del ejercicio~\ref{ejer:c11-composicion-eventual}; en C12 solo se dio la indicación de usar la intersección.
+\end{sol}
+
+Sobre restricciones cofinales comunes, la asociatividad se reduce a la de la composición de aplicaciones y las identidades a las identidades ordinarias. Queda así definida la categoría $e\Sp^{\mathrm{CW}}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El funtor hacia la localización}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P04--P09; transcripción 00:14--00:32.
+Escribimos $\Sp^{\mathrm{CW}}$ para la subcategoría plena de CW espectros y
+\[
+\Ho(\Sp^{\mathrm{CW}})=\Sp^{\mathrm{CW}}[\text{equiv.\ estables}^{-1}].
+\]
+Denotaremos sus morfismos por $[X,Y]_s$, y por $[u]_s$ la imagen de un morfismo ordinario $u$ en la localización.
+
+El resultado que necesitaremos, cuya demostración daremos después de la comparación, es el siguiente.
+\begin{lema}\label{lema:c12-inversa-eventual}
+Una equivalencia estable entre CW espectros tiene una inversa salvo homotopía eventualmente definida. En particular, su clase es un isomorfismo en $e\Sp^{\mathrm{CW}}$.
+\end{lema}
+Es una variante del teorema de Whitehead adaptada a $e\Sp^{\mathrm{CW}}$: la inversa y las homotopías solo se exigen sobre dominios cofinales.
+
+Definimos $F\colon e\Sp^{\mathrm{CW}}\to\Ho(\Sp^{\mathrm{CW}})$ como la identidad en objetos y, sobre una clase representada por $f\colon A\to Y$, mediante
+\[
+F([f])=
+\left[\begin{tikzcd}[cramped,column sep=large]
+X & A \arrow[l,hook',"i_A"'] \arrow[r,"f"] & Y
+\end{tikzcd}\right]
+=[f]_s\circ[i_A]_s^{-1}.
+\]
+Esto tiene sentido porque la inclusión cofinal $i_A$ es una equivalencia estable, por el lema~\ref{lema:c11-cofinal-equivalencia}.
+
+\emph{Buena definición.} Supongamos que $f\colon A\to Y$ y $g\colon B\to Y$ representan la misma clase de $[X,Y]_e$. Existen $C\subseteq A\cap B$, cofinal en $X$, y $H\colon I_+\wedge C\to Y$ con $H\circ i_0=f|_C$ y $H\circ i_1=g|_C$. Consideremos la proyección del cilindro
+\[
+\begin{tikzcd}[cramped,column sep=large]
+C \arrow[r,shift left=1.5,"i_0"] \arrow[r,shift right=1.5,"i_1"']
+& I_+\wedge C \arrow[r,"c\wedge1"] \arrow[dr,"p"']
+& S^0\wedge C \arrow[d,"\cong"]\\
+&& C,
+\end{tikzcd}
+\]
+donde $c\colon I_+\to S^0$ envía todo $I$ al punto distinto del punto base. En cada nivel, $p_n[t,x]=x$, de modo que $p$ es una equivalencia nivel a nivel y $p\circ i_0=p\circ i_1=1_C$. En la localización, por tanto, $[i_0]_s=[p]_s^{-1}=[i_1]_s$.
+
+\begin{nota}
+Usaremos dos reglas para calcular con zigzags en la categoría localizada. Dos flechas consecutivas en la misma dirección se sustituyen por su composición. Una equivalencia estable y la flecha que representa su inversa se cancelan, en cualquiera de los dos órdenes, dando la identidad. En particular, podemos insertar ese par de flechas en un zigzag sin cambiar su clase.
+\end{nota}
+
+Sea $j\colon C\hookrightarrow X$ la inclusión. El cálculo explícito consiste en insertar $p$ y su inversa después de $i_0$, componer $p\circ i_0=1_C$ y hacer el mismo proceso al revés con $i_1$:
+\[
+\begin{aligned}
+&\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+X \& C \arrow[l,"j"'] \arrow[r,"f|_C"] \& Y
+\end{tikzcd}\right]\\
+={}&\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+X \& C \arrow[l,"j"'] \arrow[r,"i_0"] \& I_+\wedge C \arrow[r,"H"] \& Y
+\end{tikzcd}\right]\\
+={}&\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+X \& C \arrow[l,"j"'] \arrow[r,"i_0"] \& I_+\wedge C \arrow[r,"p"] \& C
+\& I_+\wedge C \arrow[l,"p"'] \arrow[r,"H"] \& Y
+\end{tikzcd}\right]\\
+={}&\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+X \& C \arrow[l,"j"'] \& I_+\wedge C \arrow[l,"p"'] \arrow[r,"H"] \& Y
+\end{tikzcd}\right]\\
+={}&\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+X \& C \arrow[l,"j"'] \arrow[r,"i_1"] \& I_+\wedge C \arrow[r,"p"] \& C
+\& I_+\wedge C \arrow[l,"p"'] \arrow[r,"H"] \& Y
+\end{tikzcd}\right]\\
+={}&\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+X \& C \arrow[l,"j"'] \arrow[r,"i_1"] \& I_+\wedge C \arrow[r,"H"] \& Y
+\end{tikzcd}\right]\\
+={}&\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+X \& C \arrow[l,"j"'] \arrow[r,"g|_C"] \& Y
+\end{tikzcd}\right].
+\end{aligned}
+\]
+Las flechas hacia la izquierda etiquetadas por $p$ representan $[p]_s^{-1}$. La primera y la última igualdad usan $H\circ i_0=f|_C$ y $H\circ i_1=g|_C$; las demás usan precisamente las dos reglas anteriores.
+
+Si $\ell\colon C\hookrightarrow A$ es la inclusión, entonces $j=i_A\circ\ell$ y $f|_C=f\circ\ell$. Como $\ell$ es también una inclusión cofinal,
+\[
+[f|_C]_s\circ[j]_s^{-1}
+=[f]_s\circ[\ell]_s\circ([i_A]_s\circ[\ell]_s)^{-1}
+=[f]_s\circ[i_A]_s^{-1}.
+\]
+Haciendo lo mismo con $B$, obtenemos $F([f])=F([g])$.
+
+\emph{Funtorialidad.} La identidad se envía al zigzag $X\xleftarrow{1_X}X\xrightarrow{1_X}X$, que es la identidad en la localización. Para la composición, tomemos $f\colon A\to Y$ y $g\colon R\to X$ con $g=i_A\circ\widehat g$, como arriba. El diagrama
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+& R \arrow[dl,hook',"i_R"'] \arrow[r,"\widehat g"] \arrow[dr,"g"']
+& A \arrow[d,hook,"i_A"] \arrow[r,"f"] & Y\\
+Z && X &
+\end{tikzcd}
+\]
+muestra que $g_n(R_n)\subseteq A_n$ y que el morfismo que representa la composición es $f\circ\widehat g\colon R\to Y$. Al concatenar los zigzags, reescribimos $g=i_A\circ\widehat g$ y cancelamos la inclusión $i_A$ con su inversa:
+\[
+\begin{aligned}
+&F([f])\circ F([g])\\
+={}&\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+X \& A \arrow[l,"i_A"'] \arrow[r,"f"] \& Y
+\end{tikzcd}\right]\circ
+\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+Z \& R \arrow[l,"i_R"'] \arrow[r,"g"] \& X
+\end{tikzcd}\right]\\
+={}&\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+Z \& R \arrow[l,"i_R"'] \arrow[r,"g"] \& X
+\& A \arrow[l,"i_A"'] \arrow[r,"f"] \& Y
+\end{tikzcd}\right]\\
+={}&\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+Z \& R \arrow[l,"i_R"'] \arrow[r,"\widehat g"] \& A \arrow[r,"i_A"] \& X
+\& A \arrow[l,"i_A"'] \arrow[r,"f"] \& Y
+\end{tikzcd}\right]\\
+={}&\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+Z \& R \arrow[l,"i_R"'] \arrow[r,"\widehat g"] \& A \arrow[r,"f"] \& Y
+\end{tikzcd}\right]\\
+={}&\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+Z \& R \arrow[l,"i_R"'] \arrow[r,"f\circ\widehat g"] \& Y
+\end{tikzcd}\right]
+=F([f]\circ[g]).
+\end{aligned}
+\]
+En términos de morfismos de la localización, la cancelación central es $[i_A]_s^{-1}\circ[g]_s=[\widehat g]_s$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La inversa y la propiedad universal}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P09--P11; transcripción 00:33--00:44.
+\begin{teo}\label{teo:c12-comparacion-eventual}
+El funtor $F\colon e\Sp^{\mathrm{CW}}\to\Ho(\Sp^{\mathrm{CW}})$ es un isomorfismo de categorías.
+\end{teo}
+\begin{proof}
+Consideremos el funtor $\mathcal Q\colon\Sp^{\mathrm{CW}}\to e\Sp^{\mathrm{CW}}$ que deja los objetos fijos y envía $u\colon X\to Y$ a su clase $[u]$, con dominio efectivo todo $X$. Por el lema~\ref{lema:c12-inversa-eventual}, $\mathcal Q$ transforma las equivalencias estables en isomorfismos. La propiedad universal de la localización proporciona un funtor $G$ tal que
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sp^{\mathrm{CW}} \arrow[r,"\operatorname{loc}"] \arrow[dr,"\mathcal Q"']
+& \Ho(\Sp^{\mathrm{CW}}) \arrow[d,dashed,"G"]\\
+& e\Sp^{\mathrm{CW}}.
+\end{tikzcd}
+\]
+
+Veamos que $GF=1$. Sea $f\colon A\to Y$ un representante de $[X,Y]_e$. Por la definición de $G$,
+\[
+GF([f])=G([f]_s\circ[i_A]_s^{-1})
+=\mathcal Q(f)\circ\mathcal Q(i_A)^{-1}.
+\]
+La inversa de $\mathcal Q(i_A)$ está representada por $1_A\colon A\to A$, considerado como morfismo eventualmente definido de $X$ a $A$. Una composición da $1_A$ y la otra da $i_A\colon A\to X$, que es la restricción de $1_X$ a $A$. Así, las dos clases compuestas son respectivamente $1_A$ y $1_X$ en $e\Sp^{\mathrm{CW}}$. Sustituyendo este representante de la inversa obtenemos el cálculo de la pizarra:
+\[
+\begin{aligned}
+GF([f])&=G\left(\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
+X \& A \arrow[l,"i_A"'] \arrow[r,"f"] \& Y
+\end{tikzcd}\right]\right)\\
+&=\mathcal Q(f)\circ\mathcal Q(i_A)^{-1}\\
+&=[f\colon A\to Y]\circ[1_A\colon A\to A]\\
+&=[f\circ1_A\colon A\to Y]=[f\colon A\to Y].
+\end{aligned}
+\]
+En la tercera línea el segundo factor tiene fuente $X$, con dominio efectivo $A$, y el resultado tiene fuente $X$ y destino $Y$. Por ello, la composición vuelve a ser exactamente la clase inicial, sin cambiar su dominio efectivo. En objetos ambos funtores son la identidad, luego $GF=1$.
+
+Para comprobar $FG=1$, basta calcular después de precomponer con $\operatorname{loc}$. Si $u\colon X\to Y$ es un morfismo ordinario,
+\[
+FG(\operatorname{loc}(u))=F(\mathcal Q(u))
+=\left[\begin{tikzcd}[cramped,column sep=large]
+X & X \arrow[l,"1_X"'] \arrow[r,"u"] & Y
+\end{tikzcd}\right]
+=\operatorname{loc}(u).
+\]
+Así, $FG\circ\operatorname{loc}=\operatorname{loc}=1\circ\operatorname{loc}$. La unicidad en la propiedad universal de la localización implica $FG=1$. Por tanto, $G$ es la inversa de $F$.
+\end{proof}
+
+La comparación no exige que los CW espectros sean $\Omega$-espectros: la flexibilidad está en permitir que las aplicaciones y las homotopías se definan sobre subespectros cofinales. Es sorprendente que una localización, cuyos morfismos se presentan mediante zigzags arbitrarios, quede descrita por estas clases de aplicaciones. El lema de la inversa eventual es la clave: permite interpretar en $e\Sp^{\mathrm{CW}}$ las inversas formales de las equivalencias estables y, con ello, todos los zigzags de la localización.
+
+\begin{nota}
+Esta descripción no se obtiene directamente de la teoría general de categorías de modelos. Para describir sus morfismos homotópicos mediante clases de aplicaciones se usan reemplazos bifibrantes, o un reemplazo cofibrante del dominio y uno fibrante del codominio. Aquí trabajamos con CW espectros, pero el codominio no necesita un reemplazo fibrante. La posibilidad de retrasar las celdas y permitir dominios cofinales es lo que proporciona la inversa y las homotopías de este resultado.
+\end{nota}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Inversas eventualmente definidas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El cilindro y los grupos relativos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P12--P14; transcripción 00:47--01:00.
+Probemos ahora el lema~\ref{lema:c12-inversa-eventual}. La demostración muestra cómo trabajar con CW espectros celda a celda y dónde se necesita controlar cuidadosamente los representantes de las celdas estables. Sea $f\colon X\to Y$ una equivalencia estable entre CW espectros. Formamos el cilindro de aplicación nivel a nivel:
+\[
+(M_f)_n=Y_n\cup_{f_n}(I_+\wedge X_n),
+\]
+pegando $[0,x]$ a $f_n(x)$. Los morfismos estructurales usan los de $Y$ sobre la base y los de $X$ sobre el cilindro, dejando fija la coordenada del intervalo. Tenemos
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+X \arrow[r,hook,"i"] \arrow[dr,"f"'] & M_f \arrow[d,"p"]\\
+& Y \arrow[u,bend right=30,"j"'].
+\end{tikzcd}
+\]
+Aquí $i_n(x)=[1,x]$, $j_n$ incluye $Y_n$, y $p_n$ es la identidad sobre $Y_n$ y satisface $p_n[t,x]=f_n(x)$. Se cumple $p\circ i=f$, $p\circ j=1_Y$ y $j\circ p\simeq1_{M_f}$ mediante el aplastamiento del cilindro. Esa homotopía es compatible con los morfismos estructurales, pues solo modifica la coordenada del intervalo. En consecuencia, $p$ tiene una inversa salvo homotopía globalmente definida y $[p]$ es un isomorfismo en $e\Sp^{\mathrm{CW}}$.
+
+Basta probar que $[i]$ también es invertible. Escribiremos $M=M_f$ e identificaremos $X$ con el extremo libre del cilindro. Como $p$ es una equivalencia nivel a nivel y $f$ es una equivalencia estable, para todo $k$ el triángulo
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\pi_k(X) \arrow[r,"i_*","\cong"'] \arrow[dr,"f_*"',"\cong"]
+& \pi_k(M) \arrow[d,"p_*","\cong"']\\
+& \pi_k(Y)
+\end{tikzcd}
+\]
+muestra que $i_*$ es un isomorfismo.
+
+Para una pareja de espectros $(E,A)$, con $A\subseteq E$, definimos $\pi_k(E,A)=\operatorname*{colim}_n\pi_{k+n}(E_n,A_n)$, con transiciones dadas por suspensión y los morfismos estructurales de la pareja. Tomamos niveles suficientemente altos para trabajar con grupos relativos.
+
+\begin{ejer}\label{ejer:c12-sucesion-relativa}
+Probar que una pareja $(E,A)$ de espectros tiene una sucesión exacta larga
+\[
+\cdots\longrightarrow\pi_k(A)\longrightarrow\pi_k(E)
+\longrightarrow\pi_k(E,A)\longrightarrow\pi_{k-1}(A)
+\longrightarrow\pi_{k-1}(E)\longrightarrow\cdots.
+\]
+\end{ejer}
+\begin{sol}[Indicación]
+Las sucesiones exactas largas de las parejas $(E_n,A_n)$ son compatibles con la suspensión y con los morfismos estructurales. Al tomar su colímite filtrado se conserva la exactitud y se obtienen los términos indicados. Este fue el argumento señalado en clase para el ejercicio.
+\end{sol}
+
+Aplicándolo a $(M,X)$, los isomorfismos $i_*$ implican $\pi_k(M,X)=0$ para todo $k$. La idea será usar esta anulación para deformar las celdas de $M$ hacia $X$, después de suspenderlas lo suficiente.
+
+El objetivo preciso es construir una \emph{retracción por deformación eventualmente definida} de $M$ a $X$. Buscamos un subespectro cofinal $M'\subseteq M$ que contenga $X$, una retracción $r'\colon M'\to X$ y una homotopía, con valores en $M$, entre $i\circ r'$ y la restricción de $1_M$ a $M'$, relativa a $X$. Tanto la retracción como la homotopía estarán así eventualmente definidas. Esto basta: la primera composición será $1_X$ y la segunda representará $1_M$ en la categoría de morfismos eventuales.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La primera familia de celdas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P13--P15; transcripción 00:54--01:05.
+Empezamos con $1_X\colon X\to X$ y la homotopía constante sobre $X$. Entre las celdas estables de $M$ que no están en $X$, consideramos primero las que nacen en el nivel más bajo $n$ y, entre ellas, las de dimensión estable mínima $k$. Una función característica $\Phi\colon D^{k+n}\to M_n$ tiene entonces su borde en $X_n$ y determina una clase
+\[
+[\Phi]\in\pi_{k+n}(M_n,X_n)
+\longrightarrow\pi_k(M,X)=0.
+\]
+La igualdad con cero en el colímite significa que, después de un número suficiente $m$ de suspensiones, esta clase se vuelve nula.
+
+La función característica de la celda suspendida es
+$\psi=\xi^M_{n,m}\circ\Sigma^m\Phi_+\circ q\colon D^{k+n+m}\to M_{n+m}$, donde $q\colon D^{k+n+m}\to\Sigma^mD^{k+n}_+$ es el cociente usado en C10. La anulación de la clase relativa permite deformar $\psi$ hacia una aplicación $r'\colon D^{k+n+m}\to X_{n+m}$, conservando su aplicación de borde. El diagrama conmuta salvo esa homotopía relativa al borde:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+D^{k+n+m} \arrow[r,"q"] \arrow[ddr,dashed,"r'"']
+& \Sigma^mD^{k+n}_+ \arrow[r,"\Sigma^m\Phi_+"]
+& \Sigma^mM_n \arrow[d,"\xi^M_{n,m}"]\\
+&& M_{n+m}\\
+& X_{n+m} \arrow[ur,hook] &
+\end{tikzcd}
+\]
+Adjuntamos a $X$ este representante de la celda y todas sus suspensiones posteriores. La aplicación $r'$, junto con $1_X$, define una retracción sobre el espectro así obtenido. La homotopía de la celda se propaga por suspensión y se pega con la homotopía constante sobre $X$, porque coincide con ella en el borde. Obtenemos una homotopía, con valores en $M$, entre la inclusión de ese subespectro y el compuesto de la retracción con $i$, relativa a $X$.
+
+Hacemos lo mismo con todas las $k$-celdas estables nacidas en el nivel $n$. La familia puede ser no numerable; por eso tratamos simultáneamente todas las celdas de esa dimensión y ese nivel, sin escoger una enumeración celda por celda. Cada una puede necesitar un número diferente de suspensiones. Sus retracciones y homotopías se pegan porque en los bordes coinciden con la identidad y la homotopía constante de $X$. El resultado es un subespectro $M^{(1)}\subseteq M$ que contiene $X$ y los representantes escogidos, con una retracción $M^{(1)}\to X$ y la homotopía correspondiente.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Extensión de la retracción y de la homotopía}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P15--P16; transcripción 01:06--01:19.
+La regla de inducción es tomar la siguiente dimensión de celdas estables del mismo nivel que no están en $X$. Si ya no quedan dimensiones por tratar en ese nivel, pasamos a la dimensión mínima del siguiente nivel de nacimiento que tenga celdas fuera de $X$. Así se recorre cada nivel por dimensiones crecientes antes de pasar al siguiente; cuando se han tratado todas sus dimensiones, se toma la unión de lo construido en ellas.
+
+En el paso siguiente no basta con repetir literalmente el anterior: el borde de la nueva celda puede estar en $M^{(1)}$, y la homotopía allí ya está prescrita. Sea $\Phi'\colon D^{r+n}\to M_n$ una función característica de una celda de la siguiente dimensión $r$. Por la minimalidad de $r$, las celdas de dimensiones inferiores fuera de $X$ en este nivel son las de dimensión $k$, ya tratadas. La aplicación de adjunción tiene imagen en un subcomplejo finito; por ello, aunque sus representantes hayan sido suspendidos números diferentes de veces, podemos escoger un único $a$ que alcance todos los que aparecen en ese borde. Obtenemos
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma^aS^{r+n-1}_+ \arrow[r,hook] \arrow[d]
+& \Sigma^aD^{r+n}_+ \arrow[r,"\Sigma^a\Phi'_+"]
+& \Sigma^aM_n \arrow[d,"\xi^M_{n,a}"]\\
+M^{(1)}_{n+a} \arrow[rr,hook] && M_{n+a}.
+\end{tikzcd}
+\]
+Es decir, el borde de la celda suspendida cae en $M^{(1)}_{n+a}$. En las etapas posteriores se usa exactamente el mismo criterio con la parte ya construida, que contiene representantes de todas las celdas de las dimensiones anteriores.
+
+Pongamos $N=r+n+a$ y sea $\psi\colon D^N\to M_{n+a}$ la función característica suspendida, incluyendo el cociente parametrizador. Orientamos la homotopía ya construida $H$ desde la retracción en $t=0$ hasta la inclusión en $t=1$. Sobre la tapa y las paredes del cilindro definimos
+\[
+W=(\{1\}\times D^N)\cup(I\times S^{N-1}),\qquad
+u\colon W\longrightarrow M_{n+a},
+\]
+por $u(1,z)=\psi(z)$ y $u(t,z)=H_{n+a}(t,\psi(z))$ en las paredes. En estas últimas estamos pegando, como se dijo en clase, ``todas las homotopías del diagrama gordo juntas'': el paso anterior se dibujó para una celda, pero se realizó para toda la familia. Sobre el borde de la nueva celda solo intervienen finitísimas de ellas, y sus homotopías ya coinciden en los mapas de pegadura. Las fórmulas de $u$ coinciden en $\{1\}\times S^{N-1}$. Además, $u(0,z)=i_{n+a}r(\psi(z))$ está en $X_{n+a}$. Por ello tenemos el diagrama
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\{0\}\times S^{N-1} \arrow[r,"u|_{\{0\}\times S^{N-1}}"] \arrow[d,hook]
+& X_{n+a} \arrow[d,hook]\\
+W \arrow[r,"u"'] & M_{n+a}.
+\end{tikzcd}
+\]
+La pareja $(W,\{0\}\times S^{N-1})$ es homeomorfa a $(D^N,S^{N-1})$. Para visualizar este ejercicio conocido de topología algebraica, imaginemos que engordamos el cilindro y lo proyectamos sobre el plano de su tapa rellena. La tapa da el disco central y las paredes dan una corona que lo rodea; juntos forman otro disco. El extremo libre de las paredes se convierte en su esfera de borde. Así se obtiene el homeomorfismo de parejas, y no solo el de los espacios completos. Por tanto, $u$ determina una clase en $\pi_N(M_{n+a},X_{n+a})$ que se envía a cero en $\pi_r(M,X)$.
+
+Después de suspender más, esa clase relativa es nula. Podemos entonces llenar el cilindro, con su extremo $t=0$ en $X$, conservando los valores de la tapa y las paredes. Esto extiende simultáneamente la retracción y la homotopía a la nueva celda. Se realiza la misma construcción para toda la familia y se obtiene $M^{(2)}$. Recorriendo los niveles de nacimiento y las dimensiones de las celdas, repetimos el procedimiento. En cada extensión solo intervienen las finitísimas celdas de la imagen de la aplicación de adjunción.
+
+Obtenemos un subespectro $M'\subseteq M$, cofinal porque contiene un representante de cada celda estable, y un morfismo $r'\colon M'\to X$. Contiene todo $X$, y la construcción da
+\[
+r'\circ i'=1_X,\qquad i\circ r'\simeq j'\quad\text{rel }X,
+\]
+donde $i'\colon X\hookrightarrow M'$ y $j'\colon M'\hookrightarrow M$. La segunda homotopía tiene dominio $I_+\wedge M'$ y codominio $M$.
+
+La clase $[r']\in[M,X]_e$ es inversa de $[i]\in[X,M]_e$: la primera composición es $1_X$ y la segunda es eventualmente homótopa a $1_M$, pues $j'$ es su restricción a $M'$. Como $[f]=[p]\circ[i]$ y $[p]$ ya era invertible, $[f]$ es un isomorfismo. Esto concluye la prueba del lema~\ref{lema:c12-inversa-eventual} y, con ella, la comparación del teorema~\ref{teo:c12-comparacion-eventual}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Otros modelos y el teorema de Whitehead}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Los reemplazos celular y fibrante}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P17--P18. Esta parte se recupera de la pizarra.
+La inclusión $J\colon\Sp^{\mathrm{CW}}\hookrightarrow\Sp^{\mathbb N}$ y el reemplazo celular funtorial $Q\colon\Sp^{\mathbb N}\to\Sp^{\mathrm{CW}}$ inducen funtores entre las localizaciones. En efecto, $J$ preserva las equivalencias estables y la naturalidad de $q_X\colon QX\to X$, junto con dos de tres, muestra que $Q$ también las preserva:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+QX \arrow[r,"q_X","\simeq_s"'] \arrow[d,"Qf"',"\simeq_s"]
+& X \arrow[d,"f","\simeq_s"']\\
+QY \arrow[r,"q_Y"',"\simeq_s"] & Y.
+\end{tikzcd}
+\]
+Denotemos por $\overline J$ y $\overline Q$ los funtores inducidos. Para un CW espectro $X$, el compuesto se calcula como
+\[
+\overline Q\,\overline J(X)=\overline Q(X)=QX
+\xrightarrow{\ [q_X]_s\ }X
+\qquad\text{en }\Ho(\Sp^{\mathrm{CW}}).
+\]
+Como $X$ y $QX$ son celulares, $q_X$ es aquí un morfismo de $\Sp^{\mathrm{CW}}$ y una equivalencia estable, luego su imagen es un isomorfismo. Para un espectro arbitrario $X$, el otro compuesto da
+\[
+\overline J\,\overline Q(X)=\overline J(QX)=QX
+\xrightarrow{\ [q_X]_s\ }X
+\qquad\text{en }\Ho(\Sp^{\mathbb N}).
+\]
+La naturalidad de $q_X$ muestra que estos isomorfismos son naturales en $X$. Obtenemos así $\overline Q\,\overline J\cong1$ y $\overline J\,\overline Q\cong1$ en las respectivas localizaciones. Por tanto,
+\[
+\Ho(\Sp^{\mathbb N})\simeq\Ho(\Sp^{\mathrm{CW}})
+\cong e\Sp^{\mathrm{CW}}.
+\]
+La primera comparación es una equivalencia de categorías; la segunda es el isomorfismo ya construido. En particular, para CW espectros $X,Y$ tenemos $[X,Y]_s\cong[X,Y]_e$, y para espectros arbitrarios,
+\[
+[X,Y]_s\cong[QX,QY]_s\cong[QX,QY]_e.
+\]
+
+Sea $\Sp^\Omega$ la subcategoría plena de $\Omega$-espectros y $\Sp^{\mathrm{CW},\Omega}$ la de CW $\Omega$-espectros. El mismo argumento con el reemplazo funtorial $R$ de C10 da $\Ho(\Sp^\Omega)\simeq\Ho(\Sp^{\mathbb N})$. Usando ambos reemplazos obtenemos
+\[
+\Ho(\Sp^{\mathbb N})\simeq\Ho(\Sp^{\mathrm{CW},\Omega}).
+\]
+Para este último modelo puede usarse $QRX$: es un CW $\Omega$-espectro y el zigzag $X\to RX\leftarrow QRX$ es natural y está formado por equivalencias estables, como vimos en el corolario~\ref{coro:c11-aproximacion-cw}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Equivalencias homotópicas de espectros celulares}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P19--P21.
+Una \emph{equivalencia homotópica de espectros} es un morfismo $f\colon X\to Y$ con un morfismo $g\colon Y\to X$ tal que $g\circ f\simeq1_X$ y $f\circ g\simeq1_Y$, con homotopías definidas en todo el espectro.
+
+\begin{teo}[Whitehead]\label{teo:c12-whitehead}
+Un morfismo entre $\Omega$-espectros celulares es una equivalencia estable si y solo si es una equivalencia homotópica de espectros.
+\end{teo}
+
+Una equivalencia homotópica es estable porque las aplicaciones homótopas inducen el mismo homomorfismo en homotopía. Para verlo nivel a nivel, si $a,b\colon Z\to B$ están relacionados por $H\colon I_+\wedge Z\to B$, entonces $H\circ i_0=a$ y $H\circ i_1=b$. Como $p\circ i_0=p\circ i_1=1_Z$ y $p$ es una equivalencia nivel a nivel, $(i_0)_*=(i_1)_*$, y por tanto $a_*=b_*$. Si $g$ es una inversa homotópica de $f$, obtenemos el diagrama
+\[
+\begin{tikzcd}[cramped,column sep=large]
+\pi_k(X) \arrow[r,shift left=1.5,"f_*"]
+& \pi_k(Y) \arrow[l,shift left=1.5,"g_*"]
+\end{tikzcd}
+\]
+con $f_*\circ g_*=(f\circ g)_*=(1_Y)_*=1$ y $g_*\circ f_*=(g\circ f)_*=(1_X)_*=1$. Así, $f_*$ es un isomorfismo para todo $k$.
+
+Para la otra implicación, sea $f\colon X\to Y$ una equivalencia estable entre $\Omega$-espectros celulares. Por la proposición~\ref{prop:c10-omega-equivalencias}, es una equivalencia nivel a nivel. Cada $f_n$ es entonces una equivalencia homotópica de complejos celulares. Factorizamos nuevamente $f=p\circ i$ mediante el cilindro de aplicación:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+X \arrow[r,hook,"i"] \arrow[dr,"f"']
+& M_f \arrow[d,"p","\simeq"']\\
+& Y.
+\end{tikzcd}
+\]
+El morfismo $p$ ya tiene una inversa homotópica global, por el aplastamiento del cilindro. Es suficiente ver que $i$ es una equivalencia homotópica. Escribiendo $M=M_f$, bastará construir una retracción $r\colon M\to X$ y una homotopía global $ir\simeq1_M$.
+
+En cada nivel, $i_n\colon X_n\hookrightarrow M_n$ es una cofibración y una equivalencia homotópica, luego $X_n$ es un retracto por deformación de $M_n$. Debemos escoger las retracciones de manera compatible entre niveles. Las inclusiones encajan en el cuadrado
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma X_{n-1} \arrow[r,"\xi^X_{n-1}"] \arrow[d,hook,"\Sigma i_{n-1}"']
+& X_n \arrow[d,hook,"i_n"]\\
+\Sigma M_{n-1} \arrow[r,"\xi^M_{n-1}"'] & M_n.
+\end{tikzcd}
+\]
+Identificamos las suspensiones con sus imágenes por los morfismos estructurales. La estructura celular del cilindro da
+\[
+X_n\cap\Sigma M_{n-1}=\Sigma X_{n-1}.
+\]
+Supongamos construido el retracto en el nivel $n-1$ y pongamos $L_n=X_n\cup_{\Sigma X_{n-1}}\Sigma M_{n-1}$. Al suspender la deformación anterior y pegarla con la identidad de $X_n$, $L_n$ se retrae por deformación sobre $X_n$. El triángulo
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+X_n \arrow[r,hook,"\simeq"] \arrow[dr,hook,"i_n"',"\simeq"]
+& L_n \arrow[d,hook]\\
+& M_n
+\end{tikzcd}
+\]
+muestra que $L_n\hookrightarrow M_n$ también es una equivalencia homotópica. Como es la inclusión de un subcomplejo, admite una retracción por deformación $M_n\to L_n$. Componiéndola con la de $L_n$ sobre $X_n$, obtenemos $r_n$. La primera retracción fija $\Sigma M_{n-1}$, de modo que la restricción de $r_n$ a ese subespacio es la suspensión de $r_{n-1}$. La compatibilidad buscada se escribe
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma M_{n-1} \arrow[r,"\xi^M_{n-1}"] \arrow[d,"\Sigma r_{n-1}"']
+& M_n \arrow[d,"r_n"]\\
+\Sigma X_{n-1} \arrow[r,"\xi^X_{n-1}"'] & X_n.
+\end{tikzcd}
+\]
+Por inducción, los $r_n$ definen un morfismo de espectros $r\colon M\to X$ con $r\circ i=1_X$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Una homotopía compatible en todos los niveles}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P22--P24. Los intervalos diádicos sincronizan las homotopías de niveles.
+Falta escoger la homotopía de modo que también sea un morfismo de espectros. En el nivel $n$, las retracciones anteriores forman una cadena de $n+1$ pasos:
+\[
+\begin{tikzcd}[cramped,column sep=large]
+M_n \arrow[r,"s_{n,1}"]
+& X_n\cup_{\Sigma X_{n-1}}\Sigma M_{n-1} \arrow[r,"s_{n,2}"]
+& \cdots \arrow[r,"s_{n,n+1}"] & X_n.
+\end{tikzcd}
+\]
+Sus términos intermedios son $L_{n,j}=X_n\cup_{\Sigma^jX_{n-j}}\Sigma^jM_{n-j}$, para $1\le j\le n$, con $L_{n,0}=M_n$ y $L_{n,n+1}=X_n$. El primer paso es la retracción de $M_n$ sobre $L_n$, y los siguientes son los pasos del nivel anterior, suspendidos y pegados con la identidad sobre $X_n$. Escribimos $S_{n,0}=1_{M_n}$ y $S_{n,j}=s_{n,j}\circ\cdots\circ s_{n,1}$; entonces $S_{n,n+1}=r_n$.
+
+Sea $D_{n,j}\colon I\times L_{n,j-1}\to L_{n,j-1}$ la deformación desde la identidad hasta $s_{n,j}$, incluyendo su imagen en $L_{n,j-1}$. Es relativa a $L_{n,j}$. Definimos $H_n$ empezando con un intervalo constante y realizando después esos pasos en los intervalos
+\[
+[2^{-(n+1)},2^{-n}],\quad[2^{-n},2^{-(n-1)}],\quad\ldots,\quad[1/2,1].
+\]
+Más precisamente, para $1\le j\le n+1$ ponemos $a_{n,j}=2^{-(n+2-j)}$ y $b_{n,j}=2^{-(n+1-j)}$, y definimos
+\[
+H_n(t,z)=
+\begin{cases}
+z,&0\le t\le2^{-(n+1)},\\[2pt]
+D_{n,j}\!\left(\dfrac{t-a_{n,j}}{b_{n,j}-a_{n,j}},S_{n,j-1}(z)\right),
+&a_{n,j}\le t\le b_{n,j}.
+\end{cases}
+\]
+Las fórmulas coinciden en los extremos de los intervalos: cada paso empieza donde terminó el anterior. Así, $H_n(0,-)=1_{M_n}$ y $H_n(1,-)=i_nr_n$, y $H_n$ fija $X_n$.
+
+La compatibilidad que debemos comprobar es
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+I_+\wedge\Sigma M_{n-1} \arrow[r,"\Sigma H_{n-1}"] \arrow[d,"1\wedge\xi^M_{n-1}"']
+& \Sigma M_{n-1} \arrow[d,"\xi^M_{n-1}"]\\
+I_+\wedge M_n \arrow[r,"H_n"'] & M_n.
+\end{tikzcd}
+\]
+Si $0\le t\le2^{-(n+1)}$, ambas composiciones son la inclusión de $\Sigma M_{n-1}$. En el intervalo $[2^{-(n+1)},2^{-n}]$, $H_n$ realiza su primer paso, que fija $L_n$ y en particular $\Sigma M_{n-1}$; mientras tanto, $H_{n-1}$ sigue siendo la identidad. Por tanto, también coinciden allí. Para $t\ge2^{-n}$, los pasos restantes de $H_n$ sobre $\Sigma M_{n-1}$ son precisamente los de $\Sigma H_{n-1}$, en los mismos intervalos y con la misma parametrización. El cuadrado conmuta.
+
+Obtenemos una homotopía de espectros $H\colon I_+\wedge M\to M$ desde $1_M$ hasta $ir$, definida globalmente. Así, $i$ es una equivalencia homotópica y también lo es $f=p\circ i$. Esto termina la demostración del teorema~\ref{teo:c12-whitehead}.
