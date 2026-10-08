@@ -7,7 +7,7 @@
 
 La clase anterior comparó los morfismos eventualmente definidos con los de la categoría homotópica estable y demostró el teorema de Whitehead para $\Omega$-espectros celulares. Ahora veremos que, si el dominio es celular y el codominio es un $\Omega$-espectro, las clases de homotopía globales ya calculan los morfismos estables. Aplicaremos esta descripción a la representación de la cohomología. Después enunciaremos la estructura de modelos estable de los espectros secuenciales, describiremos sus generadores y el producto pushout, y terminaremos con la propiedad universal de los funtores derivados.
 
-Escribiremos $[X,Y]_h$ para las clases de morfismos de espectros módulo homotopía global, $[X,Y]_e$ para las clases eventualmente definidas y $[X,Y]_s$ para los morfismos en $\Ho(\Sp^{\mathbb N})$. Conservamos la notación $\xi^X_{m,n}\colon\Sigma^nX_m\to X_{m+n}$ de C11. Todas las aplicaciones y homotopías son punteadas.
+Escribiremos $[X,Y]_h$ para las clases de morfismos de espectros módulo homotopía global, $[X,Y]_e$ para las clases eventualmente definidas y $[X,Y]_s$ para los morfismos en $\Ho(\Sp^{\mathbb N})$. Conservamos la notación $\xi^X_{m,n}\colon\Sigma^nX_m\to X_{m+n}$ de la clase~11. Todas las aplicaciones y homotopías son punteadas.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Morfismos estables y homotopías globales}
@@ -18,7 +18,7 @@ Escribiremos $[X,Y]_h$ para las clases de morfismos de espectros módulo homotop
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % P01--P02; transcripción 00:00--00:10.
-Denotemos por $\Sp^{\mathrm{CW},\Omega}$ la categoría de CW $\Omega$-espectros. El teorema de Whitehead de C12 dice que una equivalencia estable entre sus objetos es precisamente una equivalencia homotópica global.
+Denotemos por $\Sp^{\mathrm{CW},\Omega}$ la categoría de CW $\Omega$-espectros. El teorema de Whitehead de la clase~12 dice que una equivalencia estable entre sus objetos es precisamente una equivalencia homotópica global.
 
 \begin{defi}
 La categoría $h\Sp^{\mathrm{CW},\Omega}$ tiene los mismos objetos que $\Sp^{\mathrm{CW},\Omega}$ y conjuntos de morfismos
@@ -78,7 +78,7 @@ Si $X$ es un CW espectro y $Y$ es un $\Omega$-espectro, las aplicaciones natural
 son biyectivas. No es necesario que $Y$ sea celular.
 \end{prop}
 
-Aquí $[X,Y]_e$ se define mediante aplicaciones $X'\to Y$ sobre subespectros cofinales $X'\subseteq X$, con la misma relación de homotopía eventual de C11. La primera aplicación considera un morfismo global como eventualmente definido; la segunda está dada por
+Aquí $[X,Y]_e$ se define mediante aplicaciones $X'\to Y$ sobre subespectros cofinales $X'\subseteq X$, con la misma relación de homotopía eventual de la clase~11. La primera aplicación considera un morfismo global como eventualmente definido; la segunda está dada por
 \[
 a([f\colon X'\to Y]_e)
 =\left[\begin{tikzcd}[cramped,column sep=large]
@@ -86,9 +86,9 @@ X & X' \arrow[l,hook',"i"'] \arrow[r,"f"] & Y
 \end{tikzcd}\right]
 =[f]_s[i]_s^{-1}.
 \]
-Su buena definición usa que la inclusión cofinal es una equivalencia estable y que las homotopías dan la misma clase en la localización, como en C12; este argumento no requiere que $Y$ sea celular.
+Su buena definición usa que la inclusión cofinal es una equivalencia estable y que las homotopías dan la misma clase en la localización, como en la clase~12; este argumento no requiere que $Y$ sea celular.
 
-Para comparar $a$ con el resultado de C12, tomamos el reemplazo celular $q_Y\colon QY\to Y$. Como $q_Y$ es una equivalencia nivel a nivel y $Y$ es un $\Omega$-espectro, $QY$ también lo es. Tenemos el cuadrado
+Para comparar $a$ con el resultado de la clase~12, tomamos el reemplazo celular $q_Y\colon QY\to Y$. Como $q_Y$ es una equivalencia nivel a nivel y $Y$ es un $\Omega$-espectro, $QY$ también lo es. Tenemos el cuadrado
 \[
 \begin{tikzcd}[cramped,column sep=large,row sep=large]
 {[X,Y]_e} \arrow[r,"a"] & {[X,Y]_s}\\
@@ -96,7 +96,7 @@ Para comparar $a$ con el resultado de C12, tomamos el reemplazo celular $q_Y\col
 & {[X,QY]_s} \arrow[u,"(q_Y)_*"',"\cong"] .
 \end{tikzcd}
 \]
-La flecha inferior es la comparación de C12, usando la equivalencia entre los modelos celulares y todos los espectros. La derecha es biyectiva porque $q_Y$ se invierte en la localización. Probaremos primero que $\varphi$ es biyectiva mediante celdas y después volveremos a $\psi$.
+La flecha inferior es la comparación de la clase~12, usando la equivalencia entre los modelos celulares y todos los espectros. La derecha es biyectiva porque $q_Y$ se invierte en la localización. Probaremos primero que $\varphi$ es biyectiva mediante celdas y después volveremos a $\psi$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Representantes definidos en todo el espectro}
@@ -140,7 +140,7 @@ Sea $X^{(1)}$ el subespectro obtenido al adjuntar a $X'$ la familia de celdas or
 \]
 Su restricción a $\{0\}_+\wedge X^{(1)}$ es un morfismo definido en $X^{(1)}$, y sobre $X'$ es homotópico a $f$. Obsérvese que se adjuntan las celdas originales: después de pasar al adjunto, el dominio del disco vuelve a ser $D^{k+m}_+$, aunque para alcanzar $X'$ hayamos usado $n$ suspensiones.
 
-Repetimos el procedimiento con la siguiente dimensión de celdas estables del mismo nivel que aún falte; agotado ese nivel, pasamos a la mínima dimensión que falte en el siguiente. Los bordes se encuentran en la parte ya construida, y las homotopías anteriores se incluyen entre los datos de pegado del paso siguiente, como en la inducción de C12. Cada familia se trata a la vez y en las etapas límite se toma el colímite. Obtenemos finalmente
+Repetimos el procedimiento con la siguiente dimensión de celdas estables del mismo nivel que aún falte; agotado ese nivel, pasamos a la mínima dimensión que falte en el siguiente. Los bordes se encuentran en la parte ya construida, y las homotopías anteriores se incluyen entre los datos de pegado del paso siguiente, como en la inducción de la clase~12. Cada familia se trata a la vez y en las etapas límite se toma el colímite. Obtenemos finalmente
 \[
 \begin{tikzcd}[cramped,column sep=large,row sep=large]
 \{0\}_+\wedge X
@@ -226,7 +226,7 @@ de modo que $a$ también es biyectiva. Junto con las dos partes ya probadas para
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % P09--P10; transcripción 00:50--00:52.
-Sea $E$ el $\Omega$-espectro asociado a una teoría de cohomología reducida $\widetilde E^{\,*}$, como en C7, y sea $A$ un CW-complejo punteado. Para $n\ge0$, la proposición permite calcular
+Sea $E$ el $\Omega$-espectro asociado a una teoría de cohomología reducida $\widetilde E^{\,*}$, como en la clase~7, y sea $A$ un CW-complejo punteado. Para $n\ge0$, la proposición permite calcular
 \[
 [\sh^n\Sigma^\infty A,E]_s\cong[\sh^n\Sigma^\infty A,E]_h.
 \]
@@ -328,7 +328,7 @@ F_n(S^{k-1}_+)\longrightarrow F_n(D^k_+)
 \ \middle|\ n,k\ge0
 \right\}.
 \]
-Usamos la convención de C11: $S^{-1}=\varnothing$ y $S^{-1}_+=*$. Estos son los mapas que adjuntan las celdas estables libres.
+Usamos la convención de la clase~11: $S^{-1}=\varnothing$ y $S^{-1}_+=*$. Estos son los mapas que adjuntan las celdas estables libres.
 
 Para describir las cofibraciones acíclicas generadoras, necesitamos ciertos mapas que expresan la estabilización. Recordemos que
 \[
@@ -410,7 +410,7 @@ X\otimes B \arrow[r] \arrow[drr,bend right=15,"1\otimes g"']
 && X\otimes Y.
 \end{tikzcd}
 \]
-En nuestro caso usaremos el bifuntor $\wedge\colon\Topstar\times\Sp^{\mathbb N}\to\Sp^{\mathbb N}$, formado nivel a nivel. Para un espacio $A$, el funtor $A\wedge-$ tiene como adjunto derecho el espectro de funciones $F(A,-)$ de C9, y por ello preserva colímites. Para comprobarlo en la otra variable necesitamos un espacio de morfismos de espectros.
+En nuestro caso usaremos el bifuntor $\wedge\colon\Topstar\times\Sp^{\mathbb N}\to\Sp^{\mathbb N}$, formado nivel a nivel. Para un espacio $A$, el funtor $A\wedge-$ tiene como adjunto derecho el espectro de funciones $F(A,-)$ de la clase~9, y por ello preserva colímites. Para comprobarlo en la otra variable necesitamos un espacio de morfismos de espectros.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{El espacio de morfismos y la adjunción con el smash}

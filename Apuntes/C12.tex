@@ -7,7 +7,7 @@
 
 La clase anterior introdujo los morfismos y las homotopías eventualmente definidos. Ahora completaremos la composición en la categoría de CW espectros y probaremos que esta categoría es isomorfa a la localización en las equivalencias estables. El paso central será construir una inversa eventualmente definida de cada equivalencia estable, retrasando las celdas hasta que desaparezcan las obstrucciones relativas. Después compararemos con los modelos obtenidos mediante los reemplazos celular y fibrante, y demostraremos el teorema de Whitehead para $\Omega$-espectros celulares, donde la inversa y las homotopías pueden definirse en todo el espectro.
 
-Usaremos $\xi^X_{n,m}\colon\Sigma^mX_n\to X_{n+m}$ con el significado fijado en C11. Todas las aplicaciones y homotopías de espectros serán punteadas. El producto $I_+\wedge X$ es el cilindro formado nivel a nivel.
+Usaremos $\xi^X_{n,m}\colon\Sigma^mX_n\to X_{n+m}$ con el significado fijado en la clase~11. Todas las aplicaciones y homotopías de espectros serán punteadas. El producto $I_+\wedge X$ es el cilindro formado nivel a nivel.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{La categoría homotópica mediante morfismos eventuales}
@@ -35,7 +35,7 @@ Consideremos una celda de $B_k$, con función característica $\Phi\colon D^d\to
 \]
 La aplicación hacia $X_{k+m}$ tiene imagen en $A_{k+m}$. Por tanto, cada celda estable de $B$ tiene un representante cuya imagen por $g$ está en $A$.
 
-Para reunir estos representantes, usamos una filtración celular $B=\operatorname*{colim}_iB^{(i)}$, con $B^{(-1)}=\Sigma^\infty *$, como en C11. La etapa de nacimiento $n_i$ adjunta una familia de celdas de dimensiones estables $k_j$, para $j\in J_i$, mediante aplicaciones
+Para reunir estos representantes, usamos una filtración celular $B=\operatorname*{colim}_iB^{(i)}$, con $B^{(-1)}=\Sigma^\infty *$, como en la clase~11. La etapa de nacimiento $n_i$ adjunta una familia de celdas de dimensiones estables $k_j$, para $j\in J_i$, mediante aplicaciones
 \[
 \varphi_j\colon S^{n_i+k_j-1}\longrightarrow B^{(i)}_{n_i}.
 \]
@@ -56,7 +56,7 @@ Si la celda $j$ se retrasa $r_j$ niveles, escribimos
 E_{i,j}=F_{n_i+r_j}(D^{n_i+k_j+r_j}_+),\qquad
 \partial E_{i,j}=F_{n_i+r_j}(S^{n_i+k_j+r_j-1}_+).
 \]
-Así se conserva la dimensión estable $k_j$. Escogemos $r_j$ de modo que la imagen de la celda esté en $A$ y que su borde esté en la parte de $R$ ya construida. Esto último es posible porque la aplicación de adjunción tiene imagen en un subcomplejo finito y cada una de sus celdas ya tiene un representante en $R$; basta suspender hasta alcanzar todos ellos. El mapa de pegadura de $\partial E_{i,j}$ es el obtenido de $\varphi_j$ por suspensión y por los morfismos estructurales, usando los discos parametrizadores de C10. Los números $r_j$ pueden variar entre las celdas de una misma familia. Las etapas quedan descritas por
+Así se conserva la dimensión estable $k_j$. Escogemos $r_j$ de modo que la imagen de la celda esté en $A$ y que su borde esté en la parte de $R$ ya construida. Esto último es posible porque la aplicación de adjunción tiene imagen en un subcomplejo finito y cada una de sus celdas ya tiene un representante en $R$; basta suspender hasta alcanzar todos ellos. El mapa de pegadura de $\partial E_{i,j}$ es el obtenido de $\varphi_j$ por suspensión y por los morfismos estructurales, usando los discos parametrizadores de la clase~10. Los números $r_j$ pueden variar entre las celdas de una misma familia. Las etapas quedan descritas por
 \[
 \begin{aligned}
 R^{(0)}&=R^{(-1)}\cup_{\bigvee_{j\in J_0}\partial E_{0,j}}
@@ -95,8 +95,24 @@ En efecto, $[g]=[g|_R]$ y ahora las aplicaciones se pueden componer. La identida
 \begin{ejer}\label{ejer:c12-composicion-eventual}
 Comprobar que esta composición no depende de las restricciones cofinales escogidas ni de los representantes de las clases de homotopía eventualmente definida. Es el ejercicio~\ref{ejer:c11-composicion-eventual}, retomado después de construir la restricción necesaria.
 \end{ejer}
-\begin{sol}[Indicación]
-Dos subespectros cofinales admiten una restricción cofinal común: su intersección. Esto reduce la comparación de dos elecciones a comparar una aplicación con su restricción. Para cambiar los representantes hay que restringir también las homotopías a un dominio cuya imagen esté en el subespectro donde se realiza la composición. La demostración completa ya está escrita en la solución del ejercicio~\ref{ejer:c11-composicion-eventual}; en C12 solo se dio la indicación de usar la intersección.
+\begin{sol}
+Es el ejercicio~\ref{ejer:c11-composicion-eventual} de la clase~11, cuya solución prueba también la siguiente afirmación auxiliar: si $C\subseteq X$ es cofinal y $G\colon I_+\wedge D\to X$ es una homotopía con $D$ celular, existe $E\subseteq D$ cofinal tal que $G(I_+\wedge E)\subseteq C$. Aplicaremos esa afirmación a las elecciones de esta clase.
+
+Primero, si $R_0,R_1\subseteq B$ son dos restricciones cofinales con $g(R_j)\subseteq A$, entonces $R=R_0\cap R_1$ es cofinal y
+\[
+(f\circ g|_{R_0})|_R=f\circ g|_R=(f\circ g|_{R_1})|_R.
+\]
+Por tanto, la clase de la composición no depende de la restricción escogida.
+
+Para permitir también cambios de representantes, tomemos dos parejas admisibles $f_j\colon A_j\to Y$ y $g_j\colon B_j\to A_j$, para $j=0,1$, que representen las mismas clases de $[X,Y]_e$ y $[Z,X]_e$, respectivamente, considerando los $g_j$ con codominio $X$. Existen $C\subseteq A_0\cap A_1$ cofinal en $X$ y $D\subseteq B_0\cap B_1$ cofinal en $Z$, con homotopías
+\[
+F\colon I_+\wedge C\to Y,\qquad G\colon I_+\wedge D\to X
+\]
+entre las restricciones de $f_0,f_1$ y de $g_0,g_1$. La afirmación auxiliar da $E\subseteq D$ cofinal, también en $Z$, tal que $G(I_+\wedge E)\subseteq C$. Ahora $f_0\circ G|_{I_+\wedge E}$ y $F\circ(1_{I_+}\wedge g_1|_E)$ son homotopías bien definidas y se concatenan para dar
+\[
+(f_0\circ g_0)|_E\simeq(f_0\circ g_1)|_E\simeq(f_1\circ g_1)|_E.
+\]
+La concatenación respeta la estructura de espectro porque se usa la misma reparametrización del intervalo en todos los niveles. Como $E$ es cofinal, las dos composiciones representan la misma clase de $[Z,Y]_e$. Esto incluye tanto el cambio de los representantes originales como el de cualquier representante auxiliar con imagen en el dominio de $f$.
 \end{sol}
 
 Sobre restricciones cofinales comunes, la asociatividad se reduce a la de la composición de aplicaciones y las identidades a las identidades ordinarias. Queda así definida la categoría $e\Sp^{\mathrm{CW}}$.
@@ -313,8 +329,33 @@ Probar que una pareja $(E,A)$ de espectros tiene una sucesión exacta larga
 \longrightarrow\pi_{k-1}(E)\longrightarrow\cdots.
 \]
 \end{ejer}
-\begin{sol}[Indicación]
-Las sucesiones exactas largas de las parejas $(E_n,A_n)$ son compatibles con la suspensión y con los morfismos estructurales. Al tomar su colímite filtrado se conserva la exactitud y se obtienen los términos indicados. Este fue el argumento señalado en clase para el ejercicio.
+\begin{sol}
+Fijemos $k\in\mathbb Z$ y tomemos $n+k\ge3$, de modo que todos los términos del tramo considerado sean grupos abelianos, incluidos los relativos. Restringirnos a esta cola cofinal no cambia los colímites, como en el ejercicio~\ref{ejer:pi-abeliano} de la clase~8. Para cada uno de esos niveles tenemos la sucesión exacta de la pareja de espacios
+\[
+\begin{aligned}
+\cdots\longrightarrow\pi_{k+n}(A_n)\longrightarrow\pi_{k+n}(E_n)
+\longrightarrow\pi_{k+n}(E_n,A_n)\\
+\xrightarrow{\ \partial_n\ }\pi_{k+n-1}(A_n)
+\longrightarrow\pi_{k+n-1}(E_n)\longrightarrow\cdots.
+\end{aligned}
+\]
+Las transiciones son la suspensión seguida de los morfismos estructurales. La naturalidad de la sucesión de la pareja y la compatibilidad de su conexión con la suspensión hacen conmutar los cuadrados entre niveles; para la conexión, esto se escribe
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\pi_{k+n}(E_n,A_n) \arrow[r,"\partial_n"] \arrow[d,"t_n^{E,A}"']
+& \pi_{k+n-1}(A_n) \arrow[d,"t_n^A"]\\
+\pi_{k+n+1}(E_{n+1},A_{n+1}) \arrow[r,"\partial_{n+1}"']
+& \pi_{k+n}(A_{n+1}).
+\end{tikzcd}
+\]
+Así, las conexiones inducen un homomorfismo $\partial\colon\pi_k(E,A)\to\pi_{k-1}(A)$, dado en representantes por $\partial([u_n])=[\partial_nu_n]$. Los demás mapas se obtienen de igual manera. Los colímites de los cinco términos escritos son, por definición, $\pi_k(A)$, $\pi_k(E)$, $\pi_k(E,A)$, $\pi_{k-1}(A)$ y $\pi_{k-1}(E)$.
+
+Comprobemos explícitamente que se conserva la exactitud. Consideremos cualquier tramo compatible $U_n\xrightarrow{\alpha_n}V_n\xrightarrow{\beta_n}W_n$ de estas sucesiones. Como $\beta_n\alpha_n=0$, la imagen del primer mapa entre colímites está contenida en el núcleo del segundo. Recíprocamente, sea $v=[v_n]\in\operatorname*{colim}_nV_n$ cuya imagen es cero en $\operatorname*{colim}_nW_n$. Por la definición del colímite filtrado, existe $m\ge n$ tal que la imagen $v_m$ de $v_n$ satisface $\beta_m(v_m)=0$. La exactitud en ese nivel proporciona $u_m\in U_m$ con $\alpha_m(u_m)=v_m$. Por tanto,
+\[
+v=[v_m]=[\alpha_m(u_m)]
+=(\operatorname*{colim}_n\alpha_n)([u_m]).
+\]
+Esto prueba la inclusión contraria. Aplicándolo a cada tramo, y dejando variar $k$, obtenemos toda la sucesión exacta larga enunciada.
 \end{sol}
 
 Aplicándolo a $(M,X)$, los isomorfismos $i_*$ implican $\pi_k(M,X)=0$ para todo $k$. La idea será usar esta anulación para deformar las celdas de $M$ hacia $X$, después de suspenderlas lo suficiente.
@@ -334,7 +375,7 @@ Empezamos con $1_X\colon X\to X$ y la homotopía constante sobre $X$. Entre las 
 La igualdad con cero en el colímite significa que, después de un número suficiente $m$ de suspensiones, esta clase se vuelve nula.
 
 La función característica de la celda suspendida es
-$\psi=\xi^M_{n,m}\circ\Sigma^m\Phi_+\circ q\colon D^{k+n+m}\to M_{n+m}$, donde $q\colon D^{k+n+m}\to\Sigma^mD^{k+n}_+$ es el cociente usado en C10. La anulación de la clase relativa permite deformar $\psi$ hacia una aplicación $r'\colon D^{k+n+m}\to X_{n+m}$, conservando su aplicación de borde. El diagrama conmuta salvo esa homotopía relativa al borde:
+$\psi=\xi^M_{n,m}\circ\Sigma^m\Phi_+\circ q\colon D^{k+n+m}\to M_{n+m}$, donde $q\colon D^{k+n+m}\to\Sigma^mD^{k+n}_+$ es el cociente usado en la clase~10. La anulación de la clase relativa permite deformar $\psi$ hacia una aplicación $r'\colon D^{k+n+m}\to X_{n+m}$, conservando su aplicación de borde. El diagrama conmuta salvo esa homotopía relativa al borde:
 \[
 \begin{tikzcd}[cramped,column sep=large,row sep=large]
 D^{k+n+m} \arrow[r,"q"] \arrow[ddr,dashed,"r'"']
@@ -379,7 +420,28 @@ por $u(1,z)=\psi(z)$ y $u(t,z)=H_{n+a}(t,\psi(z))$ en las paredes. En estas últ
 W \arrow[r,"u"'] & M_{n+a}.
 \end{tikzcd}
 \]
-La pareja $(W,\{0\}\times S^{N-1})$ es homeomorfa a $(D^N,S^{N-1})$. Para visualizar este ejercicio conocido de topología algebraica, imaginemos que engordamos el cilindro y lo proyectamos sobre el plano de su tapa rellena. La tapa da el disco central y las paredes dan una corona que lo rodea; juntos forman otro disco. El extremo libre de las paredes se convierte en su esfera de borde. Así se obtiene el homeomorfismo de parejas, y no solo el de los espacios completos. Por tanto, $u$ determina una clase en $\pi_N(M_{n+a},X_{n+a})$ que se envía a cero en $\pi_r(M,X)$.
+La identificación de la pareja que aparece en este diagrama es el ejercicio de topología mencionado en clase.
+
+\begin{ejer}[La tapa y las paredes de un cilindro]\label{ejer:c12-tapa-paredes}
+Para $N\ge0$, sea $W=(\{1\}\times D^N)\cup(I\times S^{N-1})$. Construir un homeomorfismo de parejas
+\[
+(W,\{0\}\times S^{N-1})\cong(D^N,S^{N-1}).
+\]
+\end{ejer}
+\begin{sol}
+Para $N=0$, $W$ es un punto y ambos subespacios distinguidos son vacíos. Supongamos $N\ge1$ y representemos $D^N$ como el disco unitario de $\mathbb R^N$. Definimos
+\[
+h\colon W\longrightarrow D^N,\qquad
+h(t,z)=
+\begin{cases}
+z/2,&t=1,\ z\in D^N,\\
+(1-t/2)z,&t\in I,\ z\in S^{N-1}.
+\end{cases}
+\]
+Las fórmulas coinciden en $\{1\}\times S^{N-1}$, de modo que $h$ es continua por pegado. La tapa se envía biyectivamente al disco de radio $1/2$, y las paredes a la corona $1/2\le\lVert z\rVert\le1$; solo coinciden las imágenes de los puntos que ya están identificados en la intersección de ambas piezas. Por tanto, $h$ es biyectiva. Como $W$ es compacto y $D^N$ es Hausdorff, es un homeomorfismo. Además, $h(0,z)=z$ para todo $z\in S^{N-1}$, así que envía el subespacio distinguido exactamente al borde de $D^N$.
+\end{sol}
+
+Por el ejercicio~\ref{ejer:c12-tapa-paredes}, $u$ determina una clase en $\pi_N(M_{n+a},X_{n+a})$ que se envía a cero en $\pi_r(M,X)$.
 
 Después de suspender más, esa clase relativa es nula. Podemos entonces llenar el cilindro, con su extremo $t=0$ en $X$, conservando los valores de la tapa y las paredes. Esto extiende simultáneamente la retracción y la homotopía a la nueva celda. Se realiza la misma construcción para toda la familia y se obtiene $M^{(2)}$. Recorriendo los niveles de nacimiento y las dimensiones de las celdas, repetimos el procedimiento. En cada extensión solo intervienen las finitísimas celdas de la imagen de la aplicación de adjunción.
 
@@ -430,7 +492,7 @@ La primera comparación es una equivalencia de categorías; la segunda es el iso
 [X,Y]_s\cong[QX,QY]_s\cong[QX,QY]_e.
 \]
 
-Sea $\Sp^\Omega$ la subcategoría plena de $\Omega$-espectros y $\Sp^{\mathrm{CW},\Omega}$ la de CW $\Omega$-espectros. El mismo argumento con el reemplazo funtorial $R$ de C10 da $\Ho(\Sp^\Omega)\simeq\Ho(\Sp^{\mathbb N})$. Usando ambos reemplazos obtenemos
+Sea $\Sp^\Omega$ la subcategoría plena de $\Omega$-espectros y $\Sp^{\mathrm{CW},\Omega}$ la de CW $\Omega$-espectros. El mismo argumento con el reemplazo funtorial $R$ de la clase~10 da $\Ho(\Sp^\Omega)\simeq\Ho(\Sp^{\mathbb N})$. Usando ambos reemplazos obtenemos
 \[
 \Ho(\Sp^{\mathbb N})\simeq\Ho(\Sp^{\mathrm{CW},\Omega}).
 \]
