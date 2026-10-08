@@ -1,0 +1,560 @@
+% C13 -- 7 de octubre de 2026.
+% Fragmento del documento principal, sin preámbulo ni \chapter.
+% Fuentes: Screenshots C13/P01--P23.png y Transcripciones/C13 (whisper).txt.
+% La transcripción presenta repeticiones extensas y no recupera el contenido
+% posterior al descanso; P12--P23 se reconstruyen a partir de las pizarras.
+% Se conserva la convención de C7: (sh^d X)_n = X_{n+d}.
+
+La clase anterior comparó los morfismos eventualmente definidos con los de la categoría homotópica estable y demostró el teorema de Whitehead para $\Omega$-espectros celulares. Ahora veremos que, si el dominio es celular y el codominio es un $\Omega$-espectro, las clases de homotopía globales ya calculan los morfismos estables. Aplicaremos esta descripción a la representación de la cohomología. Después enunciaremos la estructura de modelos estable de los espectros secuenciales, describiremos sus generadores y el producto pushout, y terminaremos con la propiedad universal de los funtores derivados.
+
+Escribiremos $[X,Y]_h$ para las clases de morfismos de espectros módulo homotopía global, $[X,Y]_e$ para las clases eventualmente definidas y $[X,Y]_s$ para los morfismos en $\Ho(\Sp^{\mathbb N})$. Conservamos la notación $\xi^X_{m,n}\colon\Sigma^nX_m\to X_{m+n}$ de C11. Todas las aplicaciones y homotopías son punteadas.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Morfismos estables y homotopías globales}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La categoría de homotopía de CW \texorpdfstring{$\Omega$}{Omega}-espectros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P01--P02; transcripción 00:00--00:10.
+Denotemos por $\Sp^{\mathrm{CW},\Omega}$ la categoría de CW $\Omega$-espectros. El teorema de Whitehead de C12 dice que una equivalencia estable entre sus objetos es precisamente una equivalencia homotópica global.
+
+\begin{defi}
+La categoría $h\Sp^{\mathrm{CW},\Omega}$ tiene los mismos objetos que $\Sp^{\mathrm{CW},\Omega}$ y conjuntos de morfismos
+\[
+\hom_{h\Sp^{\mathrm{CW},\Omega}}(X,Y)=[X,Y]_h.
+\]
+La composición se obtiene componiendo representantes: $[g]_h\circ[f]_h=[g\circ f]_h$.
+\end{defi}
+
+\begin{teo}\label{teo:c13-localizacion-global}
+El paso a clases de homotopía induce un isomorfismo de categorías
+\[
+\Ho(\Sp^{\mathrm{CW},\Omega})\cong h\Sp^{\mathrm{CW},\Omega}.
+\]
+\end{teo}
+\begin{proof}
+Sea $\rho\colon\Sp^{\mathrm{CW},\Omega}\to h\Sp^{\mathrm{CW},\Omega}$ el funtor cociente. Por Whitehead, envía las equivalencias estables a isomorfismos. Comprobaremos que satisface la propiedad universal de la localización.
+
+Sea $F\colon\Sp^{\mathrm{CW},\Omega}\to\mathcal D$ un funtor que invierte las equivalencias estables. Si $f,g\colon X\to Y$ son homotópicos mediante $H\colon I_+\wedge X\to Y$, consideramos
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+X \arrow[r,shift left=1.5,"i_0"] \arrow[r,shift right=1.5,"i_1"']
+& I_+\wedge X \arrow[r,"H"] \arrow[d,"p"'] & Y\\
+& X. &
+\end{tikzcd}
+\]
+La proyección $p$ es una equivalencia nivel a nivel y $pi_0=pi_1=1_X$. El cilindro es celular y también es un $\Omega$-espectro, pues sus niveles se retraen por deformación sobre los de $X$ de manera compatible con la estructura. Por tanto, $F(p)$ es invertible y
+\[
+\begin{aligned}
+F(f)&=F(H)F(i_0)=F(H)F(p)^{-1}\\
+&=F(H)F(i_1)=F(g).
+\end{aligned}
+\]
+Así, $F$ solo depende de las clases de homotopía. Definimos $\widetilde F(X)=F(X)$ y $\widetilde F([f]_h)=F(f)$; obtenemos el único funtor que hace conmutar
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sp^{\mathrm{CW},\Omega} \arrow[r,"F"] \arrow[d,"\rho"'] & \mathcal D\\
+h\Sp^{\mathrm{CW},\Omega} \arrow[ur,dashed,"\widetilde F"'] &
+\end{tikzcd}
+\]
+La unicidad se debe a que $\rho$ es la identidad en objetos y todo morfismo de $h\Sp^{\mathrm{CW},\Omega}$ tiene un representante ordinario. Esta es exactamente la propiedad universal de $\Ho(\Sp^{\mathrm{CW},\Omega})$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Un dominio celular y un codominio fibrante}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P03; transcripción 00:10--00:17.
+La descripción anterior exige que ambos objetos sean celulares y $\Omega$-espectros. Para calcular un conjunto de morfismos bastará una condición sobre cada extremo.
+
+\begin{prop}\label{prop:c13-comparacion-morfismos}
+Si $X$ es un CW espectro y $Y$ es un $\Omega$-espectro, las aplicaciones naturales
+\[
+[X,Y]_h\xrightarrow{\ \varphi\ }[X,Y]_e
+\xrightarrow{\ a\ }[X,Y]_s
+\]
+son biyectivas. No es necesario que $Y$ sea celular.
+\end{prop}
+
+Aquí $[X,Y]_e$ se define mediante aplicaciones $X'\to Y$ sobre subespectros cofinales $X'\subseteq X$, con la misma relación de homotopía eventual de C11. La primera aplicación considera un morfismo global como eventualmente definido; la segunda está dada por
+\[
+a([f\colon X'\to Y]_e)
+=\left[\begin{tikzcd}[cramped,column sep=large]
+X & X' \arrow[l,hook',"i"'] \arrow[r,"f"] & Y
+\end{tikzcd}\right]
+=[f]_s[i]_s^{-1}.
+\]
+Su buena definición usa que la inclusión cofinal es una equivalencia estable y que las homotopías dan la misma clase en la localización, como en C12; este argumento no requiere que $Y$ sea celular.
+
+Para comparar $a$ con el resultado de C12, tomamos el reemplazo celular $q_Y\colon QY\to Y$. Como $q_Y$ es una equivalencia nivel a nivel y $Y$ es un $\Omega$-espectro, $QY$ también lo es. Tenemos el cuadrado
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+{[X,Y]_e} \arrow[r,"a"] & {[X,Y]_s}\\
+{[X,QY]_e} \arrow[u,"\psi=(q_Y)_*"] \arrow[r,"\cong"']
+& {[X,QY]_s} \arrow[u,"(q_Y)_*"',"\cong"] .
+\end{tikzcd}
+\]
+La flecha inferior es la comparación de C12, usando la equivalencia entre los modelos celulares y todos los espectros. La derecha es biyectiva porque $q_Y$ se invierte en la localización. Probaremos primero que $\varphi$ es biyectiva mediante celdas y después volveremos a $\psi$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Representantes definidos en todo el espectro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P04--P06; transcripción 00:17--00:30.
+\begin{proof}[Demostración de la sobreyectividad de $\varphi$]
+Sea $f\colon X'\to Y$ un representante eventualmente definido. Queremos construir $g\colon X\to Y$ y una homotopía global $g|_{X'}\simeq f$.
+
+Escogemos el primer nivel $m$ con celdas de $X$ que no están en $X'$, y la mínima dimensión estable $k$ de esas celdas. Se trata simultáneamente toda la familia de esa dimensión. Para una de sus funciones características escribimos $\Phi\colon D^d\to X_m$, donde $d=k+m$; su borde cae en $X'_m$. Por cofinalidad, existe $n$ tal que la suspensión de esta función característica tiene imagen en $X'_{m+n}$:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma^nD^d_+ \arrow[r,"\Sigma^n\Phi_+"] \arrow[d,"\widetilde\Phi"']
+& \Sigma^nX_m \arrow[d,"\xi^X_{m,n}"]\\
+X'_{m+n} \arrow[r,hook] \arrow[d,"f_{m+n}"'] & X_{m+n}\\
+Y_{m+n}. &
+\end{tikzcd}
+\]
+Al pasar al adjunto de $f_{m+n}\widetilde\Phi$, obtenemos $u\colon D^d_+\to\Omega^nY_{m+n}$. Si $b=f_m\Phi_+|_{S^{d-1}_+}$ y $a_{m,n}=(\xi^Y_{m,n})^\perp$, la compatibilidad estructural da
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+S^{d-1}_+ \arrow[r,"b"] \arrow[d,hook]
+& Y_m \arrow[d,"a_{m,n}","\simeq"']\\
+D^d_+ \arrow[r,"u"'] & \Omega^nY_{m+n}.
+\end{tikzcd}
+\]
+Como $Y$ es un $\Omega$-espectro, $a_{m,n}$ es una equivalencia débil. Para hablar de un par, sustituimos este mapa por la inclusión de $Y_m$ en su cilindro de aplicación. Los grupos relativos correspondientes son nulos; en particular, la obstrucción representada por este disco pertenece a
+\[
+\pi_d(\Omega^nY_{m+n},Y_m)=0.
+\]
+En dimensión cero se usa la correspondiente afirmación sobre componentes. Podemos entonces llevar $u$ a una aplicación con valores en $Y_m$, conservando el dato del borde, junto con una homotopía en $\Omega^nY_{m+n}$. Al deshacer la adjunción, esta homotopía permite modificar $f$ sobre el representante suspendido para hacerlo compatible con el mapa de la celda original. Las homotopías se extienden y pegan sobre las celdas de $X'$ con sus bordes ya prescritos.
+
+Sea $X^{(1)}$ el subespectro obtenido al adjuntar a $X'$ la familia de celdas originales de dimensión estable $k$ nacidas en el nivel $m$. El resultado del paso es un mapa sobre el disco y el cilindro pegados:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\{0\}_+\wedge X^{(1)}
+\underset{\{0\}_+\wedge X'}{\cup}(I_+\wedge X')
+\arrow[r,"H^{(1)}"] & Y\\
+\{1\}_+\wedge X' \arrow[u,hook] \arrow[ur,"f"'] &
+\end{tikzcd}
+\]
+Su restricción a $\{0\}_+\wedge X^{(1)}$ es un morfismo definido en $X^{(1)}$, y sobre $X'$ es homotópico a $f$. Obsérvese que se adjuntan las celdas originales: después de pasar al adjunto, el dominio del disco vuelve a ser $D^{k+m}_+$, aunque para alcanzar $X'$ hayamos usado $n$ suspensiones.
+
+Repetimos el procedimiento con la siguiente dimensión de celdas estables del mismo nivel que aún falte; agotado ese nivel, pasamos a la mínima dimensión que falte en el siguiente. Los bordes se encuentran en la parte ya construida, y las homotopías anteriores se incluyen entre los datos de pegado del paso siguiente, como en la inducción de C12. Cada familia se trata a la vez y en las etapas límite se toma el colímite. Obtenemos finalmente
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\{0\}_+\wedge X
+\underset{\{0\}_+\wedge X'}{\cup}(I_+\wedge X')
+\arrow[r,"H"] & Y\\
+\{1\}_+\wedge X' \arrow[u,hook] \arrow[ur,"f"'] &
+\end{tikzcd}
+\]
+Definiendo $g=H|_{\{0\}_+\wedge X}$, la restricción de $H$ al cilindro de $X'$ da $g|_{X'}\simeq f$. Por tanto,
+\[
+[f]_e=[g|_{X'}]_e=[g]_e=\varphi([g]_h).
+\]
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Extensión de las homotopías y comparación final}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P06--P08; la transcripción de este tramo está muy deteriorada.
+\begin{proof}[Demostración de la inyectividad de $\varphi$]
+Sean $f,g\colon X\to Y$ tales que $[f]_e=[g]_e$. Existe $X'\subseteq X$ cofinal y una homotopía $H\colon I_+\wedge X'\to Y$ desde $f|_{X'}$ hasta $g|_{X'}$. Ahora hay que extender la homotopía, manteniendo sus dos extremos.
+
+Tomamos una primera familia de celdas faltantes, como antes, y una función característica $\Phi\colon D^d\to X_m$. Escogemos $n$ de modo que su representante suspendido $\widetilde\Phi$ tenga imagen en $X'_{m+n}$. La composición
+\[
+I_+\wedge\Sigma^nD^d_+
+\xrightarrow{\ 1\wedge\widetilde\Phi\ }
+I_+\wedge X'_{m+n}
+\xrightarrow{\ H_{m+n}\ }Y_{m+n}
+\]
+produce, por adjunción, un mapa $v\colon(I\times D^d)_+\to\Omega^nY_{m+n}$. En el borde del cilindro ya tenemos el mapa hacia $Y_m$ dado por $f_m\Phi$ en $t=0$, por $g_m\Phi$ en $t=1$ y por $H_m$ sobre $I\times S^{d-1}$. El cuadrado correspondiente es
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\bigl((\partial I\times D^d)\cup(I\times S^{d-1})\bigr)_+
+\arrow[r,"(f_m\Phi)\cup(g_m\Phi)\cup H_m"] \arrow[d,hook]
+& Y_m \arrow[d,"a_{m,n}","\simeq"']\\
+(I\times D^d)_+ \arrow[r,"v"'] & \Omega^nY_{m+n}.
+\end{tikzcd}
+\]
+Usamos $(I\times D^d,\partial(I\times D^d))\cong(D^{d+1},S^d)$. La obstrucción está ahora en $\pi_{d+1}(\Omega^nY_{m+n},Y_m)=0$. Por ello podemos llevar este cilindro a $Y_m$ con el borde prescrito. Se obtiene una homotopía sobre la nueva celda, junto con una deformación de la homotopía anterior que fija $f$ y $g$.
+
+Para registrar ambos parámetros, escribimos $t$ para la homotopía entre $f$ y $g$ y $s$ para su deformación. Si $X^{(1)}$ es la primera ampliación de $X'$, el mapa que se construye es
+\[
+K^{(1)}\colon
+(I_t\times\{0\}_s)_+\wedge X^{(1)}
+\underset{(I_t\times\{0\}_s)_+\wedge X'}{\cup}
+(I_t\times I_s)_+\wedge X'
+\longrightarrow Y.
+\]
+En la parte ya prescrita cumple
+\[
+\begin{aligned}
+K^{(1)}(t,1,x)&=H(t,x),& x&\in X',\\
+K^{(1)}(0,s,x)&=f(x),&
+K^{(1)}(1,s,x)&=g(x),\qquad x\in X'.
+\end{aligned}
+\]
+En $s=0$, sus extremos sobre todo $X^{(1)}$ siguen siendo $f$ y $g$. Es el diagrama de pegado
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+(I_t\times\{0\}_s)_+\wedge X^{(1)}
+\underset{(I_t\times\{0\}_s)_+\wedge X'}{\cup}
+(I_t\times I_s)_+\wedge X'
+\arrow[r,"K^{(1)}"] & Y\\
+\bigl((I_t\times\{1\}_s)\cup(\partial I_t\times I_s)\bigr)_+\wedge X'
+\arrow[u,hook] \arrow[ur,"H\cup f\cup g"'] &
+\end{tikzcd}
+\]
+Repitiendo por familias de celdas, con los mismos datos de borde, reemplazamos $X^{(1)}$ por $X$. La cara $s=0$ proporciona una homotopía global $f\simeq g$. Así, $[f]_h=[g]_h$ y $\varphi$ es inyectiva.
+\end{proof}
+
+\begin{proof}[Conclusión de la proposición~\ref{prop:c13-comparacion-morfismos}]
+Queda comprobar que $\psi=(q_Y)_*\colon[X,QY]_e\to[X,Y]_e$ es biyectiva. En clase se indicó el mismo argumento celular: como cada $(q_Y)_m\colon(QY)_m\to Y_m$ es una equivalencia débil, se anulan los grupos relativos $\pi_d(Y_m,(QY)_m)$, interpretados mediante el cilindro de aplicación. Esto permite levantar las aplicaciones de los discos salvo homotopía, compatibilizando los bordes, y hacer lo mismo con los cilindros para comparar dos levantamientos. Aplicado a los representantes eventualmente definidos, da la sobreyectividad y la inyectividad de $\psi$.
+
+En el cuadrado anterior, las otras dos flechas son biyectivas. Explícitamente,
+\[
+a=(q_Y)_*\circ\bigl([X,QY]_e\xrightarrow{\cong}[X,QY]_s\bigr)\circ\psi^{-1},
+\]
+de modo que $a$ también es biyectiva. Junto con las dos partes ya probadas para $\varphi$, queda demostrado el resultado.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La cohomología como conjunto de morfismos estables}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P09--P10; transcripción 00:50--00:52.
+Sea $E$ el $\Omega$-espectro asociado a una teoría de cohomología reducida $\widetilde E^{\,*}$, como en C7, y sea $A$ un CW-complejo punteado. Para $n\ge0$, la proposición permite calcular
+\[
+[\sh^n\Sigma^\infty A,E]_s\cong[\sh^n\Sigma^\infty A,E]_h.
+\]
+Un morfismo está dado por aplicaciones $f_j\colon\Sigma^{n+j}A\to E_j$ compatibles con los morfismos estructurales:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma(\Sigma^{n+j}A) \arrow[r,"\Sigma f_j"] \arrow[d,"\cong"']
+& \Sigma E_j \arrow[d,"\xi^E_j"]\\
+\Sigma^{n+j+1}A \arrow[r,"f_{j+1}"'] & E_{j+1}.
+\end{tikzcd}
+\]
+Por tanto, $f_0\colon\Sigma^nA\to E_0$ determina todas las componentes mediante $f_{j+1}=\xi^E_j\circ\Sigma f_j$. La misma afirmación se aplica a las homotopías, por lo que
+\[
+\begin{aligned}
+[\sh^n\Sigma^\infty A,E]_s
+&\cong[\Sigma^nA,E_0]_*\\
+&\cong[A,\Omega^nE_0]_*\cong\widetilde E^{-n}(A).
+\end{aligned}
+\]
+El signo corresponde a nuestra convención $(\sh^dX)_j=X_{j+d}$: el grado de cohomología es el opuesto al desplazamiento del dominio. Para $r\ge0$, el espectro $\sh^{-r}\Sigma^\infty A=F_rA$ empieza con $r$ niveles triviales, y un morfismo hacia $E$ queda determinado por $A\to E_r$. Esto da $[\sh^{-r}\Sigma^\infty A,E]_s\cong[A,E_r]_*\cong\widetilde E^r(A)$. Reuniendo ambos cálculos, para todo $r\in\mathbb Z$ obtenemos la formulación
+\[
+\boxed{\widetilde E^r(A)\cong[\sh^{-r}\Sigma^\infty A,E]_s
+=\hom_{\Ho(\Sp^{\mathbb N})}(\sh^{-r}\Sigma^\infty A,E).}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{La estructura de modelos estable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Equivalencias, cofibraciones y fibraciones}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P10--P11; transcripción 00:52--01:01.
+Pasamos al punto de vista formal de las categorías de modelos, que permitirá estudiar construcciones derivadas.
+
+\begin{defi}\label{defi:c13-fibracion-estable}
+Un morfismo $f\colon X\to Y$ es una \emph{fibración estable} si cada $f_n\colon X_n\to Y_n$ es una fibración de Serre y, para todo $n\ge0$, el cuadrado
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+X_n \arrow[r,"(\xi^X_n)^\perp"] \arrow[d,"f_n"']
+& \Omega X_{n+1} \arrow[d,"\Omega f_{n+1}"]\\
+Y_n \arrow[r,"(\xi^Y_n)^\perp"'] & \Omega Y_{n+1}
+\end{tikzcd}
+\]
+es homotópicamente cartesiano. Es decir, la aplicación canónica
+\[
+X_n\longrightarrow Y_n\mathop{\times}^{h}_{\Omega Y_{n+1}}\Omega X_{n+1}
+\]
+es una equivalencia débil.
+\end{defi}
+
+\begin{teo}\label{teo:c13-modelos-estables}
+La categoría $\Sp^{\mathbb N}$ admite una estructura de categoría de modelos en la que:
+\begin{enumerate}
+\item Las equivalencias débiles son las equivalencias estables.
+\item Las cofibraciones son los retractos de inclusiones de espectros celulares relativos.
+\item Las fibraciones son las fibraciones estables de la definición anterior.
+\end{enumerate}
+\end{teo}
+Este teorema se enunció sin demostración. Los retractos de la segunda condición se toman en la categoría de morfismos: se parte de una inclusión construida adjuntando celdas estables y se toma un retracto de ese mapa.
+
+Denotaremos esta categoría de modelos por $\Sp^{\mathbb N}_s$. Existe también la estructura \emph{nivel a nivel}, $\Sp^{\mathbb N}_l$, donde las equivalencias débiles y las fibraciones se detectan en cada nivel. La estructura estable se obtiene de ella por una localización de Bousfield por la izquierda. Ambas tienen la misma categoría subyacente y las mismas cofibraciones. La exposición sigue la terminología del libro de espectros~(\cite{malkiewich}).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Reemplazos cofibrantes y fibrantes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P12--P13.
+El objeto cero, que es inicial y terminal, es $\Sigma^\infty *$. Un objeto $X$ es cofibrante si $\Sigma^\infty *\to X$ es una cofibración. Por el teorema, los objetos cofibrantes son los retractos de CW espectros. Nuestro reemplazo $q_X\colon QX\to X$ tiene dominio celular y es una equivalencia nivel a nivel, luego proporciona en particular un modelo cofibrante establemente equivalente a $X$.
+
+Para un objeto fibrante se exige que $X\to\Sigma^\infty *$ sea una fibración estable. La condición de fibración de Serre hacia el punto es automática; la otra condición es que sea homotópicamente cartesiano el cuadrado
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+X_n \arrow[r,"(\xi^X_n)^\perp"] \arrow[d]
+& \Omega X_{n+1} \arrow[d]\\
+* \arrow[r] & *.
+\end{tikzcd}
+\]
+El pullback homotópico de la fila inferior y la columna derecha tiene el tipo de homotopía de $\Omega X_{n+1}$. Por ello, la condición equivale a que $(\xi^X_n)^\perp$ sea una equivalencia débil para todo $n$.
+
+\begin{prop}
+Los objetos fibrantes de $\Sp^{\mathbb N}_s$ son exactamente los $\Omega$-espectros.
+\end{prop}
+Así se justifican los nombres empleados para los reemplazos construidos anteriormente: $QX$ es celular y, por tanto, cofibrante; $RX$ es un $\Omega$-espectro y, por tanto, fibrante. Sus equivalencias estables se orientan como
+\[
+QX\xrightarrow{\ q_X\ }X\xrightarrow{\ h_X\ }RX.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cofibraciones generadoras y mapas entre espectros libres}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P13--P15.
+La estructura de modelos estable es cofibrantemente generada. Un conjunto de cofibraciones generadoras es
+\[
+\mathcal I=\left\{
+F_n(S^{k-1}_+)\longrightarrow F_n(D^k_+)
+\ \middle|\ n,k\ge0
+\right\}.
+\]
+Usamos la convención de C11: $S^{-1}=\varnothing$ y $S^{-1}_+=*$. Estos son los mapas que adjuntan las celdas estables libres.
+
+Para describir las cofibraciones acíclicas generadoras, necesitamos ciertos mapas que expresan la estabilización. Recordemos que
+\[
+F_iS^0=(*,\ldots,*,S^0,S^1,S^2,\ldots)=\sh^{-i}\Sph,
+\]
+con $S^0$ en el nivel $i$. Por la adjunción del espectro libre,
+\[
+\begin{aligned}
+\hom_{\Sp^{\mathbb N}}(F_{i+j}S^j,F_iS^0)
+&\cong\Map_*(S^j,(F_iS^0)_{i+j})\\
+&\cong\Map_*(S^j,S^j).
+\end{aligned}
+\]
+La identidad de $S^j$ determina un morfismo $\lambda_{i,j}\colon F_{i+j}S^j\to F_iS^0$. Para $j\ge1$, su sucesión de componentes desde el nivel $i$ se ve como
+\[
+\begin{tikzcd}[cramped,column sep=small,row sep=large]
+* \arrow[d] & * \arrow[d]
+& \cdots & * \arrow[d] & S^j \arrow[d,equal]
+& S^{j+1} \arrow[d,equal] & \cdots\\
+S^0 & S^1 & \cdots
+& S^{j-1} & S^j & S^{j+1} & \cdots.
+\end{tikzcd}
+\]
+Cada columna muestra una componente de $\lambda_{i,j}$. Antes del nivel $i+j$, son los mapas desde el punto; desde ese nivel son identidades. En particular, $\lambda_{i,j}$ es una equivalencia estable. Si $j=0$, es la identidad de $F_iS^0$.
+
+Factorizamos este mapa mediante su cilindro de aplicación:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+F_{i+j}S^j \arrow[r,hook,"k_{i,j}"] \arrow[dr,"\lambda_{i,j}"']
+& \operatorname{Cyl}_{i,j} \arrow[d,"p_{i,j}","\simeq_h"']\\
+& F_iS^0.
+\end{tikzcd}
+\]
+Aquí
+\[
+\operatorname{Cyl}_{i,j}
+=F_iS^0\underset{F_{i+j}S^j}{\cup}
+(I_+\wedge F_{i+j}S^j),
+\]
+donde la cara $t=0$ se pega mediante $\lambda_{i,j}$ y $k_{i,j}$ incluye la cara libre $t=1$. Sus niveles son
+\[
+(\operatorname{Cyl}_{i,j})_\ell\cong
+\begin{cases}
+*,&\ell<i,\\
+S^{\ell-i},&i\le\ell<i+j,\\
+I_+\wedge S^{\ell-i},&\ell\ge i+j.
+\end{cases}
+\]
+En particular, en el nivel $i+j$ se pega un cilindro a $S^j$ por uno de sus extremos. El aplastamiento $p_{i,j}$ es una equivalencia homotópica nivel a nivel, y $k_{i,j}$ es una cofibración. Como $p_{i,j}k_{i,j}=\lambda_{i,j}$, también $k_{i,j}$ es una equivalencia estable. Para completar la descripción de los generadores introduciremos el producto pushout.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El producto pushout}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P16--P17.
+Sea $\otimes\colon\mathcal C\times\mathcal D\to\mathcal E$ un bifuntor que preserva colímites en cada variable, y supongamos que existen los pushouts necesarios. Dados $f\colon A\to X$ y $g\colon B\to Y$, la funtorialidad produce
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+A\otimes B \arrow[r,"1\otimes g"] \arrow[d,"f\otimes1"']
+& A\otimes Y \arrow[d,"f\otimes1"]\\
+X\otimes B \arrow[r,"1\otimes g"'] & X\otimes Y.
+\end{tikzcd}
+\]
+
+\begin{defi}
+El \emph{producto pushout} de $f$ y $g$ es la aplicación inducida
+\[
+f\mathbin{\square}g\colon
+(X\otimes B)\underset{A\otimes B}{\cup}(A\otimes Y)
+\longrightarrow X\otimes Y.
+\]
+\end{defi}
+Si llamamos $P$ al dominio, su definición y el mapa universal quedan recogidos en
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+A\otimes B \arrow[r] \arrow[d] & A\otimes Y \arrow[d] \arrow[ddr,bend left=15,"f\otimes1"] &\\
+X\otimes B \arrow[r] \arrow[drr,bend right=15,"1\otimes g"']
+& P \arrow[ul,phantom,"\ulcorner",very near start] \arrow[dr,dashed,"f\square g"] &\\
+&& X\otimes Y.
+\end{tikzcd}
+\]
+En nuestro caso usaremos el bifuntor $\wedge\colon\Topstar\times\Sp^{\mathbb N}\to\Sp^{\mathbb N}$, formado nivel a nivel. Para un espacio $A$, el funtor $A\wedge-$ tiene como adjunto derecho el espectro de funciones $F(A,-)$ de C9, y por ello preserva colímites. Para comprobarlo en la otra variable necesitamos un espacio de morfismos de espectros.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El espacio de morfismos y la adjunción con el smash}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P18--P20.
+\begin{defi}
+Para dos espectros $X,Y$, el \emph{espacio de morfismos} $\Map_*(X,Y)$ es el subespacio de
+$\prod_{n\ge0}\Map_*(X_n,Y_n)$ formado por las familias $(f_n)$ que hacen conmutar
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma X_n \arrow[r,"\Sigma f_n"] \arrow[d,"\xi^X_n"']
+& \Sigma Y_n \arrow[d,"\xi^Y_n"]\\
+X_{n+1} \arrow[r,"f_{n+1}"'] & Y_{n+1}.
+\end{tikzcd}
+\]
+El punto base es el morfismo constante. La topología se toma en la categoría de espacios compactamente generados.
+\end{defi}
+
+Equivalentemente, es el igualador
+\[
+\Map_*(X,Y)=\operatorname{Eq}\left(
+\prod_{n\ge0}\Map_*(X_n,Y_n)
+\mathrel{\substack{\longrightarrow\\[-4pt]\longrightarrow}}
+\prod_{n\ge0}\Map_*(\Sigma X_n,Y_{n+1})
+\right),
+\]
+cuyas dos flechas envían $(f_n)$ respectivamente a $(\xi^Y_n\circ\Sigma f_n)_n$ y a $(f_{n+1}\circ\xi^X_n)_n$. Este es un espacio punteado; el objeto $F(A,Y)$ utilizado antes es un espectro.
+
+\begin{ejer}\label{ejer:c13-adjuncion-smash}
+Comprobar que existe una biyección natural
+\[
+\hom_{\Sp^{\mathbb N}}(A\wedge X,Y)
+\cong\hom_{\Topstar}(A,\Map_*(X,Y)).
+\]
+\end{ejer}
+\begin{sol}
+Un morfismo $u\colon A\wedge X\to Y$ es una familia $u_n\colon A\wedge X_n\to Y_n$ compatible con la estructura. La adjunción de espacios punteados da aplicaciones $\widehat u_n\colon A\to\Map_*(X_n,Y_n)$, con $\widehat u_n(a)(x)=u_n[a,x]$. Reunidas, definen un mapa hacia el producto de los espacios de aplicaciones. La compatibilidad de los $u_n$ dice exactamente que su imagen está en el igualador que define $\Map_*(X,Y)$.
+
+Recíprocamente, un mapa $A\to\Map_*(X,Y)$ produce por evaluación aplicaciones $A\wedge X_n\to Y_n$; la condición de igualador garantiza que forman un morfismo de espectros. Las dos construcciones son inversas y naturales.
+\end{sol}
+
+Por esta adjunción, $-\wedge X$ también preserva colímites. Queda justificado el uso del producto pushout para un mapa de espacios punteados y uno de espectros.
+
+Volviendo a la estructura de modelos estable, un conjunto de cofibraciones acíclicas generadoras es
+\[
+\begin{aligned}
+\mathcal J={}&\left\{
+F_i((D^n\times\{0\})_+)\longrightarrow F_i((D^n\times I)_+)
+\ \middle|\ i,n\ge0
+\right\}\\
+&\cup\left\{
+(S^{n-1}_+\to D^n_+)\mathbin{\square}k_{i,j}
+\ \middle|\ i,j,n\ge0
+\right\}.
+\end{aligned}
+\]
+El primer conjunto procede de las inclusiones de un extremo del cilindro en cada nivel libre. En el segundo se usa el producto pushout de la inclusión del borde de un disco con el mapa $k_{i,j}$ construido antes. Esta descripción de $\mathcal I$ y $\mathcal J$ forma parte del teorema enunciado; no se comprobaron en clase los axiomas de la estructura de modelos.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Funtores derivados y su propiedad universal}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El paso a la categoría localizada}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P20--P21.
+Sea $\mathcal M$ una categoría con una clase de equivalencias débiles $W$, y sea $\gamma\colon\mathcal M\to\mathcal M[W^{-1}]$ su localización. Si $F\colon\mathcal M\to\mathcal C$ envía todos los elementos de $W$ a isomorfismos, la propiedad universal proporciona un único funtor $\overline F$ tal que
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\mathcal M \arrow[r,"F"] \arrow[d,"\gamma"'] & \mathcal C\\
+\mathcal M[W^{-1}] \arrow[ur,dashed,"\overline F"'] &
+\end{tikzcd}
+\qquad\qquad \overline F\circ\gamma=F.
+\]
+Cuando $F$ no conserva las equivalencias débiles, buscamos una aproximación universal que sí esté definida en la categoría homotópica. En lo que sigue, $\mathcal M$ será una categoría de modelos y escribiremos $\gamma\colon\mathcal M\to\Ho(\mathcal M)$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El derivado izquierdo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P21--P22.
+\begin{defi}\label{defi:c13-derivado-izquierdo}
+Un \emph{funtor derivado izquierdo} de $F\colon\mathcal M\to\mathcal C$ es un par $(\mathrm LF,\mu)$ formado por un funtor $\mathrm LF\colon\Ho(\mathcal M)\to\mathcal C$ y una transformación natural
+\[
+\mu\colon\mathrm LF\circ\gamma\Longrightarrow F
+\]
+que es final entre tales pares: para todo $K\colon\Ho(\mathcal M)\to\mathcal C$ y toda transformación natural $\xi\colon K\circ\gamma\Rightarrow F$, existe una única transformación natural $\sigma\colon K\Rightarrow\mathrm LF$ tal que
+\[
+\mu\circ(\sigma\gamma)=\xi.
+\]
+\end{defi}
+
+Los datos del par se representan por el diagrama de funtores y su transformación natural:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\mathcal M \arrow[r,"F",""{name=c13F,below}] \arrow[d,"\gamma"'] & \mathcal C\\
+\Ho(\mathcal M) \arrow[ur,"\mathrm LF"',""{name=c13LF,above}] &
+\arrow[Rightarrow,nfold,from=c13LF,to=c13F,"\mu",shorten <=-2pt,shorten >=-2pt]
+\end{tikzcd}
+\]
+La condición universal se expresa, para cada objeto $m\in\mathcal M$, por el triángulo conmutativo
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+K(\gamma m) \arrow[r,dashed,"\sigma_{\gamma m}"] \arrow[dr,"\xi_m"']
+& \mathrm LF(\gamma m) \arrow[d,"\mu_m"]\\
+& F(m).
+\end{tikzcd}
+\]
+Se exige una única $\sigma$ natural que satisfaga simultáneamente todos estos triángulos. Así, el par $(\mathrm LF,\mu)$ es un objeto final en la categoría de funtores desde $\Ho(\mathcal M)$ equipados con una transformación de su composición con $\gamma$ hacia $F$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El derivado derecho}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P23.
+\begin{defi}\label{defi:c13-derivado-derecho}
+Un \emph{funtor derivado derecho} de $F\colon\mathcal M\to\mathcal C$ es un par $(\mathrm RF,\mu)$ formado por un funtor $\mathrm RF\colon\Ho(\mathcal M)\to\mathcal C$ y una transformación natural
+\[
+\mu\colon F\Longrightarrow\mathrm RF\circ\gamma
+\]
+que es inicial entre tales pares: para todo $K\colon\Ho(\mathcal M)\to\mathcal C$ y toda transformación natural $\xi\colon F\Rightarrow K\circ\gamma$, existe una única transformación natural $\sigma\colon\mathrm RF\Rightarrow K$ tal que
+\[
+(\sigma\gamma)\circ\mu=\xi.
+\]
+\end{defi}
+
+La transformación natural tiene ahora la orientación opuesta:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\mathcal M \arrow[r,"F",""{name=c13Fr,below}] \arrow[d,"\gamma"'] & \mathcal C\\
+\Ho(\mathcal M) \arrow[ur,"\mathrm RF"',""{name=c13RF,above}] &
+\arrow[Rightarrow,nfold,from=c13Fr,to=c13RF,"\mu",shorten <=-2pt,shorten >=-2pt]
+\end{tikzcd}
+\]
+En componentes, la propiedad universal es
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+F(m) \arrow[r,"\mu_m"] \arrow[dr,"\xi_m"']
+& \mathrm RF(\gamma m) \arrow[d,dashed,"\sigma_{\gamma m}"]\\
+& K(\gamma m).
+\end{tikzcd}
+\]
+La orientación de la transformación natural distingue las dos propiedades universales: en el caso izquierdo se aproxima $F$ mediante un mapa hacia $F$, y en el derecho mediante un mapa desde $F$.
+
+Como referencia algebraica, en clase se mencionaron $\operatorname{Tor}$ y $\operatorname{Ext}$ como derivados del producto tensorial y de $\Hom$, respectivamente, resumidos en la notación $\operatorname{Tor}=\otimes^{\mathrm L}$ y $\operatorname{Ext}=\mathrm R\Hom$. La sesión terminó con estas definiciones universales, sin desarrollar todavía la construcción de los derivados mediante reemplazos.
