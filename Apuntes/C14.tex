@@ -1,0 +1,406 @@
+% C14 -- 8 de octubre de 2026. Fragmento del documento principal.
+% Fuentes: Screenshots C14/P01--P18.png y Transcripciones/C14 (whisper).txt.
+% Whisper deja de aportar contenido matemático en 01:23:37, durante P13.
+% P13--P18: reconstrucción por las pizarras y Malkiewich, §§3.4.1--3.4.4.
+% P11--P14: se corrige expresamente el ejemplo del telescopio; los grados 2
+% deben estar en los mapas estructurales para obtener denominadores uniformes.
+
+La clase anterior terminó con la propiedad universal de los funtores derivados. Ahora construiremos estos funtores mediante reemplazos y veremos por qué algunas operaciones con espectros ya pasan a la categoría homotópica, mientras que otras necesitan derivarse. Estudiaremos la evaluación en el nivel cero, el espectro de suspensión y los productos infinitos. Los contraejemplos explicarán el papel de la aproximación celular y del reemplazo por un $\Omega$-espectro.
+
+Escribiremos $\gamma$ para los funtores de localización, omitiéndolos en los objetos cuando no haya confusión. En $\Sp^{\mathbb N}$ las equivalencias débiles son las equivalencias estables; en $\Topstar$ usamos la estructura de modelos de Quillen, cuyas equivalencias débiles son las equivalencias homotópicas débiles. Conservamos los reemplazos funtoriales $q_X\colon QX\to X$ y $h_X\colon X\to RX$ de las clases anteriores.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Construcción de los funtores derivados}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Los primeros ejemplos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P01--P03; transcripción 00:00--00:14.
+Recordemos que el derivado izquierdo de $F\colon\mathcal M\to\mathcal C$ viene con $\mu\colon\mathrm LF\circ\gamma\Rightarrow F$, final entre tales pares. El derecho viene con $\mu\colon F\Rightarrow\mathrm RF\circ\gamma$ y es inicial. Estas propiedades se formularon en la clase~13.
+
+\begin{ejem}
+Si $F$ envía todas las equivalencias débiles a isomorfismos, la localización proporciona $\widehat F\colon\Ho(\mathcal M)\to\mathcal C$ con $\widehat F\gamma=F$. Entonces $\mathrm LF=\widehat F=\mathrm RF$, con transformación natural identidad. En efecto, una transformación natural entre funtores que invierten las equivalencias débiles desciende a la localización: la naturalidad para un morfismo invertido se obtiene invirtiendo su cuadrado de naturalidad. Así se obtiene también la propiedad universal de ambos derivados.
+\end{ejem}
+
+\begin{ejem}[Homología después de tensorizar]
+Fijemos un grupo abeliano $M$ y consideremos
+\[
+F\colon\Ch_{\ge0}\longrightarrow\Ab^{\mathbb Z},\qquad
+C_*\longmapsto H_*(M\otimes C_*).
+\]
+Las equivalencias débiles de $\Ch_{\ge0}$ son los \emph{casi isomorfismos}: los morfismos que inducen isomorfismos en todos los grupos de homología. Tensorizar con $M$ no los preserva en general, pues $M$ puede no ser plano.
+
+Sea $q_C\colon QC_*\to C_*$ una resolución proyectiva funtorial del complejo, es decir, un casi isomorfismo desde un complejo no negativo de grupos proyectivos. El derivado izquierdo está dado por
+\[
+\mathrm LF\colon D_{\ge0}(\mathbb Z)\longrightarrow\Ab^{\mathbb Z},\qquad
+\mathrm LF(C_*)=H_*(M\otimes QC_*),
+\]
+donde $D_{\ge0}(\mathbb Z)=\Ho(\Ch_{\ge0})$ es la categoría derivada no negativa. La transformación de comparación es
+\[
+\mu_C=H_*(1_M\otimes q_C)\colon
+H_*(M\otimes QC_*)\longrightarrow H_*(M\otimes C_*).
+\]
+Si $C_*=A[0]$ está concentrado en grado cero, sus componentes son los grupos $\operatorname{Tor}^{\mathbb Z}_n(M,A)$.
+\end{ejem}
+
+\begin{ejem}[El colímite homotópico]
+Sea $J$ una categoría pequeña. En $\Top^J=\operatorname{Fun}(J,\Top)$ consideramos equivalencias débiles objeto a objeto: una transformación $\eta\colon D\Rightarrow D'$ es una equivalencia si cada $\eta_j$ lo es. El funtor $\colim_J\colon\Top^J\to\Top$ no preserva todas estas equivalencias. El derivado izquierdo de su composición con la localización se llama \emph{colímite homotópico}:
+\[
+\operatorname{hocolim}_J
+=\mathrm L(\gamma\circ\colim_J)\colon
+\Ho(\Top^J)\longrightarrow\Ho(\Top).
+\]
+La idea es reemplazar el diagrama por uno adecuado antes de tomar su colímite. Se reemplaza el diagrama con sus aplicaciones, no solamente sus espacios por separado. En esta clase usaremos el caso secuencial, representado por un telescopio.
+\end{ejem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Reemplazos y existencia}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P04--P05; transcripción 00:14--00:23.
+En general, un funtor no tiene por qué admitir un derivado izquierdo o derecho. La siguiente condición permite construirlos.
+
+\begin{prop}\label{prop:c14-existencia-derivados}
+Sea $\mathcal M$ una categoría de modelos y $F\colon\mathcal M\to\mathcal C$ un funtor. Si $F$ envía las cofibraciones acíclicas entre objetos cofibrantes a isomorfismos, existe su derivado izquierdo y puede calcularse mediante
+\[
+\mathrm LF(X)=F(QX),\qquad \mu_X=F(q_X).
+\]
+Además, $\mu_X$ es un isomorfismo si $X$ es cofibrante. Dualmente, si $F$ envía las fibraciones acíclicas entre objetos fibrantes a isomorfismos, existe su derivado derecho, con
+\[
+\mathrm RF(X)=F(RX),\qquad \mu_X=F(h_X),
+\]
+y $\mu_X$ es un isomorfismo si $X$ es fibrante.
+\end{prop}
+\begin{proof}
+El lema de Ken Brown implica que $F$ envía todas las equivalencias débiles entre objetos cofibrantes a isomorfismos; véase \cite[Lema~1.1.12]{hovey1999}. Si $f\colon X\to Y$ es una equivalencia débil, la naturalidad de $q$ da
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+QX \arrow[r,"q_X","\sim"'] \arrow[d,"Qf"'] & X \arrow[d,"f","\sim"']\\
+QY \arrow[r,"q_Y","\sim"'] & Y.
+\end{tikzcd}
+\]
+Por dos de tres, $Qf$ es una equivalencia entre objetos cofibrantes. Por tanto, $F(Qf)$ es invertible y $FQ$ factoriza por la localización:
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\mathcal M \arrow[r,"FQ"] \arrow[d,"\gamma"'] & \mathcal C\\
+\Ho(\mathcal M) \arrow[ur,dashed,"\mathrm LF"'] &
+\end{tikzcd}
+\qquad \mathrm LF\gamma=FQ.
+\]
+Aplicar $F$ a $q\colon Q\Rightarrow1_{\mathcal M}$ produce $\mu\colon\mathrm LF\gamma\Rightarrow F$. Si $X$ es cofibrante, $q_X$ es una equivalencia entre objetos cofibrantes, luego $\mu_X$ es un isomorfismo.
+
+Para ver la universalidad, dados $K\colon\Ho(\mathcal M)\to\mathcal C$ y $\xi\colon K\gamma\Rightarrow F$, definimos
+\[
+\sigma_{\gamma X}
+=\xi_{QX}\circ K(\gamma q_X)^{-1}\colon
+K(\gamma X)\longrightarrow F(QX).
+\]
+La naturalidad de $\xi$ y $q$ hace natural esta familia, también respecto de los morfismos invertidos. Además,
+\[
+\mu_X\sigma_{\gamma X}
+=F(q_X)\xi_{QX}K(\gamma q_X)^{-1}=\xi_X.
+\]
+Sobre objetos cofibrantes esta igualdad determina $\sigma$, porque $\mu$ es invertible; la naturalidad respecto de $q_X$ la determina entonces sobre todo objeto. Esto prueba la unicidad. El argumento derecho es dual.
+\end{proof}
+
+En la práctica también podemos comprobar directamente que $F$ invierte las equivalencias entre objetos cofibrantes. Más generalmente, el argumento solo necesita un funtor $Q\colon\mathcal M\to\mathcal A\subseteq\mathcal M$, una equivalencia débil natural $q\colon Q\Rightarrow1_{\mathcal M}$ y que $F$ invierta las equivalencias débiles entre objetos de $\mathcal A$. Así se obtiene $\mathrm LF(X)=F(QX)$, con comparación invertible para $X\in\mathcal A$. Existe la versión dual con $1_{\mathcal M}\Rightarrow R$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Operaciones que ya preservan equivalencias estables}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P05; transcripción 00:23--00:26.
+Por definición, $\pi_k\colon\Sp^{\mathbb N}\to\Ab$ envía las equivalencias estables a isomorfismos, de modo que define un funtor sobre $\Ho(\Sp^{\mathbb N})$. Lo mismo ocurre con $\gamma\sh^d$, porque
+\[
+\pi_k(\sh^dX)\cong\pi_{k-d}(X).
+\]
+La suspensión y el espacio de lazos tampoco necesitan reemplazos para preservar equivalencias estables: los isomorfismos naturales $\pi_k(\Sigma X)\cong\pi_{k-1}(X)$ y $\pi_k(\Omega X)\cong\pi_{k+1}(X)$ reducen la afirmación a la definición. Para productos finitos se tiene
+\[
+\pi_k\left(\prod_{i=1}^rX^{(i)}\right)
+\cong\prod_{i=1}^r\pi_k(X^{(i)}),
+\]
+pues los grupos de homotopía de espacios preservan productos y un colímite filtrado conmuta con productos finitos de grupos. Por ello, estos productos también preservan equivalencias estables.
+
+\begin{ejer}\label{ejer:c14-coproductos}
+Demostrar que el coproducto de una familia de equivalencias estables $f^{(j)}\colon X^{(j)}\to Y^{(j)}$, $j\in J$, es una equivalencia estable.
+\end{ejer}
+\begin{sol}
+Un mapa de un compacto hacia $\bigvee_jK_j$ usa finitos sumandos. De otro modo, escogiendo un punto de su imagen en infinitos sumandos distintos, obtendríamos un conjunto cerrado, discreto e infinito en una imagen compacta. El conjunto y todos sus subconjuntos son cerrados porque su intersección con cada sumando es vacía o un punto cerrado. Esto es imposible por compacidad. El mismo argumento se aplica a las homotopías.
+
+Para dos espectros, la sucesión de cofibras $X\to X\vee Y\to Y$ es escindida: el cono de la primera inclusión es $CX\vee Y$ y se retrae por deformación sobre $Y$. La inclusión de $Y$ escinde la proyección, así que la sucesión exacta estable da $\pi_k(X\vee Y)\cong\pi_k(X)\oplus\pi_k(Y)$. Por inducción se obtiene la fórmula para cualquier familia finita; este es también el argumento de \cite[Proposición~2.4.4.3]{malkiewich}.
+
+La compacidad permite intercambiar los colímites sobre los niveles y las familias finitas. Los isomorfismos naturales siguientes identifican $(\bigvee_jf^{(j)})_*$ con $\bigoplus_jf^{(j)}_*$, que es invertible:
+\[
+\begin{aligned}
+\pi_k\left(\bigvee_{j\in J}X^{(j)}\right)
+&\cong\colim_{\substack{F\subseteq J\\F\text{ finito}}}
+\pi_k\left(\bigvee_{j\in F}X^{(j)}\right)\\
+&\cong\colim_{\substack{F\subseteq J\\F\text{ finito}}}
+\bigoplus_{j\in F}\pi_k(X^{(j)})
+\cong\bigoplus_{j\in J}\pi_k(X^{(j)}).\qedhere
+\end{aligned}
+\]
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Evaluación y espectros de suspensión}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El derivado de la evaluación en el nivel cero}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P06; transcripción 00:26--00:33.
+El funtor $(-)_0\colon\Sp^{\mathbb N}\to\Topstar$, compuesto con la localización, no preserva todas las equivalencias estables. En efecto, el subespectro cofinal
+\[
+T=F_1S^1=\sh^{-1}\Sigma^\infty S^1=(*,S^1,S^2,\ldots)
+\lhook\joinrel\longrightarrow\Sph
+\]
+es una equivalencia estable, pero en el nivel cero induce $*\to S^0$, que no es una equivalencia débil. Ambos espectros son celulares, así que el problema persiste incluso sobre objetos cofibrantes.
+
+En cambio, una equivalencia estable $f\colon X\to Y$ entre $\Omega$-espectros es una equivalencia nivel a nivel, como vimos en la \myref{prop:c10-omega-equivalencias}. En el nivel cero, los isomorfismos naturales se organizan en el cuadrado
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\pi_n(X_0) \arrow[r,"(f_0)_*"] \arrow[d,"\cong"']
+& \pi_n(Y_0) \arrow[d,"\cong"]\\
+\pi_n(X) \arrow[r,"f_*","\cong"'] & \pi_n(Y),
+\end{tikzcd}
+\qquad n\ge0.
+\]
+Para $n=0$ se trata de conjuntos de componentes; el argumento para los demás puntos base forma parte del resultado de la clase~10. Por tanto, $\gamma(-)_0$ invierte las equivalencias entre objetos fibrantes y admite un derivado derecho:
+\[
+\Omega^\infty:=\mathrm R(\gamma(-)_0)\colon
+\Ho(\Sp^{\mathbb N})\longrightarrow\Ho(\Topstar),\qquad
+\Omega^\infty X=(RX)_0.
+\]
+Su comparación está inducida por $(h_X)_0\colon X_0\to(RX)_0$. Esto explica por qué en la definición de $\Omega^\infty$ reemplazamos primero el espectro por un $\Omega$-espectro.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Por qué hay que derivar el espectro de suspensión}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P07--P09; transcripción 00:33--00:51. Bibliografía: ejercicio 3.6.24.
+Consideremos $\mathbb N=\{0,1,2,\ldots\}$ con topología discreta y punto base $0$, y el espacio punteado
+\[
+X=\{0\}\cup\{1/n:n\ge1\}\subseteq\mathbb R.
+\]
+La aplicación $f\colon\mathbb N\to X$, dada por $f(0)=0$ y $f(n)=1/n$ para $n\ge1$, es continua y una equivalencia débil. En efecto, ambos espacios tienen componentes por caminos reducidas a un punto, $f$ las identifica biyectivamente y todos los grupos de homotopía superiores son triviales: la imagen de una esfera conexa en cualquiera de ellos es un punto.
+
+Sin embargo, $\Sigma^\infty f$ no es una equivalencia estable. Para verlo, comparamos las suspensiones reducidas. Se tiene
+\[
+\Sigma^k\mathbb N\cong\bigvee_{n\ge1}S^k_n,
+\]
+con la topología de CW-complejo. En cambio, $H_k:=\Sigma^kX$ es una unión de esferas $S^k_n$ que se encogen hacia el punto base: puede representarse por esferas de diámetro $1/n$ tangentes en el origen de $\mathbb R^{k+1}$. Para $k=1$ es el \emph{anillo hawaiano}. En efecto, $X\wedge S^k$ tiene una copia de $S^k$ por cada punto $1/n$, y sus vecindades del punto base contienen todas las esferas salvo finitas. Esta es la topología de la unión de esferas decrecientes; véase \cite[Ejercicio~3.6.24]{malkiewich}.
+
+Para $k\ge2$, la conectividad y el teorema de Hurewicz dan
+\[
+\pi_k(\Sigma^k\mathbb N)\cong\bigoplus_{n\ge1}\mathbb Z.
+\]
+Las suspensiones preservan los generadores, así que
+\[
+\pi_0(\Sigma^\infty\mathbb N)
+\cong\colim_{k\ge2}\pi_k(\Sigma^k\mathbb N)
+\cong\bigoplus_{n\ge1}\mathbb Z.
+\]
+En grado uno, $\pi_1(\Sigma\mathbb N)$ es el grupo libre en los círculos, no su abelianización; comenzamos el cálculo estable en $k=2$.
+
+\begin{ejer}\label{ejer:c14-hawaiano}
+Sea $r_n^{(k)}\colon H_k\to S^k_n$ la retracción que es la identidad en la esfera $n$ y colapsa las demás al punto base. Demostrar que
+\[
+\rho_k=((r_n^{(k)})_*)_{n\ge1}\colon
+\pi_k(H_k)\longrightarrow\prod_{n\ge1}\mathbb Z
+\]
+es sobreyectiva para todo $k\ge1$, y que estas aplicaciones son compatibles con la suspensión. Deducir que $\pi_1(H_1)$ y $\pi_0(\Sigma^\infty X)$ no son numerables.
+\end{ejer}
+\begin{sol}
+Las retracciones son continuas porque las esferas restantes se colapsan al punto base y la esfera que se conserva está separada de ellas fuera de ese punto. Dada una sucesión de enteros $(a_n)$, escogemos en $S^k$ bolas cerradas $B_n$ con interiores disjuntos, de diámetros que tienden a cero y que se acumulan solamente en el punto base. En cada cociente $B_n/\partial B_n\cong S^k$ elegimos un mapa de grado $a_n$ hacia $S^k_n$. Definimos $u\colon S^k\to H_k$ por estos mapas sobre las bolas y por el punto base fuera de sus interiores.
+
+El pegado es continuo en los bordes. También lo es en el punto de acumulación: toda vecindad del punto base de $H_k$ contiene las esferas $S^k_n$ para $n$ suficientemente grande, mientras que las finitas bolas restantes están alejadas de ese punto. Así, $u$ es continuo y $r_n^{(k)}u$ tiene grado $a_n$; por tanto, $\rho_k[u]=(a_n)$. Para $k=1$ la construcción concatena, en intervalos cada vez más cortos, lazos de $a_n$ vueltas en el círculo $n$.
+
+Las retracciones de dimensiones sucesivas son las suspensiones de las anteriores. Como la suspensión de un mapa de esferas conserva el grado, conmuta
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\pi_k(H_k) \arrow[r,"\rho_k",two heads] \arrow[d,"\Sigma"']
+& \displaystyle\prod_{n\ge1}\mathbb Z \arrow[d,equal]\\
+\pi_{k+1}(H_{k+1}) \arrow[r,"\rho_{k+1}",two heads]
+& \displaystyle\prod_{n\ge1}\mathbb Z.
+\end{tikzcd}
+\]
+Tomando el colímite sobre $k\ge2$ obtenemos una sobreyección
+\[
+\pi_0(\Sigma^\infty X)\longrightarrow\prod_{n\ge1}\mathbb Z.
+\]
+El producto no es numerable, pues contiene $\{0,1\}^{\mathbb N_{>0}}$. Esto prueba la afirmación estable; $\rho_1$ prueba directamente la del grupo fundamental.
+\end{sol}
+
+El grupo $\pi_0(\Sigma^\infty\mathbb N)$ es numerable y $\pi_0(\Sigma^\infty X)$ no lo es. Por tanto, $\Sigma^\infty f$ no es una equivalencia estable, aunque $f$ sea una equivalencia débil de espacios.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El derivado izquierdo de la suspensión infinita}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P09--P11; transcripción 00:51--01:04.
+Usamos la aproximación celular funtorial $Q\colon\Topstar\to\CWstar$ y su equivalencia débil natural $q_X\colon QX\to X$. Basta comprobar que $\Sigma^\infty$ preserva las equivalencias débiles entre CW-complejos punteados.
+
+Si $f\colon A\to B$ es una de ellas, Whitehead proporciona una inversa homotópica punteada $g\colon B\to A$. Cada $\Sigma^kg$ es una inversa de $\Sigma^kf$, y estas aplicaciones forman un único morfismo de espectros, porque
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma\Sigma^kB \arrow[r,"\Sigma\Sigma^kg"] \arrow[d,equal]
+& \Sigma\Sigma^kA \arrow[d,equal]\\
+\Sigma^{k+1}B \arrow[r,"\Sigma^{k+1}g"'] & \Sigma^{k+1}A.
+\end{tikzcd}
+\]
+Las suspensiones de las homotopías $gf\simeq1_A$ y $fg\simeq1_B$ también son compatibles con la estructura, de modo que $\Sigma^\infty g$ es una inversa homotópica global de $\Sigma^\infty f$. En particular, este último es una equivalencia estable. No hemos elegido inversas independientes en cada nivel: todas proceden del mismo mapa $g$.
+
+Por el criterio de reemplazo obtenemos
+\[
+\mathrm L\Sigma^\infty\colon\Ho(\Topstar)\longrightarrow\Ho(\Sp^{\mathbb N}),\qquad
+\mathrm L\Sigma^\infty X=\Sigma^\infty QX,
+\]
+con comparación inducida por $\Sigma^\infty q_X$. Habitualmente se omite la $\mathrm L$ y se escribe también $\Sigma^\infty$ para este funtor derivado; el contexto distingue las dos construcciones.
+
+\begin{nota}
+La convención de \cite[Definición~3.4.2.3]{malkiewich} mantiene el derivado antes de localizar el dominio: allí se escribe $\mathrm LF=FQ$ y $\mathrm RF=FR$, como funtores que preservan equivalencias débiles. Cuando el destino ya es una categoría homotópica, corresponden a las composiciones $(\mathrm LF)\gamma$ y $(\mathrm RF)\gamma$ de nuestra notación. Es la misma diferencia de punto de vista que aparece al considerar $\operatorname{Ext}^n_R(A,B)$ como un funtor de módulos, aunque se calcule mediante resoluciones en la categoría derivada.
+\end{nota}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Productos infinitos y reemplazos fibrantes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El ejemplo de los denominadores, corregido}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P11--P14. Corrección solicitada: la filtración de un producto de telescopios
+% no se puede sustituir por una filtración diagonal de etapas uniformes.
+\begin{ejem}\label{ejem:c14-producto-denominadores}
+\begin{nota}
+El profesor buscaba mostrar que el producto infinito no preserva equivalencias estables, comparando $\pi_1(\prod_iX)$ con $\prod_i\pi_1(X)$ y obteniendo, en el primer grupo, fracciones con un denominador común. Para ello tomó el telescopio nivel a nivel
+\[
+X=\operatorname{hocolim}\bigl(\Sigma^\infty S^1
+\xrightarrow{\,2\,}\Sigma^\infty S^1
+\xrightarrow{\,2\,}\cdots\bigr).
+\]
+Este telescopio no produce el contraejemplo afirmado. En cada nivel ya se tiene $\pi_{n+1}(X_n)\cong\mathbb Z[1/2]$ y las aplicaciones de estabilización son isomorfismos. Por tanto,
+\[
+\pi_1\left(\prod_iX\right)\cong\prod_i\mathbb Z[1/2].
+\]
+El error consiste en sustituir el producto de los colímites por el colímite de los productos, imponiendo una etapa común a todos los factores. Los mapas desde una esfera hacia un producto pueden alcanzar etapas distintas y sin cota uniforme en sus coordenadas. Corregimos el ejemplo situando los grados $2$ en los mapas estructurales del espectro; así la localización ocurre al estabilizar, y no dentro de cada nivel. El criterio general sobre productos que se ilustra aquí está en \cite[Ejercicio~2.7.26]{malkiewich}.
+\end{nota}
+
+Definimos $E_n=S^{n+1}$ para $n\ge0$ y tomamos como mapa estructural $\xi_n\colon\Sigma E_n=S^{n+2}\to E_{n+1}=S^{n+2}$ un mapa punteado de grado $2$. Entonces
+\[
+\pi_1(E)\cong\colim\bigl(\mathbb Z\xrightarrow{\,2\,}\mathbb Z
+\xrightarrow{\,2\,}\cdots\bigr)\cong\mathbb Z[1/2],
+\]
+identificando el entero $b$ del nivel $n$ con $b/2^n$.
+
+Sea $P=\prod_{i\ge1}E$. Como $P_n=\prod_{i\ge1}S^{n+1}$, los grupos inestables y sus mapas de estabilización dan
+\[
+\pi_1(P)\cong\colim\left(
+\prod_{i\ge1}\mathbb Z\xrightarrow{\,2\,}
+\prod_{i\ge1}\mathbb Z\xrightarrow{\,2\,}\cdots\right)
+\cong\left(\prod_{i\ge1}\mathbb Z\right)[1/2].
+\]
+El homomorfismo inducido por las proyecciones se identifica con la inclusión
+\[
+\left(\prod_{i\ge1}\mathbb Z\right)[1/2]
+\longrightarrow\prod_{i\ge1}\mathbb Z[1/2],\qquad
+\frac{(b_i)_i}{2^n}\longmapsto\left(\frac{b_i}{2^n}\right)_i.
+\]
+Su imagen consiste en las sucesiones $(a_i)$ para las que existe un mismo $n$ tal que $2^na_i\in\mathbb Z$ para todo $i$. No es sobreyectiva: $(1,1/2,1/4,\ldots)$ no tiene un denominador común de esta forma.
+
+Para convertir el cálculo en una familia de equivalencias estables, usamos $h_E\colon E\to RE$. Como $RE$ es un $\Omega$-espectro, la estabilización permite calcular $\pi_1$ en cualquier nivel, y
+\[
+\pi_1\left(\prod_{i\ge1}RE\right)
+\cong\prod_{i\ge1}\pi_1(RE)
+\cong\prod_{i\ge1}\mathbb Z[1/2].
+\]
+Por naturalidad respecto de las proyecciones, el mapa inducido por $\prod_ih_E$ es precisamente la inclusión anterior. Por ello, $\prod_ih_E$ no es una equivalencia estable, aunque cada factor sí lo sea.
+\end{ejem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Espectros que empiezan cada vez más tarde}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P14--P16; transcripción ausente para esta parte.
+\begin{ejem}
+Para $j\ge0$ consideremos
+\[
+X^{(j)}=F_jS^j=\sh^{-j}\Sigma^\infty S^j,\qquad
+X^{(j)}_n=\begin{cases}*,&n<j,\\S^n,&n\ge j.\end{cases}
+\]
+La inclusión $i_j\colon X^{(j)}\hookrightarrow\Sph$ es una equivalencia estable, pues es la identidad a partir del nivel $j$. En el nivel $n$ del producto de todos ellos solo hay $n+1$ factores no triviales:
+\[
+\left(\prod_{j\ge0}X^{(j)}\right)_n\cong\prod_{j=0}^nS^n.
+\]
+Para $n\ge1$, su grupo $\pi_n$ es $\mathbb Z^{n+1}$ y el mapa de estabilización es
+\[
+(a_0,\ldots,a_n)\longmapsto(a_0,\ldots,a_n,0).
+\]
+La nueva coordenada es cero porque el factor $j=n+1$ todavía era trivial en el nivel anterior. En consecuencia,
+\[
+\pi_0\left(\prod_{j\ge0}X^{(j)}\right)
+\cong\colim_n\mathbb Z^{n+1}\cong\bigoplus_{j\ge0}\mathbb Z.
+\]
+Por otra parte, para $\prod_{j\ge0}\Sph$ todos los factores están presentes en cada nivel, y los mapas $\pi_n(S^n)\to\pi_{n+1}(S^{n+1})$ son la identidad. Así,
+\[
+\pi_0\left(\prod_{j\ge0}\Sph\right)\cong\prod_{j\ge0}\mathbb Z.
+\]
+El morfismo $\prod_ji_j$ induce la inclusión de la suma directa en el producto. No es sobreyectiva, por ejemplo porque $(1,1,1,\ldots)$ no tiene soporte finito. De nuevo, un producto de equivalencias estables puede no ser una equivalencia estable.
+\end{ejem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El producto derivado y su propiedad universal}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P17--P18; reconstrucción con Malkiewich, ejemplo 3.4.2.8.
+El problema desaparece si los factores son $\Omega$-espectros. En efecto, su producto también lo es, porque $\Omega$ preserva productos y un producto de equivalencias débiles de espacios es una equivalencia débil. Si todos los $Z^{(j)}$ son $\Omega$-espectros, para cada $k\in\mathbb Z$ escogemos $m$ con $m+k\ge1$ y obtenemos
+\[
+\begin{aligned}
+\pi_k\left(\prod_jZ^{(j)}\right)
+&\cong\pi_{m+k}\left(\prod_jZ^{(j)}_m\right)\\
+&\cong\prod_j\pi_{m+k}(Z^{(j)}_m)
+\cong\prod_j\pi_k(Z^{(j)}).
+\end{aligned}
+\]
+El mismo nivel $m$ sirve para todos los factores, ya que sus sistemas de estabilización constan de isomorfismos. En particular, para una familia de equivalencias estables $f^{(j)}\colon X^{(j)}\to Y^{(j)}$ entre $\Omega$-espectros, conmuta
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\pi_k\left(\prod_jX^{(j)}\right) \arrow[r,"(\prod_jf^{(j)})_*"] \arrow[d,"\cong"']
+& \pi_k\left(\prod_jY^{(j)}\right) \arrow[d,"\cong"]\\
+\displaystyle\prod_j\pi_k(X^{(j)}) \arrow[r,"\prod_jf^{(j)}_*","\cong"']
+& \displaystyle\prod_j\pi_k(Y^{(j)}).
+\end{tikzcd}
+\]
+La flecha superior es un isomorfismo, luego el producto preserva las equivalencias estables entre estas familias.
+
+Aplicando el criterio derecho al reemplazo por $\Omega$-espectros en cada coordenada, obtenemos el \emph{producto derivado} de \cite[Ejemplo~3.4.2.8]{malkiewich}:
+\[
+\mathrm R\!\prod_{j\in J}\colon
+\prod_{j\in J}\Ho(\Sp^{\mathbb N})\longrightarrow\Ho(\Sp^{\mathbb N}),\qquad
+(X^{(j)})_j\longmapsto\prod_{j\in J}RX^{(j)}.
+\]
+La transformación de comparación está inducida por $\prod_jh_{X^{(j)}}$. También suele omitirse $\mathrm R$ cuando se trabaja en la categoría homotópica.
+
+\begin{ejer}\label{ejer:c14-producto-categorico}
+Demostrar que $\prod_{j\in J}RX^{(j)}$, con las proyecciones y los isomorfismos $RX^{(j)}\cong X^{(j)}$ en la categoría homotópica, es el producto categórico de la familia $(X^{(j)})_{j\in J}$ en $\Ho(\Sp^{\mathbb N})$.
+\end{ejer}
+\begin{sol}
+Sea $Z$ un espectro y pongamos $P=\prod_jRX^{(j)}$, que es un $\Omega$-espectro. Como $QZ$ es celular, la comparación de morfismos de la clase~13 da
+\[
+\begin{aligned}
+[Z,P]_s&\cong[QZ,P]_h
+\cong\prod_j[QZ,RX^{(j)}]_h\\
+&\cong\prod_j[Z,RX^{(j)}]_s
+\cong\prod_j[Z,X^{(j)}]_s.
+\end{aligned}
+\]
+La biyección intermedia se obtiene de la propiedad universal del producto de espectros: un mapa hacia $P$ es una familia de mapas hacia los factores. Una homotopía global hacia $P$ es, del mismo modo, una familia de homotopías globales hacia ellos, de modo que la biyección pasa a clases de homotopía.
+
+Estos isomorfismos son naturales en $Z$ y la aplicación de izquierda a derecha está inducida por las proyecciones $P\to RX^{(j)}$, seguidas por la inversa de $h_{X^{(j)}}$ en la localización. Por tanto, dada cualquier familia de morfismos $Z\to X^{(j)}$ en la categoría homotópica, existe un único morfismo $Z\to P$ con esas componentes. Esta es exactamente la propiedad universal del producto.
+\end{sol}
+
+Así, el producto nivel a nivel es siempre el producto en $\Sp^{\mathbb N}$, pero para obtener el producto en $\Ho(\Sp^{\mathbb N})$ reemplazamos primero los factores por $\Omega$-espectros.
