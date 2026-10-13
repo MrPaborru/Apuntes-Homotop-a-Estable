@@ -46,10 +46,10 @@ Si $C_*=A[0]$ está concentrado en grado cero, sus componentes son los grupos $\
 \end{ejem}
 
 \begin{ejem}[El colímite homotópico]
-Sea $J$ una categoría pequeña. En $\Top^J=\operatorname{Fun}(J,\Top)$ consideramos equivalencias débiles objeto a objeto: una transformación $\eta\colon D\Rightarrow D'$ es una equivalencia si cada $\eta_j$ lo es. El funtor $\colim_J\colon\Top^J\to\Top$ no preserva todas estas equivalencias. El derivado izquierdo de su composición con la localización se llama \emph{colímite homotópico}:
+Sea $J$ una categoría pequeña. En $\Top^J=\operatorname{Fun}(J,\Top)$ consideramos equivalencias débiles objeto a objeto: una transformación $\eta\colon D\Rightarrow D'$ es una equivalencia si cada $\eta_j$ lo es. El funtor $\varinjlim\nolimits_J\colon\Top^J\to\Top$ no preserva todas estas equivalencias. El derivado izquierdo de su composición con la localización se llama \emph{colímite homotópico}:
 \[
 \operatorname{hocolim}_J
-=\mathrm L(\gamma\circ\colim_J)\colon
+=\mathrm L(\gamma\circ\varinjlim\nolimits_J)\colon
 \Ho(\Top^J)\longrightarrow\Ho(\Top).
 \]
 La idea es reemplazar el diagrama por uno adecuado antes de tomar su colímite. Se reemplaza el diagrama con sus aplicaciones, no solamente sus espacios por separado. En esta clase usaremos el caso secuencial, representado por un telescopio.
@@ -135,9 +135,9 @@ La compacidad permite intercambiar los colímites sobre los niveles y las famili
 \[
 \begin{aligned}
 \pi_k\left(\bigvee_{j\in J}X^{(j)}\right)
-&\cong\colim_{\substack{F\subseteq J\\F\text{ finito}}}
+&\cong\varinjlim_{\substack{F\subseteq J\\F\text{ finito}}}
 \pi_k\left(\bigvee_{j\in F}X^{(j)}\right)\\
-&\cong\colim_{\substack{F\subseteq J\\F\text{ finito}}}
+&\cong\varinjlim_{\substack{F\subseteq J\\F\text{ finito}}}
 \bigoplus_{j\in F}\pi_k(X^{(j)})
 \cong\bigoplus_{j\in J}\pi_k(X^{(j)})
 \end{aligned}
@@ -201,7 +201,7 @@ Para $k\ge2$, la conectividad y el teorema de Hurewicz dan
 Las suspensiones preservan los generadores, así que
 \[
 \pi_0(\Sigma^\infty\mathbb N)
-\cong\colim_{k\ge2}\pi_k(\Sigma^k\mathbb N)
+\cong\varinjlim\nolimits_{k\ge2}\pi_k(\Sigma^k\mathbb N)
 \cong\bigoplus_{n\ge1}\mathbb Z.
 \]
 En grado uno, $\pi_1(\Sigma\mathbb N)$ es el grupo libre en los círculos, no su abelianización; comenzamos el cálculo estable en $k=2$.
@@ -290,16 +290,20 @@ Este telescopio no produce el contraejemplo afirmado. En cada nivel ya se tiene 
 El error consiste en sustituir el producto de los colímites por el colímite de los productos, imponiendo una etapa común a todos los factores. Los mapas desde una esfera hacia un producto pueden alcanzar etapas distintas y sin cota uniforme en sus coordenadas. Corregimos el ejemplo situando los grados $2$ en los mapas estructurales del espectro; así la localización ocurre al estabilizar, y no dentro de cada nivel. El criterio general sobre productos que se ilustra aquí está en \cite[Ejercicio~2.7.26]{malkiewich}.
 \end{nota}
 
-Definimos $E_n=S^{n+1}$ para $n\ge0$ y tomamos como mapa estructural $\xi_n\colon\Sigma E_n=S^{n+2}\to E_{n+1}=S^{n+2}$ un mapa punteado de grado $2$. Entonces
+Definimos $E_n=S^{n+1}$ para $n\ge0$ y tomamos como mapa estructural
 \[
-\pi_1(E)\cong\colim\bigl(\mathbb Z\xrightarrow{\,2\,}\mathbb Z
+\xi_n\colon\Sigma E_n=S^{n+2}\to E_{n+1}=S^{n+2}
+\]
+ un mapa punteado de grado $2$. Entonces
+\[
+\pi_1(E)\cong\varinjlim\bigl(\mathbb Z\xrightarrow{\,2\,}\mathbb Z
 \xrightarrow{\,2\,}\cdots\bigr)\cong\mathbb Z[1/2],
 \]
 identificando el entero $b$ del nivel $n$ con $b/2^n$.
 
 Sea $P=\prod_{i\ge1}E$. Como $P_n=\prod_{i\ge1}S^{n+1}$, los grupos inestables y sus mapas de estabilización dan
 \[
-\pi_1(P)\cong\colim\left(
+\pi_1(P)\cong\varinjlim\left(
 \prod_{i\ge1}\mathbb Z\xrightarrow{\,2\,}
 \prod_{i\ge1}\mathbb Z\xrightarrow{\,2\,}\cdots\right)
 \cong\left(\prod_{i\ge1}\mathbb Z\right)[1/2].
@@ -343,9 +347,13 @@ Para $n\ge1$, su grupo $\pi_n$ es $\mathbb Z^{n+1}$ y el mapa de estabilización
 La nueva coordenada es cero porque el factor $j=n+1$ todavía era trivial en el nivel anterior. En consecuencia,
 \[
 \pi_0\left(\prod_{j\ge0}X^{(j)}\right)
-\cong\colim_n\mathbb Z^{n+1}\cong\bigoplus_{j\ge0}\mathbb Z.
+\cong\varinjlim\nolimits_n\mathbb Z^{n+1}\cong\bigoplus_{j\ge0}\mathbb Z.
 \]
-Por otra parte, para $\prod_{j\ge0}\Sph$ todos los factores están presentes en cada nivel, y los mapas $\pi_n(S^n)\to\pi_{n+1}(S^{n+1})$ son la identidad. Así,
+Por otra parte, para $\prod_{j\ge0}\Sph$ todos los factores están presentes en cada nivel, y los mapas
+\[
+\pi_n(S^n)\to\pi_{n+1}(S^{n+1})
+\]
+son identidades. Por tanto, el grupo estable resulta ser
 \[
 \pi_0\left(\prod_{j\ge0}\Sph\right)\cong\prod_{j\ge0}\mathbb Z.
 \]

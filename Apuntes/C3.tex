@@ -10,7 +10,7 @@ En la clase anterior se estableció que la categoría de Spanier--Whitehead $\SW
 
 No existe una función punteada $S^0\to S^0$ de grado dos: una función punteada entre dos copias de $S^0$ es necesariamente la función constante o la identidad, y por tanto tiene grado $0$ o $1$. En la categoría estable, en cambio, tenemos
 \[
-\set*{S^0_0,S^0_0}=\varinjlim_d[S^d,S^d]_*\cong\mathbb Z,
+\set*{S^0_0,S^0_0}=\varinjlim\nolimits_d[S^d,S^d]_*\cong\mathbb Z,
 \]
 ya que, para $d\geq1$, el grado identifica $[S^d,S^d]_*$ con $\mathbb Z$, y la suspensión preserva el grado. El morfismo $2\colon S^0_0\to S^0_0$ es la clase correspondiente al entero $2$, representada por $z\mapsto z^2\colon S^1\to S^1$, como se indica en la pizarra; por la aditividad, también es $2\id_{S^0_0}$.
 
@@ -67,7 +67,7 @@ Aplicando $\set*{C,-}$ resulta (por lo visto la clase anterior) una sucesión ex
 \set*{C,\mathbb{RP}^2_{-1}} \arrow[r] & \set*{C,S^1_0}.
 \end{tikzcd}
 \]
-Por la propiedad universal supuesta, $\set*{C,S^0_0}\cong{}_2\mathbb Z=0$ y $\set*{C,S^1_0}\cong{}_2\pi_0^s(S^1)=0$. La última igualdad se sigue de que $\pi_0^s(S^1)=\varinjlim_r\pi_r(S^{r+1})=0$. Por exactitud, $\set*{C,\mathbb{RP}^2_{-1}}=0$.
+Por la propiedad universal supuesta, $\set*{C,S^0_0}\cong{}_2\mathbb Z=0$ y $\set*{C,S^1_0}\cong{}_2\pi_0^s(S^1)=0$. La última igualdad se sigue de que $\pi_0^s(S^1)=\varinjlim\nolimits_r\pi_r(S^{r+1})=0$. Por exactitud, $\set*{C,\mathbb{RP}^2_{-1}}=0$.
 
 Por otra parte, la suspensión es una autoequivalencia y, por tanto, preserva la propiedad universal de los conúcleos. Esto garantiza que $\Sigma C$ es un \emph{conúcleo} de $2\colon S^1_0\to S^1_0$. En consecuencia, repitiendo el argumento del inicio de la sección (el isomorfismo izquierdo se sigue de que $\Sigma$ es equivalencia):
 \[
@@ -183,9 +183,9 @@ cuyas filas son triángulos distinguidos, existe $w\colon Z\to Z'$ tal que $(\va
 \item (\emph{Axioma del octaedro}.) Sean $f\colon X\to Y$ y $g\colon Y\to Z$ y fijemos triángulos distinguidos para $f$, $gf$ y $g$. Usamos $Z'$, $Y'$ y $X'$ para sus respectivos terceros objetos. Existen $h\colon Z'\to Y'$ y $k\colon Y'\to X'$ que completan el diagrama
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
-X \arrow[r,"f"] \arrow[d,equal] & Y \arrow[r,"p_1"] \arrow[d,"g"'] & Z' \arrow[r,"d_1"] \arrow[d,red,"h"] & \Sigma X \arrow[d,equal]\\
-X \arrow[r,"gf"'] & Z \arrow[r,"p_2"'] \arrow[d,"p_3"'] & Y' \arrow[r,"d_2"'] \arrow[d,red,"k"] & \Sigma X\\
-& X' \arrow[d,"d_3"'] & X' \arrow[d,red,"{(\Sigma p_1)d_3}"] &\\
+X \arrow[r,"f"] \arrow[d,equal] & Y \arrow[r,"p_1"] \arrow[d,"g"'] & Z' \arrow[r,"d_1"] \arrow[d,rojoCIMAT,"h"] & \Sigma X \arrow[d,equal]\\
+X \arrow[r,"gf"'] & Z \arrow[r,"p_2"'] \arrow[d,"p_3"'] & Y' \arrow[r,"d_2"'] \arrow[d,rojoCIMAT,"k"] & \Sigma X\\
+& X' \arrow[d,"d_3"'] & X' \arrow[d,rojoCIMAT,"{(\Sigma p_1)d_3}"] &\\
 & \Sigma Y & \Sigma Z' &
 \end{tikzcd}
 \]
@@ -290,16 +290,16 @@ La consecuencia más importante de la definición es que los triángulos disting
 \begin{prop}\label{prop:exacta}
 Sea $X\xrightarrow{f}Y\xrightarrow{g}Z\xrightarrow{h}\Sigma X$ un triángulo distinguido y sea $A\in\mathcal C$. Al aplicar $\hom_{\mathcal C}(A,-)$ y $\hom_{\mathcal C}(-,A)$ a su prolongación se obtienen sucesiones exactas:
 \[
-\cdots\longrightarrow{}\hom_{\mathcal C}(A,\Sigma^{-1}Z)\longrightarrow
-\hom_{\mathcal C}(A,X)\xrightarrow{\ f_*\ }\hom_{\mathcal C}(A,Y)
-\xrightarrow{\ g_*\ }\hom_{\mathcal C}(A,Z)\xrightarrow{\ h_*}\hom_{\mathcal C}(A,\Sigma X)\longrightarrow\cdots
+\cdots\to{}\hom_{\mathcal C}(A,\Sigma^{-1}Z)\to
+\hom_{\mathcal C}(A,X)\xrightarrow{f_*}\hom_{\mathcal C}(A,Y)
+\xrightarrow{g_*}\hom_{\mathcal C}(A,Z)\xrightarrow{h_*}\hom_{\mathcal C}(A,\Sigma X)\to\cdots
 \]
 y
 \[
-\cdots\longleftarrow\hom_{\mathcal C}(\Sigma^{-1}Z,A)\longleftarrow
-\hom_{\mathcal C}(X,A)\xleftarrow{\ f^*\ }\hom_{\mathcal C}(Y,A)
-\xleftarrow{\ g^*\ }\hom_{\mathcal C}(Z,A)
-\xleftarrow{\ h^*\ }\hom_{\mathcal C}(\Sigma X,A)\longleftarrow\cdots
+\cdots\leftarrow\hom_{\mathcal C}(\Sigma^{-1}Z,A)\leftarrow
+\hom_{\mathcal C}(X,A)\xleftarrow{f^*}\hom_{\mathcal C}(Y,A)
+\xleftarrow{g^*}\hom_{\mathcal C}(Z,A)
+\xleftarrow{h^*}\hom_{\mathcal C}(\Sigma X,A)\leftarrow\cdots
 \]
 \end{prop}
 \begin{proof}
@@ -528,7 +528,11 @@ Su primer morfismo es $f$, como se quería.
 Completar la demostración anterior cuando $n<m$.
 \end{ejer}
 \begin{sol}
-Ahora usamos $Y_m\cong(\Sigma^{m-n}Y)_n$ y representamos $f$ por $g\colon\Sigma^{n+k}X\to\Sigma^{n+k}(\Sigma^{m-n}Y)=\Sigma^{m+k}Y$, con $k$ suficientemente grande. A partir del triángulo de cono de $g$ en índice cero, mediante las rotaciones e identificaciones anteriores, obtenemos $X_n\xrightarrow{f}Y_m\to(C_g)_{-k}\to X_{n+1}$. Por tanto, la diferencia entre los casos solo afecta a la identificación inicial; la construcción mediante representantes funciona para cualesquiera $n,m\in\mathbb Z$.
+Ahora usamos $Y_m\cong(\Sigma^{m-n}Y)_n$ y representamos $f$ por
+\[
+g\colon\Sigma^{n+k}X\to\Sigma^{n+k}(\Sigma^{m-n}Y)=\Sigma^{m+k}Y,
+\]
+ con $k$ suficientemente grande. A partir del triángulo de cono de $g$ en índice cero, mediante las rotaciones e identificaciones anteriores, obtenemos $X_n\xrightarrow{f}Y_m\to(C_g)_{-k}\to X_{n+1}$. Por tanto, la diferencia entre los casos solo afecta a la identificación inicial; la construcción mediante representantes funciona para cualesquiera $n,m\in\mathbb Z$.
 \end{sol}
 
 \begin{ejem}

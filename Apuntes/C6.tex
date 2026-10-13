@@ -135,21 +135,21 @@ Se debe comprobar que estos morfismos satisfacen las dos identidades de zigzag. 
 % P03, derecha. Se separan las dos apariciones de Y tensor (X tensor Y).
 \[
 \begin{tikzcd}[column sep=6em,row sep=1.8em]
-Y \arrow[d,"{\lambda^{-1}}"'] \arrow[r,"{\rho^{-1}}",red]
- & Y\otimes1 \arrow[d,"{1\otimes\mathrm{coev}}",red]\\
+Y \arrow[d,"{\lambda^{-1}}"'] \arrow[r,"{\rho^{-1}}",rojoCIMAT]
+ & Y\otimes1 \arrow[d,"{1\otimes\mathrm{coev}}",rojoCIMAT]\\
 1\otimes Y \arrow[d,"{\mathrm{coev}\otimes1}"']
- \arrow[ur,"{B_{1,Y}}" description,red]
+ \arrow[ur,"{B_{1,Y}}" description,rojoCIMAT]
  &Y\otimes(X\otimes Y)
- \arrow[dddd,"{\alpha^{-1}}",red]\\
+ \arrow[dddd,"{\alpha^{-1}}",rojoCIMAT]\\
 (X\otimes Y)\otimes Y \arrow[d,"{B_{X,Y}\otimes1}"']
- \arrow[ur,"{B_{X\otimes Y,Y}}" description,red]&\\
+ \arrow[ur,"{B_{X\otimes Y,Y}}" description,rojoCIMAT]&\\
 (Y\otimes X)\otimes Y \arrow[d,"{\alpha}"']&\\
 Y\otimes(X\otimes Y) \arrow[d,"{1\otimes B_{X,Y}}"']&\\
 Y\otimes(Y\otimes X) \arrow[d,"{1\otimes\mathrm{ev}}"']
- \arrow[r,"{B_{Y,Y\otimes X}}",red]
- &(Y\otimes X)\otimes Y \arrow[d,"{\mathrm{ev}\otimes1}",red]\\
-Y\otimes1 \arrow[d,"{\rho}"'] \arrow[r,"{B_{Y,1}}",red]
- &1\otimes Y \arrow[dl,"{\lambda}",red]\\
+ \arrow[r,"{B_{Y,Y\otimes X}}",rojoCIMAT]
+ &(Y\otimes X)\otimes Y \arrow[d,"{\mathrm{ev}\otimes1}",rojoCIMAT]\\
+Y\otimes1 \arrow[d,"{\rho}"'] \arrow[r,"{B_{Y,1}}",rojoCIMAT]
+ &1\otimes Y \arrow[dl,"{\lambda}",rojoCIMAT]\\
 Y&
 \end{tikzcd}
 \]
@@ -960,9 +960,11 @@ Las columnas son exactas por la \myref{prop:exacta}, pues $-\wedge X$ preserva l
 Para pegar una celda se toma $D=S^m$ y $C$ su cono de adjunción a $B$. Las aplicaciones $\theta_D$ y $\theta_{\Sigma D}$ son isomorfismos por hipótesis, y las de $B$ y $\Sigma B$ por inducción. El lema de los cinco da que $\theta_C$ es un isomorfismo. El caso inicial de dimensión cero es una cuña finita de $S^0$, para la cual se usa la aditividad; el objeto cero tampoco presenta dificultad. Así se obtiene el resultado para todo CW-complejo finito.
 
 \emph{Desplazamientos.}
-Para pasar a todos los objetos de $\SW$. Definamos un emparejamiento
-$\mathrm{ev}_n\colon\Sigma^nX^*\wedge\Sigma^{-n}X\to S$
-mediante
+Para cubrir todos los objetos de $\SW$, definimos el emparejamiento
+\[
+\mathrm{ev}_n\colon\Sigma^nX^*\wedge\Sigma^{-n}X\to S
+\]
+mediante la composición que muestra el siguiente diagrama:
 % P19, derecha.
 \[
 \begin{tikzcd}[column sep=large,row sep=large]

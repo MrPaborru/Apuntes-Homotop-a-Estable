@@ -63,7 +63,13 @@
 \usepackage{fancyhdr} % Encabezados y pies de página
 \usepackage{eucal} % Mejorar fuente \mathcal
 \usepackage{mathtools} % Herramientas para subíndices y mejoras de símbolos
+% Preferencia editorial: las fórmulas en línea se mantienen completas.
+\AtBeginDocument{\everymath\expandafter{\the\everymath\binoppenalty=10000\relpenalty=10000}}
 \usepackage{etoolbox}
+\makeatletter
+% Las URL necesitan sus propios puntos de corte, aunque internamente usen modo matemático.
+\AtBeginDocument{\pretocmd{\Url@FormatString}{\everymath{}}{}{}}
+\makeatother
 \usepackage{pgfplots} % Graficar funciones
     \pgfplotsset{compat=1.18}
     \usepgfplotslibrary{groupplots}
@@ -88,7 +94,7 @@
 \newcommand{\Alumno}{Pablo Jair Aranda Pérez}
     \newcommand{\abvAlumno}{Pablo J. Aranda P.}
 \newcommand{\Correo}{pablo\_p1@live.com}
-\newcommand{\NumClases}{14}
+\newcommand{\NumClases}{15}
 
 
 

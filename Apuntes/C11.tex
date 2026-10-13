@@ -134,9 +134,9 @@ en la que cada paso adjunta una familia de celdas estables. Podemos organizar la
 & X^{(r)} \arrow[ul,phantom,"\ulcorner",very near start].
 \end{tikzcd}
 \]
-Aquí $m_r$ es el nivel en que se generan las nuevas celdas, $m_r+k_i$ es su dimensión como celdas de espacios y $k_i$ es su dimensión estable; se supone $m_r+k_i\ge0$. El índice $r$ cuenta las etapas de adjunción, no los niveles del espectro, y un mismo nivel puede aparecer en varias etapas. Además, que el proceso sea numerable no significa que cada conjunto $J_r$ deba ser numerable. El espectro final es $X\cong\operatorname*{colim}_{r\ge-1}X^{(r)}$.
+Aquí $m_r$ es el nivel en que se generan las nuevas celdas, $m_r+k_i$ es su dimensión como celdas de espacios y $k_i$ es su dimensión estable; se supone $m_r+k_i\ge0$. El índice $r$ cuenta las etapas de adjunción, no los niveles del espectro, y un mismo nivel puede aparecer en varias etapas. Además, que el proceso sea numerable no significa que cada conjunto $J_r$ deba ser numerable. El espectro final es $X\cong\varinjlim\nolimits_{r\ge-1}X^{(r)}$.
 
-Esta descripción traduce la construcción nivel a nivel usando el lema de adjunción y el cálculo de colímites de espectros. La reorganización de las etapas se mencionó en clase sin desarrollar sus detalles. La versión relativa se obtiene empezando con $X^{(-1)}=A$: el morfismo canónico $A\to\operatorname*{colim}_rX^{(r)}$ es un espectro celular relativo. En la versión CW, las construcciones relativas en cada nivel se realizan como CW complejos relativos.
+Esta descripción traduce la construcción nivel a nivel usando el lema de adjunción y el cálculo de colímites de espectros. La reorganización de las etapas se mencionó en clase sin desarrollar sus detalles. La versión relativa se obtiene empezando con $X^{(-1)}=A$: el morfismo canónico $A\to\varinjlim\nolimits_rX^{(r)}$ es un espectro celular relativo. En la versión CW, las construcciones relativas en cada nivel se realizan como CW complejos relativos.
 
 % P08--P10. Factorización: se reproducen los diagramas de la inducción.
 \subsection{Aproximación celular}
@@ -293,7 +293,11 @@ Luego $i_*$ es sobreyectiva.
 
 \emph{Inyectividad.} Sea $[g]\in\pi_k(A)$, representada por $g\colon S^{k+n}\to A_n$, y supongamos que $i_*[g]=0$. La igualdad con cero en el colímite significa que existe $m\ge0$ y una homotopía punteada $H\colon I_+\wedge S^{k+n+m}\to X_{n+m}$ desde $\xi^X_{n,m}\circ\Sigma^m(i_n\circ g)$ hasta la aplicación constante $c$. El dominio de $H$ es compacto, así que su imagen está contenida en un subcomplejo finito de $X_{n+m}$. Aplicando el mismo argumento de cofinalidad, existe $r\ge0$ tal que, después de suspender $r$ veces y aplicar los morfismos estructurales, toda esa imagen queda en $A_{n+m+r}$.
 
-Suspendemos la homotopía dejando fija su coordenada en $I$; mediante la identificación $\Sigma^r(I_+\wedge S^{k+n+m})\cong I_+\wedge S^{k+n+m+r}$, obtenemos
+Suspendemos la homotopía dejando fija su coordenada en $I$; mediante la identificación
+\[
+\Sigma^r(I_+\wedge S^{k+n+m})\cong I_+\wedge S^{k+n+m+r},
+\]
+La homotopía suspendida queda expresada como
 \[
 H'=\xi^X_{n+m,r}\circ\Sigma^rH
 \colon I_+\wedge S^{k+n+m+r}\longrightarrow A_{n+m+r}.
@@ -359,7 +363,7 @@ Estas componentes respetan los morfismos estructurales: a partir del nivel $2$ c
 & \mathbb S.
 \end{tikzcd}
 \]
-La clase de $h$, seguida de sus suspensiones, representa el elemento no nulo de $\pi_1^S=\operatorname*{colim}_n\pi_{n+1}(S^n)$. El sistema se estabiliza a partir de $\pi_4(S^3)$: el paso $\pi_3(S^2)\to\pi_4(S^3)$ todavía no es un isomorfismo. Precisamente ese paso aparecerá en el siguiente ejemplo.
+La clase de $h$, seguida de sus suspensiones, representa el elemento no nulo de $\pi_1^S=\varinjlim\nolimits_n\pi_{n+1}(S^n)$. El sistema se estabiliza a partir de $\pi_4(S^3)$: el paso $\pi_3(S^2)\to\pi_4(S^3)$ todavía no es un isomorfismo. Precisamente ese paso aparecerá en el siguiente ejemplo.
 
 % P21. Homotopías e inclusiones de los extremos del cilindro.
 \subsection{Homotopías eventualmente definidas}
@@ -386,7 +390,11 @@ La homotopía solo tiene que existir sobre algún subespectro cofinal común, qu
 
 % P21--P24. Ejemplo h frente a 3h. En P23 se define H_1=F por separado;
 % la fórmula H_n=Sigma^{n-1}F unifica todos los niveles n>=1.
-\emph{Ejemplo: la fibración de Hopf y su triple.} Consideremos los morfismos estrictos $f,g\colon\Sigma^\infty S^3\to\Sigma^\infty S^2$ dados por $f_n=\Sigma^nh$ y $g_n=\Sigma^n(3h)$. Aquí $3h\colon S^3\to S^2$ es una aplicación que representa $[h]+[h]+[h]$ en $\pi_3(S^2)$; puede elegirse mediante la suma habitual de aplicaciones de una esfera, usando el pinzamiento $S^3\to S^3\vee S^3\vee S^3$. No se trata de una suma puntual de valores en $S^2$.
+\emph{Ejemplo: la fibración de Hopf y su triple.} Consideremos los morfismos estrictos
+\[
+f,g\colon\Sigma^\infty S^3\to\Sigma^\infty S^2
+\]
+ dados por $f_n=\Sigma^nh$ y $g_n=\Sigma^n(3h)$. Aquí $3h\colon S^3\to S^2$ es una aplicación que representa $[h]+[h]+[h]$ en $\pi_3(S^2)$; puede elegirse mediante la suma habitual de aplicaciones de una esfera, usando el pinzamiento $S^3\to S^3\vee S^3\vee S^3$. No se trata de una suma puntual de valores en $S^2$.
 
 Recordemos el comienzo del sistema de suspensión:
 \[

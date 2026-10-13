@@ -114,9 +114,9 @@ La misma corrección debe alternarse de una fila a la siguiente. En el cuadrado 
 
 La sucesión $(p_n,q_n)$ determina un camino cofinal en la malla: dada cualquier pareja $(p,q)$, existe $n$ tal que $p\le p_n$ y $q\le q_n$, pues ambos índices tienden a infinito. Como $p_n+q_n=n$, obtenemos
 \[
-\operatorname*{colim}_{(p,q)\in\mathbb N^2}
+\varinjlim_{(p,q)\in\mathbb N^2}
 \pi_{k+p+q}(X_p\wedge Y_q)
-\cong \operatorname*{colim}_n\pi_{k+n}(X_{p_n}\wedge Y_{q_n})
+\cong \varinjlim\nolimits_n\pi_{k+n}(X_{p_n}\wedge Y_{q_n})
 =\pi_k(X\wedge Y).
 \]
 Por tanto, todas las elecciones del camino dan los mismos grupos de homotopía. Esto no demuestra por sí solo la equivalencia estable entre las construcciones: todavía haría falta un morfismo, o un zigzag de morfismos, que indujera los isomorfismos. Esa es la parte adicional del resultado de Adams mencionado antes.
@@ -150,8 +150,8 @@ A_{p,q} \arrow[u,"V_{p,q}"] \arrow[r,"H_{p,q}"']
 \]
 En efecto, $D_{p,q+1}V_{p,q}=H_{p,q}$ porque las aplicaciones que las inducen difieren por $1\wedge\beta_q\simeq1$; de igual manera, $V_{p+1,q}D_{p,q+1}=H_{p,q+1}$ usando $\beta_{q+1}\simeq1$. Estas identidades también hacen compatibles las diagonales con las transiciones horizontales. Al tomar colímites en $p$, las verticales y las diagonales inducen aplicaciones inversas: sus composiciones son transiciones horizontales, que representan la identidad en el colímite. Por ello todos los colímites de las filas se identifican con el de la fila $q=0$, que es $\pi_k(Y)$, y
 \[
-\pi_k(Z)\cong\operatorname*{colim}_{q}\operatorname*{colim}_{p}A_{p,q}
-\cong\operatorname*{colim}_{p}A_{p,0}=\pi_k(Y).
+\pi_k(Z)\cong\varinjlim\nolimits_{q}\varinjlim\nolimits_{p}A_{p,q}
+\cong\varinjlim\nolimits_{p}A_{p,0}=\pi_k(Y).
 \]
 El primer isomorfismo es el de cofinalidad probado antes. El segundo está inducido por aplicar sucesivamente las diagonales; sobre $A_{p,q}$, su composición es precisamente $(\sigma_{p,q})_*$. Por tanto, el isomorfismo obtenido es el inducido por $(a_n)$. Como $a'_n\simeq a_n r_n$ y $r$ es una equivalencia estable, $a'$ también induce isomorfismos en todos los grupos estables. El zigzag anterior demuestra $Y\wedge\mathbb S\simeq_sY$.
 \end{sol}
@@ -281,7 +281,7 @@ La aplicación $\lambda_n$ es una equivalencia débil. Se utiliza aquí la propi
 \[
 \begin{aligned}
 \pi_i\!\left(\operatorname*{hocolim}_m\Omega^{m+1}X_{n+m+1}\right)
-&\cong\operatorname*{colim}_m\pi_{i+1}(\Omega^mX_{n+m+1})\\
+&\cong\varinjlim\nolimits_m\pi_{i+1}(\Omega^mX_{n+m+1})\\
 &\cong\pi_{i+1}((RX)_{n+1})
 \cong\pi_i(\Omega(RX)_{n+1}).
 \end{aligned}
@@ -418,10 +418,10 @@ Por la descripción de los grupos de homotopía del telescopio y la conmutativid
 \[
 \begin{aligned}
 \pi_k(RX)
-&=\operatorname*{colim}_n\pi_{k+n}((RX)_n)\\
-&\cong\operatorname*{colim}_n\operatorname*{colim}_m
+&=\varinjlim\nolimits_n\pi_{k+n}((RX)_n)\\
+&\cong\varinjlim\nolimits_n\varinjlim\nolimits_m
 \pi_{k+n}(\Omega^mX_{n+m})\\
-&\cong\operatorname*{colim}_m\operatorname*{colim}_n
+&\cong\varinjlim\nolimits_m\varinjlim\nolimits_n
 \pi_{k+n}(\Omega^mX_{n+m}).
 \end{aligned}
 \]
@@ -443,9 +443,9 @@ Ahora tomaremos primero los colímites verticales. La primera columna ya da $\pi
 \]
 El triángulo superior izquierdo conmuta por la definición de la flecha vertical. El inferior derecho conmuta por la naturalidad de la adjunción que acabamos de comprobar. Las horizontales inducen, por tanto, un morfismo
 \[
-\operatorname*{colim}_n\pi_{k+n}(\Omega^mX_{n+m})
+\varinjlim\nolimits_n\pi_{k+n}(\Omega^mX_{n+m})
 \longrightarrow
-\operatorname*{colim}_n\pi_{k+n}(\Omega^{m+1}X_{n+m+1}),
+\varinjlim\nolimits_n\pi_{k+n}(\Omega^{m+1}X_{n+m+1}),
 \]
 mientras que las diagonales inducen otro en sentido contrario, usando que eliminar el primer término de un sistema secuencial no cambia su colímite. Para explicitar su compatibilidad con las transiciones verticales, escribamos aquí $A_{n,m}=\pi_{k+n}(\Omega^mX_{n+m})$, y denotemos por $a_{n,m}$, $v_{n,m}$ y $d_{n,m}$ las flechas horizontal, vertical y diagonal, respectivamente. Los dos triángulos anteriores afirman que $d_{n,m}a_{n,m}=v_{n,m}$ y $a_{n+1,m}d_{n,m}=v_{n,m+1}$. Al pegarlos se obtiene el diagrama auxiliar
 \[
@@ -461,11 +461,11 @@ Cada triángulo conmuta por una de esas identidades. Por tanto, el contorno exte
 Las composiciones de los dos morfismos inducidos son las identidades: horizontal seguida de diagonal es una transición vertical de la primera columna, y diagonal seguida de horizontal es una transición vertical de la segunda. En un colímite, avanzar un paso mediante una transición representa el mismo elemento. Por ello cada flecha horizontal entre colímites de columnas es un isomorfismo. Identificándolos sucesivamente con el de la primera columna, el sistema horizontal se vuelve constante y obtenemos
 \[
 \begin{aligned}
-\operatorname*{colim}_m\operatorname*{colim}_n
+\varinjlim\nolimits_m\varinjlim\nolimits_n
 \pi_{k+n}(\Omega^mX_{n+m})
-&\cong\operatorname*{colim}_m
-\left(\operatorname*{colim}_n\pi_{k+n}(X_n)\right)\\
-&\cong\operatorname*{colim}_n\pi_{k+n}(X_n)
+&\cong\varinjlim\nolimits_m
+\left(\varinjlim\nolimits_n\pi_{k+n}(X_n)\right)\\
+&\cong\varinjlim\nolimits_n\pi_{k+n}(X_n)
 =\pi_k(X).
 \end{aligned}
 \]
@@ -618,12 +618,12 @@ Al suspender, el segmento que procede del punto base se colapsa y el segmento pr
 \coordinate (S) at (0,-1.1);
 \coordinate (L) at (-1,0);
 \coordinate (R) at (1,0);
-\draw[red,very thick] (N)--(L)--(S);
+\draw[rojoCIMAT,very thick] (N)--(L)--(S);
 \draw[very thick] (N)--(R)--(S);
 \foreach \p in {N,S,L,R}{\fill (\p) circle (1.4pt);}
 \node[left=3pt] at (L) {$-1$};
 \node[right=3pt] at (R) {$1$};
-\node[red,left=8pt] at (-.5,-.55) {$1$-celda};
+\node[rojoCIMAT,left=8pt] at (-.5,-.55) {$1$-celda};
 \node[align=center,text width=3.1cm] at (3.3,0) {El lado negro se identifica con el punto base.};
 \end{tikzpicture}
 \end{center}

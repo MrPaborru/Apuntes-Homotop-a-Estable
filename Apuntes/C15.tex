@@ -1,0 +1,583 @@
+% C15 -- 12 de octubre de 2026. Fragmento del documento principal.
+% Fuentes: Screenshots C15/P01--P20.png y Transcripciones/C15.txt.
+% La transcripción unificada conserva las dos fuentes de Whisper originales.
+% Descanso estimado: 01:05:21.040--01:15:21.040; segunda parte desplazada
+% +01:15:21.040. Sus tiempos globales son aproximados.
+% El recall del telescopio se coloca primero por petición del usuario.
+% P07: la justificación mediante inyectividad pura no es correcta.
+% P10--P11: la fórmula de mapeos desplazados necesita simetrías adicionales;
+% no se presenta como una construcción estricta válida para espectros secuenciales.
+% P19--P20: la identificación explícita nivel a nivel queda para la clase siguiente.
+
+Retomaremos el ejemplo de la clase anterior que pretendía mostrar que los grupos de homotopía estables no conmutan con productos infinitos. Explicaremos el error del telescopio y la corrección del profesor. Después estudiaremos la localización de productos de categorías y las operaciones derivadas con espectros. Finalmente construiremos colímites homotópicos usando diagramas cofibrantes y reemplazos simpliciales.
+
+Conservamos los reemplazos funtoriales $q_X\colon QX\to X$ y $h_X\colon X\to RX$, y escribimos $\gamma$ para la localización. Para distinguir las dos estructuras de modelos sobre espectros secuenciales, escribiremos $\Sp^{\mathbb N}_{\ell}$ para la estructura nivel a nivel y $\Sp^{\mathbb N}_s$ para la estable. En una fórmula de funtores derivados se entiende que el resultado se considera en la categoría homotópica correspondiente.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Correcciones de la clase anterior}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Recordatorio del ejemplo erróneo: el telescopio}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% C14/P11--P14; C15/P05--P07, 00:25:00--00:39:41.
+En el \myref{ejem:c14-producto-denominadores} registramos que el profesor buscaba obtener dos grupos distintos al comparar $\pi_1(\prod_iX)$ con $\prod_i\pi_1(X)$. La construcción que propuso originalmente era
+\[
+\begin{aligned}
+T&=\operatorname{hocolim}\bigl(\Sigma^\infty S^1
+\xrightarrow{\,2\,}\Sigma^\infty S^1
+\xrightarrow{\,2\,}\cdots\bigr),\\
+T_n&=\operatorname{hocolim}\bigl(S^{n+1}\xrightarrow{\,2\,}S^{n+1}\xrightarrow{\,2\,}\cdots\bigr).
+\end{aligned}
+\]
+Aquí el telescopio se construye en cada nivel. Lo que se pretendía era que, en el producto, aparecieran únicamente sucesiones de fracciones con denominador común, es decir, el grupo $(\prod_i\mathbb Z)[1/2]$.
+
+Veamos por qué este cálculo no corresponde a $T$. En un telescopio, un mapa desde una esfera y una homotopía entre tales mapas tienen imagen en una parte finita, que se retrae sobre su última etapa. Por ello, para cada $n\ge0$,
+\[
+\pi_{n+1}(T_n)\cong
+\varinjlim\nolimits_r\bigl(\mathbb Z\xrightarrow{\,2\,}\mathbb Z\xrightarrow{\,2\,}\cdots\bigr)
+\cong\mathbb Z[1/2].
+\]
+El índice $r$ cuenta las etapas del telescopio, mientras que $n$ es el nivel del espectro. La suspensión y los mapas estructurales de $T$ conservan estas fracciones: bajo las identificaciones anteriores, $\pi_{n+1}(T_n)\to\pi_{n+2}(T_{n+1})$ es la identidad. Si $P_T=\prod_{i\ge1}T$, obtenemos
+\[
+\begin{aligned}
+\pi_1(P_T)
+&=\varinjlim\nolimits_n\pi_{n+1}\left(\prod_{i\ge1}T_n\right)
+\cong\varinjlim\nolimits_n\prod_{i\ge1}\pi_{n+1}(T_n)\\
+&\cong\varinjlim\nolimits_n\prod_{i\ge1}\mathbb Z[1/2]
+\cong\prod_{i\ge1}\mathbb Z[1/2].
+\end{aligned}
+\]
+Así, este telescopio no da el contraejemplo. El paso incorrecto era intercambiar el producto infinito con el colímite sobre $r$, sustituyendo $\prod_i\varinjlim\nolimits_r\mathbb Z$ por $\varinjlim\nolimits_r\prod_i\mathbb Z$. En un mapa hacia un producto, cada coordenada puede alcanzar una etapa distinta del telescopio; la compacidad no obliga a que estas etapas tengan una cota común. Por ejemplo, la sucesión $(1,1/2,1/4,\ldots)$ se realiza coordenada a coordenada en $\pi_{n+1}(\prod_iT_n)$, aunque sus denominadores no estén acotados.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La corrección: multiplicar por dos al estabilizar}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+La corrección del profesor consiste en colocar los grados $2$ en los mapas estructurales del espectro, en lugar de formar un telescopio dentro de cada nivel. Usamos la letra $E$, como en la clase~14, para no confundirlo con $T$.
+
+\begin{ejem}
+Definimos $E_n=S^{n+1}$ y elegimos como mapa estructural $\xi_n\colon\Sigma E_n=S^{n+2}\to E_{n+1}$ un mapa punteado de grado $2$. Entonces
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\pi_{n+1}(E_n) \arrow[r,"\Sigma","\cong"'] \arrow[dr,"2"']
+& \pi_{n+2}(\Sigma E_n) \arrow[d,"(\xi_n)_*"]\\
+& \pi_{n+2}(E_{n+1}),
+\end{tikzcd}
+\qquad
+\pi_1(E)\cong\varinjlim\nolimits_n\bigl(\mathbb Z\xrightarrow{\,2\,}\mathbb Z\xrightarrow{\,2\,}\cdots\bigr)
+\cong\mathbb Z[1/2].
+\]
+El entero $a$ del nivel $n$ representa $a/2^n$ en el colímite.
+
+Sea $P=\prod_{i\ge1}E$. Su nivel $n$ es $\prod_iS^{n+1}$. Para calcular su estabilización conviene usar los adjuntos estructurales $\widetilde\xi_n\colon E_n\to\Omega E_{n+1}$. El triángulo
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\displaystyle\prod_i\pi_{n+1}(E_n)
+\arrow[rr,"(2)_i"] \arrow[dr,"((\widetilde\xi_n)_*)_i"']
+&& \displaystyle\prod_i\pi_{n+2}(E_{n+1})\\
+& \displaystyle\prod_i\pi_{n+1}(\Omega E_{n+1})
+\arrow[ur,"\cong"'] &
+\end{tikzcd}
+\]
+identifica el mapa de estabilización con la multiplicación por $2$ en todas las coordenadas. Antes de identificar los grupos con productos, el mismo argumento tiene la forma dibujada en la pizarra:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\pi_{n+1}(\prod_iE_n) \arrow[dr,"(\prod_i\widetilde\xi_n)_*"']
+&& \pi_{n+2}(\prod_iE_{n+1})\\
+& \pi_{n+1}(\prod_i\Omega E_{n+1})\cong\pi_{n+1}(\Omega\prod_iE_{n+1})
+\arrow[ur,"\mathrm{adj}"'] &
+\end{tikzcd}
+\]
+Aquí usamos que $\Omega$ y los grupos de homotopía de espacios preservan productos. Por tanto,
+\[
+\pi_1(P)\cong\varinjlim\nolimits_n\left(\prod_i\mathbb Z\xrightarrow{\,2\,}\prod_i\mathbb Z\xrightarrow{\,2\,}\cdots\right)
+\cong\left(\prod_i\mathbb Z\right)[1/2].
+\]
+Esta vez el colímite que introduce los denominadores es precisamente el colímite de estabilización: todos los factores están en el mismo nivel $n$. Las proyecciones $\operatorname{pr}_i\colon P\to E$ inducen
+\[
+\begin{aligned}
+\pi_1(P)&\longrightarrow\prod_i\pi_1(E),\\
+\left(\prod_i\mathbb Z\right)[1/2]&\longrightarrow\prod_i\mathbb Z[1/2],
+&\frac{(a_i)_i}{2^n}\longmapsto\left(\frac{a_i}{2^n}\right)_i.
+\end{aligned}
+\]
+La imagen consiste en las sucesiones $(b_i)$ con un exponente común $n$ tal que todos los $2^nb_i$ son enteros. La sucesión $(1,1/2,1/4,\ldots)$ queda fuera de la imagen, luego la comparación no es un isomorfismo.
+
+Como vimos en la clase~14, reemplazar cada copia por $RE$ da $\pi_1(\prod_iRE)\cong\prod_i\mathbb Z[1/2]$, y $\prod_ih_E$ induce la misma inclusión. Así se obtiene un producto de equivalencias estables que no es una equivalencia estable.
+\end{ejem}
+
+\begin{nota}
+En clase se afirmó además que estos dos grupos no son isomorfos abstractamente, sin desarrollar la demostración. La justificación propuesta mediante inyectividad pura necesita corregirse: $\prod_i\mathbb Z[1/2]$ no es puramente inyectivo como $\mathbb Z[1/2]$-módulo. En efecto, $\mathbb Z[1/2]$ es un sumando directo suyo y no es algebraicamente compacto: el sistema $z_r=1+7z_{r+1}$, $r\ge0$, tiene solución para cada subsistema finito, pero una solución completa obligaría a que $6z_0+1\in\bigcap_{r\ge0}7^r\mathbb Z[1/2]=0$, es decir, $z_0=-1/6\notin\mathbb Z[1/2]$. Para el contraejemplo solo usamos que la comparación canónica no es sobreyectiva; no necesitamos decidir aquí la cuestión del isomorfismo abstracto.
+\end{nota}
+
+% P08, 00:39:41--00:41:29.
+El otro ejemplo de la clase anterior permanece válido. Tomamos los espectros
+\[
+X^{(j)}=\sh^{-j}\Sigma^\infty S^j=F_jS^j.
+\]
+Los grupos de homotopía que se comparan son
+\[
+\pi_0\left(\prod_{j\ge0}X^{(j)}\right)\cong\bigoplus_{j\ge0}\mathbb Z,
+\qquad
+\prod_{j\ge0}\pi_0(X^{(j)})\cong\prod_{j\ge0}\mathbb Z.
+\]
+En cada nivel solo hay finitos factores no triviales, y la estabilización añade una coordenada cero. En este caso los grupos tampoco son isomorfos abstractamente: la suma directa es numerable y el producto no lo es.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Localización y productos de categorías}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P01--P05, 00:01:01--00:25:00.
+Hay que distinguir el producto de espectros del producto de categorías. Sea $(\mathcal C_j,W_j)_{j\in J}$ una familia de categorías con equivalencias débiles, donde $W_j$ contiene los isomorfismos y cumple dos de tres. En $\mathcal C=\prod_j\mathcal C_j$ consideramos $W=\prod_jW_j$, es decir, equivalencias coordenada a coordenada. Las proyecciones inducen siempre un funtor canónico
+\[
+\Phi\colon\Ho\left(\prod_j\mathcal C_j\right)\longrightarrow\prod_j\Ho(\mathcal C_j).
+\]
+En efecto, $\mathcal C\to\prod_j\Ho(\mathcal C_j)$, $(C_j)_j\mapsto(C_j)_j$, envía $(f_j)_j\in W$ a la familia de isomorfismos $([f_j])_j$, y factoriza por la localización. El funtor $\Phi$ envía un zigzag a sus zigzags coordenados.
+
+La dificultad para construir una inversa está en los morfismos. Un zigzag en la categoría producto tiene longitud finita y la misma forma en todas las coordenadas, mientras que una familia infinita de zigzags puede tener longitudes sin cota común. La pizarra compara, por ejemplo,
+\[
+\begin{tikzcd}[column sep=large]
+C_1 \arrow[r,"f"] & D & A \arrow[l,"w","\sim"'] &\\
+C_2 \arrow[r,"f'"] & D' & A' \arrow[l,"w'","\sim"'] \arrow[r,"g'"] & B'.
+\end{tikzcd}
+\]
+En una familia finita, las identidades permiten igualar longitudes y direcciones:
+\[
+\begin{tikzcd}[cramped,column sep=large]
+C_1 \arrow[r,"f"] & D \arrow[r,leftarrow,"w","\sim"'] & A \arrow[r,"1"] & A\\
+C_2 \arrow[r,"f'"] & D' \arrow[r,leftarrow,"w'","\sim"'] & A' \arrow[r,"g'"] & B'
+\end{tikzcd}
+\]
+se reúnen en el zigzag
+\[
+\begin{tikzcd}[cramped,column sep=large]
+(C_1,C_2) \arrow[r,"{(f,f')}"]
+& (D,D') \arrow[r,leftarrow,"{(w,w')}","\sim"']
+& (A,A') \arrow[r,"{(1,g')}"] & (A,B').
+\end{tikzcd}
+\]
+Las relaciones que identifican representantes se aplican también coordenada a coordenada, insertando identidades en las otras coordenadas. Así, $\Phi$ es un isomorfismo para productos finitos. Para productos infinitos, disponer de representantes de longitud uniformemente acotada permite reunirlos, pero también hay que controlar sus relaciones para obtener una inversa bien definida. En categorías con equivalencias débiles arbitrarias no se puede afirmar que $\Phi$ sea un isomorfismo.
+
+\begin{prop}\label{prop:c15-localizacion-productos}
+Si todas las $\mathcal C_j$ son categorías de modelos, el funtor canónico es un isomorfismo
+\[
+\Ho\left(\prod_{j\in J}\mathcal C_j\right)\cong\prod_{j\in J}\Ho(\mathcal C_j).
+\]
+\end{prop}
+\begin{proof}
+Recordemos primero la descripción de los morfismos en una categoría de modelos $\mathcal C$. Los reemplazos y las inclusiones proporcionan
+\[
+\begin{tikzcd}[column sep=normal,row sep=large]
+\Ho(\mathcal C) \arrow[r,shift left,"Q"]
+& \Ho(\mathcal C_c) \arrow[l,shift left] \arrow[r,shift left,"R"]
+& \Ho(\mathcal C_{cf}) \arrow[l,shift left] \arrow[r,shift left,"{[f]\mapsto[f]}"]
+& \mathcal C_{cf}/{\simeq} \arrow[l,shift left,"\cong"]
+\end{tikzcd}
+\]
+El reemplazo cofibrante permite escribir primero una clase $X\to Y$ como
+\[
+\begin{tikzcd}[column sep=large]
+X & QX \arrow[l,"\sim"'] \arrow[r,phantom,"\text{zigzag}" description]
+& QY \arrow[r,"\sim"] & Y.
+\end{tikzcd}
+\]
+Tomamos $R$ mediante una cofibración acíclica, de modo que $RQX$ sigue siendo cofibrante. Las biyecciones de morfismos permiten representar esa clase por
+\[
+\begin{tikzcd}[cramped,column sep=normal]
+X & QX \arrow[l,"\sim"'] \arrow[r,"\sim"] & RQX \arrow[r,"f"]
+& RQY & QY \arrow[l,"\sim"'] \arrow[r,"\sim"] & Y.
+\end{tikzcd}
+\]
+Componiendo las dos flechas hacia la derecha de la parte inicial, quedan cuatro flechas:
+\[
+\begin{tikzcd}[column sep=large]
+X & QX \arrow[l,"\sim"'] \arrow[r]
+& RQY & QY \arrow[l,"\sim"'] \arrow[r,"\sim"] & Y.
+\end{tikzcd}
+\] Más directamente, la biyección $\hom_{\Ho(\mathcal C)}(X,Y)\cong\hom_{\mathcal C}(QX,RY)/{\simeq}$ da un representante de tres flechas:
+\[
+\begin{tikzcd}[cramped,column sep=large]
+X & QX \arrow[l,"q_X","\sim"'] \arrow[r,"f"]
+& RY & Y \arrow[l,"h_Y","\sim"'].
+\end{tikzcd}
+\]
+Esta forma sirve uniformemente para todas las coordenadas.
+
+La categoría $\prod_j\mathcal C_j$ tiene la estructura de modelos coordenada a coordenada: factorizaciones y levantamientos se hacen en cada factor. Su reemplazo cofibrante de $(X_j)_j$ es $(Q_jX_j)_j$, y el fibrante de $(Y_j)_j$ es $(R_jY_j)_j$. Un mapa entre estas familias es una familia de mapas $Q_jX_j\to R_jY_j$. Del mismo modo, una homotopía es una familia de homotopías, usando cilindros coordenados. Por tanto,
+\[
+\begin{aligned}
+\hom_{\Ho(\prod_j\mathcal C_j)}((X_j)_j,(Y_j)_j)
+&\cong\hom_{\prod_j\mathcal C_j}((Q_jX_j)_j,(R_jY_j)_j)/{\simeq}\\
+&\cong\prod_j\bigl(\hom_{\mathcal C_j}(Q_jX_j,R_jY_j)/{\simeq}\bigr)\\
+&\cong\prod_j\hom_{\Ho(\mathcal C_j)}(X_j,Y_j).
+\end{aligned}
+\]
+La biyección es la inducida por $\Phi$, que además es la identidad sobre los objetos. Luego $\Phi$ es un isomorfismo de categorías.
+\end{proof}
+
+En particular, esta identificación justifica que el producto derivado de espectros de la clase~14 tenga como dominio $\prod_j\Ho(\Sp^{\mathbb N})$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Operaciones derivadas con espectros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Resumen de los funtores}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P08--P09, 00:41:29--00:46:54.
+Los siguientes funtores ya preservan equivalencias estables: $\pi_k$, $\Sigma$, $\Omega$, $\sh^d$, los coproductos y los productos finitos. También $K\wedge-$ las preserva si $K$ es un CW-complejo punteado, y $F(K,-)$ si $K$ es un CW-complejo punteado finito. Aquí $F(K,X)_n=\Map_*(K,X_n)$ es el espectro de funciones de un espacio en un espectro, definido en la clase~9. Las condiciones sobre $K$ pertenecen a estas afirmaciones y no deben omitirse.
+
+Para las operaciones que sí necesitan derivarse, el resumen de la pizarra es el siguiente. En las dos últimas filas, el smash y el espectro de funciones entre espectros se interpretan en un modelo monoidal adecuado, como se precisa más abajo.
+\[
+\begin{array}{c|c|c}
+\text{Operación} & \text{Modelo del derivado} & \text{Tipo}\\ \hline
+(-)_0 & \Omega^\infty X=(RX)_0 & \text{derecho}\\
+\Sigma^\infty K & \Sigma^\infty QK & \text{izquierdo}\\
+\displaystyle\prod_jX^{(j)} & \displaystyle\prod_jRX^{(j)} & \text{derecho}\\
+K\wedge X & QK\wedge X & \text{izquierdo}\\
+\Map_*(X,Y) & \Map_*(QX,RY) & \text{derecho}\\
+X\wedge Y & QX\wedge QY & \text{izquierdo}\\
+F(X,Y) & F(QX,RY) & \text{derecho}
+\end{array}
+\]
+En la variable contravariante de los funtores de mapeos, el reemplazo cofibrante $QX$ actúa como reemplazo fibrante en la categoría opuesta. Por eso se habla de un derivado derecho, aunque aparezcan simultáneamente $Q$ y $R$.
+
+Para $K\wedge X$ basta reemplazar el espacio: la invariancia de $QK\wedge-$ respecto de equivalencias estables permite dejar $X$ intacto. Reemplazar también $X$ produce un modelo equivalente, $QK\wedge QX\simeq QK\wedge X$; véase \cite[Ejemplo~3.4.3.4]{malkiewich}. El desarrollo de esta invariancia quedó pendiente en clase.
+
+\begin{nota}
+Habitualmente se omiten las letras $\mathrm L$ y $\mathrm R$ cuando ya se trabaja en la categoría homotópica. Por ejemplo, se escribe $\Sigma^\infty K$ o $\prod_jX^{(j)}$ para sus versiones derivadas. En el smash es más frecuente conservar $\wedge^{\mathrm L}$. Si una operación ya preserva equivalencias, derivarla da un funtor naturalmente isomorfo al original.
+\end{nota}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Espacios y espectros de mapeos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P09--P11, 00:46:54--00:58:37.
+Recordemos el espacio de morfismos de la clase~13. Antes de derivar, $\Map_*(X,Y)$ es el subespacio de $\prod_{m\ge0}\Map_*(X_m,Y_m)$ formado por las familias $(f_m)$ que hacen conmutar
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma X_m \arrow[r,"\Sigma f_m"] \arrow[d,"\xi^X_m"']
+& \Sigma Y_m \arrow[d,"\xi^Y_m"]\\
+X_{m+1} \arrow[r,"f_{m+1}"'] & Y_{m+1}.
+\end{tikzcd}
+\]
+Se toma el punto base constante y la topología de igualador en espacios compactamente generados. Su versión derivada es
+\[
+\mathrm R\Map_*(X,Y)=\Map_*(QX,RY).
+\]
+
+La idea presentada para construir un espectro de mapeos era permitir un desplazamiento fijo $n$ en el codominio. En el nivel $n$ se propuso el espacio
+\[
+A_n(X,Y)=\left\{(f_m)\in\prod_{m\ge0}\Map_*(X_m,Y_{m+n})
+\ \middle|\ \xi^Y_{m+n}\Sigma f_m=f_{m+1}\xi^X_m\text{ para todo }m\right\},
+\]
+es decir, $A_n(X,Y)=\Map_*(X,\sh^nY)$. La condición se representa por
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+\Sigma X_m \arrow[r,"\Sigma f_m"] \arrow[d,"\xi^X_m"']
+& \Sigma Y_{m+n} \arrow[d,"\xi^Y_{m+n}"]\\
+X_{m+1} \arrow[r,"f_{m+1}"'] & Y_{m+n+1}.
+\end{tikzcd}
+\]
+Las flechas propuestas para los adjuntos estructurales, coordenada a coordenada, son
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\Map_*(X_m,Y_{m+n}) \arrow[r,"(\widetilde\xi^Y_{m+n})_*"]
+& \Map_*(X_m,\Omega Y_{m+n+1}) \arrow[d,"\cong"]\\
+& \Omega\Map_*(X_m,Y_{m+n+1}).
+\end{tikzcd}
+\]
+
+\begin{nota}
+Para espectros secuenciales arbitrarios, estas flechas de espacios no inducen automáticamente una flecha $A_n(X,Y)\to\Omega A_{n+1}(X,Y)$. Al comprobar el cuadrado de compatibilidad aparecen dos coordenadas de suspensión en órdenes opuestos: aplicar primero la estructura de $X$ y después la nueva coordenada de lazo produce $\xi^Y(t\wedge\xi^Y(s\wedge f_m(x)))$, mientras que el otro recorrido produce $\xi^Y(s\wedge\xi^Y(t\wedge f_m(x)))$. La definición de espectro secuencial no exige esa igualdad; el desplazamiento de la pizarra necesita datos de simetría para definir un espectro estricto.
+
+En espectros simétricos u ortogonales, las permutaciones de las coordenadas y las condiciones de equivariancia completan esta definición; véase \cite[Definición~6.2.2.4]{malkiewich}. Para esta clase usaremos únicamente el resultado en la categoría homotópica: existe un espectro de funciones derivado $\mathrm RF(X,Y)$, representado allí por $F(QX,RY)$, que es el Hom interno para el smash derivado.
+\end{nota}
+
+La propiedad que se anunció, sin demostración en clase, es
+\[
+[Z\wedge^{\mathrm L}X,Y]_s\cong[Z,\mathrm RF(X,Y)]_s,
+\]
+natural en los tres espectros; véase \cite[Ejemplo~4.1.4.13]{malkiewich}. Este espectro de funciones difiere del espacio $\mathrm R\Map_*(X,Y)$ y de $F(K,Y)$ para un espacio punteado $K$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Colímites homotópicos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Diagramas y equivalencias objeto a objeto}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P11--P12, 00:58:37--01:05:21; continuación 01:15:21--01:18:24.
+Sea $\mathcal M$ una categoría de modelos y $K$ una categoría pequeña. Escribimos $\mathcal M^K=\operatorname{Fun}(K,\mathcal M)$. Sus objetos son diagramas con la forma de $K$ y sus morfismos son transformaciones naturales. Una transformación $\eta\colon F\Rightarrow G$ es una \emph{equivalencia objeto a objeto} si $\eta_k\colon F(k)\to G(k)$ es una equivalencia débil para todo $k\in\ob K$.
+
+La forma de $K$ comprende cuatro objetos, dos flechas paralelas y un endomorfismo:
+\[
+\begin{tikzcd}[column sep=small,row sep=small]
+& \bullet \arrow[dr] &\\
+\bullet \arrow[ur] \arrow[dr] & & \bullet \arrow[loop right]\\
+& \bullet \arrow[ur,shift left=2] \arrow[ur,shift right=2] &
+\end{tikzcd}
+\]
+Una transformación entre dos diagramas de esa forma reúne las componentes $\eta_X,\eta_Y,\eta_Z,\eta_W$:
+\[
+\begin{tikzcd}[column sep=9mm,row sep=7.5mm,
+  cells={nodes={inner sep=2pt}},
+  every label/.append style={font=\normalsize}]
+& W \arrow[loop above,looseness=10,min distance=10mm] & & & & & & W' \arrow[loop above,looseness=10,min distance=10mm] &\\
+Z \arrow[ur] & & & & & & Z' \arrow[ur] & &\\
+& & Y
+& & & & & & Y' \arrow[uul,shift left=1.8,crossing over]
+           \arrow[uul,shift right=1.8,crossing over]\\
+& X \arrow[uul] \arrow[ur] & & & & & & X' \arrow[uul] \arrow[ur] &
+% Las cuatro componentes tienen etiquetas centradas: nombre arriba, equivalencia abajo.
+\arrow[from=1-2,to=1-8,rojoCIMAT,"\eta_W"{pos=.5},"\simeq"'{pos=.5}]
+\arrow[from=2-1,to=2-7,rojoCIMAT,"\eta_Z"{pos=.5},"\simeq"'{pos=.5}]
+\arrow[from=3-3,to=3-9,rojoCIMAT,crossing over,"\eta_Y"{pos=.5},"\simeq"'{pos=.5}]
+\arrow[from=4-2,to=4-8,rojoCIMAT,"\eta_X"{pos=.5},"\simeq"'{pos=.5}]
+% Se trazan al final para pasar por delante de la componente eta_Z.
+\arrow[from=3-3,to=1-2,shift left=1.8,crossing over]
+\arrow[from=3-3,to=1-2,shift right=1.8,crossing over]
+\end{tikzcd}
+\]
+Para cada flecha $\alpha\colon k\to l$ de $K$, la condición es $G(\alpha)\eta_k=\eta_lF(\alpha)$. Esto incluye por separado las dos flechas paralelas y el endomorfismo. La equivalencia objeto a objeto exige además que todas las $\eta_X,\eta_Y,\eta_Z,\eta_W$ sean equivalencias débiles.
+
+\begin{ejem}
+El colímite ordinario no preserva estas equivalencias, ni siquiera en espacios. Consideremos el siguiente morfismo de spans; las flechas rojas punteadas son las aplicaciones canónicas a sus respectivos pushouts:
+\[
+\begin{tikzcd}[column sep={13mm,between origins},
+  row sep={14mm,between origins},
+  cells={nodes={inner sep=2pt}}]
+S^n \arrow[rr,hook] \arrow[dd,hook]
+& & D^{n+1} & & &\\
+& & & S^n \arrow[rr] \arrow[dd] & & *\\
+D^{n+1} & & S^{n+1} & & &\\
+& & & * & & *
+% Los pushouts completan las dos L de la pizarra.
+\arrow[from=1-3,to=3-3,rojoCIMAT,dotted]
+\arrow[from=3-1,to=3-3,rojoCIMAT,dotted]
+\arrow[from=2-6,to=4-6,rojoCIMAT,dotted]
+\arrow[from=4-4,to=4-6,rojoCIMAT,dotted]
+% La misma traslacion de los tres vertices da equivalencias paralelas.
+\arrow[from=1-1,to=2-4,rojoCIMAT,crossing over,"1"{pos=.5},"\simeq"'{pos=.5}]
+\arrow[from=1-3,to=2-6,rojoCIMAT,crossing over,"c"{pos=.5},"\simeq"'{pos=.5}]
+\arrow[from=3-1,to=4-4,rojoCIMAT,crossing over,"c"{pos=.5},"\simeq"'{pos=.5}]
+\end{tikzcd}
+\]
+Los dos diagramas son débilmente equivalentes objeto a objeto, pero sus pushouts son $S^{n+1}$ y $*$, respectivamente. El mapa inducido $S^{n+1}\to *$ no es una equivalencia débil. Por ello necesitamos derivar el colímite.
+\end{ejem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La estructura de modelos proyectiva}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P13--P14, 01:18:24--01:31:56.
+Supongamos que $\mathcal M$ es cofibrantemente generada por un conjunto $I$ de cofibraciones y un conjunto $J$ de cofibraciones acíclicas. Para describir los generadores de $\mathcal M^K$ necesitamos los diagramas libres.
+
+\begin{defi}
+Dado $X\in\mathcal M$ y $\alpha\in\ob K$, el \emph{diagrama libre generado por $\alpha$ sobre $X$} es $F_X^\alpha\colon K\to\mathcal M$, con
+\[
+F_X^\alpha(\beta)=\coprod_{s\in\hom_K(\alpha,\beta)}X.
+\]
+Si $r\colon\beta\to\gamma$, la flecha $r_*=F_X^\alpha(r)$ envía la copia indexada por $s$ a la copia indexada por $rs$, mediante la identidad de $X$.
+\end{defi}
+Si $\iota_s$ denota la inclusión del sumando, esta regla dice $r_*\iota_s=\iota_{rs}$. Por ello $(tr)_*\iota_s=\iota_{trs}=t_*r_*\iota_s$ y $(1_\beta)_*\iota_s=\iota_s$, lo que verifica la funtorialidad. La regla de los índices queda recogida en
+\[
+\begin{tikzcd}[cramped,column sep=large,row sep=large]
+X \arrow[r,"\iota_s"] \arrow[d,equal]
+& \displaystyle\coprod_{\hom_K(\alpha,\beta)}X \arrow[d,"r_*"]\\
+X \arrow[r,"\iota_{rs}"'] & \displaystyle\coprod_{\hom_K(\alpha,\gamma)}X.
+\end{tikzcd}
+\]
+Un morfismo $f\colon X\to Y$ induce $F_f^\alpha\colon F_X^\alpha\Rightarrow F_Y^\alpha$ aplicando $f$ a cada copia con el mismo índice. La naturalidad se sigue de que ambas composiciones envían el sumando $s$ al sumando $rs$ mediante $f$.
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\displaystyle\coprod_{\hom_K(\alpha,\beta)}X \arrow[r,"(F_f^\alpha)_\beta"] \arrow[d,"r_*"]
+& \displaystyle\coprod_{\hom_K(\alpha,\beta)}Y \arrow[d,"r_*"]\\
+\displaystyle\coprod_{\hom_K(\alpha,\gamma)}X \arrow[r,"(F_f^\alpha)_\gamma"']
+& \displaystyle\coprod_{\hom_K(\alpha,\gamma)}Y.
+\end{tikzcd}
+\]
+
+\begin{ejer}
+Ilustrar la construcción de los diagramas libres en un ejemplo sencillo de categoría pequeña.
+\end{ejer}
+\begin{sol}
+Tomemos $K=(0\to1)$, como ejemplo de un diagrama con una sola flecha, y sea $\varnothing_{\mathcal M}$ el objeto inicial. Hay un morfismo $0\to0$, uno $0\to1$, uno $1\to1$ y ninguno $1\to0$. Por tanto, los dos diagramas libres sobre $X$ son
+\[
+F_X^0=(X\xrightarrow{1_X}X),\qquad
+F_X^1=(\varnothing_{\mathcal M}\longrightarrow X).
+\]
+Para $f\colon X\to Y$, la transformación $F_f^0$ tiene componentes $(f,f)$ y $F_f^1$ tiene componentes $(1_{\varnothing_{\mathcal M}},f)$. Los cuadrados conmutan por la identidad y la propiedad del objeto inicial. En espacios punteados, $\varnothing_{\mathcal M}=*$ y los coproductos son uniones por el punto base.
+\end{sol}
+
+\begin{teo}[Estructura proyectiva]\label{teo:c15-modelos-proyectivos}
+Si $\mathcal M$ es cofibrantemente generada por $I$ y $J$, entonces $\mathcal M^K$ tiene una estructura de modelos cofibrantemente generada por
+\[
+F_I^K=\{F_f^\alpha:f\in I,\ \alpha\in\ob K\},\qquad
+F_J^K=\{F_f^\alpha:f\in J,\ \alpha\in\ob K\}.
+\]
+Las equivalencias débiles y las fibraciones son las equivalencias débiles y fibraciones objeto a objeto. Las cofibraciones son los retractos de complejos $F_I^K$-celulares relativos.
+\end{teo}
+
+El teorema se utilizó sin demostración. Para espacios, su construcción aparece en \cite[Sección~5.3]{malkiewich}. Un complejo celular relativo se obtiene formando pushouts de coproductos de los generadores y tomando composiciones transfinitas, con colímites en las etapas límite. Las cofibraciones proyectivas son cofibraciones objeto a objeto, porque sus generadores, pushouts, composiciones y retractos lo son. El recíproco no vale en general: ser cofibrante objeto a objeto no garantiza ser un diagrama cofibrante.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El colímite como funtor de Quillen izquierdo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P14--P15, 01:31:56--01:40:25.
+Sea $\underline X\colon K\to\mathcal M$ el diagrama constante en $X$, que envía todo morfismo a $1_X$. La propiedad universal del colímite da una biyección natural
+\[
+\hom_{\mathcal M}(\varinjlim\nolimits_KF,X)\cong
+\hom_{\mathcal M^K}(F,\underline X).
+\]
+Un mapa desde el colímite equivale a una familia compatible $F(k)\to X$; esa compatibilidad es exactamente la naturalidad de $F\Rightarrow\underline X$. Así, $\varinjlim\nolimits_K$ es adjunto izquierdo del funtor constante
+\[
+\operatorname{const}\colon\mathcal M\longrightarrow\mathcal M^K.
+\]
+Como las fibraciones y las equivalencias proyectivas se comprueban objeto a objeto, $\operatorname{const}$ preserva fibraciones y fibraciones acíclicas. Por la adjunción, $\varinjlim\nolimits_K$ preserva cofibraciones y cofibraciones acíclicas: es un \emph{funtor de Quillen izquierdo}.
+
+En particular, $\gamma\varinjlim\nolimits_K$ envía las cofibraciones acíclicas entre diagramas cofibrantes a isomorfismos. La \myref{prop:c14-existencia-derivados} proporciona su derivado izquierdo.
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\mathcal M^K \arrow[r,"\varinjlim\nolimits_K"] \arrow[dr,"\gamma\varinjlim\nolimits_K"']
+& \mathcal M \arrow[d,"\gamma"]\\
+& \Ho(\mathcal M).
+\end{tikzcd}
+\]
+
+\begin{defi}
+El \emph{colímite homotópico} es el funtor
+\[
+\operatorname{hocolim}_K:=\mathrm L(\gamma\varinjlim\nolimits_K)\colon
+\Ho(\mathcal M^K)\longrightarrow\Ho(\mathcal M).
+\]
+Si $q_F\colon QF\to F$ es un reemplazo cofibrante proyectivo del diagrama, el colímite homotópico queda representado por
+\[
+\operatorname{hocolim}_KF=\varinjlim\nolimits_KQF.
+\]
+\end{defi}
+La comparación con el colímite ordinario está inducida por $\varinjlim\nolimits_Kq_F$. En particular, como $\Sp^{\mathbb N}_s$ es cofibrantemente generada, existen los colímites homotópicos de diagramas de espectros secuenciales. Esta fórmula prueba su existencia, pero construir un reemplazo proyectivo mediante el argumento del objeto pequeño no suele ser el modo más práctico de visualizarlos.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El colímite homotópico manual de espacios}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P15--P17, 01:40:25--01:47:42.
+Para $F\colon K\to\Topstar$, la construcción manual presentada en clase es
+\[
+\operatorname{hocolim}^{\mathrm{man}}_KF
+=\left(\bigvee_{p\ge0}\ \bigvee_{k_0\to\cdots\to k_p}
+F(k_0)\wedge\Delta^p_+\right)/{\sim}.
+\]
+El segundo coproducto corre sobre todas las cadenas de $p$ morfismos componibles, incluidas las identidades, y $\Delta^p_+$ es el simplex con un punto base disjunto. Para precisar las identificaciones, introducimos el reemplazo simplicial.
+
+\begin{defi}
+El \emph{reemplazo simplicial} $\operatorname{srep}(F)_\bullet$ es el espacio punteado simplicial
+\[
+\operatorname{srep}(F)_p=\bigvee_{k_0\xrightarrow{\alpha_1}\cdots\xrightarrow{\alpha_p}k_p}F(k_0).
+\]
+En el sumando de una cadena, escribimos un punto como $(a;\alpha_1,\ldots,\alpha_p)$. La cara $d_0$ aplica $F(\alpha_1)$ a $a$ y elimina $k_0$. Para $0<j<p$, la cara $d_j$ deja $a$ intacto y sustituye $\alpha_j,\alpha_{j+1}$ por $\alpha_{j+1}\alpha_j$. La cara $d_p$ deja $a$ intacto y elimina la última flecha. La degeneración $s_j$ deja $a$ intacto e inserta $1_{k_j}$ en la cadena.
+\end{defi}
+Las identidades simpliciales se siguen de la asociatividad, las identidades de $K$ y la funtorialidad de $F$. Si $d^j\colon\Delta^{p-1}\to\Delta^p$ y $s^j\colon\Delta^{p+1}\to\Delta^p$ son las caras y degeneraciones de los símplices, las relaciones de realización son
+\[
+(d_jx,t)\sim(x,d^jt),\qquad
+(s_jx,t)\sim(x,s^jt).
+\]
+Por tanto,
+\[
+\operatorname{hocolim}^{\mathrm{man}}_KF=|\operatorname{srep}(F)_\bullet|.
+\]
+La realización punteada usa uniones por el punto base y $\Delta^p_+$, e identifica todos los puntos base. Obtenemos así un espacio concreto antes de pasar a la categoría homotópica.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El reemplazo del diagrama y la comparación}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P17--P18, 01:47:42--01:52:52.
+Para cada $k\in\ob K$, sea $K\downarrow k$ la categoría cuyos objetos son flechas $\alpha\colon j\to k$. Un morfismo de $(j,\alpha)$ a $(j',\alpha')$ es una flecha $r\colon j\to j'$ con $\alpha'r=\alpha$. El funtor de olvido es
+\[
+U_k\colon K\downarrow k\longrightarrow K,\qquad
+(j,\alpha)\longmapsto j,\quad r\longmapsto r.
+\]
+La condición que define los morfismos se representa por el triángulo
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+j \arrow[d,"r"'] \arrow[dr,"\alpha"] &\\
+j' \arrow[r,"\alpha'"'] & k.
+\end{tikzcd}
+\]
+Una flecha $k\to k'$ induce $K\downarrow k\to K\downarrow k'$ por postcomposición. Así, la fórmula siguiente depende funtorialmente de $k$.
+
+\begin{prop}\label{prop:c15-reemplazo-simplicial}
+Si todos los $F(k)$ son cofibrantes en $\Topstar$, el diagrama
+\[
+QF(k)=|\operatorname{srep}(F\circ U_k)_\bullet|
+\]
+es un reemplazo cofibrante proyectivo de $F$. Su aumento $q_F(k)\colon QF(k)\to F(k)$ aplica, en una cadena que termina con una flecha a $k$, la composición de todas las flechas a su punto de $F(j_0)$.
+\end{prop}
+
+Este es el reemplazo explícito anunciado en clase. La categoría $K\downarrow k$ tiene objeto terminal $(k,1_k)$; añadirlo al final de una cadena da la contracción del aumento sobre $F(k)$. La condición de cofibrancia de los espacios permite realizar el reemplazo como un diagrama cofibrante. Es la versión punteada del reemplazo mediante la construcción barra; véase \cite[Secciones~\mbox{7.4.3--7.4.5}]{malkiewich}.
+
+Al tomar el colímite sobre $k$, las flechas finales a $k$ se identifican por postcomposición y queda el reemplazo simplicial de $F$. Como la realización preserva colímites, obtenemos
+\[
+\operatorname{hocolim}_KF
+=\varinjlim\nolimits_KQF
+\cong|\operatorname{srep}(F)_\bullet|
+=\operatorname{hocolim}^{\mathrm{man}}_KF.
+\]
+La igualdad con el derivado se entiende mediante este representante en $\Ho(\Topstar)$. Así queda justificada la fórmula manual para diagramas de espacios cofibrantes. Para un diagrama arbitrario se aplica primero un reemplazo celular funtorial objeto a objeto, y después la construcción simplicial al diagrama resultante; reemplazar solo los espacios no sustituye este segundo paso.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Comparación de las estructuras nivel a nivel y estable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P19--P20, 01:52:52--02:03:03.
+Para $F\colon K\to\Sp^{\mathbb N}_s$, se anunció que un modelo del colímite homotópico puede construirse nivel a nivel. Si los espacios $F(k)_n$ son cofibrantes, el modelo propuesto es
+\[
+H_n=\operatorname{hocolim}^{\mathrm{man}}_K F(-)_n.
+\]
+Sus mapas estructurales se obtienen de
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\Sigma H_n \arrow[r,"\cong"]
+& \operatorname{hocolim}^{\mathrm{man}}_K\Sigma F(-)_n
+\arrow[d,"\operatorname{hocolim}^{\mathrm{man}}_K\xi_n"]\\
+& \operatorname{hocolim}^{\mathrm{man}}_KF(-)_{n+1}=H_{n+1}.
+\end{tikzcd}
+\]
+Para este modelo concreto, el primer isomorfismo se obtiene porque $\Sigma=S^1\wedge-$ preserva los coproductos, los cocientes y la realización. En la categoría homotópica, la razón correspondiente es que la suspensión es un funtor de Quillen izquierdo. Si los niveles no son cofibrantes, hay que usar reemplazos compatibles con la estructura del espectro, no elegirlos independientemente en cada espacio.
+
+La justificación de que $H$ calcula el colímite derivado estable quedó para la clase siguiente. En esta clase se hizo el siguiente primer paso. La estructura $\Sp^{\mathbb N}_{\ell}$ también es cofibrantemente generada, de modo que podemos tomar un reemplazo cofibrante
+\[
+q'_F\colon Q'F\longrightarrow F
+\quad\text{en }(\Sp^{\mathbb N}_{\ell})^K.
+\]
+Esto significa que $Q'F$ es proyectivamente cofibrante y, para todo $k\in\ob K$ y $n\ge0$, el mapa $Q'F(k)_n\to F(k)_n$ es una equivalencia débil de espacios.
+\[
+\begin{tikzcd}[column sep=large]
+Q'F(k) \arrow[r,"q'_F(k)","\sim_\ell"'] & F(k).
+\end{tikzcd}
+\]
+
+Las estructuras nivel a nivel y estable tienen las mismas cofibraciones, como se recordó en la clase~13. Sus estructuras proyectivas sobre diagramas tienen también las mismas cofibraciones: se generan aplicando los mismos diagramas libres a las mismas cofibraciones generadoras. Por tanto, $Q'F$ es cofibrante en $(\Sp^{\mathbb N}_s)^K$. Además, una equivalencia nivel a nivel es una equivalencia estable, luego $q'_F$ es una equivalencia estable objeto a objeto. En consecuencia, también sirve como reemplazo cofibrante estable, y el mismo espectro representa ambos colímites derivados:
+\[
+\operatorname{hocolim}^{(\ell)}_KF=\varinjlim\nolimits_KQ'F,
+\qquad
+\operatorname{hocolim}^{(s)}_KF=\varinjlim\nolimits_KQ'F.
+\]
+El punto que falta es identificar los niveles de un reemplazo adecuado con los modelos explícitos de espacios. No basta con afirmar que un diagrama de espectros es cofibrante objeto a objeto: necesitamos su cofibrancia proyectiva.
+\[
+\begin{tikzcd}[column sep=large]
+Q'F \arrow[r,"q'_F","\sim_s"',shift left=0] \arrow[r,phantom,"\sim_\ell" description,yshift=-10pt] & F.
+\end{tikzcd}
+\]
+
+% Preguntas finales, 02:03:03--02:14:13.
+\begin{obs}
+La construcción manual permite visualizar los pushouts homotópicos y los telescopios, y filtrar un colímite homotópico por la longitud de las cadenas $k_0\to\cdots\to k_p$. Esta es la filtración por esqueletos de la realización, útil para construir sucesiones espectrales. En el caso secuencial, la compacidad de esferas y homotopías y la retracción de cada telescopio finito sobre su última etapa explican que los grupos de homotopía conmuten con el colímite homotópico. No se afirmó una conmutación análoga para diagramas arbitrarios.
+\end{obs}

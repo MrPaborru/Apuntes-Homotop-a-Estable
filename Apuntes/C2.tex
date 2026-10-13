@@ -9,7 +9,7 @@ En esta clase se continúa el estudio de la categoría extendida de Spanier--Whi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Los objetos de la categoría extendida de Spanier--Whitehead $\ESW$ son parejas $X_m=(X,m)$, donde $X$ es un CW-complejo punteado y $m\in\mathbb Z$. La interpretación de $X_m$ es la suspensión formal $\Sigma^mX$, aun cuando $m$ sea negativo. Para dos objetos $X_m$ y $Y_n$ se define
 \[
-\set*{X_m,Y_n}\coloneqq\Hom_{\ESW}(X_m,Y_n)=\colim_{\substack{k\to\infty\\m+k,n+k\geq0}}[\Sigma^{m+k}X,\Sigma^{n+k}Y]_*.
+\set*{X_m,Y_n}\coloneqq\Hom_{\ESW}(X_m,Y_n)=\varinjlim_{\substack{k\to\infty\\m+k,n+k\geq0}}[\Sigma^{m+k}X,\Sigma^{n+k}Y]_*.
 \]
 Los mapeos del sistema dirigido son inducidos por la suspensión. Así, un morfismo estable puede representarse mediante una función punteada $f\colon\Sigma^{m+k}X\to\Sigma^{n+k}Y$, y dos representantes determinan el mismo morfismo cuando sus suspensiones se vuelven homotópicas en algún nivel posterior. Para componer $[f]_k\colon X_m\to Y_n$ y $[g]_\ell\colon Y_n\to Z_p$ se suspenden ambos representantes hasta un nivel común $r\geq k,\ell$ y se toma la clase de $(\Sigma^{r-\ell}g)\circ(\Sigma^{r-k}f)$. El resultado no depende de las elecciones porque la suspensión preserva identidades, composiciones y homotopías.
 
@@ -27,7 +27,7 @@ En particular, $\pi_n^s$ pasa a ser correpresentable en $\ESW$ por $S^0_n$, en c
 La definición del colímite hace evidentes otras dos propiedades que se usarán constantemente. La primera es que suspender el espacio no cambia el conjunto de morfismos:
 \[
 \bigl\{(\Sigma X,n),(\Sigma Y,m)\bigr\}
-=\varinjlim_k[\Sigma^{n+k+1}X,\Sigma^{m+k+1}Y]_*
+=\varinjlim\nolimits_k[\Sigma^{n+k+1}X,\Sigma^{m+k+1}Y]_*
 =\bigl\{(X,n),(Y,m)\bigr\}.
 \]
 La segunda es que desplazar los dos índices a la vez tampoco los cambia:
@@ -39,7 +39,7 @@ Ninguna de las dos es casual: ambas dicen que mover el índice y suspender el es
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Funtores de desplazamiento y suspensión}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Para cada $r\in\mathbb Z$ se define el funtor de desplazamiento $\sh^r\colon\ESW\to\ESW$ mediante $\sh^r(X_m)=X_{m+r}$. Sobre morfismos, $\sh^r$ se obtiene reindexando los sistemas dirigidos que definen los conjuntos de morfismos. En particular, $\sh^1$ y $\sh^{-1}$ son inversos estrictos sobre los objetos y, con la identificación canónica de los colímites, también sobre los morfismos; por tanto, $\sh^1$ es un automorfismo con inverso $\sh^{-1}$. Los casos $r=1$ y $r=-1$ son los relevantes: los desplazamientos de índice arbitrario se obtienen iterando estos dos, de modo que no aportan información nueva.
+Para $r\in\mathbb Z$, el desplazamiento $\sh^r\colon\ESW\to\ESW$ se define por $\sh^r(X_m)=X_{m+r}$. Sobre morfismos, $\sh^r$ se obtiene reindexando los sistemas dirigidos que definen los conjuntos de morfismos. En particular, $\sh^1$ y $\sh^{-1}$ son inversos estrictos sobre los objetos y, con la identificación canónica de los colímites, también sobre los morfismos; por tanto, $\sh^1$ es un automorfismo con inverso $\sh^{-1}$. Los casos $r=1$ y $r=-1$ son los relevantes: los desplazamientos de índice arbitrario se obtienen iterando estos dos, de modo que no aportan información nueva.
 
 Existe también el funtor de suspensión directa $\sigma\colon\ESW\to\ESW$, definido por $\sigma(X_m)=(\Sigma X)_m$. Sobre morfismos, si $[f]_k\colon X_m\to Y_n$ está representado por $f\colon\Sigma^{m+k}X\to\Sigma^{n+k}Y$ con $m+k\ge1$ y $n+k\ge1$ ---lo cual siempre se consigue aumentando $k$---, se define $\sigma([f]_k)$ como la clase de la \emph{misma} $f$ vista ahora como
 \[
@@ -77,7 +77,11 @@ Como $\sigma\cong\sh^1$ y $\sh^1$ es invertible, la suspensión es una autoequiv
 \Ho(\CWstar) \arrow[r,"{\Sigma^\infty}"'] & \ESW
 \end{tikzcd}
 \]
-conmuta estrictamente, sin pasar a homotopía. Esto es inmediato sobre objetos, pues $\Sigma^\infty(\Sigma X)=(\Sigma X)_0=\Sigma(X_0)$. El contenido de la proposición anterior es, entonces, que ese funtor de suspensión ---que no era invertible en $\Ho(\CWstar)$--- pasa a serlo después de estabilizar. Conviene precisar el sentido en que $\sigma$ \emph{extiende} la suspensión clásica: $\Ho(\CWstar)$ no es literalmente una subcategoría de $\ESW$, porque $\Sigma^\infty$ no es la inclusión de una subcategoría. Al estabilizar se identifican clases de homotopía que antes eran distintas y aparecen morfismos estables que no provienen de ninguna función inestable. Lo que aporta la construcción es la posibilidad de invertir la suspensión, no una inclusión de categorías.
+conmuta estrictamente, sin pasar a homotopía. Esto es inmediato sobre objetos, pues
+\[
+\Sigma^\infty(\Sigma X)=(\Sigma X)_0=\Sigma(X_0).
+\]
+ El contenido de la proposición anterior es, entonces, que ese funtor de suspensión ---que no era invertible en $\Ho(\CWstar)$--- pasa a serlo después de estabilizar. Conviene precisar el sentido en que $\sigma$ \emph{extiende} la suspensión clásica: $\Ho(\CWstar)$ no es literalmente una subcategoría de $\ESW$, porque $\Sigma^\infty$ no es la inclusión de una subcategoría. Al estabilizar se identifican clases de homotopía que antes eran distintas y aparecen morfismos estables que no provienen de ninguna función inestable. Lo que aporta la construcción es la posibilidad de invertir la suspensión, no una inclusión de categorías.
 
 Como consecuencia, en $\ESW$ todo objeto es a la vez una suspensión y una desuspensión de alguien:
 \[
@@ -321,7 +325,7 @@ Aumentando $r$ si es necesario, Freudenthal permite identificar simultáneamente
 Extender la sucesión anterior indefinidamente hacia la derecha y hacia la izquierda.
 \end{ejer}
 \begin{sol}
-Como cada par de flechas en $A \to X \to X/A \to \Sigma A\to\cdots$ es sucesión cofibrada, podemos aplicar el resultado ya obtenido para tener la exactitud en cada punto de 
+Como cada par de flechas en $A \to X \to X/A \to \Sigma A\to\cdots$ es sucesión cofibrada, podemos aplicar el resultado ya obtenido para tener la exactitud en cada punto de
 \[
 \set{Z_k,A_m} \longrightarrow
 \set{Z_k,X_m} \longrightarrow
@@ -362,13 +366,21 @@ Una categoría aditiva es una categoría cuyos conjuntos de morfismos son grupos
 
 Ya sabemos que los morfismos de $\SW$ forman grupos abelianos y que la composición es bilineal. El objeto $*_0$ es un objeto cero, pues $\set*{*_0,Z_m}=0=\set*{Z_m,*_0}$ para cualquier $Z_m$: la suspensión reducida del punto vuelve a ser el punto y en ambos sentidos solo aparece la clase del mapeo constante. Así, el morfismo cero $X_m\to Y_n$ es el compuesto $X_m\to *_0\to Y_n$, es decir, la clase estable del mapeo constante.
 
-Para construir el coproducto de $Z_m$ y $W_n$, supongamos $n\geq m$. Como $W_n\cong(\Sigma^{n-m}W)_m$, podemos representar ambos objetos con el mismo índice y proponer $(Z\vee\Sigma^{n-m}W)_m$ como coproducto. Esto tiene sentido aunque $m$ o $n$ sean negativos, pues solo necesitamos $n-m\geq0$.
+Para construir el coproducto de $Z_m$ y $W_n$, supongamos $n\geq m$. Como
+\[
+W_n\cong(\Sigma^{n-m}W)_m,
+\]
+ podemos representar ambos objetos con el mismo índice y proponer $(Z\vee\Sigma^{n-m}W)_m$ como coproducto. Esto tiene sentido aunque $m$ o $n$ sean negativos, pues solo necesitamos $n-m\geq0$.
 
 \begin{ejer}[Coproductos finitos]
 Sean $Z_m,W_n\in\SW$ con $n\geq m$. Verificar que $(Z\vee\Sigma^{n-m}W)_m$ es un coproducto de $Z_m$ y $W_n$.
 \end{ejer}
 \begin{sol}
-Las inclusiones de los sumandos de la cuña, junto con el isomorfismo canónico $W_n\cong(\Sigma^{n-m}W)_m$, determinan morfismos $j_Z\colon Z_m\to (Z\vee\Sigma^{n-m}W)_m$ y $j_W\colon W_n\to (Z\vee\Sigma^{n-m}W)_m$. Para cualquier $T_t\in\SW$ y todo $r$ suficientemente grande, la suspensión preserva cuñas y, por su propiedad universal, tenemos una biyección
+Usamos las inclusiones de los sumandos de la cuña y el isomorfismo canónico
+\[
+W_n\cong(\Sigma^{n-m}W)_m.
+\]
+Así obtenemos los morfismos $j_Z\colon Z_m\to (Z\vee\Sigma^{n-m}W)_m$ y $j_W\colon W_n\to (Z\vee\Sigma^{n-m}W)_m$. Para cualquier $T_t\in\SW$ y todo $r$ suficientemente grande, la suspensión preserva cuñas y, por su propiedad universal, tenemos una biyección
 \[
 \begin{aligned}
 [\Sigma^{m+r}(Z\vee\Sigma^{n-m}W),\Sigma^{t+r}T]_*
@@ -394,7 +406,7 @@ Aunque $\SW$ es aditiva, no es abeliana. En clase se anunció, dejando la demost
 
 La categoría $\SW$ tampoco posee todos los coproductos infinitos. Por ejemplo, si existiera $C=\coprod_{j\geq1}S^0_0$, su propiedad universal daría $\set*{C,S^0_0}\cong\prod_{j\geq1}\mathbb Z$, un conjunto no numerable. En cambio, los conjuntos de morfismos entre objetos de $\SW$ son numerables: se calculan como colímites numerables de clases de homotopía entre complejos finitos, y estos conjuntos de clases son numerables. Por tanto, tal coproducto no existe. De manera análoga, un producto numerable $P=\prod_{j\geq1}S^0_0$ exigiría $\set*{S^0_0,P}\cong\prod_{j\geq1}\mathbb Z$, lo cual es imposible. Así, $\SW$ no es completa ni cocompleta.
 
-Permitir CW-complejos infinitos no resuelve automáticamente el problema. En $\ESW$, los mapeos estables desde una cuña de objetos con índice cero se calculan mediante $\colim_r\prod_\alpha[\Sigma^rX_\alpha,\Sigma^rY]_*$, mientras que la propiedad universal del coproducto exigiría $\prod_\alpha\colim_r[\Sigma^rX_\alpha,\Sigma^rY]_*$. El mapeo natural entre ambas expresiones no tiene por qué ser una biyección: un colímite filtrado conmuta con productos finitos, pero no con productos infinitos en general. En clase se anunció un ejemplo con esferas que se estudiará posteriormente; aquí no se ha demostrado ese contraejemplo concreto.
+Permitir CW-complejos infinitos no resuelve automáticamente el problema. En $\ESW$, los mapeos estables desde una cuña de objetos con índice cero se calculan mediante $\varinjlim\nolimits_r\prod_\alpha[\Sigma^rX_\alpha,\Sigma^rY]_*$, mientras que la propiedad universal del coproducto exigiría $\prod_\alpha\varinjlim\nolimits_r[\Sigma^rX_\alpha,\Sigma^rY]_*$. El mapeo natural entre ambas expresiones no tiene por qué ser una biyección: un colímite filtrado conmuta con productos finitos, pero no con productos infinitos en general. En clase se anunció un ejemplo con esferas que se estudiará posteriormente; aquí no se ha demostrado ese contraejemplo concreto.
 
 También se discutió la construcción de $\Omega^\infty$. Tomar espacios de lazos iterados y los colímites homotópicos necesarios puede producir espacios sin tipo de homotopía de un CW-complejo finito, de modo que estas operaciones no se realizan en general dentro del marco finito. Esto no debe interpretarse como la inexistencia de un funtor desde $\SW$ hacia la categoría homotópica de espacios: una vez incluida $\SW$ en la categoría homotópica de espectros, puede restringirse a ella el funtor derivado $\Omega^\infty$. Su construcción requiere herramientas que todavía no se han introducido.
 

@@ -145,7 +145,7 @@ es exacta para todo $n\in\mathbb Z$, donde $i\colon A\hookrightarrow X$ es la in
 
 \item \emph{Invarianza homotópica.} Si $f\simeq g\colon X\to Y$, entonces $f^*=g^*$ en todas las dimensiones.
 
-\item \emph{Aditividad.} Para cualquier familia de espacios punteados $\{X_\alpha\}_{\alpha\in J}$, la aplicación 
+\item \emph{Aditividad.} Para cualquier familia de espacios punteados $\{X_\alpha\}_{\alpha\in J}$, la aplicación
 \[\textstyle
 \tilde h^n\Bigl(\bigvee_{\alpha\in J}X_\alpha\Bigr)\xrightarrow{\ (\iota_\alpha^*)\ }\prod_{\alpha\in J}\tilde h^n(X_\alpha)
 \]
@@ -222,7 +222,11 @@ donde los signos de las flechas suspendidas no afectan la exactitud. Cada tramo 
 \]
 Por naturalidad de $\sigma^n$, los dos primeros términos se identifican con $\tilde h^n(X)$ y $\tilde h^n(A)$ y la primera flecha con $i^*$. Por la equivalencia $e$, el tercer término se identifica con $\tilde h^{n+1}(X/A)$; bajo estas identificaciones, la flecha que lo precede es precisamente $\delta$ y la que lo sigue es $q^*$, pues $e$ restringida a $X$ es $q$. Así obtenemos la exactitud en los dos términos que enlazan grados consecutivos. El axioma original aporta la exactitud en $\tilde h^n(X)$; dejando variar $n$ se obtiene toda la sucesión.
 
-En homología se aplica el funtor covariante a los mismos tramos. La conexión es $\delta=\sigma_n^A\,p_*\,(e_*)^{-1}$, con dominio $\tilde h_n(X/A)$ y codominio $\tilde h_{n-1}(A)$. El mismo razonamiento da la sucesión homológica.
+En homología se aplica el funtor covariante a los mismos tramos. La conexión es
+\[
+\delta=\sigma_n^A\,p_*\,(e_*)^{-1},
+\]
+ con dominio $\tilde h_n(X/A)$ y codominio $\tilde h_{n-1}(A)$. El mismo razonamiento da la sucesión homológica.
 \end{sol}
 
 \begin{nota}
@@ -326,7 +330,7 @@ que es un isomorfismo cuando $J$ es finito. Para familias infinitas, la comparac
 Escribiendo la definición del colímite,
 \[
 \Bigl\{\Bigl(\bigvee_{j\in J}X_j,-n\Bigr),(Z,m)\Bigr\}
-=\varinjlim_k\Bigl[\Sigma^{-n+k}\bigvee_{j\in J}X_j,\ \Sigma^{m+k}Z\Bigr]_* .
+=\varinjlim\nolimits_k\Bigl[\Sigma^{-n+k}\bigvee_{j\in J}X_j,\ \Sigma^{m+k}Z\Bigr]_* .
 \]
 La suspensión conmuta con la cuña: el dominio es $\bigvee_{j\in J}\Sigma^{-n+k}X_j$, y por la \myref{lema:prod-morfismos} aplicada a $\Ho(\CWstar)$,
 \[
@@ -335,8 +339,8 @@ La suspensión conmuta con la cuña: el dominio es $\bigvee_{j\in J}\Sigma^{-n+k
 \]
 Para obtener el resultado habría que conmutar el colímite sobre $k$ con el producto sobre $J$. Cuando $J$ es finito esto es legítimo: los colímites filtrados conmutan con productos finitos; resulta entonces
 \[
-\varinjlim_k\prod_{j=1}^r\Bigl[\Sigma^{-n+k}X_j,\Sigma^{m+k}Z\Bigr]_*
-\cong\prod_{j=1}^r\varinjlim_k\Bigl[\Sigma^{-n+k}X_j,\Sigma^{m+k}Z\Bigr]_*
+\varinjlim\nolimits_k\prod_{j=1}^r\Bigl[\Sigma^{-n+k}X_j,\Sigma^{m+k}Z\Bigr]_*
+\cong\prod_{j=1}^r\varinjlim\nolimits_k\Bigl[\Sigma^{-n+k}X_j,\Sigma^{m+k}Z\Bigr]_*
 =\prod_{j=1}^r\set*{(X_j,-n),(Z,m)},
 \]
 que es el isomorfismo enunciado. Para $J$ infinito solo se obtiene la flecha canónica del colímite al producto de los colímites, sin que este cálculo permita afirmar que sea inyectiva o sobreyectiva. El ejemplo siguiente mostrará que la sobreyectividad puede fallar.
@@ -360,7 +364,7 @@ no es sobre. Por tanto, $X_0$ no representa en $\ESW$ el coproducto de los objet
 \begin{proof}
 Desarrollemos primero ambos miembros. Por un lado,
 \[\textstyle
-\set*{X_0,S^0_0}=\varinjlim_n[\Sigma^nX,S^n]_*=\varinjlim_n\Bigl[\bigvee_{r\ge0}S^{n+r},S^n\Bigr]_*,
+\set*{X_0,S^0_0}=\varinjlim\nolimits_n[\Sigma^nX,S^n]_*=\varinjlim\nolimits_n\Bigl[\bigvee_{r\ge0}S^{n+r},S^n\Bigr]_*,
 \]
 y como la cuña es el coproducto en $\Ho(\CWstar)$, el conjunto de clases de homotopía de una cuña en un espacio es el producto de los conjuntos de clases de cada sumando:
 \[
@@ -368,11 +372,11 @@ y como la cuña es el coproducto en $\Ho(\CWstar)$, el conjunto de clases de hom
 \]
 Por otro lado,
 \[
-\prod_{r\ge0}\set*{S^r_0,S^0_0}=\prod_{r\ge0}\varinjlim_n\pi_{n+r}(S^n)=\prod_{r\ge0}\pi_r^s(S^0).
+\prod_{r\ge0}\set*{S^r_0,S^0_0}=\prod_{r\ge0}\varinjlim\nolimits_n\pi_{n+r}(S^n)=\prod_{r\ge0}\pi_r^s(S^0).
 \]
 El morfismo $\Psi$ es, con estas identificaciones, la aplicación canónica del colímite al producto de los colímites,
 \[
-\varinjlim_n\prod_{r\ge0}\pi_{n+r}(S^n)\longrightarrow\prod_{r\ge0}\varinjlim_n\pi_{n+r}(S^n),
+\varinjlim\nolimits_n\prod_{r\ge0}\pi_{n+r}(S^n)\longrightarrow\prod_{r\ge0}\varinjlim\nolimits_n\pi_{n+r}(S^n),
 \]
 que envía la clase de una familia $(x_r)_{r\ge0}$ en el nivel $n$ a la familia de sus estabilizaciones.
 
@@ -624,11 +628,11 @@ El siguiente esquema reproduce las posiciones que utilizaremos. Los recuadros ro
     \node at (3,-.85) {$2$};
     \node at (5.5,-.85) {$n$};
     \node (h00) at (0,0) {$\tilde H_0(Z)$};
-    \node[draw=red,inner sep=4pt] (h10) at (1.5,0) {$\tilde H_1(Z)$};
+    \node[draw=rojoCIMAT,inner sep=4pt] (h10) at (1.5,0) {$\tilde H_1(Z)$};
     \node (h20) at (3,0) {$\tilde H_2(Z)$};
     \node at (4.25,0) {$\cdots$};
     \node at (5.5,0) {$\tilde H_n(Z)$};
-    \node[draw=red,inner sep=4pt] (h01) at (0,1.15) {$\tilde H_0(Z;\mathbb Z/2)$};
+    \node[draw=rojoCIMAT,inner sep=4pt] (h01) at (0,1.15) {$\tilde H_0(Z;\mathbb Z/2)$};
     \node at (3,1.15) {$\cdots$};
     \node at (0,1.9) {$\vdots$};
     \node at (0,2.6) {$\tilde H_0(Z;\pi_q^s)$};
@@ -646,7 +650,7 @@ Si $2<n$, en grado $2$ pueden contribuir las posiciones $(0,2)$, $(1,1)$ y $(2,0
 \]
 Aplicando de nuevo coeficientes universales, se anula toda la columna $p=2$.
 
-Continuamos de esta manera hasta el grado $n-1$. En efecto, si $k<n$ y ya hemos probado que $\tilde H_p(Z)=0$ para $p<k$, el teorema de coeficientes universales da $\tilde H_p(Z;\pi_q^s)=0$ para $p<k$ y todo $q$. Por tanto, en la antidiagonal $p+q=k$ solo puede contribuir $E^\infty_{k,0}$. Además, los diferenciales que salen de $E^r_{k,0}$ llegan a columnas anteriores, ya nulas, y los que entran provienen de $q<0$. Así, 
+Continuamos de esta manera hasta el grado $n-1$. En efecto, si $k<n$ y ya hemos probado que $\tilde H_p(Z)=0$ para $p<k$, el teorema de coeficientes universales da $\tilde H_p(Z;\pi_q^s)=0$ para $p<k$ y todo $q$. Por tanto, en la antidiagonal $p+q=k$ solo puede contribuir $E^\infty_{k,0}$. Además, los diferenciales que salen de $E^r_{k,0}$ llegan a columnas anteriores, ya nulas, y los que entran provienen de $q<0$. Así,
 \[
 \tilde H_k(Z)=E^2_{k,0}=E^\infty_{k,0}\cong\pi_k^s(Z)=0
 \]

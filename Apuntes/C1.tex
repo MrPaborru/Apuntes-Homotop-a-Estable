@@ -197,7 +197,7 @@ Después de suspender, esta sucesión se escinde homotópicamente usando el mapa
 \[
 \Sigma(X \times Y) \xrightarrow{\operatorname{pinch}_{X\times Y}} \Sigma(X \times Y) \vee \Sigma(X \times Y) \xrightarrow{{\Sigma\p_X} \vee{\Sigma\p_Y}} \Sigma(X) \vee \Sigma(Y)
 \]
-Esta escisión garantiza que se tiene la equivalencia (\ref{eq:susprod}), así que se tiene 
+Esta escisión garantiza que se tiene la equivalencia (\ref{eq:susprod}), así que se tiene
 \[
 \Sigma(X\times Y)\simeq \Sigma( X\vee Y\vee(X\wedge Y))
 \]
@@ -252,6 +252,7 @@ Equivalentemente, si \(X\) es \((n-1)\)-conexo, entonces \(E\) es un isomorfismo
 Si $X$ es un CW-complejo punteado como los anteriores, siempre es $(-1)$-conexo (no vacío). Luego:
 
 \begin{center}\small
+\setlength{\tabcolsep}{5.5pt}
 \begin{tabular}{|l|c|c|c|c|}
 \hline
 & \((-1)\)-conexo & arcoconexo & \(1\)-conexo & \(2\)-conexo\\
@@ -289,7 +290,7 @@ es eventualmente una sucesión de isomorfismos.
 
 El \(i\)-ésimo grupo de homotopía estable de \(X\) se define mediante
 \[
-\pi_i^s(X)\coloneqq \varinjlim_k \pi_{i+k}(\Sigma^kX).
+\pi_i^s(X)\coloneqq \varinjlim\nolimits_k \pi_{i+k}(\Sigma^kX).
 \]
 Los morfismos del sistema son los homomorfismos de suspensión.
 
@@ -302,7 +303,7 @@ El colímite sigue teniendo sentido aunque la sucesión no se vuelva literalment
 La estabilización tiene una consecuencia práctica apreciable. Calcular grupos de homotopía es bastante más difícil que calcular homología o cohomología: para estas últimas se dispone de Mayer--Vietoris y de la sucesión exacta del par, mientras que para homotopía las herramientas existentes son más débiles. La estabilización reduce el problema, pues para conocer todos los grupos \(\pi_{i+k}(\Sigma^kX)\) de las suspensiones de un mismo espacio basta calcular un número finito de ellos, los anteriores al rango en que la sucesión se estabiliza; a partir de ahí todos coinciden salvo isomorfismo.
 Se escribe
 \[
-\pi_i^s\coloneqq \pi_i^s(S^0)=\varinjlim_k\pi_{i+k}(S^k).
+\pi_i^s\coloneqq \pi_i^s(S^0)=\varinjlim\nolimits_k\pi_{i+k}(S^k).
 \]
 Estos son los tallos estables de las esferas. Los primeros son
 \[
@@ -322,7 +323,7 @@ que se obtiene dejando que la suspensión absorba una dimensión de la esfera, y
 \[
 \begin{aligned}
 \pi_i^s(S^d)
-&=\varinjlim_k\pi_{i+k}(S^{d+k})\\
+&=\varinjlim\nolimits_k\pi_{i+k}(S^{d+k})\\
 &\cong\pi_{i-d}^s.
 \end{aligned}
 \]
@@ -334,7 +335,7 @@ Así, cambiar la dimensión de la esfera solamente desplaza la graduación.
 
 Si \(i<0\), se comienza el sistema en un \(k\) suficientemente grande para que \(i+k\ge1\):
 \[
-\pi_i^s(X)=\varinjlim_{k\gg0}\pi_{i+k}(\Sigma^kX).
+\pi_i^s(X)=\varinjlim\nolimits_{k\gg0}\pi_{i+k}(\Sigma^kX).
 \]
 Si \(X\) es un CW-complejo punteado no vacío, \(\Sigma^kX\) es al menos \((k-1)\)-conexo. Como \(i<0\),
 \[
@@ -348,7 +349,7 @@ y por tanto \(\pi_{i+k}(\Sigma^kX)=0\). En consecuencia,
 para espacios ordinarios.
 El caso \(i=-1\) ilustra el mecanismo y se escribió explícitamente en clase: como \(\Sigma^kX\) es \((k-1)\)-conexo, basta arrancar el sistema en \(k\ge2\), y entonces
 \[
-\pi_{-1}^s(X)=\varinjlim_{k\ge2}\pi_{-1+k}(\Sigma^kX)=0,
+\pi_{-1}^s(X)=\varinjlim\nolimits_{k\ge2}\pi_{-1+k}(\Sigma^kX)=0,
 \]
 porque \(-1+k\le k-1\) para todo \(k\ge2\).
 Esto no vuelve inútiles los grados negativos: los espectros admiten desuspensiones genuinas y pueden tener grupos de homotopía no triviales en grados negativos.
@@ -384,7 +385,7 @@ es una biyección, que es lo que se quería probar.
 
 Esta estabilización motiva a definir los conjuntos de clases de homotopía estable:
 \[
-\set{X,Y}\coloneqq \varinjlim_k [\Sigma^kX,\Sigma^kY]_*
+\set{X,Y}\coloneqq \varinjlim\nolimits_k [\Sigma^kX,\Sigma^kY]_*
 \]
 Esto es, dos funciones representan la misma clase estable si, después de suspenderlas suficientemente muchas veces, se vuelven homotópicas.
 
@@ -555,7 +556,11 @@ conmuta.
 \[
 [\Sigma^n\Sph,X]=0\quad\text{para todo }n\in\mathbb Z\quad\Longrightarrow\quad X\simeq0.
 \]
-Equivalentemente, los grupos de homotopía estable deben detectar equivalencias: una función de espectros \(f\colon X\to Y\) es una equivalencia estable cuando induce isomorfismos $\pi_n(X)\longrightarrow\pi_n(Y)$ para todo \(n\). La esfera también será compacta: $[\Sph,\bigvee_\alpha X_\alpha]\cong\bigoplus_\alpha[\Sph,X_\alpha]$.
+Equivalentemente, los grupos de homotopía estable deben detectar equivalencias: una función de espectros \(f\colon X\to Y\) es una equivalencia estable cuando induce isomorfismos
+\[
+\pi_n(X)\longrightarrow\pi_n(Y)
+\]
+ para todo \(n\). La esfera también será compacta: $[\Sph,\bigvee_\alpha X_\alpha]\cong\bigoplus_\alpha[\Sph,X_\alpha]$.
 
 \item La subcategoría completa de objetos finitos ---los generados mediante un número finito de pasos a partir de \(\Sigma^r\Sph\)--- es equivalente a la categoría de Spanier--Whitehead mediante una equivalencia que es triangulada, simétrica monoidal y \emph{unital}.
 \end{enumerate}
@@ -578,7 +583,7 @@ En estos apuntes denotaremos por \(\ESW\) la categoría extendida, cuyos objetos
 
 Los conjuntos de morfismos se definen por
 \[
-\bigl\{(X,m),(Y,n)\bigr\}\coloneqq \varinjlim_k [\Sigma^{m+k}X,\Sigma^{n+k}Y]_*
+\bigl\{(X,m),(Y,n)\bigr\}\coloneqq \varinjlim\nolimits_k [\Sigma^{m+k}X,\Sigma^{n+k}Y]_*
 \]
 donde \(k\) se toma suficientemente grande para que \(m+k\ge0\) y \(n+k\ge0\)
 (recordemos que los morfismos del sistema son las suspensiones $[f]\longmapsto[\Sigma f]$).
@@ -712,9 +717,9 @@ La definición de los morfismos da
 \[
 \begin{aligned}
 \bigl\{(S^0,n),(X,0)\bigr\}
-&=\varinjlim_k[\Sigma^{n+k}S^0,\Sigma^kX]_*\\
-&=\varinjlim_k[S^{n+k},\Sigma^kX]_*\\
-&=\varinjlim_k\pi_{n+k}(\Sigma^kX)=\pi_n^s(X)
+&=\varinjlim\nolimits_k[\Sigma^{n+k}S^0,\Sigma^kX]_*\\
+&=\varinjlim\nolimits_k[S^{n+k},\Sigma^kX]_*\\
+&=\varinjlim\nolimits_k\pi_{n+k}(\Sigma^kX)=\pi_n^s(X)
 \end{aligned}
 \]
 Por tanto, el funtor \(\pi_n^s\) está representado en la categoría estable por la esfera desplazada \((S^0,n)\).

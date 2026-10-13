@@ -127,7 +127,11 @@ p_{n+1}\bigl(\nu_n[a,u]\bigr)
 =\xi_n[a,u]
 =\xi_n\bigl(\Sigma p_n[a,u]\bigr).
 \]
-Sobre los cilindros, tomando $[x,s,t,u]\in\Sigma C_n$ con $x\in A_k$, se satisface que $\Sigma p_n[x,s,t,u]=\bigl[\xi_{n-1}\circ\cdots\circ\Sigma^{n-k-1}\xi_k(x,s),\,u\bigr]$, de donde
+Sobre los cilindros, tomando $[x,s,t,u]\in\Sigma C_n$ con $x\in A_k$, se satisface que
+\[
+\Sigma p_n[x,s,t,u]=\bigl[\xi_{n-1}\circ\cdots\circ\Sigma^{n-k-1}\xi_k(x,s),\,u\bigr],
+\]
+De esta igualdad se sigue
 \[
 \xi_n\bigl(\Sigma p_n[x,s,t,u]\bigr) = \xi_n\circ\Sigma\xi_{n-1}\circ\cdots\circ\Sigma^{n-k}\xi_k(x,s,u)
 \]
@@ -304,18 +308,18 @@ Para todo espectro secuencial $X$, el morfismo $g\colon X^{\mathrm{even}}\to X$ 
 \begin{proof}
 Hay que ver que $g_*\colon\pi_k(X^{\mathrm{even}})\to\pi_k(X)$ es un isomorfismo para todo $k$. Los dos grupos son colímites,
 \[\textstyle
-\pi_k\bigl(X^{\mathrm{even}}\bigr)=\varinjlim_m\pi_{m+k}\bigl(X^{\mathrm{even}}_m\bigr),
+\pi_k\bigl(X^{\mathrm{even}}\bigr)=\varinjlim\nolimits_m\pi_{m+k}\bigl(X^{\mathrm{even}}_m\bigr),
 \qquad
-\pi_k(X)=\varinjlim_m\pi_{m+k}(X_m),
+\pi_k(X)=\varinjlim\nolimits_m\pi_{m+k}(X_m),
 \]
 y el sistema de índices admite el subconjunto cofinal de los índices pares $m=2m'$. Restringiendo ambos sistemas a esos índices se obtiene el diagrama
 \[
 \begin{tikzcd}[sep=large]
-\pi_k\bigl(X^{\mathrm{even}}\bigr) \arrow[d,"\cong"']\arrow[d,"g_*"] & \varinjlim\nolimits_m\pi_{m+k}\bigl(X^{\mathrm{even}}_m\bigr) \arrow[l,equals,nfold] \arrow[d,"\varinjlim_m (g_m)_*"] & \varinjlim\nolimits_m\pi_{2m+k}\bigl(X^{\mathrm{even}}_{2m}\bigr) \arrow[l,"\cong"'] \arrow[d,"\varinjlim_m (g_{2m})_*","1" swap]\\
+\pi_k\bigl(X^{\mathrm{even}}\bigr) \arrow[d,"\cong"']\arrow[d,"g_*"] & \varinjlim\nolimits_m\pi_{m+k}\bigl(X^{\mathrm{even}}_m\bigr) \arrow[l,equals,nfold] \arrow[d,"\varinjlim\nolimits_m (g_m)_*"] & \varinjlim\nolimits_m\pi_{2m+k}\bigl(X^{\mathrm{even}}_{2m}\bigr) \arrow[l,"\cong"'] \arrow[d,"\varinjlim\nolimits_m (g_{2m})_*","1" swap]\\
 \pi_k(X) & \varinjlim\nolimits_m\pi_{m+k}(X_m) \arrow[l,equals,nfold] & \varinjlim\nolimits_m\pi_{2m+k}(X_{2m}) \arrow[l,"\cong"]
 \end{tikzcd}
 \]
-en el que las flechas horizontales son isomorfismos por cofinalidad. En la columna derecha, $X^{\mathrm{even}}_{2m}=X_{2m}$ y $g_{2m}=1$, de modo que $\varinjlim_m(g_{2m})_*=1$. Como el diagrama conmuta y las otras tres flechas son isomorfismos, $g_*$ es un isomorfismo. \qedhere
+en el que las flechas horizontales son isomorfismos por cofinalidad. En la columna derecha, $X^{\mathrm{even}}_{2m}=X_{2m}$ y $g_{2m}=1$, de modo que $\varinjlim\nolimits_m(g_{2m})_*=1$. Como el diagrama conmuta y las otras tres flechas son isomorfismos, $g_*$ es un isomorfismo. \qedhere
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -525,7 +529,7 @@ Para el colímite, como $\Sigma$ es un adjunto izquierdo, preserva colímites. P
 \Sigma\Bigl(\varinjlim\nolimits_J X(-)_n\Bigr)
 \xrightarrow{\ \cong\ }
 \varinjlim\nolimits_J\Sigma X(-)_n
-\xrightarrow{\ \varinjlim_J\xi_n\ }
+\xrightarrow{\ \varinjlim\nolimits_J\xi_n\ }
 \varinjlim\nolimits_J X(-)_{n+1},
 \]
 que define el morfismo estructural del espectro buscado. La primera flecha es la inversa de la comparación canónica; la segunda no tiene por qué ser un isomorfismo.

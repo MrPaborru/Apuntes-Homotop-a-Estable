@@ -35,7 +35,7 @@ Consideremos una celda de $B_k$, con función característica $\Phi\colon D^d\to
 \]
 La aplicación hacia $X_{k+m}$ tiene imagen en $A_{k+m}$. Por tanto, cada celda estable de $B$ tiene un representante cuya imagen por $g$ está en $A$.
 
-Para reunir estos representantes, usamos una filtración celular $B=\operatorname*{colim}_iB^{(i)}$, con $B^{(-1)}=\Sigma^\infty *$, como en la clase~11. La etapa de nacimiento $n_i$ adjunta una familia de celdas de dimensiones estables $k_j$, para $j\in J_i$, mediante aplicaciones
+Para reunir estos representantes, usamos una filtración celular $B=\varinjlim\nolimits_iB^{(i)}$, con $B^{(-1)}=\Sigma^\infty *$, como en la clase~11. La etapa de nacimiento $n_i$ adjunta una familia de celdas de dimensiones estables $k_j$, para $j\in J_i$, mediante aplicaciones
 \[
 \varphi_j\colon S^{n_i+k_j-1}\longrightarrow B^{(i)}_{n_i}.
 \]
@@ -66,7 +66,7 @@ R^{(i+1)}&=R^{(i)}\cup_{\bigvee_{j\in J_i}\partial E_{i,j}}
 \end{aligned}
 \]
 
-El colímite $R=\operatorname*{colim}_iR^{(i)}$ es un subespectro de $B$. Contiene un representante de cada celda estable de $B$, de modo que es cofinal, y por construcción $g_n(R_n)\subseteq A_n$.
+El colímite $R=\varinjlim\nolimits_iR^{(i)}$ es un subespectro de $B$. Contiene un representante de cada celda estable de $B$, de modo que es cofinal, y por construcción $g_n(R_n)\subseteq A_n$.
 \end{proof}
 
 En la aplicación a la composición, $B$ es un subespectro cofinal de $Z$. Podemos entonces empezar con una celda estable de $Z$ y una función característica $\Phi\colon D^d\to Z_k$. La cofinalidad de $B$ dice que, para algún $m$, la aplicación que representa su suspensión factoriza como en el diagrama de la pizarra:
@@ -319,7 +319,7 @@ Basta probar que $[i]$ también es invertible. Escribiremos $M=M_f$ e identifica
 \]
 muestra que $i_*$ es un isomorfismo.
 
-Para una pareja de espectros $(E,A)$, con $A\subseteq E$, definimos $\pi_k(E,A)=\operatorname*{colim}_n\pi_{k+n}(E_n,A_n)$, con transiciones dadas por suspensión y los morfismos estructurales de la pareja. Tomamos niveles suficientemente altos para trabajar con grupos relativos.
+Para una pareja de espectros $(E,A)$, con $A\subseteq E$, definimos $\pi_k(E,A)=\varinjlim\nolimits_n\pi_{k+n}(E_n,A_n)$, con transiciones dadas por suspensión y los morfismos estructurales de la pareja. Tomamos niveles suficientemente altos para trabajar con grupos relativos.
 
 \begin{ejer}\label{ejer:c12-sucesion-relativa}
 Probar que una pareja $(E,A)$ de espectros tiene una sucesión exacta larga
@@ -350,10 +350,10 @@ Las transiciones son la suspensión seguida de los morfismos estructurales. La n
 \]
 Así, las conexiones inducen un homomorfismo $\partial\colon\pi_k(E,A)\to\pi_{k-1}(A)$, dado en representantes por $\partial([u_n])=[\partial_nu_n]$. Los demás mapas se obtienen de igual manera. Los colímites de los cinco términos escritos son, por definición, $\pi_k(A)$, $\pi_k(E)$, $\pi_k(E,A)$, $\pi_{k-1}(A)$ y $\pi_{k-1}(E)$.
 
-Comprobemos explícitamente que se conserva la exactitud. Consideremos cualquier tramo compatible $U_n\xrightarrow{\alpha_n}V_n\xrightarrow{\beta_n}W_n$ de estas sucesiones. Como $\beta_n\alpha_n=0$, la imagen del primer mapa entre colímites está contenida en el núcleo del segundo. Recíprocamente, sea $v=[v_n]\in\operatorname*{colim}_nV_n$ cuya imagen es cero en $\operatorname*{colim}_nW_n$. Por la definición del colímite filtrado, existe $m\ge n$ tal que la imagen $v_m$ de $v_n$ satisface $\beta_m(v_m)=0$. La exactitud en ese nivel proporciona $u_m\in U_m$ con $\alpha_m(u_m)=v_m$. Por tanto,
+Comprobemos explícitamente que se conserva la exactitud. Consideremos cualquier tramo compatible $U_n\xrightarrow{\alpha_n}V_n\xrightarrow{\beta_n}W_n$ de estas sucesiones. Como $\beta_n\alpha_n=0$, la imagen del primer mapa entre colímites está contenida en el núcleo del segundo. Recíprocamente, sea $v=[v_n]\in\varinjlim\nolimits_nV_n$ cuya imagen es cero en $\varinjlim\nolimits_nW_n$. Por la definición del colímite filtrado, existe $m\ge n$ tal que la imagen $v_m$ de $v_n$ satisface $\beta_m(v_m)=0$. La exactitud en ese nivel proporciona $u_m\in U_m$ con $\alpha_m(u_m)=v_m$. Por tanto,
 \[
 v=[v_m]=[\alpha_m(u_m)]
-=(\operatorname*{colim}_n\alpha_n)([u_m]).
+=(\varinjlim\nolimits_n\alpha_n)([u_m]).
 \]
 Esto prueba la inclusión contraria. Aplicándolo a cada tramo, y dejando variar $k$, obtenemos toda la sucesión exacta larga enunciada.
 \end{sol}

@@ -94,7 +94,11 @@ El ejemplo de la cuña infinita de la clase anterior corresponde a $\ESW$ y mues
 \subsection{La construcción del producto y sus signos}
 
 \begin{defi}\label{defi:smash}
-El \emph{producto smash} de dos objetos de $\SW$ se define por $(X,m)\wedge(Y,n)=(X\wedge Y,m+n)$.
+El \emph{producto smash} de dos objetos de $\SW$ se define por
+\[
+(X,m)\wedge(Y,n)=(X\wedge Y,m+n).
+\]
+
 \end{defi}
 Se quiere extender esta operación a un funtor $\wedge\colon\SW\times\SW\to\SW$, cuya acción sobre morfismos tenga la forma
 \[
@@ -679,7 +683,11 @@ La región negra $(\mathrm{P})$ conmuta por axioma del pentágono. Justifiquemos
 \begin{enumerate}[label=(\roman*)]
 \item Conmuta por el axioma del triángulo aplicado a los objetos $x\otimes y$ y $1$. Sus dos caminos expresan la igualdad $(1_{x\otimes y}\otimes\lambda_1)\circ\alpha_{x\otimes y,1,1}=\rho_{x\otimes y}\otimes1_1$.
 \item Conmuta por naturalidad del asociador respecto de la terna $(1_x,1_y,\lambda_1)$, donde $\lambda_1\colon1\otimes1\to1$. La flecha roja que sale de $(x\otimes y)\otimes(1\otimes1)$ es $1_{x\otimes y}\otimes\lambda_1=(1_x\otimes1_y)\otimes\lambda_1$; después de reasociar, corresponde a $1_x\otimes(1_y\otimes\lambda_1)$.
-\item Se obtiene aplicando el funtor $x\otimes-$ al axioma del triángulo para $y$ y $1$. En efecto, $(1_y\otimes\lambda_1)\circ\alpha_{y,1,1}=\rho_y\otimes1_1$; al tensorizar por $1_x$, el camino que pasa por $x\otimes(y\otimes(1\otimes1))$ coincide con la flecha roja $1_x\otimes(\rho_y\otimes1_1)$.
+\item Se obtiene aplicando el funtor $x\otimes-$ al axioma del triángulo para $y$ y $1$. En efecto,
+\[
+(1_y\otimes\lambda_1)\circ\alpha_{y,1,1}=\rho_y\otimes1_1;
+\]
+ al tensorizar por $1_x$, el camino que pasa por $x\otimes(y\otimes(1\otimes1))$ coincide con la flecha roja $1_x\otimes(\rho_y\otimes1_1)$.
 \item Conmuta por naturalidad del asociador respecto de $(1_x,\rho_y,1_1)$, con $\rho_y\colon y\otimes1\to y$. Su flecha superior es $(1_x\otimes\rho_y)\otimes1_1$, mientras que la flecha curva interior es $1_x\otimes(\rho_y\otimes1_1)$; las otras dos flechas son los asociadores correspondientes.
 \end{enumerate}
 Por tanto, conmuta todo el diagrama. Comparamos los dos recorridos exteriores que comienzan en $((x\otimes y)\otimes1)\otimes1$ y terminan en $x\otimes(y\otimes1)$: uno pasa por el vértice inferior izquierdo y el otro por el superior derecho. Ambos terminan en $\alpha_{x,y,1}$, de modo que, cancelando este isomorfismo, obtenemos

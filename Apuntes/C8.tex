@@ -102,7 +102,7 @@ En efecto, por definición $(\Sigma^\infty A)_n=\Sigma^nA$, de modo que el siste
 \]
 y ese sistema es, palabra por palabra, el que define los grupos de homotopía estable de $A$. Luego
 \[\textstyle
-\pi_k(\Sigma^\infty A)\cong\varinjlim_n\pi_{n+k}(\Sigma^nA)\cong \pi_k^s(A),
+\pi_k(\Sigma^\infty A)\cong\varinjlim\nolimits_n\pi_{n+k}(\Sigma^nA)\cong \pi_k^s(A),
 \]
 Esto presenta a $\pi_k$ en espectros como generalización de $\pi^s_k$ en espacios punteados.
 \end{ejem}
@@ -165,12 +165,12 @@ Entonces afirmamos, para todo $k\in\mathbb Z$:
 \]
 En efecto, \myref{defi:pi-espectro} y la representabilidad,
 \[\textstyle
-\pi_k(E)\cong \varinjlim_n\pi_{n+k}(E_n)\cong\varinjlim_n\bigl[S^{n+k},E_n\bigr]_*
+\pi_k(E)\cong \varinjlim\nolimits_n\pi_{n+k}(E_n)\cong\varinjlim\nolimits_n\bigl[S^{n+k},E_n\bigr]_*
 \]
 Ahora bien, en el diagrama de este último colímite, sabemos que los morfismos estructurales $\Sigma E_n\to E_{n+1}$ inducen isomorfismos $[S^{n+k},E_{n}]_* \cong [S^{n+1+k},E_{n+1}]_*$ así que el sistema es naturalmente isomorfo a uno constante, por lo que para todo $n_0\en\mathbb Z$ con $n_0+k \ge0$:
 \[\textstyle
 \pi_k(E)
-\cong \varinjlim_n\bigl[S^{n+k},E_n\bigr]_*
+\cong \varinjlim\nolimits_n\bigl[S^{n+k},E_n\bigr]_*
 \cong [S^{n_0+k},E_{n_0}] \cong \Tilde{E}^{n_0}(S^{n_0+k})
 \]
 basta con tomar $n_0 = -k$ y $n_0=0$. 
@@ -331,9 +331,9 @@ Por el \cref{ejem:truncacion}, $X$ y $X_{\ge0}$ son establemente equivalentes y,
 \begin{nota}
 Se obtiene directamente de la definición del desplazamiento que:
 \[\textstyle
-\pi_k(\sh^dX) = \varinjlim_n\pi_{n+k}(X_{n+d})
+\pi_k(\sh^dX) = \varinjlim\nolimits_n\pi_{n+k}(X_{n+d})
 \;\underset{\scriptscriptstyle m=n+d}{\cong}\;
-\varinjlim_{m}\pi_{m+k-d}(X_{m}) = \pi_{k-d}(X),
+\varinjlim\nolimits_{m}\pi_{m+k-d}(X_{m}) = \pi_{k-d}(X),
 \]
 Es el análogo estable de la relación $\pi^s_{k}(\Sigma^dA)\cong\pi^s_{k-d}(A)$ para espacios: desplazar los índices de un espectro equivale a suspenderlo, y esa conmutación entre desplazamiento y suspensión es precisamente lo que no se tiene en homotopía inestable, donde la suspensión solo es un isomorfismo a partir del rango del teorema de Freudenthal.
 \end{nota}
@@ -388,7 +388,11 @@ Sea $X=(X_n,\xi_n)$ un espectro secuencial. Su \emph{suspensión} $\Sigma X$ tie
 Si $f\colon X\to Y$ es un morfismo de espectros, definimos $(\Sigma f)_n\coloneqq 1\wedge f_n$.
 \end{defi}
 
-Esta construcción es funtorial: el cuadrado estructural de $\Sigma f$ conmuta porque $f_{n+1}\circ\xi_n=\zeta_n\circ(f_n\wedge1)$. El orden de los factores permite escribir $1\wedge\xi_n$ sin introducir permutaciones.
+Esta construcción es funtorial: el cuadrado estructural de $\Sigma f$ conmuta porque
+\[
+f_{n+1}\circ\xi_n=\zeta_n\circ(f_n\wedge1).
+\]
+ El orden de los factores permite escribir $1\wedge\xi_n$ sin introducir permutaciones.
 
 \begin{prop}\label{prop:suspension-extiende}
 Para todo espacio punteado $A$ se tiene
@@ -430,11 +434,11 @@ La última identificación se obtiene reindexando el colímite que define los gr
 
 Por definición, $\pi_{k+1}(\Sigma X)$ es el colímite de los grupos $\pi_{n+k+1}(S^1\wedge X_n)$, con transición $(1\wedge\xi_n)_*\Sigma$. Podemos restringirnos a los niveles pares: entonces las transiciones son los compuestos de los pasos correspondientes a $2n$ y $2n+1$, y obtenemos
 \begin{equation}\label{eq:colsuspar}\textstyle
-\pi_{k+1}(\Sigma X)\cong\varinjlim_n\pi_{2n+k+1}(S^1\wedge X_{2n})
+\pi_{k+1}(\Sigma X)\cong\varinjlim\nolimits_n\pi_{2n+k+1}(S^1\wedge X_{2n})
 \quad\text{con transición}\quad
 (1\wedge\xi_{2n+1})_*\Sigma(1\wedge\xi_{2n})_*\Sigma
 \end{equation}
-En cambio, $\pi_k(X)=\varinjlim_n\pi_{n+k}(X_n)$ se calcula mediante las transiciones $(\xi_n)_* \Sigma$, es decir,
+En cambio, $\pi_k(X)=\varinjlim\nolimits_n\pi_{n+k}(X_n)$ se calcula mediante las transiciones $(\xi_n)_* \Sigma$, es decir,
 \[
 \makebox[\textwidth]{%
 \begin{tikzcd}[
@@ -459,7 +463,7 @@ En cambio, $\pi_k(X)=\varinjlim_n\pi_{n+k}(X_n)$ se calcula mediante las transic
 \]
 por lo que conservando solo las entradas impares $2n+1$ (que son un subsistema cofinal), obtenemos
 \begin{equation}\label{eq:colimpar}\textstyle
-\pi_k(X)\cong\varinjlim_n\pi_{2n+k+1}(X_{2n}\wedge S^1)
+\pi_k(X)\cong\varinjlim\nolimits_n\pi_{2n+k+1}(X_{2n}\wedge S^1)
 \quad\text{con transición}\quad
 \Sigma(\xi_{2n+1})_*\Sigma(\xi_{2n})_*
 \end{equation}
