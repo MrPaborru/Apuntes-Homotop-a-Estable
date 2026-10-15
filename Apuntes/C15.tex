@@ -84,9 +84,9 @@ Sea $P=\prod_{i\ge1}E$. Su nivel $n$ es $\prod_iS^{n+1}$. Para calcular su estab
 identifica el mapa de estabilización con la multiplicación por $2$ en todas las coordenadas. Antes de identificar los grupos con productos, el mismo argumento tiene la forma dibujada en la pizarra:
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
-\pi_{n+1}(\prod_iE_n) \arrow[dr,"(\prod_i\widetilde\xi_n)_*"']
-&& \pi_{n+2}(\prod_iE_{n+1})\\
-& \pi_{n+1}(\prod_i\Omega E_{n+1})\cong\pi_{n+1}(\Omega\prod_iE_{n+1})
+\pi_{n+1}\left(\prod_iE_n\right) \arrow[dr,"(\prod_i\widetilde\xi_n)_*"']
+&& \pi_{n+2}\left(\prod_iE_{n+1}\right)\\
+& \pi_{n+1}\left(\prod_i\Omega E_{n+1}\right)\cong\pi_{n+1}\left(\Omega\prod_iE_{n+1}\right)
 \arrow[ur,"\mathrm{adj}"'] &
 \end{tikzcd}
 \]
@@ -316,10 +316,10 @@ Sea $\mathcal M$ una categoría de modelos y $K$ una categoría pequeña. Escrib
 
 La forma de $K$ comprende cuatro objetos, dos flechas paralelas y un endomorfismo:
 \[
-\begin{tikzcd}[column sep=small,row sep=small]
+\begin{tikzcd}[column sep=small,row sep=small,cramped]
 & \bullet \arrow[dr] &\\
 \bullet \arrow[ur] \arrow[dr] & & \bullet \arrow[loop right]\\
-& \bullet \arrow[ur,shift left=2] \arrow[ur,shift right=2] &
+& \bullet \arrow[ur,shift left=1] \arrow[ur,shift right=1] &
 \end{tikzcd}
 \]
 Una transformación entre dos diagramas de esa forma reúne las componentes $\eta_X,\eta_Y,\eta_Z,\eta_W$:
@@ -348,10 +348,10 @@ Para cada flecha $\alpha\colon k\to l$ de $K$, la condición es $G(\alpha)\eta_k
 \begin{ejem}
 El colímite ordinario no preserva estas equivalencias, ni siquiera en espacios. Consideremos el siguiente morfismo de spans; las flechas rojas punteadas son las aplicaciones canónicas a sus respectivos pushouts:
 \[
-\begin{tikzcd}[column sep={13mm,between origins},
-  row sep={14mm,between origins},
+\begin{tikzcd}[column sep={12mm,between origins},
+  row sep={12mm,between origins},
   cells={nodes={inner sep=2pt}}]
-S^n \arrow[rr,hook] \arrow[dd,hook]
+S^n \arrow[dd,hook]
 & & D^{n+1} & & &\\
 & & & S^n \arrow[rr] \arrow[dd] & & *\\
 D^{n+1} & & S^{n+1} & & &\\
@@ -363,8 +363,9 @@ D^{n+1} & & S^{n+1} & & &\\
 \arrow[from=4-4,to=4-6,rojoCIMAT,dotted]
 % La misma traslacion de los tres vertices da equivalencias paralelas.
 \arrow[from=1-1,to=2-4,rojoCIMAT,crossing over,"1"{pos=.5},"\simeq"'{pos=.5}]
-\arrow[from=1-3,to=2-6,rojoCIMAT,crossing over,"c"{pos=.5},"\simeq"'{pos=.5}]
-\arrow[from=3-1,to=4-4,rojoCIMAT,crossing over,"c"{pos=.5},"\simeq"'{pos=.5}]
+\arrow[from=1-3,to=2-6,rojoCIMAT,"c"{pos=.5},"\simeq"'{pos=.5}]
+\arrow[from=3-1,to=4-4,rojoCIMAT,"c"{pos=.5},"\simeq"'{pos=.5}]
+\arrow[from=1-1,to=1-3,hook]
 \end{tikzcd}
 \]
 Los dos diagramas son débilmente equivalentes objeto a objeto, pero sus pushouts son $S^{n+1}$ y $*$, respectivamente. El mapa inducido $S^{n+1}\to *$ no es una equivalencia débil. Por ello necesitamos derivar el colímite.
