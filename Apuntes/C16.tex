@@ -1,0 +1,531 @@
+% C16 -- 14 de octubre de 2026. Fragmento del documento principal.
+% Fuentes: Screenshots C16/P01--P17.png; Transcripciones/C16.txt.
+% C16.txt reúne read.ai y dos fragmentos de TurboScribe; tiempos locales.
+% P14: se completa la cancelación de la prueba de unicidad: F(eta_X)
+% no tiene por qué ser invertible. La igualdad se prueba con una Q adicional.
+% P16: la independencia del tipo correcto se formula para destinos saturados.
+
+Completaremos la construcción nivel a nivel de los colímites homotópicos de espectros y describiremos los modelos correspondientes para límites homotópicos. Después retomaremos los funtores derivados desde el punto de vista de las deformaciones, probaremos su propiedad universal y explicaremos qué significa que una construcción tenga el tipo de homotopía correcto. Cerraremos con las sucesiones cofibradas y el ejercicio sobre sucesiones fibradas.
+
+Conservamos la notación $\Sp^{\mathbb N}_{\ell}$ para la estructura de modelos nivel a nivel y $\Sp^{\mathbb N}_s$ para la estable. La letra $K$ denotará una categoría pequeña, salvo en el ejemplo del smash con un espacio punteado.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Colímites y límites homotópicos de espectros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El colímite homotópico nivel a nivel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P01--P04; parte 1, 01:50--16:06.
+Sea $F\colon K\to\Sp^{\mathbb N}_s$. En la clase~15 vimos que
+\[
+\operatorname{hocolim}_K F=\varinjlim\nolimits_K QF,
+\]
+donde $QF$ es un reemplazo cofibrante en la estructura proyectiva de diagramas. Para identificar sus niveles, elegimos primero un reemplazo proyectivo $Q'F$ usando la estructura nivel a nivel. Recordemos la comparación:
+\[
+\begin{tikzcd}[column sep=huge]
+Q'F \arrow[r,"q'_F","{\simeq_\ell\,,\ \simeq_s}"'] & F.
+\end{tikzcd}
+\]
+Una equivalencia nivel a nivel es estable. Además, las dos estructuras sobre espectros tienen las mismas cofibraciones y, por tanto, también las tienen sus estructuras proyectivas sobre diagramas. Así, $Q'F$ sirve como reemplazo cofibrante en ambos casos y podemos usar el mismo representante:
+\[
+\operatorname{hocolim}^{(s)}_K F
+=\varinjlim\nolimits_K Q'F
+=\operatorname{hocolim}^{(\ell)}_K F.
+\]
+Estas igualdades corresponden a la elección de modelo indicada; un reemplazo diferente produce un objeto equivalente en la categoría homotópica.
+
+Escribamos $C_Z$ para el diagrama constante de valor $Z$. La cofibrancia proyectiva de $Q'F$ significa que el morfismo desde el objeto inicial es una cofibración:
+\[
+\begin{tikzcd}[row sep=large]
+C_{\Sigma^\infty *}\arrow[d,hook]\\
+Q'F.
+\end{tikzcd}
+\]
+Este morfismo es un retracto de un complejo celular construido con los generadores libres $F_I^K$ de la clase~15. Al tomar el nivel $n$, obtenemos
+\[
+\begin{tikzcd}[row sep=large]
+C_*\arrow[d,hook]\\
+(Q'F)_n
+\end{tikzcd}
+\qquad\text{en }(\Topstar^q)^K.
+\]
+Veamos por qué sigue siendo una cofibración proyectiva. El nivel $n$ preserva los colímites y los retractos que intervienen en la construcción celular. Los generadores de espectros son libres sobre inclusiones de celdas; en cada nivel dan inclusiones celulares de espacios, posiblemente suspendidas. Al aplicar el funtor libre de diagramas obtenemos complejos celulares generados por
+\[
+I'=\{S^{r-1}_+\hookrightarrow D^r_+:r\ge0\},
+\qquad S^{-1}=\varnothing.
+\]
+Por tanto, el mapa anterior es un retracto de un complejo celular $F_{I'}^K$. Esto demuestra que $(Q'F)_n$ es proyectivamente cofibrante. Por otra parte,
+\[
+(Q'F)_n\xrightarrow{\ (q'_F)_n\ }F_n
+\]
+es una equivalencia débil objeto a objeto, pues $q'_F$ era una equivalencia nivel a nivel. Hemos obtenido un reemplazo cofibrante proyectivo de $F_n$.
+
+Los colímites de espectros se calculan nivel a nivel. En consecuencia,
+\[
+\left(\varinjlim\nolimits_K Q'F\right)_n
+\cong\varinjlim\nolimits_K (Q'F)_n
+=\operatorname{hocolim}_K F_n.
+\]
+La estructura de espectro no se elige por separado en cada nivel. Si $\xi_n$ denota la transformación formada por los mapas estructurales de $Q'F$, se obtiene del triángulo
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\Sigma\left(\varinjlim\nolimits_K Q'F\right)_n
+\arrow[rr]\arrow[dr,"\cong"']
+&&\left(\varinjlim\nolimits_K Q'F\right)_{n+1}\\
+&\varinjlim\nolimits_K\Sigma(Q'F)_n
+\arrow[ur,"\varinjlim\nolimits_K\xi_n"']&
+\end{tikzcd}
+\]
+El isomorfismo usa que la suspensión es un adjunto izquierdo y preserva colímites. La otra flecha se obtiene de los mapas estructurales del diagrama, que hacen compatibles las elecciones.
+
+% P04--P05; parte 1, 16:06--19:37.
+Además, las cofibraciones proyectivas son cofibraciones objeto a objeto. El mapa $C_*\to(Q'F)_n$ implica entonces que cada espacio $Q'F(k)_n$ es cofibrante. Podemos aplicar el reemplazo simplicial de la clase~15 y obtener otro modelo explícito:
+\[
+\operatorname{hocolim}_K F_n
+\simeq\bigl|\operatorname{srep}((Q'F)_n)_\bullet\bigr|.
+\]
+El aumento de esta realización hacia $\varinjlim\nolimits_K(Q'F)_n$ es una equivalencia débil porque $(Q'F)_n$ es proyectivamente cofibrante. En particular, el telescopio y la cofibra homotópica admiten los modelos nivel a nivel que usaremos habitualmente.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La estructura inyectiva y los límites homotópicos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P05--P06; parte 1, 19:37--30:00.
+Para construir límites homotópicos mediante una estructura inyectiva, el teorema presentado en clase requiere una hipótesis adicional:
+\[
+\begin{tikzcd}[column sep=small,row sep=large]
+&\mathcal M\text{ combinatoria}\arrow[dl,no head]\arrow[dr,no head]&\\
+\text{cofibrantemente generada}&&\text{localmente presentable}.
+\end{tikzcd}
+\]
+Una categoría es \emph{localmente presentable} si, para algún cardinal regular $\kappa$, es cocompleta y posee un conjunto de objetos $\kappa$-presentables que la generan mediante colímites $\kappa$-filtrados. Aquí $A$ es $\kappa$-presentable cuando $\operatorname{Hom}(A,-)$ preserva esos colímites. En clase se utilizó también el término $\kappa$-compacto. Esta condición depende de la categoría subyacente y no solo de su categoría homotópica.
+
+\begin{teo}[Estructura inyectiva]
+Si $\mathcal M$ es una categoría de modelos combinatoria y $K$ es pequeña, la categoría $\mathcal M^K$ admite una estructura de modelos inyectiva. Sus equivalencias débiles y cofibraciones se determinan objeto a objeto. Sus fibraciones son, en particular, fibraciones objeto a objeto, aunque el recíproco no se afirma.
+\end{teo}
+
+El funtor constante $C\colon\mathcal M\to\mathcal M^K$ preserva cofibraciones y cofibraciones acíclicas en esta estructura. Por la adjunción con el límite, este último es de Quillen derecho y admite el derivado
+\[
+\operatorname{holim}_K=\mathrm R\!\varprojlim\nolimits_K.
+\]
+Se calcula tomando primero un reemplazo fibrante \emph{inyectivo del diagrama} y después su límite. La fibrancia objeto a objeto, por sí sola, no garantiza que el diagrama sea inyectivamente fibrante.
+
+Las categorías de espacios usadas en el curso, $\Top^q$ y $\Topstar^q$, no satisfacen la hipótesis de ser combinatorias. Esto no impide construir sus límites homotópicos: podemos pasar a conjuntos simpliciales mediante la equivalencia de Quillen
+\[
+\begin{tikzcd}[column sep=huge]
+\Top^q\arrow[r,bend left=22,"S_\bullet"]
+&\mathbf{sSet}\arrow[l,bend left=22,"|-|"] .
+\end{tikzcd}
+\]
+El funtor singular es el adjunto derecho y la realización es el izquierdo. Como $\mathbf{sSet}$ sí es combinatoria, un modelo para un diagrama de espacios es
+\[
+\operatorname{holim}_K F
+\simeq\left|\operatorname{holim}_K(S_\bullet\circ F)\right|.
+\]
+Se entiende que el límite homotópico interior se calcula en conjuntos simpliciales. La equivalencia de Quillen transporta el resultado a espacios; no estamos afirmando que la realización conmute con límites ordinarios. La misma construcción tiene su versión punteada.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El modelo cobarra y su aplicación a espectros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P07; parte 1, 30:00--48:03. Se incorpora la rectificación oral de R F.
+\begin{teo}[Modelo cobarra]
+Sea $\mathcal C$ una categoría de modelos simplicial y cofibrantemente generada. Si $R$ es un reemplazo fibrante funtorial y $F\colon K\to\mathcal C$, un modelo cobarra es
+\[
+\operatorname{holim}_K F\simeq\Omega(*,K,R\circ F).
+\]
+\end{teo}
+
+Aquí $*$ representa el diagrama constante puntual que actúa como peso simplicial. El otro dato es el diagrama de objetos fibrantes
+\[
+\begin{tikzcd}[column sep=large]
+K\arrow[r,"F"]&\mathcal C\arrow[r,"R"]&\mathcal C_f.
+\end{tikzcd}
+\]
+Por tanto, $RF$ significa componer $F$ con un reemplazo fibrante en $\mathcal C$; no significa reemplazar el diagrama en una estructura inyectiva. La cobarra introduce los productos, espacios de aplicaciones y compatibilidades homotópicas que requiere el límite. Malkiewich la denota por $F(A,\mathcal J,B)$; usamos $\Omega$ para distinguirla del funtor que estamos estudiando. El teorema se presentó sin demostración ni desarrollo de la construcción.
+
+La estructura estable de espectros secuenciales admite un enriquecimiento simplicial compatible con su estructura de modelos. Se obtiene a partir de los espacios de aplicaciones de espectros tomando sus conjuntos simpliciales singulares, junto con los tensores y cotensores correspondientes. Esta estructura añade información simplicial a los morfismos y permite aplicar el modelo anterior.
+
+Para espectros, tomamos un reemplazo \emph{estable} fibrante $R$, cuyos valores son $\Omega$-espectros. Un modelo compatible nivel a nivel satisface
+\[
+\bigl(\operatorname{holim}_K F\bigr)_n
+=\operatorname{holim}_K\bigl((R\circ F)_n\bigr).
+\]
+El miembro derecho es un límite homotópico de espacios punteados, con los mapas estructurales inducidos por el diagrama de espectros. La identificación proviene de que la cobarra de espectros se construye mediante las correspondientes operaciones en espacios. El reemplazo estable es esencial: tomar límites homotópicos de los niveles originales de un diagrama arbitrario no garantiza obtener su límite homotópico estable.
+
+En clase se destacó el uso práctico de estas fórmulas, especialmente para fibras homotópicas y límites homotópicos de torres. Los detalles de los modelos generales quedaron como referencia bibliográfica, sin convertirse en ejercicios adicionales.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Funtores derivados mediante deformaciones}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Deformaciones izquierdas y funtores homotópicos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P08--P10; parte 1, 48:03--58:54, y comienzo de la parte 2.
+El punto de vista de Malkiewich permite definir funtores derivados sin exigir una estructura de modelos. Sean $\mathcal C$ y $\mathcal D$ categorías con clases de equivalencias débiles $W$ y $W'$, que satisfacen dos de tres, y sea $F\colon\mathcal C\to\mathcal D$ un funtor. Sus categorías homotópicas se obtienen localizando en $W$ y $W'$.
+
+\begin{defi}
+Una \emph{deformación izquierda} de $F$ consta de un funtor $Q\colon\mathcal C\to\mathcal C$, una transformación natural $\eta\colon Q\to\id_{\mathcal C}$ y una subcategoría plena $\mathcal A\subseteq\mathcal C$ tales que:
+\begin{enumerate}
+\item Cada componente $\eta_X\colon QX\to X$ pertenece a $W$.
+\item La imagen de $Q$ está contenida en $\mathcal A$.
+\item $F$ envía las equivalencias débiles entre objetos de $\mathcal A$ a equivalencias débiles de $\mathcal D$.
+\end{enumerate}
+El funtor $\mathrm LF=FQ$ se llama \emph{funtor derivado izquierdo} asociado a la deformación. Viene equipado con la comparación natural
+\[
+\varepsilon=F\eta\colon\mathrm LF\longrightarrow F.
+\]
+\end{defi}
+
+Si $W'$ consiste en los isomorfismos, la última condición exige que $F$ convierta en isomorfismos las equivalencias débiles de $\mathcal A$. Es el caso particular mencionado primero en clase. Un \emph{funtor homotópico} es un funtor que preserva todas las equivalencias débiles de su dominio.
+
+\begin{prop}\label{prop:c16-deformacion-homotopica}
+El funtor $\mathrm LF$ preserva equivalencias débiles. Para todo objeto $X$ de $\mathcal A$, también es una equivalencia débil la comparación
+\[
+\varepsilon_X\colon\mathrm LF(X)\longrightarrow F(X).
+\]
+\end{prop}
+
+\begin{proof}
+Para una equivalencia débil $w\colon X\to Y$, la naturalidad de $\eta$ da
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+X\arrow[r,"w","\simeq"']&Y\\
+QX\arrow[u,"\eta_X","\simeq"']\arrow[r,"Qw"']&QY\arrow[u,"\eta_Y"',"\simeq"] .
+\end{tikzcd}
+\]
+Por dos de tres, $Qw$ es una equivalencia débil. Sus extremos están en $\mathcal A$, luego $FQw$ pertenece a $W'$. Si además $X\in\mathcal A$, tanto $QX$ como $X$ están en esa subcategoría y el mismo argumento aplicado a $\eta_X$ prueba la segunda afirmación.
+\end{proof}
+
+Por tanto, $\mathrm LF$ induce un funtor entre las localizaciones, para el que conservamos la notación:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\mathcal C\arrow[r,"\mathrm LF"]\arrow[d,"\gamma_{\mathcal C}"']
+&\mathcal D\arrow[d,"\gamma_{\mathcal D}"]\\
+\Ho(\mathcal C)\arrow[r,dashed,"\mathrm LF"']&\Ho(\mathcal D).
+\end{tikzcd}
+\]
+En el caso particular $W'=\operatorname{Iso}(\mathcal D)$, la factorización toma la forma dibujada inicialmente en clase:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\mathcal C\arrow[r,"\gamma_{\mathcal C}"]\arrow[rr,bend right=30,"\mathrm LF"']
+&\Ho(\mathcal C)\arrow[r,"\mathrm LF"]&\mathcal D.
+\end{tikzcd}
+\]
+Conviene distinguir el funtor $FQ\colon\mathcal C\to\mathcal D$ de su descenso a las categorías homotópicas. Esta convención complementa la utilizada en las clases anteriores, donde llamábamos derivado al funtor definido después de localizar.
+
+Si $F$ es de Quillen izquierdo, podemos tomar $Q$ como reemplazo cofibrante y $\mathcal A$ como la subcategoría de objetos cofibrantes. El lema de Ken Brown da la tercera condición. La definición recupera así el derivado habitual. Dualmente, una deformación derecha usa $\id\to R$ y produce $\mathrm RF=FR$, junto con una comparación $F\to\mathrm RF$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La propiedad universal del derivado izquierdo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P10--P14; partes 2 y 3. Los diagramas viven en Ho(D^C).
+Consideramos la categoría de funtores $\mathcal D^{\mathcal C}$, con transformaciones naturales como morfismos y equivalencias débiles objeto a objeto. Un morfismo de $\Ho(\mathcal D^{\mathcal C})$ puede representarse por un zigzag de transformaciones naturales, con equivalencias débiles en las flechas que se recorren al revés. No se exige que los funtores intermedios sean homotópicos.
+
+\begin{teo}\label{teo:c16-universal-derivado}
+Sea $\varepsilon=F\eta\colon\mathrm LF\to F$ la comparación de una deformación izquierda. Para todo funtor homotópico $G$ y todo morfismo $\varphi\colon G\to F$ en $\Ho(\mathcal D^{\mathcal C})$, hay un único morfismo $\psi\colon G\to\mathrm LF$ que hace conmutar el diagrama
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+G\arrow[r,"\varphi"]\arrow[d,dashed,"\exists!\,\psi"']&F\\
+\mathrm LF\arrow[ur,"\varepsilon"']&
+\end{tikzcd}
+\]
+Equivalentemente, $\mathrm LF\to F$ es un objeto terminal en la categoría de funtores homotópicos sobre $F$, formada dentro de $\Ho(\mathcal D^{\mathcal C})$.
+\end{teo}
+
+\begin{proof}
+La precomposición con $Q$ preserva equivalencias débiles objeto a objeto y, por tanto, induce un funtor en la categoría localizada. Si representamos $\varphi$ mediante un zigzag, la naturalidad de $\eta$ produce el diagrama de la pizarra:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+G\arrow[r,"\alpha"]&H_1&H_2\arrow[l,"\simeq"']\arrow[r]&\cdots\arrow[r]&F\\
+GQ\arrow[u,"G\eta"]\arrow[r,"\alpha Q"']
+&H_1Q\arrow[u,"H_1\eta"]
+&H_2Q\arrow[u,"H_2\eta"]\arrow[l,"\simeq"']\arrow[r]
+&\cdots\arrow[u]\arrow[r]&FQ\arrow[u,"F\eta"'].
+\end{tikzcd}
+\]
+Al invertir las equivalencias débiles, obtenemos un cuadrado en $\Ho(\mathcal D^{\mathcal C})$:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+G\arrow[r,"\varphi"]&F\\
+GQ\arrow[u,"G\eta","\cong"']\arrow[r,"\varphi Q"']
+&FQ=\mathrm LF\arrow[u,"F\eta"'] .
+\end{tikzcd}
+\]
+Como $G$ es homotópico, $G\eta$ es una equivalencia débil objeto a objeto. La fórmula
+\[
+\psi=(\varphi Q)(G\eta)^{-1}
+\]
+define entonces un morfismo que hace conmutar el triángulo y prueba la existencia.
+
+Los dos triángulos usados para separar existencia y unicidad son
+\[
+\begin{tikzcd}[column sep=large,row sep=huge]
+G\arrow[r,"\varphi"]\arrow[d,dashed,"{(\varphi Q)(G\eta)^{-1}}"']&F\\
+\mathrm LF\arrow[ur,"F\eta"']&
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=large,row sep=huge]
+G\arrow[r,"\varphi"]\arrow[d,"\psi"']&F\\
+\mathrm LF\arrow[ur,"F\eta"']&
+\end{tikzcd}
+\]
+
+Para la unicidad, supongamos que $\varepsilon\psi=\varphi$. Precomponemos con $Q$ y comparamos mediante $\eta$:
+\[
+\begin{tikzcd}[column sep=large,row sep=huge]
+GQ\arrow[r,"\psi Q"]\arrow[rr,bend left=32,"\varphi Q"]
+\arrow[d,"G\eta"',"\cong"]
+&\mathrm LFQ\arrow[r,"\varepsilon Q"]\arrow[d,"\mathrm LF\eta"',"\cong"]
+&FQ\arrow[d,"F\eta"]\\
+G\arrow[r,"\psi"']\arrow[rr,bend right=32,"\varphi"']
+&\mathrm LF\arrow[r,"\varepsilon"']&F.
+\end{tikzcd}
+\]
+Los dos mapas centrales que salen de $\mathrm LFQ=FQQ$ son invertibles. En efecto,
+\[
+(\varepsilon Q)_X=F(\eta_{QX})\colon FQQX\longrightarrow FQX
+\]
+es una equivalencia débil porque $QQX,QX\in\mathcal A$. Asimismo,
+\[
+(\mathrm LF\eta)_X=F(Q\eta_X)\colon FQQX\longrightarrow FQX
+\]
+es una equivalencia débil porque $\mathrm LF$ es homotópico. Del diagrama se deduce
+\[
+\psi=(\mathrm LF\eta)(\varepsilon Q)^{-1}(\varphi Q)(G\eta)^{-1}.
+\]
+Falta justificar que los dos primeros factores se cancelan, es decir,
+\begin{equation}\label{eq:c16-coherencia-eta}
+FQ\eta=F\eta Q\quad\text{en }\Ho(\mathcal D^{\mathcal C}).
+\end{equation}
+La naturalidad de $\eta$ proporciona el cuadrado
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+QQX\arrow[r,"\eta_{QX}"]\arrow[d,"Q\eta_X"']
+&QX\arrow[d,"\eta_X"]\\
+QX\arrow[r,"\eta_X"']&X.
+\end{tikzcd}
+\]
+Después de aplicar $F$, no podemos cancelar directamente $F\eta_X$: este mapa puede no ser invertible si $X$ no pertenece a $\mathcal A$. Completamos ese paso utilizando la naturalidad una vez más. Las tres identidades siguientes se entienden como identidades de transformaciones naturales; las escribimos en sus componentes para distinguir los índices:
+\[
+\begin{aligned}
+FQ\eta_X\,FQ\eta_{QX}
+&=FQ\eta_X\,FQQ\eta_X,\\
+F\eta_{QX}\,F\eta_{QQX}
+&=F\eta_{QX}\,FQ\eta_{QX},\\
+FQ\eta_X\,F\eta_{QQX}
+&=F\eta_{QX}\,FQQ\eta_X.
+\end{aligned}
+\]
+La primera se obtiene aplicando $FQ$ al cuadrado anterior; la segunda usa la naturalidad en $\eta_{QX}$, y la tercera en $Q\eta_X$. Los factores de la izquierda que se cancelan en las dos primeras son equivalencias débiles objeto a objeto. Así obtenemos
+\[
+FQ\eta_{QX}=FQQ\eta_X,
+\qquad F\eta_{QQX}=FQ\eta_{QX}.
+\]
+Estos mapas son también equivalencias débiles objeto a objeto. Sustituyendo ambas igualdades en la tercera identidad y cancelando el factor común a la derecha, resulta \eqref{eq:c16-coherencia-eta}. Estas cancelaciones en la categoría localizada de funtores establecen la igualdad natural requerida. Al sustituirla en la fórmula de $\psi$, obtenemos
+\[
+\psi=(\varphi Q)(G\eta)^{-1},
+\]
+que coincide con el morfismo construido antes y demuestra su unicidad.
+\end{proof}
+
+Esta es la propiedad universal del derivado izquierdo; véase \cite[Proposición~3.5.1.2]{malkiewich}. Su versión dual afirma que $F\to\mathrm RF$ es inicial entre los morfismos de $F$ hacia funtores homotópicos. No hace falta una estructura de modelos sobre la categoría de funtores para formular estas propiedades: basta la localización en las equivalencias objeto a objeto.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Unicidad y el smash de un espacio con un espectro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P15--P16; parte 3.
+\begin{coro}\label{coro:c16-unicidad-derivados}
+Dos derivados izquierdos de $F$, obtenidos mediante deformaciones distintas, son isomorfos en $\Ho(\mathcal D^{\mathcal C})$. El isomorfismo compatible con las comparaciones a $F$ es único.
+\end{coro}
+
+\begin{proof}
+Aplicamos la propiedad universal primero a $\mathrm LF\to F$ y después a $\mathrm L'F\to F$:
+\[
+\begin{tikzcd}[column sep=huge,row sep=large]
+\mathrm LF\arrow[dr,"\varepsilon"]\arrow[dd,dashed,bend left=18,"\exists!"]&\\
+&F\\
+\mathrm L'F\arrow[ur,"\varepsilon'"']\arrow[uu,dashed,bend left=18,"\exists!"]&
+\end{tikzcd}
+\]
+Cada composición es un endomorfismo compatible con la comparación a $F$. La identidad también lo es, así que la unicidad obliga a que ambas composiciones sean identidades.
+\end{proof}
+
+\begin{ejem}[Dos modelos del smash derivado]
+Consideramos el smash de un espacio punteado $K$ y un espectro $X$:
+\[
+-\wedge-\colon\Topstar\times\Sp^{\mathbb N}_s\longrightarrow\Sp^{\mathbb N}_s.
+\]
+Usamos el resultado anunciado en clase: si $K\to L$ es una equivalencia débil entre complejos CW punteados y $X\to Y$ es una equivalencia estable, entonces el mapa inducido $K\wedge X\to L\wedge Y$ es una equivalencia estable. Este resultado se utilizó sin demostración; es la invariancia que permite el modelo de \cite[Ejemplo~3.4.3.4]{malkiewich}.
+
+Si $Q_{\mathrm{esp}}$ es un reemplazo CW funtorial de espacios, podemos elegir
+\[
+\begin{aligned}
+Q_{\mathrm{esp}}\times\id\colon
+\Topstar\times\Sp^{\mathbb N}_s
+&\longrightarrow\Topstar\times\Sp^{\mathbb N}_s,\\
+\mathcal A&=\CWstar\times\Sp^{\mathbb N}_s.
+\end{aligned}
+\]
+La comparación está dada por $q_K\times\id_X$, y el resultado anterior verifica que el smash preserva equivalencias débiles en $\mathcal A$. Por tanto, un modelo del derivado izquierdo es
+\[
+K\wedge^{\mathrm L}X=Q_{\mathrm{esp}}K\wedge X.
+\]
+
+Si $Q_{\mathrm{Sp}}$ es un reemplazo funtorial por espectros CW, podemos usar también la deformación
+\[
+\begin{aligned}
+Q_{\mathrm{esp}}\times Q_{\mathrm{Sp}}\colon
+\Topstar\times\Sp^{\mathbb N}_s
+&\longrightarrow\Topstar\times\Sp^{\mathbb N}_s,\\
+\mathcal A'&=\CWstar\times\Sp^{\mathbb N,\mathrm{CW}}.
+\end{aligned}
+\]
+Produce el modelo $Q_{\mathrm{esp}}K\wedge Q_{\mathrm{Sp}}X$. La comparación natural
+\[
+Q_{\mathrm{esp}}K\wedge Q_{\mathrm{Sp}}X
+\xrightarrow{\ \id\wedge q_X\ }
+Q_{\mathrm{esp}}K\wedge X
+\]
+es una equivalencia estable compatible con los mapas a $K\wedge X$, por lo que realiza el isomorfismo del corolario. Reemplazar solo el espacio o ambos objetos produce modelos equivalentes.
+\end{ejem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El tipo de homotopía correcto}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{defi}
+Se dice que $F$ tiene el \emph{tipo de homotopía correcto en $X$} si la comparación
+\[
+\varepsilon_X\colon\mathrm LF(X)\longrightarrow F(X)
+\]
+es una equivalencia débil. En tal caso, $F(X)$ ya representa el valor del funtor derivado en $X$.
+\end{defi}
+
+Todos los objetos de $\mathcal A$ tienen esta propiedad. Para una deformación fija, podemos ampliar esa subcategoría a la subcategoría plena
+\[
+\mathcal A_{\max}
+=\{X\in\mathcal C:\varepsilon_X\text{ es una equivalencia débil}\}.
+\]
+Contiene la imagen de $Q$ y $F$ preserva equivalencias débiles entre sus objetos. En efecto, si $w\colon X\to Y$ es una de ellas, la identidad
+\[
+Fw\circ\varepsilon_X=\varepsilon_Y\circ\mathrm LF(w)
+\]
+y dos de tres implican que $Fw$ es una equivalencia débil. Además, cualquier subcategoría de deformación para este mismo $(Q,\eta)$ está contenida en $\mathcal A_{\max}$, por la \myref{prop:c16-deformacion-homotopica}.
+
+La independencia respecto de la deformación se interpreta mediante el diagrama de la pizarra:
+\[
+\begin{tikzcd}[column sep=huge,row sep=large]
+\mathrm LF(X)\arrow[dr,"\varepsilon_X"]\arrow[dd,"\cong"']&\\
+&F(X)\\
+\mathrm L'F(X)\arrow[ur,"\varepsilon'_X"']&
+\end{tikzcd}
+\qquad\text{en }\Ho(\mathcal D).
+\]
+Una comparación es un isomorfismo en $\Ho(\mathcal D)$ si y solo si lo es la otra. Cuando las equivalencias débiles de $\mathcal D$ son \emph{saturadas}, es decir, son precisamente los mapas que se vuelven isomorfismos al localizar, esto equivale a la independencia del tipo de homotopía correcto. Es el caso de las categorías de modelos del curso, en particular de espacios y espectros. Con la sola hipótesis abstracta de dos de tres, la independencia expresada por este diagrama se refiere a ser isomorfismo después de localizar; para identificarla con pertenecer a $W'$ se necesita la precisión anterior.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sucesiones cofibradas y fibradas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La cofibra homotópica de un morfismo de espectros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% P16--P17; final de la parte 3.
+Dado un morfismo de espectros $f\colon X\to Y$, su cofibra homotópica se construye mediante el cono de aplicación nivel a nivel:
+\[
+(C_f)_n=C_{f_n}=Y_n\cup_{f_n}CX_n.
+\]
+El cono es reducido y los mapas estructurales proceden de los de $X$ y $Y$, usando que la suspensión preserva los pushouts. La construcción produce la sucesión
+\[
+\begin{tikzcd}[column sep=large]
+X\arrow[r,"f"]&Y\arrow[r,"i"]&C_f.
+\end{tikzcd}
+\]
+Para interpretar esta fórmula como cofibra homotópica se emplean los modelos adecuados de espacios punteados; se puede reemplazar primero el morfismo por uno entre espectros cofibrantes, cuyos niveles están bien punteados. Así evitamos atribuir a un pushout reducido arbitrario una invariancia homotópica que podría fallar.
+
+\begin{defi}
+Una \emph{sucesión cofibrada} de espectros es una sucesión de la forma $X\to Y\to C_f$, una obtenida al iterar la construcción de cofibra hacia la derecha, o una sucesión isomorfa a una de ellas en la categoría homotópica estable.
+\end{defi}
+
+La iteración da la sucesión de Puppe, con las identificaciones homotópicas correspondientes:
+\[
+X\xrightarrow{f}Y\longrightarrow C_f
+\longrightarrow\Sigma X\longrightarrow\Sigma Y\longrightarrow\cdots.
+\]
+Estas sucesiones serán los modelos de los triángulos distinguidos. Se anunció para la clase siguiente que inducen sucesiones exactas largas de grupos de homotopía estables. La demostración de esa afirmación quedó pendiente; en cambio, el resultado dual se dejó como ejercicio.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sucesiones fibradas y exactitud en homotopía estable}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{ejer}[Sucesiones fibradas]\label{ejer:c16-sucesiones-fibradas}
+Formular la definición de sucesión fibrada de espectros y demostrar que toda sucesión fibrada induce una sucesión exacta larga de grupos de homotopía estables.
+\end{ejer}
+
+\begin{sol}
+Para $f\colon X\to Y$, definimos la fibra homotópica nivel a nivel. Si
+\[
+PY_n=\{\lambda\colon I\to Y_n:\lambda(1)=*\},
+\qquad e_0(\lambda)=\lambda(0),
+\]
+ponemos
+\[
+(F_f)_n=X_n\times_{Y_n}PY_n
+=\{(x,\lambda):\lambda(0)=f_n(x),\ \lambda(1)=*\}.
+\]
+Los puntos base son los pares formados por el punto base y la trayectoria constante. Para precisar la estructura de espectro, si $\xi_n^X$ y $\xi_n^Y$ son sus mapas estructurales, enviamos $[s,(x,\lambda)]$ a
+\[
+\left(\xi_n^X([s,x]),\ t\longmapsto\xi_n^Y([s,\lambda(t)])\right).
+\]
+La condición de que $f$ sea un morfismo de espectros garantiza que esta trayectoria empieza en la imagen del primer componente y termina en el punto base. La fórmula respeta los puntos identificados en el smash y define un mapa continuo.
+
+Llamamos \emph{sucesión fibrada} a $F_f\to X\xrightarrow{f}Y$, a sus iteraciones por fibras hacia la izquierda, o a una sucesión isomorfa a una de ellas en $\Ho(\Sp^{\mathbb N}_s)$. La iteración tiene la forma
+\[
+\cdots\longrightarrow\Omega X\longrightarrow\Omega Y
+\longrightarrow F_f\longrightarrow X\xrightarrow{f}Y.
+\]
+La fibra nivel a nivel es homotópicamente invariante para equivalencias estables, como también se sigue del argumento de exactitud que damos a continuación; por tanto, es compatible con los reemplazos estables usados al construir límites homotópicos.
+
+En cada nivel, factorizamos $f_n$ mediante el espacio de caminos de aplicación
+\[
+E_{f_n}=\{(x,\alpha):\alpha(0)=f_n(x)\},
+\qquad p_n(x,\alpha)=\alpha(1).
+\]
+El mapa $p_n\colon E_{f_n}\to Y_n$ es una fibración con fibra $(F_f)_n$. La inclusión de caminos constantes $X_n\to E_{f_n}$ es una equivalencia de homotopía: la retracción olvida el camino y la homotopía $\alpha(t)\mapsto\alpha(ut)$, con $0\le u\le1$, lo contrae a su valor inicial. La sucesión exacta de esta fibración da, para $r\ge2$,
+\[
+\cdots\longrightarrow\pi_{r+1}(Y_n)
+\xrightarrow{\partial_n}\pi_r((F_f)_n)
+\longrightarrow\pi_r(X_n)
+\xrightarrow{(f_n)_*}\pi_r(Y_n)\longrightarrow\cdots.
+\]
+Estas sucesiones son compatibles con la estabilización. Una manera de verlo sin suponer que la suspensión preserva fibras es usar los adjuntos estructurales
+\[
+X_n\longrightarrow\Omega X_{n+1},\qquad
+Y_n\longrightarrow\Omega Y_{n+1}.
+\]
+Inducen un mapa de fibras homotópicas hacia la fibra de $\Omega f_{n+1}$, que se identifica naturalmente con $\Omega(F_f)_{n+1}$. La naturalidad de la sucesión exacta, junto con la adjunción de lazos, hace conmutar los mapas de conexión con los mapas de estabilización. Usamos las convenciones compatibles de lazos y de conexión en todos los niveles.
+
+Fijemos ahora $k\in\mathbb Z$ y tomemos $n$ suficientemente grande para que todos los grupos de un tramo finito estén en grados al menos dos. Tomando el colímite filtrado sobre $n$ obtenemos
+\[
+\pi_k(Z)=\varinjlim\nolimits_n\pi_{k+n}(Z_n).
+\]
+Los colímites filtrados de grupos abelianos preservan la exactitud. Resulta, por tanto, la sucesión
+\[
+\cdots\longrightarrow\pi_{k+1}(Y)
+\xrightarrow{\partial}\pi_k(F_f)
+\longrightarrow\pi_k(X)
+\xrightarrow{f_*}\pi_k(Y)
+\xrightarrow{\partial}\pi_{k-1}(F_f)\longrightarrow\cdots.
+\]
+La exactitud puede comprobarse también con representantes: si una clase se anula al pasar al siguiente término del colímite, se anula en alguna etapa posterior; la exactitud en esa etapa proporciona una preimagen. Esto vale para cada entero $k$, incluidos los negativos, porque al aumentar $n$ entramos en grados de homotopía de espacios arbitrariamente altos.
+
+Finalmente, un isomorfismo de sucesiones en la categoría homotópica estable induce isomorfismos en todos los grupos $\pi_k$ y transporta esta sucesión exacta. Así queda demostrado el enunciado para todas las sucesiones fibradas de la definición, incluidas sus iteraciones.
+\end{sol}
