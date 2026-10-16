@@ -86,29 +86,29 @@
     % Segmentos de llegada por encima del cilindro más ancho
     % que interviene en cada imagen: forman una escalerita.
     % El primero representa [0,t] del primer cilindro inferior.
-    \draw[rojoCIMAT,very thick]
+    \draw[rojoDiagramaCIMAT,very thick]
       (0,{.72+\alturaImagen})
       -- ({\tHom*\L},{.72+\alturaImagen});
     \foreach \x in {0,\tHom}{
-      \draw[rojoCIMAT] ({\x*\L},{.72+\alturaImagen-.08})
+      \draw[rojoDiagramaCIMAT] ({\x*\L},{.72+\alturaImagen-.08})
               -- ({\x*\L},{.72+\alturaImagen+.08});
     }
-    \node[rojoCIMAT,below=-1.5pt,font=\scriptsize]
+    \node[rojoDiagramaCIMAT,below=-1.5pt,font=\scriptsize]
       at ({\tHom*\L},{.72+\alturaImagen-.08}) {$t$};
 
     % Los demás atraviesan una pegadura:
     % [t,1] del cilindro anterior unido a [0,t] del siguiente.
     \foreach \m/\radio in {1/1.08,2/1.50,3/1.86}{
       \pgfmathsetmacro{\ySegmento}{\radio+\alturaImagen}
-      \draw[rojoCIMAT,very thick]
+      \draw[rojoDiagramaCIMAT,very thick]
         ({(\m-1+\tHom)*\L},\ySegmento)
         -- ({(\m+\tHom)*\L},\ySegmento);
       \foreach \extremo in {0,1}{
-        \draw[rojoCIMAT]
+        \draw[rojoDiagramaCIMAT]
           ({(\m-1+\tHom+\extremo)*\L},{\ySegmento-.08})
           -- ({(\m-1+\tHom+\extremo)*\L},{\ySegmento+.08});
       }
-      \node[rojoCIMAT,below=-1.5pt,font=\scriptsize]
+      \node[rojoDiagramaCIMAT,below=-1.5pt,font=\scriptsize]
         at ({(\m+\tHom)*\L},{\ySegmento-.08}) {$t$};
     }
   \end{scope}
@@ -122,11 +122,11 @@
     \pgfmathsetmacro{\yImagen}
       {-\separacion+\radioInferior+\alturaImagen}
     \pgfmathsetmacro{\yControl}{(-\radioSuperior+\yImagen)/2}
-    \draw[rojoCIMAT,thick,->]
+    \draw[rojoDiagramaCIMAT,thick,->]
       ({(\m+.5)*\L},{-\radioSuperior})
       .. controls ({(\m+.5)*\L},\yControl)
                and (\xImagen,\yControl)
       .. (\xImagen,\yImagen);
   }
-  \node[rojoCIMAT] at (8.65,-2.35) {$H_t$};
+  \node[rojoDiagramaCIMAT] at (8.65,-2.35) {$H_t$};
 \end{tikzpicture}
