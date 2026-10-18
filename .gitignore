@@ -4,8 +4,9 @@
 # build/, así que esta lista es sobre todo una red de seguridad: si alguna vez
 # se compila a mano con pdflatex en la raíz, esos archivos no se suben.
 
-# Carpeta de compilación
-build/
+# Carpeta de compilación: solo se sincroniza el PDF final.
+/build/*
+!/build/main.pdf
 
 # Auxiliares de LaTeX
 *.aux
@@ -36,7 +37,7 @@ build/
 *.bbl-SAVE-ERROR
 
 # Salida del documento (el PDF vive en build/)
-main.pdf
+/main.pdf
 out.txt
 
 # Archivos de respaldo / temporales de editores
