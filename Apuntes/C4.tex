@@ -1,8 +1,8 @@
-En la clase anterior se presentó la estructura triangulada de $\SW$ y de $\ESW$, verificando los axiomas salvo el del octaedro y utilizando un lema de relleno. La demostración de ese lema se completa al inicio de esta clase. Con la estructura triangulada ya disponible, el objetivo se desplaza a un problema distinto: hasta qué punto la homotopía estable permite \emph{representar} teorías de (co)homología.
+Ya disponemos de la estructura triangulada de $\SW$ y de $\ESW$, cuyos axiomas se verificaron salvo el del octaedro y con ayuda de un lema de relleno. Completaremos primero la demostración de ese lema. Después estudiaremos un problema distinto: hasta qué punto la homotopía estable permite \emph{representar} teorías de (co)homología.
 
-Tras recordar los axiomas de Eilenberg--Steenrod en su forma reducida y construir el morfismo de conexión, se ensaya la representación más económica posible, $\tilde h^n(X)=\set*{(X,-n),(Z,m)}$, con $(Z,m)$ un objeto fijo de $\SW$. El candidato satisface la invarianza homotópica, la exactitud y la aditividad \emph{finita}. Al intentar extenderlo a todos los CW-complejos punteados surge un obstáculo: el colímite que define los conjuntos de morfismos no conmuta en general con productos infinitos. El obstáculo se concreta en que la cuña infinita $\bigvee_{r\ge0}S^r$ no es el coproducto de la familia $\{S^r\}_{r\ge0}$ en $\ESW$, hecho que se demuestra combinando los resultados de Toda y Milnor citados en clase. Por un argumento distinto, se inicia la prueba de que la cohomología singular no admite una representación de esta forma con $Z$ finito.
+Tras recordar los axiomas de Eilenberg--Steenrod en su forma reducida y construir el morfismo de conexión, se ensaya la representación más económica posible, $\tilde h^n(X)=\set*{(X,-n),(Z,m)}$, con $(Z,m)$ un objeto fijo de $\SW$. El candidato satisface la invarianza homotópica, la exactitud y la aditividad \emph{finita}. Al intentar extenderlo a todos los CW-complejos punteados surge un obstáculo: el colímite que define los conjuntos de morfismos no conmuta en general con productos infinitos. El obstáculo se concreta en que la cuña infinita $\bigvee_{r\ge0}S^r$ no es el coproducto de la familia $\{S^r\}_{r\ge0}$ en $\ESW$, hecho que se demuestra combinando los resultados de Toda y Milnor citados. Por un argumento distinto, se inicia la prueba de que la cohomología singular no admite una representación de esta forma con $Z$ finito.
 
-La segunda mitad de la clase construye el ejemplo positivo: los grupos de homotopía estable $\pi_n^s(-)$ sí forman una teoría de homología reducida, y lo mismo ocurre con $\pi_n^s(X\wedge K)$ para cualquier CW-complejo punteado $K$. Con estas herramientas se enuncia y demuestra el teorema de Hurewicz estable, que sirve de entrada a la contradicción final: si un CW-complejo finito tuviera como único grupo de homotopía estable no nulo una copia de $\mathbb Z$, las suspensiones de ese espacio tendrían una tabla de grupos de homotopía incompatible con lo que se probará después. La contradicción se cierra en la clase siguiente.
+Consideraremos después el ejemplo positivo: los grupos de homotopía estable $\pi_n^s(-)$ sí forman una teoría de homología reducida, y lo mismo ocurre con $\pi_n^s(X\wedge K)$ para cualquier CW-complejo punteado $K$. Con estas herramientas se enuncia y demuestra el teorema de Hurewicz estable, que sirve de entrada a la contradicción final: si un CW-complejo finito tuviera como único grupo de homotopía estable no nulo una copia de $\mathbb Z$, las suspensiones de ese espacio tendrían una tabla de grupos de homotopía incompatible con lo que se probará después. La contradicción se cierra en la clase siguiente.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Teorías de (co)homología y representabilidad}
@@ -118,7 +118,7 @@ Con esto queda verificada la única pieza que faltaba del axioma \textup{TR5}. E
 \subsection{Teorías de homología y cohomología reducidas}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Con $\SW$ y $\ESW$ ya establecidas como categorías trianguladas, disponemos de sucesiones exactas largas asociadas a cada sucesión cofibrada. La pregunta de esta clase es si esas sucesiones provienen de una teoría de (co)homología, y conviene por tanto recordar los axiomas con precisión.%
+Con $\SW$ y $\ESW$ ya establecidas como categorías trianguladas, disponemos de sucesiones exactas largas asociadas a cada sucesión cofibrada. Nos preguntamos si esas sucesiones provienen de una teoría de (co)homología, y conviene por tanto recordar los axiomas con precisión.%
 \footnote{
     Las sucesiones exactas largas se obtuvieron en $\SW$, sobre CW-complejos finitos, donde todos los conjuntos de morfismos estabilizan y la exactitud se lee tras estabilizar lo suficiente. En $\ESW$ los conjuntos de morfismos pueden no estabilizar. Aún así, exactitud sigue siendo válida: para cada igualdad concreta se puede suspender suficientemente y trabajar con representantes.
 }
@@ -161,7 +161,7 @@ Una \emph{teoría de homología reducida} es una sucesión de funtores covariant
 \tilde h_n\colon\CWstar\longrightarrow\Ab,
 \qquad n\in\mathbb Z,
 \]
-junto con isomorfismos naturales $\sigma_n\colon\tilde h_n\circ\Sigma\to\tilde h_{n-1}$, escritos en la dirección usada en clase. Se exige la invarianza homotópica, la exactitud de $\tilde h_n(A)\to\tilde h_n(X)\to\tilde h_n(X/A)$ para cada subcomplejo punteado $A\subseteq X$, y la aditividad en la forma
+junto con isomorfismos naturales $\sigma_n\colon\tilde h_n\circ\Sigma\to\tilde h_{n-1}$, con esta orientación. Se exige la invarianza homotópica, la exactitud de $\tilde h_n(A)\to\tilde h_n(X)\to\tilde h_n(X/A)$ para cada subcomplejo punteado $A\subseteq X$, y la aditividad en la forma
 \[\textstyle
 \bigoplus_{\alpha\in J}\tilde h_n(X_\alpha)\xrightarrow{\ \cong\ }\tilde h_n\Bigl(\bigvee_{\alpha\in J}X_\alpha\Bigr).
 \]
@@ -290,7 +290,7 @@ La inclusión $A\hookrightarrow X$ y el cociente $X\to X/A$ dan lugar a la suces
 \[
 \set*{(X/A,-n),(Z,m)}\longrightarrow\set*{(X,-n),(Z,m)}\longrightarrow\set*{(A,-n),(Z,m)}.
 \]
-La identificación utilizada en la pizarra procede de la equivalencia $e\colon C_i=X\cup_A CA\to X/A$. Si $j\colon X\to C_i$ es la inclusión, entonces $ej=q$, de modo que tenemos el diagrama conmutativo
+La identificación procede de la equivalencia $e\colon C_i=X\cup_A CA\to X/A$. Si $j\colon X\to C_i$ es la inclusión, entonces $ej=q$, de modo que tenemos el diagrama conmutativo
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
 \set*{(X/A,-n),Z_m} \arrow[r,"e^*","\cong"'] \arrow[dr,"q^*"'] & \set*{(C_i,-n),Z_m} \arrow[d,"j^*"]\\
@@ -492,7 +492,7 @@ La asignación $X\mapsto\pi_n^s(X)$ define una teoría de homología reducida so
 % \]
 La primera flecha usa $(\Sigma X,0)\cong(X,1)$ y la segunda inducida por $\sh^{-1}$.
 
-\emph{Exactitud.} Sea $A\subseteq X$ un subcomplejo punteado. La sucesión cofibrada $A\to X\to X/A$ se completa a un triángulo distinguido en $\ESW$, y el funtor covariante $\set*{S^0_n,-}$ transforma triángulos distinguidos en sucesiones exactas por la clase anterior. Las identificaciones de la pizarra forman el diagrama
+\emph{Exactitud.} Sea $A\subseteq X$ un subcomplejo punteado. La sucesión cofibrada $A\to X\to X/A$ se completa a un triángulo distinguido en $\ESW$, y el funtor covariante $\set*{S^0_n,-}$ transforma triángulos distinguidos en sucesiones exactas por la clase anterior. Estas identificaciones forman el diagrama
 \[
 \begin{tikzcd}[column sep=small,row sep=large]
 \set*{S^0_n,A_0} \arrow[r,"i_*"] \arrow[d,"\cong"'] & \set*{S^0_n,X_0} \arrow[r,"q_*"] \arrow[d,"\cong"'] & \set*{S^0_n,(X/A)_0} \arrow[d,"\cong"]\\
@@ -587,7 +587,7 @@ h_n(*)=\tilde h_n(*_+)=\tilde h_n(S^0)=\pi_n^s(S^0\wedge K)=\pi_n^s(K).
 \]
 En el caso $K=S^0$ coinciden también con los grupos $\pi^s_n$. 
 
-La notación usual $\pi_n^s(-)$ también se emplea para la teoría no reducida. Como se advirtió en clase, hay que interpretar el símbolo por el contexto:
+La notación usual $\pi_n^s(-)$ también se emplea para la teoría no reducida. Hay que interpretar el símbolo por el contexto:
 \[
 \begin{tikzcd}[column sep=large,row sep=small]
 & 0\\

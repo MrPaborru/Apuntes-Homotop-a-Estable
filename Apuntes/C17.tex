@@ -124,7 +124,7 @@ Todo morfismo $f\colon X\to Y$ admite una comparación natural $\varepsilon\colo
 \end{prop}
 
 \begin{proof}
-Para escribir la fórmula de la pizarra, usamos el camino inverso al de la clase~16: si allí $\lambda$ va de $f_n(x)$ a $*$, ahora ponemos $\gamma(t)=\lambda(1-t)$. Asimismo, en esta fórmula parametrizamos el cono con base en $u=1$ y vértice en $u=0$. Son cambios de parametrización de los mismos modelos. En estas coordenadas, la fibra queda descrita por
+Para escribir la fórmula, usamos el camino inverso al de la clase~16: si allí $\lambda$ va de $f_n(x)$ a $*$, ahora ponemos $\gamma(t)=\lambda(1-t)$. Asimismo, en esta fórmula parametrizamos el cono con base en $u=1$ y vértice en $u=0$. Son cambios de parametrización de los mismos modelos. En estas coordenadas, la fibra queda descrita por
 \[
 (F_f)_n=\{(x,\gamma):\gamma(0)=*,\ \gamma(1)=f_n(x)\},
 \]
@@ -138,7 +138,7 @@ y definimos $\varepsilon_n\colon\Sigma(F_f)_n\to Y_n\cup_{f_n}CX_n$ mediante
 \]
 En el punto de empalme ambas expresiones representan $f_n(x)$; los extremos y el punto base se envían al punto base. El lema de pegado da continuidad, y la fórmula desciende a la suspensión reducida. El camino recorre primero $\gamma$ en $Y_n$ y luego sube al vértice del cono $CX_n$.
 
-Comprobemos también la compatibilidad con la estructura de espectro, indicada en clase. El mapa estructural de la fibra envía $[s,(x,\gamma)]$ al par formado por $\xi_n^X([s,x])$ y el camino $v\mapsto\xi_n^Y([s,\gamma(v)])$. En la primera mitad de la fórmula de $\varepsilon$ aparece, por cualquiera de las dos composiciones, $\xi_n^Y([s,\gamma(2t)])$; en la segunda aparece el punto del cono $[\xi_n^X([s,x]),2-2t]$. Con la permutación usual de las coordenadas de suspensión, las dos expresiones coinciden. Así, los $\varepsilon_n$ definen un morfismo de espectros, natural en los cuadrados de morfismos $f$.
+Comprobemos también la compatibilidad con la estructura de espectro. El mapa estructural de la fibra envía $[s,(x,\gamma)]$ al par formado por $\xi_n^X([s,x])$ y el camino $v\mapsto\xi_n^Y([s,\gamma(v)])$. En la primera mitad de la fórmula de $\varepsilon$ aparece, por cualquiera de las dos composiciones, $\xi_n^Y([s,\gamma(2t)])$; en la segunda aparece el punto del cono $[\xi_n^X([s,x]),2-2t]$. Con la permutación usual de las coordenadas de suspensión, las dos expresiones coinciden. Así, los $\varepsilon_n$ definen un morfismo de espectros, natural en los cuadrados de morfismos $f$.
 
 La sucesión fibrada y su suspensión se comparan con la sucesión cofibrada:
 \[
@@ -215,7 +215,7 @@ Consideremos los homomorfismos inducidos por las inclusiones y las proyecciones:
 \varphi(u,v)=(\iota_1)_*u+(\iota_2)_*v,
 \qquad F=((p_1)_*,(p_2)_*).
 \]
-Junto con $\psi=a_*$, forman el diagrama de la pizarra:
+Junto con $\psi=a_*$, forman el siguiente diagrama:
 \[
 \begin{tikzcd}[column sep=huge,row sep=large]
 \pi_k(X)\oplus\pi_k(Y)\arrow[r,"\varphi"]\arrow[rdd,"\cong"']
@@ -267,7 +267,7 @@ La última identificación usa que los colímites filtrados conmutan con product
 \end{proof}
 
 \begin{obs}
-El resultado se refiere al producto de espectros. Para espacios punteados bien basados, la descomposición recordada en clase es
+El resultado se refiere al producto de espectros. Para espacios punteados bien basados, tenemos la descomposición
 \[
 \Sigma(U\times V)\simeq\Sigma U\vee\Sigma V\vee\Sigma(U\wedge V).
 \]
@@ -300,7 +300,7 @@ Una equivalencia con $S^1\vee Z$ daría un isomorfismo de anillos reducidos
 \widetilde H^*(S^1\times S^1;\mathbb Q)
 \cong\widetilde H^*(S^1;\mathbb Q)\times\widetilde H^*(Z;\mathbb Q),
 \]
-en el que los productos entre sumandos distintos son cero. Como el lado izquierdo tiene dimensión dos en grado uno, el espacio $H^1(Z;\mathbb Q)$ tendría dimensión uno. Si $u$ genera el primer sumando y $v$ el segundo, entonces $u^2=0$, $uv=vu=0$ y $v^2=0$; esta última igualdad usa la conmutatividad graduada sobre $\mathbb Q$. Por bilinealidad, el producto de cualesquiera dos clases de grado uno sería cero, incluso si se elige una base que mezcle ambos sumandos. Esto contradice $ab\ne0$ y resuelve también la posible ambigüedad sobre los generadores mencionada en clase.
+en el que los productos entre sumandos distintos son cero. Como el lado izquierdo tiene dimensión dos en grado uno, el espacio $H^1(Z;\mathbb Q)$ tendría dimensión uno. Si $u$ genera el primer sumando y $v$ el segundo, entonces $u^2=0$, $uv=vu=0$ y $v^2=0$; esta última igualdad usa la conmutatividad graduada sobre $\mathbb Q$. Por bilinealidad, el producto de cualesquiera dos clases de grado uno sería cero, incluso si se elige una base que mezcle ambos sumandos. Esto contradice $ab\ne0$ y resuelve también la posible ambigüedad en la elección de generadores.
 \end{sol}
 
 \begin{prop}\label{prop:c17-retracto-sumando}
@@ -512,7 +512,7 @@ N&=\nabla_Y(f\vee g)\boxplus\nabla_Y(f'\vee g'),
 \end{aligned}
 \qquad M,N\colon X\vee X\to Y.
 \]
-La comprobación sobre el primer sumando reproduce los dos triángulos de la pizarra:
+La comprobación sobre el primer sumando se expresa mediante los dos triángulos siguientes:
 \[
 \begin{tikzcd}[column sep=huge,row sep=large]
 X\vee X\arrow[r,"M"]&Y\\

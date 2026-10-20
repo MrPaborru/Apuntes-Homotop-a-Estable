@@ -5,7 +5,7 @@
 % Se conserva la notación de C10--C11, incluidos los discos parametrizadores
 % de las celdas suspendidas. Las referencias Pxx son solo para cotejo.
 
-La clase anterior introdujo los morfismos y las homotopías eventualmente definidos. Ahora completaremos la composición en la categoría de CW espectros y probaremos que esta categoría es isomorfa a la localización en las equivalencias estables. El paso central será construir una inversa eventualmente definida de cada equivalencia estable, retrasando las celdas hasta que desaparezcan las obstrucciones relativas. Después compararemos con los modelos obtenidos mediante los reemplazos celular y fibrante, y demostraremos el teorema de Whitehead para $\Omega$-espectros celulares, donde la inversa y las homotopías pueden definirse en todo el espectro.
+Partimos de los morfismos y las homotopías eventualmente definidos. Ahora completaremos la composición en la categoría de CW espectros y probaremos que esta categoría es isomorfa a la localización en las equivalencias estables. El paso central será construir una inversa eventualmente definida de cada equivalencia estable, retrasando las celdas hasta que desaparezcan las obstrucciones relativas. Después compararemos con los modelos obtenidos mediante los reemplazos celular y fibrante, y demostraremos el teorema de Whitehead para $\Omega$-espectros celulares, donde la inversa y las homotopías pueden definirse en todo el espectro.
 
 Usaremos $\xi^X_{n,m}\colon\Sigma^mX_n\to X_{n+m}$ con el significado fijado en la clase~11. Todas las aplicaciones y homotopías de espectros serán punteadas. El producto $I_+\wedge X$ es el cilindro formado nivel a nivel.
 
@@ -69,7 +69,7 @@ R^{(i+1)}&=R^{(i)}\cup_{\bigvee_{j\in J_i}\partial E_{i,j}}
 El colímite $R=\varinjlim\nolimits_iR^{(i)}$ es un subespectro de $B$. Contiene un representante de cada celda estable de $B$, de modo que es cofinal, y por construcción $g_n(R_n)\subseteq A_n$.
 \end{proof}
 
-En la aplicación a la composición, $B$ es un subespectro cofinal de $Z$. Podemos entonces empezar con una celda estable de $Z$ y una función característica $\Phi\colon D^d\to Z_k$. La cofinalidad de $B$ dice que, para algún $m$, la aplicación que representa su suspensión factoriza como en el diagrama de la pizarra:
+En la aplicación a la composición, $B$ es un subespectro cofinal de $Z$. Podemos entonces empezar con una celda estable de $Z$ y una función característica $\Phi\colon D^d\to Z_k$. La cofinalidad de $B$ dice que, para algún $m$, la aplicación que representa su suspensión factoriza como en el siguiente diagrama:
 \[
 \begin{tikzcd}[cramped,column sep=large,row sep=small]
 \Sigma^mD^d_+ \arrow[r,"\Sigma^m\Phi_+"] \arrow[dddd]
@@ -257,7 +257,7 @@ Veamos que $GF=1$. Sea $f\colon A\to Y$ un representante de $[X,Y]_e$. Por la de
 GF([f])=G([f]_s\circ[i_A]_s^{-1})
 =\mathcal Q(f)\circ\mathcal Q(i_A)^{-1}.
 \]
-La inversa de $\mathcal Q(i_A)$ está representada por $1_A\colon A\to A$, considerado como morfismo eventualmente definido de $X$ a $A$. Una composición da $1_A$ y la otra da $i_A\colon A\to X$, que es la restricción de $1_X$ a $A$. Así, las dos clases compuestas son respectivamente $1_A$ y $1_X$ en $e\Sp^{\mathrm{CW}}$. Sustituyendo este representante de la inversa obtenemos el cálculo de la pizarra:
+La inversa de $\mathcal Q(i_A)$ está representada por $1_A\colon A\to A$, considerado como morfismo eventualmente definido de $X$ a $A$. Una composición da $1_A$ y la otra da $i_A\colon A\to X$, que es la restricción de $1_X$ a $A$. Así, las dos clases compuestas son respectivamente $1_A$ y $1_X$ en $e\Sp^{\mathrm{CW}}$. Sustituyendo este representante de la inversa obtenemos el siguiente cálculo:
 \[
 \begin{aligned}
 GF([f])&=G\left(\left[\begin{tikzcd}[cramped,column sep=small,ampersand replacement=\&]
@@ -412,7 +412,7 @@ Pongamos $N=r+n+a$ y sea $\psi\colon D^N\to M_{n+a}$ la función característica
 W=(\{1\}\times D^N)\cup(I\times S^{N-1}),\qquad
 u\colon W\longrightarrow M_{n+a},
 \]
-por $u(1,z)=\psi(z)$ y $u(t,z)=H_{n+a}(t,\psi(z))$ en las paredes. En estas últimas estamos pegando, como se dijo en clase, ``todas las homotopías del diagrama gordo juntas'': el paso anterior se dibujó para una celda, pero se realizó para toda la familia. Sobre el borde de la nueva celda solo intervienen finitísimas de ellas, y sus homotopías ya coinciden en los mapas de pegadura. Las fórmulas de $u$ coinciden en $\{1\}\times S^{N-1}$. Además, $u(0,z)=i_{n+a}r(\psi(z))$ está en $X_{n+a}$. Por ello tenemos el diagrama
+por $u(1,z)=\psi(z)$ y $u(t,z)=H_{n+a}(t,\psi(z))$ en las paredes. En estas últimas pegamos simultáneamente todas las homotopías del diagrama: el paso anterior se dibujó para una celda, pero se realizó para toda la familia. Sobre el borde de la nueva celda solo intervienen finitísimas de ellas, y sus homotopías ya coinciden en los mapas de pegadura. Las fórmulas de $u$ coinciden en $\{1\}\times S^{N-1}$. Además, $u(0,z)=i_{n+a}r(\psi(z))$ está en $X_{n+a}$. Por ello tenemos el diagrama
 \[
 \begin{tikzcd}[cramped,column sep=large,row sep=large]
 \{0\}\times S^{N-1} \arrow[r,"u|_{\{0\}\times S^{N-1}}"] \arrow[d,hook]
@@ -420,7 +420,7 @@ por $u(1,z)=\psi(z)$ y $u(t,z)=H_{n+a}(t,\psi(z))$ en las paredes. En estas últ
 W \arrow[r,"u"'] & M_{n+a}.
 \end{tikzcd}
 \]
-La identificación de la pareja que aparece en este diagrama es el ejercicio de topología mencionado en clase.
+La identificación de la pareja que aparece en este diagrama se propone como ejercicio de topología.
 
 \begin{ejer}[La tapa y las paredes de un cilindro]\label{ejer:c12-tapa-paredes}
 Para $N\ge0$, sea $W=(\{1\}\times D^N)\cup(I\times S^{N-1})$. Construir un homeomorfismo de parejas

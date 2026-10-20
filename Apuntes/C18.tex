@@ -14,7 +14,7 @@ Denotamos el espectro esfera por $\mathbb S$. Salvo cuando trabajemos con modelo
 \subsection{Triángulos y producto derivado}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % P01--P03.
-La clase~17 estableció la estructura aditiva de $\Ho(\Sp^{\mathbb N})$. Recordamos además dos resultados estructurales que en esta clase se enuncian sin demostrar todos sus axiomas.
+Ya conocemos la estructura aditiva de $\Ho(\Sp^{\mathbb N})$. Recordemos además dos resultados estructurales, que enunciamos sin demostrar todos sus axiomas.
 \begin{teo}[Estructura de la categoría homotópica estable]\label{teo:c18-estructura}
 La categoría $\Ho(\Sp^{\mathbb N})$ es triangulada. Sus triángulos distinguidos son los isomorfos a los triángulos de cofibra
 \[
@@ -23,7 +23,7 @@ X\xlongrightarrow{f}Y\longrightarrow C_f\longrightarrow\Sigma X.
 Asimismo, el smash derivado le da una estructura monoidal simétrica cerrada con unidad $\mathbb S$.
 \end{teo}
 \begin{nota}
-La estructura monoidal se remonta a Adams; véanse \cite{adams1974} y \cite[capítulos~3 y~4]{malkiewich}. Aquí verificamos las compatibilidades que se usaron en clase, sin desarrollar la construcción completa del smash de Adams ni todos los axiomas de triangulación. Un morfismo de $\Ho(\Sp^{\mathbb N})$ puede estar representado por un zigzag; el enunciado no exige que el triángulo venga inicialmente dado por un solo morfismo estricto de espectros.
+La estructura monoidal se remonta a Adams; véanse \cite{adams1974} y \cite[capítulos~3 y~4]{malkiewich}. Aquí verificamos las compatibilidades necesarias, sin desarrollar la construcción completa del smash de Adams ni todos los axiomas de triangulación. Un morfismo de $\Ho(\Sp^{\mathbb N})$ puede estar representado por un zigzag; el enunciado no exige que el triángulo venga inicialmente dado por un solo morfismo estricto de espectros.
 \end{nota}
 
 \begin{prop}\label{prop:c18-smash-exacto}
@@ -98,7 +98,7 @@ X\wedge_{B,C}Y\arrow[r,"\simeq"]&\operatorname{hocolim}\mathcal D
 &X\wedge_{B',C'}Y\arrow[l,"\simeq"'] .
 \end{tikzcd}
 \]
-Cuando $X=\Sigma^\infty K$, el segundo modelo puede tener $B'$ finito y $C'$ infinito; entonces sus niveles se calculan como $K\wedge Y_r$. Esta posibilidad no se afirma para espectros arbitrarios. En clase se explicó la función de este telescopio comparador, sin construirlo por completo.
+Cuando $X=\Sigma^\infty K$, el segundo modelo puede tener $B'$ finito y $C'$ infinito; entonces sus niveles se calculan como $K\wedge Y_r$. Esta posibilidad no se afirma para espectros arbitrarios. Solo utilizamos la función de este telescopio comparador, sin construirlo por completo.
 
 La compatibilidad de $\sigma$ con la unidad se expresa por el triángulo
 \[
@@ -154,7 +154,7 @@ Omitimos el superíndice $L$ dentro de esta demostración. Sean $f,f'\colon X\to
 f+f'=\nabla_Y(f\vee f')a_X^{-1}\Delta_X,
 \qquad a_X\colon X\vee X\xrightarrow{\cong}X\times X.
 \]
-El comienzo de la construcción conserva la forma del diagrama de la pizarra:
+Comencemos con el siguiente diagrama:
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
 &X\vee X\arrow[r,"f\vee f'"]\arrow[d,"a_X"]&Y\vee Y\arrow[r,"\nabla_Y"]&Y\\
@@ -200,7 +200,7 @@ Para $X$ un CW complejo finito punteado, definimos
 \iota\colon\SW\longrightarrow\Ho(\Sp^{\mathbb N}),
 \qquad (X,n)\longmapsto\sh^n\Sigma^\infty X=:F_{-n}X.
 \]
-La asignación de objetos y de morfismos se dispone como en la pizarra:
+La asignación de objetos y de morfismos se expresa en el diagrama:
 \[
 \begin{tikzcd}[column sep=huge,row sep=large]
 (X,n)\arrow[r,mapsto]\arrow[d,"{[f]}"']&F_{-n}X\arrow[d,"{\iota([f])}"]\\
@@ -279,7 +279,7 @@ $g\colon\Sigma^{m+\ell}Y\to\Sigma^{b+\ell}Z$. Para componer sus clases en $\SW$,
 \Sigma^kg\circ\Sigma^\ell f\colon
 \Sigma^{n+k+\ell}X\longrightarrow\Sigma^{b+k+\ell}Z.
 \]
-La composición de sus imágenes tiene la forma de la pizarra:
+La composición de sus imágenes está representada por el zigzag:
 \[
 \begin{tikzcd}[column sep=1.8em]
 F_{-n}X\arrow[r,"h"]&RF_{-m}Y&F_{-m}Y\arrow[l,"\eta"',"\simeq"]\arrow[r,"k'"]&RF_{-b}Z&F_{-b}Z\arrow[l,"\eta"',"\simeq"]
@@ -300,20 +300,20 @@ A\arrow[r,"Rk'\circ h"]&RRC&RC\arrow[l,"\eta_{RC}"',"\simeq"]&C\arrow[l,"\eta_C"
 \end{tikzcd}
 \]
 % P12--P13; transcripción unificada 01:07:42--01:21:18.
-Para identificar este zigzag con la imagen de la composición, el profesor explica geométricamente el mapa $Rk'$. Fijemos un nivel $j$. El espacio $(RB)_j$ es un telescopio, mientras que $(RRC)_j$ es un telescopio de telescopios: el primero es $(RC)_j$, el siguiente corresponde a $\Omega(RC)_{j+1}$ y así sucesivamente. En el dibujo, los telescopios interiores se extienden horizontalmente; los cilindros exteriores, señalados en rojo, conectan uno con el siguiente.
+Para identificar este zigzag con la imagen de la composición, describamos geométricamente el mapa $Rk'$. Fijemos un nivel $j$. El espacio $(RB)_j$ es un telescopio, mientras que $(RRC)_j$ es un telescopio de telescopios: el primero es $(RC)_j$, el siguiente corresponde a $\Omega(RC)_{j+1}$ y así sucesivamente. En el dibujo, los telescopios interiores se extienden horizontalmente; los cilindros exteriores, señalados en rojo, conectan uno con el siguiente.
 
 En la primera etapa del telescopio de origen aplicamos $k'_j$. Como $k'=((\Sigma^kg)^\perp)^{\perp'}$, su construcción lleva esa etapa a una etapa del telescopio amarillo y después la incluye en él. Al aplicar $R$ a $k'$, la siguiente etapa se envía mediante $\Omega k'_{j+1}$ al segundo telescopio. En general, la aplicación sobre la etapa $a$ es
 \[
 \Omega^a B_{j+a}\xrightarrow{\Omega^a k'_{j+a}}
 \Omega^a(RC)_{j+a}\longrightarrow(RRC)_j.
 \]
-Así, al avanzar por las etapas del origen, la imagen avanza dentro de los telescopios interiores y también pasa de un telescopio al siguiente. Este es el recorrido \emph{diagonal} que describe el profesor:
+Así, al avanzar por las etapas del origen, la imagen avanza dentro de los telescopios interiores y también pasa de un telescopio al siguiente. Este es el recorrido \emph{diagonal}:
 \[
 \csname cXVIIIdoble\endcsname
 \]
 La comparación consiste en efectuar esas mismas aplicaciones, con las suspensiones necesarias, pero avanzando siempre dentro del primer telescopio, el amarillo. Este mapa es $\varphi\colon RB\to RC$: en clase se lo llamó inicialmente $h$ y después se cambió a $\varphi$ para distinguirlo del mapa $h\colon A\to RB$. Al incluir su imagen en el telescopio doble obtenemos $\eta_{RC}\varphi$, pues $\eta_{RC}$ es precisamente la inclusión de la primera etapa exterior.
 
-Ahora se comparan ambos recorridos. Sobre la primera etapa del origen ya coinciden. Para la segunda, se lleva la imagen de $\eta_{RC}\varphi$ desde el telescopio amarillo hasta el segundo, recorriendo el cilindro exterior que los une. Para la tercera se avanza hasta el tercero, y así sucesivamente. Los cilindros entre etapas del origen permiten interpolar entre estos recorridos: sus extremos se pegan mediante las aplicaciones estructurales con las que se ha construido $Rk'$. De este modo, el recorrido que permanece en el primer telescopio se deforma al recorrido diagonal. Esta es la homotopía geométrica usada en clase, y da
+Ahora se comparan ambos recorridos. Sobre la primera etapa del origen ya coinciden. Para la segunda, se lleva la imagen de $\eta_{RC}\varphi$ desde el telescopio amarillo hasta el segundo, recorriendo el cilindro exterior que los une. Para la tercera se avanza hasta el tercero, y así sucesivamente. Los cilindros entre etapas del origen permiten interpolar entre estos recorridos: sus extremos se pegan mediante las aplicaciones estructurales con las que se ha construido $Rk'$. De este modo, el recorrido que permanece en el primer telescopio se deforma al recorrido diagonal. Esta homotopía geométrica da
 \[
 \eta_{RC}\circ\varphi\simeq Rk'.
 \]
@@ -332,7 +332,7 @@ Las dos flechas con etiqueta $\eta_{RC}=\eta_{RF_{-b}Z}$ se recorren en sentidos
 F_{-n}X\arrow[r,"\varphi\circ h"]&RF_{-b}Z&F_{-b}Z\arrow[l,"\eta_{F_{-b}Z}"',"\simeq"] .
 \end{tikzcd}
 \]
-Para reconocer el primer mapa, el profesor vuelve al nivel $-n$, que determina un morfismo desde el espectro libre $F_{-n}X$. Primero, $h$ aplica el adjunto de $\Sigma^\ell f$ e incluye el resultado en una etapa del telescopio de $Y$. Después, $\varphi$ aplica allí el mapa correspondiente a $\Sigma^kg$, manteniendo el resultado dentro del primer telescopio de $Z$. Como los representantes se suspendieron hasta una etapa común, esto es aplicar sucesivamente $\Sigma^\ell f$ y $\Sigma^kg$, tomar el adjunto e incluirlo en el telescopio de $Z$. Por la adjunción libre, el mapa obtenido representa
+Para reconocer el primer mapa, volvamos al nivel $-n$, que determina un morfismo desde el espectro libre $F_{-n}X$. Primero, $h$ aplica el adjunto de $\Sigma^\ell f$ e incluye el resultado en una etapa del telescopio de $Y$. Después, $\varphi$ aplica allí el mapa correspondiente a $\Sigma^kg$, manteniendo el resultado dentro del primer telescopio de $Z$. Como los representantes se suspendieron hasta una etapa común, esto es aplicar sucesivamente $\Sigma^\ell f$ y $\Sigma^kg$, tomar el adjunto e incluirlo en el telescopio de $Z$. Por la adjunción libre, el mapa obtenido representa
 \[
 \varphi\circ h\simeq
 \bigl((\Sigma^kg\circ\Sigma^\ell f)^\perp\bigr)^{\perp'}.
@@ -379,7 +379,7 @@ Es suficiente demostrar que la fila inferior es un triángulo distinguido. En el
 X\xrightarrow{f}Y\longrightarrow
 \operatorname{hocolim}(Y\longrightarrow\Omega\Sigma Y\longrightarrow\Omega^2\Sigma^2Y\longrightarrow\cdots).
 \]
-Sea $C=C_\gamma$. Su cono se adjunta a la primera etapa, mientras que en $RD$ aparecen las estructuras de cono dentro de las etapas y sus cilindros. Los esquemas de la pizarra expresan esta diferencia:
+Sea $C=C_\gamma$. Su cono se adjunta a la primera etapa, mientras que en $RD$ aparecen las estructuras de cono dentro de las etapas y sus cilindros. Los siguientes esquemas expresan esta diferencia:
 \[
 \csname cXVIIIconos\endcsname
 \]
@@ -471,14 +471,14 @@ Un desplazamiento de $\Sigma^\infty K$, con $K$ un CW complejo finito, tiene tan
 
 Recíprocamente, un CW espectro con finitas celdas estables tiene una presentación por finitas adjunciones. Cada aplicación de adjunción, al tener dominio una esfera compacta, está representada en una etapa finita. Elegimos un nivel común posterior a todas esas etapas y suspendemos las aplicaciones y las celdas hasta ese nivel. Se obtiene allí un CW complejo finito $K$. A partir de ese nivel, la presentación modificada se genera por suspensiones de $K$; reemplazar la presentación inicial por esta cola no cambia el tipo de homotopía estable.
 
-El ejemplo del profesor tiene tres celdas que nacen en los niveles $-3$, $2$ y $5$, respectivamente (se trata de una presentación desplazada). Para mover la primera al nivel $2$ se usa
+El siguiente ejemplo tiene tres celdas que nacen en los niveles $-3$, $2$ y $5$, respectivamente (se trata de una presentación desplazada). Para mover la primera al nivel $2$ se usa
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
 \Sigma^5C_1\arrow[r]\arrow[dr]&\Sigma^5X_{-3}\arrow[d]\\
 &X_2.
 \end{tikzcd}
 \]
-El símbolo $C_i$ designa aquí el dato de la celda y de su adjunción, no una cofibra nueva. Las dos modificaciones sucesivas conservan el esquema escalonado de la pizarra:
+El símbolo $C_i$ designa aquí el dato de la celda y de su adjunción, no una cofibra nueva. Las dos modificaciones sucesivas dan el siguiente esquema escalonado:
 \[
 \begin{tikzcd}[column sep=2em,row sep=large]
 \text{nivel}&-3&\cdots&2&\cdots&5\\
@@ -497,5 +497,5 @@ En la última expresión de la pizarra aparece $\sh^5\Sigma^\infty K$. Con la co
 \end{nota}
 
 \begin{nota}
-La finitud que se usa aquí es la de las \emph{celdas estables}, no la mera finitud de cada espacio por separado. La descripción por un desplazamiento de un espectro de suspensión coincide con \cite[sección~4.2.2]{malkiewich}. La generación de toda $\Ho(\Sp^{\mathbb N})$ por las esferas requiere una afirmación adicional, que el profesor dejó para la siguiente sesión.
+La finitud que se usa aquí es la de las \emph{celdas estables}, no la mera finitud de cada espacio por separado. La descripción por un desplazamiento de un espectro de suspensión coincide con \cite[sección~4.2.2]{malkiewich}. La generación de toda $\Ho(\Sp^{\mathbb N})$ por las esferas requiere una afirmación adicional, que abordaremos posteriormente.
 \end{nota}

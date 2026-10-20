@@ -22,7 +22,7 @@ Conservamos los reemplazos funtoriales $q_X\colon QX\to X$ y $h_X\colon X\to RX$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % C14/P11--P14; C15/P05--P07, 00:25:00--00:39:41.
-En el \myref{ejem:c14-producto-denominadores} registramos que el profesor buscaba obtener dos grupos distintos al comparar $\pi_1(\prod_iX)$ con $\prod_i\pi_1(X)$. La construcción que propuso originalmente era
+En el \myref{ejem:c14-producto-denominadores} registramos que el profesor buscaba obtener dos grupos distintos al comparar $\pi_1(\prod_iX)$ con $\prod_i\pi_1(X)$. La construcción propuesta en la clase anterior era
 \[
 \begin{aligned}
 T&=\operatorname{hocolim}\bigl(\Sigma^\infty S^1
@@ -81,7 +81,7 @@ Sea $P=\prod_{i\ge1}E$. Su nivel $n$ es $\prod_iS^{n+1}$. Para calcular su estab
 \arrow[ur,"\cong"'] &
 \end{tikzcd}
 \]
-identifica el mapa de estabilización con la multiplicación por $2$ en todas las coordenadas. Antes de identificar los grupos con productos, el mismo argumento tiene la forma dibujada en la pizarra:
+identifica el mapa de estabilización con la multiplicación por $2$ en todas las coordenadas. Antes de identificar los grupos con productos, el mismo argumento se expresa mediante el siguiente diagrama:
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
 \pi_{n+1}\left(\prod_iE_n\right) \arrow[dr,"(\prod_i\widetilde\xi_n)_*"']
@@ -136,7 +136,7 @@ Hay que distinguir el producto de espectros del producto de categorías. Sea $(\
 \]
 En efecto, $\mathcal C\to\prod_j\Ho(\mathcal C_j)$, $(C_j)_j\mapsto(C_j)_j$, envía $(f_j)_j\in W$ a la familia de isomorfismos $([f_j])_j$, y factoriza por la localización. El funtor $\Phi$ envía un zigzag a sus zigzags coordenados.
 
-La dificultad para construir una inversa está en los morfismos. Un zigzag en la categoría producto tiene longitud finita y la misma forma en todas las coordenadas, mientras que una familia infinita de zigzags puede tener longitudes sin cota común. La pizarra compara, por ejemplo,
+La dificultad para construir una inversa está en los morfismos. Un zigzag en la categoría producto tiene longitud finita y la misma forma en todas las coordenadas, mientras que una familia infinita de zigzags puede tener longitudes sin cota común. Comparemos, por ejemplo,
 \[
 \begin{tikzcd}[column sep=large]
 C_1 \arrow[r,"f"] & D & A \arrow[l,"w","\sim"'] &\\
@@ -230,7 +230,7 @@ En particular, esta identificación justifica que el producto derivado de espect
 % P08--P09, 00:41:29--00:46:54.
 Los siguientes funtores ya preservan equivalencias estables: $\pi_k$, $\Sigma$, $\Omega$, $\sh^d$, los coproductos y los productos finitos. También $K\wedge-$ las preserva si $K$ es un CW-complejo punteado, y $F(K,-)$ si $K$ es un CW-complejo punteado finito. Aquí $F(K,X)_n=\Map_*(K,X_n)$ es el espectro de funciones de un espacio en un espectro, definido en la clase~9. Las condiciones sobre $K$ pertenecen a estas afirmaciones y no deben omitirse.
 
-Para las operaciones que sí necesitan derivarse, el resumen de la pizarra es el siguiente. En las dos últimas filas, el smash y el espectro de funciones entre espectros se interpretan en un modelo monoidal adecuado, como se precisa más abajo.
+Para las operaciones que sí necesitan derivarse, tenemos el siguiente resumen. En las dos últimas filas, el smash y el espectro de funciones entre espectros se interpretan en un modelo monoidal adecuado, como se precisa más abajo.
 \[
 \begin{array}{c|c|c}
 \text{Operación} & \text{Modelo del derivado} & \text{Tipo}\\ \hline
@@ -245,7 +245,7 @@ F(X,Y) & F(QX,RY) & \text{derecho}
 \]
 En la variable contravariante de los funtores de mapeos, el reemplazo cofibrante $QX$ actúa como reemplazo fibrante en la categoría opuesta. Por eso se habla de un derivado derecho, aunque aparezcan simultáneamente $Q$ y $R$.
 
-Para $K\wedge X$ basta reemplazar el espacio: la invariancia de $QK\wedge-$ respecto de equivalencias estables permite dejar $X$ intacto. Reemplazar también $X$ produce un modelo equivalente, $QK\wedge QX\simeq QK\wedge X$; véase \cite[Ejemplo~3.4.3.4]{malkiewich}. El desarrollo de esta invariancia quedó pendiente en clase.
+Para $K\wedge X$ basta reemplazar el espacio: la invariancia de $QK\wedge-$ respecto de equivalencias estables permite dejar $X$ intacto. Reemplazar también $X$ produce un modelo equivalente, $QK\wedge QX\simeq QK\wedge X$; véase \cite[Ejemplo~3.4.3.4]{malkiewich}. La demostración de esta invariancia queda pendiente aquí.
 
 \begin{nota}
 Habitualmente se omiten las letras $\mathrm L$ y $\mathrm R$ cuando ya se trabaja en la categoría homotópica. Por ejemplo, se escribe $\Sigma^\infty K$ o $\prod_jX^{(j)}$ para sus versiones derivadas. En el smash es más frecuente conservar $\wedge^{\mathrm L}$. Si una operación ya preserva equivalencias, derivarla da un funtor naturalmente isomorfo al original.
@@ -294,10 +294,10 @@ Las flechas propuestas para los adjuntos estructurales, coordenada a coordenada,
 \begin{nota}
 Para espectros secuenciales arbitrarios, estas flechas de espacios no inducen automáticamente una flecha $A_n(X,Y)\to\Omega A_{n+1}(X,Y)$. Al comprobar el cuadrado de compatibilidad aparecen dos coordenadas de suspensión en órdenes opuestos: aplicar primero la estructura de $X$ y después la nueva coordenada de lazo produce $\xi^Y(t\wedge\xi^Y(s\wedge f_m(x)))$, mientras que el otro recorrido produce $\xi^Y(s\wedge\xi^Y(t\wedge f_m(x)))$. La definición de espectro secuencial no exige esa igualdad; el desplazamiento de la pizarra necesita datos de simetría para definir un espectro estricto.
 
-En espectros simétricos u ortogonales, las permutaciones de las coordenadas y las condiciones de equivariancia completan esta definición; véase \cite[Definición~6.2.2.4]{malkiewich}. Para esta clase usaremos únicamente el resultado en la categoría homotópica: existe un espectro de funciones derivado $\mathrm RF(X,Y)$, representado allí por $F(QX,RY)$, que es el Hom interno para el smash derivado.
+En espectros simétricos u ortogonales, las permutaciones de las coordenadas y las condiciones de equivariancia completan esta definición; véase \cite[Definición~6.2.2.4]{malkiewich}. Usaremos únicamente el resultado en la categoría homotópica: existe un espectro de funciones derivado $\mathrm RF(X,Y)$, representado allí por $F(QX,RY)$, que es el Hom interno para el smash derivado.
 \end{nota}
 
-La propiedad que se anunció, sin demostración en clase, es
+Enunciamos sin demostración la siguiente propiedad:
 \[
 [Z\wedge^{\mathrm L}X,Y]_s\cong[Z,\mathrm RF(X,Y)]_s,
 \]
@@ -469,7 +469,7 @@ La comparación con el colímite ordinario está inducida por $\varinjlim\nolimi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % P15--P17, 01:40:25--01:47:42.
-Para $F\colon K\to\Topstar$, la construcción manual presentada en clase es
+Para $F\colon K\to\Topstar$, la construcción explícita es
 \[
 \operatorname{hocolim}^{\mathrm{man}}_KF
 =\left(\bigvee_{p\ge0}\ \bigvee_{k_0\to\cdots\to k_p}
@@ -522,7 +522,7 @@ QF(k)=|\operatorname{srep}(F\circ U_k)_\bullet|
 es un reemplazo cofibrante proyectivo de $F$. Su aumento $q_F(k)\colon QF(k)\to F(k)$ aplica, en una cadena que termina con una flecha a $k$, la composición de todas las flechas a su punto de $F(j_0)$.
 \end{prop}
 
-Este es el reemplazo explícito anunciado en clase. La categoría $K\downarrow k$ tiene objeto terminal $(k,1_k)$; añadirlo al final de una cadena da la contracción del aumento sobre $F(k)$. La condición de cofibrancia de los espacios permite realizar el reemplazo como un diagrama cofibrante. Es la versión punteada del reemplazo mediante la construcción barra; véase \cite[Secciones~\mbox{7.4.3--7.4.5}]{malkiewich}.
+Este es el reemplazo explícito buscado. La categoría $K\downarrow k$ tiene objeto terminal $(k,1_k)$; añadirlo al final de una cadena da la contracción del aumento sobre $F(k)$. La condición de cofibrancia de los espacios permite realizar el reemplazo como un diagrama cofibrante. Es la versión punteada del reemplazo mediante la construcción barra; véase \cite[Secciones~\mbox{7.4.3--7.4.5}]{malkiewich}.
 
 Al tomar el colímite sobre $k$, las flechas finales a $k$ se identifican por postcomposición y queda el reemplazo simplicial de $F$. Como la realización preserva colímites, obtenemos
 \[
@@ -538,7 +538,7 @@ La igualdad con el derivado se entiende mediante este representante en $\Ho(\Top
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % P19--P20, 01:52:52--02:03:03.
-Para $F\colon K\to\Sp^{\mathbb N}_s$, se anunció que un modelo del colímite homotópico puede construirse nivel a nivel. Si los espacios $F(k)_n$ son cofibrantes, el modelo propuesto es
+Para $F\colon K\to\Sp^{\mathbb N}_s$, enunciamos que un modelo del colímite homotópico puede construirse nivel a nivel. Si los espacios $F(k)_n$ son cofibrantes, el modelo propuesto es
 \[
 H_n=\operatorname{hocolim}^{\mathrm{man}}_K F(-)_n.
 \]
@@ -553,7 +553,7 @@ Sus mapas estructurales se obtienen de
 \]
 Para este modelo concreto, el primer isomorfismo se obtiene porque $\Sigma=S^1\wedge-$ preserva los coproductos, los cocientes y la realización. En la categoría homotópica, la razón correspondiente es que la suspensión es un funtor de Quillen izquierdo. Si los niveles no son cofibrantes, hay que usar reemplazos compatibles con la estructura del espectro, no elegirlos independientemente en cada espacio.
 
-La justificación de que $H$ calcula el colímite derivado estable quedó para la clase siguiente. En esta clase se hizo el siguiente primer paso. La estructura $\Sp^{\mathbb N}_{\ell}$ también es cofibrantemente generada, de modo que podemos tomar un reemplazo cofibrante
+La justificación de que $H$ calcula el colímite derivado estable se pospone. Demos aquí el primer paso. La estructura $\Sp^{\mathbb N}_{\ell}$ también es cofibrantemente generada, de modo que podemos tomar un reemplazo cofibrante
 \[
 q'_F\colon Q'F\longrightarrow F
 \quad\text{en }(\Sp^{\mathbb N}_{\ell})^K.
@@ -565,7 +565,7 @@ Q'F(k) \arrow[r,"q'_F(k)","\sim_\ell"'] & F(k).
 \end{tikzcd}
 \]
 
-Las estructuras nivel a nivel y estable tienen las mismas cofibraciones, como se recordó en la clase~13. Sus estructuras proyectivas sobre diagramas tienen también las mismas cofibraciones: se generan aplicando los mismos diagramas libres a las mismas cofibraciones generadoras. Por tanto, $Q'F$ es cofibrante en $(\Sp^{\mathbb N}_s)^K$. Además, una equivalencia nivel a nivel es una equivalencia estable, luego $q'_F$ es una equivalencia estable objeto a objeto. En consecuencia, también sirve como reemplazo cofibrante estable, y el mismo espectro representa ambos colímites derivados:
+Las estructuras nivel a nivel y estable tienen las mismas cofibraciones, como vimos en la clase~13. Sus estructuras proyectivas sobre diagramas tienen también las mismas cofibraciones: se generan aplicando los mismos diagramas libres a las mismas cofibraciones generadoras. Por tanto, $Q'F$ es cofibrante en $(\Sp^{\mathbb N}_s)^K$. Además, una equivalencia nivel a nivel es una equivalencia estable, luego $q'_F$ es una equivalencia estable objeto a objeto. En consecuencia, también sirve como reemplazo cofibrante estable, y el mismo espectro representa ambos colímites derivados:
 \[
 \operatorname{hocolim}^{(\ell)}_KF=\varinjlim\nolimits_KQ'F,
 \qquad

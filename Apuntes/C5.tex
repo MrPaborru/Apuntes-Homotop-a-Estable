@@ -1,4 +1,4 @@
-En la clase anterior quedaron expuestas algunas limitaciones de las categorías de Spanier--Whitehead y de Spanier--Whitehead extendida para representar teorías de (co)homología. Esta clase completa la contradicción que impide representar la cohomología singular mediante un objeto de $\SW$. Después se construye el producto smash en $\SW$, prestando atención a los signos necesarios para que esté bien definido sobre morfismos estables, y se introduce la dualidad en categorías monoidales simétricas. La evaluación y la coevaluación permiten obtener una adjunción; su verificación se desarrolla mediante los diagramas de coherencia.
+Ya conocemos algunas limitaciones de las categorías de Spanier--Whitehead y de Spanier--Whitehead extendida para representar teorías de (co)homología. Completaremos la contradicción que impide representar la cohomología singular mediante un objeto de $\SW$. Después se construye el producto smash en $\SW$, prestando atención a los signos necesarios para que esté bien definido sobre morfismos estables, y se introduce la dualidad en categorías monoidales simétricas. La evaluación y la coevaluación permiten obtener una adjunción; su verificación se desarrolla mediante los diagramas de coherencia.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{La contradicción cohomológica}
@@ -62,7 +62,7 @@ los términos extremos se anulan para $k\le2(N+n)+2$, que es el rango requerido.
 \subsection{El cierre de la contradicción}
 
 \begin{proof}[Conclusión de la demostración de la \cref{prop:no-existe}]
-Sea $\iota\in H^{N+n+2}(K(\mathbb Z,N+n+2);\mathbb F_2)$ la reducción módulo $2$ de la clase fundamental integral. El cálculo de esta cohomología citado en clase como el resultado de Cartan proporciona clases no nulas
+Sea $\iota\in H^{N+n+2}(K(\mathbb Z,N+n+2);\mathbb F_2)$ la reducción módulo $2$ de la clase fundamental integral. El cálculo de esta cohomología conocido como el resultado de Cartan proporciona clases no nulas
 \[
 \Sq^{2^r}\Sq^{2^{r-1}}\cdots\Sq^2(\iota),\qquad r\ge1.
 \]
@@ -83,7 +83,7 @@ una contradicción. Por tanto, no existe un complejo finito $Z$ con el patrón d
 \end{proof}
 
 \begin{nota}
-La no anulación de las clases anteriores utiliza el cálculo de la cohomología de los espacios de Eilenberg--Mac Lane; no se deduce únicamente de la fórmula de Cartan para el cuadrado de un producto. Este resultado se usa como un hecho conocido, sin demostrarlo en la clase.
+La no anulación de las clases anteriores utiliza el cálculo de la cohomología de los espacios de Eilenberg--Mac Lane; no se deduce únicamente de la fórmula de Cartan para el cuadrado de un producto. Este resultado se usa como un hecho conocido, sin demostrarlo aquí.
 \end{nota}
 
 El ejemplo de la cuña infinita de la clase anterior corresponde a $\ESW$ y muestra que esa cuña no tiene la propiedad universal esperada. La contradicción que acabamos de cerrar es una obstrucción distinta, referida a los objetos finitos de $\SW$. A pesar de estas limitaciones, el producto smash y la dualidad hacen de $\SW$ una categoría útil.
@@ -171,7 +171,7 @@ La escritura $(-1)^{am}$ significa un mapa de ese grado en la esfera de suspensi
 
 \subsection{Independencia de los representantes}
 
-Sean $w,w'$ los mapas corregidos obtenidos con $\psi$ y con $\Sigma^c\psi$, respectivamente. En la descripción por bloques escribimos $\varphi([t_1,t_3,x])=[s_1,s_3,z]$ y $\psi([t_2,t_4,y])=[s_2,s_4,w]$, donde $t_1,s_1$ tienen dimensión $k$, $t_2,s_2$ dimensión $a$, y los otros bloques tienen las dimensiones de los objetos. El cálculo de la pizarra queda
+Sean $w,w'$ los mapas corregidos obtenidos con $\psi$ y con $\Sigma^c\psi$, respectivamente. En la descripción por bloques escribimos $\varphi([t_1,t_3,x])=[s_1,s_3,z]$ y $\psi([t_2,t_4,y])=[s_2,s_4,w]$, donde $t_1,s_1$ tienen dimensión $k$, $t_2,s_2$ dimensión $a$, y los otros bloques tienen las dimensiones de los objetos. El cálculo queda
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
 {[t_1,t_3,x,m_2,t_2,t_4,y]} \arrow[r,mapsto,"\varphi\wedge(1\wedge\psi)"] & {[s_1,s_3,z,m_2,s_2,s_4,w]} \arrow[d,mapsto]\\
@@ -338,7 +338,7 @@ El signo $(-1)^{mn}$ de la trenza es el punto fino de la proposición, y su pres
 \subsection{Categorías monoidales simétricas}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-La \myref{prop:monoidal} dice que $\SW$ tiene la estructura que en álgebra se llama monoidal simétrica. Conviene fijar los axiomas, porque son los que gobiernan todas las manipulaciones de la segunda mitad de la clase.
+La \myref{prop:monoidal} dice que $\SW$ tiene la estructura que en álgebra se llama monoidal simétrica. Conviene fijar los axiomas, porque son los que gobiernan las manipulaciones que siguen.
 
 La definición se guía por una analogía con el álgebra: el producto monoidal se comporta como el producto de un anillo asociativo, con la diferencia de que las igualdades se sustituyen por isomorfismos naturales; la simetría añade la conmutatividad, también salvo isomorfismos naturales. Los axiomas de coherencia que siguen son, en este sentido, las relaciones que en un anillo asociativo y conmutativo se cumplen sin más.
 
@@ -459,7 +459,7 @@ En una categoría monoidal simétrica, dos morfismos construidos mediante produc
 \end{teo}
 
 \begin{nota}
-La precisión sobre las ocurrencias importa cuando se repite un objeto: $B_{x,x}\colon x\otimes x\to x\otimes x$ no tiene por qué ser la identidad. La coherencia permite prescindir del camino de reasociaciones y permutaciones una vez fijada la permutación que se quiere realizar. En la prueba de dualidad que sigue se comprobarán los diagramas a mano, como se hizo en clase.
+La precisión sobre las ocurrencias importa cuando se repite un objeto: $B_{x,x}\colon x\otimes x\to x\otimes x$ no tiene por qué ser la identidad. La coherencia permite prescindir del camino de reasociaciones y permutaciones una vez fijada la permutación que se quiere realizar. En la prueba de dualidad que sigue se comprobarán los diagramas a mano.
 \end{nota}
 
 \begin{ejer}[La trenza y la unidad]
@@ -696,7 +696,7 @@ Por tanto, conmuta todo el diagrama. Comparamos los dos recorridos exteriores qu
 =\bigl((1_x\otimes\rho_y)\otimes1_1\bigr)
 \circ(\alpha_{x,y,1}\otimes1_1).
 \]
-Para eliminar el factor adicional de unidad usamos el siguiente diagrama, que reproduce el cierre de la pizarra:
+Para eliminar el factor adicional de unidad usamos el siguiente diagrama:
 \[
 \begin{tikzcd}[
     row sep=large,
@@ -771,12 +771,12 @@ X^\vee\otimes X \arrow[r,"\mathrm{ev}"] \arrow[d,"\lambda_{X^\vee}^{-1}\otimes1_
 y las identidades triangulares son $\varepsilon F\circ F\eta=1_F$ y $G\varepsilon\circ\eta G=1_G$.
 
 \begin{nota}\label{nota:compatibilidad-adjuncion-dual}
-La clase también plantea el recorrido inverso: partir de una adjunción entre estos funtores, tomar sus componentes en $1$ y obtener los dos zigzags de dualidad. Para este recorrido se entiende que la adjunción es compatible con tensorizar por un objeto a la izquierda: una vez extraídas $\mathrm{coev}$ y $\mathrm{ev}$ de $\eta_1$ y $\varepsilon_1$, sus demás componentes deben tener las dos formas anteriores. Con esta compatibilidad, las identidades triangulares evaluadas en $1$ dan, mediante los isomorfismos de unidad, exactamente los zigzags de $X$ y $X^\vee$. Una adjunción ordinaria arbitraria entre los funtores subyacentes no permite suponer automáticamente esa compatibilidad. La exposición oral esbozó este recíproco sin desarrollar esa precisión.
+Consideremos también el recorrido inverso: partir de una adjunción entre estos funtores, tomar sus componentes en $1$ y obtener los dos zigzags de dualidad. Para este recorrido se entiende que la adjunción es compatible con tensorizar por un objeto a la izquierda: una vez extraídas $\mathrm{coev}$ y $\mathrm{ev}$ de $\eta_1$ y $\varepsilon_1$, sus demás componentes deben tener las dos formas anteriores. Con esta compatibilidad, las identidades triangulares evaluadas en $1$ dan, mediante los isomorfismos de unidad, exactamente los zigzags de $X$ y $X^\vee$. Una adjunción ordinaria arbitraria entre los funtores subyacentes no permite suponer automáticamente esa compatibilidad. La exposición oral esbozó este recíproco sin desarrollar esa precisión.
 \end{nota}
 
 \subsection{Dualizabilidad, finitud y rigidez}
 
-Una categoría monoidal simétrica se llama \emph{rígida} si todos sus objetos son dualizables. En la discusión de la clase se anunció el siguiente resultado, cuya demostración se desarrollará la siguiente clase.
+Una categoría monoidal simétrica se llama \emph{rígida} si todos sus objetos son dualizables. El siguiente resultado se enuncia ahora y se demostrará más adelante.
 
 \begin{prop}\label{prop:dualizable-sw}
 Todo objeto de $\SW$ admite un dual.

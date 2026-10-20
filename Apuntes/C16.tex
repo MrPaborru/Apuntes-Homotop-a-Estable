@@ -93,14 +93,14 @@ El aumento de esta realización hacia $\varinjlim\nolimits_K(Q'F)_n$ es una equi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % P05--P06; parte 1, 19:37--30:00.
-Para construir límites homotópicos mediante una estructura inyectiva, el teorema presentado en clase requiere una hipótesis adicional:
+Para construir límites homotópicos mediante una estructura inyectiva, el siguiente teorema requiere una hipótesis adicional:
 \[
 \begin{tikzcd}[column sep=small,row sep=large]
 &\mathcal M\text{ combinatoria}\arrow[dl,no head]\arrow[dr,no head]&\\
 \text{cofibrantemente generada}&&\text{localmente presentable}.
 \end{tikzcd}
 \]
-Una categoría es \emph{localmente presentable} si, para algún cardinal regular $\kappa$, es cocompleta y posee un conjunto de objetos $\kappa$-presentables que la generan mediante colímites $\kappa$-filtrados. Aquí $A$ es $\kappa$-presentable cuando $\operatorname{Hom}(A,-)$ preserva esos colímites. En clase se utilizó también el término $\kappa$-compacto. Esta condición depende de la categoría subyacente y no solo de su categoría homotópica.
+Una categoría es \emph{localmente presentable} si, para algún cardinal regular $\kappa$, es cocompleta y posee un conjunto de objetos $\kappa$-presentables que la generan mediante colímites $\kappa$-filtrados. Aquí $A$ es $\kappa$-presentable cuando $\operatorname{Hom}(A,-)$ preserva esos colímites. También usaremos el término $\kappa$-compacto. Esta condición depende de la categoría subyacente y no solo de su categoría homotópica.
 
 \begin{teo}[Estructura inyectiva]
 Si $\mathcal M$ es una categoría de modelos combinatoria y $K$ es pequeña, la categoría $\mathcal M^K$ admite una estructura de modelos inyectiva. Sus equivalencias débiles y cofibraciones se determinan objeto a objeto. Sus fibraciones son, en particular, fibraciones objeto a objeto, aunque el recíproco no se afirma.
@@ -155,7 +155,7 @@ Para espectros, tomamos un reemplazo \emph{estable} fibrante $R$, cuyos valores 
 \]
 El miembro derecho es un límite homotópico de espacios punteados, con los mapas estructurales inducidos por el diagrama de espectros. La identificación proviene de que la cobarra de espectros se construye mediante las correspondientes operaciones en espacios. El reemplazo estable es esencial: tomar límites homotópicos de los niveles originales de un diagrama arbitrario no garantiza obtener su límite homotópico estable.
 
-En clase se destacó el uso práctico de estas fórmulas, especialmente para fibras homotópicas y límites homotópicos de torres. Los detalles de los modelos generales quedaron como referencia bibliográfica, sin convertirse en ejercicios adicionales.
+Estas fórmulas son útiles especialmente para fibras homotópicas y límites homotópicos de torres. Para los detalles de los modelos generales remitimos a la bibliografía; no se proponen como ejercicios adicionales.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Funtores derivados mediante deformaciones}
@@ -181,7 +181,7 @@ El funtor $\mathrm LF=FQ$ se llama \emph{funtor derivado izquierdo} asociado a l
 \]
 \end{defi}
 
-Si $W'$ consiste en los isomorfismos, la última condición exige que $F$ convierta en isomorfismos las equivalencias débiles de $\mathcal A$. Es el caso particular mencionado primero en clase. Un \emph{funtor homotópico} es un funtor que preserva todas las equivalencias débiles de su dominio.
+Si $W'$ consiste en los isomorfismos, la última condición exige que $F$ convierta en isomorfismos las equivalencias débiles de $\mathcal A$. Este es el caso particular inicial. Un \emph{funtor homotópico} es un funtor que preserva todas las equivalencias débiles de su dominio.
 
 \begin{prop}\label{prop:c16-deformacion-homotopica}
 El funtor $\mathrm LF$ preserva equivalencias débiles. Para todo objeto $X$ de $\mathcal A$, también es una equivalencia débil la comparación
@@ -209,7 +209,7 @@ Por tanto, $\mathrm LF$ induce un funtor entre las localizaciones, para el que c
 \Ho(\mathcal C)\arrow[r,dashed,"\mathrm LF"']&\Ho(\mathcal D).
 \end{tikzcd}
 \]
-En el caso particular $W'=\operatorname{Iso}(\mathcal D)$, la factorización toma la forma dibujada inicialmente en clase:
+En el caso particular $W'=\operatorname{Iso}(\mathcal D)$, la factorización toma la forma:
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
 \mathcal C\arrow[r,"\gamma_{\mathcal C}"]\arrow[rr,bend right=30,"\mathrm LF"']
@@ -239,7 +239,7 @@ Equivalentemente, $\mathrm LF\to F$ es un objeto terminal en la categoría de fu
 \end{teo}
 
 \begin{proof}
-La precomposición con $Q$ preserva equivalencias débiles objeto a objeto y, por tanto, induce un funtor en la categoría localizada. Si representamos $\varphi$ mediante un zigzag, la naturalidad de $\eta$ produce el diagrama de la pizarra:
+La precomposición con $Q$ preserva equivalencias débiles objeto a objeto y, por tanto, induce un funtor en la categoría localizada. Si representamos $\varphi$ mediante un zigzag, la naturalidad de $\eta$ produce el siguiente diagrama:
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
 G\arrow[r,"\alpha"]&H_1&H_2\arrow[l,"\simeq"']\arrow[r]&\cdots\arrow[r]&F\\
@@ -362,7 +362,7 @@ Consideramos el smash de un espacio punteado $K$ y un espectro $X$:
 \[
 -\wedge-\colon\Topstar\times\Sp^{\mathbb N}_s\longrightarrow\Sp^{\mathbb N}_s.
 \]
-Usamos el resultado anunciado en clase: si $K\to L$ es una equivalencia débil entre complejos CW punteados y $X\to Y$ es una equivalencia estable, entonces el mapa inducido $K\wedge X\to L\wedge Y$ es una equivalencia estable. Este resultado se utilizó sin demostración; es la invariancia que permite el modelo de \cite[Ejemplo~3.4.3.4]{malkiewich}.
+Usamos el siguiente resultado: si $K\to L$ es una equivalencia débil entre complejos CW punteados y $X\to Y$ es una equivalencia estable, entonces el mapa inducido $K\wedge X\to L\wedge Y$ es una equivalencia estable. Lo utilizamos sin demostración; es la invariancia que permite el modelo de \cite[Ejemplo~3.4.3.4]{malkiewich}.
 
 Si $Q_{\mathrm{esp}}$ es un reemplazo CW funtorial de espacios, podemos elegir
 \[
@@ -419,7 +419,7 @@ Fw\circ\varepsilon_X=\varepsilon_Y\circ\mathrm LF(w)
 \]
 y dos de tres implican que $Fw$ es una equivalencia débil. Además, cualquier subcategoría de deformación para este mismo $(Q,\eta)$ está contenida en $\mathcal A_{\max}$, por la \myref{prop:c16-deformacion-homotopica}.
 
-La independencia respecto de la deformación se interpreta mediante el diagrama de la pizarra:
+La independencia respecto de la deformación se interpreta mediante el siguiente diagrama:
 \[
 \begin{tikzcd}[column sep=huge,row sep=large]
 \mathrm LF(X)\arrow[dr,"\varepsilon_X"]\arrow[dd,"\cong"']&\\
@@ -460,7 +460,7 @@ La iteración da la sucesión de Puppe, con las identificaciones homotópicas co
 X\xrightarrow{f}Y\longrightarrow C_f
 \longrightarrow\Sigma X\longrightarrow\Sigma Y\longrightarrow\cdots.
 \]
-Estas sucesiones serán los modelos de los triángulos distinguidos. Se anunció para la clase siguiente que inducen sucesiones exactas largas de grupos de homotopía estables. La demostración de esa afirmación quedó pendiente; en cambio, el resultado dual se dejó como ejercicio.
+Estas sucesiones serán los modelos de los triángulos distinguidos. Estas sucesiones inducen sucesiones exactas largas de grupos de homotopía estables. Posponemos la demostración y proponemos el resultado dual como ejercicio.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Sucesiones fibradas y exactitud en homotopía estable}

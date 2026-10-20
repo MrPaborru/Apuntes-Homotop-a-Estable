@@ -5,7 +5,7 @@
 % posterior al descanso; P12--P23 se reconstruyen a partir de las pizarras.
 % Se conserva la convención de C7: (sh^d X)_n = X_{n+d}.
 
-La clase anterior comparó los morfismos eventualmente definidos con los de la categoría homotópica estable y demostró el teorema de Whitehead para $\Omega$-espectros celulares. Ahora veremos que, si el dominio es celular y el codominio es un $\Omega$-espectro, las clases de homotopía globales ya calculan los morfismos estables. Aplicaremos esta descripción a la representación de la cohomología. Después enunciaremos la estructura de modelos estable de los espectros secuenciales, describiremos sus generadores y el producto pushout, y terminaremos con la propiedad universal de los funtores derivados.
+Ya hemos comparado los morfismos eventualmente definidos con los de la categoría homotópica estable y demostrado el teorema de Whitehead para $\Omega$-espectros celulares. Ahora veremos que, si el dominio es celular y el codominio es un $\Omega$-espectro, las clases de homotopía globales ya calculan los morfismos estables. Aplicaremos esta descripción a la representación de la cohomología. Después enunciaremos la estructura de modelos estable de los espectros secuenciales, describiremos sus generadores y el producto pushout, y terminaremos con la propiedad universal de los funtores derivados.
 
 Escribiremos $[X,Y]_h$ para las clases de morfismos de espectros módulo homotopía global, $[X,Y]_e$ para las clases eventualmente definidas y $[X,Y]_s$ para los morfismos en $\Ho(\Sp^{\mathbb N})$. Conservamos la notación $\xi^X_{m,n}\colon\Sigma^nX_m\to X_{m+n}$ de la clase~11. Todas las aplicaciones y homotopías son punteadas.
 
@@ -212,7 +212,7 @@ Repitiendo por familias de celdas, con los mismos datos de borde, reemplazamos $
 \end{proof}
 
 \begin{proof}[Conclusión de la proposición~\ref{prop:c13-comparacion-morfismos}]
-Queda comprobar que $\psi=(q_Y)_*\colon[X,QY]_e\to[X,Y]_e$ es biyectiva. En clase se indicó el mismo argumento celular: como cada $(q_Y)_m\colon(QY)_m\to Y_m$ es una equivalencia débil, se anulan los grupos relativos $\pi_d(Y_m,(QY)_m)$, interpretados mediante el cilindro de aplicación. Esto permite levantar las aplicaciones de los discos salvo homotopía, compatibilizando los bordes, y hacer lo mismo con los cilindros para comparar dos levantamientos. Aplicado a los representantes eventualmente definidos, da la sobreyectividad y la inyectividad de $\psi$.
+Queda comprobar que $\psi=(q_Y)_*\colon[X,QY]_e\to[X,Y]_e$ es biyectiva. Aplicamos el mismo argumento celular: como cada $(q_Y)_m\colon(QY)_m\to Y_m$ es una equivalencia débil, se anulan los grupos relativos $\pi_d(Y_m,(QY)_m)$, interpretados mediante el cilindro de aplicación. Esto permite levantar las aplicaciones de los discos salvo homotopía, compatibilizando los bordes, y hacer lo mismo con los cilindros para comparar dos levantamientos. Aplicado a los representantes eventualmente definidos, da la sobreyectividad y la inyectividad de $\psi$.
 
 En el cuadrado anterior, las otras dos flechas son biyectivas. Explícitamente,
 \[
@@ -468,7 +468,7 @@ F_i((D^n\times\{0\})_+)\longrightarrow F_i((D^n\times I)_+)
 \right\}.
 \end{aligned}
 \]
-El primer conjunto procede de las inclusiones de un extremo del cilindro en cada nivel libre. En el segundo se usa el producto pushout de la inclusión del borde de un disco con el mapa $k_{i,j}$ construido antes. Esta descripción de $\mathcal I$ y $\mathcal J$ forma parte del teorema enunciado; no se comprobaron en clase los axiomas de la estructura de modelos.
+El primer conjunto procede de las inclusiones de un extremo del cilindro en cada nivel libre. En el segundo se usa el producto pushout de la inclusión del borde de un disco con el mapa $k_{i,j}$ construido antes. Esta descripción de $\mathcal I$ y $\mathcal J$ forma parte del teorema enunciado; no comprobamos aquí los axiomas de la estructura de modelos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Funtores derivados y su propiedad universal}
@@ -557,4 +557,4 @@ F(m) \arrow[r,"\mu_m"] \arrow[dr,"\xi_m"']
 \]
 La orientación de la transformación natural distingue las dos propiedades universales: en el caso izquierdo se aproxima $F$ mediante un mapa hacia $F$, y en el derecho mediante un mapa desde $F$.
 
-Como referencia algebraica, en clase se mencionaron $\operatorname{Tor}$ y $\operatorname{Ext}$ como derivados del producto tensorial y de $\Hom$, respectivamente, resumidos en la notación $\operatorname{Tor}=\otimes^{\mathrm L}$ y $\operatorname{Ext}=\mathrm R\Hom$. La sesión terminó con estas definiciones universales, sin desarrollar todavía la construcción de los derivados mediante reemplazos.
+Como referencia algebraica, consideremos $\operatorname{Tor}$ y $\operatorname{Ext}$ como derivados del producto tensorial y de $\Hom$, respectivamente, resumidos en la notación $\operatorname{Tor}=\otimes^{\mathrm L}$ y $\operatorname{Ext}=\mathrm R\Hom$. Estas definiciones universales aún no incluyen la construcción de los derivados mediante reemplazos.

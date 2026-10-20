@@ -1,6 +1,6 @@
-La clase anterior terminó con la definición de espectro secuencial, sus dos fuentes principales ---el espectro suspensión $\Sigma^\infty A$ de un espacio punteado y el espectro $E$ asociado a una teoría de cohomología reducida $\widetilde E^{\,*}$--- y la construcción del desplazamiento $sh^d$. Esta clase empieza el trabajo con esa maquinaria: se fijan los tipos especiales de espectros que aparecerán, se define la categoría de espectros secuenciales y sus morfismos, y se introduce la noción de grupo de homotopía de un espectro, que es la que permite decir cuándo dos espectros son «el mismo» sin necesidad de exhibir un isomorfismo.
+Partimos de la definición de espectro secuencial, sus dos fuentes principales ---el espectro suspensión $\Sigma^\infty A$ de un espacio punteado y el espectro $E$ asociado a una teoría de cohomología reducida $\widetilde E^{\,*}$--- y la construcción del desplazamiento $sh^d$. Desarrollaremos estas construcciones: se fijan los tipos especiales de espectros que aparecerán, se define la categoría de espectros secuenciales y sus morfismos, y se introduce la noción de grupo de homotopía de un espectro, que es la que permite decir cuándo dos espectros son «el mismo» sin necesidad de exhibir un isomorfismo.
 
-El objetivo declarado al comienzo de la sesión es mostrar que \emph{la categoría homotópica estable es estable}, es decir, que en ella la suspensión es invertible. La segunda mitad de la clase se dedica al primer paso de esa demostración: construir la suspensión de un espectro y comprobar que coincide con el desplazamiento $\sh^1$ en el nivel de los grupos de homotopía.
+Nuestro objetivo es mostrar que \emph{la categoría homotópica estable es estable}, es decir, que en ella la suspensión es invertible. Comenzaremos esa demostración por construir la suspensión de un espectro y comprobar que coincide con el desplazamiento $\sh^1$ en el nivel de los grupos de homotopía.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{La categoría de espectros secuenciales}
@@ -135,7 +135,7 @@ En la situación que nos ocupa, $F=\Sigma$ y $G=\Omega$. Los morfismos estructur
 y el diagrama anterior permite describir las aplicaciones del sistema dirigido de la \myref{defi:pi-espectro} sin mencionar explícitamente el morfismo estructural.
 
 \begin{nota}
-   Conviene tener a la vista la forma concreta del diagrama, porque en la pizarra se escribió con las dos diagonales y es donde se ve que las dos descripciones coinciden. Con $\pi_{n+k}(X_n)$ arriba a la izquierda y $\pi_{n+k+1}(X_{n+1})$ arriba a la derecha, las cuatro flechas son
+   Las dos diagonales del diagrama permiten comprobar que las dos descripciones coinciden. Con $\pi_{n+k}(X_n)$ arriba a la izquierda y $\pi_{n+k+1}(X_{n+1})$ arriba a la derecha, las cuatro flechas son
    \[
    (\xi_n^{\perp})_*\colon\pi_{n+k}(X_n)\to\pi_{n+k}(\Omega X_{n+1}),
    \qquad
@@ -146,7 +146,7 @@ y el diagrama anterior permite describir las aplicaciones del sistema dirigido d
    \qquad
    (\xi_n)_*\colon\pi_{n+k+1}(\Sigma X_n)\to\pi_{n+k+1}(X_{n+1}),
    \]
-   y el compuesto de las dos primeras coincide con el de las dos últimas, que es la aplicación del sistema dirigido. En la pizarra se anotó al lado que $(\xi_n)_*$ es, en efecto, la aplicación inducida por $f$, con lo que las dos descripciones quedan identificadas.
+   y el compuesto de las dos primeras coincide con el de las dos últimas, que es la aplicación del sistema dirigido. Además, $(\xi_n)_*$ es, en efecto, la aplicación inducida por $f$, con lo que las dos descripciones quedan identificadas.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -354,7 +354,7 @@ La \emph{categoría homotópica estable} es la localización de $\Sp^{\mathbb{N}
 es decir, la categoría que se obtiene al invertir formalmente todos los morfismos que son equivalencias estables.
 \end{defi}
 
-Esta categoría es un modelo de la categoría homotópica estable mediante las propiedades que se enumeraron en la clase 1. Su ventaja es que no hay que construir nada nuevo: los objetos siguen siendo espectros secuenciales y los morfismos son clases de zigzags de morfismos. Su inconveniente es que tenemos que confiar en que la categoría es localmente pequeña (lo es, pero no es trivial de probar) y que los morfismos pasan a ser clases de zigzags, lo cual es incómodo. Eso es lo que motiva buscar otros modelos, en los que la inversión sea menos violenta.
+Esta categoría es un modelo de la categoría homotópica estable mediante las propiedades que se enumeraron en la clase 1. Su ventaja es que no hay que construir nada nuevo: los objetos siguen siendo espectros secuenciales y los morfismos son clases de zigzags de morfismos. Su inconveniente es que tenemos que confiar en que la categoría es localmente pequeña (lo es, pero no es trivial de probar) y que los morfismos pasan a ser clases de zigzags, lo cual es incómodo. Eso es lo que motiva buscar otros modelos, en los que la inversión de equivalencias sea más manejable.
 
 \begin{ejer}\label{ejer:localizaciones-equivalentes}
 Comprobar que el modelo con espectros $\mathbb N$-secuenciales es equivalente al que usa espectros $\mathbb Z$-secuenciales,
@@ -414,7 +414,7 @@ En particular, el cuadrado de funtores de espacios punteados a espectros
 \]
 conmuta bajo dichas identificaciones. El funtor $\sh^1$ no hace conmutar estrictamente este cuadrado: $(\sh^1\Sigma^\infty A)_n=A\wedge(S^1)^{\wedge(n+1)}$, mientras que $(\Sigma^\infty\Sigma A)_n=S^1\wedge A\wedge(S^1)^{\wedge n}$.
 
-El resto de esta clase y la siguiente se centrarán en probar que $\Sigma$ y $\sh^1$ son establemente equivalentes (naturalmente). A partir de aquí, omitiremos los símbolos de composición \enquote{$\circ$}.
+Nos proponemos probar que $\Sigma$ y $\sh^1$ son establemente equivalentes (naturalmente). A partir de aquí, omitiremos los símbolos de composición \enquote{$\circ$}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Comparación de los grupos de homotopía de \texorpdfstring{$\Sigma$ y $\sh^1$}{sigma y sh1}}

@@ -1,9 +1,9 @@
-La clase anterior estableció la dualidad en categorías monoidales simétricas y la relación entre tener un dual y una adjunción. Esta clase retoma esa discusión desde dos frentes. Por un lado se extraen las consecuencias formales de la dualidad —la unidad es autodual, el dual de un producto tensorial es el producto tensorial de los duales, el dual es único salvo isomorfismo— y se aísla el teorema de coherencia que permite abreviar todos los cálculos diagramáticos. Por otro lado se introduce el \emph{hom interno}, que es la pieza que en una categoría monoidal simétrica general ocupa el lugar del dual, y se estudia la noción de categoría monoidal simétrica \emph{cerrada}.
+Partimos de la dualidad en categorías monoidales simétricas y de su relación con las adjunciones. Desarrollaremos estas nociones en dos direcciones. Por un lado se extraen las consecuencias formales de la dualidad —la unidad es autodual, el dual de un producto tensorial es el producto tensorial de los duales, el dual es único salvo isomorfismo— y se aísla el teorema de coherencia que permite abreviar todos los cálculos diagramáticos. Por otro lado se introduce el \emph{hom interno}, que es la pieza que en una categoría monoidal simétrica general ocupa el lugar del dual, y se estudia la noción de categoría monoidal simétrica \emph{cerrada}.
 
-La segunda mitad de la clase vuelve al contexto estable. La categoría de Spanier--Whitehead con el producto smash no se sabe todavía que sea cerrada, de modo que no hay un candidato evidente para el dual de un objeto arbitrario; pero las esferas sí tienen dual, y se demuestra que basta con comprobar la dualidad sobre las esferas para obtenerla en toda la categoría. El caso general se deja para la clase siguiente.
+Volveremos después al contexto estable. La categoría de Spanier--Whitehead con el producto smash no se sabe todavía que sea cerrada, de modo que no hay un candidato evidente para el dual de un objeto arbitrario; pero las esferas sí tienen dual, y se demuestra que basta con comprobar la dualidad sobre las esferas para obtenerla en toda la categoría. El caso general se deja para la clase siguiente.
 
 \begin{nota}
-   La clase se abre reenunciando el criterio de la sesión anterior, que se usará una y otra vez: \emph{$X^\vee$ es un dual de $X$ si y solo si $-\otimes X$ es adjunto izquierdo a $-\otimes X^\vee$}. En la \myref{prop:adjuncion} se construyeron las biyecciones a partir de una dualidad; al inicio de esta sesión se recordó el criterio en esta forma, que será la utilizada en el capítulo. Entendemos aquí la adjunción con la \hyperref[nota:compatibilidad-adjuncion-dual]{compatibilidad con tensorizar precisada al final de la clase~5}.
+   Recordemos el criterio que utilizaremos reiteradamente: \emph{$X^\vee$ es un dual de $X$ si y solo si $-\otimes X$ es adjunto izquierdo a $-\otimes X^\vee$}. En la \myref{prop:adjuncion} se construyeron las biyecciones a partir de una dualidad; esta es la forma del criterio que utilizaremos en el capítulo. Entendemos aquí la adjunción con la \hyperref[nota:compatibilidad-adjuncion-dual]{compatibilidad con tensorizar precisada al final de la clase~5}.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -14,9 +14,9 @@ La segunda mitad de la clase vuelve al contexto estable. La categoría de Spanie
 \subsection{Corrección del diagrama de la clase anterior}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-La clase comienza con una corrección. Al final de la clase anterior se escribió un diagrama que debía probar que las transformaciones $\Phi$ y $\Psi$ de la \myref{prop:adjuncion} son inversas, y el diagrama presentado era ya una \emph{simplificación}: faltaba el paso que reduce el cálculo a ese diagrama. El paso omitido es un cuadrado de naturalidad, y su ausencia hacía que el término de una de las esquinas apareciera desplazado.
+Comencemos corrigiendo el diagrama presentado en la clase anterior, destinado a probar que las transformaciones $\Phi$ y $\Psi$ de la \myref{prop:adjuncion} son inversas. Ese diagrama era ya una \emph{simplificación}: faltaba el paso que reduce el cálculo a ese diagrama. El paso omitido es un cuadrado de naturalidad, y su ausencia hacía que el término de una de las esquinas apareciera desplazado.
 
-La versión completa parte de $f\colon A\to B\otimes X^\vee$. Primero se obtiene $\Psi(f)$ mediante el diagrama de la izquierda de la pizarra:
+La versión completa parte de $f\colon A\to B\otimes X^\vee$. Primero se obtiene $\Psi(f)$ mediante el siguiente diagrama:
 % P01, izquierda.
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
@@ -27,7 +27,7 @@ A\otimes X \arrow[r,"{f\otimes1_X}"]
  & B .
 \end{tikzcd}
 \]
-Para calcular $\Phi\Psi(f)$ se tensoriza este camino con $X^\vee$ y se anteponen la unidad inversa, la coevaluación y el asociador inverso. El diagrama completo del pizarrón puede disponerse así:
+Para calcular $\Phi\Psi(f)$ se tensoriza este camino con $X^\vee$ y se anteponen la unidad inversa, la coevaluación y el asociador inverso. El diagrama completo es:
 % P01, derecha. Las dos flechas con etiqueta alpha se recorren al revés
 % cuando se sigue el compuesto Phi Psi.
 \[
@@ -49,10 +49,10 @@ Para calcular $\Phi\Psi(f)$ se tensoriza este camino con $X^\vee$ y se anteponen
 B\otimes X^\vee &
 \end{tikzcd}
 \]
-El cuadrado central conmuta por naturalidad del asociador. Por ello se puede recorrer el cuadrado por cualquiera de sus dos lados, invirtiendo los asociadores cuando corresponda. Este es el paso que faltaba antes de llegar al diagrama simplificado de la sesión anterior.
+El cuadrado central conmuta por naturalidad del asociador. Por ello se puede recorrer el cuadrado por cualquiera de sus dos lados, invirtiendo los asociadores cuando corresponda. Este es el paso que faltaba antes de llegar al diagrama simplificado anterior.
 
 \begin{nota}
-En la primera flecha de la pizarra aparece $\rho$; con las convenciones de la clase debe leerse $\rho_A^{-1}$, pues la flecha va de $A$ a $A\otimes1$. La corrección explicada oralmente se refiere, además, a la esquina que faltaba en el diagrama de la clase anterior. Para concluir que $\Phi\Psi(f)=f$ se usan la naturalidad, el pentágono, las unidades y la identidad de zigzag, como en la \myref{prop:adjuncion}. No se deduce esa igualdad solamente del cuadrado central.
+En la primera flecha de la pizarra aparece $\rho$; con nuestras convenciones debe leerse $\rho_A^{-1}$, pues la flecha va de $A$ a $A\otimes1$. La corrección explicada oralmente se refiere, además, a la esquina que faltaba en el diagrama de la clase anterior. Para concluir que $\Phi\Psi(f)=f$ se usan la naturalidad, el pentágono, las unidades y la identidad de zigzag, como en la \myref{prop:adjuncion}. No se deduce esa igualdad solamente del cuadrado central.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -96,7 +96,7 @@ Un objeto $X$ de una categoría monoidal simétrica es \emph{dualizable} si admi
 \subsection{El teorema de coherencia de Mac Lane y Kelly}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Los cálculos de la clase anterior y de esta son diagramas formados por asociadores, unidades y trenzas. El resultado siguiente dice que no hace falta verificarlos uno por uno.
+Los cálculos de dualidad anteriores utilizan diagramas formados por asociadores, unidades y trenzas. El resultado siguiente dice que no hace falta verificarlos uno por uno.
 
 \begin{teo}[Mac Lane--Kelly]\label{teo:mackane-kelly}
 En una categoría monoidal simétrica $(\mathcal C,\otimes,1,\alpha,\lambda,\rho,B)$, dos composiciones de asociadores, unidades, simetrías, sus inversas y sus productos tensoriales con identidades son iguales si tienen los mismos extremos formales e inducen la misma permutación de las apariciones de los factores. En particular, todo diagrama de este tipo cuyos caminos paralelos inducen la misma permutación conmuta.
@@ -116,7 +116,7 @@ Si $X^\vee$ es un dual de $X$, entonces $X$ es un dual de $X^\vee$.
 
 \begin{proof}
 Sean $\mathrm{ev}\colon X^\vee\otimes X\to1$ y
-$\mathrm{coev}\colon1\to X\otimes X^\vee$ los morfismos de la dualidad. Como en clase, se definen $\mathrm{ev}'=\mathrm{ev}\circ B_{X,X^\vee}$ y $\mathrm{coev}'=B_{X,X^\vee}\circ\mathrm{coev}$
+$\mathrm{coev}\colon1\to X\otimes X^\vee$ los morfismos de la dualidad. Definimos $\mathrm{ev}'=\mathrm{ev}\circ B_{X,X^\vee}$ y $\mathrm{coev}'=B_{X,X^\vee}\circ\mathrm{coev}$
 % P03, izquierda.
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
@@ -131,7 +131,7 @@ X\otimes X^\vee \arrow[r,"{B_{X,X^\vee}}"] \arrow[dr,"{\mathrm{ev}'}"']
  &X^\vee\otimes X
 \end{tikzcd}
 \]
-Se debe comprobar que estos morfismos satisfacen las dos identidades de zigzag. Reproducimos la comparación de caminos de la pizarra, abreviando $Y=X^\vee$ y omitiendo los subíndices de $\alpha,\lambda,\rho$ y de las identidades cuando el dominio los determina. El camino negro es el zigzag nuevo sobre $Y$; el rojo es el zigzag original.
+Se debe comprobar que estos morfismos satisfacen las dos identidades de zigzag. Comparemos los caminos, abreviando $Y=X^\vee$ y omitiendo los subíndices de $\alpha,\lambda,\rho$ y de las identidades cuando el dominio los determina. El camino negro es el zigzag nuevo sobre $Y$; el rojo es el zigzag original.
 % P03, derecha. Se separan las dos apariciones de Y tensor (X tensor Y).
 \[
 \begin{tikzcd}[column sep=6em,row sep=1.8em]
@@ -163,7 +163,7 @@ Por el \myref{teo:mackane-kelly} esos caminos coinciden. El camino negro es, por
 \end{proof}
 
 \begin{nota}
-En la pizarra se reutilizó el vértice $X^\vee\otimes(X\otimes X^\vee)$ para dos lugares del trazado. Para que la comparación sea válida se han separado esas dos apariciones: no se puede identificar cada camino que llega a ellas invocando únicamente que los objetos escritos coinciden. Las apariciones de $X^\vee$ pueden haber sido permutadas. También se escribe $\lambda^{-1}$ en la primera flecha, en lugar de la etiqueta $1\otimes\lambda^{-1}$ que aparece en la captura.
+En la pizarra se reutilizó el vértice $X^\vee\otimes(X\otimes X^\vee)$ para dos lugares del trazado. Para que la comparación sea válida se han separado esas dos apariciones: no se puede identificar cada camino que llega a ellas invocando únicamente que los objetos escritos coinciden. Las apariciones de $X^\vee$ pueden haber sido permutadas. También se escribe $\lambda^{-1}$ en la primera flecha, en lugar de la etiqueta $1\otimes\lambda^{-1}$ que aparece en la pizarra.
 \end{nota}
 
 \begin{ejer}[La otra identidad de zigzag]
@@ -221,7 +221,7 @@ donde los isomorfismos de los extremos son las unidades monoidales.
 \end{proof}
 
 \begin{nota}
-   La unicidad es «salvo isomorfismo» y no «a secas», y esa diferencia tendrá consecuencias en la sección siguiente: la sola existencia de duales no especifica una elección de objeto y de morfismos de dualidad para cada $X$. Una vez fijadas dos dualidades de $X$, existe un único isomorfismo entre ellas compatible con sus evaluaciones y coevaluaciones. Es la misma situación que en álgebra homológica con los funtores derivados: el funtor $\mathrm{Tor}$ que se define al principio depende de las resoluciones proyectivas elegidas, y solo después se comprueba que resoluciones distintas dan funtores naturalmente isomorfos. En las categorías que aparecen en la práctica —y en particular en las de espectros— suele haber una elección canónica y el problema desaparece. (Este paralelismo con el álgebra homológica se explicó oralmente en clase: el profesor lo compara expresamente con «cuando dices que quieres hacer funtores derivados y tienes que escoger una resolución».)
+   La unicidad es «salvo isomorfismo» y no «a secas», y esa diferencia tendrá consecuencias en la sección siguiente: la sola existencia de duales no especifica una elección de objeto y de morfismos de dualidad para cada $X$. Una vez fijadas dos dualidades de $X$, existe un único isomorfismo entre ellas compatible con sus evaluaciones y coevaluaciones. Es la misma situación que en álgebra homológica con los funtores derivados: el funtor $\mathrm{Tor}$ que se define al principio depende de las resoluciones proyectivas elegidas, y solo después se comprueba que resoluciones distintas dan funtores naturalmente isomorfos. En las categorías que aparecen en la práctica —y en particular en las de espectros— suele haber una elección canónica y el problema desaparece. (El paralelismo consiste en que, al construir funtores derivados, hay que escoger una resolución.)
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -245,7 +245,7 @@ Y^\vee\otimes X \arrow[r,"{1\otimes f}"] \arrow[dr,"{\mathrm{ev}_Y(1\otimes f)}"
  &1 .
 \end{tikzcd}
 \]
-La última adjunción produce el siguiente diagrama. Se omiten los asociadores y las unidades, como en la pizarra; en particular, la primera flecha incluye $\rho_{Y^\vee}^{-1}$ y la última incluye $\lambda_{X^\vee}$.
+La última adjunción produce el siguiente diagrama. Se omiten los asociadores y las unidades; en particular, la primera flecha incluye $\rho_{Y^\vee}^{-1}$ y la última incluye $\lambda_{X^\vee}$.
 % P05, derecha, diagrama inferior.
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
@@ -340,7 +340,7 @@ X\otimes-\colon\mathcal C\longrightarrow\mathcal C
 admite un adjunto derecho, que se denota $\ihom(X,-)$ y se llama el \emph{hom interno}.
 \end{defi}
 
-Se conserva la convención de P06: el objeto fijo $X$ está a la izquierda. Por simetría, esta adjunción también da una para $-\otimes X$. Para todos $X,Y,Z$,
+Fijamos la siguiente convención: el objeto fijo $X$ está a la izquierda. Por simetría, esta adjunción también da una para $-\otimes X$. Para todos $X,Y,Z$,
 \[
 \hom_{\mathcal C}(X\otimes Y,\ Z)\cong\hom_{\mathcal C}\bigl(Y,\ \ihom(X,Z)\bigr).
 \]
@@ -459,7 +459,7 @@ con $v_i\in V$ y $f_i\in V^\vee$. Obsérvese que no se pide que los $v_i$ formen
 
 En los cálculos que siguen se omiten los asociadores y las unidades, que no intervienen en el argumento.
 
-Consideremos el zigzag que se calculó en clase:
+Consideremos el siguiente zigzag:
 % P09, izquierda.
 \[
 \begin{tikzcd}[column sep=large]
@@ -635,7 +635,7 @@ X\otimes H_{X,Y}\otimes W\otimes H_{W,Z}
 En estos diagramas se omiten únicamente los asociadores que quedan determinados por los extremos.
 \end{prop}
 
-Todas estas construcciones se obtienen tomando adjuntos de los morfismos indicados. La naturalidad de la adjunción permite comprobar las identidades; la coherencia justifica los reagrupamientos y las permutaciones especificadas. La asociatividad de $c$ compara las dos maneras de componer tres homs internos, sin cambiar su orden; es el análogo de la asociatividad de los conjuntos de morfismos que se comentó en clase.
+Todas estas construcciones se obtienen tomando adjuntos de los morfismos indicados. La naturalidad de la adjunción permite comprobar las identidades; la coherencia justifica los reagrupamientos y las permutaciones especificadas. La asociatividad de $c$ compara las dos maneras de componer tres homs internos, sin cambiar su orden; es el análogo de la asociatividad de los conjuntos de morfismos ya considerada.
 
 \begin{prop}\label{prop:ensamble-iso}
 Si $Z$ es dualizable, el morfismo de ensamble
@@ -645,7 +645,9 @@ Si $Z$ es dualizable, el morfismo de ensamble
 es un isomorfismo.
 \end{prop}
 \begin{proof}[Idea de la demostración]
-Se sigue la construcción del inverso por adjunciones de P14. Escribamos
+Construyamos el inverso por adjunciones.
+
+Escribamos
 $A=\ihom(X,Y\otimes Z)$ y $H=\ihom(X,Y)$.
 Como $Z$ es un dual de $Z^\vee$, la \myref{prop:hom-dual} da
 \[
@@ -699,7 +701,7 @@ Para módulos sobre un anillo \emph{conmutativo} $R$, el ensamble es
 En clase se mencionó el caso de $Z$ libre finitamente generado, que ciertamente es dualizable. Si se pretende caracterizar todos los módulos dualizables, la condición correcta es ser \emph{proyectivo finitamente generado}; no se exige que sea libre.
 \end{nota}
 
-Para más propiedades y demostraciones del hom interno, la referencia recomendada en clase es \cite{malkiewich}.
+Para más propiedades y demostraciones del hom interno, puede consultarse \cite{malkiewich}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -778,7 +780,7 @@ Esto no es un isomorfismo en una categoría monoidal simétrica cerrada general.
 \begin{nota}
 En el ejemplo de complejos, la recuperación usa $Z_0$ de los complejos de homs; usar $H_0$ daría la categoría de complejos con morfismos módulo homotopía. El enriquecimiento conserva los mismos objetos y añade los objetos de morfismos y sus operaciones; su categoría ordinaria subyacente es la original.
 
-En clase se advirtió que hay que distinguir estos dos niveles de estructura, también cuando se habla de espectros. La estructura monoidal simétrica puede formularse en el sentido enriquecido; aquí la categoría sobre la que se enriquece es la propia $\mathcal C$, que ya es monoidal simétrica.
+Hay que distinguir estos dos niveles de estructura, también cuando se habla de espectros. La estructura monoidal simétrica puede formularse en el sentido enriquecido; aquí la categoría sobre la que se enriquece es la propia $\mathcal C$, que ya es monoidal simétrica.
 \end{nota}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -903,7 +905,7 @@ S &X^*\wedge X \arrow[l,"{\mathrm{ev}}"']
 S &X^*\wedge X \arrow[l,"{\mathrm{ev}}"']
 \end{tikzcd}
 \]
-Los símbolos $f$ representan morfismos estables, no representantes a un nivel fijo, como se aclaró oralmente en clase.
+Los símbolos $f$ representan morfismos estables, no representantes a un nivel fijo.
 \end{lema}
 
 \begin{proof}
@@ -939,7 +941,7 @@ Si
 \[
 D\xrightarrow{f}B\xrightarrow{g}C\xrightarrow{h}\Sigma D
 \]
-es una sucesión cofibrada, la naturalidad de $\theta$ da el siguiente diagrama. Como en P18, las sucesiones exactas se leen de abajo hacia arriba:
+es una sucesión cofibrada, la naturalidad de $\theta$ da el siguiente diagrama. Las sucesiones exactas se leen de abajo hacia arriba:
 % P18, derecha: todos los mapas inducidos y sus direcciones.
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
@@ -978,7 +980,7 @@ S^n\wedge S^{-n}\wedge X^*\wedge X
 \]
 Aquí $\mathrm{ev}_{S^{-n}}\colon S^n\wedge S^{-n}\to S$ es la evaluación de las esferas ya construida. Todavía no se afirma que $\mathrm{ev}_n$ sea una dualidad. Por las biyecciones de desplazamiento, las condiciones sobre esferas para este emparejamiento se identifican con las de $\mathrm{ev}$, cambiando $r$ por $r-n$ en la primera y por $r+n$ en la segunda; las simetrías intermedias son isomorfismos. Por tanto, se le puede aplicar la inducción anterior.
 
-Para un CW-complejo finito $K$ resulta el cuadrado de P20:
+Para un CW-complejo finito $K$ resulta el siguiente cuadrado:
 % P20, izquierda.
 \[
 \begin{tikzcd}[column sep=large,row sep=large]
@@ -991,7 +993,7 @@ Para un CW-complejo finito $K$ resulta el cuadrado de P20:
 Los isomorfismos son naturales y se eligen con las mismas identificaciones de suspensión del diagrama anterior. Todo objeto de $\SW$ es isomorfo a $\Sigma^{-n}K$ para algún $n\geq0$ y algún CW-complejo finito $K$. Así, $\theta_A$ es un isomorfismo para todo $A$. El argumento intercambiando $X$ y $X^*$ se aplica a la segunda biyección.
 
 \emph{Segunda entrada.}
-Hagamos explícito el último paso que se resumió oralmente. Para $A,B\in\SW$ se tiene la aplicación natural
+Hagamos explícito el último paso. Para $A,B\in\SW$ se tiene la aplicación natural
 \[
 T_{A,B}\colon\set*{A,B\wedge X^*}
 \longrightarrow\set*{A\wedge X,B},
@@ -1028,6 +1030,6 @@ Esta es la adjunción $-\wedge X\dashv-\wedge X^*$, dada por el emparejamiento e
 \end{nota}
 
 \begin{nota}
-En las preguntas finales se discutió en qué sentido los objetos dualizables permiten recuperar una categoría más grande. No se formuló un teorema general: se distinguió entre pertenecer a la subcategoría de objetos finitos y generar otros objetos mediante operaciones, por ejemplo colímites. Los espacios vectoriales son colímites de sus subespacios de dimensión finita; análogamente, estudiar complejos perfectos no significa identificar la categoría derivada con su subcategoría de perfectos. El alcance de una afirmación de generación depende de la categoría y de las operaciones permitidas.
+Conviene distinguir en qué sentido los objetos dualizables permiten recuperar una categoría más grande. Sin afirmar un teorema general, distinguimos entre pertenecer a la subcategoría de objetos finitos y generar otros objetos mediante operaciones, por ejemplo colímites. Los espacios vectoriales son colímites de sus subespacios de dimensión finita; análogamente, estudiar complejos perfectos no significa identificar la categoría derivada con su subcategoría de perfectos. El alcance de una afirmación de generación depende de la categoría y de las operaciones permitidas.
 
 \end{nota}

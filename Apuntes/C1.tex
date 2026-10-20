@@ -1,4 +1,4 @@
-En esta clase se introducen las ideas fundamentales de la homotopía estable, cuyo objetivo es estudiar aquellos fenómenos homotópicos que dejan de cambiar después de aplicar un número suficiente de suspensiones. Para ello, comenzaremos trabajando en las categorías de espacios compactamente generados débilmente Hausdorff y de espacios punteados, donde el producto \emph{smash}, la suspensión reducida y el espacio de lazos presentan las propiedades categóricas adecuadas. En particular, estudiaremos la adjunción natural \(\Sigma\dashv\Omega\) y algunos ejemplos que muestran cómo la suspensión puede eliminar información inestable.
+Introduciremos las ideas fundamentales de la homotopía estable, cuyo objetivo es estudiar aquellos fenómenos homotópicos que dejan de cambiar después de aplicar un número suficiente de suspensiones. Para ello, comenzaremos trabajando en las categorías de espacios compactamente generados débilmente Hausdorff y de espacios punteados, donde el producto \emph{smash}, la suspensión reducida y el espacio de lazos presentan las propiedades categóricas adecuadas. En particular, estudiaremos la adjunción natural \(\Sigma\dashv\Omega\) y algunos ejemplos que muestran cómo la suspensión puede eliminar información inestable.
 
 El teorema de suspensión de Freudenthal permitirá formalizar este proceso de estabilización y definir los grupos de homotopía estable y las clases estables de funciones como ciertos colímites. Después examinaremos algunas de sus aplicaciones, entre ellas la estabilidad de la homología y la cohomología y la formulación estable de la dualidad de Alexander. Finalmente, introduciremos los espectros y la categoría extendida de Spanier--Whitehead, en la cual la suspensión se vuelve formalmente invertible y los grupos de homotopía estable quedan representados por desplazamientos de la esfera. Esta construcción servirá como primer modelo de la categoría homotópica estable y motivará el estudio posterior de modelos más completos de espectros.
 
@@ -347,7 +347,7 @@ y por tanto \(\pi_{i+k}(\Sigma^kX)=0\). En consecuencia,
 \quad\text{para}\;i<0
 \]
 para espacios ordinarios.
-El caso \(i=-1\) ilustra el mecanismo y se escribió explícitamente en clase: como \(\Sigma^kX\) es \((k-1)\)-conexo, basta arrancar el sistema en \(k\ge2\), y entonces
+El caso \(i=-1\) ilustra el mecanismo: como \(\Sigma^kX\) es \((k-1)\)-conexo, basta arrancar el sistema en \(k\ge2\), y entonces
 \[
 \pi_{-1}^s(X)=\varinjlim\nolimits_{k\ge2}\pi_{-1+k}(\Sigma^kX)=0,
 \]
@@ -518,7 +518,7 @@ Históricamente, la homotopía estable siguió en parte el camino inverso. Prime
 
 Los espectros secuenciales modelan la teoría homotópica estable, pero su producto smash puntual no proporciona con facilidad una categoría simétrica monoidal que satisfaga simultáneamente todas las propiedades deseadas; la homotopía formal no resultó adecuada para los espectros secuenciales. Estas limitaciones están relacionadas con el conocido teorema de imposibilidad de Lewis.
 
-Los espectros simétricos y los espectros ortogonales incorporan simetrías adicionales y admiten categorías de modelos monoidales adecuadas. En la valoración que se hizo en clase, los simétricos «se comportan bastante bien salvo detalles», mientras que los ortogonales son «los mejor portados pero muy técnicos». Desde una perspectiva moderna, todos estos modelos presentan la misma \(\infty\)-categoría estable de espectros, aunque sus propiedades puntuales sean distintas.
+Los espectros simétricos y los espectros ortogonales incorporan simetrías adicionales y admiten categorías de modelos monoidales adecuadas. En cuanto a su comportamiento, los simétricos «se comportan bastante bien salvo detalles», mientras que los ortogonales son «los mejor portados pero muy técnicos». Desde una perspectiva moderna, todos estos modelos presentan la misma \(\infty\)-categoría estable de espectros, aunque sus propiedades puntuales sean distintas.
 
 La elección de empezar por los espectros secuenciales y por la categoría de Spanier--Whitehead responde a un criterio expositivo: los espectros ortogonales son los que mejor se comportan, pero también los más técnicos, y estudiarlos desde el principio hace perder buena parte de la intuición sobre por qué las cosas se definen así. En la práctica conviene conocer varios modelos, pues cada uno resulta cómodo para fines distintos. Históricamente, al teorema de imposibilidad de Lewis le siguió un resultado de posibilidad obtenido al debilitar ciertas condiciones, y los espectros simétricos, que aportaron objetos bien portados, aparecieron en los años noventa.
 

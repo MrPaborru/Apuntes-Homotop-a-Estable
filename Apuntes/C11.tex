@@ -4,7 +4,7 @@
 % Se conservan \Sp, \sh y \Map, usados en C9, y los entornos del documento.
 % Las referencias Pxx permiten cotejar el desarrollo con las pizarras.
 
-La clase anterior introdujo los espectros celulares y sus celdas estables. Ahora describiremos la adjunción de estas celdas directamente en la categoría de espectros y construiremos una aproximación celular de cualquier espectro secuencial. Después estudiaremos los subespectros cofinales, que conservan todas las celdas estables aunque algunos de sus representantes aparezcan más tarde, y probaremos que sus inclusiones son equivalencias estables. Esto permitirá introducir los morfismos y las homotopías eventualmente definidos. Los ejemplos con la fibración de Hopf mostrarán por qué necesitamos esta flexibilidad para describir la categoría homotópica estable; al final anunciaremos la composición y la comparación de categorías que se desarrollarán en la siguiente clase.
+Partimos de los espectros celulares y sus celdas estables. Ahora describiremos la adjunción de estas celdas directamente en la categoría de espectros y construiremos una aproximación celular de cualquier espectro secuencial. Después estudiaremos los subespectros cofinales, que conservan todas las celdas estables aunque algunos de sus representantes aparezcan más tarde, y probaremos que sus inclusiones son equivalencias estables. Esto permitirá introducir los morfismos y las homotopías eventualmente definidos. Los ejemplos con la fibración de Hopf mostrarán por qué necesitamos esta flexibilidad para describir la categoría homotópica estable; al final enunciaremos la composición y la comparación de categorías, que desarrollaremos posteriormente.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Construcción y aproximación celular de espectros}
@@ -56,7 +56,7 @@ La idea es formar un espectro celular pegando celdas y, simultáneamente, sus su
 \vdots
 \end{tikzcd}
 \]
-La expresión $\Sigma X_1$ de la tercera fila contiene tanto $\Sigma^2X_0$ como las suspensiones de las celdas añadidas al construir $X_1$. Es la unión que en la pizarra se escribió esquemáticamente como $\Sigma^2X_0\cup\Sigma C$, donde $C$ representa las nuevas celdas, con sus respectivas aplicaciones de adjunción.
+La expresión $\Sigma X_1$ de la tercera fila contiene tanto $\Sigma^2X_0$ como las suspensiones de las celdas añadidas al construir $X_1$. Esta unión se escribe esquemáticamente como $\Sigma^2X_0\cup\Sigma C$, donde $C$ representa las nuevas celdas, con sus respectivas aplicaciones de adjunción.
 
 También podemos empezar con un espectro $A$ en lugar del espectro cero, adjuntar celdas en $A_0$ para formar $X_0$ y continuar de manera compatible en los niveles siguientes. El resultado viene acompañado de un morfismo $A\to X$. Un \emph{espectro celular relativo} se refiere a este morfismo y a su construcción por adjunción de celdas, no solo al espectro final $X$.
 
@@ -136,7 +136,7 @@ en la que cada paso adjunta una familia de celdas estables. Podemos organizar la
 \]
 Aquí $m_r$ es el nivel en que se generan las nuevas celdas, $m_r+k_i$ es su dimensión como celdas de espacios y $k_i$ es su dimensión estable; se supone $m_r+k_i\ge0$. El índice $r$ cuenta las etapas de adjunción, no los niveles del espectro, y un mismo nivel puede aparecer en varias etapas. Además, que el proceso sea numerable no significa que cada conjunto $J_r$ deba ser numerable. El espectro final es $X\cong\varinjlim\nolimits_{r\ge-1}X^{(r)}$.
 
-Esta descripción traduce la construcción nivel a nivel usando el lema de adjunción y el cálculo de colímites de espectros. La reorganización de las etapas se mencionó en clase sin desarrollar sus detalles. La versión relativa se obtiene empezando con $X^{(-1)}=A$: el morfismo canónico $A\to\varinjlim\nolimits_rX^{(r)}$ es un espectro celular relativo. En la versión CW, las construcciones relativas en cada nivel se realizan como CW complejos relativos.
+Esta descripción traduce la construcción nivel a nivel usando el lema de adjunción y el cálculo de colímites de espectros. La reorganización de las etapas se utiliza aquí sin detallar su construcción. La versión relativa se obtiene empezando con $X^{(-1)}=A$: el morfismo canónico $A\to\varinjlim\nolimits_rX^{(r)}$ es un espectro celular relativo. En la versión CW, las construcciones relativas en cada nivel se realizan como CW complejos relativos.
 
 % P08--P10. Factorización: se reproducen los diagramas de la inducción.
 \subsection{Aproximación celular}
@@ -219,12 +219,12 @@ Aplicamos la proposición al morfismo del espectro cero a $X$:
 \Sigma^\infty * \arrow[r] & QX \arrow[r,"q_X","\simeq_\ell"'] & X.
 \end{tikzcd}
 \]
-Un CW espectro relativo que parte del espectro cero es un CW espectro. Usando factorizaciones funtoriales de espacios, el proceso inductivo anterior produce un funtor $Q$ y una transformación natural $q\colon Q\Rightarrow\operatorname{Id}$; la elección funtorial de esas factorizaciones solo se anunció en clase.
+Un CW espectro relativo que parte del espectro cero es un CW espectro. Usando factorizaciones funtoriales de espacios, el proceso inductivo anterior produce un funtor $Q$ y una transformación natural $q\colon Q\Rightarrow\operatorname{Id}$; la elección funtorial de esas factorizaciones se enuncia aquí sin desarrollar su construcción.
 
 Para la segunda afirmación, tomamos primero el reemplazo $X\to RX$ de la clase anterior y luego $q_{RX}\colon QRX\to RX$. Tenemos el zigzag de equivalencias estables $X\to RX\leftarrow QRX$. Como $q_{RX}$ es una equivalencia nivel a nivel y $RX$ es un $\Omega$-espectro, la compatibilidad de $q_{RX}$ con los morfismos estructurales adjuntos y la propiedad de dos de tres implican que $(QRX)_n\to\Omega(QRX)_{n+1}$ es una equivalencia débil para todo $n$. Aquí se usa que $\Omega$ preserva equivalencias débiles. Por tanto, $QRX$ es también un $\Omega$-espectro.
 \end{proof}
 
-En términos de estructuras de modelos, $QX$ desempeña el papel de un reemplazo cofibrante, mientras que $RX$ desempeña el de un reemplazo fibrante. En esta clase la aproximación se construyó explícitamente, a partir de la factorización de aplicaciones de espacios.
+En términos de estructuras de modelos, $QX$ desempeña el papel de un reemplazo cofibrante, mientras que $RX$ desempeña el de un reemplazo fibrante. La aproximación anterior se construye explícitamente, a partir de la factorización de aplicaciones de espacios.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Subespectros cofinales}
@@ -437,15 +437,15 @@ La homotopía que relaciona dos representantes no tiene por qué ser única. Sin
 % P25 y discusión final. Solo se anunció la construcción categórica.
 \subsection{La categoría de CW espectros con morfismos eventuales}
 
-Se anunció la categoría $e\Sp^{\mathrm{CW}}$, cuyos objetos son los CW espectros y cuyos conjuntos de morfismos son $\hom_{e\Sp^{\mathrm{CW}}}(X,Y)=[X,Y]_e$. La identidad está representada por $1_X\colon X\to X$. El punto que requiere trabajo es definir la composición
+Consideremos la categoría $e\Sp^{\mathrm{CW}}$, cuyos objetos son los CW espectros y cuyos conjuntos de morfismos son $\hom_{e\Sp^{\mathrm{CW}}}(X,Y)=[X,Y]_e$. La identidad está representada por $1_X\colon X\to X$. El punto que requiere trabajo es definir la composición
 \[
 [X,Y]_e\times[Z,X]_e\longrightarrow[Z,Y]_e.
 \]
-Supongamos que las clases están representadas por $f\colon A\to Y$, con $A$ cofinal en $X$, y $g\colon B\to X$, con $B$ cofinal en $Z$. No podemos componer directamente $f$ con $g$ sin asegurar que la imagen de $g$ quede en $A$. La idea expuesta en clase fue elegir otro representante $g'\colon B'\to X$ de la misma clase, con $B'$ cofinal en $Z$, tal que $g'_n(B'_n)\subseteq A_n$ para todo $n$. Considerándolo entonces como un morfismo a $A$, se define
+Supongamos que las clases están representadas por $f\colon A\to Y$, con $A$ cofinal en $X$, y $g\colon B\to X$, con $B$ cofinal en $Z$. No podemos componer directamente $f$ con $g$ sin asegurar que la imagen de $g$ quede en $A$. La idea es elegir otro representante $g'\colon B'\to X$ de la misma clase, con $B'$ cofinal en $Z$, tal que $g'_n(B'_n)\subseteq A_n$ para todo $n$. Considerándolo entonces como un morfismo a $A$, se define
 \[
 [g']=[g],\qquad ([f]\circ[g])=[f\circ g'].
 \]
-El dominio $B'$ puede ser un subespectro cofinal menor que el dominio original $B$. Probar que puede elegirse un representante con esa propiedad, y que la composición no depende de las elecciones, quedó pendiente para la siguiente clase; la comprobación de buena definición se anunció como ejercicio para después de esa construcción.
+El dominio $B'$ puede ser un subespectro cofinal menor que el dominio original $B$. Probar que puede elegirse un representante con esa propiedad, y que la composición no depende de las elecciones, se abordará posteriormente; la comprobación de buena definición se propone como ejercicio tras esa construcción.
 
 % Ejercicio anunciado al final de C11 (transcripción, entre 1:55:56 y 2:02:06).
 % La solución es un desarrollo añadido a los apuntes, no una prueba dada en clase.
@@ -481,4 +481,4 @@ e\Sp^{\mathrm{CW}} \arrow[r,"\cong"]
 \]
 La primera comparación será un isomorfismo de categorías, con los mismos objetos, y la segunda una equivalencia; el reemplazo $q_X\colon QX\to X$ proporciona la aproximación por CW espectros necesaria para esta última. La comparación enviará el representante $f\colon A\to Y$ al zigzag $X\leftarrow A\to Y$ considerado anteriormente.
 
-En la discusión final se aclaró que las definiciones de morfismo y homotopía eventualmente definidos permiten un codominio arbitrario. Para formar la categoría anterior, en cambio, se escogen CW espectros como objetos, de modo que cualquiera de ellos pueda desempeñar también el papel de dominio. Asimismo, se adelantó que las equivalencias estables entre CW espectros admitirán inversas en el sentido de homotopía eventualmente definida; ese resultado explicará por qué las inclusiones cofinales bastan para obtener todos los morfismos de la categoría homotópica. Estas afirmaciones quedaron anunciadas, no demostradas, en esta clase.
+Las definiciones de morfismo y homotopía eventualmente definidos permiten un codominio arbitrario. Para formar la categoría anterior, en cambio, se escogen CW espectros como objetos, de modo que cualquiera de ellos pueda desempeñar también el papel de dominio. Asimismo, enunciamos que las equivalencias estables entre CW espectros admitirán inversas en el sentido de homotopía eventualmente definida; ese resultado explicará por qué las inclusiones cofinales bastan para obtener todos los morfismos de la categoría homotópica. Estas afirmaciones quedan aquí enunciadas sin demostración.

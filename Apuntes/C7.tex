@@ -1,4 +1,4 @@
-En esta clase se completa la demostración de que todo objeto de $\SW$ es dualizable: primero se construye el dual de una cofibra y después se aplica el resultado al pegado de celdas. A continuación se introducen los espectros secuenciales, motivados por la representación de las teorías de cohomología.
+Completaremos la demostración de que todo objeto de $\SW$ es dualizable: primero se construye el dual de una cofibra y después se aplica el resultado al pegado de celdas. A continuación se introducen los espectros secuenciales, motivados por la representación de las teorías de cohomología.
 
 \section{El cierre de la dualidad de Spanier--Whitehead}
 
@@ -60,7 +60,7 @@ Para utilizar esta nulhomotopía calculamos el cociente del producto de los cono
 \[
 X^*\wedge Y,\quad CY^*\wedge Y,\quad X^*\wedge CX,\quad CY^*\wedge CX.
 \]
-Las dos piezas intermedias se pegan a la primera mediante $f^*\wedge1$ y $1\wedge f$; la última se pega a las intermedias mediante $1\wedge f$ y $f^*\wedge1$. Esta es la descomposición de la pizarra, entendida como un pushout con sus mapas de pegado.
+Las dos piezas intermedias se pegan a la primera mediante $f^*\wedge1$ y $1\wedge f$; la última se pega a las intermedias mediante $1\wedge f$ y $f^*\wedge1$. Esta descomposición es un pushout con los mapas de pegado indicados.
 
 Al colapsar $X^*\wedge Y$, las dos piezas intermedias se convierten en los dos sumandos de $V$. La pieza restante aporta un cono sobre $U$, cuyo mapa de pegado es $d$. De este modo se obtiene, con las parametrizaciones de los conos, una equiv. $Q\simeq V\cup_d CU=C_d$ compatible con la inclusión de $V$.
 
@@ -170,7 +170,7 @@ p=[\pi]\colon W\wedge Z=(C_t\wedge C_f,-k-1)\longrightarrow S.
 \]
 Escribamos también $b\colon\Sigma^{-1}A^*\to W$ para el mapa inducido por $r$, con los signos de la sucesión cofibrada escogida.
 
-\emph{Las biyecciones.} Fijemos $r\in\mathbb Z$. Las dos sucesiones cofibradas anteriores dan las columnas exactas de la escalera de cinco términos de la pizarra:
+\emph{Las biyecciones.} Fijemos $r\in\mathbb Z$. Las dos sucesiones cofibradas anteriores dan las columnas exactas de la siguiente escalera de cinco términos:
 \[
 \begin{tikzcd}[column sep=huge,row sep=large]
 \set*{\Sigma^rS,A^*} \arrow[r,"\cong"] & \set*{\Sigma^rX,S}\\
@@ -186,7 +186,7 @@ Las flechas horizontales se obtienen haciendo smash con la identidad y componien
 \]
 Los cuadrados extremos conmutan por la compatibilidad de $[f]^*$ con las evaluaciones. Los dos centrales conmutan por los dos cuadrados que satisface $\pi$.
 
-Detallemos el cuadrado que se calculó en clase. Para $\varphi\colon\Sigma^rS\to\Sigma^{-1}A^*=(X',m-1)$, sea $e_{-1}\colon\Sigma^{-1}A^*\wedge\Sigma X\to S$ la evaluación inducida por $e$. Los dos recorridos son
+Detallemos el cuadrado central. Para $\varphi\colon\Sigma^rS\to\Sigma^{-1}A^*=(X',m-1)$, sea $e_{-1}\colon\Sigma^{-1}A^*\wedge\Sigma X\to S$ la evaluación inducida por $e$. Los dos recorridos son
 \[
 \begin{tikzcd}[column sep=large]
 \Sigma^r C_f \arrow[r,"\varphi\wedge1"] \arrow[d,"\Sigma^rh"'] & \Sigma^{-1}A^*\wedge C_f \arrow[r,"b\wedge1"] \arrow[d,"1\wedge h"] & W\wedge C_f \arrow[d,"p"]\\
@@ -198,7 +198,7 @@ El cuadrado izquierdo conmuta por funtorialidad del smash y el derecho es la ver
 p\bigl((b\varphi)\wedge1\bigr)
 =e_{-1}(\varphi\wedge1)(\Sigma^rh).
 \]
-Esto reproduce los dos compuestos de la pizarra sin perder el índice $-k-1$ de $W$. El otro cuadrado central se verifica del mismo modo. El lema de los cinco prueba que $\Phi_r$ es un isomorfismo.
+En ambos compuestos se conserva el índice $-k-1$ de $W$. El otro cuadrado central se verifica del mismo modo. El lema de los cinco prueba que $\Phi_r$ es un isomorfismo.
 
 Para completar las \emph{dos} condiciones del criterio, usamos $p'=pB_{Z,W}\colon Z\wedge W\to S$. La misma compatibilidad, con los factores intercambiados, produce la segunda escalera exacta:
 \[
@@ -252,7 +252,7 @@ El dual de $\mathbb{RP}^2=(\mathbb{RP}^2,0)$, con un punto base en el propio esp
 \end{ejem}
 
 \begin{proof}
-La estructura celular da la sucesión cofibrada $S^1\xrightarrow{2}S^1\to\mathbb{RP}^2\to S^2$. Por la \myref{teo:cofibra-dual}, su dual es la fibra de $2^*\colon S^{-1}\to S^{-1}$. Verifiquemos, como en clase, que $2^*$ tiene grado $2$.
+La estructura celular da la sucesión cofibrada $S^1\xrightarrow{2}S^1\to\mathbb{RP}^2\to S^2$. Por la \myref{teo:cofibra-dual}, su dual es la fibra de $2^*\colon S^{-1}\to S^{-1}$. Verifiquemos que $2^*$ tiene grado $2$.
 
 El mapa dual se construye mediante el compuesto
 \[
@@ -301,7 +301,7 @@ S^{-1} \arrow[r,"2"'] & S^{-1}.
 \]
 El compuesto que define $2^*$ se identifica, por tanto, con $1\circ2\circ1=2$.
 
-Enderezando la sucesión larga de la pizarra, sus tramos relevantes son
+Los tramos relevantes de la sucesión exacta larga son
 \[
 \begin{tikzcd}[column sep=large]
 \Sigma^{-3}\mathbb{RP}^2 \arrow[r] & S^{-1} \arrow[r,"2"] & S^{-1} \arrow[r] & \Sigma^{-2}\mathbb{RP}^2,
@@ -317,7 +317,7 @@ Enderezando la sucesión larga de la pizarra, sus tramos relevantes son
 \Sigma^{-1}\mathbb{RP}^2 \arrow[r] & S^1 \arrow[r,"2"] & S^1 \arrow[r] & \mathbb{RP}^2.
 \end{tikzcd}
 \]
-Se han escogido las identificaciones de los términos para escribir los mapas de grado $2$ con signo positivo, como en la pizarra. La cofibra de $2\colon S^{-1}\to S^{-1}$ es $\Sigma^{-2}\mathbb{RP}^2$; su fibra es su desuspensión, $\Sigma^{-3}\mathbb{RP}^2$, como queríamos.
+Se han escogido las identificaciones de los términos para escribir los mapas de grado $2$ con signo positivo. La cofibra de $2\colon S^{-1}\to S^{-1}$ es $\Sigma^{-2}\mathbb{RP}^2$; su fibra es su desuspensión, $\Sigma^{-3}\mathbb{RP}^2$, como queríamos.
 \end{proof}
 
 \subsection{Dual por inclusión en una esfera}
@@ -347,7 +347,7 @@ Sea $M$ una variedad suave cerrada y sea $M\hookrightarrow\mathbb R^k$ una inclu
 Aquí $M_+$ es $M$ con un punto base disjunto y $k$ es la dimensión del espacio ambiente.
 \end{teo}
 
-El resultado se cita sin demostración, como en clase. Si $\nu=N(M\hookrightarrow\mathbb R^k)$, su espacio de Thom es $D(\nu)/S(\nu)$, el cociente del fibrado de discos por el fibrado de esferas. Equivalentemente, es el cociente de un vecindario tubular cerrado por su frontera.
+El resultado se cita sin demostración. Si $\nu=N(M\hookrightarrow\mathbb R^k)$, su espacio de Thom es $D(\nu)/S(\nu)$, el cociente del fibrado de discos por el fibrado de esferas. Equivalentemente, es el cociente de un vecindario tubular cerrado por su frontera.
 
 \begin{nota}
 El punto base disjunto importa: el ejemplo anterior calcula el dual de $\mathbb{RP}^2$ punteado, mientras que Atiyah se aplica a $(\mathbb{RP}^2)_+$. Escogiendo un punto de $M$, la inclusión $S^0\to M_+$ admite la retracción que envía todo $M$ al punto no base de $S^0$. Su cofibra es $M$ punteado, así que establemente $M_+\simeq S\vee M$. Por ello, en el caso del plano proyectivo,
@@ -383,14 +383,14 @@ Por Yoneda, $\tau_n$ está inducida por una única clase $[\xi_n]\in[\Sigma K_n,
 Así, $\tau_n=(\xi_n)_*\circ\Sigma$: los espacios $K_n$ representan los grupos de cohomología y los mapas $\xi_n$ realizan sus isomorfismos de suspensión. Estos serán los mapas estructurales del espectro.
 
 \begin{nota}
-En clase, el profesor utiliza primero la adjunción $\Sigma\dashv\Omega$ y aplica Yoneda al isomorfismo $[-,K_n]_*\cong[-,\Omega K_{n+1}]_*$ de la parte gris. Escogiendo un modelo CW del tipo de homotopía de $\Omega K_{n+1}$, obtiene una equivalencia homotópica $\xi_n^\perp\colon K_n\to\Omega K_{n+1}$ y toma después su adjunta $\xi_n$. El cuadrado conmuta por la definición de $\tau_n$; el triángulo, por naturalidad de la adjunción, pues la adjunta de $\xi_n\circ\Sigma u$ es $\xi_n^\perp\circ u$.
+Utilizamos primero la adjunción $\Sigma\dashv\Omega$ y después aplicamos Yoneda al isomorfismo $[-,K_n]_*\cong[-,\Omega K_{n+1}]_*$ de la parte gris. Escogiendo un modelo CW del tipo de homotopía de $\Omega K_{n+1}$, obtenemos una equivalencia homotópica $\xi_n^\perp\colon K_n\to\Omega K_{n+1}$ y tomamos después su adjunta $\xi_n$. El cuadrado conmuta por la definición de $\tau_n$; el triángulo, por naturalidad de la adjunción, pues la adjunta de $\xi_n\circ\Sigma u$ es $\xi_n^\perp\circ u$.
 
 Este paso por la adjunción no es necesario para obtener los mapas estructurales: Yoneda se aplica directamente a $\tau_n$. Su utilidad es reconocer que los adjuntos $\xi_n^\perp$ son equivalencias, propiedad que motiva la definición de $\Omega$-espectro.
 \end{nota}
 
 \subsection{Definición y espectros suspensión}
 
-A partir de ahora, como se fijó en la pizarra, usaremos $\Sigma X=X\wedge S^1$.
+A partir de ahora usaremos $\Sigma X=X\wedge S^1$.
 
 \begin{defi}\label{defi:espectro-secuencial}
 Un \emph{espectro secuencial} es una sucesión $X=\{X_n\}_{n\in\mathbb N}$ de espacios punteados, con $\mathbb N=\{0,1,\ldots\}$, junto con mapas punteados $\xi_n\colon\Sigma X_n\to X_{n+1}$, llamados \emph{mapas estructurales}.
@@ -448,7 +448,7 @@ Aplicando directamente Yoneda, como antes, tomamos $[\xi_n]=\tau_{n,E_n}([1_{E_n
 \]
 En particular, cada aplicación $[u]\mapsto[\xi_n\circ\Sigma u]$ es una biyección; esta es la descripción que retomaremos al calcular los grupos de homotopía de $E$. Al componer con la adjunción, los mismos isomorfismos naturales muestran que los adjuntos $\xi_n^\perp\colon E_n\to\Omega E_{n+1}$ son equivalencias homotópicas. Por tanto, $E$ es un $\Omega$-espectro. Restringiendo a $n\ge0$ obtenemos un espectro secuencial.
 
-Los ejemplos señalados en clase son:
+Consideremos los siguientes ejemplos:
 \begin{center}
 \begin{tabular}{ll}
 \hline
@@ -509,4 +509,4 @@ En la segunda línea de la definición de $\xi'_n$ se toma la inclusión del pun
 \]
 En $\sh^{-2}\mathbb S$ los dos primeros mapas estructurales son $\Sigma*\xrightarrow{1}*$ y $\Sigma*\to S^0$; después aparecen las identificaciones $\Sigma S^j\cong S^{j+1}$.
 
-Seguiremos la notación de la clase $\Sigma^{\infty+d}A\coloneqq\sh^d\Sigma^\infty A$. La notación $\Sigma^dE$ para $\sh^dE$ se dejó anunciada para más adelante; por ahora conservamos $\sh^dE$.
+Usaremos la notación $\Sigma^{\infty+d}A\coloneqq\sh^d\Sigma^\infty A$. La notación $\Sigma^dE$ para $\sh^dE$ se reserva para más adelante; por ahora conservamos $\sh^dE$.

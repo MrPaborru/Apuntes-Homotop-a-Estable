@@ -1,4 +1,4 @@
-La clase anterior terminó mostrando que $\pi_{k+1}(\Sigma X)\cong\pi_k(X)$ y, por otra parte y de manera más directa, que $\pi_k(X)\cong\pi_{k+1}(\sh^1X)$. Los dos espectros $\Sigma X$ y $\sh^1X$ tienen por tanto los mismos grupos de homotopía, lo que los hace buenos candidatos a ser establemente equivalentes, pero el cálculo de los grupos no basta: hace falta exhibir un morfismo, o un zigzag de morfismos, que realice el isomorfismo. Esta clase construye ese zigzag, y con él queda demostrado que la suspensión es invertible en la categoría homotópica estable.
+Los cálculos anteriores muestran que $\pi_{k+1}(\Sigma X)\cong\pi_k(X)$ y, por otra parte y de manera más directa, que $\pi_k(X)\cong\pi_{k+1}(\sh^1X)$. Los dos espectros $\Sigma X$ y $\sh^1X$ tienen por tanto los mismos grupos de homotopía, lo que los hace buenos candidatos a ser establemente equivalentes, pero el cálculo de los grupos no basta: hace falta exhibir un morfismo, o un zigzag de morfismos, que realice el isomorfismo. Construiremos ese zigzag, y con él queda demostrado que la suspensión es invertible en la categoría homotópica estable.
 
 El camino tiene tres etapas. Primero se introduce la noción de \emph{morfismo débil}, que relaja la condición de conmutatividad de los morfismos de espectros admitiendo homotopías, y se muestra que todo morfismo débil se puede reemplazar por un zigzag en el que uno de los morfismos es una equivalencia nivel a nivel. Después se construye, para cada espectro $X$, un espectro ``par'' que conserva la información de los niveles pares y descarta la de los impares, y se prueba que es establemente equivalente a $X$. Finalmente se combinan ambas herramientas para conectar $\Sigma X$ con $\sh^1X$. La última parte de la clase, más ligera, recoge una serie de construcciones con espectros ---el producto smash con un espacio, el espectro de funciones, los (co)límites y las (co)fibras--- que se usarán más adelante.
 
@@ -63,7 +63,7 @@ Las asignaciones
 definidas sobre el sumando $\Sigma A_n\subseteq\Sigma C_n$ por
 $\nu_n[a,u]=[a,u,1]$,%
 \footnote{
-    En clase se obvió este caso pero, por si se presentan dudas, decidí incluirlo en estos apuntes.
+    Este caso se omitió en clase; lo incluimos en los apuntes para aclarar la definición.
 }
 donde el lado derecho pertenece al primer cilindro $\Sigma A_n\wedge I_+\subseteq C_{n+1}$, y sobre los demás cilindros por
 \[
@@ -432,7 +432,7 @@ el espacio de aplicaciones punteadas de $K$ en $X_n$. Sus morfismos estructurale
 donde la primera flecha está inducida por el adjunto del morfismo estructural de $X$ y la segunda es el homeomorfismo evidente que intercambia el lazo con la variable de $K$.
 \end{defi}
 
-El caso que interesa en la clase es $K=S^1$: dar una aplicación punteada desde el círculo es dar un lazo, de modo que el espectro de lazos de $X$ es, por definición,
+El caso que nos interesa es $K=S^1$: dar una aplicación punteada desde el círculo es dar un lazo, de modo que el espectro de lazos de $X$ es, por definición,
 \[
 \Omega X\coloneqq F(S^1,X).
 \]
@@ -642,4 +642,4 @@ p_{n+1}\bigl((\xi_n^{F_f})^\perp(x,\alpha)(t)\bigr)
 Por tanto, $\Omega p_{n+1}\circ(\xi_n^{F_f})^\perp=(\xi_n^X)^\perp\circ p_n$. Tomando adjuntos obtenemos $p_{n+1}\circ\xi_n^{F_f}=\xi_n^X\circ\Sigma p_n$, que es precisamente la compatibilidad estructural requerida.
 \end{sol}
 
-Con esto quedan recogidas las construcciones que se usarán en las clases siguientes. El profesor anunció que el paso siguiente es el producto smash de espectros, que en el caso secuencial no se comportará tan bien como uno querría, y que después se estudiarán con detenimiento los $\Omega$-espectros, que hasta ahora se habían dejado de lado. Más adelante se construirán también los colímites y límites homotópicos, que son más importantes una vez que se disponga de la categoría homotópica propiamente dicha.
+Con esto quedan recogidas las construcciones que se usarán en las clases siguientes. El paso siguiente será el producto smash de espectros, que en el caso secuencial no se comportará tan bien como uno querría, y que después se estudiarán con detenimiento los $\Omega$-espectros, que hasta ahora se habían dejado de lado. Más adelante se construirán también los colímites y límites homotópicos, que son más importantes una vez que se disponga de la categoría homotópica propiamente dicha.

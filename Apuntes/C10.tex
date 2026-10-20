@@ -1,4 +1,4 @@
-La clase anterior concluyó la comparación entre la suspensión y el desplazamiento de espectros e introdujo varias construcciones nivel a nivel. Ahora completaremos esa discusión con el producto smash de dos espectros y explicaremos por qué su definición requiere signos. Después estudiaremos los $\Omega$-espectros: calcularemos sus grupos de homotopía, probaremos que una equivalencia estable entre ellos es una equivalencia nivel a nivel y construiremos explícitamente un reemplazo fibrante $X\to RX$. Finalmente introduciremos las celdas estables de un espectro celular y veremos que, con su estructura celular habitual, el espectro esfera tiene una única celda estable de dimensión cero.
+Disponemos ya de la comparación entre la suspensión y el desplazamiento de espectros, así como de varias construcciones nivel a nivel. Ahora completaremos esa discusión con el producto smash de dos espectros y explicaremos por qué su definición requiere signos. Después estudiaremos los $\Omega$-espectros: calcularemos sus grupos de homotopía, probaremos que una equivalencia estable entre ellos es una equivalencia nivel a nivel y construiremos explícitamente un reemplazo fibrante $X\to RX$. Finalmente introduciremos las celdas estables de un espectro celular y veremos que, con su estructura celular habitual, el espectro esfera tiene una única celda estable de dimensión cero.
 
 Trabajaremos con aplicaciones y homotopías punteadas. Los morfismos estructurales se escribirán $\xi_n\colon X_n\wedge S^1\to X_{n+1}$ y sus adjuntos $\xi_n^{\perp}\colon X_n\to\Omega X_{n+1}$. Cuando intervengan dos espectros, distinguiremos sus morfismos mediante los superíndices $X$ e $Y$. Omitiremos las identificaciones asociativas del producto smash; al usar adjunciones indicaremos qué coordenada se evalúa, pues su orden será esencial.
 
@@ -38,7 +38,7 @@ X_{p_n}\wedge Y_{q_n}\wedge S^1
 Aquí $\tau_q\colon Y_q\wedge S^1\to S^1\wedge Y_q$ está dada por $\tau_q[y,z]=[z^{(-1)^q},y]$. Visto $S^1$ como el círculo unidad de $\mathbb C$, se tiene $z^{(-1)^q}=z$ si $q$ es par y $z^{(-1)^q}=\overline z$ si $q$ es impar.
 \end{defi}
 
-La elección de $(p_n,q_n)$ forma parte de esta definición. Se mencionó en clase el resultado de Adams según el cual distintas elecciones producen espectros establemente equivalentes; su demostración no se desarrollará aquí. El objetivo inmediato es entender el signo de la definición y comprobar que los grupos de homotopía no dependen del camino elegido.
+La elección de $(p_n,q_n)$ forma parte de esta definición. El resultado de Adams afirma que distintas elecciones producen espectros establemente equivalentes; su demostración no se desarrollará aquí. El objetivo inmediato es entender el signo de la definición y comprobar que los grupos de homotopía no dependen del camino elegido.
 
 % P3--P6. Malla de grupos, primer cuadrado y comparación de sus dos caminos.
 \subsection{Por qué aparecen los signos}
@@ -156,7 +156,7 @@ En efecto, $D_{p,q+1}V_{p,q}=H_{p,q}$ porque las aplicaciones que las inducen di
 El primer isomorfismo es el de cofinalidad probado antes. El segundo está inducido por aplicar sucesivamente las diagonales; sobre $A_{p,q}$, su composición es precisamente $(\sigma_{p,q})_*$. Por tanto, el isomorfismo obtenido es el inducido por $(a_n)$. Como $a'_n\simeq a_n r_n$ y $r$ es una equivalencia estable, $a'$ también induce isomorfismos en todos los grupos estables. El zigzag anterior demuestra $Y\wedge\mathbb S\simeq_sY$.
 \end{sol}
 
-El ejercicio expresa el papel del espectro esfera como unidad por la derecha del producto smash en la categoría homotópica estable. El profesor mencionó también que $\mathbb S\wedge Y\simeq_sY$, aunque precisó que el ejercicio propuesto era el anterior. No se trata de una igualdad nivel a nivel: en general, un nivel de $Y\wedge\mathbb S$ tiene la forma $Y_{p_n}\wedge S^{q_n}$, que no coincide con $Y_n$. La estructura monoidal simétrica completa se estudiará más adelante.
+El ejercicio expresa el papel del espectro esfera como unidad por la derecha del producto smash en la categoría homotópica estable. También se tiene que $\mathbb S\wedge Y\simeq_sY$, aunque el ejercicio propuesto se limita al caso anterior. No se trata de una igualdad nivel a nivel: en general, un nivel de $Y\wedge\mathbb S$ tiene la forma $Y_{p_n}\wedge S^{q_n}$, que no coincide con $Y_n$. La estructura monoidal simétrica completa se estudiará más adelante.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Los \texorpdfstring{$\Omega$}{Omega}-espectros y el reemplazo fibrante}
@@ -302,7 +302,7 @@ Por adjunción, esto define aplicaciones $\xi'_n\colon(RX)_n\wedge S^1\to(RX)_{n
 % P12--P14.
 \subsection{Por qué el reemplazo es un \texorpdfstring{$\Omega$}{Omega}-espectro}
 
-Probemos que $g_n$ es una equivalencia homotópica. Siguiendo la construcción de clase, consideremos la homotopía
+Probemos que $g_n$ es una equivalencia homotópica. Consideremos la homotopía
 \[
 H\colon(RX)_n\times I\longrightarrow
 \operatorname*{hocolim}_{m\ge0}\Omega^{m+1}X_{n+m+1}
@@ -403,7 +403,7 @@ En estas dos fórmulas el símbolo ${}^{\perp}$ pasa de una aplicación hacia un
 =F\bigl(b^{\perp}[x,t]\bigr).
 \end{aligned}
 \]
-La igualdad es la naturalidad de la adjunción, pero podemos verificarla también en las coordenadas restantes, como en clase. Si $m\ge1$, ambos valores, evaluados en $(u_1,\ldots,u_{m+1})$, son
+La igualdad es la naturalidad de la adjunción, pero podemos verificarla también en las coordenadas restantes. Si $m\ge1$, ambos valores, evaluados en $(u_1,\ldots,u_{m+1})$, son
 \[
 \xi_{n+m+1}\!\left(
 \xi_{n+m}\bigl(g(x)(t,u_1,\ldots,u_{m-1}),u_m\bigr),
@@ -499,7 +499,7 @@ Solo resta justificar la naturalidad. Un morfismo $f\colon X\to Y$ induce en la 
 
 El reemplazo permite definir, para un espectro arbitrario, $\Omega^\infty E=(RE)_0$, y para un morfismo $f$ la aplicación $\Omega^\infty f=(Rf)_0$. La naturalidad de $h$ y la propiedad de dos de tres muestran que $R$ preserva equivalencias estables. Como sus valores son $\Omega$-espectros, la proposición~\ref{prop:c10-omega-equivalencias} implica que $\Omega^\infty$ las transforma en equivalencias débiles de espacios. Cuando $E$ ya es un $\Omega$-espectro, la misma proposición aplicada a $h\colon E\to RE$ muestra que $E_0\to(RE)_0$ es una equivalencia débil. Por ello la nueva definición coincide, salvo equivalencia débil natural, con la notación anterior $\Omega^\infty E=E_0$.
 
-Esta construcción representa el funtor derivado derecho de evaluación en el nivel cero. La adjunción anunciada en clase con $\Sigma^\infty$ se entiende en las categorías homotópicas: el funtor derivado de suspensión infinita es adjunto izquierdo de $\Omega^\infty$. Para un espacio punteado arbitrario $A$, se puede representarlo por $\Sigma^\infty(QA)$, donde $QA\to A$ es un reemplazo cofibrante del \emph{espacio}. La pregunta de cuándo se puede omitir ese reemplazo quedó abierta en la discusión final de la clase; no se usará tal omisión en los argumentos anteriores.
+Esta construcción representa el funtor derivado derecho de evaluación en el nivel cero. La adjunción con $\Sigma^\infty$ se entiende en las categorías homotópicas: el funtor derivado de suspensión infinita es adjunto izquierdo de $\Omega^\infty$. Para un espacio punteado arbitrario $A$, se puede representarlo por $\Sigma^\infty(QA)$, donde $QA\to A$ es un reemplazo cofibrante del \emph{espacio}. La pregunta de cuándo se puede omitir ese reemplazo quedó abierta en la discusión final de la clase; no se usará tal omisión en los argumentos anteriores.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Espectros celulares y celdas estables}
@@ -629,4 +629,4 @@ Al suspender, el segmento que procede del punto base se colapsa y el segmento pr
 \end{center}
 La $1$-celda de $S^1$ es la suspensión de la $0$-celda de $S^0$, y por ello representa la misma celda estable. De igual manera, la única $r$-celda distinta del punto base en $S^r$ es la suspensión iterada de aquella $0$-celda. Todas estas celdas representan una sola clase y tienen dimensión estable $r-r=0$. Con esta estructura, $\mathbb S$ tiene exactamente una $0$-celda estable.
 
-Esta afirmación depende de la estructura celular escogida. Como se aclaró al final de la clase, se pueden elegir otras estructuras celulares compatibles en las esferas, con más celdas; el número de celdas estables no se afirma invariante bajo esos cambios.
+Esta afirmación depende de la estructura celular escogida. Se pueden elegir otras estructuras celulares compatibles en las esferas, con más celdas; el número de celdas estables no se afirma invariante bajo esos cambios.
