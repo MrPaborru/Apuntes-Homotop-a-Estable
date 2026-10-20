@@ -64,7 +64,7 @@
 \usepackage{eucal} % Mejorar fuente \mathcal
 \usepackage{mathtools} % Herramientas para subíndices y mejoras de símbolos
 % Preferencia editorial: las fórmulas en línea se mantienen completas.
-\AtBeginDocument{\everymath\expandafter{\the\everymath\binoppenalty=10000\relpenalty=10000}}
+\AtBeginDocument{\everymath\expandafter{\the\everymath\binoppenalty=10000\relax\relpenalty=10000\relax}}
 \usepackage{etoolbox}
 \makeatletter
 % Las URL necesitan sus propios puntos de corte, aunque internamente usen modo matemático.
@@ -94,7 +94,7 @@
 \newcommand{\Alumno}{Pablo Jair Aranda Pérez}
     \newcommand{\abvAlumno}{Pablo J. Aranda P.}
 \newcommand{\Correo}{pablo\_p1@live.com}
-\newcommand{\NumClases}{17}
+\newcommand{\NumClases}{18}
 
 
 
