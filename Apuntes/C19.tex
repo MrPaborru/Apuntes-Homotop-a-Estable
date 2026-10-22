@@ -1,0 +1,557 @@
+% C19 -- 21 de octubre de 2026.
+% Fuentes: Estable1021.pdf; Screenshots C19/P01--P16.png;
+% Transcripciones/C19-fusionada.txt, con los dos originales conservados.
+% P01: imagen esencial, no igualdad literal ni esqueleto sin elegir representantes.
+% P02: el nivel de S^k es k-r, no r-k.
+% P12--P13: distinguir los representantes conexos de sus modelos completos.
+% P11: la comparación de espectros de funciones se entiende derivada (véase C15).
+
+Recordemos primero las formulaciones correctas de dos resultados anteriores. Después probaremos que el espectro esfera es un generador débil graduado pequeño e introduciremos la homología y la cohomología de espectros. Terminaremos con la unicidad del espectro que representa una teoría de cohomología y con la idea de la representabilidad de las teorías de homología.
+
+Escribimos $[X,Y]_s=\hom_{\Ho(\Sp^{\mathbb N})}(X,Y)$ y denotamos por $[X,Y]_h$ y $[X,Y]_e$ las clases de homotopía globales y eventualmente definidas. El espectro esfera es $\mathbb S$. Todos los espacios, aplicaciones y homotopías son punteados; el smash de espectros se entiende derivado, aunque a veces omitamos el superíndice $\mathrm L$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Recordatorios y generación por el espectro esfera}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La imagen esencial y el signo de la cohomología}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% P01 y P04--P05; transcripción, primera parte, 02:48 y 28:01--40:10.
+La \myref{prop:c18-imagen-finita} identifica la \emph{imagen esencial} de la inclusión $\iota\colon\SW\to\Ho(\Sp^{\mathbb N})$ con los espectros finitos. Esto significa que todo espectro finito es isomorfo a un objeto de la imagen y que $\iota$ es plenamente fiel. Por tanto, $\SW$ es equivalente a la subcategoría completa de espectros finitos; no se exige que cada modelo finito sea literalmente un desplazamiento de un espectro de suspensión.
+
+\begin{nota}
+Al comienzo de la clase 19 se precisó la afirmación presentada al final de la clase 18. Los apuntes de esa clase ya hablaban de \emph{imagen esencial}, de modo que no ha sido necesario cambiar su resultado. En clase también se empleó la palabra «esqueleto». Literalmente, para obtener un esqueleto hay que elegir un representante de cada clase de isomorfismo: los distintos pares isomorfos de $\SW$ no son un único objeto.
+\end{nota}
+
+El segundo recordatorio concierne al apartado~\ref{subsec:c13-cohomologia}. Para un CW complejo $Y$ y un espectro $E$ que representa una teoría de cohomología reducida, la fórmula correcta es
+\[
+\widetilde E^{\,n}(Y)\cong[\sh^{-n}\Sigma^\infty Y,E]_s
+\cong[\Sigma^\infty Y,\sh^nE]_s.
+\]
+En efecto, para $n\ge0$, el espectro $F_nY=\sh^{-n}\Sigma^\infty Y$ empieza con $Y$ en el nivel $n$, y un mapa hacia el $\Omega$-espectro $E$ queda determinado por una aplicación $Y\to E_n$. En cambio, desplazar el dominio por $+n$ da
+\[
+[\sh^n\Sigma^\infty Y,E]_s
+\cong[\Sigma^nY,E_0]_*
+\cong[Y,\Omega^nE_0]_*
+\cong\widetilde E^{-n}(Y).
+\]
+La relación estructural es $E_j\simeq\Omega E_{j+1}$; en particular, $E_0\simeq\Omega^nE_n$, no $E_n\simeq\Omega^nE_0$. Esta inversión explica el error de signo.
+
+\begin{nota}
+En la primera parte de la clase 19, al retomar la cohomología, el profesor corrigió el signo de la formulación presentada en la clase 13. El apartado~\ref{subsec:c13-cohomologia} ya contenía, antes de esta revisión, la formulación correcta para todos los grados. Se conserva esa versión; aquí se recuerda la corrección oral y se explica su origen.
+\end{nota}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La pequeñez de la esfera}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% P01--P02; primera parte, 05:08--20:00.
+\begin{prop}\label{prop:c19-esfera-pequena}
+El espectro esfera es pequeño: para toda familia $(X_\alpha)_{\alpha\in J}$ y todo $r\in\mathbb Z$, las inclusiones en el coproducto inducen un isomorfismo
+\[
+\bigoplus_{\alpha\in J}[\sh^r\mathbb S,X_\alpha]_s
+\xrightarrow{\ \Phi\ }
+\left[\sh^r\mathbb S,\bigvee_{\alpha\in J}X_\alpha\right]_s.
+\]
+\end{prop}
+\begin{proof}
+Podemos tomar modelos celulares de los $X_\alpha$. Sus wedges calculan el coproducto derivado y permiten aplicar la compacidad en CW complejos. Como $\sh^r\mathbb S$ es celular, calculamos los morfismos estables mediante representantes eventualmente definidos, usando la comparación de las clases 11 y 12.
+
+Representemos una clase $[g]_e$ hacia el wedge sobre una cola cofinal:
+\[
+T=F_{k-r}S^k=(*,\ldots,*,S^k,S^{k+1},\ldots),
+\qquad k\ge\max\{0,r\},
+\]
+donde $S^k$ aparece en el nivel $k-r$. Basta desplazar hacia delante la única celda estable de $\sh^r\mathbb S$. La aplicación
+\[
+g_{k-r}\colon S^k\longrightarrow
+\bigvee_{\alpha\in J}(X_\alpha)_{k-r}
+\]
+tiene imagen en un subcomplejo finito y, por tanto, en el wedge correspondiente a un conjunto finito $J_0\subseteq J$. La compatibilidad estructural da
+\[
+\begin{tikzcd}[column sep=large,row sep=1.5em]
+\Sigma S^k\arrow[r,"\Sigma g_{k-r}"]\arrow[d,"\simeq"']
+&\displaystyle\bigvee_{\alpha\in J_0}\Sigma(X_\alpha)_{k-r}\arrow[d,"\bigvee\xi^{X_\alpha}_{k-r}"]\\
+S^{k+1}\arrow[r,"g_{k-r+1}"']
+&\displaystyle\bigvee_{\alpha\in J_0}(X_\alpha)_{k-r+1}.
+\end{tikzcd}
+\]
+Así, las componentes siguientes quedan en los mismos sumandos, y $g$ factoriza por $\bigvee_{J_0}X_\alpha$.
+
+Para una familia finita, la \myref{prop:c17-coproducto-producto} identifica el coproducto con el producto. Usando la propiedad del producto y la igualdad entre suma y producto finitos de grupos, obtenemos
+\[
+\begin{tikzcd}[column sep=large,row sep=1.25em]
+\displaystyle\bigoplus_{\alpha\in J}[\sh^r\mathbb S,X_\alpha]_s
+\arrow[r,"\Phi"]
+&\displaystyle\left[\sh^r\mathbb S,\bigvee_{\alpha\in J}X_\alpha\right]_s\\
+\displaystyle\bigoplus_{\alpha\in J_0}[\sh^r\mathbb S,X_\alpha]_s
+\arrow[u,hook]\arrow[r,"\Phi_{J_0}","\simeq"']\arrow[d,"\simeq"']
+&\displaystyle\left[\sh^r\mathbb S,\bigvee_{\alpha\in J_0}X_\alpha\right]_s\arrow[u]\arrow[d,"\simeq"]\\
+\displaystyle\prod_{\alpha\in J_0}[\sh^r\mathbb S,X_\alpha]_s
+&\displaystyle\left[\sh^r\mathbb S,\prod_{\alpha\in J_0}X_\alpha\right]_s\arrow[l,"\simeq"'].
+\end{tikzcd}
+\]
+Las dos rutas desde la suma finita al producto finito envían cada coordenada a sí misma. Por ello $\Phi_{J_0}$ es un isomorfismo, y la factorización de $g$ prueba la sobreyectividad de $\Phi$.
+
+Para la inyectividad, tomemos dos familias de soporte finito con la misma imagen. La igualdad se representa, tras una restricción cofinal común, por una homotopía $H\colon I_+\wedge T\to\bigvee_JX_\alpha$. La compacidad de $I_+\wedge S^k$ y la compatibilidad estructural dan un conjunto finito $J_1$ que contiene ambos soportes y por el cual factoriza toda la homotopía:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+I_+\wedge T\arrow[r,"H"]\arrow[dr,dashed,"H'"']
+&\displaystyle\bigvee_{\alpha\in J}X_\alpha\\
+&\displaystyle\bigvee_{\alpha\in J_1}X_\alpha\arrow[u,hook].
+\end{tikzcd}
+\]
+Las dos familias son entonces iguales por la inyectividad de $\Phi_{J_1}$. El argumento incluye los desplazamientos negativos: solo cambia el nivel en que aparece la primera esfera.
+\end{proof}
+
+\begin{nota}
+En este cálculo se corrige el índice $r-k$ escrito en la pizarra: con la convención $(\sh^r\mathbb S)_j=S^{j+r}$, la esfera $S^k$ está en el nivel $k-r$, y su cola es $F_{k-r}S^k$.
+\end{nota}
+
+\begin{ejer}\label{ejer:c19-global-eventual}
+Comparar $[\mathbb S,X]_h$ con $[\mathbb S,X]_e$. Dar un ejemplo en que la aplicación natural entre ambos no sea biyectiva, utilizando la clase de Hopf.
+\end{ejer}
+\begin{sol}
+Como $\mathbb S=F_0S^0$, un mapa global queda determinado por $S^0\to X_0$ y sus suspensiones seguidas de los mapas estructurales de $X$. Lo mismo ocurre con las homotopías. Por tanto,
+\[
+[\mathbb S,X]_h\cong[S^0,X_0]_*\cong\pi_0(X_0).
+\]
+En cambio, al permitir una cola cofinal podemos empezar en cualquier nivel $j$ con $S^j\to X_j$, y comparar dos representantes después de suspenderlos. De aquí
+\[
+[\mathbb S,X]_e\cong\varinjlim\nolimits_j[S^j,X_j]_*
+=\pi_0(X).
+\]
+La comparación es la aplicación de la etapa cero al colímite, que no tiene por qué ser biyectiva. En la primera expresión hay, en general, un conjunto punteado; la estructura de grupo estable aparece en la segunda.
+
+Tomemos $X=\sh^{-1}\mathbb S=(*,S^0,S^1,S^2,\ldots)$. Entonces $[\mathbb S,X]_h$ tiene un solo elemento, porque $X_0=*$. Sin embargo,
+\[
+[\mathbb S,X]_e\cong\pi_0(\sh^{-1}\mathbb S)
+\cong\pi_1(\mathbb S)\cong\mathbb Z/2.
+\]
+Su elemento no nulo se representa sobre la cola $\mathbb S^{\ge3}$ por
+$h\colon S^3\to X_3=S^2$ en el nivel $3$ y por $\Sigma^{j-3}h$ en el nivel $j\ge3$. Es exactamente la construcción de la clase 11 con la fibración de Hopf, desplazada un nivel. La clase no se anula al suspender, pues genera $\pi_1^S$; por eso no proviene de un mapa global.
+
+Si $X$ es un $\Omega$-espectro, sí hay biyección: la \myref{prop:c13-comparacion-morfismos}, aplicada al dominio celular $\mathbb S$, identifica las clases globales, eventuales y estables. La hipótesis de fibrancia es la diferencia esencial entre ambas situaciones.
+\end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La generación débil graduada}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% P03; primera parte, 20:00--28:01.
+Las colas de la esfera desplazada dan, naturalmente en $X$,
+\begin{equation}\label{eq:c19-esfera-pi}
+[\sh^r\mathbb S,X]_s\cong[\sh^r\mathbb S,X]_e
+\cong\varinjlim\nolimits_j[S^{r+j},X_j]_*
+=\pi_r(X).
+\end{equation}
+Se toman índices suficientemente grandes para que las esferas estén definidas y los grupos sean abelianos.
+
+\begin{prop}\label{prop:c19-generador}
+El espectro esfera es un generador débil graduado: un morfismo $u\colon X\to Y$ en $\Ho(\Sp^{\mathbb N})$ es un isomorfismo si y solo si
+\[
+u_*\colon[\sh^r\mathbb S,X]_s\longrightarrow[\sh^r\mathbb S,Y]_s
+\]
+es biyectivo para todo $r\in\mathbb Z$.
+\end{prop}
+\begin{proof}
+Un isomorfismo induce biyecciones en todos los conjuntos de morfismos. Recíprocamente, representemos $u$ usando un reemplazo cofibrante del dominio y uno fibrante del codominio:
+\[
+\begin{tikzcd}[column sep=huge]
+X&QX\arrow[l,"q_X"',"\simeq"]\arrow[r,"h"]
+&RY&Y\arrow[l,"\eta_Y"',"\simeq"] .
+\end{tikzcd}
+\]
+El morfismo inducido en los grupos de homotopía se expresa mediante el zigzag:
+\[
+\pi_r(u)=\pi_r(\eta_Y)^{-1}\pi_r(h)\pi_r(q_X)^{-1}
+\]
+Por \eqref{eq:c19-esfera-pi}, la hipótesis afirma que $\pi_r(u)$ es un isomorfismo. Como también lo son $\pi_r(q_X)$ y $\pi_r(\eta_Y)$, la fórmula implica que $\pi_r(h)$ es un isomorfismo para todo $r$. Ahora $h$ es un morfismo estricto de espectros, de modo que esta es precisamente la definición de equivalencia estable. Las tres flechas del zigzag se invierten en la localización y $u$ es un isomorfismo.
+\end{proof}
+Conviene conservar esta distinción: un morfismo en la categoría homotópica puede ser un zigzag; no tiene por qué estar dado inicialmente por un único mapa de espectros.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Cohomología y homología de espectros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cohomología y notación de Adams}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% P04--P06; primera parte, 28:01--44:24.
+Volvamos al recordatorio del signo. Si $E$ es un $\Omega$-espectro y $X$ es celular, para $n\ge0$ tenemos
+\[
+[\sh^{-n}X,E]_s\cong[\sh^{-n}X,E]_h
+\cong[X,\sh^nE]_h.
+\]
+La última correspondencia solo reindexa las componentes: $X_0\to E_n$, $X_1\to E_{n+1}$, etcétera. Para un espectro celular arbitrario, esto no significa que la componente en el nivel cero determine las demás. Esa conclusión sí vale para $X=\Sigma^\infty Y$, pues los morfismos estructurales del dominio son identificaciones. El cuadrado que fuerza las componentes sucesivas es
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\Sigma^{j+1}Y\arrow[r,"\Sigma f_j"]\arrow[d,equal]
+&\Sigma E_{n+j}\arrow[d,"\xi^E_{n+j}"]\\
+\Sigma^{j+1}Y\arrow[r,"f_{j+1}"']&E_{n+j+1}.
+\end{tikzcd}
+\]
+También las homotopías quedan determinadas por su componente inicial. Obtenemos
+\[
+\widetilde E^{\,n}(Y)\cong[Y,E_n]_*
+\cong[\Sigma^\infty Y,\sh^nE]_s
+\cong[\sh^{-n}\Sigma^\infty Y,E]_s.
+\]
+Para grados negativos se usa $\Omega^{-n}E_0$ como espacio representante, o se trasladan ambos términos en la categoría estable. No se necesita un nivel negativo en el espectro secuencial.
+
+En la notación de Adams, $[F,E]_d$ denota morfismos de grado $d$: bajan $d$ niveles, es decir, sus componentes van de $F_j$ a $E_{j-d}$. Se toman las clases estables correspondientes, de modo que
+\[
+[F,E]_d=[\sh^dF,E]_s\cong[F,\sh^{-d}E]_s.
+\]
+Si los representantes son celulares y fibrantes, se pueden calcular por mapas y homotopías globales. En particular, $[\Sigma^\infty Y,E]_{-n}$ tiene componentes $\Sigma^jY\to E_{j+n}$: bajar $-n$ niveles es subir $n$ niveles.
+
+\begin{defi}\label{defi:c19-cohomologia}
+Para espectros $E,F$ y $k\in\mathbb Z$, la \emph{$E$-cohomología de $F$} es
+\[
+E^k(F):=[F,\sh^kE]_s
+\cong[\sh^{-k}F,E]_s=[F,E]_{-k}.
+\]
+\end{defi}
+No se escribe una tilde para espectros. Para un CW complejo punteado $Y$, la correspondencia con espacios sí es reducida:
+\[
+E^k(\Sigma^\infty Y)=\widetilde E^{\,k}(Y).
+\]
+La definición no exige que $E$ sea un $\Omega$-espectro. Las equivalencias de reemplazo y su compatibilidad estable con los desplazamientos dan
+\[
+[F,\sh^kE]_s\cong[F,R(\sh^kE)]_s
+\cong[F,\sh^kRE]_s,
+\qquad E^k(F)\cong(RE)^k(F).
+\]
+El cálculo por mapas globales se realiza desde $QF$ hacia un reemplazo fibrante del codominio.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La motivación mediante dualidad de Alexander}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% P06--P07; primera parte, 44:24--55:42.
+Sea $A$ un grupo abeliano y sea $HA$ su espectro de Eilenberg--Mac Lane. Para un CW complejo finito $X$, pongamos $V=\Sigma^\infty X$. Como $V$ es dualizable, la adjunción con su dual proporciona
+\[
+\begin{aligned}
+\pi_k(V\wedge^{\mathrm L}HA)
+&=[\sh^k\mathbb S,V\wedge^{\mathrm L}HA]_s\\
+&\cong[\sh^k\mathbb S\wedge^{\mathrm L}V^*,HA]_s\\
+&\cong[\sh^kV^*,HA]_s=H^{-k}(V^*;A).
+\end{aligned}
+\]
+Tomemos un modelo finito de $X$ embebido en una esfera $S^n$, con $n$ suficientemente grande, y un CW complejo finito $K\simeq S^n-X$ con el punto base correspondiente a la construcción del dual. La descripción geométrica de la dualidad de Spanier--Whitehead da
+\[
+V^*\simeq\sh^{-(n-1)}\Sigma^\infty K.
+\]
+Si hace falta, sustituimos $X$ por un modelo simplicial finito de su tipo de homotopía. Los grupos calculados se conservan, y el desplazamiento en cohomología da
+\[
+\begin{aligned}
+H^{-k}(V^*;A)
+&\cong H^{-k}(\sh^{-(n-1)}\Sigma^\infty K;A)\\
+&\cong H^{n-1-k}(\Sigma^\infty K;A)\\
+&=\widetilde H^{\,n-1-k}(K;A)\\
+&\cong\widetilde H^{\,n-1-k}(S^n-X;A)
+\cong\widetilde H_k(X;A).
+\end{aligned}
+\]
+La última identificación es la dualidad de Alexander, en su forma dual para complejos finitos. Hemos recuperado
+\begin{equation}\label{eq:c19-homologia-ordinaria}
+\widetilde H_k(X;A)\cong
+\pi_k(\Sigma^\infty X\wedge^{\mathrm L}HA).
+\end{equation}
+La finitud se usó para disponer del dual. Para un CW complejo cualquiera, ambos lados conmutan con el paso al colímite de los subcomplejos finitos, y la identificación se extiende por naturalidad. En el lado espectral se usa que el smash derivado preserva colímites homotópicos y que las esferas son compactas. Esta extensión no afirma que un complejo infinito sea dualizable.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Definición de homología y cálculo por niveles}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% P07--P09; final de la primera parte y segunda parte, 00:00--06:26 originales.
+\begin{defi}\label{defi:c19-homologia}
+Para espectros $E,F$ y $k\in\mathbb Z$, la \emph{$E$-homología de $F$} es
+\[
+E_k(F):=\pi_k(F\wedge^{\mathrm L}E)
+=[\sh^k\mathbb S,F\wedge^{\mathrm L}E]_s
+=[\mathbb S,F\wedge^{\mathrm L}E]_k.
+\]
+Para un CW complejo $Y$, escribimos
+$\widetilde E_k(Y)=E_k(\Sigma^\infty Y)$.
+\end{defi}
+El carácter derivado del smash ya estaba presente en el uso de la dualidad: es el producto monoidal de $\Ho(\Sp^{\mathbb N})$. El smash sin derivar no da, en general, un funtor sobre esta localización.
+
+\begin{prop}\label{prop:c19-homologia-niveles}
+La homología de un espectro se calcula mediante el isomorfismo natural
+\[
+E_k(F)\cong\varinjlim\nolimits_n\widetilde E_{k+n}(F_n).
+\]
+Las transiciones se obtienen del isomorfismo de suspensión y del mapa estructural de $F$:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\widetilde E_{k+n}(F_n)\arrow[rr]\arrow[dr,"\simeq"']
+&&\widetilde E_{k+n+1}(F_{n+1})\\
+&\widetilde E_{k+n+1}(\Sigma F_n)\arrow[ur,"(\xi^F_n)_*"']&
+\end{tikzcd}
+\]
+Para niveles no celulares se entiende la homología de espacios mediante reemplazos CW.
+\end{prop}
+\begin{proof}
+Tomemos reemplazos celulares nivel a nivel $QF\to F$ y $QE\to E$. El cálculo del smash de la clase 10 utiliza el diagrama doble $D$ con términos
+\[
+D_{i,j}=\pi_{k+i+j}\bigl((QF)_i\wedge(QE)_j\bigr).
+\]
+Tomamos una región cofinal donde los grados sean al menos dos. Cada flecha se obtiene suspendiendo y aplicando el mapa estructural del factor que avanza:
+\[
+\begin{tikzcd}[column sep=1.5em,row sep=large]
+\vdots&\vdots&\\
+\pi_{k+1}((QF)_0\wedge(QE)_1)\arrow[u]\arrow[r]
+&\pi_{k+2}((QF)_1\wedge(QE)_1)\arrow[u]\arrow[r]&\cdots\\
+\pi_k((QF)_0\wedge(QE)_0)\arrow[u]\arrow[r]
+&\pi_{k+1}((QF)_1\wedge(QE)_0)\arrow[u]\arrow[r]&\cdots .
+\end{tikzcd}
+\]
+Así, $\pi_k(QF\wedge QE)\cong\varinjlim D$. Fijemos primero $i=0$. Como $(QF)_0$ es un CW complejo, hacer smash con él preserva equivalencias débiles de espacios. Luego
+\[
+\begin{aligned}
+\varinjlim\nolimits_j\pi_{k+j}((QF)_0\wedge(QE)_j)
+&\cong\varinjlim\nolimits_j\pi_{k+j}((QF)_0\wedge E_j)\\
+&=\pi_k((QF)_0\wedge E)
+\cong\widetilde E_k((QF)_0).
+\end{aligned}
+\]
+En la última línea el smash es el de un espacio con un espectro. La compatibilidad con la suspensión infinita identifica su versión derivada con $\Sigma^\infty(QF)_0\wedge^{\mathrm L}E$. La ruta alternativa señalada en clase usa directamente la preservación de equivalencias estables por el smash con un CW complejo:
+\[
+\varinjlim\nolimits_j\pi_{k+j}((QF)_0\wedge(QE)_j)
+\mathrel{\mathop{\cong}^{\color{rojoDiagramaCIMAT}}}
+\pi_k((QF)_0\wedge QE)
+\mathrel{\mathop{\cong}^{\color{rojoDiagramaCIMAT}}}
+\pi_k((QF)_0\wedge E).
+\]
+Cada columna da, de la misma manera, $\widetilde E_{k+i}((QF)_i)$. Las flechas horizontales inducen precisamente las transiciones enunciadas, de modo que queda la sucesión
+\[
+\widetilde E_k((QF)_0)\longrightarrow
+\widetilde E_{k+1}((QF)_1)\longrightarrow\cdots.
+\]
+Los colímites iterados calculan el colímite del diagrama doble. Finalmente, cada $(QF)_i\to F_i$ es una equivalencia débil y por ello induce un isomorfismo en homología. Concluimos
+\[
+\begin{aligned}
+E_k(F)&\cong\varinjlim\nolimits_i\varinjlim\nolimits_jD_{i,j}\\
+&\cong\varinjlim\nolimits_i\widetilde E_{k+i}((QF)_i)
+\cong\varinjlim\nolimits_i\widetilde E_{k+i}(F_i).
+\end{aligned}
+\]
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dualidad y espectros de funciones}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% P10--P12; segunda parte, 09:15--21:49 originales.
+\begin{prop}\label{prop:c19-dualidad-homologia}
+Si $X$ es un espectro dualizable, entonces
+\[
+E_k(X^*)\cong E^{-k}(X).
+\]
+\end{prop}
+\begin{proof}
+La adjunción de dualidad y la compatibilidad del smash con desplazamientos dan
+\[
+\begin{aligned}
+E_k(X^*)&=[\sh^k\mathbb S,X^*\wedge^{\mathrm L}E]_s\\
+&\cong[\sh^k\mathbb S\wedge^{\mathrm L}X,E]_s\\
+&\cong[\sh^kX,E]_s=E^{-k}(X).
+\end{aligned}
+\]
+Para explicitar la segunda identificación, $\sh^k\mathbb S$ es celular y solo necesitamos reemplazar $X$:
+\[
+\sh^k\mathbb S\wedge^{\mathrm L}X
+\simeq\sh^k\mathbb S\wedge QX
+\simeq\sh^kQX\simeq\sh^kX.
+\]
+La compatibilidad central es la del smash con la suspensión y su inversa, establecida en la clase 18; la última equivalencia usa que $\sh^k$ preserva equivalencias estables.
+\end{proof}
+
+El espectro $E$ actúa como los coeficientes $A$ en la fórmula clásica
+\[
+H_k(Y;A)=H_k(C_*(Y)\otimes_{\mathbb Z}A).
+\]
+El smash sustituye al tensor y los grupos de homotopía sustituyen a la homología del complejo. Para la cohomología, la comparación se hace más transparente usando el Hom interno derivado $\mathrm RF(F,E)$ de la clase 15.
+
+\begin{prop}\label{prop:c19-cohomologia-funciones}
+Hay un isomorfismo natural
+\[
+E^k(F)\cong\pi_{-k}\bigl(\mathrm RF(F,E)\bigr).
+\]
+\end{prop}
+\begin{proof}
+La adjunción cerrada y el isomorfismo unitario dan
+\[
+\begin{aligned}
+E^k(F)&=\hom_{\Ho(\Sp^{\mathbb N})}(F,\sh^kE)\\
+&\cong\hom_{\Ho(\Sp^{\mathbb N})}
+(\mathbb S,\mathrm RF(F,\sh^kE)).
+\end{aligned}
+\]
+En un modelo del espectro de funciones derivado, se reemplaza el primer argumento por $QF$ y el segundo por un modelo fibrante. Para $k\ge0$, la comparación usada en clase es
+\[
+\mathrm RF(F,\sh^kE)\simeq F(QF,R(\sh^kE))
+\simeq F(QF,\sh^kRE)\simeq\sh^k\mathrm RF(F,E).
+\]
+El cálculo de índices que la motiva compara componentes
+\[
+(QF)_m\longrightarrow(\sh^kRE)_{m+n}=(RE)_{m+n+k}.
+\]
+Son las mismas componentes que aparecen al desplazar por $k$ el espectro de funciones hacia $RE$. Para comprobar la comparación en todos los grados, apliquemos la adjunción a un espectro $Z$:
+\[
+\begin{aligned}
+[Z,\mathrm RF(F,\sh^kE)]_s
+&\cong[Z\wedge^{\mathrm L}F,\sh^kE]_s\\
+&\cong[\sh^{-k}Z\wedge^{\mathrm L}F,E]_s\\
+&\cong[Z,\sh^k\mathrm RF(F,E)]_s.
+\end{aligned}
+\]
+La naturalidad y Yoneda identifican los objetos. Por consiguiente,
+\[
+\begin{aligned}
+E^k(F)&\cong[\mathbb S,\sh^k\mathrm RF(F,E)]_s\\
+&\cong[\sh^{-k}\mathbb S,\mathrm RF(F,E)]_s
+=\pi_{-k}(\mathrm RF(F,E)).
+\end{aligned}
+\]
+\end{proof}
+\begin{nota}
+Como se advirtió en la clase 15, el espacio de familias de mapas de espectros secuenciales no proporciona por sí solo un Hom interno estricto sin datos adicionales de simetría. Por ello las identificaciones de espectros de funciones escritas en la pizarra se interpretan aquí en la categoría derivada; el argumento de adjunción anterior explicita esa interpretación.
+\end{nota}
+
+La analogía con las cocadenas queda entonces expresada por
+\[
+H^k(Y;A)=H^k\bigl(\Hom(C_*(Y),A)\bigr)
+\cong H_{-k}\bigl(\Hom(C_*(Y),A)\bigr),
+\]
+donde en la última expresión se cambia a graduación homológica. El diagrama de grados es
+\[
+\begin{tikzcd}[column sep=large,row sep=1em]
+0&1&2&\cdots\\
+\Hom(C_0(Y),A)\arrow[r]&\Hom(C_1(Y),A)\arrow[r]
+&\Hom(C_2(Y),A)\arrow[r]&\cdots\\
+0&-1&-2&\cdots .
+\end{tikzcd}
+\]
+La fila superior indica el grado cohomológico y la inferior el homológico. Esto explica el signo $-k$ en la descripción mediante grupos de homotopía.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Representabilidad y unicidad}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Brown y los espacios representantes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% P12--P13; segunda parte, 21:58--25:36 originales.
+Recordemos la representabilidad de Brown para una teoría de cohomología reducida $\widetilde h^{\,*}$ sobre CW complejos, con el axioma del wedge. Existen modelos CW $E_n$ y clases universales $u_n\in\widetilde h^{\,n}(E_n)$ que inducen el siguiente isomorfismo natural:
+\[
+[X,E_n]_*\xrightarrow{\ \cong\ }\widetilde h^{\,n}(X),
+\qquad[f]\longmapsto f^*(u_n).
+\]
+Los isomorfismos de suspensión de la teoría se representan por equivalencias débiles
+\[
+e_n=(\xi^E_n)^\perp\colon E_n\longrightarrow\Omega E_{n+1}.
+\]
+Como ambos espacios tienen tipo de homotopía CW, son equivalencias homotópicas. Sus adjuntos $\xi^E_n\colon\Sigma E_n\to E_{n+1}$ forman un $\Omega$-espectro.
+
+La construcción de Brown puede empezar en los espacios conexos. Para extender la representación a un $X$ que no sea conexo se usa precisamente el paso a la suspensión:
+\[
+[X,\Omega E_{n+1}]_*\cong[\Sigma X,E_{n+1}]_*
+\cong\widetilde h^{\,n+1}(\Sigma X)
+\cong\widetilde h^{\,n}(X).
+\]
+Aquí $\Sigma X$ es conexo. El modelo completo de $E_n$ se elige del tipo de homotopía de $\Omega E_{n+1}$, con todas sus componentes, y así $[X,E_n]_*$ da la misma representación.
+
+\begin{nota}
+En la exposición de clase se llamó conexos a los representantes y después se utilizó $E_n\simeq\Omega E_{n+1}$ para todo $X$. Es necesario distinguir el representante construido sobre dominios conexos de su modelo completo: este último puede ser disconexo. Por ejemplo, para cohomología ordinaria $E_0=K(A,0)$ tiene componentes indexadas por $A$. Esta precisión completa el paso de la pizarra a dominios no conexos; véase \cite[Teorema~2.5.2.11]{malkiewich}.
+\end{nota}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Unicidad del espectro representante}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% P13--P15; segunda parte, 25:36--32:37 originales.
+\begin{teo}\label{teo:c19-unicidad-cohomologia}
+Una teoría de cohomología reducida sobre CW complejos está representada por un espectro $E$, único salvo equivalencia estable, mediante isomorfismos naturales compatibles con la suspensión
+\[
+\widetilde h^{\,n}(X)\cong[\sh^{-n}\Sigma^\infty X,E]_s.
+\]
+\end{teo}
+\begin{proof}
+La existencia del $\Omega$-espectro se acaba de recordar, y su identificación con la expresión estable es el cálculo de cohomología anterior. Para la unicidad, supongamos primero que $E$ y otro representante $F$ son $\Omega$-espectros con niveles CW. Los isomorfismos naturales
+\[
+[X,E_n]_*\cong\widetilde h^{\,n}(X)\cong[X,F_n]_*
+\]
+y el lema de Yoneda proporcionan equivalencias homotópicas $f_n\colon E_n\to F_n$ que inducen esas biyecciones.
+
+La compatibilidad con la suspensión significa que conmuta el diagrama
+\[
+\begin{tikzcd}[column sep=huge,row sep=large]
+{[X,E_n]_*}\arrow[r,"(f_n)_*"]\arrow[d,"(e_n)_*"']
+&{[X,F_n]_*}\arrow[d,"(d_n)_*"]\\
+{[X,\Omega E_{n+1}]_*}\arrow[r,"(\Omega f_{n+1})_*"']
+&{[X,\Omega F_{n+1}]_*},
+\end{tikzcd}
+\qquad d_n=(\xi^F_n)^\perp.
+\]
+Ambas flechas verticales realizan el mismo isomorfismo de suspensión de $\widetilde h^{\,*}$. Evaluando en $X=E_n$ sobre la clase de la identidad se obtiene
+\[
+[d_nf_n]=[\Omega f_{n+1}\,e_n].
+\]
+Por adjunción, esto da homotopías punteadas
+$\xi^F_n\Sigma f_n\simeq f_{n+1}\xi^E_n$. Por tanto, los $f_n$ forman un morfismo débil de espectros, no necesariamente uno estricto. La \myref{teo:zigzag-morfismo-debil} produce el zigzag
+\[
+\begin{tikzcd}[column sep=huge]
+E&C\arrow[l,"r"',"\simeq"]\arrow[r,"f'","\simeq"']&F.
+\end{tikzcd}
+\]
+La primera flecha es una equivalencia nivel a nivel por construcción. La segunda también lo es por el \myref{coro:debil-equivalencia}, pues cada $f_n$ es una equivalencia homotópica. Así, $E\cong F$ en $\Ho(\Sp^{\mathbb N})$.
+
+Si los niveles de $F$ no son CW, tomamos $QF\to F$, una equivalencia nivel a nivel con dominio celular. Como $F$ es un $\Omega$-espectro, también lo es $QF$. Para cada CW complejo $X$, la equivalencia débil $(QF)_n\to F_n$ induce biyecciones naturales
+\[
+\widetilde h^{\,n}(X)\cong[X,F_n]_*
+\cong[X,(QF)_n]_*.
+\]
+El argumento anterior se aplica a $E$ y $QF$, de modo que
+\[
+E\cong QF\cong F\quad\text{en }\Ho(\Sp^{\mathbb N}).
+\]
+Un representante arbitrario se reduce al caso fibrante reemplazándolo por su $\Omega$-espectro asociado. La unicidad afirmada es del tipo de homotopía estable del espectro, no de una elección literal de espacios, mapas estructurales o isomorfismo entre modelos.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La variante finita y la representabilidad de la homología}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% P15--P16; segunda parte, 32:42--37:17 originales.
+\begin{teo}[Variante de Adams]\label{teo:c19-adams-finito}
+Una teoría de cohomología reducida definida sobre CW complejos finitos, con los axiomas correspondientes y aditividad finita, está representada por un espectro, único salvo equivalencia estable.
+\end{teo}
+\begin{nota}
+Este resultado se enunció sin demostración en clase, citando el artículo de Adams \emph{A variant of E.~H.~Brown's representability theorem}. Se reemplaza el axioma del wedge arbitrario por su versión finita porque solo se trabaja con complejos finitos; véanse \cite{adams1971} y \cite[Teorema~2.5.2.13]{malkiewich}.
+\end{nota}
+
+Para cualquier espectro $E$, la asignación
+\[
+\widetilde E_k(X)=\pi_k(\Sigma^\infty X\wedge^{\mathrm L}E)
+\]
+es una teoría de homología reducida sobre CW complejos. Esta afirmación se utilizó sin demostrar todos sus axiomas en clase: la exactitud procede de los triángulos, la suspensión de la estructura estable y la aditividad de la preservación de coproductos por el smash y de la pequeñez de la esfera.
+
+La pregunta recíproca tiene respuesta afirmativa: toda teoría de homología reducida es representable de esta manera. Al final de la clase se enunció este resultado y se anticipó la siguiente estrategia, reservando sus detalles para la clase siguiente.
+
+Sea $\widetilde h_*$ una teoría de homología reducida. Primero se extiende a espectros finitos mediante la suspensión: si $V\simeq\sh^a\Sigma^\infty K$, se interpreta
+\[
+h_q(V)=\widetilde h_{q-a}(K).
+\]
+La compatibilidad de la homología con suspensión permite comparar las distintas presentaciones de $V$. Sobre CW complejos finitos se propone entonces
+\[
+\widetilde h^{\,n}(X):=
+h_{-n}\!\left(\mathrm RF(\Sigma^\infty X,\mathbb S)\right)
+=h_{-n}\bigl((\Sigma^\infty X)^*\bigr).
+\]
+El dual convierte cofibras en fibras y cambia el sentido de las flechas. Además, para sumas finitas, productos y coproductos coinciden en la categoría estable. Estas son las propiedades que permiten comprobar los axiomas de cohomología en el caso finito y aplicar la variante de Adams.
+
+Si $E$ representa esa cohomología, la doble dualidad y la \myref{prop:c19-dualidad-homologia} dan, para $V$ finito, la cadena que motiva la construcción:
+\[
+h_k(V)\cong h_k(V^{**})
+\cong E^{-k}(V^*)\cong E_k(V).
+\]
+Finalmente se toma el colímite sobre los subcomplejos finitos de un CW complejo arbitrario.
+\begin{nota}
+Lo anterior recoge el esquema anunciado al final de la clase 19, no una demostración completa dada ese día. Quedaron para la siguiente clase la comprobación de la extensión a espectros finitos y de los axiomas de la teoría dual. La restricción a objetos finitos es esencial: en general, dualizar un coproducto infinito produce un producto, y la homología no transforma esos productos en los productos de grupos que exigiría el axioma del wedge para cohomología.
+\end{nota}
