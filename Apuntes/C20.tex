@@ -1,0 +1,550 @@
+% C20 -- 22 de octubre de 2026.
+% Fuentes: Estable1022.pdf; Screenshots C20/P01--P18.png;
+% Transcripciones/C20.txt, con ambos originales conservados.
+% P09: para anular una componente impar se usa el nivel par SIGUIENTE.
+% P12: r es la aplicación de la fibra, no una retracción.
+% Todos los productos y coproductos de espectros se entienden derivados.
+
+Completaremos la representabilidad de las teorías de homología mediante dualidad finita. Después estudiaremos los morfismos fantasmas y superfantasmas, que impiden identificar los morfismos de espectros con las transformaciones de las teorías sobre espacios. Al permitir espectros como argumentos de la cohomología, recuperaremos una equivalencia de categorías.
+
+La prueba por dualidad y paso al límite se desarrolla en \cite[teorema~4.2.3.4]{malkiewich}; para los mapas fantasmas, el ejemplo de la fibra de wedge a producto y el criterio de superfantasmalidad, véase \cite[\S\S6.1 y~6.3, lema~6.9]{christensen1998}. Estas referencias desarrollan los mecanismos usados aquí; el cálculo de la homología integral de $KU$ y la representabilidad sobre espectros se utilizaron en clase sin demostración.
+
+Conservamos la notación $[E,F]_s=\hom_{\Ho(\Sp^{\mathbb N})}(E,F)$. Los isomorfismos entre teorías y sus transformaciones naturales serán compatibles con la suspensión y, por consiguiente, con los morfismos de conexión. Los productos, coproductos, fibras y smash de espectros se toman en sentido derivado.
+
+% \begin{nota}
+% Al comienzo de la clase 20 quedó abierta la cuestión de si el smash derivado de espectros secuenciales arbitrarios puede calcularse reemplazando solamente uno de sus factores. No se dio una prueba para el producto secuencial empleado en el curso; los resultados sobre otros modelos no resuelven por sí solos esa cuestión sobre el producto concreto. Seguimos usando reemplazos en ambos factores. Esto no modifica los casos ya justificados de smash con espacios CW.
+% \end{nota}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Representabilidad de las teorías de homología}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Una teoría de cohomología sobre complejos finitos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Sea $\widetilde h_*$ una teoría de homología reducida sobre CW complejos. La suspensión permite extenderla a espectros finitos: si $V\simeq\sh^{-r}\Sigma^\infty X$, con $X$ finito, ponemos
+\[
+h_k(V)=\widetilde h_{k+r}(X).
+\]
+Las fórmulas de morfismos de la categoría de Spanier--Whitehead y los isomorfismos de suspensión hacen esta definición independiente de la presentación. En efecto, un morfismo se representa tras suficientes suspensiones por una aplicación de espacios; dos representantes dan el mismo homomorfismo al suspender hasta una homotopía común. También las cofibras finitas se representan después de suspender, por lo que $h_*$ conserva sus sucesiones exactas.
+
+Escribamos $DV=RF(V,\mathbb S)$ para el dual de un espectro finito. Por dualidad finita, $DV$ vuelve a ser finito, $D^2V\simeq V$ y
+\[
+D(\sh^rV)\simeq\sh^{-r}DV.
+\]
+Definimos sobre espacios finitos
+\[
+\widetilde h^{\,n}(X)=h_{-n}(D\Sigma^\infty X),
+\]
+y, sobre espectros finitos, $h^n(V)=h_{-n}(DV)$.
+
+\begin{prop}\label{prop:c20-dual-cohomologia}
+Los funtores $\widetilde h^{\,*}$ forman una teoría de cohomología reducida sobre CW complejos finitos, con aditividad finita.
+\end{prop}
+\begin{proof}
+El dual invierte los morfismos y respeta sus clases de homotopía. Además, $D0\simeq0$, de modo que la teoría es reducida. La compatibilidad con la suspensión se escribe
+\[
+\widetilde h^{\,n+1}(\Sigma X)
+=h_{-n-1}(\sh^{-1}D\Sigma^\infty X)
+\cong h_{-n}(D\Sigma^\infty X)
+=\widetilde h^{\,n}(X).
+\]
+Una sucesión de cofibra $A\to X\to X/A$ se transforma mediante $D\Sigma^\infty$ en un triángulo con las flechas invertidas. La sucesión exacta de $h_*$, reindexada por $k=-n$, da
+\[
+\cdots\longrightarrow\widetilde h^{\,n}(X/A)
+\longrightarrow\widetilde h^{\,n}(X)
+\longrightarrow\widetilde h^{\,n}(A)
+\longrightarrow\widetilde h^{\,n+1}(X/A)\longrightarrow\cdots.
+\]
+Esto comprueba la exactitud y la compatibilidad de las conexiones con la suspensión; la formulación relativa proporciona también la escisión.
+
+Para una familia finita $(X_\alpha)_{\alpha\in J}$, usamos que el dual transforma wedges en productos y que productos y coproductos finitos de espectros coinciden:
+\[
+\begin{aligned}
+\widetilde h^{\,n}\Bigl(\bigvee_{\alpha\in J}X_\alpha\Bigr)
+&=h_{-n}\Bigl(RF\bigl(\bigvee_{\alpha\in J}\Sigma^\infty X_\alpha,\mathbb S\bigr)\Bigr)\\
+&\cong h_{-n}\Bigl(\prod_{\alpha\in J}D\Sigma^\infty X_\alpha\Bigr)\\
+&\cong h_{-n}\Bigl(\bigvee_{\alpha\in J}D\Sigma^\infty X_\alpha\Bigr)\\
+&\cong\bigoplus_{\alpha\in J}\widetilde h^{\,n}(X_\alpha)
+\cong\prod_{\alpha\in J}\widetilde h^{\,n}(X_\alpha).
+\end{aligned}
+\]
+El isomorfismo resultante es el inducido por las inclusiones $X_\alpha\to\bigvee X_\alpha$: al dualizarlas se obtienen precisamente las proyecciones sobre los factores. Así se verifica el axioma con sus aplicaciones canónicas.
+\end{proof}
+
+La restricción a familias finitas es esencial en este argumento. Una teoría de homología conserva coproductos, pero no tiene por qué transformar productos infinitos de espectros en productos de grupos. Aplicamos, por ello, la \myref{teo:c19-adams-finito}, que produce un espectro $E$ y un isomorfismo natural
+\[
+\widetilde h^{\,n}(X)\cong[\Sigma^\infty X,\sh^nE]_s
+\qquad(X\text{ finito}).
+\]
+Mediante suspensión, esta representación vale también para todo espectro finito $V$:
+\[
+h^n(V)\cong[V,\sh^nE]_s.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Existencia y unicidad del representante}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{teo}[Representabilidad de Whitehead]\label{teo:c20-whitehead}
+Toda teoría de homología reducida sobre CW complejos es naturalmente isomorfa a la teoría
+\[
+\widetilde E_n(X)=\pi_n(\Sigma^\infty X\wedge^{\mathrm L}E)
+\]
+de un espectro $E$, único hasta equivalencia estable.
+\end{teo}
+\begin{proof}
+Tomemos el representante de la teoría dual construida arriba. Para $V=\Sigma^\infty X$ finito, la bidualidad y la adjunción de un objeto dualizable dan
+\[
+\begin{aligned}
+\widetilde h_n(X)&=h_n(V)\cong h_n(D^2V)=h^{-n}(DV)\\
+&\cong[\sh^nDV,E]_s
+\cong[D(\sh^{-n}V),E]_s\\
+&\cong[\mathbb S\wedge^{\mathrm L}D(\sh^{-n}V),E]_s\\
+&\cong[\mathbb S,\sh^{-n}V\wedge^{\mathrm L}E]_s\\
+&\cong[\sh^n\mathbb S,V\wedge^{\mathrm L}E]_s
+=\widetilde E_n(X).
+\end{aligned}
+\]
+Todos los isomorfismos son naturales y respetan la suspensión. En particular, con las conexiones inducidas por triángulos, forman un isomorfismo de teorías sobre complejos finitos.
+
+Sea ahora $X$ cualquier CW complejo y sea $\{X_\alpha\}$ el sistema de sus subcomplejos finitos punteados. Ambas teorías satisfacen la continuidad respecto de este sistema. Obtenemos el diagrama natural
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\displaystyle\varinjlim\nolimits_\alpha\widetilde h_n(X_\alpha)
+\arrow[r,"\simeq"]\arrow[d,"\simeq"']
+&\displaystyle\varinjlim\nolimits_\alpha\widetilde E_n(X_\alpha)
+\arrow[d,"\simeq"]\\
+\widetilde h_n(X)\arrow[r,"\simeq"']&\widetilde E_n(X).
+\end{tikzcd}
+\]
+La continuidad de una teoría de homología sobre CW complejos es la consecuencia usual de los axiomas de exactitud, escisión y wedge; para la teoría representada también se obtiene calculando en modelos celulares y usando la compacidad de las esferas. Así se extiende el isomorfismo a todos los espacios de la teoría.
+
+Si $E$ y $F$ representan teorías de homología isomorfas, la misma extensión por suspensión da un isomorfismo $E_*(V)\cong F_*(V)$ para todo espectro finito. La dualidad de la \myref{prop:c19-dualidad-homologia} lo transforma en
+\[
+E^n(W)\cong E_{-n}(DW)
+\cong F_{-n}(DW)\cong F^n(W),
+\qquad W\text{ finito}.
+\]
+Aplicamos la unicidad de la variante finita de Adams y concluimos $E\simeq F$ en la categoría estable.
+\end{proof}
+
+Junto con la representabilidad de Brown, esto identifica las tres colecciones de clases de isomorfismo:
+\[
+\begin{tikzcd}[column sep=small,row sep=large]
+\left\{\begin{gathered}\text{teorías de cohomología}\\\text{reducida}\end{gathered}\right\}/\cong
+\arrow[rr,"\simeq"]
+&&\left\{\begin{gathered}\text{teorías de homología}\\\text{reducida}\end{gathered}\right\}/\cong\\
+&\{\text{espectros}\}/\simeq_s
+\arrow[ul,"\simeq"]\arrow[ur,"\simeq"']&
+\end{tikzcd}
+\]
+Esta afirmación sobre objetos no asegura todavía una equivalencia entre las categorías correspondientes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Transformaciones naturales y morfismos superfantasmas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El funtor de teorías sobre espacios}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Sea $\mathcal D$ la categoría de teorías de cohomología reducida sobre CW complejos, con transformaciones naturales graduadas compatibles con la suspensión. Un morfismo $f\colon E\to F$ induce
+\[
+\begin{tikzcd}[column sep=huge,row sep=large]
+E\arrow[d,"f"']\arrow[r,mapsto]&
+\bigl(X\longmapsto[\Sigma^\infty X,\sh^nE]_s\bigr)
+\arrow[d,"(\sh^nf)_*"]\\
+F\arrow[r,mapsto]&
+\bigl(X\longmapsto[\Sigma^\infty X,\sh^nF]_s\bigr).
+\end{tikzcd}
+\]
+Las equivalencias estables inducen isomorfismos de teorías, de modo que obtenemos un funtor
+\[
+\Ho(\Sp^{\mathbb N})\longrightarrow\mathcal D,
+\qquad E\longmapsto\widetilde E^{\,*}.
+\]
+Es biyectivo sobre clases de isomorfismo de objetos, por los resultados de representabilidad y unicidad. Veremos que no es fiel.
+
+\begin{defi}\label{defi:c20-superfantasma}
+Un morfismo estable $f\colon E\to F$ es \emph{superfantasmal} si, para todo CW complejo punteado $Z$, todo $m\in\mathbb Z$ y todo morfismo $g$, la composición del diagrama es cero:
+\[
+\begin{tikzcd}[column sep=large]
+\sh^m\Sigma^\infty Z\arrow[r,"g"]
+\arrow[rr,bend right=25,"0"',color=rojoDiagramaCIMAT]
+&E\arrow[r,"f"]&F.
+\end{tikzcd}
+\]
+\end{defi}
+
+La palabra «todo» incluye espacios infinitos y todos los desplazamientos. Si se permitiera cualquier espectro como objeto de prueba, bastaría tomar $g=1_E$ para forzar $f=0$.
+
+Los superfantasmas forman un subgrupo en cada grupo $[E,F]_s$ y un ideal respecto de la composición. Además,
+\[
+f\text{ es superfantasmal}
+\quad\Longleftrightarrow\quad
+\widetilde f^{\,*}\colon\widetilde E^{\,*}\longrightarrow\widetilde F^{\,*}
+\text{ es cero}.
+\]
+En efecto, la transformación en grado $n$ es, tras pasar el desplazamiento al dominio,
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+{[\Sigma^\infty X,\sh^nE]_s}\arrow[r,"(\sh^nf)_*"]\arrow[d,"\simeq"']
+&{[\Sigma^\infty X,\sh^nF]_s}\arrow[d,"\simeq"]\\
+{[\sh^{-n}\Sigma^\infty X,E]_s}\arrow[r,"f_*"']
+&{[\sh^{-n}\Sigma^\infty X,F]_s}.
+\end{tikzcd}
+\]
+La aplicación inferior envía $g$ a $fg$, y $-n$ recorre todos los enteros.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Un superfantasma no nulo desde la teoría K}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Consideremos el espectro de teoría K compleja periódica $KU$. En clase se utilizó el cálculo
+\[
+H_k(KU;\mathbb Z)\cong
+\begin{cases}\mathbb Q,&k\text{ par},\\0,&k\text{ impar},\end{cases}
+\qquad k\in\mathbb Z,
+\]
+sin desarrollar su demostración. Los coeficientes universales para la cohomología \emph{ordinaria} de espectros dan una sucesión natural
+\[
+0\longrightarrow\operatorname{Ext}^1_{\mathbb Z}(H_{q-1}(V;\mathbb Z),\mathbb Z)
+\longrightarrow H^q(V;\mathbb Z)
+\longrightarrow\Hom_{\mathbb Z}(H_q(V;\mathbb Z),\mathbb Z)
+\longrightarrow0.
+\]
+No estamos afirmando una sucesión corta semejante para dos teorías generalizadas arbitrarias; las versiones generalizadas requieren otras hipótesis y suelen ser sucesiones espectrales. Para $V=KU$ y $q=1$ resulta
+\[
+[KU,\sh^1H\mathbb Z]_s=H^1(KU;\mathbb Z)
+\cong\operatorname{Ext}^1_{\mathbb Z}(\mathbb Q,\mathbb Z)\ne0.
+\]
+
+\begin{nota}
+La no anulación de este grupo de extensiones también se utilizó sin cálculo en clase. Podemos justificarla como complemento algebraico: puesto que $\mathbb Q$ es inyectivo, la sucesión $0\to\mathbb Z\to\mathbb Q\to\mathbb Q/\mathbb Z\to0$ da
+\[
+\operatorname{Ext}^1_{\mathbb Z}(\mathbb Q,\mathbb Z)
+\cong\frac{\Hom(\mathbb Q,\mathbb Q/\mathbb Z)}{\operatorname{im}\Hom(\mathbb Q,\mathbb Q)}.
+\]
+El denominador es numerable, pues cada endomorfismo de $\mathbb Q$ es multiplicación por un racional. El numerador no lo es: una aplicación queda determinada por los valores $a_j$ de $1/j!$, sujetos a $(j+1)a_{j+1}=a_j$. Cada elemento de $\mathbb Q/\mathbb Z$ tiene exactamente $j+1$ raíces de ese orden; fijando $a_1=0$ y eligiéndolas sucesivamente se obtienen incontables sistemas distintos. Por tanto, el cociente es distinto de cero.
+\end{nota}
+
+Elijamos $0\ne\alpha\colon KU\to\sh^1H\mathbb Z$. Probemos que es superfantasmal. Dado $g\colon\sh^m\Sigma^\infty Y\to KU$, su composición con $\alpha$ pertenece a
+\[
+H^1(\sh^m\Sigma^\infty Y;\mathbb Z)
+\cong\widetilde H^{\,1-m}(Y;\mathbb Z).
+\]
+Si $m>1$, el último grupo es cero. Para $m=1$ no podemos anular toda la cohomología de grado cero; usamos que $\alpha$ procede del término $\operatorname{Ext}^1$ y la naturalidad del diagrama
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\operatorname{Ext}^1_{\mathbb Z}(H_0(KU;\mathbb Z),\mathbb Z)
+\arrow[r,hook]\arrow[d,"g^*"']
+&H^1(KU;\mathbb Z)\arrow[d,"g^*"]\\
+\operatorname{Ext}^1_{\mathbb Z}(\widetilde H_{-m}(Y;\mathbb Z),\mathbb Z)
+\arrow[r,hook]&H^1(\sh^m\Sigma^\infty Y;\mathbb Z).
+\end{tikzcd}
+\]
+El término inferior izquierdo es cero para todo $m>0$. Así, basta considerar $m\le0$.
+
+Tomemos un modelo CW y $\Omega$ de $KU$ y un modelo $\Omega$ del destino. El modelo de $KU$ conserva los tipos de homotopía de sus espacios, aunque no sus modelos literales. Como
+\[
+\sh^m\Sigma^\infty Y=F_{-m}Y,
+\qquad [F_{-m}Y,KU]_s\cong[Y,KU_{-m}]_*,
+\]
+el morfismo $g$ queda determinado por una aplicación de espacios. Asimismo, $\alpha$ admite un representante global, y la composición se calcula en el nivel $-m$:
+\[
+\begin{tikzcd}[column sep=large]
+Y\arrow[r,"g_{-m}"]\arrow[rr,bend right=25,"(\alpha g)_{-m}"']
+&KU_{-m}\arrow[r,"\alpha_{-m}"]&(\sh^1H\mathbb Z)_{-m}.
+\end{tikzcd}
+\]
+Para $j=2r\ge0$, la periodicidad de Bott identifica $KU_{2r}\simeq\mathbb Z\times BU$ y el destino con $K(\mathbb Z,2r+1)$. Por tanto,
+\[
+[KU_{2r},(\sh^1H\mathbb Z)_{2r}]_*
+\cong\widetilde H^{\,2r+1}(\mathbb Z\times BU;\mathbb Z)=0.
+\]
+La última igualdad se debe a que $BU$ tiene una estructura celular con celdas de dimensión par; sus copias disjuntas tampoco tienen cohomología impar. En particular, $\alpha_0\simeq0$, como muestra el caso de $K(\mathbb Z,1)$.
+
+Las aplicaciones estructurales adjuntas proporcionan el cuadrado considerado en clase:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+KU_0\arrow[r,"\alpha_0"]\arrow[d,"\simeq"']
+&K(\mathbb Z,1)\arrow[d,"\simeq"]\\
+\Omega KU_1\arrow[r,"\Omega\alpha_1"']&\Omega K(\mathbb Z,2).
+\end{tikzcd}
+\]
+Este cuadrado prueba $\Omega\alpha_1\simeq0$. Para concluir la nulidad de una componente impar usamos, en cambio, el nivel par \emph{siguiente}:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+KU_{2r+1}\arrow[r,"\alpha_{2r+1}"]\arrow[d,"\simeq"']
+&K(\mathbb Z,2r+2)\arrow[d,"\simeq"]\\
+\Omega KU_{2r+2}\arrow[r,"\Omega\alpha_{2r+2}=0"']
+&\Omega K(\mathbb Z,2r+3).
+\end{tikzcd}
+\]
+Ahora sí se sigue $\alpha_{2r+1}\simeq0$, porque las flechas verticales son equivalencias. Todas las componentes de $\alpha$ son nulhomotópicas; en consecuencia, la composición con cualquier $F_{-m}Y$ también lo es. Hemos probado
+\[
+0\ne\alpha\colon KU\longrightarrow\sh^1H\mathbb Z
+\qquad\text{superfantasmal}.
+\]
+
+\begin{nota}
+En clase se pasó del primer cuadrado a la nulidad de las componentes impares. El argumento se precisa arriba usando el siguiente nivel par: no se puede cancelar el funtor $\Omega$ en una igualdad de clases de aplicaciones de espacios. Tampoco se deduce $\alpha=0$ de la nulidad de cada componente, pues las nulhomotopías escogidas no tienen por qué ser compatibles entre sí como homotopía de espectros.
+\end{nota}
+
+En particular, el funtor de teorías induce una aplicación no inyectiva
+\[
+[KU,\sh^1H\mathbb Z]_s\longrightarrow
+\hom_{\mathcal D}(\widetilde K^{\,*},\widetilde H^{\,*+1}),
+\qquad\alpha\longmapsto0.
+\]
+No puede ser una equivalencia de categorías.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{El cociente por los superfantasmas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Definamos $\mathcal R$ con los mismos objetos que $\Ho(\Sp^{\mathbb N})$ y con grupos de morfismos
+\[
+\hom_{\mathcal R}(E,F)
+=\frac{[E,F]_s}{\{\text{morfismos superfantasmales de }E\text{ a }F\}}.
+\]
+La propiedad de ideal hace que la composición esté bien definida. El funtor inducido $\mathcal R\to\mathcal D$ es fiel y esencialmente sobreyectivo. Para obtener una equivalencia falta comprobar que es pleno; identificar el núcleo, por sí solo, no basta.
+
+La plenitud se obtiene retomando el argumento de espacios representantes. Si $E$ y $F$ son modelos CW y $\Omega$, una transformación $\theta^*\colon\widetilde E^{\,*}\to\widetilde F^{\,*}$ proporciona en cada grado $n\ge0$, mediante Yoneda sobre espacios, una aplicación
+\[
+f_n\colon E_n\longrightarrow F_n,
+\qquad\theta^n_X\colon[X,E_n]_*\longrightarrow[X,F_n]_*.
+\]
+La compatibilidad con suspensión significa que conmuta, hasta homotopía, el cuadrado
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+E_n\arrow[r,"f_n"]\arrow[d,"\simeq"']&F_n\arrow[d,"\simeq"]\\
+\Omega E_{n+1}\arrow[r,"\Omega f_{n+1}"']&\Omega F_{n+1}.
+\end{tikzcd}
+\]
+La rectificación de mapas débiles desarrollada en la clase 9 convierte estas aplicaciones compatibles hasta homotopía en un morfismo estable $f\colon E\to F$. Su transformación inducida coincide con $\theta$ en grados no negativos por construcción, y en los restantes por suspensión. Esto demuestra la plenitud. Las distintas elecciones de rectificación pueden diferir por un superfantasma; en el cociente determinan el mismo morfismo. Por tanto,
+\[
+\mathcal R\simeq\mathcal D.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Morfismos fantasmas y un ejemplo no nulo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Pruebas mediante espectros finitos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Si restringimos las teorías a CW complejos finitos, también obtenemos un funtor desde la categoría estable, pero ahora se pierden todavía más morfismos.
+
+\begin{defi}\label{defi:c20-fantasma}
+Un morfismo estable $f\colon E\to F$ es \emph{fantasmal} si la composición
+\[
+\begin{tikzcd}[column sep=large]
+\sh^m\Sigma^\infty Z\arrow[r,"g"]
+\arrow[rr,bend right=25,"0"',color=rojoDiagramaCIMAT]
+&E\arrow[r,"f"]&F
+\end{tikzcd}
+\]
+es cero para todo CW complejo finito $Z$, todo $m\in\mathbb Z$ y todo $g$.
+\end{defi}
+
+Equivalentemente, se prueba con todos los espectros finitos, por la descripción de la imagen esencial de $\SW$. Todo superfantasma es fantasmal. La aplicación sobre teorías restringidas a espacios finitos es cero exactamente cuando el morfismo es fantasmal, por el mismo cambio de desplazamiento usado antes.
+
+Consideremos la aplicación canónica entre el coproducto numerable y el producto numerable
+\[
+\iota\colon\bigvee_{j\ge0}H\mathbb Z\longrightarrow\prod_{j\ge0}H\mathbb Z.
+\]
+Para abreviar los diagramas de su fibra, escribiremos $A=\bigvee_{j\ge0}H\mathbb Z$ y $B=\prod_{j\ge0}H\mathbb Z$. Sean $u_j\colon H\mathbb Z\to A$ las inclusiones y $p_i\colon B\to H\mathbb Z$ las proyecciones. La aplicación $\iota$ queda caracterizada por
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+H\mathbb Z\arrow[r,"u_j"]
+\arrow[rr,bend left=25,"\iota u_j"]
+\arrow[rrd,bend right=20,"\delta_{ij}1"']
+&A\arrow[r,"\iota"]&B\arrow[d,"p_i"]\\
+&&H\mathbb Z.
+\end{tikzcd}
+\]
+El producto puede calcularse por niveles después de reemplazar los factores por $\Omega$-espectros. Para todo espectro finito $T$, su pequeñez y la propiedad universal del producto dan el cuadrado
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+{[T,A]_s}\arrow[r,"\iota_*"]\arrow[d,"\simeq"']
+&{[T,B]_s}\arrow[d,"\simeq"]\\
+\displaystyle\bigoplus_{j\ge0}[T,H\mathbb Z]_s\arrow[r,hook]
+&\displaystyle\prod_{j\ge0}[T,H\mathbb Z]_s.
+\end{tikzcd}
+\]
+La aplicación inferior es la inclusión usual. La pequeñez de $T$ se obtiene de la de la esfera, por suspensiones y sucesivas cofibras de sus finitas celdas; equivalentemente, puede usarse la compacidad de un representante finito en $\SW$. En particular, $\iota_*$ es inyectiva.
+
+Tomemos una fibra homotópica y su triángulo distinguido
+\[
+F\xrightarrow{\ r\ }A\xrightarrow{\ \iota\ }B
+\xrightarrow{\ k\ }\sh^1F.
+\]
+Al aplicar $[T,-]_s$, la exactitud y la inyectividad de $\iota_*$ implican $r_*=0$. Así, para todo $T$ finito,
+\[
+\begin{tikzcd}[column sep=large]
+T\arrow[r,"g"]\arrow[rr,bend right=25,"0"',color=rojoDiagramaCIMAT]
+&F\arrow[r,"r"]&A.
+\end{tikzcd}
+\]
+Por tanto, $r$ es fantasmal. La aplicación $r$ es el morfismo de la fibra, no una retracción. Probaremos que no es cero.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La nulidad de la fibra obligaría a una escisión}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Supongamos $r=0$. La rotación del triángulo proporciona
+\[
+F\xrightarrow{\ 0\ }A\xrightarrow{\ \iota\ }B
+\xrightarrow{\ k\ }\sh^1F\xrightarrow{\ 0\ }\sh^1A.
+\]
+Para cualquier espectro $X$, el segmento correspondiente de la sucesión exacta se reduce a
+\[
+0\longrightarrow[X,A]_s\xrightarrow{\iota_*}[X,B]_s
+\xrightarrow{k_*}[X,\sh^1F]_s\longrightarrow0.
+\]
+Tomando $X=\sh^1F$, la sobreyectividad de $k_*$ da un morfismo $\ell\colon\sh^1F\to B$ con $k\ell=1$. Comparemos con el triángulo escindido:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+F\arrow[r,"0"]\arrow[d,equal]
+&A\arrow[r,"i_1"]\arrow[d,equal]
+&A\vee\sh^1F\arrow[r,"0\vee1"]\arrow[d,"{[\iota,\ell]}"]
+&\sh^1F\arrow[d,equal]\\
+F\arrow[r,"0"']&A\arrow[r,"\iota"']
+&B\arrow[r,"k"']&\sh^1F.
+\end{tikzcd}
+\]
+El cuadrado central conmuta por definición y el derecho por $k\iota=0$ y $k\ell=1$. Aplicando $\pi_q$ a las dos filas, sus términos extremos nulos dan sucesiones cortas exactas; el lema de los cinco muestra que $[\iota,\ell]$ induce isomorfismos en todos los grupos estables. Es, por tanto, una equivalencia estable. En la categoría homotópica podemos definir
+\[
+t=(1\vee0)[\iota,\ell]^{-1}\colon B\longrightarrow A,
+\qquad t\iota=1_A.
+\]
+Esta factorización conserva el diagrama de escisión:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+A\arrow[r,"\iota"]\arrow[rr,bend left=25,"1_A"]\arrow[d,equal]
+&B\arrow[r,"t"]\arrow[d,"{[\iota,\ell]^{-1}}","\simeq"']&A\arrow[d,equal]\\
+A\arrow[r,"i_1"']&A\vee\sh^1F\arrow[r,"1\vee0"']&A.
+\end{tikzcd}
+\]
+En consecuencia, la nulidad de $r$ obligaría a que la inclusión del wedge en el producto tuviese una retracción estable.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La obstrucción en grupos abelianos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Tenemos $\pi_0(H\mathbb Z)=\mathbb Z$. La pequeñez de la esfera y la propiedad universal del producto transforman la supuesta retracción en
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\pi_0(A)\arrow[r,"\pi_0(\iota)"]\arrow[rr,bend left=25,"1"]\arrow[d,"\simeq"']
+&\pi_0(B)\arrow[r,"\pi_0(t)"]\arrow[d,"\simeq"]
+&\pi_0(A)\arrow[d,"\simeq"]\\
+\displaystyle\bigoplus_{j\ge0}\mathbb Z\arrow[r,hook,"i"']
+&\displaystyle\prod_{j\ge0}\mathbb Z\arrow[r,"\rho"']
+&\displaystyle\bigoplus_{j\ge0}\mathbb Z.
+\end{tikzcd}
+\]
+Así, $\rho i=1$. Entonces la sucesión corta de grupos abelianos
+\[
+0\longrightarrow\bigoplus_{j\ge0}\mathbb Z
+\xrightarrow{\ i\ }\prod_{j\ge0}\mathbb Z
+\xrightarrow{\ q\ }C\longrightarrow0,
+\qquad C=\operatorname{coker}(i),
+\]
+sería escindida: la restricción de $q$ a $\ker\rho$ es un isomorfismo, cuya inversa da una sección $s\colon C\to\prod\mathbb Z$.
+
+Consideremos
+\[
+z=q(1,2,2^2,2^3,\ldots)\in C.
+\]
+Es distinto de cero porque esa sucesión no tiene soporte finito. Para cada $n\ge1$, cambiar sus primeras $n$ coordenadas no modifica la clase en $C$, y por ello
+\[
+\begin{aligned}
+z&=q(\underbrace{0,\ldots,0}_{n},2^n,2^{n+1},\ldots)\\
+&=2^n q(\underbrace{0,\ldots,0}_{n},1,2,2^2,\ldots)
+=2^n\omega_n.
+\end{aligned}
+\]
+Si existiera la sección $s$, el elemento $s(z)$ sería no nulo y divisible por $2^n$ para todo $n$. Pero cada una de sus coordenadas enteras sería entonces divisible por todas las potencias de dos, lo que obliga a que todas sean cero. Esta contradicción prueba que la sucesión no se escinde y que $\iota$ no tiene retracción. Concluimos
+\[
+0\ne r\colon F\longrightarrow\bigvee_{j\ge0}H\mathbb Z
+\qquad\text{fantasmal}.
+\]
+El ejemplo confirma que incluso sobre complejos finitos hay morfismos estables no nulos que inducen la transformación cero de teorías.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Teorías de cohomología sobre espectros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Axiomas y teorías representadas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{defi}\label{defi:c20-cohomologia-espectros}
+Una \emph{teoría de cohomología sobre espectros} consiste en funtores aditivos
+\[
+h^n\colon\Ho(\Sp^{\mathbb N})^{\mathrm{op}}\longrightarrow\Ab,
+\qquad n\in\mathbb Z,
+\]
+con isomorfismos naturales de suspensión $h^n(X)\cong h^{n+1}(\sh^1X)$, que cumplen lo siguiente:
+\begin{enumerate}
+\item Cada triángulo distinguido $X\to Y\to Z\to\sh^1X$ induce una sucesión exacta larga
+\[
+\cdots\longrightarrow h^n(Z)\longrightarrow h^n(Y)
+\longrightarrow h^n(X)\longrightarrow h^{n+1}(Z)\longrightarrow\cdots,
+\]
+con la conexión inducida por el triángulo y la suspensión.
+\item Para cualquier familia de espectros, las inclusiones inducen un isomorfismo
+\[
+h^n\Bigl(\bigvee_\alpha X_\alpha\Bigr)
+\xrightarrow{\ \simeq\ }\prod_\alpha h^n(X_\alpha).
+\]
+\end{enumerate}
+Los morfismos entre estas teorías son transformaciones naturales graduadas compatibles con los isomorfismos de suspensión.
+\end{defi}
+
+Todo espectro $E$ determina una teoría
+\[
+E^n(X)=[X,\sh^nE]_s.
+\]
+La suspensión es un isomorfismo porque $\sh$ es una autoequivalencia; la exactitud es la de $[-,\sh^nE]_s$ sobre triángulos distinguidos, y el axioma del wedge es la propiedad universal del coproducto. La teoría sobre espacios es su restricción a espectros de suspensión:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+\Ho(\mathrm{CW}_*)^{\mathrm{op}}
+\arrow[r,"(\Sigma^\infty)^{\mathrm{op}}"]
+\arrow[rr,bend right=25,"\widetilde E^{\,*}"']
+&\Ho(\Sp^{\mathbb N})^{\mathrm{op}}\arrow[r,"E^*"]&\Ab.
+\end{tikzcd}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Representabilidad y Yoneda}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{teo}[Representabilidad sobre espectros]\label{teo:c20-brown-espectros}
+Toda teoría de cohomología sobre espectros es naturalmente isomorfa a $E^*$ para algún espectro $E$. El representante es único hasta isomorfismo en la categoría homotópica estable.
+\end{teo}
+
+El resultado se enunció sin demostración en clase, con la referencia \cite[teorema~4.3.11]{margolis1983}. A diferencia de la representabilidad sobre espacios, aquí el dominio de los funtores ya es toda la categoría estable. Esto permite aplicar Yoneda directamente a los espectros representantes.
+
+\begin{prop}\label{prop:c20-yoneda-espectros}
+El funtor que asocia a un espectro su teoría de cohomología sobre espectros es una equivalencia de categorías. En particular,
+\[
+[E,F]_s\xrightarrow{\ \simeq\ }\hom(E^*,F^*),
+\qquad f\longmapsto\bigl((\sh^nf)_*\bigr)_{n\in\mathbb Z}.
+\]
+\end{prop}
+\begin{proof}
+La representabilidad del teorema anterior da la sobreyectividad esencial. Para comprobar la afirmación sobre morfismos, sea $\theta\colon E^*\to F^*$ una transformación de teorías. Su componente de grado cero es una transformación
+\[
+[-,E]_s\longrightarrow[-,F]_s
+\]
+sobre toda la categoría homotópica estable. Por Yoneda, el morfismo correspondiente es
+\[
+f=\theta^0_E(1_E)\colon E\longrightarrow F,
+\qquad\theta^0_X(g)=fg.
+\]
+Para cualquier grado $n$, las identificaciones
+\[
+E^n(X)\cong E^0(\sh^{-n}X),
+\qquad F^n(X)\cong F^0(\sh^{-n}X)
+\]
+y la compatibilidad de $\theta$ con la suspensión fuerzan que $\theta^n_X$ sea composición con $\sh^nf$. Así, cada transformación procede de un único morfismo estable. El funtor es pleno y fiel, y por tanto una equivalencia.
+\end{proof}
+
+La conclusión es una equivalencia y, en particular, una biyección entre \emph{clases de isomorfismo} de objetos; no requiere una igualdad literal entre teorías y espectros. La posibilidad de evaluar en $E$ detecta ahora el morfismo $f$ sobre $1_E$, precisamente la prueba que no estaba disponible cuando solo se admitían espacios como argumentos.
+
+En clase también se anunció la versión de representabilidad para teorías de homología sobre espectros, sin desarrollarla. La construcción celular de la homología ordinaria de espectros y sus coeficientes universales quedaron para una clase posterior, junto con el estudio ulterior de operaciones y localizaciones.
